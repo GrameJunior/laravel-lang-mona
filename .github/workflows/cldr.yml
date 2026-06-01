@@ -19,7 +19,7 @@ jobs:
             -   name: Install dependencies
                 run: |
                     composer install --no-progress --no-interaction --optimize-autoloader --no-dev
-                    npm ci
+                    npm ci --ignore-scripts
 
             -   name: Update data
                 run: composer data:update
