@@ -1,12 +1,7 @@
-name: update
+name: Unicode CLDR
 
 on:
-    push:
-        branches:
-            - main
     workflow_dispatch:
-
-permissions: write-all
 
 jobs:
     update:
@@ -21,24 +16,25 @@ jobs:
                     extensions: curl, mbstring, zip, pcntl, pdo, pdo_sqlite, iconv, json
                     coverage: none
 
-            -   name: Install Composer dependencies
-                run: composer update --prefer-stable --prefer-dist --no-progress --no-interaction
+            -   name: Install dependencies
+                run: |
+                    composer install --no-progress --no-interaction --optimize-autoloader --no-dev
+                    npm ci
 
             -   name: Update data
-                id: data
-                run: composer collect
+                run: composer data:update
 
             -   name: Create a Pull Request
                 uses: peter-evans/create-pull-request@v8
                 id: pullRequest
                 with:
-                    branch: projects/download
+                    branch: source/date
                     branch-suffix: random
                     delete-branch: true
                     add-paths: ./data
-                    title: "[source]: Data updated"
-                    commit-message: 📦 Data updated
-                    body: 📦 Data updated
+                    title: "[source]: CLDR data updated"
+                    commit-message: 📦 CLDR data updated
+                    body: 📦 CLDR data updated
                     labels: |
                         source
 
