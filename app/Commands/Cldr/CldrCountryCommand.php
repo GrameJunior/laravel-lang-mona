@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Mona\Commands\Cldr;
 
-final class CldrCountry extends CldrCommand
+final class CldrCountryCommand extends CldrCommand
 {
     protected string $directory = __DIR__ . '/../../../src/NativeCountryNames/data';
 

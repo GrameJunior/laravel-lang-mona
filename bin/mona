@@ -4,8 +4,8 @@
 declare(strict_types=1);
 
 use Dotenv\Dotenv;
-use LaravelLang\Mona\Commands\Cldr\CldrCountry;
-use LaravelLang\Mona\Commands\Cldr\CldrLocale;
+use LaravelLang\Mona\Commands\Cldr\CldrCountryCommand;
+use LaravelLang\Mona\Commands\Cldr\CldrLocaleCommand;
 use Symfony\Component\Console\Application;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -16,8 +16,8 @@ $dotenv->safeLoad();
 $application = new Application('Laravel-Lang: Mona');
 
 $application->addCommands([
-    new CldrCountry,
-    new CldrLocale,
+    new CldrCountryCommand,
+    new CldrLocaleCommand,
 ]);
 
 $application->run();

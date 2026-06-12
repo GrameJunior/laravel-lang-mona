@@ -11,22 +11,15 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use function env;
-use function file_get_contents;
 use function file_put_contents;
-use function json_decode;
 use function json_encode;
 use function Laravel\Prompts\task;
-use function str_replace;
 
 abstract class CldrCommand extends Command
 {
     protected string $directory;
 
-    protected int $jsonOptions = JSON_THROW_ON_ERROR
-    | JSON_UNESCAPED_SLASHES
-    | JSON_UNESCAPED_UNICODE;
-
-    protected array $loaded = [];
+    protected int $jsonOptions = JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
 
     protected function configure(): void
     {
@@ -54,7 +47,7 @@ abstract class CldrCommand extends Command
         $data = [];
 
         foreach (Locale::values() as $locale) {
-            $data[$locale] = $this->perform($code, $this->convertLocale($locale));
+            $data[$locale] = $this->perform($code, $locale);
         }
 
         $this->store($code, $data);
@@ -72,27 +65,12 @@ abstract class CldrCommand extends Command
             : json_encode($data, $this->jsonOptions);
     }
 
-    protected function convertLocale(string $code): string
-    {
-        return str_replace('_', '-', $code);
-    }
-
     protected function commandName(): string
     {
         return Str::of(static::class)
             ->classBasename()
+            ->beforeLast('Command')
             ->snake(':')
             ->toString();
-    }
-
-    protected function loadFile(string $path): array
-    {
-        if (isset($this->loaded[$path])) {
-            return $this->loaded[$path];
-        }
-
-        $content = file_get_contents(__DIR__ . '/../../../' . $path);
-
-        return $this->loaded[$path] = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
     }
 }
