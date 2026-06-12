@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "update-skills-description": {
+      "source": "TheDragonSkills/update-skills-description",
+      "sourceType": "github",
+      "skillPath": ".agents/update-skills-description/SKILL.md",
+      "computedHash": "8adb9e3d9a7304f2e0490ae4bea1100dc6c706285e30330131021367e6e47b31"
+    }
+  }
+}
