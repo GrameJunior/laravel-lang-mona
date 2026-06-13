@@ -1,0 +1,14 @@
+<?php
+
+declare(strict_types=1);
+
+use LaravelLang\CurrencyNames\CurrencyNames;
+use LaravelLang\LocaleList\Locale;
+
+test('fallback', function () {
+    $items = CurrencyNames::all();
+
+    expect($items->toArray())
+        ->toHaveCount(count(Locale::cases()))
+        ->toMatchSnapshot();
+});
