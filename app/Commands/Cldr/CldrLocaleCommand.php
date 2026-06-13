@@ -12,7 +12,7 @@ use function str_replace;
 
 final class CldrLocaleCommand extends CldrCommand
 {
-    protected string $directory = __DIR__ . '/../../../src/NativeLocaleNames/data';
+    protected string $directory = __DIR__ . '/../../../src/LocaleNames/data';
 
     private const string SOURCE_DIRECTORY = __DIR__ . '/../../../node_modules/cldr-localenames-full/main';
     private const string FALLBACK_LOCALE  = 'en';
