@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\CurrencyNames\Data;
+namespace LaravelLang\CurrencyNames;
 
 use Illuminate\Contracts\Support\Arrayable;
 

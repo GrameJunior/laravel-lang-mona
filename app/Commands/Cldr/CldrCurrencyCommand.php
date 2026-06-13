@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace LaravelLang\Mona\Commands\Cldr;
 
 use Illuminate\Contracts\Support\Arrayable;
-use LaravelLang\CurrencyNames\Data\CurrencyData;
+use LaravelLang\CurrencyNames\CurrencyData;
 use RuntimeException;
 
 use function array_key_first;
