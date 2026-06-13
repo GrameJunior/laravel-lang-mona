@@ -74,6 +74,7 @@
         "cldr:update": [
             "@disableProcessTimeout",
             "@php bin/mona cldr:country",
+            "@php bin/mona cldr:currency",
             "@php bin/mona cldr:locale"
         ],
         "disableProcessTimeout": "Composer\\Config::disableProcessTimeout"
