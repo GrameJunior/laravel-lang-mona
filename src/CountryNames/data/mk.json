@@ -1,647 +1,518 @@
 {
     "af": {
         "code": "ZA",
-        "native": "Suid-Afrika",
-        "localized": "Јужноафриканска Република"
+        "name": "Јужноафриканска Република"
     },
     "sq": {
         "code": "AL",
-        "native": "Shqipëri",
-        "localized": "Албанија"
+        "name": "Албанија"
     },
     "am": {
         "code": "ET",
-        "native": "ኢትዮጵያ",
-        "localized": "Етиопија"
+        "name": "Етиопија"
     },
     "ar": {
         "code": "EG",
-        "native": "مصر",
-        "localized": "Египет"
+        "name": "Египет"
     },
     "hy": {
         "code": "AM",
-        "native": "Հայաստան",
-        "localized": "Ерменија"
+        "name": "Ерменија"
     },
     "as": {
         "code": "IN",
-        "native": "ভাৰত",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "az": {
         "code": "AZ",
-        "native": "Azərbaycan",
-        "localized": "Азербејџан"
+        "name": "Азербејџан"
     },
     "bm": {
         "code": "ML",
-        "native": "Mali",
-        "localized": "Мали"
+        "name": "Мали"
     },
     "eu": {
         "code": "ES",
-        "native": "Espainia",
-        "localized": "Шпанија"
+        "name": "Шпанија"
     },
     "be": {
         "code": "BY",
-        "native": "Беларусь",
-        "localized": "Белорусија"
+        "name": "Белорусија"
     },
     "bn": {
         "code": "BD",
-        "native": "বাংলাদেশ",
-        "localized": "Бангладеш"
+        "name": "Бангладеш"
     },
     "bho": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "bs": {
         "code": "BA",
-        "native": "Bosna i Hercegovina",
-        "localized": "Босна и Херцеговина"
+        "name": "Босна и Херцеговина"
     },
     "bg": {
         "code": "BG",
-        "native": "България",
-        "localized": "Бугарија"
+        "name": "Бугарија"
     },
     "en_CA": {
         "code": "CA",
-        "native": "Canada",
-        "localized": "Канада"
+        "name": "Канада"
     },
     "ca": {
         "code": "ES",
-        "native": "Espanya",
-        "localized": "Шпанија"
+        "name": "Шпанија"
     },
     "ceb": {
         "code": "PH",
-        "native": "Philippines",
-        "localized": "Филипини"
+        "name": "Филипини"
     },
     "km": {
         "code": "KH",
-        "native": "កម្ពុជា",
-        "localized": "Камбоџа"
+        "name": "Камбоџа"
     },
     "zh_CN": {
         "code": "CN",
-        "native": "中国",
-        "localized": "Кина"
+        "name": "Кина"
     },
     "zh_HK": {
         "code": "HK",
-        "native": "中國香港特別行政區",
-        "localized": "Хонгконг САР Кина"
+        "name": "Хонгконг САР Кина"
     },
     "zh_TW": {
         "code": "TW",
-        "native": "台灣",
-        "localized": "Тајван"
+        "name": "Тајван"
     },
     "hr": {
         "code": "HR",
-        "native": "Hrvatska",
-        "localized": "Хрватска"
+        "name": "Хрватска"
     },
     "cs": {
         "code": "CZ",
-        "native": "Česko",
-        "localized": "Чешка"
+        "name": "Чешка"
     },
     "da": {
         "code": "DK",
-        "native": "Danmark",
-        "localized": "Данска"
+        "name": "Данска"
     },
     "doi": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "nl": {
         "code": "NL",
-        "native": "Nederland",
-        "localized": "Холандија"
+        "name": "Холандија"
     },
     "en": {
         "code": "US",
-        "native": "United States",
-        "localized": "Соединети Американски Држави"
+        "name": "Соединети Американски Држави"
     },
     "eo": {
         "code": "001",
-        "native": "mondo",
-        "localized": "Свет"
+        "name": "Свет"
     },
     "et": {
         "code": "EE",
-        "native": "Eesti",
-        "localized": "Естонија"
+        "name": "Естонија"
     },
     "ee": {
         "code": "GH",
-        "native": "Ghana nutome",
-        "localized": "Гана"
+        "name": "Гана"
     },
     "fi": {
         "code": "FI",
-        "native": "Suomi",
-        "localized": "Финска"
+        "name": "Финска"
     },
     "fr": {
         "code": "FR",
-        "native": "France",
-        "localized": "Франција"
+        "name": "Франција"
     },
     "fy": {
         "code": "NL",
-        "native": "Nederlân",
-        "localized": "Холандија"
+        "name": "Холандија"
     },
     "gl": {
         "code": "ES",
-        "native": "España",
-        "localized": "Шпанија"
+        "name": "Шпанија"
     },
     "ka": {
         "code": "GE",
-        "native": "საქართველო",
-        "localized": "Грузија"
+        "name": "Грузија"
     },
     "de": {
         "code": "DE",
-        "native": "Deutschland",
-        "localized": "Германија"
+        "name": "Германија"
     },
     "de_AT": {
         "code": "AT",
-        "native": "Österreich",
-        "localized": "Австрија"
+        "name": "Австрија"
     },
     "de_CH": {
         "code": "CH",
-        "native": "Schweiz",
-        "localized": "Швајцарија"
+        "name": "Швајцарија"
     },
     "el": {
         "code": "GR",
-        "native": "Ελλάδα",
-        "localized": "Грција"
+        "name": "Грција"
     },
     "gu": {
         "code": "IN",
-        "native": "ભારત",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "ht": {
         "code": "HT",
-        "native": "Haïti",
-        "localized": "Хаити"
+        "name": "Хаити"
     },
     "ha": {
         "code": "NG",
-        "native": "Nijeriya",
-        "localized": "Нигерија"
+        "name": "Нигерија"
     },
     "haw": {
         "code": "US",
-        "native": "ʻAmelika Hui Pū ʻIa",
-        "localized": "Соединети Американски Држави"
+        "name": "Соединети Американски Држави"
     },
     "he": {
         "code": "IL",
-        "native": "ישראל",
-        "localized": "Израел"
+        "name": "Израел"
     },
     "hi": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "hu": {
         "code": "HU",
-        "native": "Magyarország",
-        "localized": "Унгарија"
+        "name": "Унгарија"
     },
     "is": {
         "code": "IS",
-        "native": "Ísland",
-        "localized": "Исланд"
+        "name": "Исланд"
     },
     "ig": {
         "code": "NG",
-        "native": "Naịjịrịa",
-        "localized": "Нигерија"
+        "name": "Нигерија"
     },
     "id": {
         "code": "ID",
-        "native": "Indonesia",
-        "localized": "Индонезија"
+        "name": "Индонезија"
     },
     "ga": {
         "code": "IE",
-        "native": "Éire",
-        "localized": "Ирска"
+        "name": "Ирска"
     },
     "it": {
         "code": "IT",
-        "native": "Italia",
-        "localized": "Италија"
+        "name": "Италија"
     },
     "ja": {
         "code": "JP",
-        "native": "日本",
-        "localized": "Јапонија"
+        "name": "Јапонија"
     },
     "kn": {
         "code": "IN",
-        "native": "ಭಾರತ",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "kk": {
         "code": "KZ",
-        "native": "Қазақстан",
-        "localized": "Казахстан"
+        "name": "Казахстан"
     },
     "rw": {
         "code": "RW",
-        "native": "U Rwanda",
-        "localized": "Руанда"
+        "name": "Руанда"
     },
     "ko": {
         "code": "KR",
-        "native": "대한민국",
-        "localized": "Јужна Кореја"
+        "name": "Јужна Кореја"
     },
     "ku": {
         "code": "TR",
-        "native": "Türkiye",
-        "localized": "Турција"
+        "name": "Турција"
     },
     "ckb": {
         "code": "IQ",
-        "native": "عێراق",
-        "localized": "Ирак"
+        "name": "Ирак"
     },
     "ky": {
         "code": "KG",
-        "native": "Кыргызстан",
-        "localized": "Киргистан"
+        "name": "Киргистан"
     },
     "lo": {
         "code": "LA",
-        "native": "ລາວ",
-        "localized": "Лаос"
+        "name": "Лаос"
     },
     "lv": {
         "code": "LV",
-        "native": "Latvija",
-        "localized": "Латвија"
+        "name": "Латвија"
     },
     "ln": {
         "code": "CD",
-        "native": "Republíki ya Kongó Demokratíki",
-        "localized": "Конго - Киншаса"
+        "name": "Конго - Киншаса"
     },
     "lt": {
         "code": "LT",
-        "native": "Lietuva",
-        "localized": "Литванија"
+        "name": "Литванија"
     },
     "lg": {
         "code": "UG",
-        "native": "Yuganda",
-        "localized": "Уганда"
+        "name": "Уганда"
     },
     "lb": {
         "code": "LU",
-        "native": "Lëtzebuerg",
-        "localized": "Луксембург"
+        "name": "Луксембург"
     },
     "mk": {
         "code": "MK",
-        "native": "Северна Македонија",
-        "localized": "Северна Македонија"
+        "name": "Северна Македонија"
     },
     "mai": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "mg": {
         "code": "MG",
-        "native": "Madagasikara",
-        "localized": "Мадагаскар"
+        "name": "Мадагаскар"
     },
     "ms": {
         "code": "MY",
-        "native": "Malaysia",
-        "localized": "Малезија"
+        "name": "Малезија"
     },
     "ml": {
         "code": "IN",
-        "native": "ഇന്ത്യ",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "mt": {
         "code": "MT",
-        "native": "Malta",
-        "localized": "Малта"
+        "name": "Малта"
     },
     "mi": {
         "code": "NZ",
-        "native": "Aotearoa",
-        "localized": "Нов Зеланд"
+        "name": "Нов Зеланд"
     },
     "mr": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "mni_Mtei": {
         "code": "IN",
-        "native": "ইন্দিয়া",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "mn": {
         "code": "MN",
-        "native": "Монгол",
-        "localized": "Монголија"
+        "name": "Монголија"
     },
     "my": {
         "code": "MM",
-        "native": "မြန်မာ",
-        "localized": "Мјанмар (Бурма)"
+        "name": "Мјанмар (Бурма)"
     },
     "ne": {
         "code": "NP",
-        "native": "नेपाल",
-        "localized": "Непал"
+        "name": "Непал"
     },
     "nb": {
         "code": "NO",
-        "native": "Norge",
-        "localized": "Норвешка"
+        "name": "Норвешка"
     },
     "nn": {
         "code": "NO",
-        "native": "Noreg",
-        "localized": "Норвешка"
+        "name": "Норвешка"
     },
     "oc": {
         "code": "FR",
-        "native": "França",
-        "localized": "Франција"
+        "name": "Франција"
     },
     "or": {
         "code": "IN",
-        "native": "ଭାରତ",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "om": {
         "code": "ET",
-        "native": "Itoophiyaa",
-        "localized": "Етиопија"
+        "name": "Етиопија"
     },
     "ps": {
         "code": "AF",
-        "native": "افغانستان",
-        "localized": "Авганистан"
+        "name": "Авганистан"
     },
     "fa": {
         "code": "IR",
-        "native": "ایران",
-        "localized": "Иран"
+        "name": "Иран"
     },
     "fil": {
         "code": "PH",
-        "native": "Pilipinas",
-        "localized": "Филипини"
+        "name": "Филипини"
     },
     "pl": {
         "code": "PL",
-        "native": "Polska",
-        "localized": "Полска"
+        "name": "Полска"
     },
     "pt": {
         "code": "BR",
-        "native": "Brasil",
-        "localized": "Бразил"
+        "name": "Бразил"
     },
     "pt_BR": {
         "code": "BR",
-        "native": "Brasil",
-        "localized": "Бразил"
+        "name": "Бразил"
     },
     "pa": {
         "code": "IN",
-        "native": "ਭਾਰਤ",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "qu": {
         "code": "PE",
-        "native": "Perú",
-        "localized": "Перу"
+        "name": "Перу"
     },
     "ro": {
         "code": "RO",
-        "native": "România",
-        "localized": "Романија"
+        "name": "Романија"
     },
     "ru": {
         "code": "RU",
-        "native": "Россия",
-        "localized": "Русија"
+        "name": "Русија"
     },
     "sa": {
         "code": "IN",
-        "native": "भारतः",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "sc": {
         "code": "IT",
-        "native": "Itàlia",
-        "localized": "Италија"
+        "name": "Италија"
     },
     "gd": {
         "code": "GB",
-        "native": "An Rìoghachd Aonaichte",
-        "localized": "Обединето Кралство"
+        "name": "Обединето Кралство"
     },
     "sr_Cyrl": {
         "code": "RS",
-        "native": "Србија",
-        "localized": "Србија"
+        "name": "Србија"
     },
     "sr_Latn": {
         "code": "RS",
-        "native": "Srbija",
-        "localized": "Србија"
+        "name": "Србија"
     },
     "sr_Latn_ME": {
         "code": "ME",
-        "native": "Crna Gora",
-        "localized": "Црна Гора"
+        "name": "Црна Гора"
     },
     "sn": {
         "code": "ZW",
-        "native": "Zimbabwe",
-        "localized": "Зимбабве"
+        "name": "Зимбабве"
     },
     "sd": {
         "code": "PK",
-        "native": "پاڪستان",
-        "localized": "Пакистан"
+        "name": "Пакистан"
     },
     "si": {
         "code": "LK",
-        "native": "ශ්‍රී ලංකාව",
-        "localized": "Шри Ланка"
+        "name": "Шри Ланка"
     },
     "sk": {
         "code": "SK",
-        "native": "Slovensko",
-        "localized": "Словачка"
+        "name": "Словачка"
     },
     "sl": {
         "code": "SI",
-        "native": "Slovenija",
-        "localized": "Словенија"
+        "name": "Словенија"
     },
     "so": {
         "code": "SO",
-        "native": "Soomaaliya",
-        "localized": "Сомалија"
+        "name": "Сомалија"
     },
     "es": {
         "code": "ES",
-        "native": "España",
-        "localized": "Шпанија"
+        "name": "Шпанија"
     },
     "su": {
         "code": "ID",
-        "native": "Indonesia",
-        "localized": "Индонезија"
+        "name": "Индонезија"
     },
     "sw": {
         "code": "TZ",
-        "native": "Tanzania",
-        "localized": "Танзанија"
+        "name": "Танзанија"
     },
     "sv": {
         "code": "SE",
-        "native": "Sverige",
-        "localized": "Шведска"
+        "name": "Шведска"
     },
     "tl": {
         "code": "PH",
-        "native": "Pilipinas",
-        "localized": "Филипини"
+        "name": "Филипини"
     },
     "tg": {
         "code": "TJ",
-        "native": "Тоҷикистон",
-        "localized": "Таџикистан"
+        "name": "Таџикистан"
     },
     "ta": {
         "code": "IN",
-        "native": "இந்தியா",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "tt": {
         "code": "RU",
-        "native": "Россия",
-        "localized": "Русија"
+        "name": "Русија"
     },
     "te": {
         "code": "IN",
-        "native": "భారతదేశం",
-        "localized": "Индија"
+        "name": "Индија"
     },
     "th": {
         "code": "TH",
-        "native": "ไทย",
-        "localized": "Тајланд"
+        "name": "Тајланд"
     },
     "ti": {
         "code": "ET",
-        "native": "ኢትዮጵያ",
-        "localized": "Етиопија"
+        "name": "Етиопија"
     },
     "tr": {
         "code": "TR",
-        "native": "Türkiye",
-        "localized": "Турција"
+        "name": "Турција"
     },
     "tk": {
         "code": "TM",
-        "native": "Türkmenistan",
-        "localized": "Туркменистан"
+        "name": "Туркменистан"
     },
     "ak": {
         "code": "GH",
-        "native": "Gaana",
-        "localized": "Гана"
+        "name": "Гана"
     },
     "ug": {
         "code": "CN",
-        "native": "جۇڭگو",
-        "localized": "Кина"
+        "name": "Кина"
     },
     "uk": {
         "code": "UA",
-        "native": "Україна",
-        "localized": "Украина"
+        "name": "Украина"
     },
     "ur": {
         "code": "PK",
-        "native": "پاکستان",
-        "localized": "Пакистан"
+        "name": "Пакистан"
     },
     "uz_Cyrl": {
         "code": "UZ",
-        "native": "Ўзбекистон",
-        "localized": "Узбекистан"
+        "name": "Узбекистан"
     },
     "uz_Latn": {
         "code": "UZ",
-        "native": "Oʻzbekiston",
-        "localized": "Узбекистан"
+        "name": "Узбекистан"
     },
     "vi": {
         "code": "VN",
-        "native": "Việt Nam",
-        "localized": "Виетнам"
+        "name": "Виетнам"
     },
     "cy": {
         "code": "GB",
-        "native": "Y Deyrnas Unedig",
-        "localized": "Обединето Кралство"
+        "name": "Обединето Кралство"
     },
     "xh": {
         "code": "ZA",
-        "native": "EMzantsi Afrika",
-        "localized": "Јужноафриканска Република"
+        "name": "Јужноафриканска Република"
     },
     "yi": {
         "code": "UA",
-        "native": "אוקראַינע",
-        "localized": "Украина"
+        "name": "Украина"
     },
     "yo": {
         "code": "NG",
-        "native": "Nàìjíríà",
-        "localized": "Нигерија"
+        "name": "Нигерија"
     },
     "zu": {
         "code": "ZA",
-        "native": "iNingizimu Afrika",
-        "localized": "Јужноафриканска Република"
+        "name": "Јужноафриканска Република"
     }
 }

@@ -1,131 +1,518 @@
 {
-    "af": "Afracáinis",
-    "sq": "Albáinis",
-    "am": "Amáiris",
-    "ar": "Araibis",
-    "hy": "Airméinis",
-    "as": "Asaimis",
-    "az": "Asarbaiseáinis",
-    "bm": "Bambairis",
-    "eu": "Bascais",
-    "be": "Bealarúisis",
-    "bn": "Beangáilis",
-    "bho": "Vóispiris",
-    "bs": "Boisnis",
-    "bg": "Bulgáiris",
-    "en_CA": "Béarla Cheanada",
-    "ca": "Catalóinis",
-    "ceb": "Seabúáinis",
-    "km": "Ciméiris",
-    "zh_CN": "Sínis",
-    "zh_HK": "Sínis",
-    "zh_TW": "Sínis",
-    "hr": "Cróitis",
-    "cs": "Seicis",
-    "da": "Danmhairgis",
-    "doi": "Dóigris",
-    "nl": "Ollainnis",
-    "en": "Béarla",
-    "eo": "Esperanto",
-    "et": "Eastóinis",
-    "ee": "Éabhais",
-    "fi": "Fionlainnis",
-    "fr": "Fraincis",
-    "fy": "Freaslainnis Iartharach",
-    "gl": "Gailísis",
-    "ka": "Seoirsis",
-    "de": "Gearmáinis",
-    "de_AT": "Gearmáinis na hOstaire",
-    "de_CH": "Ard-Ghearmáinis Eilvéiseach",
-    "el": "Gréigis",
-    "gu": "Gúisearáitis",
-    "ht": "Críol Háítí",
-    "ha": "Hásais",
-    "haw": "Haváis",
-    "he": "Eabhrais",
-    "hi": "Hiondúis",
-    "hu": "Ungáiris",
-    "is": "Íoslainnis",
-    "ig": "Íogbóis",
-    "id": "Indinéisis",
-    "ga": "Gaeilge",
-    "it": "Iodáilis",
-    "ja": "Seapáinis",
-    "kn": "Cannadais",
-    "kk": "Casaicis",
-    "rw": "Ciniaruaindis",
-    "ko": "Cóiréis",
-    "ku": "Coirdis",
-    "ckb": "Coirdis Lárnach",
-    "ky": "Cirgisis",
-    "lo": "Laoisis",
-    "lv": "Laitvis",
-    "ln": "Liongáilis",
-    "lt": "Liotuáinis",
-    "lg": "Lugandais",
-    "lb": "Lucsambuirgis",
-    "mk": "Macadóinis",
-    "mai": "Maitilis",
-    "mg": "Malagáisis",
-    "ms": "Malaeis",
-    "ml": "Mailéalaimis",
-    "mt": "Máltais",
-    "mi": "Maorais",
-    "mr": "Maraitis",
-    "mni_Mtei": "Manapúiris",
-    "mn": "Mongóilis",
-    "my": "Burmais",
-    "ne": "Neipeailis",
-    "nb": "Bocmál",
-    "nn": "Nua-Ioruais",
-    "oc": "Ocsatáinis",
-    "or": "Oirísis",
-    "om": "Oraimis",
-    "ps": "Paistis",
-    "fa": "Peirsis",
-    "fil": "Filipínis",
-    "pl": "Polainnis",
-    "pt": "Portaingéilis",
-    "pt_BR": "Portaingéilis Bhrasaíleach",
-    "pa": "Puinseáibis",
-    "qu": "Ceatsuais",
-    "ro": "Rómáinis",
-    "ru": "Rúisis",
-    "sa": "Sanscrait",
-    "sc": "Sairdínis",
-    "gd": "Gaeilge na hAlban",
-    "sr_Cyrl": "Seirbis",
-    "sr_Latn": "Seirbis",
-    "sr_Latn_ME": "Seirbis",
-    "sn": "Seoinis",
-    "sd": "Sindis",
-    "si": "Siolóinis",
-    "sk": "Slóvaicis",
-    "sl": "Slóivéinis",
-    "so": "Somáilis",
-    "es": "Spáinnis",
-    "su": "Sundais",
-    "sw": "Svahaílis",
-    "sv": "Sualainnis",
-    "tl": "Tagálaigis",
-    "tg": "Taidsícis",
-    "ta": "Tamailis",
-    "tt": "Tatairis",
-    "te": "Teileagúis",
-    "th": "Téalainnis",
-    "ti": "Tigrinis",
-    "tr": "Tuircis",
-    "tk": "Tuircméinis",
-    "ak": "Acáinis",
-    "ug": "Uigiúiris",
-    "uk": "Úcráinis",
-    "ur": "Urdúis",
-    "uz_Cyrl": "Úisbéiceastáinis",
-    "uz_Latn": "Úisbéiceastáinis",
-    "vi": "Vítneaimis",
-    "cy": "Breatnais",
-    "xh": "Cóisis",
-    "yi": "Giúdais",
-    "yo": "Iarúibis",
-    "zu": "Súlúis"
+    "af": {
+        "code": "af",
+        "name": "Afracáinis"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "Albáinis"
+    },
+    "am": {
+        "code": "am",
+        "name": "Amáiris"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "Araibis"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "Airméinis"
+    },
+    "as": {
+        "code": "as",
+        "name": "Asaimis"
+    },
+    "az": {
+        "code": "az",
+        "name": "Asarbaiseáinis"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "Bambairis"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "Bascais"
+    },
+    "be": {
+        "code": "be",
+        "name": "Bealarúisis"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "Beangáilis"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "Vóispiris"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "Boisnis"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "Bulgáiris"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "Béarla Cheanada"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "Catalóinis"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "Seabúáinis"
+    },
+    "km": {
+        "code": "km",
+        "name": "Ciméiris"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "Sínis"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "Sínis"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "Sínis"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "Cróitis"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "Seicis"
+    },
+    "da": {
+        "code": "da",
+        "name": "Danmhairgis"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "Dóigris"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "Ollainnis"
+    },
+    "en": {
+        "code": "en",
+        "name": "Béarla"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "Esperanto"
+    },
+    "et": {
+        "code": "et",
+        "name": "Eastóinis"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "Éabhais"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "Fionlainnis"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "Fraincis"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "Freaslainnis Iartharach"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "Gailísis"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "Seoirsis"
+    },
+    "de": {
+        "code": "de",
+        "name": "Gearmáinis"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "Gearmáinis na hOstaire"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "Ard-Ghearmáinis Eilvéiseach"
+    },
+    "el": {
+        "code": "el",
+        "name": "Gréigis"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "Gúisearáitis"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "Críol Háítí"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "Hásais"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "Haváis"
+    },
+    "he": {
+        "code": "he",
+        "name": "Eabhrais"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "Hiondúis"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "Ungáiris"
+    },
+    "is": {
+        "code": "is",
+        "name": "Íoslainnis"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "Íogbóis"
+    },
+    "id": {
+        "code": "id",
+        "name": "Indinéisis"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "Gaeilge"
+    },
+    "it": {
+        "code": "it",
+        "name": "Iodáilis"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "Seapáinis"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "Cannadais"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "Casaicis"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "Ciniaruaindis"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "Cóiréis"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "Coirdis"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "Coirdis Lárnach"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "Cirgisis"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "Laoisis"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "Laitvis"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "Liongáilis"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "Liotuáinis"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "Lugandais"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "Lucsambuirgis"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "Macadóinis"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "Maitilis"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "Malagáisis"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "Malaeis"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "Mailéalaimis"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "Máltais"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "Maorais"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "Maraitis"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "Manapúiris"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "Mongóilis"
+    },
+    "my": {
+        "code": "my",
+        "name": "Burmais"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "Neipeailis"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "Bocmál"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "Nua-Ioruais"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "Ocsatáinis"
+    },
+    "or": {
+        "code": "or",
+        "name": "Oirísis"
+    },
+    "om": {
+        "code": "om",
+        "name": "Oraimis"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "Paistis"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "Peirsis"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "Filipínis"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "Polainnis"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "Portaingéilis"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "Portaingéilis Bhrasaíleach"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "Puinseáibis"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "Ceatsuais"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "Rómáinis"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "Rúisis"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "Sanscrait"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "Sairdínis"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "Gaeilge na hAlban"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "Seirbis"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "Seirbis"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "Seirbis"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "Seoinis"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "Sindis"
+    },
+    "si": {
+        "code": "si",
+        "name": "Siolóinis"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "Slóvaicis"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "Slóivéinis"
+    },
+    "so": {
+        "code": "so",
+        "name": "Somáilis"
+    },
+    "es": {
+        "code": "es",
+        "name": "Spáinnis"
+    },
+    "su": {
+        "code": "su",
+        "name": "Sundais"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "Svahaílis"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "Sualainnis"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "Tagálaigis"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "Taidsícis"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "Tamailis"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "Tatairis"
+    },
+    "te": {
+        "code": "te",
+        "name": "Teileagúis"
+    },
+    "th": {
+        "code": "th",
+        "name": "Téalainnis"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "Tigrinis"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "Tuircis"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "Tuircméinis"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "Acáinis"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "Uigiúiris"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "Úcráinis"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "Urdúis"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "Úisbéiceastáinis"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "Úisbéiceastáinis"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "Vítneaimis"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "Breatnais"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "Cóisis"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "Giúdais"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "Iarúibis"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "Súlúis"
+    }
 }

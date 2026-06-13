@@ -1,131 +1,518 @@
 {
-    "af": "Affricaneg",
-    "sq": "Albaneg",
-    "am": "Amhareg",
-    "ar": "Arabeg",
-    "hy": "Armeneg",
-    "as": "Asameg",
-    "az": "Aserbaijaneg",
-    "bm": "Bambareg",
-    "eu": "Basgeg",
-    "be": "Belarwseg",
-    "bn": "Bengaleg",
-    "bho": "Bhojpuri",
-    "bs": "Bosnieg",
-    "bg": "Bwlgareg",
-    "en_CA": "Saesneg Canada",
-    "ca": "Catalaneg",
-    "ceb": "Cebuano",
-    "km": "Chmereg",
-    "zh_CN": "Tsieinëeg",
-    "zh_HK": "Tsieinëeg",
-    "zh_TW": "Tsieinëeg",
-    "hr": "Croateg",
-    "cs": "Tsieceg",
-    "da": "Daneg",
-    "doi": "Dogri",
-    "nl": "Iseldireg",
-    "en": "Saesneg",
-    "eo": "Esperanto",
-    "et": "Estoneg",
-    "ee": "Ewe",
-    "fi": "Ffinneg",
-    "fr": "Ffrangeg",
-    "fy": "Ffriseg y Gorllewin",
-    "gl": "Galisieg",
-    "ka": "Georgeg",
-    "de": "Almaeneg",
-    "de_AT": "Almaeneg Awstria",
-    "de_CH": "Almaeneg Safonol y Swistir",
-    "el": "Groeg",
-    "gu": "Gwjarati",
-    "ht": "Creol Haiti",
-    "ha": "Hawsa",
-    "haw": "Hawäieg",
-    "he": "Hebraeg",
-    "hi": "Hindi",
-    "hu": "Hwngareg",
-    "is": "Islandeg",
-    "ig": "Igbo",
-    "id": "Indoneseg",
-    "ga": "Gwyddeleg",
-    "it": "Eidaleg",
-    "ja": "Japaneeg",
-    "kn": "Kannada",
-    "kk": "Casacheg",
-    "rw": "Ciniarŵandeg",
-    "ko": "Coreeg",
-    "ku": "Cwrdeg",
-    "ckb": "Cwrdeg Sorani",
-    "ky": "Cirgiseg",
-    "lo": "Laoeg",
-    "lv": "Latfieg",
-    "ln": "Lingala",
-    "lt": "Lithwaneg",
-    "lg": "Ganda",
-    "lb": "Lwcsembwrgeg",
-    "mk": "Macedoneg",
-    "mai": "Maithili",
-    "mg": "Malagaseg",
-    "ms": "Maleieg",
-    "ml": "Malayalam",
-    "mt": "Malteg",
-    "mi": "Māori",
-    "mr": "Marathi",
-    "mni_Mtei": "Manipwri",
-    "mn": "Mongoleg",
-    "my": "Byrmaneg",
-    "ne": "Nepaleg",
-    "nb": "Norwyeg Bokmål",
-    "nn": "Norwyeg Nynorsk",
-    "oc": "Ocsitaneg",
-    "or": "Odia",
-    "om": "Oromo",
-    "ps": "Pashto",
-    "fa": "Perseg",
-    "fil": "Ffilipineg",
-    "pl": "Pwyleg",
-    "pt": "Portiwgaleg",
-    "pt_BR": "Portiwgaleg Brasil",
-    "pa": "Pwnjabeg",
-    "qu": "Quechua",
-    "ro": "Rwmaneg",
-    "ru": "Rwseg",
-    "sa": "Sansgrit",
-    "sc": "Sardeg",
-    "gd": "Gaeleg yr Alban",
-    "sr_Cyrl": "Serbeg",
-    "sr_Latn": "Serbeg",
-    "sr_Latn_ME": "Serbeg",
-    "sn": "Shona",
-    "sd": "Sindhi",
-    "si": "Sinhaleg",
-    "sk": "Slofaceg",
-    "sl": "Slofeneg",
-    "so": "Somaleg",
-    "es": "Sbaeneg",
-    "su": "Swndaneg",
-    "sw": "Swahili",
-    "sv": "Swedeg",
-    "tl": "Tagalog",
-    "tg": "Tajiceg",
-    "ta": "Tamileg",
-    "tt": "Tatareg",
-    "te": "Telugu",
-    "th": "Thai",
-    "ti": "Tigrinya",
-    "tr": "Tyrceg",
-    "tk": "Tyrcmeneg",
-    "ak": "Acaneg",
-    "ug": "Uighur",
-    "uk": "Wcreineg",
-    "ur": "Wrdw",
-    "uz_Cyrl": "Wsbeceg",
-    "uz_Latn": "Wsbeceg",
-    "vi": "Fietnameg",
-    "cy": "Cymraeg",
-    "xh": "Xhosa",
-    "yi": "Iddew-Almaeneg",
-    "yo": "Iorwba",
-    "zu": "Swlw"
+    "af": {
+        "code": "af",
+        "name": "Affricaneg"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "Albaneg"
+    },
+    "am": {
+        "code": "am",
+        "name": "Amhareg"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "Arabeg"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "Armeneg"
+    },
+    "as": {
+        "code": "as",
+        "name": "Asameg"
+    },
+    "az": {
+        "code": "az",
+        "name": "Aserbaijaneg"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "Bambareg"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "Basgeg"
+    },
+    "be": {
+        "code": "be",
+        "name": "Belarwseg"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "Bengaleg"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "Bhojpuri"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "Bosnieg"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "Bwlgareg"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "Saesneg Canada"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "Catalaneg"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "Cebuano"
+    },
+    "km": {
+        "code": "km",
+        "name": "Chmereg"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "Tsieinëeg"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "Tsieinëeg"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "Tsieinëeg"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "Croateg"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "Tsieceg"
+    },
+    "da": {
+        "code": "da",
+        "name": "Daneg"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "Dogri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "Iseldireg"
+    },
+    "en": {
+        "code": "en",
+        "name": "Saesneg"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "Esperanto"
+    },
+    "et": {
+        "code": "et",
+        "name": "Estoneg"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "Ewe"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "Ffinneg"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "Ffrangeg"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "Ffriseg y Gorllewin"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "Galisieg"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "Georgeg"
+    },
+    "de": {
+        "code": "de",
+        "name": "Almaeneg"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "Almaeneg Awstria"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "Almaeneg Safonol y Swistir"
+    },
+    "el": {
+        "code": "el",
+        "name": "Groeg"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "Gwjarati"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "Creol Haiti"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "Hawsa"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "Hawäieg"
+    },
+    "he": {
+        "code": "he",
+        "name": "Hebraeg"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "Hindi"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "Hwngareg"
+    },
+    "is": {
+        "code": "is",
+        "name": "Islandeg"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "Igbo"
+    },
+    "id": {
+        "code": "id",
+        "name": "Indoneseg"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "Gwyddeleg"
+    },
+    "it": {
+        "code": "it",
+        "name": "Eidaleg"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "Japaneeg"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "Kannada"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "Casacheg"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "Ciniarŵandeg"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "Coreeg"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "Cwrdeg"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "Cwrdeg Sorani"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "Cirgiseg"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "Laoeg"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "Latfieg"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "Lingala"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "Lithwaneg"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "Ganda"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "Lwcsembwrgeg"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "Macedoneg"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "Maithili"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "Malagaseg"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "Maleieg"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "Malayalam"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "Malteg"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "Māori"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "Marathi"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "Manipwri"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "Mongoleg"
+    },
+    "my": {
+        "code": "my",
+        "name": "Byrmaneg"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "Nepaleg"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "Norwyeg Bokmål"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "Norwyeg Nynorsk"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "Ocsitaneg"
+    },
+    "or": {
+        "code": "or",
+        "name": "Odia"
+    },
+    "om": {
+        "code": "om",
+        "name": "Oromo"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "Pashto"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "Perseg"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "Ffilipineg"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "Pwyleg"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "Portiwgaleg"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "Portiwgaleg Brasil"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "Pwnjabeg"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "Quechua"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "Rwmaneg"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "Rwseg"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "Sansgrit"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "Sardeg"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "Gaeleg yr Alban"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "Serbeg"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "Serbeg"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "Serbeg"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "Shona"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "Sindhi"
+    },
+    "si": {
+        "code": "si",
+        "name": "Sinhaleg"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "Slofaceg"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "Slofeneg"
+    },
+    "so": {
+        "code": "so",
+        "name": "Somaleg"
+    },
+    "es": {
+        "code": "es",
+        "name": "Sbaeneg"
+    },
+    "su": {
+        "code": "su",
+        "name": "Swndaneg"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "Swahili"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "Swedeg"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "Tagalog"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "Tajiceg"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "Tamileg"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "Tatareg"
+    },
+    "te": {
+        "code": "te",
+        "name": "Telugu"
+    },
+    "th": {
+        "code": "th",
+        "name": "Thai"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "Tigrinya"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "Tyrceg"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "Tyrcmeneg"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "Acaneg"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "Uighur"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "Wcreineg"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "Wrdw"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "Wsbeceg"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "Wsbeceg"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "Fietnameg"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "Cymraeg"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "Xhosa"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "Iddew-Almaeneg"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "Iorwba"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "Swlw"
+    }
 }

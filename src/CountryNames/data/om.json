@@ -1,647 +1,518 @@
 {
     "af": {
         "code": "ZA",
-        "native": "Suid-Afrika",
-        "localized": "Afrikaa Kibbaa"
+        "name": "Afrikaa Kibbaa"
     },
     "sq": {
         "code": "AL",
-        "native": "Shqipëri",
-        "localized": "Albaaniyaa"
+        "name": "Albaaniyaa"
     },
     "am": {
         "code": "ET",
-        "native": "ኢትዮጵያ",
-        "localized": "Itoophiyaa"
+        "name": "Itoophiyaa"
     },
     "ar": {
         "code": "EG",
-        "native": "مصر",
-        "localized": "Missir"
+        "name": "Missir"
     },
     "hy": {
         "code": "AM",
-        "native": "Հայաստան",
-        "localized": "Armeeniyaa"
+        "name": "Armeeniyaa"
     },
     "as": {
         "code": "IN",
-        "native": "ভাৰত",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "az": {
         "code": "AZ",
-        "native": "Azərbaycan",
-        "localized": "Azerbaajiyaan"
+        "name": "Azerbaajiyaan"
     },
     "bm": {
         "code": "ML",
-        "native": "Mali",
-        "localized": "Maalii"
+        "name": "Maalii"
     },
     "eu": {
         "code": "ES",
-        "native": "Espainia",
-        "localized": "Ispeen"
+        "name": "Ispeen"
     },
     "be": {
         "code": "BY",
-        "native": "Беларусь",
-        "localized": "Beelaarus"
+        "name": "Beelaarus"
     },
     "bn": {
         "code": "BD",
-        "native": "বাংলাদেশ",
-        "localized": "Banglaadish"
+        "name": "Banglaadish"
     },
     "bho": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "bs": {
         "code": "BA",
-        "native": "Bosna i Hercegovina",
-        "localized": "Bosiiniyaa fi Herzoogovinaa"
+        "name": "Bosiiniyaa fi Herzoogovinaa"
     },
     "bg": {
         "code": "BG",
-        "native": "България",
-        "localized": "Bulgaariyaa"
+        "name": "Bulgaariyaa"
     },
     "en_CA": {
         "code": "CA",
-        "native": "Canada",
-        "localized": "Kanaadaa"
+        "name": "Kanaadaa"
     },
     "ca": {
         "code": "ES",
-        "native": "Espanya",
-        "localized": "Ispeen"
+        "name": "Ispeen"
     },
     "ceb": {
         "code": "PH",
-        "native": "Philippines",
-        "localized": "Filippiins"
+        "name": "Filippiins"
     },
     "km": {
         "code": "KH",
-        "native": "កម្ពុជា",
-        "localized": "Kamboodiyaa"
+        "name": "Kamboodiyaa"
     },
     "zh_CN": {
         "code": "CN",
-        "native": "中国",
-        "localized": "Chaayinaa"
+        "name": "Chaayinaa"
     },
     "zh_HK": {
         "code": "HK",
-        "native": "中國香港特別行政區",
-        "localized": "Hoong Koong SAR Chaayinaa"
+        "name": "Hoong Koong SAR Chaayinaa"
     },
     "zh_TW": {
         "code": "TW",
-        "native": "台灣",
-        "localized": "Taayiwwan"
+        "name": "Taayiwwan"
     },
     "hr": {
         "code": "HR",
-        "native": "Hrvatska",
-        "localized": "Kirooshiyaa"
+        "name": "Kirooshiyaa"
     },
     "cs": {
         "code": "CZ",
-        "native": "Česko",
-        "localized": "Cheechiya"
+        "name": "Cheechiya"
     },
     "da": {
         "code": "DK",
-        "native": "Danmark",
-        "localized": "Deenmaark"
+        "name": "Deenmaark"
     },
     "doi": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "nl": {
         "code": "NL",
-        "native": "Nederland",
-        "localized": "Neezerlaand"
+        "name": "Neezerlaand"
     },
     "en": {
         "code": "US",
-        "native": "United States",
-        "localized": "Yiinaayitid Isteet"
+        "name": "Yiinaayitid Isteet"
     },
     "eo": {
         "code": "001",
-        "native": "mondo",
-        "localized": "addunyaa"
+        "name": "addunyaa"
     },
     "et": {
         "code": "EE",
-        "native": "Eesti",
-        "localized": "Istooniyaa"
+        "name": "Istooniyaa"
     },
     "ee": {
         "code": "GH",
-        "native": "Ghana nutome",
-        "localized": "Gaanaa"
+        "name": "Gaanaa"
     },
     "fi": {
         "code": "FI",
-        "native": "Suomi",
-        "localized": "Fiinlaand"
+        "name": "Fiinlaand"
     },
     "fr": {
         "code": "FR",
-        "native": "France",
-        "localized": "Faransaay"
+        "name": "Faransaay"
     },
     "fy": {
         "code": "NL",
-        "native": "Nederlân",
-        "localized": "Neezerlaand"
+        "name": "Neezerlaand"
     },
     "gl": {
         "code": "ES",
-        "native": "España",
-        "localized": "Ispeen"
+        "name": "Ispeen"
     },
     "ka": {
         "code": "GE",
-        "native": "საქართველო",
-        "localized": "Joorjiyaa"
+        "name": "Joorjiyaa"
     },
     "de": {
         "code": "DE",
-        "native": "Deutschland",
-        "localized": "Jarmanii"
+        "name": "Jarmanii"
     },
     "de_AT": {
         "code": "AT",
-        "native": "Österreich",
-        "localized": "Awustiriyaa"
+        "name": "Awustiriyaa"
     },
     "de_CH": {
         "code": "CH",
-        "native": "Schweiz",
-        "localized": "Siwizerlaand"
+        "name": "Siwizerlaand"
     },
     "el": {
         "code": "GR",
-        "native": "Ελλάδα",
-        "localized": "Giriik"
+        "name": "Giriik"
     },
     "gu": {
         "code": "IN",
-        "native": "ભારત",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "ht": {
         "code": "HT",
-        "native": "Haïti",
-        "localized": "Haayitii"
+        "name": "Haayitii"
     },
     "ha": {
         "code": "NG",
-        "native": "Nijeriya",
-        "localized": "Naayijeeriyaa"
+        "name": "Naayijeeriyaa"
     },
     "haw": {
         "code": "US",
-        "native": "ʻAmelika Hui Pū ʻIa",
-        "localized": "Yiinaayitid Isteet"
+        "name": "Yiinaayitid Isteet"
     },
     "he": {
         "code": "IL",
-        "native": "ישראל",
-        "localized": "Israa’eel"
+        "name": "Israa’eel"
     },
     "hi": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "hu": {
         "code": "HU",
-        "native": "Magyarország",
-        "localized": "Hangaarii"
+        "name": "Hangaarii"
     },
     "is": {
         "code": "IS",
-        "native": "Ísland",
-        "localized": "Ayeslaand"
+        "name": "Ayeslaand"
     },
     "ig": {
         "code": "NG",
-        "native": "Naịjịrịa",
-        "localized": "Naayijeeriyaa"
+        "name": "Naayijeeriyaa"
     },
     "id": {
         "code": "ID",
-        "native": "Indonesia",
-        "localized": "Indooneeshiyaa"
+        "name": "Indooneeshiyaa"
     },
     "ga": {
         "code": "IE",
-        "native": "Éire",
-        "localized": "Ayeerlaand"
+        "name": "Ayeerlaand"
     },
     "it": {
         "code": "IT",
-        "native": "Italia",
-        "localized": "Xaaliyaan"
+        "name": "Xaaliyaan"
     },
     "ja": {
         "code": "JP",
-        "native": "日本",
-        "localized": "Jaappaan"
+        "name": "Jaappaan"
     },
     "kn": {
         "code": "IN",
-        "native": "ಭಾರತ",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "kk": {
         "code": "KZ",
-        "native": "Қазақстан",
-        "localized": "Kazakistaan"
+        "name": "Kazakistaan"
     },
     "rw": {
         "code": "RW",
-        "native": "U Rwanda",
-        "localized": "Ruwwandaa"
+        "name": "Ruwwandaa"
     },
     "ko": {
         "code": "KR",
-        "native": "대한민국",
-        "localized": "Kooriyaa Kibbaa"
+        "name": "Kooriyaa Kibbaa"
     },
     "ku": {
         "code": "TR",
-        "native": "Türkiye",
-        "localized": "Tarkiye"
+        "name": "Tarkiye"
     },
     "ckb": {
         "code": "IQ",
-        "native": "عێراق",
-        "localized": "Iraaq"
+        "name": "Iraaq"
     },
     "ky": {
         "code": "KG",
-        "native": "Кыргызстан",
-        "localized": "Kiyirigiyizistan"
+        "name": "Kiyirigiyizistan"
     },
     "lo": {
         "code": "LA",
-        "native": "ລາວ",
-        "localized": "Laa’oos"
+        "name": "Laa’oos"
     },
     "lv": {
         "code": "LV",
-        "native": "Latvija",
-        "localized": "Lativiyaa"
+        "name": "Lativiyaa"
     },
     "ln": {
         "code": "CD",
-        "native": "Republíki ya Kongó Demokratíki",
-        "localized": "Koongoo - Kinshaasaa"
+        "name": "Koongoo - Kinshaasaa"
     },
     "lt": {
         "code": "LT",
-        "native": "Lietuva",
-        "localized": "Lutaaniyaa"
+        "name": "Lutaaniyaa"
     },
     "lg": {
         "code": "UG",
-        "native": "Yuganda",
-        "localized": "Ugaandaa"
+        "name": "Ugaandaa"
     },
     "lb": {
         "code": "LU",
-        "native": "Lëtzebuerg",
-        "localized": "Luksembarg"
+        "name": "Luksembarg"
     },
     "mk": {
         "code": "MK",
-        "native": "Северна Македонија",
-        "localized": "Maqdooniyaa Kaabaa"
+        "name": "Maqdooniyaa Kaabaa"
     },
     "mai": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "mg": {
         "code": "MG",
-        "native": "Madagasikara",
-        "localized": "Madagaaskaar"
+        "name": "Madagaaskaar"
     },
     "ms": {
         "code": "MY",
-        "native": "Malaysia",
-        "localized": "Maleeshiyaa"
+        "name": "Maleeshiyaa"
     },
     "ml": {
         "code": "IN",
-        "native": "ഇന്ത്യ",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "mt": {
         "code": "MT",
-        "native": "Malta",
-        "localized": "Maaltaa"
+        "name": "Maaltaa"
     },
     "mi": {
         "code": "NZ",
-        "native": "Aotearoa",
-        "localized": "Neewu Zilaand"
+        "name": "Neewu Zilaand"
     },
     "mr": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "mni_Mtei": {
         "code": "IN",
-        "native": "ইন্দিয়া",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "mn": {
         "code": "MN",
-        "native": "Монгол",
-        "localized": "Mongoliyaa"
+        "name": "Mongoliyaa"
     },
     "my": {
         "code": "MM",
-        "native": "မြန်မာ",
-        "localized": "Maayinaamar (Burma)"
+        "name": "Maayinaamar (Burma)"
     },
     "ne": {
         "code": "NP",
-        "native": "नेपाल",
-        "localized": "Neeppal"
+        "name": "Neeppal"
     },
     "nb": {
         "code": "NO",
-        "native": "Norge",
-        "localized": "Noorwey"
+        "name": "Noorwey"
     },
     "nn": {
         "code": "NO",
-        "native": "Noreg",
-        "localized": "Noorwey"
+        "name": "Noorwey"
     },
     "oc": {
         "code": "FR",
-        "native": "França",
-        "localized": "Faransaay"
+        "name": "Faransaay"
     },
     "or": {
         "code": "IN",
-        "native": "ଭାରତ",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "om": {
         "code": "ET",
-        "native": "Itoophiyaa",
-        "localized": "Itoophiyaa"
+        "name": "Itoophiyaa"
     },
     "ps": {
         "code": "AF",
-        "native": "افغانستان",
-        "localized": "Afgaanistaan"
+        "name": "Afgaanistaan"
     },
     "fa": {
         "code": "IR",
-        "native": "ایران",
-        "localized": "Iraan"
+        "name": "Iraan"
     },
     "fil": {
         "code": "PH",
-        "native": "Pilipinas",
-        "localized": "Filippiins"
+        "name": "Filippiins"
     },
     "pl": {
         "code": "PL",
-        "native": "Polska",
-        "localized": "Poolaand"
+        "name": "Poolaand"
     },
     "pt": {
         "code": "BR",
-        "native": "Brasil",
-        "localized": "Biraazil"
+        "name": "Biraazil"
     },
     "pt_BR": {
         "code": "BR",
-        "native": "Brasil",
-        "localized": "Biraazil"
+        "name": "Biraazil"
     },
     "pa": {
         "code": "IN",
-        "native": "ਭਾਰਤ",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "qu": {
         "code": "PE",
-        "native": "Perú",
-        "localized": "Peeruu"
+        "name": "Peeruu"
     },
     "ro": {
         "code": "RO",
-        "native": "România",
-        "localized": "Roomaaniyaa"
+        "name": "Roomaaniyaa"
     },
     "ru": {
         "code": "RU",
-        "native": "Россия",
-        "localized": "Raashiyaa"
+        "name": "Raashiyaa"
     },
     "sa": {
         "code": "IN",
-        "native": "भारतः",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "sc": {
         "code": "IT",
-        "native": "Itàlia",
-        "localized": "Xaaliyaan"
+        "name": "Xaaliyaan"
     },
     "gd": {
         "code": "GB",
-        "native": "An Rìoghachd Aonaichte",
-        "localized": "United Kingdom"
+        "name": "United Kingdom"
     },
     "sr_Cyrl": {
         "code": "RS",
-        "native": "Србија",
-        "localized": "Serbiyaa"
+        "name": "Serbiyaa"
     },
     "sr_Latn": {
         "code": "RS",
-        "native": "Srbija",
-        "localized": "Serbiyaa"
+        "name": "Serbiyaa"
     },
     "sr_Latn_ME": {
         "code": "ME",
-        "native": "Crna Gora",
-        "localized": "Montenegiroo"
+        "name": "Montenegiroo"
     },
     "sn": {
         "code": "ZW",
-        "native": "Zimbabwe",
-        "localized": "Zimbaabuwee"
+        "name": "Zimbaabuwee"
     },
     "sd": {
         "code": "PK",
-        "native": "پاڪستان",
-        "localized": "Paakistaan"
+        "name": "Paakistaan"
     },
     "si": {
         "code": "LK",
-        "native": "ශ්‍රී ලංකාව",
-        "localized": "Siri Laankaa"
+        "name": "Siri Laankaa"
     },
     "sk": {
         "code": "SK",
-        "native": "Slovensko",
-        "localized": "Isloovaakiyaa"
+        "name": "Isloovaakiyaa"
     },
     "sl": {
         "code": "SI",
-        "native": "Slovenija",
-        "localized": "Islooveeniyaa"
+        "name": "Islooveeniyaa"
     },
     "so": {
         "code": "SO",
-        "native": "Soomaaliya",
-        "localized": "Somaaliyaa"
+        "name": "Somaaliyaa"
     },
     "es": {
         "code": "ES",
-        "native": "España",
-        "localized": "Ispeen"
+        "name": "Ispeen"
     },
     "su": {
         "code": "ID",
-        "native": "Indonesia",
-        "localized": "Indooneeshiyaa"
+        "name": "Indooneeshiyaa"
     },
     "sw": {
         "code": "TZ",
-        "native": "Tanzania",
-        "localized": "Taanzaaniyaa"
+        "name": "Taanzaaniyaa"
     },
     "sv": {
         "code": "SE",
-        "native": "Sverige",
-        "localized": "Siwiidin"
+        "name": "Siwiidin"
     },
     "tl": {
         "code": "PH",
-        "native": "Pilipinas",
-        "localized": "Filippiins"
+        "name": "Filippiins"
     },
     "tg": {
         "code": "TJ",
-        "native": "Тоҷикистон",
-        "localized": "Tajikistaan"
+        "name": "Tajikistaan"
     },
     "ta": {
         "code": "IN",
-        "native": "இந்தியா",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "tt": {
         "code": "RU",
-        "native": "Россия",
-        "localized": "Raashiyaa"
+        "name": "Raashiyaa"
     },
     "te": {
         "code": "IN",
-        "native": "భారతదేశం",
-        "localized": "Hindii"
+        "name": "Hindii"
     },
     "th": {
         "code": "TH",
-        "native": "ไทย",
-        "localized": "Taayilaand"
+        "name": "Taayilaand"
     },
     "ti": {
         "code": "ET",
-        "native": "ኢትዮጵያ",
-        "localized": "Itoophiyaa"
+        "name": "Itoophiyaa"
     },
     "tr": {
         "code": "TR",
-        "native": "Türkiye",
-        "localized": "Tarkiye"
+        "name": "Tarkiye"
     },
     "tk": {
         "code": "TM",
-        "native": "Türkmenistan",
-        "localized": "Turkimenistaan"
+        "name": "Turkimenistaan"
     },
     "ak": {
         "code": "GH",
-        "native": "Gaana",
-        "localized": "Gaanaa"
+        "name": "Gaanaa"
     },
     "ug": {
         "code": "CN",
-        "native": "جۇڭگو",
-        "localized": "Chaayinaa"
+        "name": "Chaayinaa"
     },
     "uk": {
         "code": "UA",
-        "native": "Україна",
-        "localized": "Yuukireen"
+        "name": "Yuukireen"
     },
     "ur": {
         "code": "PK",
-        "native": "پاکستان",
-        "localized": "Paakistaan"
+        "name": "Paakistaan"
     },
     "uz_Cyrl": {
         "code": "UZ",
-        "native": "Ўзбекистон",
-        "localized": "Uzbeekistaan"
+        "name": "Uzbeekistaan"
     },
     "uz_Latn": {
         "code": "UZ",
-        "native": "Oʻzbekiston",
-        "localized": "Uzbeekistaan"
+        "name": "Uzbeekistaan"
     },
     "vi": {
         "code": "VN",
-        "native": "Việt Nam",
-        "localized": "Veetinaam"
+        "name": "Veetinaam"
     },
     "cy": {
         "code": "GB",
-        "native": "Y Deyrnas Unedig",
-        "localized": "United Kingdom"
+        "name": "United Kingdom"
     },
     "xh": {
         "code": "ZA",
-        "native": "EMzantsi Afrika",
-        "localized": "Afrikaa Kibbaa"
+        "name": "Afrikaa Kibbaa"
     },
     "yi": {
         "code": "UA",
-        "native": "אוקראַינע",
-        "localized": "Yuukireen"
+        "name": "Yuukireen"
     },
     "yo": {
         "code": "NG",
-        "native": "Nàìjíríà",
-        "localized": "Naayijeeriyaa"
+        "name": "Naayijeeriyaa"
     },
     "zu": {
         "code": "ZA",
-        "native": "iNingizimu Afrika",
-        "localized": "Afrikaa Kibbaa"
+        "name": "Afrikaa Kibbaa"
     }
 }

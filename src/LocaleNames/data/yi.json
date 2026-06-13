@@ -1,131 +1,518 @@
 {
-    "af": "אַפֿריקאַנס",
-    "sq": "אַלבאַניש",
-    "am": "אַמהאַריש",
-    "ar": "אַראַביש",
-    "hy": "אַרמעניש",
-    "as": "אַסאַמיש",
-    "az": "אַזערביידזשאַניש",
-    "bm": "Bambara",
-    "eu": "באַסקיש",
-    "be": "בעלאַרוסיש",
-    "bn": "בענגאַליש",
-    "bho": "Bhojpuri",
-    "bs": "באסניש",
-    "bg": "בולגאַריש",
-    "en_CA": "ענגליש",
-    "ca": "קאַטאַלאניש",
-    "ceb": "סעבואַניש",
-    "km": "כמער",
-    "zh_CN": "כינעזיש",
-    "zh_HK": "כינעזיש",
-    "zh_TW": "כינעזיש",
-    "hr": "קראאַטיש",
-    "cs": "טשעכיש",
-    "da": "דעניש",
-    "doi": "Dogri",
-    "nl": "האלענדיש",
-    "en": "ענגליש",
-    "eo": "עספּעראַנטא",
-    "et": "עסטיש",
-    "ee": "Ewe",
-    "fi": "פֿיניש",
-    "fr": "פֿראַנצויזיש",
-    "fy": "מערב־פֿריזיש",
-    "gl": "גאַלישיש",
-    "ka": "גרוזיניש",
-    "de": "דײַטש",
-    "de_AT": "דײַטש",
-    "de_CH": "דײַטש",
-    "el": "גריכיש",
-    "gu": "Gujarati",
-    "ht": "Haitian Creole",
-    "ha": "האַוסאַ",
-    "haw": "Hawaiian",
-    "he": "העברעאיש",
-    "hi": "הינדי",
-    "hu": "אונגעריש",
-    "is": "איסלאַנדיש",
-    "ig": "Igbo",
-    "id": "אינדאנעזיש",
-    "ga": "איריש",
-    "it": "איטאַליעניש",
-    "ja": "יאַפּאַניש",
-    "kn": "קאַנאַדאַ",
-    "kk": "קאַזאַכיש",
-    "rw": "Kinyarwanda",
-    "ko": "קארעאיש",
-    "ku": "קורדיש",
-    "ckb": "Central Kurdish",
-    "ky": "קירגיזיש",
-    "lo": "לאַא",
-    "lv": "לעטיש",
-    "ln": "Lingala",
-    "lt": "ליטוויש",
-    "lg": "Ganda",
-    "lb": "לוקסעמבורגיש",
-    "mk": "מאַקעדאניש",
-    "mai": "Maithili",
-    "mg": "Malagasy",
-    "ms": "Malay",
-    "ml": "מאַלאַיאַלאַם",
-    "mt": "מאַלטעזיש",
-    "mi": "מאַאריש",
-    "mr": "Marathi",
-    "mni_Mtei": "Manipuri",
-    "mn": "מאנגאליש",
-    "my": "בירמאַניש",
-    "ne": "נעפּאַליש",
-    "nb": "Norwegian Bokmål",
-    "nn": "נײַ־נארוועגיש",
-    "oc": "אקסיטאַניש",
-    "or": "Odia",
-    "om": "Oromo",
-    "ps": "פּאַשטאָ",
-    "fa": "פּערסיש",
-    "fil": "פֿיליפּינא",
-    "pl": "פּויליש",
-    "pt": "פּארטוגעזיש",
-    "pt_BR": "פּארטוגעזיש",
-    "pa": "Punjabi",
-    "qu": "Quechua",
-    "ro": "רומעניש",
-    "ru": "רוסיש",
-    "sa": "סאַנסקריט",
-    "sc": "סאַרדיש",
-    "gd": "סקאטיש געליש",
-    "sr_Cyrl": "סערביש",
-    "sr_Latn": "סערביש",
-    "sr_Latn_ME": "סערביש",
-    "sn": "שאנאַ",
-    "sd": "סינדהי",
-    "si": "סינהאַליש",
-    "sk": "סלאוואַקיש",
-    "sl": "סלאוועניש",
-    "so": "סאמאַליש",
-    "es": "שפּאַניש",
-    "su": "Sundanese",
-    "sw": "סוואַהיליש",
-    "sv": "שוועדיש",
-    "tl": "טאַגאַלאג",
-    "tg": "Tajik",
-    "ta": "טאַמיל",
-    "tt": "טאָטעריש",
-    "te": "Telugu",
-    "th": "Thai",
-    "ti": "Tigrinya",
-    "tr": "Turkish",
-    "tk": "טורקמעניש",
-    "ak": "Akan",
-    "ug": "Uyghur",
-    "uk": "אוקראַאיניש",
-    "ur": "אורדו",
-    "uz_Cyrl": "אוזבעקיש",
-    "uz_Latn": "אוזבעקיש",
-    "vi": "וויעטנאַמעזיש",
-    "cy": "וועלשיש",
-    "xh": "Xhosa",
-    "yi": "ייִדיש",
-    "yo": "Yoruba",
-    "zu": "זולו"
+    "af": {
+        "code": "af",
+        "name": "אַפֿריקאַנס"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "אַלבאַניש"
+    },
+    "am": {
+        "code": "am",
+        "name": "אַמהאַריש"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "אַראַביש"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "אַרמעניש"
+    },
+    "as": {
+        "code": "as",
+        "name": "אַסאַמיש"
+    },
+    "az": {
+        "code": "az",
+        "name": "אַזערביידזשאַניש"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "Bambara"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "באַסקיש"
+    },
+    "be": {
+        "code": "be",
+        "name": "בעלאַרוסיש"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "בענגאַליש"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "Bhojpuri"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "באסניש"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "בולגאַריש"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "ענגליש"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "קאַטאַלאניש"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "סעבואַניש"
+    },
+    "km": {
+        "code": "km",
+        "name": "כמער"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "כינעזיש"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "כינעזיש"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "כינעזיש"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "קראאַטיש"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "טשעכיש"
+    },
+    "da": {
+        "code": "da",
+        "name": "דעניש"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "Dogri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "האלענדיש"
+    },
+    "en": {
+        "code": "en",
+        "name": "ענגליש"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "עספּעראַנטא"
+    },
+    "et": {
+        "code": "et",
+        "name": "עסטיש"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "Ewe"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "פֿיניש"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "פֿראַנצויזיש"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "מערב־פֿריזיש"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "גאַלישיש"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "גרוזיניש"
+    },
+    "de": {
+        "code": "de",
+        "name": "דײַטש"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "דײַטש"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "דײַטש"
+    },
+    "el": {
+        "code": "el",
+        "name": "גריכיש"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "Gujarati"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "Haitian Creole"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "האַוסאַ"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "Hawaiian"
+    },
+    "he": {
+        "code": "he",
+        "name": "העברעאיש"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "הינדי"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "אונגעריש"
+    },
+    "is": {
+        "code": "is",
+        "name": "איסלאַנדיש"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "Igbo"
+    },
+    "id": {
+        "code": "id",
+        "name": "אינדאנעזיש"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "איריש"
+    },
+    "it": {
+        "code": "it",
+        "name": "איטאַליעניש"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "יאַפּאַניש"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "קאַנאַדאַ"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "קאַזאַכיש"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "Kinyarwanda"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "קארעאיש"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "קורדיש"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "Central Kurdish"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "קירגיזיש"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "לאַא"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "לעטיש"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "Lingala"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "ליטוויש"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "Ganda"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "לוקסעמבורגיש"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "מאַקעדאניש"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "Maithili"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "Malagasy"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "Malay"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "מאַלאַיאַלאַם"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "מאַלטעזיש"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "מאַאריש"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "Marathi"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "Manipuri"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "מאנגאליש"
+    },
+    "my": {
+        "code": "my",
+        "name": "בירמאַניש"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "נעפּאַליש"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "Norwegian Bokmål"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "נײַ־נארוועגיש"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "אקסיטאַניש"
+    },
+    "or": {
+        "code": "or",
+        "name": "Odia"
+    },
+    "om": {
+        "code": "om",
+        "name": "Oromo"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "פּאַשטאָ"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "פּערסיש"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "פֿיליפּינא"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "פּויליש"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "פּארטוגעזיש"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "פּארטוגעזיש"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "Punjabi"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "Quechua"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "רומעניש"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "רוסיש"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "סאַנסקריט"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "סאַרדיש"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "סקאטיש געליש"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "סערביש"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "סערביש"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "סערביש"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "שאנאַ"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "סינדהי"
+    },
+    "si": {
+        "code": "si",
+        "name": "סינהאַליש"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "סלאוואַקיש"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "סלאוועניש"
+    },
+    "so": {
+        "code": "so",
+        "name": "סאמאַליש"
+    },
+    "es": {
+        "code": "es",
+        "name": "שפּאַניש"
+    },
+    "su": {
+        "code": "su",
+        "name": "Sundanese"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "סוואַהיליש"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "שוועדיש"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "טאַגאַלאג"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "Tajik"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "טאַמיל"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "טאָטעריש"
+    },
+    "te": {
+        "code": "te",
+        "name": "Telugu"
+    },
+    "th": {
+        "code": "th",
+        "name": "Thai"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "Tigrinya"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "Turkish"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "טורקמעניש"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "Akan"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "Uyghur"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "אוקראַאיניש"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "אורדו"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "אוזבעקיש"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "אוזבעקיש"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "וויעטנאַמעזיש"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "וועלשיש"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "Xhosa"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "ייִדיש"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "Yoruba"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "זולו"
+    }
 }

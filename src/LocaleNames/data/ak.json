@@ -1,131 +1,518 @@
 {
-    "af": "Afrikaans",
-    "sq": "Aabeniani",
-    "am": "Amariki",
-    "ar": "Arabeke",
-    "hy": "Aameniani",
-    "as": "Asamese",
-    "az": "Asabegyanni",
-    "bm": "Bambara",
-    "eu": "Baske",
-    "be": "Belarus kasa",
-    "bn": "Bengali kasa",
-    "bho": "Bopuri",
-    "bs": "Bosniani",
-    "bg": "Bɔlgeria kasa",
-    "en_CA": "Borɔfo",
-    "ca": "Katalan",
-    "ceb": "Kebuano",
-    "km": "Kambodia kasa",
-    "zh_CN": "Kyaena kasa",
-    "zh_HK": "Kyaena kasa",
-    "zh_TW": "Kyaena kasa",
-    "hr": "Kurowehyia kasa",
-    "cs": "Kyɛk kasa",
-    "da": "Dane kasa",
-    "doi": "Dɔgri",
-    "nl": "Dɛɛkye",
-    "en": "Borɔfo",
-    "eo": "Esperanto",
-    "et": "Estonia kasa",
-    "ee": "Ayigbe",
-    "fi": "Finlande kasa",
-    "fr": "Frɛnkye",
-    "fy": "Atɔeɛ Fam Frihyia Kasa",
-    "gl": "Galisia kasa",
-    "ka": "Gyɔɔgyia kasa",
-    "de": "Gyaaman",
-    "de_AT": "Ɔstria Gyaaman",
-    "de_CH": "Swisalande Gyaaman",
-    "el": "Greek kasa",
-    "gu": "Gugyarata",
-    "ht": "Haitian Creole",
-    "ha": "Hausa",
-    "haw": "Hawaiian",
-    "he": "Hibri kasa",
-    "hi": "Hindi",
-    "hu": "Hangri kasa",
-    "is": "Aeslande kasa",
-    "ig": "Igbo kasa",
-    "id": "Indonihyia kasa",
-    "ga": "Aerelande kasa",
-    "it": "Italy kasa",
-    "ja": "Gyapan kasa",
-    "kn": "Kanada",
-    "kk": "kasaki kasa",
-    "rw": "Rewanda kasa",
-    "ko": "Korea kasa",
-    "ku": "Kɛɛde kasa",
-    "ckb": "Central Kurdish",
-    "ky": "Kɛgyese kasa",
-    "lo": "Lawo kasa",
-    "lv": "Latvia kasa",
-    "ln": "Lingala",
-    "lt": "Lituania kasa",
-    "lg": "Ganda",
-    "lb": "Lɔsimbɔge kasa",
-    "mk": "Mɛsidonia kasa",
-    "mai": "Maetili",
-    "mg": "Malagasy",
-    "ms": "Malay kasa",
-    "ml": "Malayalam kasa",
-    "mt": "Malta kasa",
-    "mi": "Mawori",
-    "mr": "Marati",
-    "mni_Mtei": "Manipuri",
-    "mn": "Mongoliafoɔ kasa",
-    "my": "Bɛɛmis kasa",
-    "ne": "Nɛpal kasa",
-    "nb": "Norwegian Bokmål",
-    "nn": "Nɔwefoɔ Ninɔso",
-    "oc": "Osita kasa",
-    "or": "Odia",
-    "om": "Oromo",
-    "ps": "Pahyito",
-    "fa": "Pɛɛhyia kasa",
-    "fil": "Filipin kasa",
-    "pl": "Pɔland kasa",
-    "pt": "Pɔɔtugal kasa",
-    "pt_BR": "Pɔɔtugal kasa",
-    "pa": "Pungyabi kasa",
-    "qu": "Kwɛkya",
-    "ro": "Romenia kasa",
-    "ru": "Rahyia kasa",
-    "sa": "Sanskrit kasa",
-    "sc": "Saadinia kasa",
-    "gd": "Skotlandfoɔ Galek Kasa",
-    "sr_Cyrl": "Sɛbia Kasa",
-    "sr_Latn": "Sɛbia Kasa",
-    "sr_Latn_ME": "Sɛbia Kasa",
-    "sn": "Shona",
-    "sd": "Sindi",
-    "si": "Sinhala",
-    "sk": "Slovak Kasa",
-    "sl": "Slovɛniafoɔ Kasa",
-    "so": "Somalia kasa",
-    "es": "Spain kasa",
-    "su": "Sunda Kasa",
-    "sw": "Swahili",
-    "sv": "Sweden kasa",
-    "tl": "Tagalog",
-    "tg": "Tɛgyeke kasa",
-    "ta": "Tamil kasa",
-    "tt": "Tata kasa",
-    "te": "Telugu",
-    "th": "Taeland kasa",
-    "ti": "Tigrinya kasa",
-    "tr": "Tɛɛki kasa",
-    "tk": "Tɛkmɛnistan Kasa",
-    "ak": "Akan",
-    "ug": "Yugaa Kasa",
-    "uk": "Ukren kasa",
-    "ur": "Urdu kasa",
-    "uz_Cyrl": "Usbɛkistan Kasa",
-    "uz_Latn": "Usbɛkistan Kasa",
-    "vi": "Viɛtnam kasa",
-    "cy": "Wɛɛhye Kasa",
-    "xh": "Hosa Kasa",
-    "yi": "Yiddish",
-    "yo": "Yoruba",
-    "zu": "Zulu"
+    "af": {
+        "code": "af",
+        "name": "Afrikaans"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "Aabeniani"
+    },
+    "am": {
+        "code": "am",
+        "name": "Amariki"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "Arabeke"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "Aameniani"
+    },
+    "as": {
+        "code": "as",
+        "name": "Asamese"
+    },
+    "az": {
+        "code": "az",
+        "name": "Asabegyanni"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "Bambara"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "Baske"
+    },
+    "be": {
+        "code": "be",
+        "name": "Belarus kasa"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "Bengali kasa"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "Bopuri"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "Bosniani"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "Bɔlgeria kasa"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "Borɔfo"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "Katalan"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "Kebuano"
+    },
+    "km": {
+        "code": "km",
+        "name": "Kambodia kasa"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "Kyaena kasa"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "Kyaena kasa"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "Kyaena kasa"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "Kurowehyia kasa"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "Kyɛk kasa"
+    },
+    "da": {
+        "code": "da",
+        "name": "Dane kasa"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "Dɔgri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "Dɛɛkye"
+    },
+    "en": {
+        "code": "en",
+        "name": "Borɔfo"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "Esperanto"
+    },
+    "et": {
+        "code": "et",
+        "name": "Estonia kasa"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "Ayigbe"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "Finlande kasa"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "Frɛnkye"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "Atɔeɛ Fam Frihyia Kasa"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "Galisia kasa"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "Gyɔɔgyia kasa"
+    },
+    "de": {
+        "code": "de",
+        "name": "Gyaaman"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "Ɔstria Gyaaman"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "Swisalande Gyaaman"
+    },
+    "el": {
+        "code": "el",
+        "name": "Greek kasa"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "Gugyarata"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "Haitian Creole"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "Hausa"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "Hawaiian"
+    },
+    "he": {
+        "code": "he",
+        "name": "Hibri kasa"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "Hindi"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "Hangri kasa"
+    },
+    "is": {
+        "code": "is",
+        "name": "Aeslande kasa"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "Igbo kasa"
+    },
+    "id": {
+        "code": "id",
+        "name": "Indonihyia kasa"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "Aerelande kasa"
+    },
+    "it": {
+        "code": "it",
+        "name": "Italy kasa"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "Gyapan kasa"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "Kanada"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "kasaki kasa"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "Rewanda kasa"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "Korea kasa"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "Kɛɛde kasa"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "Central Kurdish"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "Kɛgyese kasa"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "Lawo kasa"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "Latvia kasa"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "Lingala"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "Lituania kasa"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "Ganda"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "Lɔsimbɔge kasa"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "Mɛsidonia kasa"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "Maetili"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "Malagasy"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "Malay kasa"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "Malayalam kasa"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "Malta kasa"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "Mawori"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "Marati"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "Manipuri"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "Mongoliafoɔ kasa"
+    },
+    "my": {
+        "code": "my",
+        "name": "Bɛɛmis kasa"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "Nɛpal kasa"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "Norwegian Bokmål"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "Nɔwefoɔ Ninɔso"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "Osita kasa"
+    },
+    "or": {
+        "code": "or",
+        "name": "Odia"
+    },
+    "om": {
+        "code": "om",
+        "name": "Oromo"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "Pahyito"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "Pɛɛhyia kasa"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "Filipin kasa"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "Pɔland kasa"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "Pɔɔtugal kasa"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "Pɔɔtugal kasa"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "Pungyabi kasa"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "Kwɛkya"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "Romenia kasa"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "Rahyia kasa"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "Sanskrit kasa"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "Saadinia kasa"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "Skotlandfoɔ Galek Kasa"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "Sɛbia Kasa"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "Sɛbia Kasa"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "Sɛbia Kasa"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "Shona"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "Sindi"
+    },
+    "si": {
+        "code": "si",
+        "name": "Sinhala"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "Slovak Kasa"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "Slovɛniafoɔ Kasa"
+    },
+    "so": {
+        "code": "so",
+        "name": "Somalia kasa"
+    },
+    "es": {
+        "code": "es",
+        "name": "Spain kasa"
+    },
+    "su": {
+        "code": "su",
+        "name": "Sunda Kasa"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "Swahili"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "Sweden kasa"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "Tagalog"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "Tɛgyeke kasa"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "Tamil kasa"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "Tata kasa"
+    },
+    "te": {
+        "code": "te",
+        "name": "Telugu"
+    },
+    "th": {
+        "code": "th",
+        "name": "Taeland kasa"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "Tigrinya kasa"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "Tɛɛki kasa"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "Tɛkmɛnistan Kasa"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "Akan"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "Yugaa Kasa"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "Ukren kasa"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "Urdu kasa"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "Usbɛkistan Kasa"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "Usbɛkistan Kasa"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "Viɛtnam kasa"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "Wɛɛhye Kasa"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "Hosa Kasa"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "Yiddish"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "Yoruba"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "Zulu"
+    }
 }

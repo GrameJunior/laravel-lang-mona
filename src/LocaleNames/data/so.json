@@ -1,131 +1,518 @@
 {
-    "af": "Afrikaanka",
-    "sq": "Albeeniyaan",
-    "am": "Axmaar",
-    "ar": "Carabi",
-    "hy": "Armeeniyaan",
-    "as": "Asaamiis",
-    "az": "Asarbayjan",
-    "bm": "Bambaara",
-    "eu": "Basquu",
-    "be": "Beleruusiyaan",
-    "bn": "Bangladesh",
-    "bho": "Bhojpuri",
-    "bs": "Bosniyaan",
-    "bg": "Bulgeeriyaan",
-    "en_CA": "Ingiriis Kanadiyaan",
-    "ca": "Katalaan",
-    "ceb": "Sebuano",
-    "km": "Kamboodhian",
-    "zh_CN": "Shinees",
-    "zh_HK": "Shinees",
-    "zh_TW": "Shinees",
-    "hr": "Koro’eeshiyaan",
-    "cs": "Jeeg",
-    "da": "Dhaanish",
-    "doi": "Dogri",
-    "nl": "Holandays",
-    "en": "Ingiriisi",
-    "eo": "Isberaanto",
-    "et": "Istooniyaan",
-    "ee": "Eewe",
-    "fi": "Finishka",
-    "fr": "Faransiis",
-    "fy": "Firiisiyan Galbeed",
-    "gl": "Galiisiyaan",
-    "ka": "Joorijiyaan",
-    "de": "Jarmal",
-    "de_AT": "Jarmal Awsteeriya",
-    "de_CH": "Iswiiska Sare ee Jarmal",
-    "el": "Giriik",
-    "gu": "Gujaraati",
-    "ht": "Heeytiyaan Karawle",
-    "ha": "Hawsa",
-    "haw": "Hawaay",
-    "he": "Cibraani",
-    "hi": "Hindi",
-    "hu": "Hangariyaan",
-    "is": "Ayslandays",
-    "ig": "Igbo",
-    "id": "Indunusiyaan",
-    "ga": "Ayrish",
-    "it": "Talyaani",
-    "ja": "Jabaaniis",
-    "kn": "Kannadays",
-    "kk": "Kasaaq",
-    "rw": "Ruwaandha",
-    "ko": "Kuuriyaan",
-    "ku": "Kurdishka",
-    "ckb": "Bartamaha Kurdish",
-    "ky": "Kirgiis",
-    "lo": "Lao",
-    "lv": "Laatfiyaan",
-    "ln": "Lingala",
-    "lt": "Lituwaanays",
-    "lg": "Gandha",
-    "lb": "Luksaamboorgish",
-    "mk": "Masadooniyaan",
-    "mai": "Maithili",
-    "mg": "Malagaasi",
-    "ms": "Malaay",
-    "ml": "Malayalam",
-    "mt": "Maltiis",
-    "mi": "Maaoori",
-    "mr": "Maarati",
-    "mni_Mtei": "Maniburi",
-    "mn": "Mangooli",
-    "my": "Burmese",
-    "ne": "Nebaali",
-    "nb": "Nawrijii Bokmål",
-    "nn": "Nawriijiga Nynorsk",
-    "oc": "Occitan",
-    "or": "Oodhiya",
-    "om": "Oromo",
-    "ps": "Bashtuu",
-    "fa": "Faarisi",
-    "fil": "Filibiino",
-    "pl": "Boolish",
-    "pt": "Boortaqiis",
-    "pt_BR": "Boortaqiiska Baraasiil",
-    "pa": "Bunjaabi",
-    "qu": "Quechua",
-    "ro": "Romanka",
-    "ru": "Ruush",
-    "sa": "Sanskrit",
-    "sc": "Sardinian",
-    "gd": "Iskot Giilik",
-    "sr_Cyrl": "Seerbiyaan",
-    "sr_Latn": "Seerbiyaan",
-    "sr_Latn_ME": "Seerbiyaan",
-    "sn": "Shoona",
-    "sd": "Siindhi",
-    "si": "Sinhala",
-    "sk": "Isloofaak",
-    "sl": "Islofeeniyaan",
-    "so": "Soomaali",
-    "es": "Isbaanish",
-    "su": "Suudaaniis",
-    "sw": "Sawaaxili",
-    "sv": "Iswiidhish",
-    "tl": "Tagalog",
-    "tg": "Taajik",
-    "ta": "Tamiil",
-    "tt": "Taatar",
-    "te": "Teluugu",
-    "th": "Taaylandays",
-    "ti": "Tigrinya",
-    "tr": "Turkish",
-    "tk": "Turkumaanish",
-    "ak": "Akan",
-    "ug": "Uighur",
-    "uk": "Yukreeniyaan",
-    "ur": "Urduu",
-    "uz_Cyrl": "Usbakis",
-    "uz_Latn": "Usbakis",
-    "vi": "Fiitnaamays",
-    "cy": "Welsh",
-    "xh": "Xhosa",
-    "yi": "Yadhish",
-    "yo": "Yoruuba",
-    "zu": "Zuulu"
+    "af": {
+        "code": "af",
+        "name": "Afrikaanka"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "Albeeniyaan"
+    },
+    "am": {
+        "code": "am",
+        "name": "Axmaar"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "Carabi"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "Armeeniyaan"
+    },
+    "as": {
+        "code": "as",
+        "name": "Asaamiis"
+    },
+    "az": {
+        "code": "az",
+        "name": "Asarbayjan"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "Bambaara"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "Basquu"
+    },
+    "be": {
+        "code": "be",
+        "name": "Beleruusiyaan"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "Bangladesh"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "Bhojpuri"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "Bosniyaan"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "Bulgeeriyaan"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "Ingiriis Kanadiyaan"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "Katalaan"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "Sebuano"
+    },
+    "km": {
+        "code": "km",
+        "name": "Kamboodhian"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "Shinees"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "Shinees"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "Shinees"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "Koro’eeshiyaan"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "Jeeg"
+    },
+    "da": {
+        "code": "da",
+        "name": "Dhaanish"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "Dogri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "Holandays"
+    },
+    "en": {
+        "code": "en",
+        "name": "Ingiriisi"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "Isberaanto"
+    },
+    "et": {
+        "code": "et",
+        "name": "Istooniyaan"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "Eewe"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "Finishka"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "Faransiis"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "Firiisiyan Galbeed"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "Galiisiyaan"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "Joorijiyaan"
+    },
+    "de": {
+        "code": "de",
+        "name": "Jarmal"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "Jarmal Awsteeriya"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "Iswiiska Sare ee Jarmal"
+    },
+    "el": {
+        "code": "el",
+        "name": "Giriik"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "Gujaraati"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "Heeytiyaan Karawle"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "Hawsa"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "Hawaay"
+    },
+    "he": {
+        "code": "he",
+        "name": "Cibraani"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "Hindi"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "Hangariyaan"
+    },
+    "is": {
+        "code": "is",
+        "name": "Ayslandays"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "Igbo"
+    },
+    "id": {
+        "code": "id",
+        "name": "Indunusiyaan"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "Ayrish"
+    },
+    "it": {
+        "code": "it",
+        "name": "Talyaani"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "Jabaaniis"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "Kannadays"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "Kasaaq"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "Ruwaandha"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "Kuuriyaan"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "Kurdishka"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "Bartamaha Kurdish"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "Kirgiis"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "Lao"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "Laatfiyaan"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "Lingala"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "Lituwaanays"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "Gandha"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "Luksaamboorgish"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "Masadooniyaan"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "Maithili"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "Malagaasi"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "Malaay"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "Malayalam"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "Maltiis"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "Maaoori"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "Maarati"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "Maniburi"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "Mangooli"
+    },
+    "my": {
+        "code": "my",
+        "name": "Burmese"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "Nebaali"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "Nawrijii Bokmål"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "Nawriijiga Nynorsk"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "Occitan"
+    },
+    "or": {
+        "code": "or",
+        "name": "Oodhiya"
+    },
+    "om": {
+        "code": "om",
+        "name": "Oromo"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "Bashtuu"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "Faarisi"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "Filibiino"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "Boolish"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "Boortaqiis"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "Boortaqiiska Baraasiil"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "Bunjaabi"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "Quechua"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "Romanka"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "Ruush"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "Sanskrit"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "Sardinian"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "Iskot Giilik"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "Seerbiyaan"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "Seerbiyaan"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "Seerbiyaan"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "Shoona"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "Siindhi"
+    },
+    "si": {
+        "code": "si",
+        "name": "Sinhala"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "Isloofaak"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "Islofeeniyaan"
+    },
+    "so": {
+        "code": "so",
+        "name": "Soomaali"
+    },
+    "es": {
+        "code": "es",
+        "name": "Isbaanish"
+    },
+    "su": {
+        "code": "su",
+        "name": "Suudaaniis"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "Sawaaxili"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "Iswiidhish"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "Tagalog"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "Taajik"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "Tamiil"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "Taatar"
+    },
+    "te": {
+        "code": "te",
+        "name": "Teluugu"
+    },
+    "th": {
+        "code": "th",
+        "name": "Taaylandays"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "Tigrinya"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "Turkish"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "Turkumaanish"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "Akan"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "Uighur"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "Yukreeniyaan"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "Urduu"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "Usbakis"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "Usbakis"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "Fiitnaamays"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "Welsh"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "Xhosa"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "Yadhish"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "Yoruuba"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "Zuulu"
+    }
 }

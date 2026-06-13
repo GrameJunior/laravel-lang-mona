@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Mona\Commands\Cldr;
 
+use LaravelLang\CountryNames\CountryData;
 use RuntimeException;
 
 use function array_key_first;
@@ -24,15 +25,14 @@ final class CldrCountryCommand extends CldrCommand
     /** @var array<string, array<string, string>> */
     private array $territories = [];
 
-    protected function perform(string $forCode, string $locale): array
+    protected function perform(string $forCode, string $locale): CountryData
     {
         $code = $this->countryCode($locale);
 
-        return [
-            'code'      => $code,
-            'native'    => $this->countryName($locale, $code),
-            'localized' => $this->countryName($forCode, $code),
-        ];
+        return new CountryData(
+            code: $code,
+            name: $this->countryName($forCode, $code),
+        );
     }
 
     protected function countryName(string $locale, string $code): string

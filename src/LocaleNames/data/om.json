@@ -1,131 +1,518 @@
 {
-    "af": "Afrikoota",
-    "sq": "Afaan Albaniyaa",
-    "am": "Afaan Amaaraa",
-    "ar": "Arabiffaa",
-    "hy": "Armeeniyaa",
-    "as": "Assamese",
-    "az": "Afaan Azerbaijani",
-    "bm": "Bambara",
-    "eu": "Afaan Baskuu",
-    "be": "Afaan Belarusia",
-    "bn": "Afaan Baangladeshi",
-    "bho": "Bihoojpuurii",
-    "bs": "Afaan Bosniyaa",
-    "bg": "Afaan Bulgariya",
-    "en_CA": "Ingiliffa Kanaadaa",
-    "ca": "Afaan Katalaa",
-    "ceb": "Kubuwanoo",
-    "km": "Khmer",
-    "zh_CN": "Chinese",
-    "zh_HK": "Chinese",
-    "zh_TW": "Chinese",
-    "hr": "Afaan Croatian",
-    "cs": "Afaan Czech",
-    "da": "Afaan Deenmaark",
-    "doi": "Dogri",
-    "nl": "Afaan Dachii",
-    "en": "Afaan Ingilizii",
-    "eo": "Afaan Esperantoo",
-    "et": "Afaan Istooniya",
-    "ee": "Ewe",
-    "fi": "Afaan Fiilaandi",
-    "fr": "Afaan Faransaayii",
-    "fy": "Afaan Firisiyaani",
-    "gl": "Afaan Galishii",
-    "ka": "Afaan Georgian",
-    "de": "Afaan Jarmanii",
-    "de_AT": "Jarmanii Awustiriyaa",
-    "de_CH": "Jarmanii Siwiiz Haay",
-    "el": "Afaan Giriiki",
-    "gu": "Afaan Gujarati",
-    "ht": "Haitian Creole",
-    "ha": "Hawusaa",
-    "haw": "Hawaiian",
-    "he": "Afaan Hebrew",
-    "hi": "Afaan Hindii",
-    "hu": "Afaan Hangaari",
-    "is": "Ayiislandiffaa",
-    "ig": "Igbo",
-    "id": "Afaan Indoneziya",
-    "ga": "Afaan Ayirishii",
-    "it": "Afaan Xaaliyaani",
-    "ja": "Afaan Japanii",
-    "kn": "Afaan Kannada",
-    "kk": "Kazakh",
-    "rw": "Kinyarwanda",
-    "ko": "Afaan Korea",
-    "ku": "Kurdish",
-    "ckb": "Central Kurdish",
-    "ky": "Kyrgyz",
-    "lo": "Lao",
-    "lv": "Afaan Lativiyaa",
-    "ln": "Lingala",
-    "lt": "Afaan Liituniyaa",
-    "lg": "Ganda",
-    "lb": "Luxembourgish",
-    "mk": "Afaan Macedooniyaa",
-    "mai": "Maithili",
-    "mg": "Malagasy",
-    "ms": "Malaayiffaa",
-    "ml": "Malayaalamiffaa",
-    "mt": "Afaan Maltesii",
-    "mi": "Māori",
-    "mr": "Afaan Maratii",
-    "mni_Mtei": "Manipuri",
-    "mn": "Mongolian",
-    "my": "Burmeesee",
-    "ne": "Afaan Nepalii",
-    "nb": "Norwegian Bokmål",
-    "nn": "Afaan Norwegian",
-    "oc": "Afaan Occit",
-    "or": "Odia",
-    "om": "Oromoo",
-    "ps": "Pashto",
-    "fa": "Afaan Persia",
-    "fil": "Afaan Filippinii",
-    "pl": "Afaan Polandii",
-    "pt": "Afaan Porchugaal",
-    "pt_BR": "Afaan Portugali (Braazil)",
-    "pa": "Afaan Punjabii",
-    "qu": "Quechua",
-    "ro": "Afaan Romaniyaa",
-    "ru": "Afaan Rushiyaa",
-    "sa": "Sanskrit",
-    "sc": "Sardinian",
-    "gd": "Scots Gaelic",
-    "sr_Cyrl": "Afaan Serbiya",
-    "sr_Latn": "Afaan Serbiya",
-    "sr_Latn_ME": "Afaan Serbiya",
-    "sn": "Shona",
-    "sd": "Sindhi",
-    "si": "Afaan Sinhalese",
-    "sk": "Afaan Slovak",
-    "sl": "Afaan Islovaniyaa",
-    "so": "Somali",
-    "es": "Afaan Ispeen",
-    "su": "Afaan Sudaanii",
-    "sw": "Suwahilii",
-    "sv": "Afaan Suwidiin",
-    "tl": "Tagalog",
-    "tg": "Tajik",
-    "ta": "Afaan Tamilii",
-    "tt": "Tatar",
-    "te": "Afaan Telugu",
-    "th": "Afaan Tayii",
-    "ti": "Afaan Tigiree",
-    "tr": "Afaan Turkii",
-    "tk": "Lammii Turkii",
-    "ak": "Akan",
-    "ug": "Uyghur",
-    "uk": "Afaan Ukreenii",
-    "ur": "Afaan Urdu",
-    "uz_Cyrl": "Afaan Uzbek",
-    "uz_Latn": "Afaan Uzbek",
-    "vi": "Afaan Veetinam",
-    "cy": "Welishiffaa",
-    "xh": "Afaan Xhosa",
-    "yi": "Yiddish",
-    "yo": "Yoruba",
-    "zu": "Afaan Zuulu"
+    "af": {
+        "code": "af",
+        "name": "Afrikoota"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "Afaan Albaniyaa"
+    },
+    "am": {
+        "code": "am",
+        "name": "Afaan Amaaraa"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "Arabiffaa"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "Armeeniyaa"
+    },
+    "as": {
+        "code": "as",
+        "name": "Assamese"
+    },
+    "az": {
+        "code": "az",
+        "name": "Afaan Azerbaijani"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "Bambara"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "Afaan Baskuu"
+    },
+    "be": {
+        "code": "be",
+        "name": "Afaan Belarusia"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "Afaan Baangladeshi"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "Bihoojpuurii"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "Afaan Bosniyaa"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "Afaan Bulgariya"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "Ingiliffa Kanaadaa"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "Afaan Katalaa"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "Kubuwanoo"
+    },
+    "km": {
+        "code": "km",
+        "name": "Khmer"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "Chinese"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "Chinese"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "Chinese"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "Afaan Croatian"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "Afaan Czech"
+    },
+    "da": {
+        "code": "da",
+        "name": "Afaan Deenmaark"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "Dogri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "Afaan Dachii"
+    },
+    "en": {
+        "code": "en",
+        "name": "Afaan Ingilizii"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "Afaan Esperantoo"
+    },
+    "et": {
+        "code": "et",
+        "name": "Afaan Istooniya"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "Ewe"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "Afaan Fiilaandi"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "Afaan Faransaayii"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "Afaan Firisiyaani"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "Afaan Galishii"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "Afaan Georgian"
+    },
+    "de": {
+        "code": "de",
+        "name": "Afaan Jarmanii"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "Jarmanii Awustiriyaa"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "Jarmanii Siwiiz Haay"
+    },
+    "el": {
+        "code": "el",
+        "name": "Afaan Giriiki"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "Afaan Gujarati"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "Haitian Creole"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "Hawusaa"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "Hawaiian"
+    },
+    "he": {
+        "code": "he",
+        "name": "Afaan Hebrew"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "Afaan Hindii"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "Afaan Hangaari"
+    },
+    "is": {
+        "code": "is",
+        "name": "Ayiislandiffaa"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "Igbo"
+    },
+    "id": {
+        "code": "id",
+        "name": "Afaan Indoneziya"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "Afaan Ayirishii"
+    },
+    "it": {
+        "code": "it",
+        "name": "Afaan Xaaliyaani"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "Afaan Japanii"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "Afaan Kannada"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "Kazakh"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "Kinyarwanda"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "Afaan Korea"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "Kurdish"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "Central Kurdish"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "Kyrgyz"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "Lao"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "Afaan Lativiyaa"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "Lingala"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "Afaan Liituniyaa"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "Ganda"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "Luxembourgish"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "Afaan Macedooniyaa"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "Maithili"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "Malagasy"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "Malaayiffaa"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "Malayaalamiffaa"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "Afaan Maltesii"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "Māori"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "Afaan Maratii"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "Manipuri"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "Mongolian"
+    },
+    "my": {
+        "code": "my",
+        "name": "Burmeesee"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "Afaan Nepalii"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "Norwegian Bokmål"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "Afaan Norwegian"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "Afaan Occit"
+    },
+    "or": {
+        "code": "or",
+        "name": "Odia"
+    },
+    "om": {
+        "code": "om",
+        "name": "Oromoo"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "Pashto"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "Afaan Persia"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "Afaan Filippinii"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "Afaan Polandii"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "Afaan Porchugaal"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "Afaan Portugali (Braazil)"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "Afaan Punjabii"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "Quechua"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "Afaan Romaniyaa"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "Afaan Rushiyaa"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "Sanskrit"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "Sardinian"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "Scots Gaelic"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "Afaan Serbiya"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "Afaan Serbiya"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "Afaan Serbiya"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "Shona"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "Sindhi"
+    },
+    "si": {
+        "code": "si",
+        "name": "Afaan Sinhalese"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "Afaan Slovak"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "Afaan Islovaniyaa"
+    },
+    "so": {
+        "code": "so",
+        "name": "Somali"
+    },
+    "es": {
+        "code": "es",
+        "name": "Afaan Ispeen"
+    },
+    "su": {
+        "code": "su",
+        "name": "Afaan Sudaanii"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "Suwahilii"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "Afaan Suwidiin"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "Tagalog"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "Tajik"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "Afaan Tamilii"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "Tatar"
+    },
+    "te": {
+        "code": "te",
+        "name": "Afaan Telugu"
+    },
+    "th": {
+        "code": "th",
+        "name": "Afaan Tayii"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "Afaan Tigiree"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "Afaan Turkii"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "Lammii Turkii"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "Akan"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "Uyghur"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "Afaan Ukreenii"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "Afaan Urdu"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "Afaan Uzbek"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "Afaan Uzbek"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "Afaan Veetinam"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "Welishiffaa"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "Afaan Xhosa"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "Yiddish"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "Yoruba"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "Afaan Zuulu"
+    }
 }

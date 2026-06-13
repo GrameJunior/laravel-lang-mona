@@ -1,131 +1,518 @@
 {
-    "af": "afrikaans",
-    "sq": "albanés",
-    "am": "amhárico",
-    "ar": "árabe",
-    "hy": "armenio",
-    "as": "assamés",
-    "az": "acerbaixano",
-    "bm": "bambara",
-    "eu": "éuscaro",
-    "be": "belaruso",
-    "bn": "bengalí",
-    "bho": "bhojpuri",
-    "bs": "bosníaco",
-    "bg": "búlgaro",
-    "en_CA": "inglés canadense",
-    "ca": "catalán",
-    "ceb": "cebuano",
-    "km": "khmer",
-    "zh_CN": "chinés",
-    "zh_HK": "chinés",
-    "zh_TW": "chinés",
-    "hr": "croata",
-    "cs": "checo",
-    "da": "dinamarqués",
-    "doi": "dogri",
-    "nl": "neerlandés",
-    "en": "inglés",
-    "eo": "esperanto",
-    "et": "estoniano",
-    "ee": "ewe",
-    "fi": "finés",
-    "fr": "francés",
-    "fy": "frisón occidental",
-    "gl": "galego",
-    "ka": "xeorxiano",
-    "de": "alemán",
-    "de_AT": "alemán austríaco",
-    "de_CH": "alto alemán suízo",
-    "el": "grego",
-    "gu": "guxarati",
-    "ht": "crioulo haitiano",
-    "ha": "hausa",
-    "haw": "hawaiano",
-    "he": "hebreo",
-    "hi": "hindi",
-    "hu": "húngaro",
-    "is": "islandés",
-    "ig": "igbo",
-    "id": "indonesio",
-    "ga": "irlandés",
-    "it": "italiano",
-    "ja": "xaponés",
-    "kn": "kannará",
-    "kk": "kazako",
-    "rw": "kiñaruanda",
-    "ko": "coreano",
-    "ku": "kurdo",
-    "ckb": "kurdo central",
-    "ky": "kirguiz",
-    "lo": "laosiano",
-    "lv": "letón",
-    "ln": "lingala",
-    "lt": "lituano",
-    "lg": "ganda",
-    "lb": "luxemburgués",
-    "mk": "macedonio",
-    "mai": "maithili",
-    "mg": "malgaxe",
-    "ms": "malaio",
-    "ml": "malabar",
-    "mt": "maltés",
-    "mi": "maorí",
-    "mr": "marathi",
-    "mni_Mtei": "manipuri",
-    "mn": "mongol",
-    "my": "birmano",
-    "ne": "nepalí",
-    "nb": "noruegués bokmål",
-    "nn": "noruegués nynorsk",
-    "oc": "occitano",
-    "or": "odiá",
-    "om": "oromo",
-    "ps": "paxto",
-    "fa": "persa",
-    "fil": "filipino",
-    "pl": "polaco",
-    "pt": "portugués",
-    "pt_BR": "portugués do Brasil",
-    "pa": "panxabí",
-    "qu": "quechua",
-    "ro": "romanés",
-    "ru": "ruso",
-    "sa": "sánscrito",
-    "sc": "sardo",
-    "gd": "gaélico escocés",
-    "sr_Cyrl": "serbio",
-    "sr_Latn": "serbio",
-    "sr_Latn_ME": "serbio",
-    "sn": "shona",
-    "sd": "sindhi",
-    "si": "cingalés",
-    "sk": "eslovaco",
-    "sl": "esloveno",
-    "so": "somalí",
-    "es": "español",
-    "su": "sundanés",
-    "sw": "suahili",
-    "sv": "sueco",
-    "tl": "tagalo",
-    "tg": "taxico",
-    "ta": "támil",
-    "tt": "tártaro",
-    "te": "telugu",
-    "th": "tailandés",
-    "ti": "tigriña",
-    "tr": "turco",
-    "tk": "turkmeno",
-    "ak": "akan",
-    "ug": "uigur",
-    "uk": "ucraíno",
-    "ur": "urdú",
-    "uz_Cyrl": "uzbeko",
-    "uz_Latn": "uzbeko",
-    "vi": "vietnamita",
-    "cy": "galés",
-    "xh": "xhosa",
-    "yi": "yiddish",
-    "yo": "ioruba",
-    "zu": "zulú"
+    "af": {
+        "code": "af",
+        "name": "afrikaans"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "albanés"
+    },
+    "am": {
+        "code": "am",
+        "name": "amhárico"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "árabe"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "armenio"
+    },
+    "as": {
+        "code": "as",
+        "name": "assamés"
+    },
+    "az": {
+        "code": "az",
+        "name": "acerbaixano"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "bambara"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "éuscaro"
+    },
+    "be": {
+        "code": "be",
+        "name": "belaruso"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "bengalí"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "bhojpuri"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "bosníaco"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "búlgaro"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "inglés canadense"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "catalán"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "cebuano"
+    },
+    "km": {
+        "code": "km",
+        "name": "khmer"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "chinés"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "chinés"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "chinés"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "croata"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "checo"
+    },
+    "da": {
+        "code": "da",
+        "name": "dinamarqués"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "dogri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "neerlandés"
+    },
+    "en": {
+        "code": "en",
+        "name": "inglés"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "esperanto"
+    },
+    "et": {
+        "code": "et",
+        "name": "estoniano"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "ewe"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "finés"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "francés"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "frisón occidental"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "galego"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "xeorxiano"
+    },
+    "de": {
+        "code": "de",
+        "name": "alemán"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "alemán austríaco"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "alto alemán suízo"
+    },
+    "el": {
+        "code": "el",
+        "name": "grego"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "guxarati"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "crioulo haitiano"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "hausa"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "hawaiano"
+    },
+    "he": {
+        "code": "he",
+        "name": "hebreo"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "hindi"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "húngaro"
+    },
+    "is": {
+        "code": "is",
+        "name": "islandés"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "igbo"
+    },
+    "id": {
+        "code": "id",
+        "name": "indonesio"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "irlandés"
+    },
+    "it": {
+        "code": "it",
+        "name": "italiano"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "xaponés"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "kannará"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "kazako"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "kiñaruanda"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "coreano"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "kurdo"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "kurdo central"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "kirguiz"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "laosiano"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "letón"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "lingala"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "lituano"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "ganda"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "luxemburgués"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "macedonio"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "maithili"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "malgaxe"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "malaio"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "malabar"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "maltés"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "maorí"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "marathi"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "manipuri"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "mongol"
+    },
+    "my": {
+        "code": "my",
+        "name": "birmano"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "nepalí"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "noruegués bokmål"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "noruegués nynorsk"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "occitano"
+    },
+    "or": {
+        "code": "or",
+        "name": "odiá"
+    },
+    "om": {
+        "code": "om",
+        "name": "oromo"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "paxto"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "persa"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "filipino"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "polaco"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "portugués"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "portugués do Brasil"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "panxabí"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "quechua"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "romanés"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "ruso"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "sánscrito"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "sardo"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "gaélico escocés"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "serbio"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "serbio"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "serbio"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "shona"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "sindhi"
+    },
+    "si": {
+        "code": "si",
+        "name": "cingalés"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "eslovaco"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "esloveno"
+    },
+    "so": {
+        "code": "so",
+        "name": "somalí"
+    },
+    "es": {
+        "code": "es",
+        "name": "español"
+    },
+    "su": {
+        "code": "su",
+        "name": "sundanés"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "suahili"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "sueco"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "tagalo"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "taxico"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "támil"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "tártaro"
+    },
+    "te": {
+        "code": "te",
+        "name": "telugu"
+    },
+    "th": {
+        "code": "th",
+        "name": "tailandés"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "tigriña"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "turco"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "turkmeno"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "akan"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "uigur"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "ucraíno"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "urdú"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "uzbeko"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "uzbeko"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "vietnamita"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "galés"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "xhosa"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "yiddish"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "ioruba"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "zulú"
+    }
 }

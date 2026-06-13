@@ -1,131 +1,518 @@
 {
-    "af": "afrikanų",
-    "sq": "albanų",
-    "am": "amharų",
-    "ar": "arabų",
-    "hy": "armėnų",
-    "as": "asamų",
-    "az": "azerbaidžaniečių",
-    "bm": "bambarų",
-    "eu": "baskų",
-    "be": "baltarusių",
-    "bn": "bengalų",
-    "bho": "baučpuri",
-    "bs": "bosnių",
-    "bg": "bulgarų",
-    "en_CA": "Kanados anglų",
-    "ca": "katalonų",
-    "ceb": "sebuanų",
-    "km": "khmerų",
-    "zh_CN": "kinų",
-    "zh_HK": "kinų",
-    "zh_TW": "kinų",
-    "hr": "kroatų",
-    "cs": "čekų",
-    "da": "danų",
-    "doi": "dogri",
-    "nl": "olandų",
-    "en": "anglų",
-    "eo": "esperanto",
-    "et": "estų",
-    "ee": "evių",
-    "fi": "suomių",
-    "fr": "prancūzų",
-    "fy": "vakarų fryzų",
-    "gl": "galisų",
-    "ka": "gruzinų",
-    "de": "vokiečių",
-    "de_AT": "Austrijos vokiečių",
-    "de_CH": "Šveicarijos aukštutinė vokiečių",
-    "el": "graikų",
-    "gu": "gudžaratų",
-    "ht": "Haičio",
-    "ha": "hausų",
-    "haw": "havajiečių",
-    "he": "hebrajų",
-    "hi": "hindi",
-    "hu": "vengrų",
-    "is": "islandų",
-    "ig": "igbų",
-    "id": "indoneziečių",
-    "ga": "airių",
-    "it": "italų",
-    "ja": "japonų",
-    "kn": "kanadų",
-    "kk": "kazachų",
-    "rw": "kinjaruandų",
-    "ko": "korėjiečių",
-    "ku": "kurdų",
-    "ckb": "soranių kurdų",
-    "ky": "kirgizų",
-    "lo": "laosiečių",
-    "lv": "latvių",
-    "ln": "ngalų",
-    "lt": "lietuvių",
-    "lg": "ganda",
-    "lb": "liuksemburgiečių",
-    "mk": "makedonų",
-    "mai": "maithili",
-    "mg": "malagasų",
-    "ms": "malajiečių",
-    "ml": "malajalių",
-    "mt": "maltiečių",
-    "mi": "maorių",
-    "mr": "maratų",
-    "mni_Mtei": "manipurių",
-    "mn": "mongolų",
-    "my": "birmiečių",
-    "ne": "nepaliečių",
-    "nb": "norvegų bukmolas",
-    "nn": "naujoji norvegų",
-    "oc": "očitarų",
-    "or": "odijų",
-    "om": "oromų",
-    "ps": "puštūnų",
-    "fa": "persų",
-    "fil": "filipiniečių",
-    "pl": "lenkų",
-    "pt": "portugalų",
-    "pt_BR": "portugalų",
-    "pa": "pendžabų",
-    "qu": "kečujų",
-    "ro": "rumunų",
-    "ru": "rusų",
-    "sa": "sanskritas",
-    "sc": "sardiniečių",
-    "gd": "škotų (gėlų)",
-    "sr_Cyrl": "serbų",
-    "sr_Latn": "serbų",
-    "sr_Latn_ME": "serbų",
-    "sn": "šonų",
-    "sd": "sindų",
-    "si": "sinhalų",
-    "sk": "slovakų",
-    "sl": "slovėnų",
-    "so": "somaliečių",
-    "es": "ispanų",
-    "su": "sundų",
-    "sw": "suahilių",
-    "sv": "švedų",
-    "tl": "tagalogų",
-    "tg": "tadžikų",
-    "ta": "tamilų",
-    "tt": "totorių",
-    "te": "telugų",
-    "th": "tajų",
-    "ti": "tigrajų",
-    "tr": "turkų",
-    "tk": "turkmėnų",
-    "ak": "akanų",
-    "ug": "uigūrų",
-    "uk": "ukrainiečių",
-    "ur": "urdų",
-    "uz_Cyrl": "uzbekų",
-    "uz_Latn": "uzbekų",
-    "vi": "vietnamiečių",
-    "cy": "valų",
-    "xh": "kosų",
-    "yi": "jidiš",
-    "yo": "jorubų",
-    "zu": "zulų"
+    "af": {
+        "code": "af",
+        "name": "afrikanų"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "albanų"
+    },
+    "am": {
+        "code": "am",
+        "name": "amharų"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "arabų"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "armėnų"
+    },
+    "as": {
+        "code": "as",
+        "name": "asamų"
+    },
+    "az": {
+        "code": "az",
+        "name": "azerbaidžaniečių"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "bambarų"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "baskų"
+    },
+    "be": {
+        "code": "be",
+        "name": "baltarusių"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "bengalų"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "baučpuri"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "bosnių"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "bulgarų"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "Kanados anglų"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "katalonų"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "sebuanų"
+    },
+    "km": {
+        "code": "km",
+        "name": "khmerų"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "kinų"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "kinų"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "kinų"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "kroatų"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "čekų"
+    },
+    "da": {
+        "code": "da",
+        "name": "danų"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "dogri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "olandų"
+    },
+    "en": {
+        "code": "en",
+        "name": "anglų"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "esperanto"
+    },
+    "et": {
+        "code": "et",
+        "name": "estų"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "evių"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "suomių"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "prancūzų"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "vakarų fryzų"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "galisų"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "gruzinų"
+    },
+    "de": {
+        "code": "de",
+        "name": "vokiečių"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "Austrijos vokiečių"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "Šveicarijos aukštutinė vokiečių"
+    },
+    "el": {
+        "code": "el",
+        "name": "graikų"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "gudžaratų"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "Haičio"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "hausų"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "havajiečių"
+    },
+    "he": {
+        "code": "he",
+        "name": "hebrajų"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "hindi"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "vengrų"
+    },
+    "is": {
+        "code": "is",
+        "name": "islandų"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "igbų"
+    },
+    "id": {
+        "code": "id",
+        "name": "indoneziečių"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "airių"
+    },
+    "it": {
+        "code": "it",
+        "name": "italų"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "japonų"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "kanadų"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "kazachų"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "kinjaruandų"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "korėjiečių"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "kurdų"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "soranių kurdų"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "kirgizų"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "laosiečių"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "latvių"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "ngalų"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "lietuvių"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "ganda"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "liuksemburgiečių"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "makedonų"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "maithili"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "malagasų"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "malajiečių"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "malajalių"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "maltiečių"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "maorių"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "maratų"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "manipurių"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "mongolų"
+    },
+    "my": {
+        "code": "my",
+        "name": "birmiečių"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "nepaliečių"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "norvegų bukmolas"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "naujoji norvegų"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "očitarų"
+    },
+    "or": {
+        "code": "or",
+        "name": "odijų"
+    },
+    "om": {
+        "code": "om",
+        "name": "oromų"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "puštūnų"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "persų"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "filipiniečių"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "lenkų"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "portugalų"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "portugalų"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "pendžabų"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "kečujų"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "rumunų"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "rusų"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "sanskritas"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "sardiniečių"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "škotų (gėlų)"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "serbų"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "serbų"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "serbų"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "šonų"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "sindų"
+    },
+    "si": {
+        "code": "si",
+        "name": "sinhalų"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "slovakų"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "slovėnų"
+    },
+    "so": {
+        "code": "so",
+        "name": "somaliečių"
+    },
+    "es": {
+        "code": "es",
+        "name": "ispanų"
+    },
+    "su": {
+        "code": "su",
+        "name": "sundų"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "suahilių"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "švedų"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "tagalogų"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "tadžikų"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "tamilų"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "totorių"
+    },
+    "te": {
+        "code": "te",
+        "name": "telugų"
+    },
+    "th": {
+        "code": "th",
+        "name": "tajų"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "tigrajų"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "turkų"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "turkmėnų"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "akanų"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "uigūrų"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "ukrainiečių"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "urdų"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "uzbekų"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "uzbekų"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "vietnamiečių"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "valų"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "kosų"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "jidiš"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "jorubų"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "zulų"
+    }
 }

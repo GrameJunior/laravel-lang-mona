@@ -23,9 +23,9 @@
 - [ ] Locales
 - [ ] Models
 - [x] MoonShine
-- [ ] NativeCountryNames
-- [ ] NativeCurrencyNames
-- [ ] NativeLocaleNames
+- [x] NativeCountryNames
+- [x] NativeCurrencyNames
+- [x] NativeLocaleNames
 - [ ] Publisher
 - [ ] Routes
 - [x] StarterKits

@@ -1,131 +1,518 @@
 {
-    "af": "afríkanska",
-    "sq": "albanska",
-    "am": "amharíska",
-    "ar": "arabíska",
-    "hy": "armenska",
-    "as": "assamska",
-    "az": "aserska",
-    "bm": "bambara",
-    "eu": "baskneska",
-    "be": "hvítrússneska",
-    "bn": "bengalska",
-    "bho": "bojpúrí",
-    "bs": "bosníska",
-    "bg": "búlgarska",
-    "en_CA": "kanadísk enska",
-    "ca": "katalónska",
-    "ceb": "kebúanó",
-    "km": "kmer",
-    "zh_CN": "kínverska",
-    "zh_HK": "kínverska",
-    "zh_TW": "kínverska",
-    "hr": "króatíska",
-    "cs": "tékkneska",
-    "da": "danska",
-    "doi": "dogrí",
-    "nl": "hollenska",
-    "en": "enska",
-    "eo": "esperantó",
-    "et": "eistneska",
-    "ee": "ewe",
-    "fi": "finnska",
-    "fr": "franska",
-    "fy": "vesturfrísneska",
-    "gl": "galisíska",
-    "ka": "georgíska",
-    "de": "þýska",
-    "de_AT": "austurrísk þýska",
-    "de_CH": "svissnesk háþýska",
-    "el": "gríska",
-    "gu": "gújaratí",
-    "ht": "haítíska",
-    "ha": "hása",
-    "haw": "havaíska",
-    "he": "hebreska",
-    "hi": "hindí",
-    "hu": "ungverska",
-    "is": "íslenska",
-    "ig": "ígbó",
-    "id": "indónesíska",
-    "ga": "írska",
-    "it": "ítalska",
-    "ja": "japanska",
-    "kn": "kannada",
-    "kk": "kasakska",
-    "rw": "kínjarvanda",
-    "ko": "kóreska",
-    "ku": "kúrdíska",
-    "ckb": "miðkúrdíska",
-    "ky": "kirgiska",
-    "lo": "laó",
-    "lv": "lettneska",
-    "ln": "lingala",
-    "lt": "litháíska",
-    "lg": "ganda",
-    "lb": "lúxemborgíska",
-    "mk": "makedónska",
-    "mai": "maítílí",
-    "mg": "malagasíska",
-    "ms": "malaíska",
-    "ml": "malajalam",
-    "mt": "maltneska",
-    "mi": "maorí",
-    "mr": "maratí",
-    "mni_Mtei": "manípúrí",
-    "mn": "mongólska",
-    "my": "búrmneska",
-    "ne": "nepalska",
-    "nb": "norskt bókmál",
-    "nn": "nýnorska",
-    "oc": "oksítaníska",
-    "or": "óría",
-    "om": "oromo",
-    "ps": "pastú",
-    "fa": "persneska",
-    "fil": "filippseyska",
-    "pl": "pólska",
-    "pt": "portúgalska",
-    "pt_BR": "brasílísk portúgalska",
-    "pa": "púnjabí",
-    "qu": "kvesjúa",
-    "ro": "rúmenska",
-    "ru": "rússneska",
-    "sa": "sanskrít",
-    "sc": "sardínska",
-    "gd": "skosk gelíska",
-    "sr_Cyrl": "serbneska",
-    "sr_Latn": "serbneska",
-    "sr_Latn_ME": "serbneska",
-    "sn": "shona",
-    "sd": "sindí",
-    "si": "singalíska",
-    "sk": "slóvakíska",
-    "sl": "slóvenska",
-    "so": "sómalska",
-    "es": "spænska",
-    "su": "súndanska",
-    "sw": "svahílí",
-    "sv": "sænska",
-    "tl": "tagalog",
-    "tg": "tadsjikska",
-    "ta": "tamílska",
-    "tt": "tatarska",
-    "te": "telúgú",
-    "th": "taílenska",
-    "ti": "tígrinja",
-    "tr": "tyrkneska",
-    "tk": "túrkmenska",
-    "ak": "akan",
-    "ug": "úígúr",
-    "uk": "úkraínska",
-    "ur": "úrdú",
-    "uz_Cyrl": "úsbekska",
-    "uz_Latn": "úsbekska",
-    "vi": "víetnamska",
-    "cy": "velska",
-    "xh": "sósa",
-    "yi": "jiddíska",
-    "yo": "jórúba",
-    "zu": "súlú"
+    "af": {
+        "code": "af",
+        "name": "afríkanska"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "albanska"
+    },
+    "am": {
+        "code": "am",
+        "name": "amharíska"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "arabíska"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "armenska"
+    },
+    "as": {
+        "code": "as",
+        "name": "assamska"
+    },
+    "az": {
+        "code": "az",
+        "name": "aserska"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "bambara"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "baskneska"
+    },
+    "be": {
+        "code": "be",
+        "name": "hvítrússneska"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "bengalska"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "bojpúrí"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "bosníska"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "búlgarska"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "kanadísk enska"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "katalónska"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "kebúanó"
+    },
+    "km": {
+        "code": "km",
+        "name": "kmer"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "kínverska"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "kínverska"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "kínverska"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "króatíska"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "tékkneska"
+    },
+    "da": {
+        "code": "da",
+        "name": "danska"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "dogrí"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "hollenska"
+    },
+    "en": {
+        "code": "en",
+        "name": "enska"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "esperantó"
+    },
+    "et": {
+        "code": "et",
+        "name": "eistneska"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "ewe"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "finnska"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "franska"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "vesturfrísneska"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "galisíska"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "georgíska"
+    },
+    "de": {
+        "code": "de",
+        "name": "þýska"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "austurrísk þýska"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "svissnesk háþýska"
+    },
+    "el": {
+        "code": "el",
+        "name": "gríska"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "gújaratí"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "haítíska"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "hása"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "havaíska"
+    },
+    "he": {
+        "code": "he",
+        "name": "hebreska"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "hindí"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "ungverska"
+    },
+    "is": {
+        "code": "is",
+        "name": "íslenska"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "ígbó"
+    },
+    "id": {
+        "code": "id",
+        "name": "indónesíska"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "írska"
+    },
+    "it": {
+        "code": "it",
+        "name": "ítalska"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "japanska"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "kannada"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "kasakska"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "kínjarvanda"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "kóreska"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "kúrdíska"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "miðkúrdíska"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "kirgiska"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "laó"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "lettneska"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "lingala"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "litháíska"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "ganda"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "lúxemborgíska"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "makedónska"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "maítílí"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "malagasíska"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "malaíska"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "malajalam"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "maltneska"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "maorí"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "maratí"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "manípúrí"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "mongólska"
+    },
+    "my": {
+        "code": "my",
+        "name": "búrmneska"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "nepalska"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "norskt bókmál"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "nýnorska"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "oksítaníska"
+    },
+    "or": {
+        "code": "or",
+        "name": "óría"
+    },
+    "om": {
+        "code": "om",
+        "name": "oromo"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "pastú"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "persneska"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "filippseyska"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "pólska"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "portúgalska"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "brasílísk portúgalska"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "púnjabí"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "kvesjúa"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "rúmenska"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "rússneska"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "sanskrít"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "sardínska"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "skosk gelíska"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "serbneska"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "serbneska"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "serbneska"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "shona"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "sindí"
+    },
+    "si": {
+        "code": "si",
+        "name": "singalíska"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "slóvakíska"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "slóvenska"
+    },
+    "so": {
+        "code": "so",
+        "name": "sómalska"
+    },
+    "es": {
+        "code": "es",
+        "name": "spænska"
+    },
+    "su": {
+        "code": "su",
+        "name": "súndanska"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "svahílí"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "sænska"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "tagalog"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "tadsjikska"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "tamílska"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "tatarska"
+    },
+    "te": {
+        "code": "te",
+        "name": "telúgú"
+    },
+    "th": {
+        "code": "th",
+        "name": "taílenska"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "tígrinja"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "tyrkneska"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "túrkmenska"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "akan"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "úígúr"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "úkraínska"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "úrdú"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "úsbekska"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "úsbekska"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "víetnamska"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "velska"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "sósa"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "jiddíska"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "jórúba"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "súlú"
+    }
 }

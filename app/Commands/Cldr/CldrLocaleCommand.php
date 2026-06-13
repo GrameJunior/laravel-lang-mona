@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Mona\Commands\Cldr;
 
+use LaravelLang\LocaleNames\LocaleData;
 use RuntimeException;
 
 use function sprintf;
@@ -17,7 +18,7 @@ final class CldrLocaleCommand extends CldrCommand
     /** @var array<string, array<string, string>> */
     private array $languages = [];
 
-    protected function perform(string $forCode, string $locale): string
+    protected function perform(string $forCode, string $locale): LocaleData
     {
         $forLanguages = $this->languages($forCode);
         $fallback     = $this->languages($this->fallback);
@@ -25,13 +26,18 @@ final class CldrLocaleCommand extends CldrCommand
         $code = $this->localeCode($locale);
         $base = $this->baseCode($code);
 
-        return $forLanguages[$code]
+        $name = $forLanguages[$code]
             ?? $forLanguages[$base]
             ?? $fallback[$code]
             ?? $fallback[$base]
             ?? throw new RuntimeException(
                 sprintf('Unable to find CLDR locale name for [%s] in [%s].', $locale, $forCode)
             );
+
+        return new LocaleData(
+            code: $locale,
+            name: $name,
+        );
     }
 
     protected function languages(string $locale): array

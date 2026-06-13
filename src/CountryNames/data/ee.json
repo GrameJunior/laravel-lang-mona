@@ -1,647 +1,518 @@
 {
     "af": {
         "code": "ZA",
-        "native": "Suid-Afrika",
-        "localized": "Anyiehe Africa nutome"
+        "name": "Anyiehe Africa nutome"
     },
     "sq": {
         "code": "AL",
-        "native": "Shqipëri",
-        "localized": "Albania nutome"
+        "name": "Albania nutome"
     },
     "am": {
         "code": "ET",
-        "native": "ኢትዮጵያ",
-        "localized": "Etiopia nutome"
+        "name": "Etiopia nutome"
     },
     "ar": {
         "code": "EG",
-        "native": "مصر",
-        "localized": "Egypte nutome"
+        "name": "Egypte nutome"
     },
     "hy": {
         "code": "AM",
-        "native": "Հայաստան",
-        "localized": "Armenia nutome"
+        "name": "Armenia nutome"
     },
     "as": {
         "code": "IN",
-        "native": "ভাৰত",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "az": {
         "code": "AZ",
-        "native": "Azərbaycan",
-        "localized": "Azerbaijan nutome"
+        "name": "Azerbaijan nutome"
     },
     "bm": {
         "code": "ML",
-        "native": "Mali",
-        "localized": "Mali nutome"
+        "name": "Mali nutome"
     },
     "eu": {
         "code": "ES",
-        "native": "Espainia",
-        "localized": "Spain nutome"
+        "name": "Spain nutome"
     },
     "be": {
         "code": "BY",
-        "native": "Беларусь",
-        "localized": "Belarus nutome"
+        "name": "Belarus nutome"
     },
     "bn": {
         "code": "BD",
-        "native": "বাংলাদেশ",
-        "localized": "Bangladesh nutome"
+        "name": "Bangladesh nutome"
     },
     "bho": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "bs": {
         "code": "BA",
-        "native": "Bosna i Hercegovina",
-        "localized": "Bosnia kple Herzergovina nutome"
+        "name": "Bosnia kple Herzergovina nutome"
     },
     "bg": {
         "code": "BG",
-        "native": "България",
-        "localized": "Bulgaria nutome"
+        "name": "Bulgaria nutome"
     },
     "en_CA": {
         "code": "CA",
-        "native": "Canada",
-        "localized": "Canada nutome"
+        "name": "Canada nutome"
     },
     "ca": {
         "code": "ES",
-        "native": "Espanya",
-        "localized": "Spain nutome"
+        "name": "Spain nutome"
     },
     "ceb": {
         "code": "PH",
-        "native": "Philippines",
-        "localized": "Filipini nutome"
+        "name": "Filipini nutome"
     },
     "km": {
         "code": "KH",
-        "native": "កម្ពុជា",
-        "localized": "Kambodia nutome"
+        "name": "Kambodia nutome"
     },
     "zh_CN": {
         "code": "CN",
-        "native": "中国",
-        "localized": "Tsaina nutome"
+        "name": "Tsaina nutome"
     },
     "zh_HK": {
         "code": "HK",
-        "native": "中國香港特別行政區",
-        "localized": "Hɔng Kɔng SAR Tsaina nutome"
+        "name": "Hɔng Kɔng SAR Tsaina nutome"
     },
     "zh_TW": {
         "code": "TW",
-        "native": "台灣",
-        "localized": "Taiwan nutome"
+        "name": "Taiwan nutome"
     },
     "hr": {
         "code": "HR",
-        "native": "Hrvatska",
-        "localized": "Kroatsia nutome"
+        "name": "Kroatsia nutome"
     },
     "cs": {
         "code": "CZ",
-        "native": "Česko",
-        "localized": "Tsɛk repɔblik nutome"
+        "name": "Tsɛk repɔblik nutome"
     },
     "da": {
         "code": "DK",
-        "native": "Danmark",
-        "localized": "Denmark nutome"
+        "name": "Denmark nutome"
     },
     "doi": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "nl": {
         "code": "NL",
-        "native": "Nederland",
-        "localized": "Netherlands nutome"
+        "name": "Netherlands nutome"
     },
     "en": {
         "code": "US",
-        "native": "United States",
-        "localized": "USA nutome"
+        "name": "USA nutome"
     },
     "eo": {
         "code": "001",
-        "native": "mondo",
-        "localized": "xexeme"
+        "name": "xexeme"
     },
     "et": {
         "code": "EE",
-        "native": "Eesti",
-        "localized": "Estonia nutome"
+        "name": "Estonia nutome"
     },
     "ee": {
         "code": "GH",
-        "native": "Ghana nutome",
-        "localized": "Ghana nutome"
+        "name": "Ghana nutome"
     },
     "fi": {
         "code": "FI",
-        "native": "Suomi",
-        "localized": "Finland nutome"
+        "name": "Finland nutome"
     },
     "fr": {
         "code": "FR",
-        "native": "France",
-        "localized": "France nutome"
+        "name": "France nutome"
     },
     "fy": {
         "code": "NL",
-        "native": "Nederlân",
-        "localized": "Netherlands nutome"
+        "name": "Netherlands nutome"
     },
     "gl": {
         "code": "ES",
-        "native": "España",
-        "localized": "Spain nutome"
+        "name": "Spain nutome"
     },
     "ka": {
         "code": "GE",
-        "native": "საქართველო",
-        "localized": "Georgia nutome"
+        "name": "Georgia nutome"
     },
     "de": {
         "code": "DE",
-        "native": "Deutschland",
-        "localized": "Germania nutome"
+        "name": "Germania nutome"
     },
     "de_AT": {
         "code": "AT",
-        "native": "Österreich",
-        "localized": "Austria nutome"
+        "name": "Austria nutome"
     },
     "de_CH": {
         "code": "CH",
-        "native": "Schweiz",
-        "localized": "Switzerland nutome"
+        "name": "Switzerland nutome"
     },
     "el": {
         "code": "GR",
-        "native": "Ελλάδα",
-        "localized": "Greece nutome"
+        "name": "Greece nutome"
     },
     "gu": {
         "code": "IN",
-        "native": "ભારત",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "ht": {
         "code": "HT",
-        "native": "Haïti",
-        "localized": "Haiti nutome"
+        "name": "Haiti nutome"
     },
     "ha": {
         "code": "NG",
-        "native": "Nijeriya",
-        "localized": "Nigeria nutome"
+        "name": "Nigeria nutome"
     },
     "haw": {
         "code": "US",
-        "native": "ʻAmelika Hui Pū ʻIa",
-        "localized": "USA nutome"
+        "name": "USA nutome"
     },
     "he": {
         "code": "IL",
-        "native": "ישראל",
-        "localized": "Israel nutome"
+        "name": "Israel nutome"
     },
     "hi": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "hu": {
         "code": "HU",
-        "native": "Magyarország",
-        "localized": "Hungari nutome"
+        "name": "Hungari nutome"
     },
     "is": {
         "code": "IS",
-        "native": "Ísland",
-        "localized": "Aiseland nutome"
+        "name": "Aiseland nutome"
     },
     "ig": {
         "code": "NG",
-        "native": "Naịjịrịa",
-        "localized": "Nigeria nutome"
+        "name": "Nigeria nutome"
     },
     "id": {
         "code": "ID",
-        "native": "Indonesia",
-        "localized": "Indonesia nutome"
+        "name": "Indonesia nutome"
     },
     "ga": {
         "code": "IE",
-        "native": "Éire",
-        "localized": "Ireland nutome"
+        "name": "Ireland nutome"
     },
     "it": {
         "code": "IT",
-        "native": "Italia",
-        "localized": "Italia nutome"
+        "name": "Italia nutome"
     },
     "ja": {
         "code": "JP",
-        "native": "日本",
-        "localized": "Dzapan nutome"
+        "name": "Dzapan nutome"
     },
     "kn": {
         "code": "IN",
-        "native": "ಭಾರತ",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "kk": {
         "code": "KZ",
-        "native": "Қазақстан",
-        "localized": "Kazakstan nutome"
+        "name": "Kazakstan nutome"
     },
     "rw": {
         "code": "RW",
-        "native": "U Rwanda",
-        "localized": "Rwanda nutome"
+        "name": "Rwanda nutome"
     },
     "ko": {
         "code": "KR",
-        "native": "대한민국",
-        "localized": "Anyiehe Korea nutome"
+        "name": "Anyiehe Korea nutome"
     },
     "ku": {
         "code": "TR",
-        "native": "Türkiye",
-        "localized": "Tɛki nutome"
+        "name": "Tɛki nutome"
     },
     "ckb": {
         "code": "IQ",
-        "native": "عێراق",
-        "localized": "iraqdukɔ"
+        "name": "iraqdukɔ"
     },
     "ky": {
         "code": "KG",
-        "native": "Кыргызстан",
-        "localized": "Kirgizstan nutome"
+        "name": "Kirgizstan nutome"
     },
     "lo": {
         "code": "LA",
-        "native": "ລາວ",
-        "localized": "Laos nutome"
+        "name": "Laos nutome"
     },
     "lv": {
         "code": "LV",
-        "native": "Latvija",
-        "localized": "Latvia nutome"
+        "name": "Latvia nutome"
     },
     "ln": {
         "code": "CD",
-        "native": "Republíki ya Kongó Demokratíki",
-        "localized": "Kongo Kinshasa nutome"
+        "name": "Kongo Kinshasa nutome"
     },
     "lt": {
         "code": "LT",
-        "native": "Lietuva",
-        "localized": "Lituania nutome"
+        "name": "Lituania nutome"
     },
     "lg": {
         "code": "UG",
-        "native": "Yuganda",
-        "localized": "Uganda nutome"
+        "name": "Uganda nutome"
     },
     "lb": {
         "code": "LU",
-        "native": "Lëtzebuerg",
-        "localized": "Lazembɔg nutome"
+        "name": "Lazembɔg nutome"
     },
     "mk": {
         "code": "MK",
-        "native": "Северна Македонија",
-        "localized": "North Macedonia"
+        "name": "North Macedonia"
     },
     "mai": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "mg": {
         "code": "MG",
-        "native": "Madagasikara",
-        "localized": "Madagaska nutome"
+        "name": "Madagaska nutome"
     },
     "ms": {
         "code": "MY",
-        "native": "Malaysia",
-        "localized": "Malaysia nutome"
+        "name": "Malaysia nutome"
     },
     "ml": {
         "code": "IN",
-        "native": "ഇന്ത്യ",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "mt": {
         "code": "MT",
-        "native": "Malta",
-        "localized": "Malta nutome"
+        "name": "Malta nutome"
     },
     "mi": {
         "code": "NZ",
-        "native": "Aotearoa",
-        "localized": "New Zealand nutome"
+        "name": "New Zealand nutome"
     },
     "mr": {
         "code": "IN",
-        "native": "भारत",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "mni_Mtei": {
         "code": "IN",
-        "native": "ইন্দিয়া",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "mn": {
         "code": "MN",
-        "native": "Монгол",
-        "localized": "Mongolia nutome"
+        "name": "Mongolia nutome"
     },
     "my": {
         "code": "MM",
-        "native": "မြန်မာ",
-        "localized": "Myanmar (Burma) nutome"
+        "name": "Myanmar (Burma) nutome"
     },
     "ne": {
         "code": "NP",
-        "native": "नेपाल",
-        "localized": "Nepal nutome"
+        "name": "Nepal nutome"
     },
     "nb": {
         "code": "NO",
-        "native": "Norge",
-        "localized": "Norway nutome"
+        "name": "Norway nutome"
     },
     "nn": {
         "code": "NO",
-        "native": "Noreg",
-        "localized": "Norway nutome"
+        "name": "Norway nutome"
     },
     "oc": {
         "code": "FR",
-        "native": "França",
-        "localized": "France nutome"
+        "name": "France nutome"
     },
     "or": {
         "code": "IN",
-        "native": "ଭାରତ",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "om": {
         "code": "ET",
-        "native": "Itoophiyaa",
-        "localized": "Etiopia nutome"
+        "name": "Etiopia nutome"
     },
     "ps": {
         "code": "AF",
-        "native": "افغانستان",
-        "localized": "Afghanistan nutome"
+        "name": "Afghanistan nutome"
     },
     "fa": {
         "code": "IR",
-        "native": "ایران",
-        "localized": "Iran nutome"
+        "name": "Iran nutome"
     },
     "fil": {
         "code": "PH",
-        "native": "Pilipinas",
-        "localized": "Filipini nutome"
+        "name": "Filipini nutome"
     },
     "pl": {
         "code": "PL",
-        "native": "Polska",
-        "localized": "Poland nutome"
+        "name": "Poland nutome"
     },
     "pt": {
         "code": "BR",
-        "native": "Brasil",
-        "localized": "Brazil nutome"
+        "name": "Brazil nutome"
     },
     "pt_BR": {
         "code": "BR",
-        "native": "Brasil",
-        "localized": "Brazil nutome"
+        "name": "Brazil nutome"
     },
     "pa": {
         "code": "IN",
-        "native": "ਭਾਰਤ",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "qu": {
         "code": "PE",
-        "native": "Perú",
-        "localized": "Peru nutome"
+        "name": "Peru nutome"
     },
     "ro": {
         "code": "RO",
-        "native": "România",
-        "localized": "Romania nutome"
+        "name": "Romania nutome"
     },
     "ru": {
         "code": "RU",
-        "native": "Россия",
-        "localized": "Russia nutome"
+        "name": "Russia nutome"
     },
     "sa": {
         "code": "IN",
-        "native": "भारतः",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "sc": {
         "code": "IT",
-        "native": "Itàlia",
-        "localized": "Italia nutome"
+        "name": "Italia nutome"
     },
     "gd": {
         "code": "GB",
-        "native": "An Rìoghachd Aonaichte",
-        "localized": "United Kingdom nutome"
+        "name": "United Kingdom nutome"
     },
     "sr_Cyrl": {
         "code": "RS",
-        "native": "Србија",
-        "localized": "Serbia"
+        "name": "Serbia"
     },
     "sr_Latn": {
         "code": "RS",
-        "native": "Srbija",
-        "localized": "Serbia"
+        "name": "Serbia"
     },
     "sr_Latn_ME": {
         "code": "ME",
-        "native": "Crna Gora",
-        "localized": "Montenegro nutome"
+        "name": "Montenegro nutome"
     },
     "sn": {
         "code": "ZW",
-        "native": "Zimbabwe",
-        "localized": "Zimbabwe nutome"
+        "name": "Zimbabwe nutome"
     },
     "sd": {
         "code": "PK",
-        "native": "پاڪستان",
-        "localized": "Pakistan nutome"
+        "name": "Pakistan nutome"
     },
     "si": {
         "code": "LK",
-        "native": "ශ්‍රී ලංකාව",
-        "localized": "Sri Lanka nutome"
+        "name": "Sri Lanka nutome"
     },
     "sk": {
         "code": "SK",
-        "native": "Slovensko",
-        "localized": "Slovakia nutome"
+        "name": "Slovakia nutome"
     },
     "sl": {
         "code": "SI",
-        "native": "Slovenija",
-        "localized": "Slovenia nutome"
+        "name": "Slovenia nutome"
     },
     "so": {
         "code": "SO",
-        "native": "Soomaaliya",
-        "localized": "Somalia nutome"
+        "name": "Somalia nutome"
     },
     "es": {
         "code": "ES",
-        "native": "España",
-        "localized": "Spain nutome"
+        "name": "Spain nutome"
     },
     "su": {
         "code": "ID",
-        "native": "Indonesia",
-        "localized": "Indonesia nutome"
+        "name": "Indonesia nutome"
     },
     "sw": {
         "code": "TZ",
-        "native": "Tanzania",
-        "localized": "Tanzania nutome"
+        "name": "Tanzania nutome"
     },
     "sv": {
         "code": "SE",
-        "native": "Sverige",
-        "localized": "Sweden nutome"
+        "name": "Sweden nutome"
     },
     "tl": {
         "code": "PH",
-        "native": "Pilipinas",
-        "localized": "Filipini nutome"
+        "name": "Filipini nutome"
     },
     "tg": {
         "code": "TJ",
-        "native": "Тоҷикистон",
-        "localized": "Tajikistan nutome"
+        "name": "Tajikistan nutome"
     },
     "ta": {
         "code": "IN",
-        "native": "இந்தியா",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "tt": {
         "code": "RU",
-        "native": "Россия",
-        "localized": "Russia nutome"
+        "name": "Russia nutome"
     },
     "te": {
         "code": "IN",
-        "native": "భారతదేశం",
-        "localized": "India nutome"
+        "name": "India nutome"
     },
     "th": {
         "code": "TH",
-        "native": "ไทย",
-        "localized": "Thailand nutome"
+        "name": "Thailand nutome"
     },
     "ti": {
         "code": "ET",
-        "native": "ኢትዮጵያ",
-        "localized": "Etiopia nutome"
+        "name": "Etiopia nutome"
     },
     "tr": {
         "code": "TR",
-        "native": "Türkiye",
-        "localized": "Tɛki nutome"
+        "name": "Tɛki nutome"
     },
     "tk": {
         "code": "TM",
-        "native": "Türkmenistan",
-        "localized": "Tɛkmenistan nutome"
+        "name": "Tɛkmenistan nutome"
     },
     "ak": {
         "code": "GH",
-        "native": "Gaana",
-        "localized": "Ghana nutome"
+        "name": "Ghana nutome"
     },
     "ug": {
         "code": "CN",
-        "native": "جۇڭگو",
-        "localized": "Tsaina nutome"
+        "name": "Tsaina nutome"
     },
     "uk": {
         "code": "UA",
-        "native": "Україна",
-        "localized": "Ukraine nutome"
+        "name": "Ukraine nutome"
     },
     "ur": {
         "code": "PK",
-        "native": "پاکستان",
-        "localized": "Pakistan nutome"
+        "name": "Pakistan nutome"
     },
     "uz_Cyrl": {
         "code": "UZ",
-        "native": "Ўзбекистон",
-        "localized": "Uzbekistan nutome"
+        "name": "Uzbekistan nutome"
     },
     "uz_Latn": {
         "code": "UZ",
-        "native": "Oʻzbekiston",
-        "localized": "Uzbekistan nutome"
+        "name": "Uzbekistan nutome"
     },
     "vi": {
         "code": "VN",
-        "native": "Việt Nam",
-        "localized": "Vietnam nutome"
+        "name": "Vietnam nutome"
     },
     "cy": {
         "code": "GB",
-        "native": "Y Deyrnas Unedig",
-        "localized": "United Kingdom nutome"
+        "name": "United Kingdom nutome"
     },
     "xh": {
         "code": "ZA",
-        "native": "EMzantsi Afrika",
-        "localized": "Anyiehe Africa nutome"
+        "name": "Anyiehe Africa nutome"
     },
     "yi": {
         "code": "UA",
-        "native": "אוקראַינע",
-        "localized": "Ukraine nutome"
+        "name": "Ukraine nutome"
     },
     "yo": {
         "code": "NG",
-        "native": "Nàìjíríà",
-        "localized": "Nigeria nutome"
+        "name": "Nigeria nutome"
     },
     "zu": {
         "code": "ZA",
-        "native": "iNingizimu Afrika",
-        "localized": "Anyiehe Africa nutome"
+        "name": "Anyiehe Africa nutome"
     }
 }

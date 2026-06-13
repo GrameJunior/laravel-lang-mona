@@ -10,18 +10,16 @@ final readonly class CurrencyData implements Arrayable
 {
     public function __construct(
         public string $code,
-        public ?int $numeric,
-        public string $native,
-        public string $localized,
+        public int $numeric,
+        public string $name,
     ) {}
 
     public function toArray(): array
     {
         return [
-            'code'      => $this->code,
-            'numeric'   => $this->numeric,
-            'native'    => $this->native,
-            'localized' => $this->localized,
+            'code'    => $this->code,
+            'numeric' => $this->numeric,
+            'name'    => $this->name,
         ];
     }
 }

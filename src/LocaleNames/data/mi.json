@@ -1,131 +1,518 @@
 {
-    "af": "Awherikāna",
-    "sq": "Arapeiniana",
-    "am": "Amahereka",
-    "ar": "Ārapi",
-    "hy": "Āmeniana",
-    "as": "Āhamēhi",
-    "az": "Atepaihānia",
-    "bm": "Pāpara",
-    "eu": "Pākihi",
-    "be": "Perarūhiana",
-    "bn": "Pākara",
-    "bho": "Pōhipuri",
-    "bs": "Pōngiana",
-    "bg": "Purukāriana",
-    "en_CA": "Ingarihi Kānata",
-    "ca": "Katarana",
-    "ceb": "Hepuano",
-    "km": "Kimēra",
-    "zh_CN": "Hainamana",
-    "zh_HK": "Hainamana",
-    "zh_TW": "Hainamana",
-    "hr": "Koroātiana",
-    "cs": "Tieke",
-    "da": "Teina",
-    "doi": "Tōkiri",
-    "nl": "Tati",
-    "en": "Ingarihi",
-    "eo": "Eheperāto",
-    "et": "Etōniana",
-    "ee": "Ewe",
-    "fi": "Whinirānia",
-    "fr": "Wīwī",
-    "fy": "Whirīhiana ki te Uru",
-    "gl": "Karīhia",
-    "ka": "Hōriana",
-    "de": "Tiamana",
-    "de_AT": "Tiamana Ateriana",
-    "de_CH": "Tiamana Ōkawa Huiterangi",
-    "el": "Kariki",
-    "gu": "Kutarāti",
-    "ht": "Kereō Haiti",
-    "ha": "Hauha",
-    "haw": "Wāhu",
-    "he": "Hīperu",
-    "hi": "Hīni",
-    "hu": "Hanekari",
-    "is": "Tiorangi",
-    "ig": "Ikapo",
-    "id": "Initonīhiana",
-    "ga": "Airihi",
-    "it": "Itāriana",
-    "ja": "Hapanihi",
-    "kn": "Kanara",
-    "kk": "Kahāka",
-    "rw": "Kiniawāna",
-    "ko": "Kōreana",
-    "ku": "Kūrihi",
-    "ckb": "Kūrihi Waenga",
-    "ky": "Kiakihi",
-    "lo": "Rao",
-    "lv": "Rāwhia",
-    "ln": "Ringāra",
-    "lt": "Rituānia",
-    "lg": "Kānata",
-    "lb": "Rakapuō",
-    "mk": "Makerōnia",
-    "mai": "Maitiri",
-    "mg": "Marakāhi",
-    "ms": "Marei",
-    "ml": "Mareiārama",
-    "mt": "Mārata",
-    "mi": "Māori",
-    "mr": "Marati",
-    "mni_Mtei": "Manipuri",
-    "mn": "Mongōria",
-    "my": "Pēmīhi",
-    "ne": "Nepari",
-    "nb": "Pakamō Nōwei",
-    "nn": "Nīnōka Nōwei",
-    "oc": "Ōkitana",
-    "or": "Ōtia",
-    "om": "Ōromo",
-    "ps": "Pāhitō",
-    "fa": "Pāhiana",
-    "fil": "Piripīno",
-    "pl": "Pōrihi",
-    "pt": "Pōtukīhi",
-    "pt_BR": "Pōtukīhi Parahi",
-    "pa": "Punutapi",
-    "qu": "Kētua",
-    "ro": "Romeinia",
-    "ru": "Ruhiana",
-    "sa": "Hanahiti",
-    "sc": "Hārinia",
-    "gd": "Keiriki Kotimana",
-    "sr_Cyrl": "Hirupia",
-    "sr_Latn": "Hirupia",
-    "sr_Latn_ME": "Hirupia",
-    "sn": "Hōna",
-    "sd": "Hiniti",
-    "si": "Hinihāra",
-    "sk": "Horowākia",
-    "sl": "Horowinia",
-    "so": "Hamāri",
-    "es": "Pāniora",
-    "su": "Hunanīhi",
-    "sw": "Wāhīri",
-    "sv": "Huitene",
-    "tl": "Tagalog",
-    "tg": "Tāhiki",
-    "ta": "Tamira",
-    "tt": "Tatā",
-    "te": "Teruku",
-    "th": "Tai",
-    "ti": "Tekirinia",
-    "tr": "Tākei",
-    "tk": "Tākamana",
-    "ak": "Ākana",
-    "ug": "Wīkura",
-    "uk": "Ukareinga",
-    "ur": "Ūrutu",
-    "uz_Cyrl": "Ūpeke",
-    "uz_Latn": "Ūpeke",
-    "vi": "Whitināmu",
-    "cy": "Werehi",
-    "xh": "Tōha",
-    "yi": "Irihi",
-    "yo": "Ōrūpa",
-    "zu": "Tūru"
+    "af": {
+        "code": "af",
+        "name": "Awherikāna"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "Arapeiniana"
+    },
+    "am": {
+        "code": "am",
+        "name": "Amahereka"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "Ārapi"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "Āmeniana"
+    },
+    "as": {
+        "code": "as",
+        "name": "Āhamēhi"
+    },
+    "az": {
+        "code": "az",
+        "name": "Atepaihānia"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "Pāpara"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "Pākihi"
+    },
+    "be": {
+        "code": "be",
+        "name": "Perarūhiana"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "Pākara"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "Pōhipuri"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "Pōngiana"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "Purukāriana"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "Ingarihi Kānata"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "Katarana"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "Hepuano"
+    },
+    "km": {
+        "code": "km",
+        "name": "Kimēra"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "Hainamana"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "Hainamana"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "Hainamana"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "Koroātiana"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "Tieke"
+    },
+    "da": {
+        "code": "da",
+        "name": "Teina"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "Tōkiri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "Tati"
+    },
+    "en": {
+        "code": "en",
+        "name": "Ingarihi"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "Eheperāto"
+    },
+    "et": {
+        "code": "et",
+        "name": "Etōniana"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "Ewe"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "Whinirānia"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "Wīwī"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "Whirīhiana ki te Uru"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "Karīhia"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "Hōriana"
+    },
+    "de": {
+        "code": "de",
+        "name": "Tiamana"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "Tiamana Ateriana"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "Tiamana Ōkawa Huiterangi"
+    },
+    "el": {
+        "code": "el",
+        "name": "Kariki"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "Kutarāti"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "Kereō Haiti"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "Hauha"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "Wāhu"
+    },
+    "he": {
+        "code": "he",
+        "name": "Hīperu"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "Hīni"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "Hanekari"
+    },
+    "is": {
+        "code": "is",
+        "name": "Tiorangi"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "Ikapo"
+    },
+    "id": {
+        "code": "id",
+        "name": "Initonīhiana"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "Airihi"
+    },
+    "it": {
+        "code": "it",
+        "name": "Itāriana"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "Hapanihi"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "Kanara"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "Kahāka"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "Kiniawāna"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "Kōreana"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "Kūrihi"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "Kūrihi Waenga"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "Kiakihi"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "Rao"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "Rāwhia"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "Ringāra"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "Rituānia"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "Kānata"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "Rakapuō"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "Makerōnia"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "Maitiri"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "Marakāhi"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "Marei"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "Mareiārama"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "Mārata"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "Māori"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "Marati"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "Manipuri"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "Mongōria"
+    },
+    "my": {
+        "code": "my",
+        "name": "Pēmīhi"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "Nepari"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "Pakamō Nōwei"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "Nīnōka Nōwei"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "Ōkitana"
+    },
+    "or": {
+        "code": "or",
+        "name": "Ōtia"
+    },
+    "om": {
+        "code": "om",
+        "name": "Ōromo"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "Pāhitō"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "Pāhiana"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "Piripīno"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "Pōrihi"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "Pōtukīhi"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "Pōtukīhi Parahi"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "Punutapi"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "Kētua"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "Romeinia"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "Ruhiana"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "Hanahiti"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "Hārinia"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "Keiriki Kotimana"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "Hirupia"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "Hirupia"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "Hirupia"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "Hōna"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "Hiniti"
+    },
+    "si": {
+        "code": "si",
+        "name": "Hinihāra"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "Horowākia"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "Horowinia"
+    },
+    "so": {
+        "code": "so",
+        "name": "Hamāri"
+    },
+    "es": {
+        "code": "es",
+        "name": "Pāniora"
+    },
+    "su": {
+        "code": "su",
+        "name": "Hunanīhi"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "Wāhīri"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "Huitene"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "Tagalog"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "Tāhiki"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "Tamira"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "Tatā"
+    },
+    "te": {
+        "code": "te",
+        "name": "Teruku"
+    },
+    "th": {
+        "code": "th",
+        "name": "Tai"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "Tekirinia"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "Tākei"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "Tākamana"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "Ākana"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "Wīkura"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "Ukareinga"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "Ūrutu"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "Ūpeke"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "Ūpeke"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "Whitināmu"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "Werehi"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "Tōha"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "Irihi"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "Ōrūpa"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "Tūru"
+    }
 }

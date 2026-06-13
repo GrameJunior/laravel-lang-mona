@@ -48,10 +48,9 @@ final class CldrCurrencyCommand extends CldrCommand
         $code = $this->currencyCode($locale);
 
         return new CurrencyData(
-            code     : $code,
-            numeric  : $this->numericCode($code),
-            native   : $this->currencyName($locale, $code),
-            localized: $this->currencyName($forCode, $code),
+            code   : $code,
+            numeric: $this->numericCode($code),
+            name   : $this->currencyName($forCode, $code),
         );
     }
 

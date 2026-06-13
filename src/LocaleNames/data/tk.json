@@ -1,131 +1,518 @@
 {
-    "af": "afrikaans dili",
-    "sq": "alban dili",
-    "am": "amhar dili",
-    "ar": "arap dili",
-    "hy": "ermeni dili",
-    "as": "assam dili",
-    "az": "azerbaýjan dili",
-    "bm": "bamana",
-    "eu": "bask dili",
-    "be": "belarus dili",
-    "bn": "bengal dili",
-    "bho": "bhojpuri dili",
-    "bs": "bosniýa dili",
-    "bg": "bolgar dili",
-    "en_CA": "iňlis dili",
-    "ca": "katalan dili",
-    "ceb": "sebuan dili",
-    "km": "khmer dili",
-    "zh_CN": "hytaý dili",
-    "zh_HK": "hytaý dili",
-    "zh_TW": "hytaý dili",
-    "hr": "horwat dili",
-    "cs": "çeh dili",
-    "da": "daniýa dili",
-    "doi": "dogri",
-    "nl": "niderland dili",
-    "en": "iňlis dili",
-    "eo": "esperanto dili",
-    "et": "eston dili",
-    "ee": "ewe dili",
-    "fi": "fin dili",
-    "fr": "fransuz dili",
-    "fy": "günbatar friz dili",
-    "gl": "galisiý dili",
-    "ka": "gruzin dili",
-    "de": "nemes dili",
-    "de_AT": "nemes dili",
-    "de_CH": "ýokarky nemes dili (Şweýsariýa)",
-    "el": "grek dili",
-    "gu": "gujarati dili",
-    "ht": "gaiti kreol dili",
-    "ha": "hausa dili",
-    "haw": "gawaý dili",
-    "he": "ýewreý dili",
-    "hi": "hindi dili",
-    "hu": "wenger dili",
-    "is": "island dili",
-    "ig": "igbo dili",
-    "id": "indonez dili",
-    "ga": "irland dili",
-    "it": "italýan dili",
-    "ja": "ýapon dili",
-    "kn": "kannada dili",
-    "kk": "gazak dili",
-    "rw": "kinýaruanda dili",
-    "ko": "koreý dili",
-    "ku": "kürt dili",
-    "ckb": "merkezi kürt dili",
-    "ky": "gyrgyz dili",
-    "lo": "laos dili",
-    "lv": "latyş dili",
-    "ln": "lingala dili",
-    "lt": "litwa dili",
-    "lg": "ganda dili",
-    "lb": "lýuksemburg dili",
-    "mk": "makedon dili",
-    "mai": "maýthili dili",
-    "mg": "malagasiý dili",
-    "ms": "malaý dili",
-    "ml": "malaýalam dili",
-    "mt": "malta dili",
-    "mi": "maori dili",
-    "mr": "marathi dili",
-    "mni_Mtei": "manipuri dili",
-    "mn": "mongol dili",
-    "my": "birma dili",
-    "ne": "nepal dili",
-    "nb": "norwegiýa bukmol dili",
-    "nn": "norwegiýa nýunorsk dili",
-    "oc": "oksitan dili",
-    "or": "oriýa dili",
-    "om": "oromo dili",
-    "ps": "puştu dili",
-    "fa": "pars dili",
-    "fil": "filippin dili",
-    "pl": "polýak dili",
-    "pt": "portugal dili",
-    "pt_BR": "portugal dili",
-    "pa": "penjab dili",
-    "qu": "keçua dili",
-    "ro": "rumyn dili",
-    "ru": "rus dili",
-    "sa": "sanskrit dili",
-    "sc": "sardin dili",
-    "gd": "şotland kelt dili",
-    "sr_Cyrl": "serb dili",
-    "sr_Latn": "serb dili",
-    "sr_Latn_ME": "serb dili",
-    "sn": "şona dili",
-    "sd": "sindhi dili",
-    "si": "singal dili",
-    "sk": "slowak dili",
-    "sl": "slowen dili",
-    "so": "somali dili",
-    "es": "ispan dili",
-    "su": "sundan dili",
-    "sw": "suahili dili",
-    "sv": "şwed dili",
-    "tl": "Tagalog",
-    "tg": "täjik dili",
-    "ta": "tamil dili",
-    "tt": "tatar dili",
-    "te": "telugu dili",
-    "th": "taý dili",
-    "ti": "tigrinýa dili",
-    "tr": "türk dili",
-    "tk": "türkmen dili",
-    "ak": "akan dili",
-    "ug": "uýgur dili",
-    "uk": "ukrain dili",
-    "ur": "urdu",
-    "uz_Cyrl": "özbek dili",
-    "uz_Latn": "özbek dili",
-    "vi": "wýetnam dili",
-    "cy": "walliý dili",
-    "xh": "kosa dili",
-    "yi": "idiş dili",
-    "yo": "ýoruba dili",
-    "zu": "zulu dili"
+    "af": {
+        "code": "af",
+        "name": "afrikaans dili"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "alban dili"
+    },
+    "am": {
+        "code": "am",
+        "name": "amhar dili"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "arap dili"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "ermeni dili"
+    },
+    "as": {
+        "code": "as",
+        "name": "assam dili"
+    },
+    "az": {
+        "code": "az",
+        "name": "azerbaýjan dili"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "bamana"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "bask dili"
+    },
+    "be": {
+        "code": "be",
+        "name": "belarus dili"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "bengal dili"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "bhojpuri dili"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "bosniýa dili"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "bolgar dili"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "iňlis dili"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "katalan dili"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "sebuan dili"
+    },
+    "km": {
+        "code": "km",
+        "name": "khmer dili"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "hytaý dili"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "hytaý dili"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "hytaý dili"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "horwat dili"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "çeh dili"
+    },
+    "da": {
+        "code": "da",
+        "name": "daniýa dili"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "dogri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "niderland dili"
+    },
+    "en": {
+        "code": "en",
+        "name": "iňlis dili"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "esperanto dili"
+    },
+    "et": {
+        "code": "et",
+        "name": "eston dili"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "ewe dili"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "fin dili"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "fransuz dili"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "günbatar friz dili"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "galisiý dili"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "gruzin dili"
+    },
+    "de": {
+        "code": "de",
+        "name": "nemes dili"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "nemes dili"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "ýokarky nemes dili (Şweýsariýa)"
+    },
+    "el": {
+        "code": "el",
+        "name": "grek dili"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "gujarati dili"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "gaiti kreol dili"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "hausa dili"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "gawaý dili"
+    },
+    "he": {
+        "code": "he",
+        "name": "ýewreý dili"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "hindi dili"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "wenger dili"
+    },
+    "is": {
+        "code": "is",
+        "name": "island dili"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "igbo dili"
+    },
+    "id": {
+        "code": "id",
+        "name": "indonez dili"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "irland dili"
+    },
+    "it": {
+        "code": "it",
+        "name": "italýan dili"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "ýapon dili"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "kannada dili"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "gazak dili"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "kinýaruanda dili"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "koreý dili"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "kürt dili"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "merkezi kürt dili"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "gyrgyz dili"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "laos dili"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "latyş dili"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "lingala dili"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "litwa dili"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "ganda dili"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "lýuksemburg dili"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "makedon dili"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "maýthili dili"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "malagasiý dili"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "malaý dili"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "malaýalam dili"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "malta dili"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "maori dili"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "marathi dili"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "manipuri dili"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "mongol dili"
+    },
+    "my": {
+        "code": "my",
+        "name": "birma dili"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "nepal dili"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "norwegiýa bukmol dili"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "norwegiýa nýunorsk dili"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "oksitan dili"
+    },
+    "or": {
+        "code": "or",
+        "name": "oriýa dili"
+    },
+    "om": {
+        "code": "om",
+        "name": "oromo dili"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "puştu dili"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "pars dili"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "filippin dili"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "polýak dili"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "portugal dili"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "portugal dili"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "penjab dili"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "keçua dili"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "rumyn dili"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "rus dili"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "sanskrit dili"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "sardin dili"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "şotland kelt dili"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "serb dili"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "serb dili"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "serb dili"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "şona dili"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "sindhi dili"
+    },
+    "si": {
+        "code": "si",
+        "name": "singal dili"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "slowak dili"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "slowen dili"
+    },
+    "so": {
+        "code": "so",
+        "name": "somali dili"
+    },
+    "es": {
+        "code": "es",
+        "name": "ispan dili"
+    },
+    "su": {
+        "code": "su",
+        "name": "sundan dili"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "suahili dili"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "şwed dili"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "Tagalog"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "täjik dili"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "tamil dili"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "tatar dili"
+    },
+    "te": {
+        "code": "te",
+        "name": "telugu dili"
+    },
+    "th": {
+        "code": "th",
+        "name": "taý dili"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "tigrinýa dili"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "türk dili"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "türkmen dili"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "akan dili"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "uýgur dili"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "ukrain dili"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "urdu"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "özbek dili"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "özbek dili"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "wýetnam dili"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "walliý dili"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "kosa dili"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "idiş dili"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "ýoruba dili"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "zulu dili"
+    }
 }

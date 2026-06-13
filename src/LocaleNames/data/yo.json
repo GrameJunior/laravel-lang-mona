@@ -1,131 +1,518 @@
 {
-    "af": "Èdè Afrikani",
-    "sq": "Èdè Albania",
-    "am": "Èdè Amariki",
-    "ar": "Èdè Lárúbáwá",
-    "hy": "Èdè Armenia",
-    "as": "Èdè Assam",
-    "az": "Èdè Asabaijani",
-    "bm": "Èdè Báḿbàrà",
-    "eu": "Èdè Baski",
-    "be": "Èdè Belarusi",
-    "bn": "Èdè Bengali",
-    "bho": "Èdè Bojuri",
-    "bs": "Èdè Bosnia",
-    "bg": "Èdè Bugaria",
-    "en_CA": "Èdè Gẹ̀ẹ́sì (Orílẹ̀-èdè Kánádà)",
-    "ca": "Èdè Katala",
-    "ceb": "Èdè Sebuano",
-    "km": "Èdè kameri",
-    "zh_CN": "Edè Ṣáínà",
-    "zh_HK": "Edè Ṣáínà",
-    "zh_TW": "Edè Ṣáínà",
-    "hr": "Èdè Kroatia",
-    "cs": "Èdè Seeki",
-    "da": "Èdè Denmaki",
-    "doi": "Èdè Dogiri",
-    "nl": "Èdè Dọ́ọ̀ṣì",
-    "en": "Èdè Gẹ̀ẹ́sì",
-    "eo": "Èdè Esperanto",
-    "et": "Èdè Estonia",
-    "ee": "Èdè Ewè",
-    "fi": "Èdè Finisi",
-    "fr": "Èdè Faransé",
-    "fy": "Èdè Frisia",
-    "gl": "Èdè Galicia",
-    "ka": "Èdè Georgia",
-    "de": "Èdè Jámánì",
-    "de_AT": "Èdè Jámánì (Ọ́síríà )",
-    "de_CH": "Èdè Ilẹ̀ Jámánì (Orílẹ́ède swítsàlandì)",
-    "el": "Èdè Giriki",
-    "gu": "Èdè Gujarati",
-    "ht": "Haitian Creole",
-    "ha": "Èdè Hausa",
-    "haw": "Hawaiian",
-    "he": "Èdè Heberu",
-    "hi": "Èdè Híńdì",
-    "hu": "Èdè Hungaria",
-    "is": "Èdè Icelandic",
-    "ig": "Èdè Yíbò",
-    "id": "Èdè Indonéṣíà",
-    "ga": "Èdè Ireland",
-    "it": "Èdè Ítálì",
-    "ja": "Èdè Jàpáànù",
-    "kn": "Èdè Kannada",
-    "kk": "Kaṣakì",
-    "rw": "Èdè Ruwanda",
-    "ko": "Èdè Kòríà",
-    "ku": "Kọdiṣì",
-    "ckb": "Ààrin Gbùngbùn Kurdish",
-    "ky": "Kírígíìsì",
-    "lo": "Láò",
-    "lv": "Èdè látífíànì",
-    "ln": "Lìǹgálà",
-    "lt": "Èdè Lithuania",
-    "lg": "Ganda",
-    "lb": "Lùṣẹ́mbọ́ọ̀gì",
-    "mk": "Èdè Masidonia",
-    "mai": "Èdè Matihi",
-    "mg": "Malagasì",
-    "ms": "Èdè Malaya",
-    "ml": "Málàyálámù",
-    "mt": "Èdè Malta",
-    "mi": "Màórì",
-    "mr": "Èdè marathi",
-    "mni_Mtei": "Èdè Manipuri",
-    "mn": "Mòngólíà",
-    "my": "Èdè Bumiisi",
-    "ne": "Èdè Nepali",
-    "nb": "Nọ́ọ́wè Bokímàl",
-    "nn": "Nọ́ọ́wè Nínọ̀sìkì",
-    "oc": "Èdè Ọ̀kísítáànì",
-    "or": "Èdè Òdíà",
-    "om": "Òròmọ́",
-    "ps": "Páshítò",
-    "fa": "Èdè Pasia",
-    "fil": "Èdè Filipino",
-    "pl": "Èdè Póláǹdì",
-    "pt": "Èdè Pọtogí",
-    "pt_BR": "Èdè Pọtogí (Orilẹ̀-èdè Bràsíl)",
-    "pa": "Èdè Punjabi",
-    "qu": "Kúẹ́ńjùà",
-    "ro": "Èdè Romania",
-    "ru": "Èdè Rọ́ṣíà",
-    "sa": "Èdè awon ara Indo",
-    "sc": "Èdè Sadini",
-    "gd": "Èdè Gaelik ti Ilu Scotland",
-    "sr_Cyrl": "Èdè Serbia",
-    "sr_Latn": "Èdè Serbia",
-    "sr_Latn_ME": "Èdè Serbia",
-    "sn": "Ṣọnà",
-    "sd": "Èdè Sindhi",
-    "si": "Èdè Sinhalese",
-    "sk": "Èdè Slovaki",
-    "sl": "Èdè Slovenia",
-    "so": "Èdè ara Somalia",
-    "es": "Èdè Sípáníìṣì",
-    "su": "Èdè Sudanísì",
-    "sw": "Èdè Swahili",
-    "sv": "Èdè Suwidiisi",
-    "tl": "Tagalog",
-    "tg": "Èdè Tàjíìkì",
-    "ta": "Èdè Tamili",
-    "tt": "Tátárì",
-    "te": "Èdè Telugu",
-    "th": "Èdè Tai",
-    "ti": "Èdè Tigrinya",
-    "tr": "Èdè Tọọkisi",
-    "tk": "Èdè Turkmen",
-    "ak": "Èdè Akani",
-    "ug": "Yúgọ̀",
-    "uk": "Èdè Ukania",
-    "ur": "Èdè Udu",
-    "uz_Cyrl": "Èdè Uzbek",
-    "uz_Latn": "Èdè Uzbek",
-    "vi": "Èdè Jetinamu",
-    "cy": "Èdè Welshi",
-    "xh": "Èdè Xhosa",
-    "yi": "Èdè Yiddishi",
-    "yo": "Èdè Yorùbá",
-    "zu": "Èdè Ṣulu"
+    "af": {
+        "code": "af",
+        "name": "Èdè Afrikani"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "Èdè Albania"
+    },
+    "am": {
+        "code": "am",
+        "name": "Èdè Amariki"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "Èdè Lárúbáwá"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "Èdè Armenia"
+    },
+    "as": {
+        "code": "as",
+        "name": "Èdè Assam"
+    },
+    "az": {
+        "code": "az",
+        "name": "Èdè Asabaijani"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "Èdè Báḿbàrà"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "Èdè Baski"
+    },
+    "be": {
+        "code": "be",
+        "name": "Èdè Belarusi"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "Èdè Bengali"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "Èdè Bojuri"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "Èdè Bosnia"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "Èdè Bugaria"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "Èdè Gẹ̀ẹ́sì (Orílẹ̀-èdè Kánádà)"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "Èdè Katala"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "Èdè Sebuano"
+    },
+    "km": {
+        "code": "km",
+        "name": "Èdè kameri"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "Edè Ṣáínà"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "Edè Ṣáínà"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "Edè Ṣáínà"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "Èdè Kroatia"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "Èdè Seeki"
+    },
+    "da": {
+        "code": "da",
+        "name": "Èdè Denmaki"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "Èdè Dogiri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "Èdè Dọ́ọ̀ṣì"
+    },
+    "en": {
+        "code": "en",
+        "name": "Èdè Gẹ̀ẹ́sì"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "Èdè Esperanto"
+    },
+    "et": {
+        "code": "et",
+        "name": "Èdè Estonia"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "Èdè Ewè"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "Èdè Finisi"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "Èdè Faransé"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "Èdè Frisia"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "Èdè Galicia"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "Èdè Georgia"
+    },
+    "de": {
+        "code": "de",
+        "name": "Èdè Jámánì"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "Èdè Jámánì (Ọ́síríà )"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "Èdè Ilẹ̀ Jámánì (Orílẹ́ède swítsàlandì)"
+    },
+    "el": {
+        "code": "el",
+        "name": "Èdè Giriki"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "Èdè Gujarati"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "Haitian Creole"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "Èdè Hausa"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "Hawaiian"
+    },
+    "he": {
+        "code": "he",
+        "name": "Èdè Heberu"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "Èdè Híńdì"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "Èdè Hungaria"
+    },
+    "is": {
+        "code": "is",
+        "name": "Èdè Icelandic"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "Èdè Yíbò"
+    },
+    "id": {
+        "code": "id",
+        "name": "Èdè Indonéṣíà"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "Èdè Ireland"
+    },
+    "it": {
+        "code": "it",
+        "name": "Èdè Ítálì"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "Èdè Jàpáànù"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "Èdè Kannada"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "Kaṣakì"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "Èdè Ruwanda"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "Èdè Kòríà"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "Kọdiṣì"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "Ààrin Gbùngbùn Kurdish"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "Kírígíìsì"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "Láò"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "Èdè látífíànì"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "Lìǹgálà"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "Èdè Lithuania"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "Ganda"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "Lùṣẹ́mbọ́ọ̀gì"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "Èdè Masidonia"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "Èdè Matihi"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "Malagasì"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "Èdè Malaya"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "Málàyálámù"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "Èdè Malta"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "Màórì"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "Èdè marathi"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "Èdè Manipuri"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "Mòngólíà"
+    },
+    "my": {
+        "code": "my",
+        "name": "Èdè Bumiisi"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "Èdè Nepali"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "Nọ́ọ́wè Bokímàl"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "Nọ́ọ́wè Nínọ̀sìkì"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "Èdè Ọ̀kísítáànì"
+    },
+    "or": {
+        "code": "or",
+        "name": "Èdè Òdíà"
+    },
+    "om": {
+        "code": "om",
+        "name": "Òròmọ́"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "Páshítò"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "Èdè Pasia"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "Èdè Filipino"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "Èdè Póláǹdì"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "Èdè Pọtogí"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "Èdè Pọtogí (Orilẹ̀-èdè Bràsíl)"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "Èdè Punjabi"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "Kúẹ́ńjùà"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "Èdè Romania"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "Èdè Rọ́ṣíà"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "Èdè awon ara Indo"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "Èdè Sadini"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "Èdè Gaelik ti Ilu Scotland"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "Èdè Serbia"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "Èdè Serbia"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "Èdè Serbia"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "Ṣọnà"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "Èdè Sindhi"
+    },
+    "si": {
+        "code": "si",
+        "name": "Èdè Sinhalese"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "Èdè Slovaki"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "Èdè Slovenia"
+    },
+    "so": {
+        "code": "so",
+        "name": "Èdè ara Somalia"
+    },
+    "es": {
+        "code": "es",
+        "name": "Èdè Sípáníìṣì"
+    },
+    "su": {
+        "code": "su",
+        "name": "Èdè Sudanísì"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "Èdè Swahili"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "Èdè Suwidiisi"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "Tagalog"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "Èdè Tàjíìkì"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "Èdè Tamili"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "Tátárì"
+    },
+    "te": {
+        "code": "te",
+        "name": "Èdè Telugu"
+    },
+    "th": {
+        "code": "th",
+        "name": "Èdè Tai"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "Èdè Tigrinya"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "Èdè Tọọkisi"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "Èdè Turkmen"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "Èdè Akani"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "Yúgọ̀"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "Èdè Ukania"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "Èdè Udu"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "Èdè Uzbek"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "Èdè Uzbek"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "Èdè Jetinamu"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "Èdè Welshi"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "Èdè Xhosa"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "Èdè Yiddishi"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "Èdè Yorùbá"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "Èdè Ṣulu"
+    }
 }

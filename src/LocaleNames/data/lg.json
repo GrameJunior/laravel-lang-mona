@@ -1,131 +1,518 @@
 {
-    "af": "Afrikaans",
-    "sq": "Albanian",
-    "am": "Lu-amhariki",
-    "ar": "Luwarabu",
-    "hy": "Armenian",
-    "as": "Assamese",
-    "az": "Azerbaijani",
-    "bm": "Bambara",
-    "eu": "Basque",
-    "be": "Lubelarusi",
-    "bn": "Lubengali",
-    "bho": "Bhojpuri",
-    "bs": "Bosnian",
-    "bg": "Lubulugariya",
-    "en_CA": "Lungereza",
-    "ca": "Catalan",
-    "ceb": "Cebuano",
-    "km": "Lukme",
-    "zh_CN": "Lucayina",
-    "zh_HK": "Lucayina",
-    "zh_TW": "Lucayina",
-    "hr": "Croatian",
-    "cs": "Luceeke",
-    "da": "Danish",
-    "doi": "Dogri",
-    "nl": "Luholandi",
-    "en": "Lungereza",
-    "eo": "Esperanto",
-    "et": "Estonian",
-    "ee": "Ewe",
-    "fi": "Finnish",
-    "fr": "Lufalansa",
-    "fy": "Western Frisian",
-    "gl": "Galician",
-    "ka": "Georgian",
-    "de": "Ludaaki",
-    "de_AT": "Ludaaki",
-    "de_CH": "Ludaaki",
-    "el": "Lugereeki/Luyonaani",
-    "gu": "Gujarati",
-    "ht": "Haitian Creole",
-    "ha": "Luhawuza",
-    "haw": "Hawaiian",
-    "he": "Hebrew",
-    "hi": "Luhindu",
-    "hu": "Luhangare",
-    "is": "Icelandic",
-    "ig": "Luyibo",
-    "id": "Luyindonezya",
-    "ga": "Irish",
-    "it": "Luyitale",
-    "ja": "Lujapani",
-    "kn": "Kannada",
-    "kk": "Kazakh",
-    "rw": "Lunarwanda",
-    "ko": "Lukoreya",
-    "ku": "Kurdish",
-    "ckb": "Central Kurdish",
-    "ky": "Kyrgyz",
-    "lo": "Lao",
-    "lv": "Latvian",
-    "ln": "Lingala",
-    "lt": "Lithuanian",
-    "lg": "Luganda",
-    "lb": "Luxembourgish",
-    "mk": "Macedonian",
-    "mai": "Maithili",
-    "mg": "Malagasy",
-    "ms": "Lumalayi",
-    "ml": "Malayalam",
-    "mt": "Maltese",
-    "mi": "Māori",
-    "mr": "Marathi",
-    "mni_Mtei": "Manipuri",
-    "mn": "Mongolian",
-    "my": "Lubbama",
-    "ne": "Lunepali",
-    "nb": "Norwegian Bokmål",
-    "nn": "Norwegian Nynorsk",
-    "oc": "Occitan",
-    "or": "Odia",
-    "om": "Oromo",
-    "ps": "Pashto",
-    "fa": "Luperusi",
-    "fil": "Filipino",
-    "pl": "Lupolandi",
-    "pt": "Lupotugiizi",
-    "pt_BR": "Lupotugiizi",
-    "pa": "Lupunjabi",
-    "qu": "Quechua",
-    "ro": "Lulomaniya",
-    "ru": "Lulasa",
-    "sa": "Sanskrit",
-    "sc": "Sardinian",
-    "gd": "Scottish Gaelic",
-    "sr_Cyrl": "Serbian",
-    "sr_Latn": "Serbian",
-    "sr_Latn_ME": "Serbian",
-    "sn": "Shona",
-    "sd": "Sindhi",
-    "si": "Sinhala",
-    "sk": "Slovak",
-    "sl": "Slovenian",
-    "so": "Lusomaliya",
-    "es": "Lusipanya",
-    "su": "Sundanese",
-    "sw": "Swahili",
-    "sv": "Luswideni",
-    "tl": "Tagalog",
-    "tg": "Tajik",
-    "ta": "Lutamiiru",
-    "tt": "Tatar",
-    "te": "Telugu",
-    "th": "Luttaayi",
-    "ti": "Tigrinya",
-    "tr": "Lutake",
-    "tk": "Turkmen",
-    "ak": "Lu-akaani",
-    "ug": "Uyghur",
-    "uk": "Luyukurayine",
-    "ur": "Lu-urudu",
-    "uz_Cyrl": "Uzbek",
-    "uz_Latn": "Uzbek",
-    "vi": "Luvyetinaamu",
-    "cy": "Welsh",
-    "xh": "Xhosa",
-    "yi": "Yiddish",
-    "yo": "Luyoruba",
-    "zu": "Luzzulu"
+    "af": {
+        "code": "af",
+        "name": "Afrikaans"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "Albanian"
+    },
+    "am": {
+        "code": "am",
+        "name": "Lu-amhariki"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "Luwarabu"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "Armenian"
+    },
+    "as": {
+        "code": "as",
+        "name": "Assamese"
+    },
+    "az": {
+        "code": "az",
+        "name": "Azerbaijani"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "Bambara"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "Basque"
+    },
+    "be": {
+        "code": "be",
+        "name": "Lubelarusi"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "Lubengali"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "Bhojpuri"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "Bosnian"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "Lubulugariya"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "Lungereza"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "Catalan"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "Cebuano"
+    },
+    "km": {
+        "code": "km",
+        "name": "Lukme"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "Lucayina"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "Lucayina"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "Lucayina"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "Croatian"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "Luceeke"
+    },
+    "da": {
+        "code": "da",
+        "name": "Danish"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "Dogri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "Luholandi"
+    },
+    "en": {
+        "code": "en",
+        "name": "Lungereza"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "Esperanto"
+    },
+    "et": {
+        "code": "et",
+        "name": "Estonian"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "Ewe"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "Finnish"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "Lufalansa"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "Western Frisian"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "Galician"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "Georgian"
+    },
+    "de": {
+        "code": "de",
+        "name": "Ludaaki"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "Ludaaki"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "Ludaaki"
+    },
+    "el": {
+        "code": "el",
+        "name": "Lugereeki/Luyonaani"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "Gujarati"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "Haitian Creole"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "Luhawuza"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "Hawaiian"
+    },
+    "he": {
+        "code": "he",
+        "name": "Hebrew"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "Luhindu"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "Luhangare"
+    },
+    "is": {
+        "code": "is",
+        "name": "Icelandic"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "Luyibo"
+    },
+    "id": {
+        "code": "id",
+        "name": "Luyindonezya"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "Irish"
+    },
+    "it": {
+        "code": "it",
+        "name": "Luyitale"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "Lujapani"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "Kannada"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "Kazakh"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "Lunarwanda"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "Lukoreya"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "Kurdish"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "Central Kurdish"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "Kyrgyz"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "Lao"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "Latvian"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "Lingala"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "Lithuanian"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "Luganda"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "Luxembourgish"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "Macedonian"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "Maithili"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "Malagasy"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "Lumalayi"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "Malayalam"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "Maltese"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "Māori"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "Marathi"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "Manipuri"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "Mongolian"
+    },
+    "my": {
+        "code": "my",
+        "name": "Lubbama"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "Lunepali"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "Norwegian Bokmål"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "Norwegian Nynorsk"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "Occitan"
+    },
+    "or": {
+        "code": "or",
+        "name": "Odia"
+    },
+    "om": {
+        "code": "om",
+        "name": "Oromo"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "Pashto"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "Luperusi"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "Filipino"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "Lupolandi"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "Lupotugiizi"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "Lupotugiizi"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "Lupunjabi"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "Quechua"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "Lulomaniya"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "Lulasa"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "Sanskrit"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "Sardinian"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "Scottish Gaelic"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "Serbian"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "Serbian"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "Serbian"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "Shona"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "Sindhi"
+    },
+    "si": {
+        "code": "si",
+        "name": "Sinhala"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "Slovak"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "Slovenian"
+    },
+    "so": {
+        "code": "so",
+        "name": "Lusomaliya"
+    },
+    "es": {
+        "code": "es",
+        "name": "Lusipanya"
+    },
+    "su": {
+        "code": "su",
+        "name": "Sundanese"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "Swahili"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "Luswideni"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "Tagalog"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "Tajik"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "Lutamiiru"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "Tatar"
+    },
+    "te": {
+        "code": "te",
+        "name": "Telugu"
+    },
+    "th": {
+        "code": "th",
+        "name": "Luttaayi"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "Tigrinya"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "Lutake"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "Turkmen"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "Lu-akaani"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "Uyghur"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "Luyukurayine"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "Lu-urudu"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "Uzbek"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "Uzbek"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "Luvyetinaamu"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "Welsh"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "Xhosa"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "Yiddish"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "Luyoruba"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "Luzzulu"
+    }
 }

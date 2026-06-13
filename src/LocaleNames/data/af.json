@@ -1,131 +1,518 @@
 {
-    "af": "Afrikaans",
-    "sq": "Albanees",
-    "am": "Amharies",
-    "ar": "Arabies",
-    "hy": "Armeens",
-    "as": "Assamees",
-    "az": "Azerbeidjans",
-    "bm": "Bambara",
-    "eu": "Baskies",
-    "be": "Belarussies",
-    "bn": "Bengaals",
-    "bho": "Bhojpuri",
-    "bs": "Bosnies",
-    "bg": "Bulgaars",
-    "en_CA": "Engels",
-    "ca": "Katalaans",
-    "ceb": "Cebuano",
-    "km": "Khmer",
-    "zh_CN": "Chinees",
-    "zh_HK": "Chinees",
-    "zh_TW": "Chinees",
-    "hr": "Kroaties",
-    "cs": "Tsjeggies",
-    "da": "Deens",
-    "doi": "Dogri",
-    "nl": "Nederlands",
-    "en": "Engels",
-    "eo": "Esperanto",
-    "et": "Estnies",
-    "ee": "Ewe",
-    "fi": "Fins",
-    "fr": "Frans",
-    "fy": "Fries",
-    "gl": "Galisies",
-    "ka": "Georgies",
-    "de": "Duits",
-    "de_AT": "Duits",
-    "de_CH": "Duits",
-    "el": "Grieks",
-    "gu": "Goedjarati",
-    "ht": "Haïtiaans",
-    "ha": "Hausa",
-    "haw": "Hawais",
-    "he": "Hebreeus",
-    "hi": "Hindi",
-    "hu": "Hongaars",
-    "is": "Yslands",
-    "ig": "Igbo",
-    "id": "Indonesies",
-    "ga": "Iers",
-    "it": "Italiaans",
-    "ja": "Japannees",
-    "kn": "Kannada",
-    "kk": "Kazaks",
-    "rw": "Rwandees",
-    "ko": "Koreaans",
-    "ku": "Koerdies",
-    "ckb": "Sorani",
-    "ky": "Kirgisies",
-    "lo": "Lao",
-    "lv": "Letties",
-    "ln": "Lingaals",
-    "lt": "Litaus",
-    "lg": "Ganda",
-    "lb": "Luxemburgs",
-    "mk": "Masedonies",
-    "mai": "Maithili",
-    "mg": "Malgassies",
-    "ms": "Maleis",
-    "ml": "Malabaars",
-    "mt": "Maltees",
-    "mi": "Maori",
-    "mr": "Marathi",
-    "mni_Mtei": "Manipuri",
-    "mn": "Mongools",
-    "my": "Birmaans",
-    "ne": "Nepalees",
-    "nb": "Boeknoors",
-    "nn": "Nuwe Noors",
-    "oc": "Oksitaans",
-    "or": "Odia",
-    "om": "Oromo",
-    "ps": "Pasjtoe",
-    "fa": "Persies",
-    "fil": "Filippyns",
-    "pl": "Pools",
-    "pt": "Portugees",
-    "pt_BR": "Portugees",
-    "pa": "Pandjabi",
-    "qu": "Quechua",
-    "ro": "Roemeens",
-    "ru": "Russies",
-    "sa": "Sanskrit",
-    "sc": "Sardinies",
-    "gd": "Skotse Gallies",
-    "sr_Cyrl": "Serwies",
-    "sr_Latn": "Serwies",
-    "sr_Latn_ME": "Serwies",
-    "sn": "Shona",
-    "sd": "Sindhi",
-    "si": "Sinhala",
-    "sk": "Slowaaks",
-    "sl": "Sloweens",
-    "so": "Somalies",
-    "es": "Spaans",
-    "su": "Sundanees",
-    "sw": "Swahili",
-    "sv": "Sweeds",
-    "tl": "Tagalog",
-    "tg": "Tadjiks",
-    "ta": "Tamil",
-    "tt": "Tataars",
-    "te": "Teloegoe",
-    "th": "Thai",
-    "ti": "Tigrinja",
-    "tr": "Turks",
-    "tk": "Turkmeens",
-    "ak": "Akan",
-    "ug": "Uighur",
-    "uk": "Oekraïens",
-    "ur": "Oerdoe",
-    "uz_Cyrl": "Oesbekies",
-    "uz_Latn": "Oesbekies",
-    "vi": "Viëtnamees",
-    "cy": "Wallies",
-    "xh": "Xhosa",
-    "yi": "Jiddisj",
-    "yo": "Joroeba",
-    "zu": "Zoeloe"
+    "af": {
+        "code": "af",
+        "name": "Afrikaans"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "Albanees"
+    },
+    "am": {
+        "code": "am",
+        "name": "Amharies"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "Arabies"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "Armeens"
+    },
+    "as": {
+        "code": "as",
+        "name": "Assamees"
+    },
+    "az": {
+        "code": "az",
+        "name": "Azerbeidjans"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "Bambara"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "Baskies"
+    },
+    "be": {
+        "code": "be",
+        "name": "Belarussies"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "Bengaals"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "Bhojpuri"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "Bosnies"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "Bulgaars"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "Engels"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "Katalaans"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "Cebuano"
+    },
+    "km": {
+        "code": "km",
+        "name": "Khmer"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "Chinees"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "Chinees"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "Chinees"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "Kroaties"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "Tsjeggies"
+    },
+    "da": {
+        "code": "da",
+        "name": "Deens"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "Dogri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "Nederlands"
+    },
+    "en": {
+        "code": "en",
+        "name": "Engels"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "Esperanto"
+    },
+    "et": {
+        "code": "et",
+        "name": "Estnies"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "Ewe"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "Fins"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "Frans"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "Fries"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "Galisies"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "Georgies"
+    },
+    "de": {
+        "code": "de",
+        "name": "Duits"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "Duits"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "Duits"
+    },
+    "el": {
+        "code": "el",
+        "name": "Grieks"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "Goedjarati"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "Haïtiaans"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "Hausa"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "Hawais"
+    },
+    "he": {
+        "code": "he",
+        "name": "Hebreeus"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "Hindi"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "Hongaars"
+    },
+    "is": {
+        "code": "is",
+        "name": "Yslands"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "Igbo"
+    },
+    "id": {
+        "code": "id",
+        "name": "Indonesies"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "Iers"
+    },
+    "it": {
+        "code": "it",
+        "name": "Italiaans"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "Japannees"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "Kannada"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "Kazaks"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "Rwandees"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "Koreaans"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "Koerdies"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "Sorani"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "Kirgisies"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "Lao"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "Letties"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "Lingaals"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "Litaus"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "Ganda"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "Luxemburgs"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "Masedonies"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "Maithili"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "Malgassies"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "Maleis"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "Malabaars"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "Maltees"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "Maori"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "Marathi"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "Manipuri"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "Mongools"
+    },
+    "my": {
+        "code": "my",
+        "name": "Birmaans"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "Nepalees"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "Boeknoors"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "Nuwe Noors"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "Oksitaans"
+    },
+    "or": {
+        "code": "or",
+        "name": "Odia"
+    },
+    "om": {
+        "code": "om",
+        "name": "Oromo"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "Pasjtoe"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "Persies"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "Filippyns"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "Pools"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "Portugees"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "Portugees"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "Pandjabi"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "Quechua"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "Roemeens"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "Russies"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "Sanskrit"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "Sardinies"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "Skotse Gallies"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "Serwies"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "Serwies"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "Serwies"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "Shona"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "Sindhi"
+    },
+    "si": {
+        "code": "si",
+        "name": "Sinhala"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "Slowaaks"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "Sloweens"
+    },
+    "so": {
+        "code": "so",
+        "name": "Somalies"
+    },
+    "es": {
+        "code": "es",
+        "name": "Spaans"
+    },
+    "su": {
+        "code": "su",
+        "name": "Sundanees"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "Swahili"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "Sweeds"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "Tagalog"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "Tadjiks"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "Tamil"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "Tataars"
+    },
+    "te": {
+        "code": "te",
+        "name": "Teloegoe"
+    },
+    "th": {
+        "code": "th",
+        "name": "Thai"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "Tigrinja"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "Turks"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "Turkmeens"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "Akan"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "Uighur"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "Oekraïens"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "Oerdoe"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "Oesbekies"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "Oesbekies"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "Viëtnamees"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "Wallies"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "Xhosa"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "Jiddisj"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "Joroeba"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "Zoeloe"
+    }
 }

@@ -2,775 +2,646 @@
     "af": {
         "code": "ZAR",
         "numeric": 710,
-        "native": "Suid-Afrikaanse rand",
-        "localized": "Südafrikanesche Rand"
+        "name": "Südafrikanesche Rand"
     },
     "sq": {
         "code": "ALL",
         "numeric": 8,
-        "native": "Leku shqiptar",
-        "localized": "Albanesche Lek"
+        "name": "Albanesche Lek"
     },
     "am": {
         "code": "ETB",
         "numeric": 230,
-        "native": "የኢትዮጵያ ብር",
-        "localized": "Ethiopescht Birr"
+        "name": "Ethiopescht Birr"
     },
     "ar": {
         "code": "EGP",
         "numeric": 818,
-        "native": "جنيه مصري",
-        "localized": "Egyptescht Pond"
+        "name": "Egyptescht Pond"
     },
     "hy": {
         "code": "AMD",
         "numeric": 51,
-        "native": "հայկական դրամ",
-        "localized": "Armeneschen Dram"
+        "name": "Armeneschen Dram"
     },
     "as": {
         "code": "INR",
         "numeric": 356,
-        "native": "ভাৰতীয় ৰুপী",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "az": {
         "code": "AZN",
         "numeric": 944,
-        "native": "Azərbaycan Manatı",
-        "localized": "Aserbaidschan-Manat"
+        "name": "Aserbaidschan-Manat"
     },
     "bm": {
         "code": "XOF",
         "numeric": 952,
-        "native": "sefa Fraŋ (BCEAO)",
-        "localized": "CFA-Frang (BCEAO)"
+        "name": "CFA-Frang (BCEAO)"
     },
     "eu": {
         "code": "EUR",
         "numeric": 978,
-        "native": "euroa",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "be": {
         "code": "BYN",
         "numeric": 933,
-        "native": "беларускі рубель",
-        "localized": "Wäissrussesche Rubel"
+        "name": "Wäissrussesche Rubel"
     },
     "bn": {
         "code": "BDT",
         "numeric": 50,
-        "native": "বাংলাদেশী টাকা",
-        "localized": "Bangladesch-Taka"
+        "name": "Bangladesch-Taka"
     },
     "bho": {
         "code": "INR",
         "numeric": 356,
-        "native": "Indian Rupee",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "bs": {
         "code": "BAM",
         "numeric": 977,
-        "native": "Bosanskohercegovačka konvertibilna marka",
-        "localized": "Bosnien an Herzegowina Konvertéierbar Mark"
+        "name": "Bosnien an Herzegowina Konvertéierbar Mark"
     },
     "bg": {
         "code": "EUR",
         "numeric": 978,
-        "native": "Евро",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "en_CA": {
         "code": "CAD",
         "numeric": 124,
-        "native": "Canadian Dollar",
-        "localized": "Kanadeschen Dollar"
+        "name": "Kanadeschen Dollar"
     },
     "ca": {
         "code": "EUR",
         "numeric": 978,
-        "native": "euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "ceb": {
         "code": "PHP",
         "numeric": 608,
-        "native": "Philippine Peso",
-        "localized": "Philippinnesche Peso"
+        "name": "Philippinnesche Peso"
     },
     "km": {
         "code": "KHR",
         "numeric": 116,
-        "native": "រៀល​កម្ពុជា",
-        "localized": "Kambodschanesche Riel"
+        "name": "Kambodschanesche Riel"
     },
     "zh_CN": {
         "code": "CNH",
         "numeric": 156,
-        "native": "人民币（离岸）",
-        "localized": "Chinese Yuan (offshore)"
+        "name": "Chinese Yuan (offshore)"
     },
     "zh_HK": {
         "code": "HKD",
         "numeric": 344,
-        "native": "港元",
-        "localized": "Hong-Kong-Dollar"
+        "name": "Hong-Kong-Dollar"
     },
     "zh_TW": {
         "code": "TWD",
         "numeric": 901,
-        "native": "新台幣",
-        "localized": "Neien Taiwan-Dollar"
+        "name": "Neien Taiwan-Dollar"
     },
     "hr": {
         "code": "EUR",
         "numeric": 978,
-        "native": "euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "cs": {
         "code": "CZK",
         "numeric": 203,
-        "native": "česká koruna",
-        "localized": "Tschechesch Kroun"
+        "name": "Tschechesch Kroun"
     },
     "da": {
         "code": "DKK",
         "numeric": 208,
-        "native": "dansk krone",
-        "localized": "Dänesch Kroun"
+        "name": "Dänesch Kroun"
     },
     "doi": {
         "code": "INR",
         "numeric": 356,
-        "native": "भारती रपेऽ",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "nl": {
         "code": "EUR",
         "numeric": 978,
-        "native": "Euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "en": {
         "code": "USN",
         "numeric": 997,
-        "native": "US Dollar (Next day)",
-        "localized": "US Dollar (Nächsten Dag)"
+        "name": "US Dollar (Nächsten Dag)"
     },
     "eo": {
         "code": "XXX",
         "numeric": 999,
-        "native": "nekonata monunuo",
-        "localized": "Onbekannt Währung"
+        "name": "Onbekannt Währung"
     },
     "et": {
         "code": "EUR",
         "numeric": 978,
-        "native": "euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "ee": {
         "code": "GHS",
         "numeric": 936,
-        "native": "ghana siɖi",
-        "localized": "Ghanaeschen Cedi"
+        "name": "Ghanaeschen Cedi"
     },
     "fi": {
         "code": "EUR",
         "numeric": 978,
-        "native": "euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "fr": {
         "code": "EUR",
         "numeric": 978,
-        "native": "euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "fy": {
         "code": "EUR",
         "numeric": 978,
-        "native": "Euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "gl": {
         "code": "EUR",
         "numeric": 978,
-        "native": "euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "ka": {
         "code": "GEL",
         "numeric": 981,
-        "native": "ქართული ლარი",
-        "localized": "Georgesche Lari"
+        "name": "Georgesche Lari"
     },
     "de": {
         "code": "EUR",
         "numeric": 978,
-        "native": "Euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "de_AT": {
         "code": "EUR",
         "numeric": 978,
-        "native": "Euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "de_CH": {
         "code": "CHW",
         "numeric": 948,
-        "native": "WIR Franken",
-        "localized": "WIR-Frang"
+        "name": "WIR-Frang"
     },
     "el": {
         "code": "EUR",
         "numeric": 978,
-        "native": "Ευρώ",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "gu": {
         "code": "INR",
         "numeric": 356,
-        "native": "ભારતીય રૂપિયા",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "ht": {
         "code": "USD",
         "numeric": 840,
-        "native": "dollar des États-Unis",
-        "localized": "US-Dollar"
+        "name": "US-Dollar"
     },
     "ha": {
         "code": "NGN",
         "numeric": 566,
-        "native": "Nairar Najeriya",
-        "localized": "Nigerianeschen Naira"
+        "name": "Nigerianeschen Naira"
     },
     "haw": {
         "code": "USN",
         "numeric": 997,
-        "native": "US Dollar (Next day)",
-        "localized": "US Dollar (Nächsten Dag)"
+        "name": "US Dollar (Nächsten Dag)"
     },
     "he": {
         "code": "ILS",
         "numeric": 376,
-        "native": "שקל חדש",
-        "localized": "Israeleschen Neie Schekel"
+        "name": "Israeleschen Neie Schekel"
     },
     "hi": {
         "code": "INR",
         "numeric": 356,
-        "native": "भारतीय रुपया",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "hu": {
         "code": "HUF",
         "numeric": 348,
-        "native": "magyar forint",
-        "localized": "Ungaresche Forint"
+        "name": "Ungaresche Forint"
     },
     "is": {
         "code": "ISK",
         "numeric": 352,
-        "native": "íslensk króna",
-        "localized": "Islännesch Kroun"
+        "name": "Islännesch Kroun"
     },
     "ig": {
         "code": "NGN",
         "numeric": 566,
-        "native": "Naịra",
-        "localized": "Nigerianeschen Naira"
+        "name": "Nigerianeschen Naira"
     },
     "id": {
         "code": "IDR",
         "numeric": 360,
-        "native": "Rupiah Indonesia",
-        "localized": "Indonesesch Rupiah"
+        "name": "Indonesesch Rupiah"
     },
     "ga": {
         "code": "EUR",
         "numeric": 978,
-        "native": "Euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "it": {
         "code": "EUR",
         "numeric": 978,
-        "native": "euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "ja": {
         "code": "JPY",
         "numeric": 392,
-        "native": "日本円",
-        "localized": "Japanesche Yen"
+        "name": "Japanesche Yen"
     },
     "kn": {
         "code": "INR",
         "numeric": 356,
-        "native": "ಭಾರತೀಯ ರೂಪಾಯಿ",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "kk": {
         "code": "KZT",
         "numeric": 398,
-        "native": "Қазақстан теңгесі",
-        "localized": "Kasacheschen Tenge"
+        "name": "Kasacheschen Tenge"
     },
     "rw": {
         "code": "RWF",
         "numeric": 646,
-        "native": "Rwandan Franc",
-        "localized": "Ruanda-Frang"
+        "name": "Ruanda-Frang"
     },
     "ko": {
         "code": "KRW",
         "numeric": 410,
-        "native": "대한민국 원",
-        "localized": "Südkoreanesche Won"
+        "name": "Südkoreanesche Won"
     },
     "ku": {
         "code": "TRY",
         "numeric": 949,
-        "native": "lîreyê tirkî",
-        "localized": "Tierkesch Lira"
+        "name": "Tierkesch Lira"
     },
     "ckb": {
         "code": "IQD",
         "numeric": 368,
-        "native": "Iraqi Dinar",
-        "localized": "Irakeschen Dinar"
+        "name": "Irakeschen Dinar"
     },
     "ky": {
         "code": "KGS",
         "numeric": 417,
-        "native": "Кыргызстан сому",
-        "localized": "Kirgisesche Som"
+        "name": "Kirgisesche Som"
     },
     "lo": {
         "code": "LAK",
         "numeric": 418,
-        "native": "ລາວ ກີບ",
-        "localized": "Laoteschen Kip"
+        "name": "Laoteschen Kip"
     },
     "lv": {
         "code": "EUR",
         "numeric": 978,
-        "native": "eiro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "ln": {
         "code": "CDF",
         "numeric": 976,
-        "native": "Falánga ya Kongó",
-        "localized": "Kongo-Frang"
+        "name": "Kongo-Frang"
     },
     "lt": {
         "code": "EUR",
         "numeric": 978,
-        "native": "Euras",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "lg": {
         "code": "UGX",
         "numeric": 800,
-        "native": "Silingi eya Yuganda",
-        "localized": "Uganda-Schilling"
+        "name": "Uganda-Schilling"
     },
     "lb": {
         "code": "EUR",
         "numeric": 978,
-        "native": "Euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "mk": {
         "code": "MKD",
         "numeric": 807,
-        "native": "Македонски денар",
-        "localized": "Mazedoneschen Denar"
+        "name": "Mazedoneschen Denar"
     },
     "mai": {
         "code": "INR",
         "numeric": 356,
-        "native": "भारतीय रुपया",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "mg": {
         "code": "MGA",
         "numeric": 969,
-        "native": "Ariary",
-        "localized": "Madagaskar-Ariary"
+        "name": "Madagaskar-Ariary"
     },
     "ms": {
         "code": "MYR",
         "numeric": 458,
-        "native": "Ringgit Malaysia",
-        "localized": "Malayseschen Ringgit"
+        "name": "Malayseschen Ringgit"
     },
     "ml": {
         "code": "INR",
         "numeric": 356,
-        "native": "ഇന്ത്യൻ രൂപ",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "mt": {
         "code": "EUR",
         "numeric": 978,
-        "native": "ewro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "mi": {
         "code": "NZD",
         "numeric": 554,
-        "native": "Tāra o Aotearoa",
-        "localized": "Neiséiland-Dollar"
+        "name": "Neiséiland-Dollar"
     },
     "mr": {
         "code": "INR",
         "numeric": 356,
-        "native": "भारतीय रुपया",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "mni_Mtei": {
         "code": "INR",
         "numeric": 356,
-        "native": "Indian Rupee",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "mn": {
         "code": "MNT",
         "numeric": 496,
-        "native": "Монгол төгрөг",
-        "localized": "Mongoleschen Tögrög"
+        "name": "Mongoleschen Tögrög"
     },
     "my": {
         "code": "MMK",
         "numeric": 104,
-        "native": "မြန်မာ ကျပ်",
-        "localized": "Myanmaresche Kyat"
+        "name": "Myanmaresche Kyat"
     },
     "ne": {
         "code": "NPR",
         "numeric": 524,
-        "native": "नेपाली रूपैयाँ",
-        "localized": "Nepalesesch Rupie"
+        "name": "Nepalesesch Rupie"
     },
     "nb": {
         "code": "NOK",
         "numeric": 578,
-        "native": "norske kroner",
-        "localized": "Norwegesch Kroun"
+        "name": "Norwegesch Kroun"
     },
     "nn": {
         "code": "NOK",
         "numeric": 578,
-        "native": "norske kroner",
-        "localized": "Norwegesch Kroun"
+        "name": "Norwegesch Kroun"
     },
     "oc": {
         "code": "EUR",
         "numeric": 978,
-        "native": "Euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "or": {
         "code": "INR",
         "numeric": 356,
-        "native": "ଭାରତୀୟ ଟଙ୍କା",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "om": {
         "code": "ETB",
         "numeric": 230,
-        "native": "Itoophiyaa Birrii",
-        "localized": "Ethiopescht Birr"
+        "name": "Ethiopescht Birr"
     },
     "ps": {
         "code": "AFN",
         "numeric": 971,
-        "native": "افغانۍ",
-        "localized": "Afghanesch Afghani"
+        "name": "Afghanesch Afghani"
     },
     "fa": {
         "code": "IRR",
         "numeric": 364,
-        "native": "ریال ایران",
-        "localized": "Iranesch Rial"
+        "name": "Iranesch Rial"
     },
     "fil": {
         "code": "PHP",
         "numeric": 608,
-        "native": "Piso ng Pilipinas",
-        "localized": "Philippinnesche Peso"
+        "name": "Philippinnesche Peso"
     },
     "pl": {
         "code": "PLN",
         "numeric": 985,
-        "native": "złoty polski",
-        "localized": "Polneschen Zloty"
+        "name": "Polneschen Zloty"
     },
     "pt": {
         "code": "BRL",
         "numeric": 986,
-        "native": "Real brasileiro",
-        "localized": "Brasilianesche Real"
+        "name": "Brasilianesche Real"
     },
     "pt_BR": {
         "code": "BRL",
         "numeric": 986,
-        "native": "Real brasileiro",
-        "localized": "Brasilianesche Real"
+        "name": "Brasilianesche Real"
     },
     "pa": {
         "code": "INR",
         "numeric": 356,
-        "native": "ਭਾਰਤੀ ਰੁਪਇਆ",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "qu": {
         "code": "PEN",
         "numeric": 604,
-        "native": "Sol Peruano",
-        "localized": "Peruaneschen Sol"
+        "name": "Peruaneschen Sol"
     },
     "ro": {
         "code": "RON",
         "numeric": 946,
-        "native": "leu românesc",
-        "localized": "Rumänesche Leu"
+        "name": "Rumänesche Leu"
     },
     "ru": {
         "code": "RUB",
         "numeric": 643,
-        "native": "российский рубль",
-        "localized": "Russesche Rubel"
+        "name": "Russesche Rubel"
     },
     "sa": {
         "code": "INR",
         "numeric": 356,
-        "native": "भारतीय रूप्यकम्",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "sc": {
         "code": "EUR",
         "numeric": 978,
-        "native": "èuro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "gd": {
         "code": "GBP",
         "numeric": 826,
-        "native": "Punnd Sasannach",
-        "localized": "Britescht Pond"
+        "name": "Britescht Pond"
     },
     "sr_Cyrl": {
         "code": "RSD",
         "numeric": 941,
-        "native": "српски динар",
-        "localized": "Serbeschen Dinar"
+        "name": "Serbeschen Dinar"
     },
     "sr_Latn": {
         "code": "RSD",
         "numeric": 941,
-        "native": "srpski dinar",
-        "localized": "Serbeschen Dinar"
+        "name": "Serbeschen Dinar"
     },
     "sr_Latn_ME": {
         "code": "EUR",
         "numeric": 978,
-        "native": "evro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "sn": {
         "code": "USD",
         "numeric": 840,
-        "native": "Dora re Amerika",
-        "localized": "US-Dollar"
+        "name": "US-Dollar"
     },
     "sd": {
         "code": "PKR",
         "numeric": 586,
-        "native": "پاڪستاني رپي",
-        "localized": "Pakistanesch Rupie"
+        "name": "Pakistanesch Rupie"
     },
     "si": {
         "code": "LKR",
         "numeric": 144,
-        "native": "ශ්‍රී ලංකා රුපියල",
-        "localized": "Sri-Lanka-Rupie"
+        "name": "Sri-Lanka-Rupie"
     },
     "sk": {
         "code": "EUR",
         "numeric": 978,
-        "native": "euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "sl": {
         "code": "EUR",
         "numeric": 978,
-        "native": "evro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "so": {
         "code": "SOS",
         "numeric": 706,
-        "native": "Shilingka Soomaaliya",
-        "localized": "Somalia-Schilling"
+        "name": "Somalia-Schilling"
     },
     "es": {
         "code": "EUR",
         "numeric": 978,
-        "native": "euro",
-        "localized": "Euro"
+        "name": "Euro"
     },
     "su": {
         "code": "IDR",
         "numeric": 360,
-        "native": "Rupee Indonésia",
-        "localized": "Indonesesch Rupiah"
+        "name": "Indonesesch Rupiah"
     },
     "sw": {
         "code": "TZS",
         "numeric": 834,
-        "native": "Shilingi ya Tanzania",
-        "localized": "Tansania-Schilling"
+        "name": "Tansania-Schilling"
     },
     "sv": {
         "code": "SEK",
         "numeric": 752,
-        "native": "svensk krona",
-        "localized": "Schwedesch Kroun"
+        "name": "Schwedesch Kroun"
     },
     "tl": {
         "code": "PHP",
         "numeric": 608,
-        "native": "Piso ng Pilipinas",
-        "localized": "Philippinnesche Peso"
+        "name": "Philippinnesche Peso"
     },
     "tg": {
         "code": "TJS",
         "numeric": 972,
-        "native": "Сомонии Тоҷикистон",
-        "localized": "Tadschikistan-Somoni"
+        "name": "Tadschikistan-Somoni"
     },
     "ta": {
         "code": "INR",
         "numeric": 356,
-        "native": "இந்திய ரூபாய்",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "tt": {
         "code": "RUB",
         "numeric": 643,
-        "native": "Россия сумы",
-        "localized": "Russesche Rubel"
+        "name": "Russesche Rubel"
     },
     "te": {
         "code": "INR",
         "numeric": 356,
-        "native": "భారతదేశ రూపాయి",
-        "localized": "Indesch Rupie"
+        "name": "Indesch Rupie"
     },
     "th": {
         "code": "THB",
         "numeric": 764,
-        "native": "บาท",
-        "localized": "Thailännesche Baht"
+        "name": "Thailännesche Baht"
     },
     "ti": {
         "code": "ETB",
         "numeric": 230,
-        "native": "ብር",
-        "localized": "Ethiopescht Birr"
+        "name": "Ethiopescht Birr"
     },
     "tr": {
         "code": "TRY",
         "numeric": 949,
-        "native": "Türk lirası",
-        "localized": "Tierkesch Lira"
+        "name": "Tierkesch Lira"
     },
     "tk": {
         "code": "TMT",
         "numeric": 934,
-        "native": "Türkmen manady",
-        "localized": "Turkmenistan-Manat"
+        "name": "Turkmenistan-Manat"
     },
     "ak": {
         "code": "GHS",
         "numeric": 936,
-        "native": "Ghana Sidi",
-        "localized": "Ghanaeschen Cedi"
+        "name": "Ghanaeschen Cedi"
     },
     "ug": {
         "code": "CNH",
         "numeric": 156,
-        "native": "Chinese Yuan (offshore)",
-        "localized": "Chinese Yuan (offshore)"
+        "name": "Chinese Yuan (offshore)"
     },
     "uk": {
         "code": "UAH",
         "numeric": 980,
-        "native": "українська гривня",
-        "localized": "Ukraineschen Hrywnja"
+        "name": "Ukraineschen Hrywnja"
     },
     "ur": {
         "code": "PKR",
         "numeric": 586,
-        "native": "پاکستانی روپیہ",
-        "localized": "Pakistanesch Rupie"
+        "name": "Pakistanesch Rupie"
     },
     "uz_Cyrl": {
         "code": "UZS",
         "numeric": 860,
-        "native": "Ўзбекистон сўм",
-        "localized": "Usbekistan-Sum"
+        "name": "Usbekistan-Sum"
     },
     "uz_Latn": {
         "code": "UZS",
         "numeric": 860,
-        "native": "O‘zbekiston so‘mi",
-        "localized": "Usbekistan-Sum"
+        "name": "Usbekistan-Sum"
     },
     "vi": {
         "code": "VND",
         "numeric": 704,
-        "native": "Đồng Việt Nam",
-        "localized": "Vietnameseschen Dong"
+        "name": "Vietnameseschen Dong"
     },
     "cy": {
         "code": "GBP",
         "numeric": 826,
-        "native": "Punt Prydain",
-        "localized": "Britescht Pond"
+        "name": "Britescht Pond"
     },
     "xh": {
         "code": "ZAR",
         "numeric": 710,
-        "native": "IRandi yaseMzantsi Afrika",
-        "localized": "Südafrikanesche Rand"
+        "name": "Südafrikanesche Rand"
     },
     "yi": {
         "code": "UAH",
         "numeric": 980,
-        "native": "Ukrainian Hryvnia",
-        "localized": "Ukraineschen Hrywnja"
+        "name": "Ukraineschen Hrywnja"
     },
     "yo": {
         "code": "NGN",
         "numeric": 566,
-        "native": "Náírà Nàìjíríà",
-        "localized": "Nigerianeschen Naira"
+        "name": "Nigerianeschen Naira"
     },
     "zu": {
         "code": "ZAR",
         "numeric": 710,
-        "native": "i-South African Rand",
-        "localized": "Südafrikanesche Rand"
+        "name": "Südafrikanesche Rand"
     }
 }

@@ -1,131 +1,518 @@
 {
-    "af": "Afrikaanca",
-    "sq": "Arnavutça",
-    "am": "Amharca",
-    "ar": "Arapça",
-    "hy": "Ermenice",
-    "as": "Assamca",
-    "az": "Azerbaycan dili",
-    "bm": "Bambara",
-    "eu": "Baskça",
-    "be": "Belarusça",
-    "bn": "Bengalce",
-    "bho": "Arayanice",
-    "bs": "Boşnakça",
-    "bg": "Bulgarca",
-    "en_CA": "Kanada İngilizcesi",
-    "ca": "Katalanca",
-    "ceb": "Sebuano dili",
-    "km": "Khmer dili",
-    "zh_CN": "Çince",
-    "zh_HK": "Çince",
-    "zh_TW": "Çince",
-    "hr": "Hırvatça",
-    "cs": "Çekçe",
-    "da": "Danca",
-    "doi": "Dogri",
-    "nl": "Felemenkçe",
-    "en": "İngilizce",
-    "eo": "Esperanto",
-    "et": "Estonca",
-    "ee": "Ewe",
-    "fi": "Fince",
-    "fr": "Fransızca",
-    "fy": "Batı Frizcesi",
-    "gl": "Galiçyaca",
-    "ka": "Gürcüce",
-    "de": "Almanca",
-    "de_AT": "Avusturya Almancası",
-    "de_CH": "İsviçre Yüksek Almancası",
-    "el": "Yunanca",
-    "gu": "Güceratça",
-    "ht": "Haiti Kreyolu",
-    "ha": "Hausa dili",
-    "haw": "Hawaii dili",
-    "he": "İbranice",
-    "hi": "Hintçe",
-    "hu": "Macarca",
-    "is": "İzlandaca",
-    "ig": "İbo dili",
-    "id": "Endonezce",
-    "ga": "İrlandaca",
-    "it": "İtalyanca",
-    "ja": "Japonca",
-    "kn": "Kannada dili",
-    "kk": "Kazakça",
-    "rw": "Kinyarwanda",
-    "ko": "Korece",
-    "ku": "Kürtçe",
-    "ckb": "Orta Kürtçe",
-    "ky": "Kırgızca",
-    "lo": "Lao dili",
-    "lv": "Letonca",
-    "ln": "Lingala",
-    "lt": "Litvanca",
-    "lg": "Ganda",
-    "lb": "Lüksemburgca",
-    "mk": "Makedonca",
-    "mai": "Maithili",
-    "mg": "Malgaşça",
-    "ms": "Malayca",
-    "ml": "Malayalam dili",
-    "mt": "Maltaca",
-    "mi": "Maori dili",
-    "mr": "Marathi dili",
-    "mni_Mtei": "Manipuri dili",
-    "mn": "Moğolca",
-    "my": "Birman dili",
-    "ne": "Nepalce",
-    "nb": "Norveççe Bokmål",
-    "nn": "Norveççe Nynorsk",
-    "oc": "Oksitan dili",
-    "or": "Oriya dili",
-    "om": "Oromo dili",
-    "ps": "Peştuca",
-    "fa": "Farsça",
-    "fil": "Filipince",
-    "pl": "Lehçe",
-    "pt": "Portekizce",
-    "pt_BR": "Brezilya Portekizcesi",
-    "pa": "Pencapça",
-    "qu": "Keçuva dili",
-    "ro": "Rumence",
-    "ru": "Rusça",
-    "sa": "Sanskrit",
-    "sc": "Sardunya dili",
-    "gd": "İskoç Gaelcesi",
-    "sr_Cyrl": "Sırpça",
-    "sr_Latn": "Sırpça",
-    "sr_Latn_ME": "Sırpça",
-    "sn": "Şona dili",
-    "sd": "Sindhi dili",
-    "si": "Sinhali dili",
-    "sk": "Slovakça",
-    "sl": "Slovence",
-    "so": "Somalice",
-    "es": "İspanyolca",
-    "su": "Sunda dili",
-    "sw": "Svahili dili",
-    "sv": "İsveççe",
-    "tl": "Tagalogca",
-    "tg": "Tacikçe",
-    "ta": "Tamilce",
-    "tt": "Tatarca",
-    "te": "Telugu dili",
-    "th": "Tayca",
-    "ti": "Tigrinya dili",
-    "tr": "Türkçe",
-    "tk": "Türkmence",
-    "ak": "Akan",
-    "ug": "Uygurca",
-    "uk": "Ukraynaca",
-    "ur": "Urduca",
-    "uz_Cyrl": "Özbekçe",
-    "uz_Latn": "Özbekçe",
-    "vi": "Vietnamca",
-    "cy": "Galce",
-    "xh": "Zosa dili",
-    "yi": "Yidiş",
-    "yo": "Yorubaca",
-    "zu": "Zuluca"
+    "af": {
+        "code": "af",
+        "name": "Afrikaanca"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "Arnavutça"
+    },
+    "am": {
+        "code": "am",
+        "name": "Amharca"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "Arapça"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "Ermenice"
+    },
+    "as": {
+        "code": "as",
+        "name": "Assamca"
+    },
+    "az": {
+        "code": "az",
+        "name": "Azerbaycan dili"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "Bambara"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "Baskça"
+    },
+    "be": {
+        "code": "be",
+        "name": "Belarusça"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "Bengalce"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "Arayanice"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "Boşnakça"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "Bulgarca"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "Kanada İngilizcesi"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "Katalanca"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "Sebuano dili"
+    },
+    "km": {
+        "code": "km",
+        "name": "Khmer dili"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "Çince"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "Çince"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "Çince"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "Hırvatça"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "Çekçe"
+    },
+    "da": {
+        "code": "da",
+        "name": "Danca"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "Dogri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "Felemenkçe"
+    },
+    "en": {
+        "code": "en",
+        "name": "İngilizce"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "Esperanto"
+    },
+    "et": {
+        "code": "et",
+        "name": "Estonca"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "Ewe"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "Fince"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "Fransızca"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "Batı Frizcesi"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "Galiçyaca"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "Gürcüce"
+    },
+    "de": {
+        "code": "de",
+        "name": "Almanca"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "Avusturya Almancası"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "İsviçre Yüksek Almancası"
+    },
+    "el": {
+        "code": "el",
+        "name": "Yunanca"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "Güceratça"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "Haiti Kreyolu"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "Hausa dili"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "Hawaii dili"
+    },
+    "he": {
+        "code": "he",
+        "name": "İbranice"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "Hintçe"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "Macarca"
+    },
+    "is": {
+        "code": "is",
+        "name": "İzlandaca"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "İbo dili"
+    },
+    "id": {
+        "code": "id",
+        "name": "Endonezce"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "İrlandaca"
+    },
+    "it": {
+        "code": "it",
+        "name": "İtalyanca"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "Japonca"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "Kannada dili"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "Kazakça"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "Kinyarwanda"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "Korece"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "Kürtçe"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "Orta Kürtçe"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "Kırgızca"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "Lao dili"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "Letonca"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "Lingala"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "Litvanca"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "Ganda"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "Lüksemburgca"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "Makedonca"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "Maithili"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "Malgaşça"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "Malayca"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "Malayalam dili"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "Maltaca"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "Maori dili"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "Marathi dili"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "Manipuri dili"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "Moğolca"
+    },
+    "my": {
+        "code": "my",
+        "name": "Birman dili"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "Nepalce"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "Norveççe Bokmål"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "Norveççe Nynorsk"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "Oksitan dili"
+    },
+    "or": {
+        "code": "or",
+        "name": "Oriya dili"
+    },
+    "om": {
+        "code": "om",
+        "name": "Oromo dili"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "Peştuca"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "Farsça"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "Filipince"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "Lehçe"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "Portekizce"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "Brezilya Portekizcesi"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "Pencapça"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "Keçuva dili"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "Rumence"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "Rusça"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "Sanskrit"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "Sardunya dili"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "İskoç Gaelcesi"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "Sırpça"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "Sırpça"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "Sırpça"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "Şona dili"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "Sindhi dili"
+    },
+    "si": {
+        "code": "si",
+        "name": "Sinhali dili"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "Slovakça"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "Slovence"
+    },
+    "so": {
+        "code": "so",
+        "name": "Somalice"
+    },
+    "es": {
+        "code": "es",
+        "name": "İspanyolca"
+    },
+    "su": {
+        "code": "su",
+        "name": "Sunda dili"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "Svahili dili"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "İsveççe"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "Tagalogca"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "Tacikçe"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "Tamilce"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "Tatarca"
+    },
+    "te": {
+        "code": "te",
+        "name": "Telugu dili"
+    },
+    "th": {
+        "code": "th",
+        "name": "Tayca"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "Tigrinya dili"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "Türkçe"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "Türkmence"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "Akan"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "Uygurca"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "Ukraynaca"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "Urduca"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "Özbekçe"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "Özbekçe"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "Vietnamca"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "Galce"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "Zosa dili"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "Yidiş"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "Yorubaca"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "Zuluca"
+    }
 }

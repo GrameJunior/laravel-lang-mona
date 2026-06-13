@@ -1,131 +1,518 @@
 {
-    "af": "Afrikaans",
-    "sq": "Albanees",
-    "am": "Amhaars",
-    "ar": "Arabisch",
-    "hy": "Armeens",
-    "as": "Assamees",
-    "az": "Azerbeidzjaans",
-    "bm": "Bambara",
-    "eu": "Baskisch",
-    "be": "Belarussisch",
-    "bn": "Bengaals",
-    "bho": "Bhojpuri",
-    "bs": "Bosnisch",
-    "bg": "Bulgaars",
-    "en_CA": "Engels",
-    "ca": "Catalaans",
-    "ceb": "Cebuano",
-    "km": "Khmer",
-    "zh_CN": "Chinees",
-    "zh_HK": "Chinees",
-    "zh_TW": "Chinees",
-    "hr": "Kroatisch",
-    "cs": "Tsjechisch",
-    "da": "Deens",
-    "doi": "Dogri",
-    "nl": "Nederlands",
-    "en": "Engels",
-    "eo": "Esperanto",
-    "et": "Estisch",
-    "ee": "Ewe",
-    "fi": "Fins",
-    "fr": "Frans",
-    "fy": "Fries",
-    "gl": "Galicisch",
-    "ka": "Georgisch",
-    "de": "Duits",
-    "de_AT": "Duits",
-    "de_CH": "Duits",
-    "el": "Grieks",
-    "gu": "Gujarati",
-    "ht": "Haïtiaans Creools",
-    "ha": "Hausa",
-    "haw": "Hawaïaans",
-    "he": "Hebreeuws",
-    "hi": "Hindi",
-    "hu": "Hongaars",
-    "is": "IJslands",
-    "ig": "Igbo",
-    "id": "Indonesisch",
-    "ga": "Iers",
-    "it": "Italiaans",
-    "ja": "Japans",
-    "kn": "Kannada",
-    "kk": "Kazachs",
-    "rw": "Kinyarwanda",
-    "ko": "Koreaans",
-    "ku": "Koerdisch",
-    "ckb": "Soranî",
-    "ky": "Kirgizisch",
-    "lo": "Laotiaans",
-    "lv": "Lets",
-    "ln": "Lingala",
-    "lt": "Litouws",
-    "lg": "Luganda",
-    "lb": "Luxemburgs",
-    "mk": "Macedonisch",
-    "mai": "Maithili",
-    "mg": "Malagassisch",
-    "ms": "Maleis",
-    "ml": "Malayalam",
-    "mt": "Maltees",
-    "mi": "Maori",
-    "mr": "Marathi",
-    "mni_Mtei": "Meitei",
-    "mn": "Mongools",
-    "my": "Birmaans",
-    "ne": "Nepalees",
-    "nb": "Noors - Bokmål",
-    "nn": "Noors - Nynorsk",
-    "oc": "Occitaans",
-    "or": "Odia",
-    "om": "Afaan Oromo",
-    "ps": "Pasjtoe",
-    "fa": "Perzisch",
-    "fil": "Filipijns",
-    "pl": "Pools",
-    "pt": "Portugees",
-    "pt_BR": "Portugees",
-    "pa": "Punjabi",
-    "qu": "Quechua",
-    "ro": "Roemeens",
-    "ru": "Russisch",
-    "sa": "Sanskriet",
-    "sc": "Sardijns",
-    "gd": "Schots-Gaelisch",
-    "sr_Cyrl": "Servisch",
-    "sr_Latn": "Servisch",
-    "sr_Latn_ME": "Servisch",
-    "sn": "Shona",
-    "sd": "Sindhi",
-    "si": "Singalees",
-    "sk": "Slowaaks",
-    "sl": "Sloveens",
-    "so": "Somalisch",
-    "es": "Spaans",
-    "su": "Soendanees",
-    "sw": "Swahili",
-    "sv": "Zweeds",
-    "tl": "Tagalog",
-    "tg": "Tadzjieks",
-    "ta": "Tamil",
-    "tt": "Tataars",
-    "te": "Telugu",
-    "th": "Thai",
-    "ti": "Tigrinya",
-    "tr": "Turks",
-    "tk": "Turkmeens",
-    "ak": "Akan",
-    "ug": "Oeigoers",
-    "uk": "Oekraïens",
-    "ur": "Urdu",
-    "uz_Cyrl": "Oezbeeks",
-    "uz_Latn": "Oezbeeks",
-    "vi": "Vietnamees",
-    "cy": "Welsh",
-    "xh": "Xhosa",
-    "yi": "Jiddisch",
-    "yo": "Yoruba",
-    "zu": "Zoeloe"
+    "af": {
+        "code": "af",
+        "name": "Afrikaans"
+    },
+    "sq": {
+        "code": "sq",
+        "name": "Albanees"
+    },
+    "am": {
+        "code": "am",
+        "name": "Amhaars"
+    },
+    "ar": {
+        "code": "ar",
+        "name": "Arabisch"
+    },
+    "hy": {
+        "code": "hy",
+        "name": "Armeens"
+    },
+    "as": {
+        "code": "as",
+        "name": "Assamees"
+    },
+    "az": {
+        "code": "az",
+        "name": "Azerbeidzjaans"
+    },
+    "bm": {
+        "code": "bm",
+        "name": "Bambara"
+    },
+    "eu": {
+        "code": "eu",
+        "name": "Baskisch"
+    },
+    "be": {
+        "code": "be",
+        "name": "Belarussisch"
+    },
+    "bn": {
+        "code": "bn",
+        "name": "Bengaals"
+    },
+    "bho": {
+        "code": "bho",
+        "name": "Bhojpuri"
+    },
+    "bs": {
+        "code": "bs",
+        "name": "Bosnisch"
+    },
+    "bg": {
+        "code": "bg",
+        "name": "Bulgaars"
+    },
+    "en_CA": {
+        "code": "en_CA",
+        "name": "Engels"
+    },
+    "ca": {
+        "code": "ca",
+        "name": "Catalaans"
+    },
+    "ceb": {
+        "code": "ceb",
+        "name": "Cebuano"
+    },
+    "km": {
+        "code": "km",
+        "name": "Khmer"
+    },
+    "zh_CN": {
+        "code": "zh_CN",
+        "name": "Chinees"
+    },
+    "zh_HK": {
+        "code": "zh_HK",
+        "name": "Chinees"
+    },
+    "zh_TW": {
+        "code": "zh_TW",
+        "name": "Chinees"
+    },
+    "hr": {
+        "code": "hr",
+        "name": "Kroatisch"
+    },
+    "cs": {
+        "code": "cs",
+        "name": "Tsjechisch"
+    },
+    "da": {
+        "code": "da",
+        "name": "Deens"
+    },
+    "doi": {
+        "code": "doi",
+        "name": "Dogri"
+    },
+    "nl": {
+        "code": "nl",
+        "name": "Nederlands"
+    },
+    "en": {
+        "code": "en",
+        "name": "Engels"
+    },
+    "eo": {
+        "code": "eo",
+        "name": "Esperanto"
+    },
+    "et": {
+        "code": "et",
+        "name": "Estisch"
+    },
+    "ee": {
+        "code": "ee",
+        "name": "Ewe"
+    },
+    "fi": {
+        "code": "fi",
+        "name": "Fins"
+    },
+    "fr": {
+        "code": "fr",
+        "name": "Frans"
+    },
+    "fy": {
+        "code": "fy",
+        "name": "Fries"
+    },
+    "gl": {
+        "code": "gl",
+        "name": "Galicisch"
+    },
+    "ka": {
+        "code": "ka",
+        "name": "Georgisch"
+    },
+    "de": {
+        "code": "de",
+        "name": "Duits"
+    },
+    "de_AT": {
+        "code": "de_AT",
+        "name": "Duits"
+    },
+    "de_CH": {
+        "code": "de_CH",
+        "name": "Duits"
+    },
+    "el": {
+        "code": "el",
+        "name": "Grieks"
+    },
+    "gu": {
+        "code": "gu",
+        "name": "Gujarati"
+    },
+    "ht": {
+        "code": "ht",
+        "name": "Haïtiaans Creools"
+    },
+    "ha": {
+        "code": "ha",
+        "name": "Hausa"
+    },
+    "haw": {
+        "code": "haw",
+        "name": "Hawaïaans"
+    },
+    "he": {
+        "code": "he",
+        "name": "Hebreeuws"
+    },
+    "hi": {
+        "code": "hi",
+        "name": "Hindi"
+    },
+    "hu": {
+        "code": "hu",
+        "name": "Hongaars"
+    },
+    "is": {
+        "code": "is",
+        "name": "IJslands"
+    },
+    "ig": {
+        "code": "ig",
+        "name": "Igbo"
+    },
+    "id": {
+        "code": "id",
+        "name": "Indonesisch"
+    },
+    "ga": {
+        "code": "ga",
+        "name": "Iers"
+    },
+    "it": {
+        "code": "it",
+        "name": "Italiaans"
+    },
+    "ja": {
+        "code": "ja",
+        "name": "Japans"
+    },
+    "kn": {
+        "code": "kn",
+        "name": "Kannada"
+    },
+    "kk": {
+        "code": "kk",
+        "name": "Kazachs"
+    },
+    "rw": {
+        "code": "rw",
+        "name": "Kinyarwanda"
+    },
+    "ko": {
+        "code": "ko",
+        "name": "Koreaans"
+    },
+    "ku": {
+        "code": "ku",
+        "name": "Koerdisch"
+    },
+    "ckb": {
+        "code": "ckb",
+        "name": "Soranî"
+    },
+    "ky": {
+        "code": "ky",
+        "name": "Kirgizisch"
+    },
+    "lo": {
+        "code": "lo",
+        "name": "Laotiaans"
+    },
+    "lv": {
+        "code": "lv",
+        "name": "Lets"
+    },
+    "ln": {
+        "code": "ln",
+        "name": "Lingala"
+    },
+    "lt": {
+        "code": "lt",
+        "name": "Litouws"
+    },
+    "lg": {
+        "code": "lg",
+        "name": "Luganda"
+    },
+    "lb": {
+        "code": "lb",
+        "name": "Luxemburgs"
+    },
+    "mk": {
+        "code": "mk",
+        "name": "Macedonisch"
+    },
+    "mai": {
+        "code": "mai",
+        "name": "Maithili"
+    },
+    "mg": {
+        "code": "mg",
+        "name": "Malagassisch"
+    },
+    "ms": {
+        "code": "ms",
+        "name": "Maleis"
+    },
+    "ml": {
+        "code": "ml",
+        "name": "Malayalam"
+    },
+    "mt": {
+        "code": "mt",
+        "name": "Maltees"
+    },
+    "mi": {
+        "code": "mi",
+        "name": "Maori"
+    },
+    "mr": {
+        "code": "mr",
+        "name": "Marathi"
+    },
+    "mni_Mtei": {
+        "code": "mni_Mtei",
+        "name": "Meitei"
+    },
+    "mn": {
+        "code": "mn",
+        "name": "Mongools"
+    },
+    "my": {
+        "code": "my",
+        "name": "Birmaans"
+    },
+    "ne": {
+        "code": "ne",
+        "name": "Nepalees"
+    },
+    "nb": {
+        "code": "nb",
+        "name": "Noors - Bokmål"
+    },
+    "nn": {
+        "code": "nn",
+        "name": "Noors - Nynorsk"
+    },
+    "oc": {
+        "code": "oc",
+        "name": "Occitaans"
+    },
+    "or": {
+        "code": "or",
+        "name": "Odia"
+    },
+    "om": {
+        "code": "om",
+        "name": "Afaan Oromo"
+    },
+    "ps": {
+        "code": "ps",
+        "name": "Pasjtoe"
+    },
+    "fa": {
+        "code": "fa",
+        "name": "Perzisch"
+    },
+    "fil": {
+        "code": "fil",
+        "name": "Filipijns"
+    },
+    "pl": {
+        "code": "pl",
+        "name": "Pools"
+    },
+    "pt": {
+        "code": "pt",
+        "name": "Portugees"
+    },
+    "pt_BR": {
+        "code": "pt_BR",
+        "name": "Portugees"
+    },
+    "pa": {
+        "code": "pa",
+        "name": "Punjabi"
+    },
+    "qu": {
+        "code": "qu",
+        "name": "Quechua"
+    },
+    "ro": {
+        "code": "ro",
+        "name": "Roemeens"
+    },
+    "ru": {
+        "code": "ru",
+        "name": "Russisch"
+    },
+    "sa": {
+        "code": "sa",
+        "name": "Sanskriet"
+    },
+    "sc": {
+        "code": "sc",
+        "name": "Sardijns"
+    },
+    "gd": {
+        "code": "gd",
+        "name": "Schots-Gaelisch"
+    },
+    "sr_Cyrl": {
+        "code": "sr_Cyrl",
+        "name": "Servisch"
+    },
+    "sr_Latn": {
+        "code": "sr_Latn",
+        "name": "Servisch"
+    },
+    "sr_Latn_ME": {
+        "code": "sr_Latn_ME",
+        "name": "Servisch"
+    },
+    "sn": {
+        "code": "sn",
+        "name": "Shona"
+    },
+    "sd": {
+        "code": "sd",
+        "name": "Sindhi"
+    },
+    "si": {
+        "code": "si",
+        "name": "Singalees"
+    },
+    "sk": {
+        "code": "sk",
+        "name": "Slowaaks"
+    },
+    "sl": {
+        "code": "sl",
+        "name": "Sloveens"
+    },
+    "so": {
+        "code": "so",
+        "name": "Somalisch"
+    },
+    "es": {
+        "code": "es",
+        "name": "Spaans"
+    },
+    "su": {
+        "code": "su",
+        "name": "Soendanees"
+    },
+    "sw": {
+        "code": "sw",
+        "name": "Swahili"
+    },
+    "sv": {
+        "code": "sv",
+        "name": "Zweeds"
+    },
+    "tl": {
+        "code": "tl",
+        "name": "Tagalog"
+    },
+    "tg": {
+        "code": "tg",
+        "name": "Tadzjieks"
+    },
+    "ta": {
+        "code": "ta",
+        "name": "Tamil"
+    },
+    "tt": {
+        "code": "tt",
+        "name": "Tataars"
+    },
+    "te": {
+        "code": "te",
+        "name": "Telugu"
+    },
+    "th": {
+        "code": "th",
+        "name": "Thai"
+    },
+    "ti": {
+        "code": "ti",
+        "name": "Tigrinya"
+    },
+    "tr": {
+        "code": "tr",
+        "name": "Turks"
+    },
+    "tk": {
+        "code": "tk",
+        "name": "Turkmeens"
+    },
+    "ak": {
+        "code": "ak",
+        "name": "Akan"
+    },
+    "ug": {
+        "code": "ug",
+        "name": "Oeigoers"
+    },
+    "uk": {
+        "code": "uk",
+        "name": "Oekraïens"
+    },
+    "ur": {
+        "code": "ur",
+        "name": "Urdu"
+    },
+    "uz_Cyrl": {
+        "code": "uz_Cyrl",
+        "name": "Oezbeeks"
+    },
+    "uz_Latn": {
+        "code": "uz_Latn",
+        "name": "Oezbeeks"
+    },
+    "vi": {
+        "code": "vi",
+        "name": "Vietnamees"
+    },
+    "cy": {
+        "code": "cy",
+        "name": "Welsh"
+    },
+    "xh": {
+        "code": "xh",
+        "name": "Xhosa"
+    },
+    "yi": {
+        "code": "yi",
+        "name": "Jiddisch"
+    },
+    "yo": {
+        "code": "yo",
+        "name": "Yoruba"
+    },
+    "zu": {
+        "code": "zu",
+        "name": "Zoeloe"
+    }
 }
