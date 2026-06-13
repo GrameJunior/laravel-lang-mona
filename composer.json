@@ -91,6 +91,10 @@
             "@php bin/mona cldr:locale",
             "@php bin/mona cldr:locale:native"
         ],
+        "library:collect": [
+            "@disableProcessTimeout",
+            "@php bin/mona library"
+        ],
         "disableProcessTimeout": "Composer\\Config::disableProcessTimeout",
         "post-autoload-dump": [
             "@clear",
