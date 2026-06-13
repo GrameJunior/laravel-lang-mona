@@ -18,7 +18,7 @@
 - [x] HttpStatuses
 - [x] JsonFallback
 - [x] Lang
-- [ ] Library
+- [x] Library
 - [x] LocaleList
 - [ ] Locales
 - [ ] Models
