@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace LaravelLang\Mona\Commands\Cldr;
 
+use Illuminate\Contracts\Support\Arrayable;
+use LaravelLang\CurrencyNames\Data\CurrencyData;
 use RuntimeException;
 
 use function array_key_first;
-use function file_get_contents;
 use function is_array;
 use function is_file;
-use function json_decode;
 use function sprintf;
 
 final class CldrCurrencyCommand extends CldrCommand
@@ -43,16 +43,16 @@ final class CldrCurrencyCommand extends CldrCommand
         'ZWG' => 924,
     ];
 
-    protected function perform(string $forCode, string $locale): array
+    protected function perform(string $forCode, string $locale): Arrayable
     {
         $code = $this->currencyCode($locale);
 
-        return [
-            'code'      => $code,
-            'numeric'   => $this->numericCode($code),
-            'native'    => $this->currencyName($locale, $code),
-            'localized' => $this->currencyName($forCode, $code),
-        ];
+        return new CurrencyData(
+            code     : $code,
+            numeric  : $this->numericCode($code),
+            native   : $this->currencyName($locale, $code),
+            localized: $this->currencyName($forCode, $code),
+        );
     }
 
     protected function currencyCode(string $locale): string
@@ -125,7 +125,7 @@ final class CldrCurrencyCommand extends CldrCommand
             throw new RuntimeException(sprintf('CLDR currency data file not found: %s', $this->currencyDataPath));
         }
 
-        $data = json_decode(file_get_contents($this->currencyDataPath), true, flags: JSON_THROW_ON_ERROR);
+        $data = $this->filesystem->get($this->currencyDataPath);
 
         $regions = $data['supplemental']['currencyData']['region'] ?? null;
 
@@ -146,7 +146,7 @@ final class CldrCurrencyCommand extends CldrCommand
             throw new RuntimeException(sprintf('CLDR code mappings file not found: %s', $this->codeMappingsPath));
         }
 
-        $data = json_decode(file_get_contents($this->codeMappingsPath), true, flags: JSON_THROW_ON_ERROR);
+        $data = $this->filesystem->get($this->codeMappingsPath);
 
         $mappings = $data['supplemental']['codeMappings'] ?? null;
 
@@ -163,8 +163,9 @@ final class CldrCurrencyCommand extends CldrCommand
             throw new RuntimeException(sprintf('CLDR currencies file not found: %s', $path));
         }
 
-        $data = json_decode(file_get_contents($path), true, flags: JSON_THROW_ON_ERROR);
-        $key  = array_key_first($data['main'] ?? []);
+        $data = $this->filesystem->get($path);
+
+        $key = array_key_first($data['main'] ?? []);
 
         $currencies = $key === null ? null : ($data['main'][$key]['numbers']['currencies'] ?? null);
 

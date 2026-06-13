@@ -57,7 +57,8 @@
             "LaravelLang\\Models\\": "src/Models/src/",
             "LaravelLang\\Mona\\": "app/",
             "LaravelLang\\Publisher\\": "src/Publisher/src/",
-            "LaravelLang\\Routes\\": "src/Routes/src/"
+            "LaravelLang\\Routes\\": "src/Routes/src/",
+            "LaravelLang\\Support\\": "src/Support/src/"
         }
     },
     "autoload-dev": {

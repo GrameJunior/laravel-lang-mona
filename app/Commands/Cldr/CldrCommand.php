@@ -4,22 +4,21 @@ declare(strict_types=1);
 
 namespace LaravelLang\Mona\Commands\Cldr;
 
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Str;
 use LaravelLang\LocaleList\Locale;
+use LaravelLang\Support\Filesystem\Filesystem;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use function array_key_first;
-use function env;
 use function explode;
 use function file_get_contents;
-use function file_put_contents;
 use function is_array;
 use function is_file;
 use function json_decode;
-use function json_encode;
 use function Laravel\Prompts\intro;
 use function Laravel\Prompts\task;
 use function preg_match;
@@ -28,8 +27,6 @@ use function sprintf;
 abstract class CldrCommand extends Command
 {
     protected string $targetDirectory;
-
-    protected int $jsonOptions = JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
 
     protected string $fallback = 'en';
 
@@ -43,6 +40,12 @@ abstract class CldrCommand extends Command
 
     /** @var array<string, string>|null */
     private ?array $likelySubtags = null;
+
+    public function __construct(
+        protected Filesystem $filesystem = new Filesystem,
+    ) {
+        parent::__construct();
+    }
 
     protected function configure(): void
     {
@@ -65,14 +68,16 @@ abstract class CldrCommand extends Command
         return self::SUCCESS;
     }
 
-    abstract protected function perform(string $forCode, string $locale): array|string|null;
+    abstract protected function perform(string $forCode, string $locale): array|string|null|Arrayable;
 
     protected function handle(string $locale): void
     {
         $data = [];
 
         foreach (Locale::values() as $current) {
-            $data[$current] = $this->perform($locale, $current);
+            $result = $this->perform($locale, $current);
+
+            $data[$current] = $result instanceof Arrayable ? $result->toArray() : $result;
         }
 
         $this->store($locale, $data);
@@ -84,8 +89,9 @@ abstract class CldrCommand extends Command
             throw new RuntimeException(sprintf('CLDR languages file not found: %s', $path));
         }
 
-        $data = json_decode(file_get_contents($path), true, flags: JSON_THROW_ON_ERROR);
-        $key  = array_key_first($data['main'] ?? []);
+        $data = $this->filesystem->get($path);
+
+        $key = array_key_first($data['main'] ?? []);
 
         $languages = $key === null ? null : ($data['main'][$key]['localeDisplayNames']['languages'] ?? null);
 
@@ -98,14 +104,11 @@ abstract class CldrCommand extends Command
 
     protected function store(string $code, array $data): void
     {
-        file_put_contents($this->targetDirectory . '/' . $code . '.json', $this->encode($data));
-    }
-
-    protected function encode(array $data): string
-    {
-        return env('PRETTY_JSON')
-            ? json_encode($data, $this->jsonOptions | JSON_PRETTY_PRINT)
-            : json_encode($data, $this->jsonOptions);
+        $this->filesystem->store(
+            path     : $this->targetDirectory . '/' . $code . '.json',
+            data     : $data,
+            jsonFlags: JSON_PRETTY_PRINT
+        );
     }
 
     protected function countryCode(string $locale): string
