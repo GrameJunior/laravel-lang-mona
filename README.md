@@ -33,6 +33,7 @@
 - [ ] tests
 - [ ] readme
 - [ ] composer.json
+- [ ] documentation
 
 ## Documentation
 
