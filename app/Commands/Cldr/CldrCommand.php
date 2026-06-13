@@ -10,8 +10,6 @@ use LaravelLang\LocaleList\Locale;
 use LaravelLang\Support\Filesystem\Filesystem;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 
 use function array_key_first;
 use function explode;
@@ -57,7 +55,7 @@ abstract class CldrCommand extends Command
             ->setDescription("Update $who names from CLDR");
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    public function __invoke(): int
     {
         intro($this->commandName());
 
