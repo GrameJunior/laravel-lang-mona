@@ -47,11 +47,15 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "LaravelLang\\Mona\\": "app/",
+            "LaravelLang\\Config\\": "src/Config/src/",
+            "LaravelLang\\CountryNames\\": "src/CountryNames/src/",
+            "LaravelLang\\CurrencyNames\\": "src/CurrencyNames/src/",
             "LaravelLang\\JsonFallback\\": "src/JsonFallback/src/",
             "LaravelLang\\LocaleList\\": "src/LocaleList/src/",
+            "LaravelLang\\LocaleNames\\": "src/LocaleNames/src/",
             "LaravelLang\\Locales\\": "src/Locales/src/",
             "LaravelLang\\Models\\": "src/Models/src/",
+            "LaravelLang\\Mona\\": "app/",
             "LaravelLang\\Publisher\\": "src/Publisher/src/",
             "LaravelLang\\Routes\\": "src/Routes/src/"
         }
