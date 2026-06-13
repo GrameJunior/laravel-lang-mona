@@ -41,4 +41,14 @@ final class Filesystem
 
         $this->storage->put($path, $content);
     }
+
+    public function directories(string $path): array
+    {
+        return $this->storage->directories($path);
+    }
+
+    public function deleteDirectory(string $path): void
+    {
+        $this->storage->deleteDirectory($path);
+    }
 }

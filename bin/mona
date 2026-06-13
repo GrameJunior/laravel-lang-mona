@@ -10,6 +10,7 @@ use LaravelLang\Mona\Commands\Cldr\CldrCurrencyCommand;
 use LaravelLang\Mona\Commands\Cldr\CldrCurrencyNativeCommand;
 use LaravelLang\Mona\Commands\Cldr\CldrLocaleCommand;
 use LaravelLang\Mona\Commands\Cldr\CldrLocaleNativeCommand;
+use LaravelLang\Mona\Commands\LibraryCommand;
 use Symfony\Component\Console\Application;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -26,6 +27,7 @@ $application->addCommands([
     new CldrCurrencyNativeCommand,
     new CldrLocaleCommand,
     new CldrLocaleNativeCommand,
+    new LibraryCommand,
 ]);
 
 $application->run();
