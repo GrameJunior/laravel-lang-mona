@@ -24,7 +24,7 @@ use function sprintf;
 
 abstract class CldrCommand extends Command
 {
-    protected string $directory;
+    protected string $targetDirectory;
 
     protected int $jsonOptions = JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
 
@@ -40,8 +40,8 @@ abstract class CldrCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        foreach (Locale::options() as $name => $code) {
-            task($name, fn () => $this->handle($code));
+        foreach (Locale::options() as $name => $locale) {
+            task($name, fn () => $this->handle($locale));
         }
 
         return self::SUCCESS;
@@ -49,15 +49,15 @@ abstract class CldrCommand extends Command
 
     abstract protected function perform(string $forCode, string $locale): array|string|null;
 
-    protected function handle(string $code): void
+    protected function handle(string $locale): void
     {
         $data = [];
 
-        foreach (Locale::values() as $locale) {
-            $data[$locale] = $this->perform($code, $locale);
+        foreach (Locale::values() as $current) {
+            $data[$current] = $this->perform($locale, $current);
         }
 
-        $this->store($code, $data);
+        $this->store($locale, $data);
     }
 
     protected function load(string $path): array
@@ -80,7 +80,7 @@ abstract class CldrCommand extends Command
 
     protected function store(string $code, array $data): void
     {
-        file_put_contents($this->directory . '/' . $code . '.json', $this->encode($data));
+        file_put_contents($this->targetDirectory . '/' . $code . '.json', $this->encode($data));
     }
 
     protected function encode(array $data): string

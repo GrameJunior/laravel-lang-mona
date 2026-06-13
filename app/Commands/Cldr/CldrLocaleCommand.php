@@ -12,11 +12,13 @@ use function str_replace;
 
 final class CldrLocaleCommand extends CldrCommand
 {
-    protected string $directory = __DIR__ . '/../../../src/LocaleNames/data';
+    protected string $targetDirectory = __DIR__ . '/../../../src/LocaleNames/data';
 
-    private const string SOURCE_DIRECTORY = __DIR__ . '/../../../node_modules/cldr-localenames-full/main';
-    private const string FALLBACK_LOCALE  = 'en';
-    private const array  LOCALE_ALIASES   = [
+    protected string $sourceDirectory = __DIR__ . '/../../../node_modules/cldr-localenames-full/main';
+
+    protected string $fallback = 'en';
+
+    protected array $aliases = [
         'pt_BR' => 'pt',
         'tl'    => 'fil',
         'zh_CN' => 'zh-Hans',
@@ -30,7 +32,7 @@ final class CldrLocaleCommand extends CldrCommand
     protected function perform(string $forCode, string $locale): string
     {
         $forLanguages = $this->languages($forCode);
-        $fallback     = $this->languages(self::FALLBACK_LOCALE);
+        $fallback     = $this->languages($this->fallback);
 
         $code = $this->localeCode($locale);
         $base = $this->baseCode($code);
@@ -49,13 +51,13 @@ final class CldrLocaleCommand extends CldrCommand
         $source = $this->bundleCode($locale);
 
         return $this->languages[$source] ??= $this->load(
-            self::SOURCE_DIRECTORY . '/' . $source . '/languages.json'
+            $this->sourceDirectory . '/' . $source . '/languages.json'
         );
     }
 
     protected function bundleCode(string $locale): string
     {
-        return self::LOCALE_ALIASES[$locale] ?? $this->localeCode($locale);
+        return $this->aliases[$locale] ?? $this->localeCode($locale);
     }
 
     protected function localeCode(string $locale): string

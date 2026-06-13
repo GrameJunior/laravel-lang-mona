@@ -6,7 +6,7 @@ namespace LaravelLang\Mona\Commands\Cldr;
 
 final class CldrCountryCommand extends CldrCommand
 {
-    protected string $directory = __DIR__ . '/../../../src/CountryNames/data';
+    protected string $targetDirectory = __DIR__ . '/../../../src/CountryNames/data';
 
     protected function perform(string $forCode, string $locale): array
     {
