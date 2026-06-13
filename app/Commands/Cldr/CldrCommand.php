@@ -13,13 +13,16 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use function array_key_first;
 use function env;
+use function explode;
 use function file_get_contents;
 use function file_put_contents;
 use function is_array;
 use function is_file;
 use function json_decode;
 use function json_encode;
+use function Laravel\Prompts\intro;
 use function Laravel\Prompts\task;
+use function preg_match;
 use function sprintf;
 
 abstract class CldrCommand extends Command
@@ -38,6 +41,9 @@ abstract class CldrCommand extends Command
         'zh_TW' => 'zh-Hant',
     ];
 
+    /** @var array<string, string>|null */
+    private ?array $likelySubtags = null;
+
     protected function configure(): void
     {
         $name = $this->commandName();
@@ -50,6 +56,8 @@ abstract class CldrCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        intro($this->commandName());
+
         foreach (Locale::options() as $name => $locale) {
             task($name, fn () => $this->handle($locale));
         }
@@ -98,6 +106,48 @@ abstract class CldrCommand extends Command
         return env('PRETTY_JSON')
             ? json_encode($data, $this->jsonOptions | JSON_PRETTY_PRINT)
             : json_encode($data, $this->jsonOptions);
+    }
+
+    protected function countryCode(string $locale): string
+    {
+        $code = $this->localeCode($locale);
+
+        foreach (explode('-', $code) as $part) {
+            if (preg_match('/^[A-Z]{2}$|^[0-9]{3}$/', $part) === 1) {
+                return $part;
+            }
+        }
+
+        $likely = $this->likelySubtags()[$code]
+            ?? $this->likelySubtags()[$this->baseCode($code)]
+            ?? throw new RuntimeException(sprintf('Unable to find CLDR likely subtag for [%s].', $locale));
+
+        if (preg_match('/-([A-Z]{2}|[0-9]{3})$/', $likely, $matches) === 1) {
+            return $matches[1];
+        }
+
+        throw new RuntimeException(sprintf('Unable to find CLDR country code for [%s].', $locale));
+    }
+
+    protected function likelySubtags(): array
+    {
+        if ($this->likelySubtags !== null) {
+            return $this->likelySubtags;
+        }
+
+        if (! is_file($this->likelySubtagsPath)) {
+            throw new RuntimeException(sprintf('CLDR likely subtags file not found: %s', $this->likelySubtagsPath));
+        }
+
+        $data = json_decode(file_get_contents($this->likelySubtagsPath), true, flags: JSON_THROW_ON_ERROR);
+
+        $likelySubtags = $data['supplemental']['likelySubtags'] ?? null;
+
+        if (! is_array($likelySubtags)) {
+            throw new RuntimeException(sprintf('CLDR likely subtags data not found: %s', $this->likelySubtagsPath));
+        }
+
+        return $this->likelySubtags = $likelySubtags;
     }
 
     protected function bundleCode(string $locale): string
