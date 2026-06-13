@@ -1,0 +1,647 @@
+{
+    "af": {
+        "code": "ZA",
+        "native": "Suid-Afrika",
+        "localized": "Āwherika ki te Tonga"
+    },
+    "sq": {
+        "code": "AL",
+        "native": "Shqipëri",
+        "localized": "Arapeinia"
+    },
+    "am": {
+        "code": "ET",
+        "native": "ኢትዮጵያ",
+        "localized": "Etiopia"
+    },
+    "ar": {
+        "code": "EG",
+        "native": "مصر",
+        "localized": "Īhipa"
+    },
+    "hy": {
+        "code": "AM",
+        "native": "Հայաստան",
+        "localized": "Āmenia"
+    },
+    "as": {
+        "code": "IN",
+        "native": "ভাৰত",
+        "localized": "Inia"
+    },
+    "az": {
+        "code": "AZ",
+        "native": "Azərbaycan",
+        "localized": "Atepaihānia"
+    },
+    "bm": {
+        "code": "ML",
+        "native": "Mali",
+        "localized": "Māri"
+    },
+    "eu": {
+        "code": "ES",
+        "native": "Espainia",
+        "localized": "Peina"
+    },
+    "be": {
+        "code": "BY",
+        "native": "Беларусь",
+        "localized": "Pērara"
+    },
+    "bn": {
+        "code": "BD",
+        "native": "বাংলাদেশ",
+        "localized": "Pākaratēhi"
+    },
+    "bho": {
+        "code": "IN",
+        "native": "भारत",
+        "localized": "Inia"
+    },
+    "bs": {
+        "code": "BA",
+        "native": "Bosna i Hercegovina",
+        "localized": "Pōngia & Herekōwini"
+    },
+    "bg": {
+        "code": "BG",
+        "native": "България",
+        "localized": "Purukāria"
+    },
+    "en_CA": {
+        "code": "CA",
+        "native": "Canada",
+        "localized": "Kānata"
+    },
+    "ca": {
+        "code": "ES",
+        "native": "Espanya",
+        "localized": "Peina"
+    },
+    "ceb": {
+        "code": "PH",
+        "native": "Philippines",
+        "localized": "Piripīni"
+    },
+    "km": {
+        "code": "KH",
+        "native": "កម្ពុជា",
+        "localized": "Kamapōtia"
+    },
+    "zh_CN": {
+        "code": "CN",
+        "native": "中国",
+        "localized": "Haina"
+    },
+    "zh_HK": {
+        "code": "HK",
+        "native": "中國香港特別行政區",
+        "localized": "Hongipua Haina"
+    },
+    "zh_TW": {
+        "code": "TW",
+        "native": "台灣",
+        "localized": "Taiwana"
+    },
+    "hr": {
+        "code": "HR",
+        "native": "Hrvatska",
+        "localized": "Koroātia"
+    },
+    "cs": {
+        "code": "CZ",
+        "native": "Česko",
+        "localized": "Tiekia"
+    },
+    "da": {
+        "code": "DK",
+        "native": "Danmark",
+        "localized": "Tenemāka"
+    },
+    "doi": {
+        "code": "IN",
+        "native": "भारत",
+        "localized": "Inia"
+    },
+    "nl": {
+        "code": "NL",
+        "native": "Nederland",
+        "localized": "Hōrana"
+    },
+    "en": {
+        "code": "US",
+        "native": "United States",
+        "localized": "Hononga o Amerika"
+    },
+    "eo": {
+        "code": "001",
+        "native": "mondo",
+        "localized": "te ao"
+    },
+    "et": {
+        "code": "EE",
+        "native": "Eesti",
+        "localized": "Etōnia"
+    },
+    "ee": {
+        "code": "GH",
+        "native": "Ghana nutome",
+        "localized": "Kāna"
+    },
+    "fi": {
+        "code": "FI",
+        "native": "Suomi",
+        "localized": "Whinarana"
+    },
+    "fr": {
+        "code": "FR",
+        "native": "France",
+        "localized": "Wīwī"
+    },
+    "fy": {
+        "code": "NL",
+        "native": "Nederlân",
+        "localized": "Hōrana"
+    },
+    "gl": {
+        "code": "ES",
+        "native": "España",
+        "localized": "Peina"
+    },
+    "ka": {
+        "code": "GE",
+        "native": "საქართველო",
+        "localized": "Hōria"
+    },
+    "de": {
+        "code": "DE",
+        "native": "Deutschland",
+        "localized": "Tiamana"
+    },
+    "de_AT": {
+        "code": "AT",
+        "native": "Österreich",
+        "localized": "Ataria"
+    },
+    "de_CH": {
+        "code": "CH",
+        "native": "Schweiz",
+        "localized": "Huiterangi"
+    },
+    "el": {
+        "code": "GR",
+        "native": "Ελλάδα",
+        "localized": "Kirihi"
+    },
+    "gu": {
+        "code": "IN",
+        "native": "ભારત",
+        "localized": "Inia"
+    },
+    "ht": {
+        "code": "HT",
+        "native": "Haïti",
+        "localized": "Haiti"
+    },
+    "ha": {
+        "code": "NG",
+        "native": "Nijeriya",
+        "localized": "Ngāitiria"
+    },
+    "haw": {
+        "code": "US",
+        "native": "ʻAmelika Hui Pū ʻIa",
+        "localized": "Hononga o Amerika"
+    },
+    "he": {
+        "code": "IL",
+        "native": "ישראל",
+        "localized": "Iharaira"
+    },
+    "hi": {
+        "code": "IN",
+        "native": "भारत",
+        "localized": "Inia"
+    },
+    "hu": {
+        "code": "HU",
+        "native": "Magyarország",
+        "localized": "Hanekari"
+    },
+    "is": {
+        "code": "IS",
+        "native": "Ísland",
+        "localized": "Tiorangi"
+    },
+    "ig": {
+        "code": "NG",
+        "native": "Naịjịrịa",
+        "localized": "Ngāitiria"
+    },
+    "id": {
+        "code": "ID",
+        "native": "Indonesia",
+        "localized": "Initonīhia"
+    },
+    "ga": {
+        "code": "IE",
+        "native": "Éire",
+        "localized": "Airani"
+    },
+    "it": {
+        "code": "IT",
+        "native": "Italia",
+        "localized": "Itāria"
+    },
+    "ja": {
+        "code": "JP",
+        "native": "日本",
+        "localized": "Hapani"
+    },
+    "kn": {
+        "code": "IN",
+        "native": "ಭಾರತ",
+        "localized": "Inia"
+    },
+    "kk": {
+        "code": "KZ",
+        "native": "Қазақстан",
+        "localized": "Katatānga"
+    },
+    "rw": {
+        "code": "RW",
+        "native": "U Rwanda",
+        "localized": "Rāwana"
+    },
+    "ko": {
+        "code": "KR",
+        "native": "대한민국",
+        "localized": "Kōrea ki te Tonga"
+    },
+    "ku": {
+        "code": "TR",
+        "native": "Türkiye",
+        "localized": "Tākei"
+    },
+    "ckb": {
+        "code": "IQ",
+        "native": "عێراق",
+        "localized": "Irāka"
+    },
+    "ky": {
+        "code": "KG",
+        "native": "Кыргызстан",
+        "localized": "Kikitānga"
+    },
+    "lo": {
+        "code": "LA",
+        "native": "ລາວ",
+        "localized": "Rāoho"
+    },
+    "lv": {
+        "code": "LV",
+        "native": "Latvija",
+        "localized": "Rāwhia"
+    },
+    "ln": {
+        "code": "CD",
+        "native": "Republíki ya Kongó Demokratíki",
+        "localized": "Kōngo - Kinihāha"
+    },
+    "lt": {
+        "code": "LT",
+        "native": "Lietuva",
+        "localized": "Rituānia"
+    },
+    "lg": {
+        "code": "UG",
+        "native": "Yuganda",
+        "localized": "Ukānga"
+    },
+    "lb": {
+        "code": "LU",
+        "native": "Lëtzebuerg",
+        "localized": "Rakapuō"
+    },
+    "mk": {
+        "code": "MK",
+        "native": "Северна Македонија",
+        "localized": "Makerōnia ki te Raki"
+    },
+    "mai": {
+        "code": "IN",
+        "native": "भारत",
+        "localized": "Inia"
+    },
+    "mg": {
+        "code": "MG",
+        "native": "Madagasikara",
+        "localized": "Matakāhika"
+    },
+    "ms": {
+        "code": "MY",
+        "native": "Malaysia",
+        "localized": "Mareia"
+    },
+    "ml": {
+        "code": "IN",
+        "native": "ഇന്ത്യ",
+        "localized": "Inia"
+    },
+    "mt": {
+        "code": "MT",
+        "native": "Malta",
+        "localized": "Mārata"
+    },
+    "mi": {
+        "code": "NZ",
+        "native": "Aotearoa",
+        "localized": "Aotearoa"
+    },
+    "mr": {
+        "code": "IN",
+        "native": "भारत",
+        "localized": "Inia"
+    },
+    "mni_Mtei": {
+        "code": "IN",
+        "native": "ইন্দিয়া",
+        "localized": "Inia"
+    },
+    "mn": {
+        "code": "MN",
+        "native": "Монгол",
+        "localized": "Mongōria"
+    },
+    "my": {
+        "code": "MM",
+        "native": "မြန်မာ",
+        "localized": "Pēma"
+    },
+    "ne": {
+        "code": "NP",
+        "native": "नेपाल",
+        "localized": "Nepōra"
+    },
+    "nb": {
+        "code": "NO",
+        "native": "Norge",
+        "localized": "Nōwei"
+    },
+    "nn": {
+        "code": "NO",
+        "native": "Noreg",
+        "localized": "Nōwei"
+    },
+    "oc": {
+        "code": "FR",
+        "native": "França",
+        "localized": "Wīwī"
+    },
+    "or": {
+        "code": "IN",
+        "native": "ଭାରତ",
+        "localized": "Inia"
+    },
+    "om": {
+        "code": "ET",
+        "native": "Itoophiyaa",
+        "localized": "Etiopia"
+    },
+    "ps": {
+        "code": "AF",
+        "native": "افغانستان",
+        "localized": "Awhekenetāna"
+    },
+    "fa": {
+        "code": "IR",
+        "native": "ایران",
+        "localized": "Irāna"
+    },
+    "fil": {
+        "code": "PH",
+        "native": "Pilipinas",
+        "localized": "Piripīni"
+    },
+    "pl": {
+        "code": "PL",
+        "native": "Polska",
+        "localized": "Pōrana"
+    },
+    "pt": {
+        "code": "BR",
+        "native": "Brasil",
+        "localized": "Parīhi"
+    },
+    "pt_BR": {
+        "code": "BR",
+        "native": "Brasil",
+        "localized": "Parīhi"
+    },
+    "pa": {
+        "code": "IN",
+        "native": "ਭਾਰਤ",
+        "localized": "Inia"
+    },
+    "qu": {
+        "code": "PE",
+        "native": "Perú",
+        "localized": "Peru"
+    },
+    "ro": {
+        "code": "RO",
+        "native": "România",
+        "localized": "Romeinia"
+    },
+    "ru": {
+        "code": "RU",
+        "native": "Россия",
+        "localized": "Rūhia"
+    },
+    "sa": {
+        "code": "IN",
+        "native": "भारतः",
+        "localized": "Inia"
+    },
+    "sc": {
+        "code": "IT",
+        "native": "Itàlia",
+        "localized": "Itāria"
+    },
+    "gd": {
+        "code": "GB",
+        "native": "An Rìoghachd Aonaichte",
+        "localized": "Te Hononga o Piritene"
+    },
+    "sr_Cyrl": {
+        "code": "RS",
+        "native": "Србија",
+        "localized": "Hirupia"
+    },
+    "sr_Latn": {
+        "code": "RS",
+        "native": "Srbija",
+        "localized": "Hirupia"
+    },
+    "sr_Latn_ME": {
+        "code": "ME",
+        "native": "Crna Gora",
+        "localized": "Maungakororiko"
+    },
+    "sn": {
+        "code": "ZW",
+        "native": "Zimbabwe",
+        "localized": "Timuwawe"
+    },
+    "sd": {
+        "code": "PK",
+        "native": "پاڪستان",
+        "localized": "Pakitāne"
+    },
+    "si": {
+        "code": "LK",
+        "native": "ශ්‍රී ලංකාව",
+        "localized": "Hiri Rānaka"
+    },
+    "sk": {
+        "code": "SK",
+        "native": "Slovensko",
+        "localized": "Horowākia"
+    },
+    "sl": {
+        "code": "SI",
+        "native": "Slovenija",
+        "localized": "Horowinia"
+    },
+    "so": {
+        "code": "SO",
+        "native": "Soomaaliya",
+        "localized": "Hūmārie"
+    },
+    "es": {
+        "code": "ES",
+        "native": "España",
+        "localized": "Peina"
+    },
+    "su": {
+        "code": "ID",
+        "native": "Indonesia",
+        "localized": "Initonīhia"
+    },
+    "sw": {
+        "code": "TZ",
+        "native": "Tanzania",
+        "localized": "Tānahia"
+    },
+    "sv": {
+        "code": "SE",
+        "native": "Sverige",
+        "localized": "Huitene"
+    },
+    "tl": {
+        "code": "PH",
+        "native": "Pilipinas",
+        "localized": "Piripīni"
+    },
+    "tg": {
+        "code": "TJ",
+        "native": "Тоҷикистон",
+        "localized": "Takiritānga"
+    },
+    "ta": {
+        "code": "IN",
+        "native": "இந்தியா",
+        "localized": "Inia"
+    },
+    "tt": {
+        "code": "RU",
+        "native": "Россия",
+        "localized": "Rūhia"
+    },
+    "te": {
+        "code": "IN",
+        "native": "భారతదేశం",
+        "localized": "Inia"
+    },
+    "th": {
+        "code": "TH",
+        "native": "ไทย",
+        "localized": "Tairanga"
+    },
+    "ti": {
+        "code": "ET",
+        "native": "ኢትዮጵያ",
+        "localized": "Etiopia"
+    },
+    "tr": {
+        "code": "TR",
+        "native": "Türkiye",
+        "localized": "Tākei"
+    },
+    "tk": {
+        "code": "TM",
+        "native": "Türkmenistan",
+        "localized": "Tukumanatānga"
+    },
+    "ak": {
+        "code": "GH",
+        "native": "Gaana",
+        "localized": "Kāna"
+    },
+    "ug": {
+        "code": "CN",
+        "native": "جۇڭگو",
+        "localized": "Haina"
+    },
+    "uk": {
+        "code": "UA",
+        "native": "Україна",
+        "localized": "Ukareinga"
+    },
+    "ur": {
+        "code": "PK",
+        "native": "پاکستان",
+        "localized": "Pakitāne"
+    },
+    "uz_Cyrl": {
+        "code": "UZ",
+        "native": "Ўзбекистон",
+        "localized": "Uhipeketāne"
+    },
+    "uz_Latn": {
+        "code": "UZ",
+        "native": "Oʻzbekiston",
+        "localized": "Uhipeketāne"
+    },
+    "vi": {
+        "code": "VN",
+        "native": "Việt Nam",
+        "localized": "Whitināmu"
+    },
+    "cy": {
+        "code": "GB",
+        "native": "Y Deyrnas Unedig",
+        "localized": "Te Hononga o Piritene"
+    },
+    "xh": {
+        "code": "ZA",
+        "native": "EMzantsi Afrika",
+        "localized": "Āwherika ki te Tonga"
+    },
+    "yi": {
+        "code": "UA",
+        "native": "אוקראַינע",
+        "localized": "Ukareinga"
+    },
+    "yo": {
+        "code": "NG",
+        "native": "Nàìjíríà",
+        "localized": "Ngāitiria"
+    },
+    "zu": {
+        "code": "ZA",
+        "native": "iNingizimu Afrika",
+        "localized": "Āwherika ki te Tonga"
+    }
+}

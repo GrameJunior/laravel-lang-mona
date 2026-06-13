@@ -71,7 +71,7 @@
     },
     "scripts": {
         "test": "vendor/bin/pest --parallel",
-        "data:update": [
+        "cldr:update": [
             "@disableProcessTimeout",
             "@php bin/mona cldr:country",
             "@php bin/mona cldr:locale"

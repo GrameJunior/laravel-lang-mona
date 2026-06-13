@@ -22,7 +22,7 @@ jobs:
                     npm ci --ignore-scripts
 
             -   name: Update data
-                run: composer data:update
+                run: composer cldr:update
 
             -   name: Create a Pull Request
                 uses: peter-evans/create-pull-request@v8
@@ -35,8 +35,7 @@ jobs:
                     title: "[source]: CLDR data updated"
                     commit-message: 📦 CLDR data updated
                     body: 📦 CLDR data updated
-                    labels: |
-                        source
+                    labels: source
 
             -   name: Merge PR
                 if: ${{ steps.pullRequest.outputs.pull-request-number }}

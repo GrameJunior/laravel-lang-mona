@@ -28,6 +28,16 @@ abstract class CldrCommand extends Command
 
     protected int $jsonOptions = JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
 
+    protected string $fallback = 'en';
+
+    protected array $aliases = [
+        'pt_BR' => 'pt',
+        'tl'    => 'fil',
+        'zh_CN' => 'zh-Hans',
+        'zh_HK' => 'zh-Hant-HK',
+        'zh_TW' => 'zh-Hant',
+    ];
+
     protected function configure(): void
     {
         $name = $this->commandName();
@@ -88,6 +98,21 @@ abstract class CldrCommand extends Command
         return env('PRETTY_JSON')
             ? json_encode($data, $this->jsonOptions | JSON_PRETTY_PRINT)
             : json_encode($data, $this->jsonOptions);
+    }
+
+    protected function bundleCode(string $locale): string
+    {
+        return $this->aliases[$locale] ?? $this->localeCode($locale);
+    }
+
+    protected function localeCode(string $locale): string
+    {
+        return str_replace('_', '-', $locale);
+    }
+
+    protected function baseCode(string $locale): string
+    {
+        return explode('-', $locale)[0];
     }
 
     protected function commandName(): string

@@ -1,0 +1,647 @@
+{
+    "af": {
+        "code": "ZA",
+        "native": "Suid-Afrika",
+        "localized": "Νότια Αφρική"
+    },
+    "sq": {
+        "code": "AL",
+        "native": "Shqipëri",
+        "localized": "Αλβανία"
+    },
+    "am": {
+        "code": "ET",
+        "native": "ኢትዮጵያ",
+        "localized": "Αιθιοπία"
+    },
+    "ar": {
+        "code": "EG",
+        "native": "مصر",
+        "localized": "Αίγυπτος"
+    },
+    "hy": {
+        "code": "AM",
+        "native": "Հայաստան",
+        "localized": "Αρμενία"
+    },
+    "as": {
+        "code": "IN",
+        "native": "ভাৰত",
+        "localized": "Ινδία"
+    },
+    "az": {
+        "code": "AZ",
+        "native": "Azərbaycan",
+        "localized": "Αζερμπαϊτζάν"
+    },
+    "bm": {
+        "code": "ML",
+        "native": "Mali",
+        "localized": "Μάλι"
+    },
+    "eu": {
+        "code": "ES",
+        "native": "Espainia",
+        "localized": "Ισπανία"
+    },
+    "be": {
+        "code": "BY",
+        "native": "Беларусь",
+        "localized": "Λευκορωσία"
+    },
+    "bn": {
+        "code": "BD",
+        "native": "বাংলাদেশ",
+        "localized": "Μπανγκλαντές"
+    },
+    "bho": {
+        "code": "IN",
+        "native": "भारत",
+        "localized": "Ινδία"
+    },
+    "bs": {
+        "code": "BA",
+        "native": "Bosna i Hercegovina",
+        "localized": "Βοσνία - Ερζεγοβίνη"
+    },
+    "bg": {
+        "code": "BG",
+        "native": "България",
+        "localized": "Βουλγαρία"
+    },
+    "en_CA": {
+        "code": "CA",
+        "native": "Canada",
+        "localized": "Καναδάς"
+    },
+    "ca": {
+        "code": "ES",
+        "native": "Espanya",
+        "localized": "Ισπανία"
+    },
+    "ceb": {
+        "code": "PH",
+        "native": "Philippines",
+        "localized": "Φιλιππίνες"
+    },
+    "km": {
+        "code": "KH",
+        "native": "កម្ពុជា",
+        "localized": "Καμπότζη"
+    },
+    "zh_CN": {
+        "code": "CN",
+        "native": "中国",
+        "localized": "Κίνα"
+    },
+    "zh_HK": {
+        "code": "HK",
+        "native": "中國香港特別行政區",
+        "localized": "Χονγκ Κονγκ ΕΔΠ Κίνας"
+    },
+    "zh_TW": {
+        "code": "TW",
+        "native": "台灣",
+        "localized": "Ταϊβάν"
+    },
+    "hr": {
+        "code": "HR",
+        "native": "Hrvatska",
+        "localized": "Κροατία"
+    },
+    "cs": {
+        "code": "CZ",
+        "native": "Česko",
+        "localized": "Τσεχία"
+    },
+    "da": {
+        "code": "DK",
+        "native": "Danmark",
+        "localized": "Δανία"
+    },
+    "doi": {
+        "code": "IN",
+        "native": "भारत",
+        "localized": "Ινδία"
+    },
+    "nl": {
+        "code": "NL",
+        "native": "Nederland",
+        "localized": "Κάτω Χώρες"
+    },
+    "en": {
+        "code": "US",
+        "native": "United States",
+        "localized": "Ηνωμένες Πολιτείες"
+    },
+    "eo": {
+        "code": "001",
+        "native": "mondo",
+        "localized": "Κόσμος"
+    },
+    "et": {
+        "code": "EE",
+        "native": "Eesti",
+        "localized": "Εσθονία"
+    },
+    "ee": {
+        "code": "GH",
+        "native": "Ghana nutome",
+        "localized": "Γκάνα"
+    },
+    "fi": {
+        "code": "FI",
+        "native": "Suomi",
+        "localized": "Φινλανδία"
+    },
+    "fr": {
+        "code": "FR",
+        "native": "France",
+        "localized": "Γαλλία"
+    },
+    "fy": {
+        "code": "NL",
+        "native": "Nederlân",
+        "localized": "Κάτω Χώρες"
+    },
+    "gl": {
+        "code": "ES",
+        "native": "España",
+        "localized": "Ισπανία"
+    },
+    "ka": {
+        "code": "GE",
+        "native": "საქართველო",
+        "localized": "Γεωργία"
+    },
+    "de": {
+        "code": "DE",
+        "native": "Deutschland",
+        "localized": "Γερμανία"
+    },
+    "de_AT": {
+        "code": "AT",
+        "native": "Österreich",
+        "localized": "Αυστρία"
+    },
+    "de_CH": {
+        "code": "CH",
+        "native": "Schweiz",
+        "localized": "Ελβετία"
+    },
+    "el": {
+        "code": "GR",
+        "native": "Ελλάδα",
+        "localized": "Ελλάδα"
+    },
+    "gu": {
+        "code": "IN",
+        "native": "ભારત",
+        "localized": "Ινδία"
+    },
+    "ht": {
+        "code": "HT",
+        "native": "Haïti",
+        "localized": "Αϊτή"
+    },
+    "ha": {
+        "code": "NG",
+        "native": "Nijeriya",
+        "localized": "Νιγηρία"
+    },
+    "haw": {
+        "code": "US",
+        "native": "ʻAmelika Hui Pū ʻIa",
+        "localized": "Ηνωμένες Πολιτείες"
+    },
+    "he": {
+        "code": "IL",
+        "native": "ישראל",
+        "localized": "Ισραήλ"
+    },
+    "hi": {
+        "code": "IN",
+        "native": "भारत",
+        "localized": "Ινδία"
+    },
+    "hu": {
+        "code": "HU",
+        "native": "Magyarország",
+        "localized": "Ουγγαρία"
+    },
+    "is": {
+        "code": "IS",
+        "native": "Ísland",
+        "localized": "Ισλανδία"
+    },
+    "ig": {
+        "code": "NG",
+        "native": "Naịjịrịa",
+        "localized": "Νιγηρία"
+    },
+    "id": {
+        "code": "ID",
+        "native": "Indonesia",
+        "localized": "Ινδονησία"
+    },
+    "ga": {
+        "code": "IE",
+        "native": "Éire",
+        "localized": "Ιρλανδία"
+    },
+    "it": {
+        "code": "IT",
+        "native": "Italia",
+        "localized": "Ιταλία"
+    },
+    "ja": {
+        "code": "JP",
+        "native": "日本",
+        "localized": "Ιαπωνία"
+    },
+    "kn": {
+        "code": "IN",
+        "native": "ಭಾರತ",
+        "localized": "Ινδία"
+    },
+    "kk": {
+        "code": "KZ",
+        "native": "Қазақстан",
+        "localized": "Καζακστάν"
+    },
+    "rw": {
+        "code": "RW",
+        "native": "U Rwanda",
+        "localized": "Ρουάντα"
+    },
+    "ko": {
+        "code": "KR",
+        "native": "대한민국",
+        "localized": "Νότια Κορέα"
+    },
+    "ku": {
+        "code": "TR",
+        "native": "Türkiye",
+        "localized": "Τουρκία"
+    },
+    "ckb": {
+        "code": "IQ",
+        "native": "عێراق",
+        "localized": "Ιράκ"
+    },
+    "ky": {
+        "code": "KG",
+        "native": "Кыргызстан",
+        "localized": "Κιργιστάν"
+    },
+    "lo": {
+        "code": "LA",
+        "native": "ລາວ",
+        "localized": "Λάος"
+    },
+    "lv": {
+        "code": "LV",
+        "native": "Latvija",
+        "localized": "Λετονία"
+    },
+    "ln": {
+        "code": "CD",
+        "native": "Republíki ya Kongó Demokratíki",
+        "localized": "Κονγκό - Κινσάσα"
+    },
+    "lt": {
+        "code": "LT",
+        "native": "Lietuva",
+        "localized": "Λιθουανία"
+    },
+    "lg": {
+        "code": "UG",
+        "native": "Yuganda",
+        "localized": "Ουγκάντα"
+    },
+    "lb": {
+        "code": "LU",
+        "native": "Lëtzebuerg",
+        "localized": "Λουξεμβούργο"
+    },
+    "mk": {
+        "code": "MK",
+        "native": "Северна Македонија",
+        "localized": "Βόρεια Μακεδονία"
+    },
+    "mai": {
+        "code": "IN",
+        "native": "भारत",
+        "localized": "Ινδία"
+    },
+    "mg": {
+        "code": "MG",
+        "native": "Madagasikara",
+        "localized": "Μαδαγασκάρη"
+    },
+    "ms": {
+        "code": "MY",
+        "native": "Malaysia",
+        "localized": "Μαλαισία"
+    },
+    "ml": {
+        "code": "IN",
+        "native": "ഇന്ത്യ",
+        "localized": "Ινδία"
+    },
+    "mt": {
+        "code": "MT",
+        "native": "Malta",
+        "localized": "Μάλτα"
+    },
+    "mi": {
+        "code": "NZ",
+        "native": "Aotearoa",
+        "localized": "Νέα Ζηλανδία"
+    },
+    "mr": {
+        "code": "IN",
+        "native": "भारत",
+        "localized": "Ινδία"
+    },
+    "mni_Mtei": {
+        "code": "IN",
+        "native": "ইন্দিয়া",
+        "localized": "Ινδία"
+    },
+    "mn": {
+        "code": "MN",
+        "native": "Монгол",
+        "localized": "Μογγολία"
+    },
+    "my": {
+        "code": "MM",
+        "native": "မြန်မာ",
+        "localized": "Μιανμάρ (Βιρμανία)"
+    },
+    "ne": {
+        "code": "NP",
+        "native": "नेपाल",
+        "localized": "Νεπάλ"
+    },
+    "nb": {
+        "code": "NO",
+        "native": "Norge",
+        "localized": "Νορβηγία"
+    },
+    "nn": {
+        "code": "NO",
+        "native": "Noreg",
+        "localized": "Νορβηγία"
+    },
+    "oc": {
+        "code": "FR",
+        "native": "França",
+        "localized": "Γαλλία"
+    },
+    "or": {
+        "code": "IN",
+        "native": "ଭାରତ",
+        "localized": "Ινδία"
+    },
+    "om": {
+        "code": "ET",
+        "native": "Itoophiyaa",
+        "localized": "Αιθιοπία"
+    },
+    "ps": {
+        "code": "AF",
+        "native": "افغانستان",
+        "localized": "Αφγανιστάν"
+    },
+    "fa": {
+        "code": "IR",
+        "native": "ایران",
+        "localized": "Ιράν"
+    },
+    "fil": {
+        "code": "PH",
+        "native": "Pilipinas",
+        "localized": "Φιλιππίνες"
+    },
+    "pl": {
+        "code": "PL",
+        "native": "Polska",
+        "localized": "Πολωνία"
+    },
+    "pt": {
+        "code": "BR",
+        "native": "Brasil",
+        "localized": "Βραζιλία"
+    },
+    "pt_BR": {
+        "code": "BR",
+        "native": "Brasil",
+        "localized": "Βραζιλία"
+    },
+    "pa": {
+        "code": "IN",
+        "native": "ਭਾਰਤ",
+        "localized": "Ινδία"
+    },
+    "qu": {
+        "code": "PE",
+        "native": "Perú",
+        "localized": "Περού"
+    },
+    "ro": {
+        "code": "RO",
+        "native": "România",
+        "localized": "Ρουμανία"
+    },
+    "ru": {
+        "code": "RU",
+        "native": "Россия",
+        "localized": "Ρωσία"
+    },
+    "sa": {
+        "code": "IN",
+        "native": "भारतः",
+        "localized": "Ινδία"
+    },
+    "sc": {
+        "code": "IT",
+        "native": "Itàlia",
+        "localized": "Ιταλία"
+    },
+    "gd": {
+        "code": "GB",
+        "native": "An Rìoghachd Aonaichte",
+        "localized": "Ηνωμένο Βασίλειο"
+    },
+    "sr_Cyrl": {
+        "code": "RS",
+        "native": "Србија",
+        "localized": "Σερβία"
+    },
+    "sr_Latn": {
+        "code": "RS",
+        "native": "Srbija",
+        "localized": "Σερβία"
+    },
+    "sr_Latn_ME": {
+        "code": "ME",
+        "native": "Crna Gora",
+        "localized": "Μαυροβούνιο"
+    },
+    "sn": {
+        "code": "ZW",
+        "native": "Zimbabwe",
+        "localized": "Ζιμπάμπουε"
+    },
+    "sd": {
+        "code": "PK",
+        "native": "پاڪستان",
+        "localized": "Πακιστάν"
+    },
+    "si": {
+        "code": "LK",
+        "native": "ශ්‍රී ලංකාව",
+        "localized": "Σρι Λάνκα"
+    },
+    "sk": {
+        "code": "SK",
+        "native": "Slovensko",
+        "localized": "Σλοβακία"
+    },
+    "sl": {
+        "code": "SI",
+        "native": "Slovenija",
+        "localized": "Σλοβενία"
+    },
+    "so": {
+        "code": "SO",
+        "native": "Soomaaliya",
+        "localized": "Σομαλία"
+    },
+    "es": {
+        "code": "ES",
+        "native": "España",
+        "localized": "Ισπανία"
+    },
+    "su": {
+        "code": "ID",
+        "native": "Indonesia",
+        "localized": "Ινδονησία"
+    },
+    "sw": {
+        "code": "TZ",
+        "native": "Tanzania",
+        "localized": "Τανζανία"
+    },
+    "sv": {
+        "code": "SE",
+        "native": "Sverige",
+        "localized": "Σουηδία"
+    },
+    "tl": {
+        "code": "PH",
+        "native": "Pilipinas",
+        "localized": "Φιλιππίνες"
+    },
+    "tg": {
+        "code": "TJ",
+        "native": "Тоҷикистон",
+        "localized": "Τατζικιστάν"
+    },
+    "ta": {
+        "code": "IN",
+        "native": "இந்தியா",
+        "localized": "Ινδία"
+    },
+    "tt": {
+        "code": "RU",
+        "native": "Россия",
+        "localized": "Ρωσία"
+    },
+    "te": {
+        "code": "IN",
+        "native": "భారతదేశం",
+        "localized": "Ινδία"
+    },
+    "th": {
+        "code": "TH",
+        "native": "ไทย",
+        "localized": "Ταϊλάνδη"
+    },
+    "ti": {
+        "code": "ET",
+        "native": "ኢትዮጵያ",
+        "localized": "Αιθιοπία"
+    },
+    "tr": {
+        "code": "TR",
+        "native": "Türkiye",
+        "localized": "Τουρκία"
+    },
+    "tk": {
+        "code": "TM",
+        "native": "Türkmenistan",
+        "localized": "Τουρκμενιστάν"
+    },
+    "ak": {
+        "code": "GH",
+        "native": "Gaana",
+        "localized": "Γκάνα"
+    },
+    "ug": {
+        "code": "CN",
+        "native": "جۇڭگو",
+        "localized": "Κίνα"
+    },
+    "uk": {
+        "code": "UA",
+        "native": "Україна",
+        "localized": "Ουκρανία"
+    },
+    "ur": {
+        "code": "PK",
+        "native": "پاکستان",
+        "localized": "Πακιστάν"
+    },
+    "uz_Cyrl": {
+        "code": "UZ",
+        "native": "Ўзбекистон",
+        "localized": "Ουζμπεκιστάν"
+    },
+    "uz_Latn": {
+        "code": "UZ",
+        "native": "Oʻzbekiston",
+        "localized": "Ουζμπεκιστάν"
+    },
+    "vi": {
+        "code": "VN",
+        "native": "Việt Nam",
+        "localized": "Βιετνάμ"
+    },
+    "cy": {
+        "code": "GB",
+        "native": "Y Deyrnas Unedig",
+        "localized": "Ηνωμένο Βασίλειο"
+    },
+    "xh": {
+        "code": "ZA",
+        "native": "EMzantsi Afrika",
+        "localized": "Νότια Αφρική"
+    },
+    "yi": {
+        "code": "UA",
+        "native": "אוקראַינע",
+        "localized": "Ουκρανία"
+    },
+    "yo": {
+        "code": "NG",
+        "native": "Nàìjíríà",
+        "localized": "Νιγηρία"
+    },
+    "zu": {
+        "code": "ZA",
+        "native": "iNingizimu Afrika",
+        "localized": "Νότια Αφρική"
+    }
+}
