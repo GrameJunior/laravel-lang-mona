@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Support\Filesystem;
 
+use Brick\VarExporter\VarExporter;
 use Illuminate\Filesystem\Filesystem as BaseFilesystem;
 use RuntimeException;
 
@@ -34,7 +35,7 @@ final class Filesystem
     public function store(string $path, string|array $data, int $jsonFlags = 0): void
     {
         $content = match ($this->storage->extension($path)) {
-            'php'  => $this->storage->put($path, $data),
+            'php'  => VarExporter::export($data),
             'json' => json_encode($data, $this->jsonOptions | $jsonFlags),
         };
 
