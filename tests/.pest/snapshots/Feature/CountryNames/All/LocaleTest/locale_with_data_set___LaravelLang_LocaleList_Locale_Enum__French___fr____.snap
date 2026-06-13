@@ -1,0 +1,518 @@
+{
+    "af": {
+        "code": "ZA",
+        "name": "Afrique du Sud"
+    },
+    "sq": {
+        "code": "AL",
+        "name": "Albanie"
+    },
+    "am": {
+        "code": "ET",
+        "name": "\u00c9thiopie"
+    },
+    "ar": {
+        "code": "EG",
+        "name": "\u00c9gypte"
+    },
+    "hy": {
+        "code": "AM",
+        "name": "Arm\u00e9nie"
+    },
+    "as": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "az": {
+        "code": "AZ",
+        "name": "Azerba\u00efdjan"
+    },
+    "bm": {
+        "code": "ML",
+        "name": "Mali"
+    },
+    "eu": {
+        "code": "ES",
+        "name": "Espagne"
+    },
+    "be": {
+        "code": "BY",
+        "name": "Bi\u00e9lorussie"
+    },
+    "bn": {
+        "code": "BD",
+        "name": "Bangladesh"
+    },
+    "bho": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "bs": {
+        "code": "BA",
+        "name": "Bosnie-Herz\u00e9govine"
+    },
+    "bg": {
+        "code": "BG",
+        "name": "Bulgarie"
+    },
+    "en_CA": {
+        "code": "CA",
+        "name": "Canada"
+    },
+    "ca": {
+        "code": "ES",
+        "name": "Espagne"
+    },
+    "ceb": {
+        "code": "PH",
+        "name": "Philippines"
+    },
+    "km": {
+        "code": "KH",
+        "name": "Cambodge"
+    },
+    "zh_CN": {
+        "code": "CN",
+        "name": "Chine"
+    },
+    "zh_HK": {
+        "code": "HK",
+        "name": "R.A.S. chinoise de Hong Kong"
+    },
+    "zh_TW": {
+        "code": "TW",
+        "name": "Ta\u00efwan"
+    },
+    "hr": {
+        "code": "HR",
+        "name": "Croatie"
+    },
+    "cs": {
+        "code": "CZ",
+        "name": "Tch\u00e9quie"
+    },
+    "da": {
+        "code": "DK",
+        "name": "Danemark"
+    },
+    "doi": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "nl": {
+        "code": "NL",
+        "name": "Pays-Bas"
+    },
+    "en": {
+        "code": "US",
+        "name": "\u00c9tats-Unis"
+    },
+    "eo": {
+        "code": "001",
+        "name": "Monde"
+    },
+    "et": {
+        "code": "EE",
+        "name": "Estonie"
+    },
+    "ee": {
+        "code": "GH",
+        "name": "Ghana"
+    },
+    "fi": {
+        "code": "FI",
+        "name": "Finlande"
+    },
+    "fr": {
+        "code": "FR",
+        "name": "France"
+    },
+    "fy": {
+        "code": "NL",
+        "name": "Pays-Bas"
+    },
+    "gl": {
+        "code": "ES",
+        "name": "Espagne"
+    },
+    "ka": {
+        "code": "GE",
+        "name": "G\u00e9orgie"
+    },
+    "de": {
+        "code": "DE",
+        "name": "Allemagne"
+    },
+    "de_AT": {
+        "code": "AT",
+        "name": "Autriche"
+    },
+    "de_CH": {
+        "code": "CH",
+        "name": "Suisse"
+    },
+    "el": {
+        "code": "GR",
+        "name": "Gr\u00e8ce"
+    },
+    "gu": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "ht": {
+        "code": "HT",
+        "name": "Ha\u00efti"
+    },
+    "ha": {
+        "code": "NG",
+        "name": "Nigeria"
+    },
+    "haw": {
+        "code": "US",
+        "name": "\u00c9tats-Unis"
+    },
+    "he": {
+        "code": "IL",
+        "name": "Isra\u00ebl"
+    },
+    "hi": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "hu": {
+        "code": "HU",
+        "name": "Hongrie"
+    },
+    "is": {
+        "code": "IS",
+        "name": "Islande"
+    },
+    "ig": {
+        "code": "NG",
+        "name": "Nigeria"
+    },
+    "id": {
+        "code": "ID",
+        "name": "Indon\u00e9sie"
+    },
+    "ga": {
+        "code": "IE",
+        "name": "Irlande"
+    },
+    "it": {
+        "code": "IT",
+        "name": "Italie"
+    },
+    "ja": {
+        "code": "JP",
+        "name": "Japon"
+    },
+    "kn": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "kk": {
+        "code": "KZ",
+        "name": "Kazakhstan"
+    },
+    "rw": {
+        "code": "RW",
+        "name": "Rwanda"
+    },
+    "ko": {
+        "code": "KR",
+        "name": "Cor\u00e9e du Sud"
+    },
+    "ku": {
+        "code": "TR",
+        "name": "Turquie"
+    },
+    "ckb": {
+        "code": "IQ",
+        "name": "Irak"
+    },
+    "ky": {
+        "code": "KG",
+        "name": "Kirghizstan"
+    },
+    "lo": {
+        "code": "LA",
+        "name": "Laos"
+    },
+    "lv": {
+        "code": "LV",
+        "name": "Lettonie"
+    },
+    "ln": {
+        "code": "CD",
+        "name": "Congo-Kinshasa"
+    },
+    "lt": {
+        "code": "LT",
+        "name": "Lituanie"
+    },
+    "lg": {
+        "code": "UG",
+        "name": "Ouganda"
+    },
+    "lb": {
+        "code": "LU",
+        "name": "Luxembourg"
+    },
+    "mk": {
+        "code": "MK",
+        "name": "Mac\u00e9doine du Nord"
+    },
+    "mai": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "mg": {
+        "code": "MG",
+        "name": "Madagascar"
+    },
+    "ms": {
+        "code": "MY",
+        "name": "Malaisie"
+    },
+    "ml": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "mt": {
+        "code": "MT",
+        "name": "Malte"
+    },
+    "mi": {
+        "code": "NZ",
+        "name": "Nouvelle-Z\u00e9lande"
+    },
+    "mr": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "mni_Mtei": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "mn": {
+        "code": "MN",
+        "name": "Mongolie"
+    },
+    "my": {
+        "code": "MM",
+        "name": "Myanmar (Birmanie)"
+    },
+    "ne": {
+        "code": "NP",
+        "name": "N\u00e9pal"
+    },
+    "nb": {
+        "code": "NO",
+        "name": "Norv\u00e8ge"
+    },
+    "nn": {
+        "code": "NO",
+        "name": "Norv\u00e8ge"
+    },
+    "oc": {
+        "code": "FR",
+        "name": "France"
+    },
+    "or": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "om": {
+        "code": "ET",
+        "name": "\u00c9thiopie"
+    },
+    "ps": {
+        "code": "AF",
+        "name": "Afghanistan"
+    },
+    "fa": {
+        "code": "IR",
+        "name": "Iran"
+    },
+    "fil": {
+        "code": "PH",
+        "name": "Philippines"
+    },
+    "pl": {
+        "code": "PL",
+        "name": "Pologne"
+    },
+    "pt": {
+        "code": "BR",
+        "name": "Br\u00e9sil"
+    },
+    "pt_BR": {
+        "code": "BR",
+        "name": "Br\u00e9sil"
+    },
+    "pa": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "qu": {
+        "code": "PE",
+        "name": "P\u00e9rou"
+    },
+    "ro": {
+        "code": "RO",
+        "name": "Roumanie"
+    },
+    "ru": {
+        "code": "RU",
+        "name": "Russie"
+    },
+    "sa": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "sc": {
+        "code": "IT",
+        "name": "Italie"
+    },
+    "gd": {
+        "code": "GB",
+        "name": "Royaume-Uni"
+    },
+    "sr_Cyrl": {
+        "code": "RS",
+        "name": "Serbie"
+    },
+    "sr_Latn": {
+        "code": "RS",
+        "name": "Serbie"
+    },
+    "sr_Latn_ME": {
+        "code": "ME",
+        "name": "Mont\u00e9n\u00e9gro"
+    },
+    "sn": {
+        "code": "ZW",
+        "name": "Zimbabwe"
+    },
+    "sd": {
+        "code": "PK",
+        "name": "Pakistan"
+    },
+    "si": {
+        "code": "LK",
+        "name": "Sri Lanka"
+    },
+    "sk": {
+        "code": "SK",
+        "name": "Slovaquie"
+    },
+    "sl": {
+        "code": "SI",
+        "name": "Slov\u00e9nie"
+    },
+    "so": {
+        "code": "SO",
+        "name": "Somalie"
+    },
+    "es": {
+        "code": "ES",
+        "name": "Espagne"
+    },
+    "su": {
+        "code": "ID",
+        "name": "Indon\u00e9sie"
+    },
+    "sw": {
+        "code": "TZ",
+        "name": "Tanzanie"
+    },
+    "sv": {
+        "code": "SE",
+        "name": "Su\u00e8de"
+    },
+    "tl": {
+        "code": "PH",
+        "name": "Philippines"
+    },
+    "tg": {
+        "code": "TJ",
+        "name": "Tadjikistan"
+    },
+    "ta": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "tt": {
+        "code": "RU",
+        "name": "Russie"
+    },
+    "te": {
+        "code": "IN",
+        "name": "Inde"
+    },
+    "th": {
+        "code": "TH",
+        "name": "Tha\u00eflande"
+    },
+    "ti": {
+        "code": "ET",
+        "name": "\u00c9thiopie"
+    },
+    "tr": {
+        "code": "TR",
+        "name": "Turquie"
+    },
+    "tk": {
+        "code": "TM",
+        "name": "Turkm\u00e9nistan"
+    },
+    "ak": {
+        "code": "GH",
+        "name": "Ghana"
+    },
+    "ug": {
+        "code": "CN",
+        "name": "Chine"
+    },
+    "uk": {
+        "code": "UA",
+        "name": "Ukraine"
+    },
+    "ur": {
+        "code": "PK",
+        "name": "Pakistan"
+    },
+    "uz_Cyrl": {
+        "code": "UZ",
+        "name": "Ouzb\u00e9kistan"
+    },
+    "uz_Latn": {
+        "code": "UZ",
+        "name": "Ouzb\u00e9kistan"
+    },
+    "vi": {
+        "code": "VN",
+        "name": "Vi\u00eat Nam"
+    },
+    "cy": {
+        "code": "GB",
+        "name": "Royaume-Uni"
+    },
+    "xh": {
+        "code": "ZA",
+        "name": "Afrique du Sud"
+    },
+    "yi": {
+        "code": "UA",
+        "name": "Ukraine"
+    },
+    "yo": {
+        "code": "NG",
+        "name": "Nigeria"
+    },
+    "zu": {
+        "code": "ZA",
+        "name": "Afrique du Sud"
+    }
+}

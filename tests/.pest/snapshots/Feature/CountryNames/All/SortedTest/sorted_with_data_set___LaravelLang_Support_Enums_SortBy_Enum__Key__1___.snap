@@ -1,0 +1,518 @@
+{
+    "af": {
+        "code": "ZA",
+        "name": "South Africa"
+    },
+    "ak": {
+        "code": "GH",
+        "name": "Ghana"
+    },
+    "am": {
+        "code": "ET",
+        "name": "Ethiopia"
+    },
+    "ar": {
+        "code": "EG",
+        "name": "Egypt"
+    },
+    "as": {
+        "code": "IN",
+        "name": "India"
+    },
+    "az": {
+        "code": "AZ",
+        "name": "Azerbaijan"
+    },
+    "be": {
+        "code": "BY",
+        "name": "Belarus"
+    },
+    "bg": {
+        "code": "BG",
+        "name": "Bulgaria"
+    },
+    "bho": {
+        "code": "IN",
+        "name": "India"
+    },
+    "bm": {
+        "code": "ML",
+        "name": "Mali"
+    },
+    "bn": {
+        "code": "BD",
+        "name": "Bangladesh"
+    },
+    "bs": {
+        "code": "BA",
+        "name": "Bosnia & Herzegovina"
+    },
+    "ca": {
+        "code": "ES",
+        "name": "Spain"
+    },
+    "ceb": {
+        "code": "PH",
+        "name": "Philippines"
+    },
+    "ckb": {
+        "code": "IQ",
+        "name": "Iraq"
+    },
+    "cs": {
+        "code": "CZ",
+        "name": "Czechia"
+    },
+    "cy": {
+        "code": "GB",
+        "name": "United Kingdom"
+    },
+    "da": {
+        "code": "DK",
+        "name": "Denmark"
+    },
+    "de": {
+        "code": "DE",
+        "name": "Germany"
+    },
+    "de_AT": {
+        "code": "AT",
+        "name": "Austria"
+    },
+    "de_CH": {
+        "code": "CH",
+        "name": "Switzerland"
+    },
+    "doi": {
+        "code": "IN",
+        "name": "India"
+    },
+    "ee": {
+        "code": "GH",
+        "name": "Ghana"
+    },
+    "el": {
+        "code": "GR",
+        "name": "Greece"
+    },
+    "en": {
+        "code": "US",
+        "name": "United States"
+    },
+    "en_CA": {
+        "code": "CA",
+        "name": "Canada"
+    },
+    "eo": {
+        "code": "001",
+        "name": "world"
+    },
+    "es": {
+        "code": "ES",
+        "name": "Spain"
+    },
+    "et": {
+        "code": "EE",
+        "name": "Estonia"
+    },
+    "eu": {
+        "code": "ES",
+        "name": "Spain"
+    },
+    "fa": {
+        "code": "IR",
+        "name": "Iran"
+    },
+    "fi": {
+        "code": "FI",
+        "name": "Finland"
+    },
+    "fil": {
+        "code": "PH",
+        "name": "Philippines"
+    },
+    "fr": {
+        "code": "FR",
+        "name": "France"
+    },
+    "fy": {
+        "code": "NL",
+        "name": "Netherlands"
+    },
+    "ga": {
+        "code": "IE",
+        "name": "Ireland"
+    },
+    "gd": {
+        "code": "GB",
+        "name": "United Kingdom"
+    },
+    "gl": {
+        "code": "ES",
+        "name": "Spain"
+    },
+    "gu": {
+        "code": "IN",
+        "name": "India"
+    },
+    "ha": {
+        "code": "NG",
+        "name": "Nigeria"
+    },
+    "haw": {
+        "code": "US",
+        "name": "United States"
+    },
+    "he": {
+        "code": "IL",
+        "name": "Israel"
+    },
+    "hi": {
+        "code": "IN",
+        "name": "India"
+    },
+    "hr": {
+        "code": "HR",
+        "name": "Croatia"
+    },
+    "ht": {
+        "code": "HT",
+        "name": "Haiti"
+    },
+    "hu": {
+        "code": "HU",
+        "name": "Hungary"
+    },
+    "hy": {
+        "code": "AM",
+        "name": "Armenia"
+    },
+    "id": {
+        "code": "ID",
+        "name": "Indonesia"
+    },
+    "ig": {
+        "code": "NG",
+        "name": "Nigeria"
+    },
+    "is": {
+        "code": "IS",
+        "name": "Iceland"
+    },
+    "it": {
+        "code": "IT",
+        "name": "Italy"
+    },
+    "ja": {
+        "code": "JP",
+        "name": "Japan"
+    },
+    "ka": {
+        "code": "GE",
+        "name": "Georgia"
+    },
+    "kk": {
+        "code": "KZ",
+        "name": "Kazakhstan"
+    },
+    "km": {
+        "code": "KH",
+        "name": "Cambodia"
+    },
+    "kn": {
+        "code": "IN",
+        "name": "India"
+    },
+    "ko": {
+        "code": "KR",
+        "name": "South Korea"
+    },
+    "ku": {
+        "code": "TR",
+        "name": "T\u00fcrkiye"
+    },
+    "ky": {
+        "code": "KG",
+        "name": "Kyrgyzstan"
+    },
+    "lb": {
+        "code": "LU",
+        "name": "Luxembourg"
+    },
+    "lg": {
+        "code": "UG",
+        "name": "Uganda"
+    },
+    "ln": {
+        "code": "CD",
+        "name": "Congo - Kinshasa"
+    },
+    "lo": {
+        "code": "LA",
+        "name": "Laos"
+    },
+    "lt": {
+        "code": "LT",
+        "name": "Lithuania"
+    },
+    "lv": {
+        "code": "LV",
+        "name": "Latvia"
+    },
+    "mai": {
+        "code": "IN",
+        "name": "India"
+    },
+    "mg": {
+        "code": "MG",
+        "name": "Madagascar"
+    },
+    "mi": {
+        "code": "NZ",
+        "name": "New Zealand"
+    },
+    "mk": {
+        "code": "MK",
+        "name": "North Macedonia"
+    },
+    "ml": {
+        "code": "IN",
+        "name": "India"
+    },
+    "mn": {
+        "code": "MN",
+        "name": "Mongolia"
+    },
+    "mni_Mtei": {
+        "code": "IN",
+        "name": "India"
+    },
+    "mr": {
+        "code": "IN",
+        "name": "India"
+    },
+    "ms": {
+        "code": "MY",
+        "name": "Malaysia"
+    },
+    "mt": {
+        "code": "MT",
+        "name": "Malta"
+    },
+    "my": {
+        "code": "MM",
+        "name": "Myanmar (Burma)"
+    },
+    "nb": {
+        "code": "NO",
+        "name": "Norway"
+    },
+    "ne": {
+        "code": "NP",
+        "name": "Nepal"
+    },
+    "nl": {
+        "code": "NL",
+        "name": "Netherlands"
+    },
+    "nn": {
+        "code": "NO",
+        "name": "Norway"
+    },
+    "oc": {
+        "code": "FR",
+        "name": "France"
+    },
+    "om": {
+        "code": "ET",
+        "name": "Ethiopia"
+    },
+    "or": {
+        "code": "IN",
+        "name": "India"
+    },
+    "pa": {
+        "code": "IN",
+        "name": "India"
+    },
+    "pl": {
+        "code": "PL",
+        "name": "Poland"
+    },
+    "ps": {
+        "code": "AF",
+        "name": "Afghanistan"
+    },
+    "pt": {
+        "code": "BR",
+        "name": "Brazil"
+    },
+    "pt_BR": {
+        "code": "BR",
+        "name": "Brazil"
+    },
+    "qu": {
+        "code": "PE",
+        "name": "Peru"
+    },
+    "ro": {
+        "code": "RO",
+        "name": "Romania"
+    },
+    "ru": {
+        "code": "RU",
+        "name": "Russia"
+    },
+    "rw": {
+        "code": "RW",
+        "name": "Rwanda"
+    },
+    "sa": {
+        "code": "IN",
+        "name": "India"
+    },
+    "sc": {
+        "code": "IT",
+        "name": "Italy"
+    },
+    "sd": {
+        "code": "PK",
+        "name": "Pakistan"
+    },
+    "si": {
+        "code": "LK",
+        "name": "Sri Lanka"
+    },
+    "sk": {
+        "code": "SK",
+        "name": "Slovakia"
+    },
+    "sl": {
+        "code": "SI",
+        "name": "Slovenia"
+    },
+    "sn": {
+        "code": "ZW",
+        "name": "Zimbabwe"
+    },
+    "so": {
+        "code": "SO",
+        "name": "Somalia"
+    },
+    "sq": {
+        "code": "AL",
+        "name": "Albania"
+    },
+    "sr_Cyrl": {
+        "code": "RS",
+        "name": "Serbia"
+    },
+    "sr_Latn": {
+        "code": "RS",
+        "name": "Serbia"
+    },
+    "sr_Latn_ME": {
+        "code": "ME",
+        "name": "Montenegro"
+    },
+    "su": {
+        "code": "ID",
+        "name": "Indonesia"
+    },
+    "sv": {
+        "code": "SE",
+        "name": "Sweden"
+    },
+    "sw": {
+        "code": "TZ",
+        "name": "Tanzania"
+    },
+    "ta": {
+        "code": "IN",
+        "name": "India"
+    },
+    "te": {
+        "code": "IN",
+        "name": "India"
+    },
+    "tg": {
+        "code": "TJ",
+        "name": "Tajikistan"
+    },
+    "th": {
+        "code": "TH",
+        "name": "Thailand"
+    },
+    "ti": {
+        "code": "ET",
+        "name": "Ethiopia"
+    },
+    "tk": {
+        "code": "TM",
+        "name": "Turkmenistan"
+    },
+    "tl": {
+        "code": "PH",
+        "name": "Philippines"
+    },
+    "tr": {
+        "code": "TR",
+        "name": "T\u00fcrkiye"
+    },
+    "tt": {
+        "code": "RU",
+        "name": "Russia"
+    },
+    "ug": {
+        "code": "CN",
+        "name": "China"
+    },
+    "uk": {
+        "code": "UA",
+        "name": "Ukraine"
+    },
+    "ur": {
+        "code": "PK",
+        "name": "Pakistan"
+    },
+    "uz_Cyrl": {
+        "code": "UZ",
+        "name": "Uzbekistan"
+    },
+    "uz_Latn": {
+        "code": "UZ",
+        "name": "Uzbekistan"
+    },
+    "vi": {
+        "code": "VN",
+        "name": "Vietnam"
+    },
+    "xh": {
+        "code": "ZA",
+        "name": "South Africa"
+    },
+    "yi": {
+        "code": "UA",
+        "name": "Ukraine"
+    },
+    "yo": {
+        "code": "NG",
+        "name": "Nigeria"
+    },
+    "zh_CN": {
+        "code": "CN",
+        "name": "China"
+    },
+    "zh_HK": {
+        "code": "HK",
+        "name": "Hong Kong SAR China"
+    },
+    "zh_TW": {
+        "code": "TW",
+        "name": "Taiwan"
+    },
+    "zu": {
+        "code": "ZA",
+        "name": "South Africa"
+    }
+}

@@ -1,0 +1,647 @@
+{
+    "af": {
+        "code": "ZAR",
+        "numeric": 710,
+        "name": "S\u00fcdafrikanischer Rand"
+    },
+    "sq": {
+        "code": "ALL",
+        "numeric": 8,
+        "name": "Albanischer Lek"
+    },
+    "am": {
+        "code": "ETB",
+        "numeric": 230,
+        "name": "\u00c4thiopischer Birr"
+    },
+    "ar": {
+        "code": "EGP",
+        "numeric": 818,
+        "name": "\u00c4gyptisches Pfund"
+    },
+    "hy": {
+        "code": "AMD",
+        "numeric": 51,
+        "name": "Armenischer Dram"
+    },
+    "as": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "az": {
+        "code": "AZN",
+        "numeric": 944,
+        "name": "Aserbaidschan-Manat"
+    },
+    "bm": {
+        "code": "XOF",
+        "numeric": 952,
+        "name": "CFA-Franc (BCEAO)"
+    },
+    "eu": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "be": {
+        "code": "BYN",
+        "numeric": 933,
+        "name": "Wei\u00dfrussischer Rubel"
+    },
+    "bn": {
+        "code": "BDT",
+        "numeric": 50,
+        "name": "Bangladesch-Taka"
+    },
+    "bho": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "bs": {
+        "code": "BAM",
+        "numeric": 977,
+        "name": "Konvertible Mark Bosnien und Herzegowina"
+    },
+    "bg": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "en_CA": {
+        "code": "CAD",
+        "numeric": 124,
+        "name": "Kanadischer Dollar"
+    },
+    "ca": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "ceb": {
+        "code": "PHP",
+        "numeric": 608,
+        "name": "Philippinischer Peso"
+    },
+    "km": {
+        "code": "KHR",
+        "numeric": 116,
+        "name": "Kambodschanischer Riel"
+    },
+    "zh_CN": {
+        "code": "CNH",
+        "numeric": 156,
+        "name": "Renminbi-Yuan (Offshore)"
+    },
+    "zh_HK": {
+        "code": "HKD",
+        "numeric": 344,
+        "name": "Hongkong-Dollar"
+    },
+    "zh_TW": {
+        "code": "TWD",
+        "numeric": 901,
+        "name": "Neuer Taiwan-Dollar"
+    },
+    "hr": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "cs": {
+        "code": "CZK",
+        "numeric": 203,
+        "name": "Tschechische Krone"
+    },
+    "da": {
+        "code": "DKK",
+        "numeric": 208,
+        "name": "D\u00e4nische Krone"
+    },
+    "doi": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "nl": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "en": {
+        "code": "USN",
+        "numeric": 997,
+        "name": "US Dollar (N\u00e4chster Tag)"
+    },
+    "eo": {
+        "code": "XXX",
+        "numeric": 999,
+        "name": "Unbekannte W\u00e4hrung"
+    },
+    "et": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "ee": {
+        "code": "GHS",
+        "numeric": 936,
+        "name": "Ghanaischer Cedi"
+    },
+    "fi": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "fr": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "fy": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "gl": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "ka": {
+        "code": "GEL",
+        "numeric": 981,
+        "name": "Georgischer Lari"
+    },
+    "de": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "de_AT": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "de_CH": {
+        "code": "CHW",
+        "numeric": 948,
+        "name": "WIR Franken"
+    },
+    "el": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "gu": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "ht": {
+        "code": "USD",
+        "numeric": 840,
+        "name": "US-Dollar"
+    },
+    "ha": {
+        "code": "NGN",
+        "numeric": 566,
+        "name": "Nigerianischer Naira"
+    },
+    "haw": {
+        "code": "USN",
+        "numeric": 997,
+        "name": "US Dollar (N\u00e4chster Tag)"
+    },
+    "he": {
+        "code": "ILS",
+        "numeric": 376,
+        "name": "Israelischer Neuer Schekel"
+    },
+    "hi": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "hu": {
+        "code": "HUF",
+        "numeric": 348,
+        "name": "Ungarischer Forint"
+    },
+    "is": {
+        "code": "ISK",
+        "numeric": 352,
+        "name": "Isl\u00e4ndische Krone"
+    },
+    "ig": {
+        "code": "NGN",
+        "numeric": 566,
+        "name": "Nigerianischer Naira"
+    },
+    "id": {
+        "code": "IDR",
+        "numeric": 360,
+        "name": "Indonesische Rupiah"
+    },
+    "ga": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "it": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "ja": {
+        "code": "JPY",
+        "numeric": 392,
+        "name": "Japanischer Yen"
+    },
+    "kn": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "kk": {
+        "code": "KZT",
+        "numeric": 398,
+        "name": "Kasachischer Tenge"
+    },
+    "rw": {
+        "code": "RWF",
+        "numeric": 646,
+        "name": "Ruanda-Franc"
+    },
+    "ko": {
+        "code": "KRW",
+        "numeric": 410,
+        "name": "S\u00fcdkoreanischer Won"
+    },
+    "ku": {
+        "code": "TRY",
+        "numeric": 949,
+        "name": "T\u00fcrkische Lira"
+    },
+    "ckb": {
+        "code": "IQD",
+        "numeric": 368,
+        "name": "Irakischer Dinar"
+    },
+    "ky": {
+        "code": "KGS",
+        "numeric": 417,
+        "name": "Kirgisischer Som"
+    },
+    "lo": {
+        "code": "LAK",
+        "numeric": 418,
+        "name": "Laotischer Kip"
+    },
+    "lv": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "ln": {
+        "code": "CDF",
+        "numeric": 976,
+        "name": "Kongo-Franc"
+    },
+    "lt": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "lg": {
+        "code": "UGX",
+        "numeric": 800,
+        "name": "Uganda-Schilling"
+    },
+    "lb": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "mk": {
+        "code": "MKD",
+        "numeric": 807,
+        "name": "Mazedonischer Denar"
+    },
+    "mai": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "mg": {
+        "code": "MGA",
+        "numeric": 969,
+        "name": "Madagaskar-Ariary"
+    },
+    "ms": {
+        "code": "MYR",
+        "numeric": 458,
+        "name": "Malaysischer Ringgit"
+    },
+    "ml": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "mt": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "mi": {
+        "code": "NZD",
+        "numeric": 554,
+        "name": "Neuseeland-Dollar"
+    },
+    "mr": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "mni_Mtei": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "mn": {
+        "code": "MNT",
+        "numeric": 496,
+        "name": "Mongolischer T\u00f6gr\u00f6g"
+    },
+    "my": {
+        "code": "MMK",
+        "numeric": 104,
+        "name": "Myanmarischer Kyat"
+    },
+    "ne": {
+        "code": "NPR",
+        "numeric": 524,
+        "name": "Nepalesische Rupie"
+    },
+    "nb": {
+        "code": "NOK",
+        "numeric": 578,
+        "name": "Norwegische Krone"
+    },
+    "nn": {
+        "code": "NOK",
+        "numeric": 578,
+        "name": "Norwegische Krone"
+    },
+    "oc": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "or": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "om": {
+        "code": "ETB",
+        "numeric": 230,
+        "name": "\u00c4thiopischer Birr"
+    },
+    "ps": {
+        "code": "AFN",
+        "numeric": 971,
+        "name": "Afghanischer Afghani"
+    },
+    "fa": {
+        "code": "IRR",
+        "numeric": 364,
+        "name": "Iranischer Rial"
+    },
+    "fil": {
+        "code": "PHP",
+        "numeric": 608,
+        "name": "Philippinischer Peso"
+    },
+    "pl": {
+        "code": "PLN",
+        "numeric": 985,
+        "name": "Polnischer Z\u0142oty"
+    },
+    "pt": {
+        "code": "BRL",
+        "numeric": 986,
+        "name": "Brasilianischer Real"
+    },
+    "pt_BR": {
+        "code": "BRL",
+        "numeric": 986,
+        "name": "Brasilianischer Real"
+    },
+    "pa": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "qu": {
+        "code": "PEN",
+        "numeric": 604,
+        "name": "Peruanischer Sol"
+    },
+    "ro": {
+        "code": "RON",
+        "numeric": 946,
+        "name": "Rum\u00e4nischer Leu"
+    },
+    "ru": {
+        "code": "RUB",
+        "numeric": 643,
+        "name": "Russischer Rubel"
+    },
+    "sa": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "sc": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "gd": {
+        "code": "GBP",
+        "numeric": 826,
+        "name": "Britisches Pfund"
+    },
+    "sr_Cyrl": {
+        "code": "RSD",
+        "numeric": 941,
+        "name": "Serbischer Dinar"
+    },
+    "sr_Latn": {
+        "code": "RSD",
+        "numeric": 941,
+        "name": "Serbischer Dinar"
+    },
+    "sr_Latn_ME": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "sn": {
+        "code": "USD",
+        "numeric": 840,
+        "name": "US-Dollar"
+    },
+    "sd": {
+        "code": "PKR",
+        "numeric": 586,
+        "name": "Pakistanische Rupie"
+    },
+    "si": {
+        "code": "LKR",
+        "numeric": 144,
+        "name": "Sri-Lanka-Rupie"
+    },
+    "sk": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "sl": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "so": {
+        "code": "SOS",
+        "numeric": 706,
+        "name": "Somalia-Schilling"
+    },
+    "es": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "su": {
+        "code": "IDR",
+        "numeric": 360,
+        "name": "Indonesische Rupiah"
+    },
+    "sw": {
+        "code": "TZS",
+        "numeric": 834,
+        "name": "Tansania-Schilling"
+    },
+    "sv": {
+        "code": "SEK",
+        "numeric": 752,
+        "name": "Schwedische Krone"
+    },
+    "tl": {
+        "code": "PHP",
+        "numeric": 608,
+        "name": "Philippinischer Peso"
+    },
+    "tg": {
+        "code": "TJS",
+        "numeric": 972,
+        "name": "Tadschikistan-Somoni"
+    },
+    "ta": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "tt": {
+        "code": "RUB",
+        "numeric": 643,
+        "name": "Russischer Rubel"
+    },
+    "te": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indische Rupie"
+    },
+    "th": {
+        "code": "THB",
+        "numeric": 764,
+        "name": "Thail\u00e4ndischer Baht"
+    },
+    "ti": {
+        "code": "ETB",
+        "numeric": 230,
+        "name": "\u00c4thiopischer Birr"
+    },
+    "tr": {
+        "code": "TRY",
+        "numeric": 949,
+        "name": "T\u00fcrkische Lira"
+    },
+    "tk": {
+        "code": "TMT",
+        "numeric": 934,
+        "name": "Turkmenistan-Manat"
+    },
+    "ak": {
+        "code": "GHS",
+        "numeric": 936,
+        "name": "Ghanaischer Cedi"
+    },
+    "ug": {
+        "code": "CNH",
+        "numeric": 156,
+        "name": "Renminbi-Yuan (Offshore)"
+    },
+    "uk": {
+        "code": "UAH",
+        "numeric": 980,
+        "name": "Ukrainische Hrywnja"
+    },
+    "ur": {
+        "code": "PKR",
+        "numeric": 586,
+        "name": "Pakistanische Rupie"
+    },
+    "uz_Cyrl": {
+        "code": "UZS",
+        "numeric": 860,
+        "name": "Usbekistan-Sum"
+    },
+    "uz_Latn": {
+        "code": "UZS",
+        "numeric": 860,
+        "name": "Usbekistan-Sum"
+    },
+    "vi": {
+        "code": "VND",
+        "numeric": 704,
+        "name": "Vietnamesischer Dong"
+    },
+    "cy": {
+        "code": "GBP",
+        "numeric": 826,
+        "name": "Britisches Pfund"
+    },
+    "xh": {
+        "code": "ZAR",
+        "numeric": 710,
+        "name": "S\u00fcdafrikanischer Rand"
+    },
+    "yi": {
+        "code": "UAH",
+        "numeric": 980,
+        "name": "Ukrainische Hrywnja"
+    },
+    "yo": {
+        "code": "NGN",
+        "numeric": 566,
+        "name": "Nigerianischer Naira"
+    },
+    "zu": {
+        "code": "ZAR",
+        "numeric": 710,
+        "name": "S\u00fcdafrikanischer Rand"
+    }
+}

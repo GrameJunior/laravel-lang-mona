@@ -10,10 +10,7 @@ final class LocaleNames extends Cldr
 {
     protected static function item(array|string $value, string $locale): LocaleData
     {
-        return new LocaleData(
-            code: $locale,
-            name: $value,
-        );
+        return new LocaleData(...$value);
     }
 
     protected static function path(string $locale): string

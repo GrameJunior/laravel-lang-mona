@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ce9156b4b232c06f2469d9c881e6dcf",
+    "content-hash": "2717afd27dc75ffcb021970389495aa5",
     "packages": [
         {
             "name": "archtechx/enums",
@@ -6312,6 +6312,78 @@
                 "source": "https://github.com/doctrine/deprecations/tree/1.1.6"
             },
             "time": "2026-02-07T07:09:04+00:00"
+        },
+        {
+            "name": "dragon-code/benchmark",
+            "version": "4.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TheDragonCode/benchmark.git",
+                "reference": "3a90c4da2f8787080a58cc052f14be90f6bf9865"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TheDragonCode/benchmark/zipball/3a90c4da2f8787080a58cc052f14be90f6bf9865",
+                "reference": "3a90c4da2f8787080a58cc052f14be90f6bf9865",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2",
+                "symfony/polyfill-php85": "^1.33"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.29",
+                "pestphp/pest": "^3.8 || ^4.0",
+                "symfony/var-dumper": "^7.0 || ^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "DragonCode\\Benchmark\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Helldar",
+                    "email": "helldar@dragon-code.pro",
+                    "homepage": "https://dragon-code.pro"
+                }
+            ],
+            "description": "Simple comparison of code execution speed between different options",
+            "keywords": [
+                "benchmark",
+                "comparator",
+                "comparators",
+                "comparison",
+                "comparison-tool",
+                "runtime",
+                "speed",
+                "speedtest",
+                "time",
+                "timer"
+            ],
+            "support": {
+                "issues": "https://github.com/TheDragonCode/benchmark/issues",
+                "source": "https://github.com/TheDragonCode/benchmark"
+            },
+            "funding": [
+                {
+                    "url": "https://boosty.to/dragon-code",
+                    "type": "boosty"
+                },
+                {
+                    "url": "https://yoomoney.ru/to/410012608840929",
+                    "type": "yoomoney"
+                }
+            ],
+            "time": "2026-05-01T19:12:46+00:00"
         },
         {
             "name": "fakerphp/faker",
