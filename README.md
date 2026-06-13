@@ -31,6 +31,8 @@
 - [x] StarterKits
 - [x] TranslationsTemplate
 - [ ] tests
+- [ ] readme
+- [ ] composer.json
 
 ## Documentation
 
