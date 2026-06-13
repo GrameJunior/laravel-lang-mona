@@ -85,8 +85,11 @@
         "cldr:update": [
             "@disableProcessTimeout",
             "@php bin/mona cldr:country",
+            "@php bin/mona cldr:country:native",
             "@php bin/mona cldr:currency",
-            "@php bin/mona cldr:locale"
+            "@php bin/mona cldr:currency:native",
+            "@php bin/mona cldr:locale",
+            "@php bin/mona cldr:locale:native"
         ],
         "disableProcessTimeout": "Composer\\Config::disableProcessTimeout",
         "post-autoload-dump": [

@@ -11,7 +11,7 @@ use LaravelLang\Support\Filesystem\Filesystem;
 
 abstract class Cldr
 {
-    protected static string $fallback = 'en';
+    protected static string $fallback = '_native';
 
     abstract protected static function item(array|string $value, string $locale): mixed;
 

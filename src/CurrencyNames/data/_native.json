@@ -1,0 +1,647 @@
+{
+    "af": {
+        "code": "ZAR",
+        "numeric": 710,
+        "name": "Suid-Afrikaanse rand"
+    },
+    "sq": {
+        "code": "ALL",
+        "numeric": 8,
+        "name": "Leku shqiptar"
+    },
+    "am": {
+        "code": "ETB",
+        "numeric": 230,
+        "name": "የኢትዮጵያ ብር"
+    },
+    "ar": {
+        "code": "EGP",
+        "numeric": 818,
+        "name": "جنيه مصري"
+    },
+    "hy": {
+        "code": "AMD",
+        "numeric": 51,
+        "name": "հայկական դրամ"
+    },
+    "as": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "ভাৰতীয় ৰুপী"
+    },
+    "az": {
+        "code": "AZN",
+        "numeric": 944,
+        "name": "Azərbaycan Manatı"
+    },
+    "bm": {
+        "code": "XOF",
+        "numeric": 952,
+        "name": "sefa Fraŋ (BCEAO)"
+    },
+    "eu": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "euroa"
+    },
+    "be": {
+        "code": "BYN",
+        "numeric": 933,
+        "name": "беларускі рубель"
+    },
+    "bn": {
+        "code": "BDT",
+        "numeric": 50,
+        "name": "বাংলাদেশী টাকা"
+    },
+    "bho": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indian Rupee"
+    },
+    "bs": {
+        "code": "BAM",
+        "numeric": 977,
+        "name": "Bosanskohercegovačka konvertibilna marka"
+    },
+    "bg": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Евро"
+    },
+    "en_CA": {
+        "code": "CAD",
+        "numeric": 124,
+        "name": "Canadian Dollar"
+    },
+    "ca": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "euro"
+    },
+    "ceb": {
+        "code": "PHP",
+        "numeric": 608,
+        "name": "Philippine Peso"
+    },
+    "km": {
+        "code": "KHR",
+        "numeric": 116,
+        "name": "រៀល​កម្ពុជា"
+    },
+    "zh_CN": {
+        "code": "CNH",
+        "numeric": 156,
+        "name": "人民币（离岸）"
+    },
+    "zh_HK": {
+        "code": "HKD",
+        "numeric": 344,
+        "name": "港元"
+    },
+    "zh_TW": {
+        "code": "TWD",
+        "numeric": 901,
+        "name": "新台幣"
+    },
+    "hr": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "euro"
+    },
+    "cs": {
+        "code": "CZK",
+        "numeric": 203,
+        "name": "česká koruna"
+    },
+    "da": {
+        "code": "DKK",
+        "numeric": 208,
+        "name": "dansk krone"
+    },
+    "doi": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "भारती रपेऽ"
+    },
+    "nl": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "en": {
+        "code": "USN",
+        "numeric": 997,
+        "name": "US Dollar (Next day)"
+    },
+    "eo": {
+        "code": "XXX",
+        "numeric": 999,
+        "name": "nekonata monunuo"
+    },
+    "et": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "euro"
+    },
+    "ee": {
+        "code": "GHS",
+        "numeric": 936,
+        "name": "ghana siɖi"
+    },
+    "fi": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "euro"
+    },
+    "fr": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "euro"
+    },
+    "fy": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "gl": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "euro"
+    },
+    "ka": {
+        "code": "GEL",
+        "numeric": 981,
+        "name": "ქართული ლარი"
+    },
+    "de": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "de_AT": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "de_CH": {
+        "code": "CHW",
+        "numeric": 948,
+        "name": "WIR Franken"
+    },
+    "el": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Ευρώ"
+    },
+    "gu": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "ભારતીય રૂપિયા"
+    },
+    "ht": {
+        "code": "USD",
+        "numeric": 840,
+        "name": "dollar des États-Unis"
+    },
+    "ha": {
+        "code": "NGN",
+        "numeric": 566,
+        "name": "Nairar Najeriya"
+    },
+    "haw": {
+        "code": "USN",
+        "numeric": 997,
+        "name": "US Dollar (Next day)"
+    },
+    "he": {
+        "code": "ILS",
+        "numeric": 376,
+        "name": "שקל חדש"
+    },
+    "hi": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "भारतीय रुपया"
+    },
+    "hu": {
+        "code": "HUF",
+        "numeric": 348,
+        "name": "magyar forint"
+    },
+    "is": {
+        "code": "ISK",
+        "numeric": 352,
+        "name": "íslensk króna"
+    },
+    "ig": {
+        "code": "NGN",
+        "numeric": 566,
+        "name": "Naịra"
+    },
+    "id": {
+        "code": "IDR",
+        "numeric": 360,
+        "name": "Rupiah Indonesia"
+    },
+    "ga": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "it": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "euro"
+    },
+    "ja": {
+        "code": "JPY",
+        "numeric": 392,
+        "name": "日本円"
+    },
+    "kn": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "ಭಾರತೀಯ ರೂಪಾಯಿ"
+    },
+    "kk": {
+        "code": "KZT",
+        "numeric": 398,
+        "name": "Қазақстан теңгесі"
+    },
+    "rw": {
+        "code": "RWF",
+        "numeric": 646,
+        "name": "Rwandan Franc"
+    },
+    "ko": {
+        "code": "KRW",
+        "numeric": 410,
+        "name": "대한민국 원"
+    },
+    "ku": {
+        "code": "TRY",
+        "numeric": 949,
+        "name": "lîreyê tirkî"
+    },
+    "ckb": {
+        "code": "IQD",
+        "numeric": 368,
+        "name": "Iraqi Dinar"
+    },
+    "ky": {
+        "code": "KGS",
+        "numeric": 417,
+        "name": "Кыргызстан сому"
+    },
+    "lo": {
+        "code": "LAK",
+        "numeric": 418,
+        "name": "ລາວ ກີບ"
+    },
+    "lv": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "eiro"
+    },
+    "ln": {
+        "code": "CDF",
+        "numeric": 976,
+        "name": "Falánga ya Kongó"
+    },
+    "lt": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euras"
+    },
+    "lg": {
+        "code": "UGX",
+        "numeric": 800,
+        "name": "Silingi eya Yuganda"
+    },
+    "lb": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "mk": {
+        "code": "MKD",
+        "numeric": 807,
+        "name": "Македонски денар"
+    },
+    "mai": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "भारतीय रुपया"
+    },
+    "mg": {
+        "code": "MGA",
+        "numeric": 969,
+        "name": "Ariary"
+    },
+    "ms": {
+        "code": "MYR",
+        "numeric": 458,
+        "name": "Ringgit Malaysia"
+    },
+    "ml": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "ഇന്ത്യൻ രൂപ"
+    },
+    "mt": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "ewro"
+    },
+    "mi": {
+        "code": "NZD",
+        "numeric": 554,
+        "name": "Tāra o Aotearoa"
+    },
+    "mr": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "भारतीय रुपया"
+    },
+    "mni_Mtei": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "Indian Rupee"
+    },
+    "mn": {
+        "code": "MNT",
+        "numeric": 496,
+        "name": "Монгол төгрөг"
+    },
+    "my": {
+        "code": "MMK",
+        "numeric": 104,
+        "name": "မြန်မာ ကျပ်"
+    },
+    "ne": {
+        "code": "NPR",
+        "numeric": 524,
+        "name": "नेपाली रूपैयाँ"
+    },
+    "nb": {
+        "code": "NOK",
+        "numeric": 578,
+        "name": "norske kroner"
+    },
+    "nn": {
+        "code": "NOK",
+        "numeric": 578,
+        "name": "norske kroner"
+    },
+    "oc": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "Euro"
+    },
+    "or": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "ଭାରତୀୟ ଟଙ୍କା"
+    },
+    "om": {
+        "code": "ETB",
+        "numeric": 230,
+        "name": "Itoophiyaa Birrii"
+    },
+    "ps": {
+        "code": "AFN",
+        "numeric": 971,
+        "name": "افغانۍ"
+    },
+    "fa": {
+        "code": "IRR",
+        "numeric": 364,
+        "name": "ریال ایران"
+    },
+    "fil": {
+        "code": "PHP",
+        "numeric": 608,
+        "name": "Piso ng Pilipinas"
+    },
+    "pl": {
+        "code": "PLN",
+        "numeric": 985,
+        "name": "złoty polski"
+    },
+    "pt": {
+        "code": "BRL",
+        "numeric": 986,
+        "name": "Real brasileiro"
+    },
+    "pt_BR": {
+        "code": "BRL",
+        "numeric": 986,
+        "name": "Real brasileiro"
+    },
+    "pa": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "ਭਾਰਤੀ ਰੁਪਇਆ"
+    },
+    "qu": {
+        "code": "PEN",
+        "numeric": 604,
+        "name": "Sol Peruano"
+    },
+    "ro": {
+        "code": "RON",
+        "numeric": 946,
+        "name": "leu românesc"
+    },
+    "ru": {
+        "code": "RUB",
+        "numeric": 643,
+        "name": "российский рубль"
+    },
+    "sa": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "भारतीय रूप्यकम्"
+    },
+    "sc": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "èuro"
+    },
+    "gd": {
+        "code": "GBP",
+        "numeric": 826,
+        "name": "Punnd Sasannach"
+    },
+    "sr_Cyrl": {
+        "code": "RSD",
+        "numeric": 941,
+        "name": "српски динар"
+    },
+    "sr_Latn": {
+        "code": "RSD",
+        "numeric": 941,
+        "name": "srpski dinar"
+    },
+    "sr_Latn_ME": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "evro"
+    },
+    "sn": {
+        "code": "USD",
+        "numeric": 840,
+        "name": "Dora re Amerika"
+    },
+    "sd": {
+        "code": "PKR",
+        "numeric": 586,
+        "name": "پاڪستاني رپي"
+    },
+    "si": {
+        "code": "LKR",
+        "numeric": 144,
+        "name": "ශ්‍රී ලංකා රුපියල"
+    },
+    "sk": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "euro"
+    },
+    "sl": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "evro"
+    },
+    "so": {
+        "code": "SOS",
+        "numeric": 706,
+        "name": "Shilingka Soomaaliya"
+    },
+    "es": {
+        "code": "EUR",
+        "numeric": 978,
+        "name": "euro"
+    },
+    "su": {
+        "code": "IDR",
+        "numeric": 360,
+        "name": "Rupee Indonésia"
+    },
+    "sw": {
+        "code": "TZS",
+        "numeric": 834,
+        "name": "Shilingi ya Tanzania"
+    },
+    "sv": {
+        "code": "SEK",
+        "numeric": 752,
+        "name": "svensk krona"
+    },
+    "tl": {
+        "code": "PHP",
+        "numeric": 608,
+        "name": "Piso ng Pilipinas"
+    },
+    "tg": {
+        "code": "TJS",
+        "numeric": 972,
+        "name": "Сомонии Тоҷикистон"
+    },
+    "ta": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "இந்திய ரூபாய்"
+    },
+    "tt": {
+        "code": "RUB",
+        "numeric": 643,
+        "name": "Россия сумы"
+    },
+    "te": {
+        "code": "INR",
+        "numeric": 356,
+        "name": "భారతదేశ రూపాయి"
+    },
+    "th": {
+        "code": "THB",
+        "numeric": 764,
+        "name": "บาท"
+    },
+    "ti": {
+        "code": "ETB",
+        "numeric": 230,
+        "name": "ብር"
+    },
+    "tr": {
+        "code": "TRY",
+        "numeric": 949,
+        "name": "Türk lirası"
+    },
+    "tk": {
+        "code": "TMT",
+        "numeric": 934,
+        "name": "Türkmen manady"
+    },
+    "ak": {
+        "code": "GHS",
+        "numeric": 936,
+        "name": "Ghana Sidi"
+    },
+    "ug": {
+        "code": "CNH",
+        "numeric": 156,
+        "name": "Chinese Yuan (offshore)"
+    },
+    "uk": {
+        "code": "UAH",
+        "numeric": 980,
+        "name": "українська гривня"
+    },
+    "ur": {
+        "code": "PKR",
+        "numeric": 586,
+        "name": "پاکستانی روپیہ"
+    },
+    "uz_Cyrl": {
+        "code": "UZS",
+        "numeric": 860,
+        "name": "Ўзбекистон сўм"
+    },
+    "uz_Latn": {
+        "code": "UZS",
+        "numeric": 860,
+        "name": "O‘zbekiston so‘mi"
+    },
+    "vi": {
+        "code": "VND",
+        "numeric": 704,
+        "name": "Đồng Việt Nam"
+    },
+    "cy": {
+        "code": "GBP",
+        "numeric": 826,
+        "name": "Punt Prydain"
+    },
+    "xh": {
+        "code": "ZAR",
+        "numeric": 710,
+        "name": "IRandi yaseMzantsi Afrika"
+    },
+    "yi": {
+        "code": "UAH",
+        "numeric": 980,
+        "name": "Ukrainian Hryvnia"
+    },
+    "yo": {
+        "code": "NGN",
+        "numeric": 566,
+        "name": "Náírà Nàìjíríà"
+    },
+    "zu": {
+        "code": "ZAR",
+        "numeric": 710,
+        "name": "i-South African Rand"
+    }
+}

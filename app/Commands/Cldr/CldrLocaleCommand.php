@@ -5,18 +5,16 @@ declare(strict_types=1);
 namespace LaravelLang\Mona\Commands\Cldr;
 
 use LaravelLang\LocaleNames\LocaleData;
+use LaravelLang\Mona\Concerns\HasLanguages;
 use RuntimeException;
 
 use function sprintf;
 
 final class CldrLocaleCommand extends CldrCommand
 {
+    use HasLanguages;
+
     protected string $targetDirectory = __DIR__ . '/../../../src/LocaleNames/data';
-
-    protected string $sourceDirectory = __DIR__ . '/../../../node_modules/cldr-localenames-full/main';
-
-    /** @var array<string, array<string, string>> */
-    private array $languages = [];
 
     protected function perform(string $forCode, string $locale): LocaleData
     {
@@ -37,15 +35,6 @@ final class CldrLocaleCommand extends CldrCommand
         return new LocaleData(
             code: $locale,
             name: $name,
-        );
-    }
-
-    protected function languages(string $locale): array
-    {
-        $source = $this->bundleCode($locale);
-
-        return $this->languages[$source] ??= $this->load(
-            $this->sourceDirectory . '/' . $source . '/languages.json'
         );
     }
 }

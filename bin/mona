@@ -5,8 +5,11 @@ declare(strict_types=1);
 
 use Dotenv\Dotenv;
 use LaravelLang\Mona\Commands\Cldr\CldrCountryCommand;
+use LaravelLang\Mona\Commands\Cldr\CldrCountryNativeCommand;
 use LaravelLang\Mona\Commands\Cldr\CldrCurrencyCommand;
+use LaravelLang\Mona\Commands\Cldr\CldrCurrencyNativeCommand;
 use LaravelLang\Mona\Commands\Cldr\CldrLocaleCommand;
+use LaravelLang\Mona\Commands\Cldr\CldrLocaleNativeCommand;
 use Symfony\Component\Console\Application;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -18,8 +21,11 @@ $application = new Application('Laravel-Lang: Mona');
 
 $application->addCommands([
     new CldrCountryCommand,
+    new CldrCountryNativeCommand,
     new CldrCurrencyCommand,
+    new CldrCurrencyNativeCommand,
     new CldrLocaleCommand,
+    new CldrLocaleNativeCommand,
 ]);
 
 $application->run();
