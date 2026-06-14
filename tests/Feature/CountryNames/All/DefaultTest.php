@@ -5,7 +5,7 @@ declare(strict_types=1);
 use LaravelLang\CountryNames\CountryNames;
 use LaravelLang\LocaleList\Locale;
 
-test('fallback', function () {
+test('default', function () {
     $items = CountryNames::all();
 
     expect($items->toArray())

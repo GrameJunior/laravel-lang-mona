@@ -1,323 +1,323 @@
 {
     "af": {
         "code": "af",
-        "name": "Afrikaans"
+        "name": "afrikaans"
     },
     "ak": {
         "code": "ak",
-        "name": "Akan"
+        "name": "akan"
     },
     "am": {
         "code": "am",
-        "name": "\u12a0\u121b\u122d\u129b"
+        "name": "amharique"
     },
     "ar": {
         "code": "ar",
-        "name": "\u0627\u0644\u0639\u0631\u0628\u064a\u0629"
+        "name": "arabe"
     },
     "as": {
         "code": "as",
-        "name": "\u0985\u09b8\u09ae\u09c0\u09af\u09bc\u09be"
+        "name": "assamais"
     },
     "az": {
         "code": "az",
-        "name": "az\u0259rbaycan"
+        "name": "azerbaïdjanais"
     },
     "be": {
         "code": "be",
-        "name": "\u0431\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0430\u044f"
+        "name": "biélorusse"
     },
     "bg": {
         "code": "bg",
-        "name": "\u0431\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438"
+        "name": "bulgare"
     },
     "bho": {
         "code": "bho",
-        "name": "\u092d\u094b\u091c\u092a\u0941\u0930\u0940"
+        "name": "bhodjpouri"
     },
     "bm": {
         "code": "bm",
-        "name": "bamanakan"
+        "name": "bambara"
     },
     "bn": {
         "code": "bn",
-        "name": "\u09ac\u09be\u0982\u09b2\u09be"
+        "name": "bengali"
     },
     "bs": {
         "code": "bs",
-        "name": "bosanski"
+        "name": "bosniaque"
     },
     "ca": {
         "code": "ca",
-        "name": "catal\u00e0"
+        "name": "catalan"
     },
     "ceb": {
         "code": "ceb",
-        "name": "Cebuano"
+        "name": "cebuano"
     },
     "ckb": {
         "code": "ckb",
-        "name": "\u06a9\u0648\u0631\u062f\u06cc\u06cc \u0646\u0627\u0648\u06d5\u0646\u062f\u06cc"
+        "name": "sorani"
     },
     "cs": {
         "code": "cs",
-        "name": "\u010de\u0161tina"
+        "name": "tchèque"
     },
     "cy": {
         "code": "cy",
-        "name": "Cymraeg"
+        "name": "gallois"
     },
     "da": {
         "code": "da",
-        "name": "dansk"
+        "name": "danois"
     },
     "de": {
         "code": "de",
-        "name": "Deutsch"
+        "name": "allemand"
     },
     "de_AT": {
         "code": "de_AT",
-        "name": "\u00d6sterreichisches Deutsch"
+        "name": "allemand autrichien"
     },
     "de_CH": {
         "code": "de_CH",
-        "name": "Schweizer Hochdeutsch"
+        "name": "allemand suisse"
     },
     "doi": {
         "code": "doi",
-        "name": "\u0921\u094b\u0917\u0930\u0940"
+        "name": "dogri"
     },
     "ee": {
         "code": "ee",
-        "name": "e\u028begbe"
+        "name": "éwé"
     },
     "el": {
         "code": "el",
-        "name": "\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac"
+        "name": "grec"
     },
     "en": {
         "code": "en",
-        "name": "English"
+        "name": "anglais"
     },
     "en_CA": {
         "code": "en_CA",
-        "name": "Canadian English"
+        "name": "anglais canadien"
     },
     "eo": {
         "code": "eo",
-        "name": "Esperanto"
+        "name": "espéranto"
     },
     "es": {
         "code": "es",
-        "name": "espa\u00f1ol"
+        "name": "espagnol"
     },
     "et": {
         "code": "et",
-        "name": "eesti"
+        "name": "estonien"
     },
     "eu": {
         "code": "eu",
-        "name": "euskara"
+        "name": "basque"
     },
     "fa": {
         "code": "fa",
-        "name": "\u0641\u0627\u0631\u0633\u06cc"
+        "name": "persan"
     },
     "fi": {
         "code": "fi",
-        "name": "suomi"
+        "name": "finnois"
     },
     "fil": {
         "code": "fil",
-        "name": "Filipino"
+        "name": "filipino"
     },
     "fr": {
         "code": "fr",
-        "name": "fran\u00e7ais"
+        "name": "français"
     },
     "fy": {
         "code": "fy",
-        "name": "Frysk"
+        "name": "frison occidental"
     },
     "ga": {
         "code": "ga",
-        "name": "Gaeilge"
+        "name": "irlandais"
     },
     "gd": {
         "code": "gd",
-        "name": "G\u00e0idhlig"
+        "name": "gaélique écossais"
     },
     "gl": {
         "code": "gl",
-        "name": "galego"
+        "name": "galicien"
     },
     "gu": {
         "code": "gu",
-        "name": "\u0a97\u0ac1\u0a9c\u0ab0\u0abe\u0aa4\u0ac0"
+        "name": "goudjarati"
     },
     "ha": {
         "code": "ha",
-        "name": "Hausa"
+        "name": "haoussa"
     },
     "haw": {
         "code": "haw",
-        "name": "\u02bb\u014clelo Hawai\u02bbi"
+        "name": "hawaïen"
     },
     "he": {
         "code": "he",
-        "name": "\u05e2\u05d1\u05e8\u05d9\u05ea"
+        "name": "hébreu"
     },
     "hi": {
         "code": "hi",
-        "name": "\u0939\u093f\u0928\u094d\u0926\u0940"
+        "name": "hindi"
     },
     "hr": {
         "code": "hr",
-        "name": "hrvatski"
+        "name": "croate"
     },
     "ht": {
         "code": "ht",
-        "name": "Krey\u00f2l Ayisyen"
+        "name": "créole haïtien"
     },
     "hu": {
         "code": "hu",
-        "name": "magyar"
+        "name": "hongrois"
     },
     "hy": {
         "code": "hy",
-        "name": "\u0570\u0561\u0575\u0565\u0580\u0565\u0576"
+        "name": "arménien"
     },
     "id": {
         "code": "id",
-        "name": "Indonesia"
+        "name": "indonésien"
     },
     "ig": {
         "code": "ig",
-        "name": "Igbo"
+        "name": "igbo"
     },
     "is": {
         "code": "is",
-        "name": "\u00edslenska"
+        "name": "islandais"
     },
     "it": {
         "code": "it",
-        "name": "italiano"
+        "name": "italien"
     },
     "ja": {
         "code": "ja",
-        "name": "\u65e5\u672c\u8a9e"
+        "name": "japonais"
     },
     "ka": {
         "code": "ka",
-        "name": "\u10e5\u10d0\u10e0\u10d7\u10e3\u10da\u10d8"
+        "name": "géorgien"
     },
     "kk": {
         "code": "kk",
-        "name": "\u049b\u0430\u0437\u0430\u049b \u0442\u0456\u043b\u0456"
+        "name": "kazakh"
     },
     "km": {
         "code": "km",
-        "name": "\u1781\u17d2\u1798\u17c2\u179a"
+        "name": "khmer"
     },
     "kn": {
         "code": "kn",
-        "name": "\u0c95\u0ca8\u0ccd\u0ca8\u0ca1"
+        "name": "kannada"
     },
     "ko": {
         "code": "ko",
-        "name": "\ud55c\uad6d\uc5b4"
+        "name": "coréen"
     },
     "ku": {
         "code": "ku",
-        "name": "kurd\u00ee (kurmanc\u00ee)"
+        "name": "kurde"
     },
     "ky": {
         "code": "ky",
-        "name": "\u043a\u044b\u0440\u0433\u044b\u0437\u0447\u0430"
+        "name": "kirghize"
     },
     "lb": {
         "code": "lb",
-        "name": "L\u00ebtzebuergesch"
+        "name": "luxembourgeois"
     },
     "lg": {
         "code": "lg",
-        "name": "Luganda"
+        "name": "ganda"
     },
     "ln": {
         "code": "ln",
-        "name": "ling\u00e1la"
+        "name": "lingala"
     },
     "lo": {
         "code": "lo",
-        "name": "\u0ea5\u0eb2\u0ea7"
+        "name": "lao"
     },
     "lt": {
         "code": "lt",
-        "name": "lietuvi\u0173"
+        "name": "lituanien"
     },
     "lv": {
         "code": "lv",
-        "name": "latvie\u0161u"
+        "name": "letton"
     },
     "mai": {
         "code": "mai",
-        "name": "\u092e\u0948\u0925\u093f\u0932\u0940"
+        "name": "maïthili"
     },
     "mg": {
         "code": "mg",
-        "name": "Malagasy"
+        "name": "malgache"
     },
     "mi": {
         "code": "mi",
-        "name": "M\u0101ori"
+        "name": "maori"
     },
     "mk": {
         "code": "mk",
-        "name": "\u043c\u0430\u043a\u0435\u0434\u043e\u043d\u0441\u043a\u0438"
+        "name": "macédonien"
     },
     "ml": {
         "code": "ml",
-        "name": "\u0d2e\u0d32\u0d2f\u0d3e\u0d33\u0d02"
+        "name": "malayalam"
     },
     "mn": {
         "code": "mn",
-        "name": "\u043c\u043e\u043d\u0433\u043e\u043b"
+        "name": "mongol"
     },
     "mni_Mtei": {
         "code": "mni_Mtei",
-        "name": "\uabc3\uabe4\uabc7\uabe9\uabc2\uabe3\uabdf"
+        "name": "manipuri"
     },
     "mr": {
         "code": "mr",
-        "name": "\u092e\u0930\u093e\u0920\u0940"
+        "name": "marathi"
     },
     "ms": {
         "code": "ms",
-        "name": "Melayu"
+        "name": "malais"
     },
     "mt": {
         "code": "mt",
-        "name": "Malti"
+        "name": "maltais"
     },
     "my": {
         "code": "my",
-        "name": "\u1019\u103c\u1014\u103a\u1019\u102c"
+        "name": "birman"
     },
     "nb": {
         "code": "nb",
-        "name": "norsk bokm\u00e5l"
+        "name": "norvégien bokmål"
     },
     "ne": {
         "code": "ne",
-        "name": "\u0928\u0947\u092a\u093e\u0932\u0940"
+        "name": "népalais"
     },
     "nl": {
         "code": "nl",
-        "name": "Nederlands"
+        "name": "néerlandais"
     },
     "nn": {
         "code": "nn",
-        "name": "norsk nynorsk"
+        "name": "norvégien nynorsk"
     },
     "oc": {
         "code": "oc",
@@ -325,194 +325,194 @@
     },
     "om": {
         "code": "om",
-        "name": "Oromoo"
+        "name": "oromo"
     },
     "or": {
         "code": "or",
-        "name": "\u0b13\u0b21\u0b3c\u0b3f\u0b06"
+        "name": "odia"
     },
     "pa": {
         "code": "pa",
-        "name": "\u0a2a\u0a70\u0a1c\u0a3e\u0a2c\u0a40"
+        "name": "pendjabi"
     },
     "pl": {
         "code": "pl",
-        "name": "polski"
+        "name": "polonais"
     },
     "ps": {
         "code": "ps",
-        "name": "\u067e\u069a\u062a\u0648"
+        "name": "pachto"
     },
     "pt": {
         "code": "pt",
-        "name": "portugu\u00eas"
+        "name": "portugais"
     },
     "pt_BR": {
         "code": "pt_BR",
-        "name": "portugu\u00eas"
+        "name": "portugais brésilien"
     },
     "qu": {
         "code": "qu",
-        "name": "Runasimi"
+        "name": "quechua"
     },
     "ro": {
         "code": "ro",
-        "name": "rom\u00e2n\u0103"
+        "name": "roumain"
     },
     "ru": {
         "code": "ru",
-        "name": "\u0440\u0443\u0441\u0441\u043a\u0438\u0439"
+        "name": "russe"
     },
     "rw": {
         "code": "rw",
-        "name": "Ikinyarwanda"
+        "name": "kinyarwanda"
     },
     "sa": {
         "code": "sa",
-        "name": "\u0938\u0902\u0938\u094d\u0915\u0943\u0924 \u092d\u093e\u0937\u093e"
+        "name": "sanskrit"
     },
     "sc": {
         "code": "sc",
-        "name": "sardu"
+        "name": "sarde"
     },
     "sd": {
         "code": "sd",
-        "name": "\u0633\u0646\u068c\u064a"
+        "name": "sindhi"
     },
     "si": {
         "code": "si",
-        "name": "\u0dc3\u0dd2\u0d82\u0dc4\u0dbd"
+        "name": "cingalais"
     },
     "sk": {
         "code": "sk",
-        "name": "sloven\u010dina"
+        "name": "slovaque"
     },
     "sl": {
         "code": "sl",
-        "name": "sloven\u0161\u010dina"
+        "name": "slovène"
     },
     "sn": {
         "code": "sn",
-        "name": "chiShona"
+        "name": "shona"
     },
     "so": {
         "code": "so",
-        "name": "Soomaali"
+        "name": "somali"
     },
     "sq": {
         "code": "sq",
-        "name": "shqip"
+        "name": "albanais"
     },
     "sr_Cyrl": {
         "code": "sr_Cyrl",
-        "name": "\u0441\u0440\u043f\u0441\u043a\u0438"
+        "name": "serbe"
     },
     "sr_Latn": {
         "code": "sr_Latn",
-        "name": "srpski"
+        "name": "serbe"
     },
     "sr_Latn_ME": {
         "code": "sr_Latn_ME",
-        "name": "srpski"
+        "name": "serbe"
     },
     "su": {
         "code": "su",
-        "name": "Basa Sunda"
+        "name": "soundanais"
     },
     "sv": {
         "code": "sv",
-        "name": "svenska"
+        "name": "suédois"
     },
     "sw": {
         "code": "sw",
-        "name": "Kiswahili"
+        "name": "swahili"
     },
     "ta": {
         "code": "ta",
-        "name": "\u0ba4\u0bae\u0bbf\u0bb4\u0bcd"
+        "name": "tamoul"
     },
     "te": {
         "code": "te",
-        "name": "\u0c24\u0c46\u0c32\u0c41\u0c17\u0c41"
+        "name": "télougou"
     },
     "tg": {
         "code": "tg",
-        "name": "\u0442\u043e\u04b7\u0438\u043a\u04e3"
+        "name": "tadjik"
     },
     "th": {
         "code": "th",
-        "name": "\u0e44\u0e17\u0e22"
+        "name": "thaï"
     },
     "ti": {
         "code": "ti",
-        "name": "\u1275\u130d\u122d\u129b"
+        "name": "tigrigna"
     },
     "tk": {
         "code": "tk",
-        "name": "t\u00fcrkmen dili"
+        "name": "turkmène"
     },
     "tl": {
         "code": "tl",
-        "name": "Tagalog"
+        "name": "tagalog"
     },
     "tr": {
         "code": "tr",
-        "name": "T\u00fcrk\u00e7e"
+        "name": "turc"
     },
     "tt": {
         "code": "tt",
-        "name": "\u0442\u0430\u0442\u0430\u0440"
+        "name": "tatar"
     },
     "ug": {
         "code": "ug",
-        "name": "\u0626\u06c7\u064a\u063a\u06c7\u0631\u0686\u06d5"
+        "name": "ouïghour"
     },
     "uk": {
         "code": "uk",
-        "name": "\u0443\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430"
+        "name": "ukrainien"
     },
     "ur": {
         "code": "ur",
-        "name": "\u0627\u0631\u062f\u0648"
+        "name": "ourdou"
     },
     "uz_Cyrl": {
         "code": "uz_Cyrl",
-        "name": "\u045e\u0437\u0431\u0435\u043a\u0447\u0430"
+        "name": "ouzbek"
     },
     "uz_Latn": {
         "code": "uz_Latn",
-        "name": "o\u2018zbek"
+        "name": "ouzbek"
     },
     "vi": {
         "code": "vi",
-        "name": "Ti\u1ebfng Vi\u1ec7t"
+        "name": "vietnamien"
     },
     "xh": {
         "code": "xh",
-        "name": "IsiXhosa"
+        "name": "xhosa"
     },
     "yi": {
         "code": "yi",
-        "name": "\u05d9\u05d9\u05b4\u05d3\u05d9\u05e9"
+        "name": "yiddish"
     },
     "yo": {
         "code": "yo",
-        "name": "\u00c8d\u00e8 Yor\u00f9b\u00e1"
+        "name": "yoruba"
     },
     "zh_CN": {
         "code": "zh_CN",
-        "name": "\u4e2d\u6587"
+        "name": "chinois"
     },
     "zh_HK": {
         "code": "zh_HK",
-        "name": "\u4e2d\u6587"
+        "name": "chinois"
     },
     "zh_TW": {
         "code": "zh_TW",
-        "name": "\u4e2d\u6587"
+        "name": "chinois"
     },
     "zu": {
         "code": "zu",
-        "name": "isiZulu"
+        "name": "zoulou"
     }
 }

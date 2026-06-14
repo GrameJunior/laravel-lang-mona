@@ -17,7 +17,7 @@
     },
     "hy": {
         "code": "hy",
-        "name": "arm\u00e9nien"
+        "name": "arménien"
     },
     "as": {
         "code": "as",
@@ -25,7 +25,7 @@
     },
     "az": {
         "code": "az",
-        "name": "azerba\u00efdjanais"
+        "name": "azerbaïdjanais"
     },
     "bm": {
         "code": "bm",
@@ -37,7 +37,7 @@
     },
     "be": {
         "code": "be",
-        "name": "bi\u00e9lorusse"
+        "name": "biélorusse"
     },
     "bn": {
         "code": "bn",
@@ -89,7 +89,7 @@
     },
     "cs": {
         "code": "cs",
-        "name": "tch\u00e8que"
+        "name": "tchèque"
     },
     "da": {
         "code": "da",
@@ -101,7 +101,7 @@
     },
     "nl": {
         "code": "nl",
-        "name": "n\u00e9erlandais"
+        "name": "néerlandais"
     },
     "en": {
         "code": "en",
@@ -109,7 +109,7 @@
     },
     "eo": {
         "code": "eo",
-        "name": "esp\u00e9ranto"
+        "name": "espéranto"
     },
     "et": {
         "code": "et",
@@ -117,7 +117,7 @@
     },
     "ee": {
         "code": "ee",
-        "name": "\u00e9w\u00e9"
+        "name": "éwé"
     },
     "fi": {
         "code": "fi",
@@ -125,7 +125,7 @@
     },
     "fr": {
         "code": "fr",
-        "name": "fran\u00e7ais"
+        "name": "français"
     },
     "fy": {
         "code": "fy",
@@ -137,7 +137,7 @@
     },
     "ka": {
         "code": "ka",
-        "name": "g\u00e9orgien"
+        "name": "géorgien"
     },
     "de": {
         "code": "de",
@@ -161,7 +161,7 @@
     },
     "ht": {
         "code": "ht",
-        "name": "cr\u00e9ole ha\u00eftien"
+        "name": "créole haïtien"
     },
     "ha": {
         "code": "ha",
@@ -169,11 +169,11 @@
     },
     "haw": {
         "code": "haw",
-        "name": "hawa\u00efen"
+        "name": "hawaïen"
     },
     "he": {
         "code": "he",
-        "name": "h\u00e9breu"
+        "name": "hébreu"
     },
     "hi": {
         "code": "hi",
@@ -193,7 +193,7 @@
     },
     "id": {
         "code": "id",
-        "name": "indon\u00e9sien"
+        "name": "indonésien"
     },
     "ga": {
         "code": "ga",
@@ -221,7 +221,7 @@
     },
     "ko": {
         "code": "ko",
-        "name": "cor\u00e9en"
+        "name": "coréen"
     },
     "ku": {
         "code": "ku",
@@ -261,11 +261,11 @@
     },
     "mk": {
         "code": "mk",
-        "name": "mac\u00e9donien"
+        "name": "macédonien"
     },
     "mai": {
         "code": "mai",
-        "name": "ma\u00efthili"
+        "name": "maïthili"
     },
     "mg": {
         "code": "mg",
@@ -305,15 +305,15 @@
     },
     "ne": {
         "code": "ne",
-        "name": "n\u00e9palais"
+        "name": "népalais"
     },
     "nb": {
         "code": "nb",
-        "name": "norv\u00e9gien bokm\u00e5l"
+        "name": "norvégien bokmål"
     },
     "nn": {
         "code": "nn",
-        "name": "norv\u00e9gien nynorsk"
+        "name": "norvégien nynorsk"
     },
     "oc": {
         "code": "oc",
@@ -349,7 +349,7 @@
     },
     "pt_BR": {
         "code": "pt_BR",
-        "name": "portugais br\u00e9silien"
+        "name": "portugais brésilien"
     },
     "pa": {
         "code": "pa",
@@ -377,7 +377,7 @@
     },
     "gd": {
         "code": "gd",
-        "name": "ga\u00e9lique \u00e9cossais"
+        "name": "gaélique écossais"
     },
     "sr_Cyrl": {
         "code": "sr_Cyrl",
@@ -409,7 +409,7 @@
     },
     "sl": {
         "code": "sl",
-        "name": "slov\u00e8ne"
+        "name": "slovène"
     },
     "so": {
         "code": "so",
@@ -429,7 +429,7 @@
     },
     "sv": {
         "code": "sv",
-        "name": "su\u00e9dois"
+        "name": "suédois"
     },
     "tl": {
         "code": "tl",
@@ -449,11 +449,11 @@
     },
     "te": {
         "code": "te",
-        "name": "t\u00e9lougou"
+        "name": "télougou"
     },
     "th": {
         "code": "th",
-        "name": "tha\u00ef"
+        "name": "thaï"
     },
     "ti": {
         "code": "ti",
@@ -465,7 +465,7 @@
     },
     "tk": {
         "code": "tk",
-        "name": "turkm\u00e8ne"
+        "name": "turkmène"
     },
     "ak": {
         "code": "ak",
@@ -473,7 +473,7 @@
     },
     "ug": {
         "code": "ug",
-        "name": "ou\u00efghour"
+        "name": "ouïghour"
     },
     "uk": {
         "code": "uk",

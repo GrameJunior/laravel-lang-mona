@@ -1,39 +1,39 @@
 {
     "af": {
         "code": "ZA",
-        "name": "Suid-Afrika"
+        "name": "Afrique du Sud"
     },
     "ak": {
         "code": "GH",
-        "name": "Gaana"
+        "name": "Ghana"
     },
     "am": {
         "code": "ET",
-        "name": "\u12a2\u1275\u12ee\u1335\u12eb"
+        "name": "Éthiopie"
     },
     "ar": {
         "code": "EG",
-        "name": "\u0645\u0635\u0631"
+        "name": "Égypte"
     },
     "as": {
         "code": "IN",
-        "name": "\u09ad\u09be\u09f0\u09a4"
+        "name": "Inde"
     },
     "az": {
         "code": "AZ",
-        "name": "Az\u0259rbaycan"
+        "name": "Azerbaïdjan"
     },
     "be": {
         "code": "BY",
-        "name": "\u0411\u0435\u043b\u0430\u0440\u0443\u0441\u044c"
+        "name": "Biélorussie"
     },
     "bg": {
         "code": "BG",
-        "name": "\u0411\u044a\u043b\u0433\u0430\u0440\u0438\u044f"
+        "name": "Bulgarie"
     },
     "bho": {
         "code": "IN",
-        "name": "\u092d\u093e\u0930\u0924"
+        "name": "Inde"
     },
     "bm": {
         "code": "ML",
@@ -41,15 +41,15 @@
     },
     "bn": {
         "code": "BD",
-        "name": "\u09ac\u09be\u0982\u09b2\u09be\u09a6\u09c7\u09b6"
+        "name": "Bangladesh"
     },
     "bs": {
         "code": "BA",
-        "name": "Bosna i Hercegovina"
+        "name": "Bosnie-Herzégovine"
     },
     "ca": {
         "code": "ES",
-        "name": "Espanya"
+        "name": "Espagne"
     },
     "ceb": {
         "code": "PH",
@@ -57,47 +57,47 @@
     },
     "ckb": {
         "code": "IQ",
-        "name": "\u0639\u06ce\u0631\u0627\u0642"
+        "name": "Irak"
     },
     "cs": {
         "code": "CZ",
-        "name": "\u010cesko"
+        "name": "Tchéquie"
     },
     "cy": {
         "code": "GB",
-        "name": "Y Deyrnas Unedig"
+        "name": "Royaume-Uni"
     },
     "da": {
         "code": "DK",
-        "name": "Danmark"
+        "name": "Danemark"
     },
     "de": {
         "code": "DE",
-        "name": "Deutschland"
+        "name": "Allemagne"
     },
     "de_AT": {
         "code": "AT",
-        "name": "\u00d6sterreich"
+        "name": "Autriche"
     },
     "de_CH": {
         "code": "CH",
-        "name": "Schweiz"
+        "name": "Suisse"
     },
     "doi": {
         "code": "IN",
-        "name": "\u092d\u093e\u0930\u0924"
+        "name": "Inde"
     },
     "ee": {
         "code": "GH",
-        "name": "Ghana nutome"
+        "name": "Ghana"
     },
     "el": {
         "code": "GR",
-        "name": "\u0395\u03bb\u03bb\u03ac\u03b4\u03b1"
+        "name": "Grèce"
     },
     "en": {
         "code": "US",
-        "name": "United States"
+        "name": "États-Unis"
     },
     "en_CA": {
         "code": "CA",
@@ -105,31 +105,31 @@
     },
     "eo": {
         "code": "001",
-        "name": "mondo"
+        "name": "Monde"
     },
     "es": {
         "code": "ES",
-        "name": "Espa\u00f1a"
+        "name": "Espagne"
     },
     "et": {
         "code": "EE",
-        "name": "Eesti"
+        "name": "Estonie"
     },
     "eu": {
         "code": "ES",
-        "name": "Espainia"
+        "name": "Espagne"
     },
     "fa": {
         "code": "IR",
-        "name": "\u0627\u06cc\u0631\u0627\u0646"
+        "name": "Iran"
     },
     "fi": {
         "code": "FI",
-        "name": "Suomi"
+        "name": "Finlande"
     },
     "fil": {
         "code": "PH",
-        "name": "Pilipinas"
+        "name": "Philippines"
     },
     "fr": {
         "code": "FR",
@@ -137,259 +137,259 @@
     },
     "fy": {
         "code": "NL",
-        "name": "Nederl\u00e2n"
+        "name": "Pays-Bas"
     },
     "ga": {
         "code": "IE",
-        "name": "\u00c9ire"
+        "name": "Irlande"
     },
     "gd": {
         "code": "GB",
-        "name": "An R\u00ecoghachd Aonaichte"
+        "name": "Royaume-Uni"
     },
     "gl": {
         "code": "ES",
-        "name": "Espa\u00f1a"
+        "name": "Espagne"
     },
     "gu": {
         "code": "IN",
-        "name": "\u0aad\u0abe\u0ab0\u0aa4"
+        "name": "Inde"
     },
     "ha": {
         "code": "NG",
-        "name": "Nijeriya"
+        "name": "Nigeria"
     },
     "haw": {
         "code": "US",
-        "name": "\u02bbAmelika Hui P\u016b \u02bbIa"
+        "name": "États-Unis"
     },
     "he": {
         "code": "IL",
-        "name": "\u05d9\u05e9\u05e8\u05d0\u05dc"
+        "name": "Israël"
     },
     "hi": {
         "code": "IN",
-        "name": "\u092d\u093e\u0930\u0924"
+        "name": "Inde"
     },
     "hr": {
         "code": "HR",
-        "name": "Hrvatska"
+        "name": "Croatie"
     },
     "ht": {
         "code": "HT",
-        "name": "Ha\u00efti"
+        "name": "Haïti"
     },
     "hu": {
         "code": "HU",
-        "name": "Magyarorsz\u00e1g"
+        "name": "Hongrie"
     },
     "hy": {
         "code": "AM",
-        "name": "\u0540\u0561\u0575\u0561\u057d\u057f\u0561\u0576"
+        "name": "Arménie"
     },
     "id": {
         "code": "ID",
-        "name": "Indonesia"
+        "name": "Indonésie"
     },
     "ig": {
         "code": "NG",
-        "name": "Na\u1ecbj\u1ecbr\u1ecba"
+        "name": "Nigeria"
     },
     "is": {
         "code": "IS",
-        "name": "\u00cdsland"
+        "name": "Islande"
     },
     "it": {
         "code": "IT",
-        "name": "Italia"
+        "name": "Italie"
     },
     "ja": {
         "code": "JP",
-        "name": "\u65e5\u672c"
+        "name": "Japon"
     },
     "ka": {
         "code": "GE",
-        "name": "\u10e1\u10d0\u10e5\u10d0\u10e0\u10d7\u10d5\u10d4\u10da\u10dd"
+        "name": "Géorgie"
     },
     "kk": {
         "code": "KZ",
-        "name": "\u049a\u0430\u0437\u0430\u049b\u0441\u0442\u0430\u043d"
+        "name": "Kazakhstan"
     },
     "km": {
         "code": "KH",
-        "name": "\u1780\u1798\u17d2\u1796\u17bb\u1787\u17b6"
+        "name": "Cambodge"
     },
     "kn": {
         "code": "IN",
-        "name": "\u0cad\u0cbe\u0cb0\u0ca4"
+        "name": "Inde"
     },
     "ko": {
         "code": "KR",
-        "name": "\ub300\ud55c\ubbfc\uad6d"
+        "name": "Corée du Sud"
     },
     "ku": {
         "code": "TR",
-        "name": "T\u00fcrkiye"
+        "name": "Turquie"
     },
     "ky": {
         "code": "KG",
-        "name": "\u041a\u044b\u0440\u0433\u044b\u0437\u0441\u0442\u0430\u043d"
+        "name": "Kirghizstan"
     },
     "lb": {
         "code": "LU",
-        "name": "L\u00ebtzebuerg"
+        "name": "Luxembourg"
     },
     "lg": {
         "code": "UG",
-        "name": "Yuganda"
+        "name": "Ouganda"
     },
     "ln": {
         "code": "CD",
-        "name": "Republ\u00edki ya Kong\u00f3 Demokrat\u00edki"
+        "name": "Congo-Kinshasa"
     },
     "lo": {
         "code": "LA",
-        "name": "\u0ea5\u0eb2\u0ea7"
+        "name": "Laos"
     },
     "lt": {
         "code": "LT",
-        "name": "Lietuva"
+        "name": "Lituanie"
     },
     "lv": {
         "code": "LV",
-        "name": "Latvija"
+        "name": "Lettonie"
     },
     "mai": {
         "code": "IN",
-        "name": "\u092d\u093e\u0930\u0924"
+        "name": "Inde"
     },
     "mg": {
         "code": "MG",
-        "name": "Madagasikara"
+        "name": "Madagascar"
     },
     "mi": {
         "code": "NZ",
-        "name": "Aotearoa"
+        "name": "Nouvelle-Zélande"
     },
     "mk": {
         "code": "MK",
-        "name": "\u0421\u0435\u0432\u0435\u0440\u043d\u0430 \u041c\u0430\u043a\u0435\u0434\u043e\u043d\u0438\u0458\u0430"
+        "name": "Macédoine du Nord"
     },
     "ml": {
         "code": "IN",
-        "name": "\u0d07\u0d28\u0d4d\u0d24\u0d4d\u0d2f"
+        "name": "Inde"
     },
     "mn": {
         "code": "MN",
-        "name": "\u041c\u043e\u043d\u0433\u043e\u043b"
+        "name": "Mongolie"
     },
     "mni_Mtei": {
         "code": "IN",
-        "name": "\u0987\u09a8\u09cd\u09a6\u09bf\u09af\u09bc\u09be"
+        "name": "Inde"
     },
     "mr": {
         "code": "IN",
-        "name": "\u092d\u093e\u0930\u0924"
+        "name": "Inde"
     },
     "ms": {
         "code": "MY",
-        "name": "Malaysia"
+        "name": "Malaisie"
     },
     "mt": {
         "code": "MT",
-        "name": "Malta"
+        "name": "Malte"
     },
     "my": {
         "code": "MM",
-        "name": "\u1019\u103c\u1014\u103a\u1019\u102c"
+        "name": "Myanmar (Birmanie)"
     },
     "nb": {
         "code": "NO",
-        "name": "Norge"
+        "name": "Norvège"
     },
     "ne": {
         "code": "NP",
-        "name": "\u0928\u0947\u092a\u093e\u0932"
+        "name": "Népal"
     },
     "nl": {
         "code": "NL",
-        "name": "Nederland"
+        "name": "Pays-Bas"
     },
     "nn": {
         "code": "NO",
-        "name": "Noreg"
+        "name": "Norvège"
     },
     "oc": {
         "code": "FR",
-        "name": "Fran\u00e7a"
+        "name": "France"
     },
     "om": {
         "code": "ET",
-        "name": "Itoophiyaa"
+        "name": "Éthiopie"
     },
     "or": {
         "code": "IN",
-        "name": "\u0b2d\u0b3e\u0b30\u0b24"
+        "name": "Inde"
     },
     "pa": {
         "code": "IN",
-        "name": "\u0a2d\u0a3e\u0a30\u0a24"
+        "name": "Inde"
     },
     "pl": {
         "code": "PL",
-        "name": "Polska"
+        "name": "Pologne"
     },
     "ps": {
         "code": "AF",
-        "name": "\u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
+        "name": "Afghanistan"
     },
     "pt": {
         "code": "BR",
-        "name": "Brasil"
+        "name": "Brésil"
     },
     "pt_BR": {
         "code": "BR",
-        "name": "Brasil"
+        "name": "Brésil"
     },
     "qu": {
         "code": "PE",
-        "name": "Per\u00fa"
+        "name": "Pérou"
     },
     "ro": {
         "code": "RO",
-        "name": "Rom\u00e2nia"
+        "name": "Roumanie"
     },
     "ru": {
         "code": "RU",
-        "name": "\u0420\u043e\u0441\u0441\u0438\u044f"
+        "name": "Russie"
     },
     "rw": {
         "code": "RW",
-        "name": "U Rwanda"
+        "name": "Rwanda"
     },
     "sa": {
         "code": "IN",
-        "name": "\u092d\u093e\u0930\u0924\u0903"
+        "name": "Inde"
     },
     "sc": {
         "code": "IT",
-        "name": "It\u00e0lia"
+        "name": "Italie"
     },
     "sd": {
         "code": "PK",
-        "name": "\u067e\u0627\u06aa\u0633\u062a\u0627\u0646"
+        "name": "Pakistan"
     },
     "si": {
         "code": "LK",
-        "name": "\u0dc1\u0dca\u200d\u0dbb\u0dd3 \u0dbd\u0d82\u0d9a\u0dcf\u0dc0"
+        "name": "Sri Lanka"
     },
     "sk": {
         "code": "SK",
-        "name": "Slovensko"
+        "name": "Slovaquie"
     },
     "sl": {
         "code": "SI",
-        "name": "Slovenija"
+        "name": "Slovénie"
     },
     "sn": {
         "code": "ZW",
@@ -397,122 +397,122 @@
     },
     "so": {
         "code": "SO",
-        "name": "Soomaaliya"
+        "name": "Somalie"
     },
     "sq": {
         "code": "AL",
-        "name": "Shqip\u00ebri"
+        "name": "Albanie"
     },
     "sr_Cyrl": {
         "code": "RS",
-        "name": "\u0421\u0440\u0431\u0438\u0458\u0430"
+        "name": "Serbie"
     },
     "sr_Latn": {
         "code": "RS",
-        "name": "Srbija"
+        "name": "Serbie"
     },
     "sr_Latn_ME": {
         "code": "ME",
-        "name": "Crna Gora"
+        "name": "Monténégro"
     },
     "su": {
         "code": "ID",
-        "name": "Indonesia"
+        "name": "Indonésie"
     },
     "sv": {
         "code": "SE",
-        "name": "Sverige"
+        "name": "Suède"
     },
     "sw": {
         "code": "TZ",
-        "name": "Tanzania"
+        "name": "Tanzanie"
     },
     "ta": {
         "code": "IN",
-        "name": "\u0b87\u0ba8\u0bcd\u0ba4\u0bbf\u0baf\u0bbe"
+        "name": "Inde"
     },
     "te": {
         "code": "IN",
-        "name": "\u0c2d\u0c3e\u0c30\u0c24\u0c26\u0c47\u0c36\u0c02"
+        "name": "Inde"
     },
     "tg": {
         "code": "TJ",
-        "name": "\u0422\u043e\u04b7\u0438\u043a\u0438\u0441\u0442\u043e\u043d"
+        "name": "Tadjikistan"
     },
     "th": {
         "code": "TH",
-        "name": "\u0e44\u0e17\u0e22"
+        "name": "Thaïlande"
     },
     "ti": {
         "code": "ET",
-        "name": "\u12a2\u1275\u12ee\u1335\u12eb"
+        "name": "Éthiopie"
     },
     "tk": {
         "code": "TM",
-        "name": "T\u00fcrkmenistan"
+        "name": "Turkménistan"
     },
     "tl": {
         "code": "PH",
-        "name": "Pilipinas"
+        "name": "Philippines"
     },
     "tr": {
         "code": "TR",
-        "name": "T\u00fcrkiye"
+        "name": "Turquie"
     },
     "tt": {
         "code": "RU",
-        "name": "\u0420\u043e\u0441\u0441\u0438\u044f"
+        "name": "Russie"
     },
     "ug": {
         "code": "CN",
-        "name": "\u062c\u06c7\u06ad\u06af\u0648"
+        "name": "Chine"
     },
     "uk": {
         "code": "UA",
-        "name": "\u0423\u043a\u0440\u0430\u0457\u043d\u0430"
+        "name": "Ukraine"
     },
     "ur": {
         "code": "PK",
-        "name": "\u067e\u0627\u06a9\u0633\u062a\u0627\u0646"
+        "name": "Pakistan"
     },
     "uz_Cyrl": {
         "code": "UZ",
-        "name": "\u040e\u0437\u0431\u0435\u043a\u0438\u0441\u0442\u043e\u043d"
+        "name": "Ouzbékistan"
     },
     "uz_Latn": {
         "code": "UZ",
-        "name": "O\u02bbzbekiston"
+        "name": "Ouzbékistan"
     },
     "vi": {
         "code": "VN",
-        "name": "Vi\u1ec7t Nam"
+        "name": "Viêt Nam"
     },
     "xh": {
         "code": "ZA",
-        "name": "EMzantsi Afrika"
+        "name": "Afrique du Sud"
     },
     "yi": {
         "code": "UA",
-        "name": "\u05d0\u05d5\u05e7\u05e8\u05d0\u05b7\u05d9\u05e0\u05e2"
+        "name": "Ukraine"
     },
     "yo": {
         "code": "NG",
-        "name": "N\u00e0\u00ecj\u00edr\u00ed\u00e0"
+        "name": "Nigeria"
     },
     "zh_CN": {
         "code": "CN",
-        "name": "\u4e2d\u56fd"
+        "name": "Chine"
     },
     "zh_HK": {
         "code": "HK",
-        "name": "\u4e2d\u570b\u9999\u6e2f\u7279\u5225\u884c\u653f\u5340"
+        "name": "R.A.S. chinoise de Hong Kong"
     },
     "zh_TW": {
         "code": "TW",
-        "name": "\u53f0\u7063"
+        "name": "Taïwan"
     },
     "zu": {
         "code": "ZA",
-        "name": "iNingizimu Afrika"
+        "name": "Afrique du Sud"
     }
 }

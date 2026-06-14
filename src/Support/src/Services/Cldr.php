@@ -11,7 +11,7 @@ use LaravelLang\Support\Filesystem\Filesystem;
 
 abstract class Cldr
 {
-    protected static string $fallback = '_native';
+    protected static string $default = '_native';
 
     abstract protected static function item(array|string $value, string $locale): mixed;
 
@@ -26,7 +26,7 @@ abstract class Cldr
     {
         return (new Collection(static::load($locale)))
             ->when($sortBy === SortBy::Key, static fn (Collection $items) => $items->sortKeys())
-            ->when($sortBy === SortBy::Value, static fn (Collection $items) => $items->sort())
+            ->when($sortBy === SortBy::Value, static fn (Collection $items) => $items->sortBy('name'))
             ->map(static fn (array|string $value, string $code) => static::item($value, $code));
     }
 
@@ -40,7 +40,7 @@ abstract class Cldr
     protected static function locale(BackedEnum|string|null $locale): string
     {
         if (! $locale) {
-            return static::$fallback;
+            return static::$default;
         }
 
         if ($locale instanceof BackedEnum) {
@@ -51,6 +51,6 @@ abstract class Cldr
             return $locale;
         }
 
-        return static::$fallback;
+        return static::$default;
     }
 }

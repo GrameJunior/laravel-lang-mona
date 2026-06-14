@@ -9,23 +9,23 @@
     },
     "am": {
         "code": "am",
-        "name": "\u12a0\u121b\u122d\u129b"
+        "name": "አማርኛ"
     },
     "ar": {
         "code": "ar",
-        "name": "\u0627\u0644\u0639\u0631\u0628\u064a\u0629"
+        "name": "العربية"
     },
     "hy": {
         "code": "hy",
-        "name": "\u0570\u0561\u0575\u0565\u0580\u0565\u0576"
+        "name": "հայերեն"
     },
     "as": {
         "code": "as",
-        "name": "\u0985\u09b8\u09ae\u09c0\u09af\u09bc\u09be"
+        "name": "অসমীয়া"
     },
     "az": {
         "code": "az",
-        "name": "az\u0259rbaycan"
+        "name": "azərbaycan"
     },
     "bm": {
         "code": "bm",
@@ -37,15 +37,15 @@
     },
     "be": {
         "code": "be",
-        "name": "\u0431\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0430\u044f"
+        "name": "беларуская"
     },
     "bn": {
         "code": "bn",
-        "name": "\u09ac\u09be\u0982\u09b2\u09be"
+        "name": "বাংলা"
     },
     "bho": {
         "code": "bho",
-        "name": "\u092d\u094b\u091c\u092a\u0941\u0930\u0940"
+        "name": "भोजपुरी"
     },
     "bs": {
         "code": "bs",
@@ -53,7 +53,7 @@
     },
     "bg": {
         "code": "bg",
-        "name": "\u0431\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438"
+        "name": "български"
     },
     "en_CA": {
         "code": "en_CA",
@@ -61,7 +61,7 @@
     },
     "ca": {
         "code": "ca",
-        "name": "catal\u00e0"
+        "name": "català"
     },
     "ceb": {
         "code": "ceb",
@@ -69,19 +69,19 @@
     },
     "km": {
         "code": "km",
-        "name": "\u1781\u17d2\u1798\u17c2\u179a"
+        "name": "ខ្មែរ"
     },
     "zh_CN": {
         "code": "zh_CN",
-        "name": "\u4e2d\u6587"
+        "name": "中文"
     },
     "zh_HK": {
         "code": "zh_HK",
-        "name": "\u4e2d\u6587"
+        "name": "中文"
     },
     "zh_TW": {
         "code": "zh_TW",
-        "name": "\u4e2d\u6587"
+        "name": "中文"
     },
     "hr": {
         "code": "hr",
@@ -89,7 +89,7 @@
     },
     "cs": {
         "code": "cs",
-        "name": "\u010de\u0161tina"
+        "name": "čeština"
     },
     "da": {
         "code": "da",
@@ -97,7 +97,7 @@
     },
     "doi": {
         "code": "doi",
-        "name": "\u0921\u094b\u0917\u0930\u0940"
+        "name": "डोगरी"
     },
     "nl": {
         "code": "nl",
@@ -117,7 +117,7 @@
     },
     "ee": {
         "code": "ee",
-        "name": "e\u028begbe"
+        "name": "eʋegbe"
     },
     "fi": {
         "code": "fi",
@@ -125,7 +125,7 @@
     },
     "fr": {
         "code": "fr",
-        "name": "fran\u00e7ais"
+        "name": "français"
     },
     "fy": {
         "code": "fy",
@@ -137,7 +137,7 @@
     },
     "ka": {
         "code": "ka",
-        "name": "\u10e5\u10d0\u10e0\u10d7\u10e3\u10da\u10d8"
+        "name": "ქართული"
     },
     "de": {
         "code": "de",
@@ -145,7 +145,7 @@
     },
     "de_AT": {
         "code": "de_AT",
-        "name": "\u00d6sterreichisches Deutsch"
+        "name": "Österreichisches Deutsch"
     },
     "de_CH": {
         "code": "de_CH",
@@ -153,15 +153,15 @@
     },
     "el": {
         "code": "el",
-        "name": "\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac"
+        "name": "Ελληνικά"
     },
     "gu": {
         "code": "gu",
-        "name": "\u0a97\u0ac1\u0a9c\u0ab0\u0abe\u0aa4\u0ac0"
+        "name": "ગુજરાતી"
     },
     "ht": {
         "code": "ht",
-        "name": "Krey\u00f2l Ayisyen"
+        "name": "Kreyòl Ayisyen"
     },
     "ha": {
         "code": "ha",
@@ -169,15 +169,15 @@
     },
     "haw": {
         "code": "haw",
-        "name": "\u02bb\u014clelo Hawai\u02bbi"
+        "name": "ʻŌlelo Hawaiʻi"
     },
     "he": {
         "code": "he",
-        "name": "\u05e2\u05d1\u05e8\u05d9\u05ea"
+        "name": "עברית"
     },
     "hi": {
         "code": "hi",
-        "name": "\u0939\u093f\u0928\u094d\u0926\u0940"
+        "name": "हिन्दी"
     },
     "hu": {
         "code": "hu",
@@ -185,7 +185,7 @@
     },
     "is": {
         "code": "is",
-        "name": "\u00edslenska"
+        "name": "íslenska"
     },
     "ig": {
         "code": "ig",
@@ -205,15 +205,15 @@
     },
     "ja": {
         "code": "ja",
-        "name": "\u65e5\u672c\u8a9e"
+        "name": "日本語"
     },
     "kn": {
         "code": "kn",
-        "name": "\u0c95\u0ca8\u0ccd\u0ca8\u0ca1"
+        "name": "ಕನ್ನಡ"
     },
     "kk": {
         "code": "kk",
-        "name": "\u049b\u0430\u0437\u0430\u049b \u0442\u0456\u043b\u0456"
+        "name": "қазақ тілі"
     },
     "rw": {
         "code": "rw",
@@ -221,35 +221,35 @@
     },
     "ko": {
         "code": "ko",
-        "name": "\ud55c\uad6d\uc5b4"
+        "name": "한국어"
     },
     "ku": {
         "code": "ku",
-        "name": "kurd\u00ee (kurmanc\u00ee)"
+        "name": "kurdî (kurmancî)"
     },
     "ckb": {
         "code": "ckb",
-        "name": "\u06a9\u0648\u0631\u062f\u06cc\u06cc \u0646\u0627\u0648\u06d5\u0646\u062f\u06cc"
+        "name": "کوردیی ناوەندی"
     },
     "ky": {
         "code": "ky",
-        "name": "\u043a\u044b\u0440\u0433\u044b\u0437\u0447\u0430"
+        "name": "кыргызча"
     },
     "lo": {
         "code": "lo",
-        "name": "\u0ea5\u0eb2\u0ea7"
+        "name": "ລາວ"
     },
     "lv": {
         "code": "lv",
-        "name": "latvie\u0161u"
+        "name": "latviešu"
     },
     "ln": {
         "code": "ln",
-        "name": "ling\u00e1la"
+        "name": "lingála"
     },
     "lt": {
         "code": "lt",
-        "name": "lietuvi\u0173"
+        "name": "lietuvių"
     },
     "lg": {
         "code": "lg",
@@ -257,15 +257,15 @@
     },
     "lb": {
         "code": "lb",
-        "name": "L\u00ebtzebuergesch"
+        "name": "Lëtzebuergesch"
     },
     "mk": {
         "code": "mk",
-        "name": "\u043c\u0430\u043a\u0435\u0434\u043e\u043d\u0441\u043a\u0438"
+        "name": "македонски"
     },
     "mai": {
         "code": "mai",
-        "name": "\u092e\u0948\u0925\u093f\u0932\u0940"
+        "name": "मैथिली"
     },
     "mg": {
         "code": "mg",
@@ -277,7 +277,7 @@
     },
     "ml": {
         "code": "ml",
-        "name": "\u0d2e\u0d32\u0d2f\u0d3e\u0d33\u0d02"
+        "name": "മലയാളം"
     },
     "mt": {
         "code": "mt",
@@ -285,31 +285,31 @@
     },
     "mi": {
         "code": "mi",
-        "name": "M\u0101ori"
+        "name": "Māori"
     },
     "mr": {
         "code": "mr",
-        "name": "\u092e\u0930\u093e\u0920\u0940"
+        "name": "मराठी"
     },
     "mni_Mtei": {
         "code": "mni_Mtei",
-        "name": "\uabc3\uabe4\uabc7\uabe9\uabc2\uabe3\uabdf"
+        "name": "ꯃꯤꯇꯩꯂꯣꯟ"
     },
     "mn": {
         "code": "mn",
-        "name": "\u043c\u043e\u043d\u0433\u043e\u043b"
+        "name": "монгол"
     },
     "my": {
         "code": "my",
-        "name": "\u1019\u103c\u1014\u103a\u1019\u102c"
+        "name": "မြန်မာ"
     },
     "ne": {
         "code": "ne",
-        "name": "\u0928\u0947\u092a\u093e\u0932\u0940"
+        "name": "नेपाली"
     },
     "nb": {
         "code": "nb",
-        "name": "norsk bokm\u00e5l"
+        "name": "norsk bokmål"
     },
     "nn": {
         "code": "nn",
@@ -321,7 +321,7 @@
     },
     "or": {
         "code": "or",
-        "name": "\u0b13\u0b21\u0b3c\u0b3f\u0b06"
+        "name": "ଓଡ଼ିଆ"
     },
     "om": {
         "code": "om",
@@ -329,11 +329,11 @@
     },
     "ps": {
         "code": "ps",
-        "name": "\u067e\u069a\u062a\u0648"
+        "name": "پښتو"
     },
     "fa": {
         "code": "fa",
-        "name": "\u0641\u0627\u0631\u0633\u06cc"
+        "name": "فارسی"
     },
     "fil": {
         "code": "fil",
@@ -345,15 +345,15 @@
     },
     "pt": {
         "code": "pt",
-        "name": "portugu\u00eas"
+        "name": "português"
     },
     "pt_BR": {
         "code": "pt_BR",
-        "name": "portugu\u00eas"
+        "name": "português"
     },
     "pa": {
         "code": "pa",
-        "name": "\u0a2a\u0a70\u0a1c\u0a3e\u0a2c\u0a40"
+        "name": "ਪੰਜਾਬੀ"
     },
     "qu": {
         "code": "qu",
@@ -361,15 +361,15 @@
     },
     "ro": {
         "code": "ro",
-        "name": "rom\u00e2n\u0103"
+        "name": "română"
     },
     "ru": {
         "code": "ru",
-        "name": "\u0440\u0443\u0441\u0441\u043a\u0438\u0439"
+        "name": "русский"
     },
     "sa": {
         "code": "sa",
-        "name": "\u0938\u0902\u0938\u094d\u0915\u0943\u0924 \u092d\u093e\u0937\u093e"
+        "name": "संस्कृत भाषा"
     },
     "sc": {
         "code": "sc",
@@ -377,11 +377,11 @@
     },
     "gd": {
         "code": "gd",
-        "name": "G\u00e0idhlig"
+        "name": "Gàidhlig"
     },
     "sr_Cyrl": {
         "code": "sr_Cyrl",
-        "name": "\u0441\u0440\u043f\u0441\u043a\u0438"
+        "name": "српски"
     },
     "sr_Latn": {
         "code": "sr_Latn",
@@ -397,19 +397,19 @@
     },
     "sd": {
         "code": "sd",
-        "name": "\u0633\u0646\u068c\u064a"
+        "name": "سنڌي"
     },
     "si": {
         "code": "si",
-        "name": "\u0dc3\u0dd2\u0d82\u0dc4\u0dbd"
+        "name": "සිංහල"
     },
     "sk": {
         "code": "sk",
-        "name": "sloven\u010dina"
+        "name": "slovenčina"
     },
     "sl": {
         "code": "sl",
-        "name": "sloven\u0161\u010dina"
+        "name": "slovenščina"
     },
     "so": {
         "code": "so",
@@ -417,7 +417,7 @@
     },
     "es": {
         "code": "es",
-        "name": "espa\u00f1ol"
+        "name": "español"
     },
     "su": {
         "code": "su",
@@ -437,35 +437,35 @@
     },
     "tg": {
         "code": "tg",
-        "name": "\u0442\u043e\u04b7\u0438\u043a\u04e3"
+        "name": "тоҷикӣ"
     },
     "ta": {
         "code": "ta",
-        "name": "\u0ba4\u0bae\u0bbf\u0bb4\u0bcd"
+        "name": "தமிழ்"
     },
     "tt": {
         "code": "tt",
-        "name": "\u0442\u0430\u0442\u0430\u0440"
+        "name": "татар"
     },
     "te": {
         "code": "te",
-        "name": "\u0c24\u0c46\u0c32\u0c41\u0c17\u0c41"
+        "name": "తెలుగు"
     },
     "th": {
         "code": "th",
-        "name": "\u0e44\u0e17\u0e22"
+        "name": "ไทย"
     },
     "ti": {
         "code": "ti",
-        "name": "\u1275\u130d\u122d\u129b"
+        "name": "ትግርኛ"
     },
     "tr": {
         "code": "tr",
-        "name": "T\u00fcrk\u00e7e"
+        "name": "Türkçe"
     },
     "tk": {
         "code": "tk",
-        "name": "t\u00fcrkmen dili"
+        "name": "türkmen dili"
     },
     "ak": {
         "code": "ak",
@@ -473,27 +473,27 @@
     },
     "ug": {
         "code": "ug",
-        "name": "\u0626\u06c7\u064a\u063a\u06c7\u0631\u0686\u06d5"
+        "name": "ئۇيغۇرچە"
     },
     "uk": {
         "code": "uk",
-        "name": "\u0443\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430"
+        "name": "українська"
     },
     "ur": {
         "code": "ur",
-        "name": "\u0627\u0631\u062f\u0648"
+        "name": "اردو"
     },
     "uz_Cyrl": {
         "code": "uz_Cyrl",
-        "name": "\u045e\u0437\u0431\u0435\u043a\u0447\u0430"
+        "name": "ўзбекча"
     },
     "uz_Latn": {
         "code": "uz_Latn",
-        "name": "o\u2018zbek"
+        "name": "o‘zbek"
     },
     "vi": {
         "code": "vi",
-        "name": "Ti\u1ebfng Vi\u1ec7t"
+        "name": "Tiếng Việt"
     },
     "cy": {
         "code": "cy",
@@ -505,11 +505,11 @@
     },
     "yi": {
         "code": "yi",
-        "name": "\u05d9\u05d9\u05b4\u05d3\u05d9\u05e9"
+        "name": "ייִדיש"
     },
     "yo": {
         "code": "yo",
-        "name": "\u00c8d\u00e8 Yor\u00f9b\u00e1"
+        "name": "Èdè Yorùbá"
     },
     "zu": {
         "code": "zu",

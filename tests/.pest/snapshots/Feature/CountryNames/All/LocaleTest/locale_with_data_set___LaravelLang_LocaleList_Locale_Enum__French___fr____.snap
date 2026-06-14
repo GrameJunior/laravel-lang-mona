@@ -9,15 +9,15 @@
     },
     "am": {
         "code": "ET",
-        "name": "\u00c9thiopie"
+        "name": "Éthiopie"
     },
     "ar": {
         "code": "EG",
-        "name": "\u00c9gypte"
+        "name": "Égypte"
     },
     "hy": {
         "code": "AM",
-        "name": "Arm\u00e9nie"
+        "name": "Arménie"
     },
     "as": {
         "code": "IN",
@@ -25,7 +25,7 @@
     },
     "az": {
         "code": "AZ",
-        "name": "Azerba\u00efdjan"
+        "name": "Azerbaïdjan"
     },
     "bm": {
         "code": "ML",
@@ -37,7 +37,7 @@
     },
     "be": {
         "code": "BY",
-        "name": "Bi\u00e9lorussie"
+        "name": "Biélorussie"
     },
     "bn": {
         "code": "BD",
@@ -49,7 +49,7 @@
     },
     "bs": {
         "code": "BA",
-        "name": "Bosnie-Herz\u00e9govine"
+        "name": "Bosnie-Herzégovine"
     },
     "bg": {
         "code": "BG",
@@ -81,7 +81,7 @@
     },
     "zh_TW": {
         "code": "TW",
-        "name": "Ta\u00efwan"
+        "name": "Taïwan"
     },
     "hr": {
         "code": "HR",
@@ -89,7 +89,7 @@
     },
     "cs": {
         "code": "CZ",
-        "name": "Tch\u00e9quie"
+        "name": "Tchéquie"
     },
     "da": {
         "code": "DK",
@@ -105,7 +105,7 @@
     },
     "en": {
         "code": "US",
-        "name": "\u00c9tats-Unis"
+        "name": "États-Unis"
     },
     "eo": {
         "code": "001",
@@ -137,7 +137,7 @@
     },
     "ka": {
         "code": "GE",
-        "name": "G\u00e9orgie"
+        "name": "Géorgie"
     },
     "de": {
         "code": "DE",
@@ -153,7 +153,7 @@
     },
     "el": {
         "code": "GR",
-        "name": "Gr\u00e8ce"
+        "name": "Grèce"
     },
     "gu": {
         "code": "IN",
@@ -161,7 +161,7 @@
     },
     "ht": {
         "code": "HT",
-        "name": "Ha\u00efti"
+        "name": "Haïti"
     },
     "ha": {
         "code": "NG",
@@ -169,11 +169,11 @@
     },
     "haw": {
         "code": "US",
-        "name": "\u00c9tats-Unis"
+        "name": "États-Unis"
     },
     "he": {
         "code": "IL",
-        "name": "Isra\u00ebl"
+        "name": "Israël"
     },
     "hi": {
         "code": "IN",
@@ -193,7 +193,7 @@
     },
     "id": {
         "code": "ID",
-        "name": "Indon\u00e9sie"
+        "name": "Indonésie"
     },
     "ga": {
         "code": "IE",
@@ -221,7 +221,7 @@
     },
     "ko": {
         "code": "KR",
-        "name": "Cor\u00e9e du Sud"
+        "name": "Corée du Sud"
     },
     "ku": {
         "code": "TR",
@@ -261,7 +261,7 @@
     },
     "mk": {
         "code": "MK",
-        "name": "Mac\u00e9doine du Nord"
+        "name": "Macédoine du Nord"
     },
     "mai": {
         "code": "IN",
@@ -285,7 +285,7 @@
     },
     "mi": {
         "code": "NZ",
-        "name": "Nouvelle-Z\u00e9lande"
+        "name": "Nouvelle-Zélande"
     },
     "mr": {
         "code": "IN",
@@ -305,15 +305,15 @@
     },
     "ne": {
         "code": "NP",
-        "name": "N\u00e9pal"
+        "name": "Népal"
     },
     "nb": {
         "code": "NO",
-        "name": "Norv\u00e8ge"
+        "name": "Norvège"
     },
     "nn": {
         "code": "NO",
-        "name": "Norv\u00e8ge"
+        "name": "Norvège"
     },
     "oc": {
         "code": "FR",
@@ -325,7 +325,7 @@
     },
     "om": {
         "code": "ET",
-        "name": "\u00c9thiopie"
+        "name": "Éthiopie"
     },
     "ps": {
         "code": "AF",
@@ -345,11 +345,11 @@
     },
     "pt": {
         "code": "BR",
-        "name": "Br\u00e9sil"
+        "name": "Brésil"
     },
     "pt_BR": {
         "code": "BR",
-        "name": "Br\u00e9sil"
+        "name": "Brésil"
     },
     "pa": {
         "code": "IN",
@@ -357,7 +357,7 @@
     },
     "qu": {
         "code": "PE",
-        "name": "P\u00e9rou"
+        "name": "Pérou"
     },
     "ro": {
         "code": "RO",
@@ -389,7 +389,7 @@
     },
     "sr_Latn_ME": {
         "code": "ME",
-        "name": "Mont\u00e9n\u00e9gro"
+        "name": "Monténégro"
     },
     "sn": {
         "code": "ZW",
@@ -409,7 +409,7 @@
     },
     "sl": {
         "code": "SI",
-        "name": "Slov\u00e9nie"
+        "name": "Slovénie"
     },
     "so": {
         "code": "SO",
@@ -421,7 +421,7 @@
     },
     "su": {
         "code": "ID",
-        "name": "Indon\u00e9sie"
+        "name": "Indonésie"
     },
     "sw": {
         "code": "TZ",
@@ -429,7 +429,7 @@
     },
     "sv": {
         "code": "SE",
-        "name": "Su\u00e8de"
+        "name": "Suède"
     },
     "tl": {
         "code": "PH",
@@ -453,11 +453,11 @@
     },
     "th": {
         "code": "TH",
-        "name": "Tha\u00eflande"
+        "name": "Thaïlande"
     },
     "ti": {
         "code": "ET",
-        "name": "\u00c9thiopie"
+        "name": "Éthiopie"
     },
     "tr": {
         "code": "TR",
@@ -465,7 +465,7 @@
     },
     "tk": {
         "code": "TM",
-        "name": "Turkm\u00e9nistan"
+        "name": "Turkménistan"
     },
     "ak": {
         "code": "GH",
@@ -485,15 +485,15 @@
     },
     "uz_Cyrl": {
         "code": "UZ",
-        "name": "Ouzb\u00e9kistan"
+        "name": "Ouzbékistan"
     },
     "uz_Latn": {
         "code": "UZ",
-        "name": "Ouzb\u00e9kistan"
+        "name": "Ouzbékistan"
     },
     "vi": {
         "code": "VN",
-        "name": "Vi\u00eat Nam"
+        "name": "Viêt Nam"
     },
     "cy": {
         "code": "GB",

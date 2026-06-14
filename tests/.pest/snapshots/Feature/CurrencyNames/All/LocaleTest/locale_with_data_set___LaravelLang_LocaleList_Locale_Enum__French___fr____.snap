@@ -12,17 +12,17 @@
     "am": {
         "code": "ETB",
         "numeric": 230,
-        "name": "birr \u00e9thiopien"
+        "name": "birr éthiopien"
     },
     "ar": {
         "code": "EGP",
         "numeric": 818,
-        "name": "livre \u00e9gyptienne"
+        "name": "livre égyptienne"
     },
     "hy": {
         "code": "AMD",
         "numeric": 51,
-        "name": "dram arm\u00e9nien"
+        "name": "dram arménien"
     },
     "as": {
         "code": "INR",
@@ -32,7 +32,7 @@
     "az": {
         "code": "AZN",
         "numeric": 944,
-        "name": "manat az\u00e9ri"
+        "name": "manat azéri"
     },
     "bm": {
         "code": "XOF",
@@ -47,7 +47,7 @@
     "be": {
         "code": "BYN",
         "numeric": 933,
-        "name": "rouble bi\u00e9lorusse"
+        "name": "rouble biélorusse"
     },
     "bn": {
         "code": "BDT",
@@ -92,7 +92,7 @@
     "zh_CN": {
         "code": "CNH",
         "numeric": 156,
-        "name": "yuan chinois (zone extrac\u00f4ti\u00e8re)"
+        "name": "yuan chinois (zone extracôtière)"
     },
     "zh_HK": {
         "code": "HKD",
@@ -102,7 +102,7 @@
     "zh_TW": {
         "code": "TWD",
         "numeric": 901,
-        "name": "nouveau dollar ta\u00efwanais"
+        "name": "nouveau dollar taïwanais"
     },
     "hr": {
         "code": "EUR",
@@ -112,7 +112,7 @@
     "cs": {
         "code": "CZK",
         "numeric": 203,
-        "name": "couronne tch\u00e8que"
+        "name": "couronne tchèque"
     },
     "da": {
         "code": "DKK",
@@ -147,7 +147,7 @@
     "ee": {
         "code": "GHS",
         "numeric": 936,
-        "name": "c\u00e9di ghan\u00e9en"
+        "name": "cédi ghanéen"
     },
     "fi": {
         "code": "EUR",
@@ -172,7 +172,7 @@
     "ka": {
         "code": "GEL",
         "numeric": 981,
-        "name": "lari g\u00e9orgien"
+        "name": "lari géorgien"
     },
     "de": {
         "code": "EUR",
@@ -202,12 +202,12 @@
     "ht": {
         "code": "USD",
         "numeric": 840,
-        "name": "dollar des \u00c9tats-Unis"
+        "name": "dollar des États-Unis"
     },
     "ha": {
         "code": "NGN",
         "numeric": 566,
-        "name": "naira nig\u00e9rian"
+        "name": "naira nigérian"
     },
     "haw": {
         "code": "USN",
@@ -217,7 +217,7 @@
     "he": {
         "code": "ILS",
         "numeric": 376,
-        "name": "nouveau shekel isra\u00e9lien"
+        "name": "nouveau shekel israélien"
     },
     "hi": {
         "code": "INR",
@@ -237,12 +237,12 @@
     "ig": {
         "code": "NGN",
         "numeric": 566,
-        "name": "naira nig\u00e9rian"
+        "name": "naira nigérian"
     },
     "id": {
         "code": "IDR",
         "numeric": 360,
-        "name": "roupie indon\u00e9sienne"
+        "name": "roupie indonésienne"
     },
     "ga": {
         "code": "EUR",
@@ -277,7 +277,7 @@
     "ko": {
         "code": "KRW",
         "numeric": 410,
-        "name": "won sud-cor\u00e9en"
+        "name": "won sud-coréen"
     },
     "ku": {
         "code": "TRY",
@@ -327,7 +327,7 @@
     "mk": {
         "code": "MKD",
         "numeric": 807,
-        "name": "denar mac\u00e9donien"
+        "name": "denar macédonien"
     },
     "mai": {
         "code": "INR",
@@ -357,7 +357,7 @@
     "mi": {
         "code": "NZD",
         "numeric": 554,
-        "name": "dollar n\u00e9o-z\u00e9landais"
+        "name": "dollar néo-zélandais"
     },
     "mr": {
         "code": "INR",
@@ -382,17 +382,17 @@
     "ne": {
         "code": "NPR",
         "numeric": 524,
-        "name": "roupie n\u00e9palaise"
+        "name": "roupie népalaise"
     },
     "nb": {
         "code": "NOK",
         "numeric": 578,
-        "name": "couronne norv\u00e9gienne"
+        "name": "couronne norvégienne"
     },
     "nn": {
         "code": "NOK",
         "numeric": 578,
-        "name": "couronne norv\u00e9gienne"
+        "name": "couronne norvégienne"
     },
     "oc": {
         "code": "EUR",
@@ -407,7 +407,7 @@
     "om": {
         "code": "ETB",
         "numeric": 230,
-        "name": "birr \u00e9thiopien"
+        "name": "birr éthiopien"
     },
     "ps": {
         "code": "AFN",
@@ -432,12 +432,12 @@
     "pt": {
         "code": "BRL",
         "numeric": 986,
-        "name": "r\u00e9al br\u00e9silien"
+        "name": "réal brésilien"
     },
     "pt_BR": {
         "code": "BRL",
         "numeric": 986,
-        "name": "r\u00e9al br\u00e9silien"
+        "name": "réal brésilien"
     },
     "pa": {
         "code": "INR",
@@ -447,7 +447,7 @@
     "qu": {
         "code": "PEN",
         "numeric": 604,
-        "name": "sol p\u00e9ruvien"
+        "name": "sol péruvien"
     },
     "ro": {
         "code": "RON",
@@ -492,7 +492,7 @@
     "sn": {
         "code": "USD",
         "numeric": 840,
-        "name": "dollar des \u00c9tats-Unis"
+        "name": "dollar des États-Unis"
     },
     "sd": {
         "code": "PKR",
@@ -527,7 +527,7 @@
     "su": {
         "code": "IDR",
         "numeric": 360,
-        "name": "roupie indon\u00e9sienne"
+        "name": "roupie indonésienne"
     },
     "sw": {
         "code": "TZS",
@@ -537,7 +537,7 @@
     "sv": {
         "code": "SEK",
         "numeric": 752,
-        "name": "couronne su\u00e9doise"
+        "name": "couronne suédoise"
     },
     "tl": {
         "code": "PHP",
@@ -567,12 +567,12 @@
     "th": {
         "code": "THB",
         "numeric": 764,
-        "name": "baht tha\u00eflandais"
+        "name": "baht thaïlandais"
     },
     "ti": {
         "code": "ETB",
         "numeric": 230,
-        "name": "birr \u00e9thiopien"
+        "name": "birr éthiopien"
     },
     "tr": {
         "code": "TRY",
@@ -582,17 +582,17 @@
     "tk": {
         "code": "TMT",
         "numeric": 934,
-        "name": "nouveau manat turkm\u00e8ne"
+        "name": "nouveau manat turkmène"
     },
     "ak": {
         "code": "GHS",
         "numeric": 936,
-        "name": "c\u00e9di ghan\u00e9en"
+        "name": "cédi ghanéen"
     },
     "ug": {
         "code": "CNH",
         "numeric": 156,
-        "name": "yuan chinois (zone extrac\u00f4ti\u00e8re)"
+        "name": "yuan chinois (zone extracôtière)"
     },
     "uk": {
         "code": "UAH",
@@ -617,7 +617,7 @@
     "vi": {
         "code": "VND",
         "numeric": 704,
-        "name": "d\u00f4ng vietnamien"
+        "name": "dông vietnamien"
     },
     "cy": {
         "code": "GBP",
@@ -637,7 +637,7 @@
     "yo": {
         "code": "NGN",
         "numeric": 566,
-        "name": "naira nig\u00e9rian"
+        "name": "naira nigérian"
     },
     "zu": {
         "code": "ZAR",

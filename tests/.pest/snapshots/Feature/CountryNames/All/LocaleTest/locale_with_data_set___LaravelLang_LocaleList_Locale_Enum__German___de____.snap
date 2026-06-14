@@ -1,7 +1,7 @@
 {
     "af": {
         "code": "ZA",
-        "name": "S\u00fcdafrika"
+        "name": "Südafrika"
     },
     "sq": {
         "code": "AL",
@@ -9,11 +9,11 @@
     },
     "am": {
         "code": "ET",
-        "name": "\u00c4thiopien"
+        "name": "Äthiopien"
     },
     "ar": {
         "code": "EG",
-        "name": "\u00c4gypten"
+        "name": "Ägypten"
     },
     "hy": {
         "code": "AM",
@@ -93,7 +93,7 @@
     },
     "da": {
         "code": "DK",
-        "name": "D\u00e4nemark"
+        "name": "Dänemark"
     },
     "doi": {
         "code": "IN",
@@ -145,7 +145,7 @@
     },
     "de_AT": {
         "code": "AT",
-        "name": "\u00d6sterreich"
+        "name": "Österreich"
     },
     "de_CH": {
         "code": "CH",
@@ -221,11 +221,11 @@
     },
     "ko": {
         "code": "KR",
-        "name": "S\u00fcdkorea"
+        "name": "Südkorea"
     },
     "ku": {
         "code": "TR",
-        "name": "T\u00fcrkei"
+        "name": "Türkei"
     },
     "ckb": {
         "code": "IQ",
@@ -325,7 +325,7 @@
     },
     "om": {
         "code": "ET",
-        "name": "\u00c4thiopien"
+        "name": "Äthiopien"
     },
     "ps": {
         "code": "AF",
@@ -361,7 +361,7 @@
     },
     "ro": {
         "code": "RO",
-        "name": "Rum\u00e4nien"
+        "name": "Rumänien"
     },
     "ru": {
         "code": "RU",
@@ -377,7 +377,7 @@
     },
     "gd": {
         "code": "GB",
-        "name": "Vereinigtes K\u00f6nigreich"
+        "name": "Vereinigtes Königreich"
     },
     "sr_Cyrl": {
         "code": "RS",
@@ -457,11 +457,11 @@
     },
     "ti": {
         "code": "ET",
-        "name": "\u00c4thiopien"
+        "name": "Äthiopien"
     },
     "tr": {
         "code": "TR",
-        "name": "T\u00fcrkei"
+        "name": "Türkei"
     },
     "tk": {
         "code": "TM",
@@ -497,11 +497,11 @@
     },
     "cy": {
         "code": "GB",
-        "name": "Vereinigtes K\u00f6nigreich"
+        "name": "Vereinigtes Königreich"
     },
     "xh": {
         "code": "ZA",
-        "name": "S\u00fcdafrika"
+        "name": "Südafrika"
     },
     "yi": {
         "code": "UA",
@@ -513,6 +513,6 @@
     },
     "zu": {
         "code": "ZA",
-        "name": "S\u00fcdafrika"
+        "name": "Südafrika"
     }
 }

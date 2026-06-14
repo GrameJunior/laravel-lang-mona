@@ -7,7 +7,10 @@ use LaravelLang\LocaleNames\LocaleNames;
 use LaravelLang\Support\Enums\SortBy;
 
 test('sorted', function (SortBy $sortBy) {
-    $items = LocaleNames::all(sortBy: $sortBy);
+    $items = LocaleNames::all(
+        locale: Locale::French,
+        sortBy: $sortBy
+    );
 
     expect($items->toArray())
         ->toHaveCount(count(Locale::cases()))

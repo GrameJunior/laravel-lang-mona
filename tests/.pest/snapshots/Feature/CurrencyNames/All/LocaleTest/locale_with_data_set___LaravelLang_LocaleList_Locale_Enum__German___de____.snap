@@ -2,7 +2,7 @@
     "af": {
         "code": "ZAR",
         "numeric": 710,
-        "name": "S\u00fcdafrikanischer Rand"
+        "name": "Südafrikanischer Rand"
     },
     "sq": {
         "code": "ALL",
@@ -12,12 +12,12 @@
     "am": {
         "code": "ETB",
         "numeric": 230,
-        "name": "\u00c4thiopischer Birr"
+        "name": "Äthiopischer Birr"
     },
     "ar": {
         "code": "EGP",
         "numeric": 818,
-        "name": "\u00c4gyptisches Pfund"
+        "name": "Ägyptisches Pfund"
     },
     "hy": {
         "code": "AMD",
@@ -47,7 +47,7 @@
     "be": {
         "code": "BYN",
         "numeric": 933,
-        "name": "Wei\u00dfrussischer Rubel"
+        "name": "Weißrussischer Rubel"
     },
     "bn": {
         "code": "BDT",
@@ -117,7 +117,7 @@
     "da": {
         "code": "DKK",
         "numeric": 208,
-        "name": "D\u00e4nische Krone"
+        "name": "Dänische Krone"
     },
     "doi": {
         "code": "INR",
@@ -132,12 +132,12 @@
     "en": {
         "code": "USN",
         "numeric": 997,
-        "name": "US Dollar (N\u00e4chster Tag)"
+        "name": "US Dollar (Nächster Tag)"
     },
     "eo": {
         "code": "XXX",
         "numeric": 999,
-        "name": "Unbekannte W\u00e4hrung"
+        "name": "Unbekannte Währung"
     },
     "et": {
         "code": "EUR",
@@ -212,7 +212,7 @@
     "haw": {
         "code": "USN",
         "numeric": 997,
-        "name": "US Dollar (N\u00e4chster Tag)"
+        "name": "US Dollar (Nächster Tag)"
     },
     "he": {
         "code": "ILS",
@@ -232,7 +232,7 @@
     "is": {
         "code": "ISK",
         "numeric": 352,
-        "name": "Isl\u00e4ndische Krone"
+        "name": "Isländische Krone"
     },
     "ig": {
         "code": "NGN",
@@ -277,12 +277,12 @@
     "ko": {
         "code": "KRW",
         "numeric": 410,
-        "name": "S\u00fcdkoreanischer Won"
+        "name": "Südkoreanischer Won"
     },
     "ku": {
         "code": "TRY",
         "numeric": 949,
-        "name": "T\u00fcrkische Lira"
+        "name": "Türkische Lira"
     },
     "ckb": {
         "code": "IQD",
@@ -372,7 +372,7 @@
     "mn": {
         "code": "MNT",
         "numeric": 496,
-        "name": "Mongolischer T\u00f6gr\u00f6g"
+        "name": "Mongolischer Tögrög"
     },
     "my": {
         "code": "MMK",
@@ -407,7 +407,7 @@
     "om": {
         "code": "ETB",
         "numeric": 230,
-        "name": "\u00c4thiopischer Birr"
+        "name": "Äthiopischer Birr"
     },
     "ps": {
         "code": "AFN",
@@ -427,7 +427,7 @@
     "pl": {
         "code": "PLN",
         "numeric": 985,
-        "name": "Polnischer Z\u0142oty"
+        "name": "Polnischer Złoty"
     },
     "pt": {
         "code": "BRL",
@@ -452,7 +452,7 @@
     "ro": {
         "code": "RON",
         "numeric": 946,
-        "name": "Rum\u00e4nischer Leu"
+        "name": "Rumänischer Leu"
     },
     "ru": {
         "code": "RUB",
@@ -567,17 +567,17 @@
     "th": {
         "code": "THB",
         "numeric": 764,
-        "name": "Thail\u00e4ndischer Baht"
+        "name": "Thailändischer Baht"
     },
     "ti": {
         "code": "ETB",
         "numeric": 230,
-        "name": "\u00c4thiopischer Birr"
+        "name": "Äthiopischer Birr"
     },
     "tr": {
         "code": "TRY",
         "numeric": 949,
-        "name": "T\u00fcrkische Lira"
+        "name": "Türkische Lira"
     },
     "tk": {
         "code": "TMT",
@@ -627,7 +627,7 @@
     "xh": {
         "code": "ZAR",
         "numeric": 710,
-        "name": "S\u00fcdafrikanischer Rand"
+        "name": "Südafrikanischer Rand"
     },
     "yi": {
         "code": "UAH",
@@ -642,6 +642,6 @@
     "zu": {
         "code": "ZAR",
         "numeric": 710,
-        "name": "S\u00fcdafrikanischer Rand"
+        "name": "Südafrikanischer Rand"
     }
 }

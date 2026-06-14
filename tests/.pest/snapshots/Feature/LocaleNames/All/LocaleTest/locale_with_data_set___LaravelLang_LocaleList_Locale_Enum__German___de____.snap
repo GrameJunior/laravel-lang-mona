@@ -93,7 +93,7 @@
     },
     "da": {
         "code": "da",
-        "name": "D\u00e4nisch"
+        "name": "Dänisch"
     },
     "doi": {
         "code": "doi",
@@ -101,7 +101,7 @@
     },
     "nl": {
         "code": "nl",
-        "name": "Niederl\u00e4ndisch"
+        "name": "Niederländisch"
     },
     "en": {
         "code": "en",
@@ -125,7 +125,7 @@
     },
     "fr": {
         "code": "fr",
-        "name": "Franz\u00f6sisch"
+        "name": "Französisch"
     },
     "fy": {
         "code": "fy",
@@ -145,7 +145,7 @@
     },
     "de_AT": {
         "code": "de_AT",
-        "name": "\u00d6sterreichisches Deutsch"
+        "name": "Österreichisches Deutsch"
     },
     "de_CH": {
         "code": "de_CH",
@@ -173,7 +173,7 @@
     },
     "he": {
         "code": "he",
-        "name": "Hebr\u00e4isch"
+        "name": "Hebräisch"
     },
     "hi": {
         "code": "hi",
@@ -185,7 +185,7 @@
     },
     "is": {
         "code": "is",
-        "name": "Isl\u00e4ndisch"
+        "name": "Isländisch"
     },
     "ig": {
         "code": "ig",
@@ -285,7 +285,7 @@
     },
     "mi": {
         "code": "mi",
-        "name": "M\u0101ori"
+        "name": "Māori"
     },
     "mr": {
         "code": "mr",
@@ -309,7 +309,7 @@
     },
     "nb": {
         "code": "nb",
-        "name": "Norwegisch (Bokm\u00e5l)"
+        "name": "Norwegisch (Bokmål)"
     },
     "nn": {
         "code": "nn",
@@ -361,7 +361,7 @@
     },
     "ro": {
         "code": "ro",
-        "name": "Rum\u00e4nisch"
+        "name": "Rumänisch"
     },
     "ru": {
         "code": "ru",
@@ -377,7 +377,7 @@
     },
     "gd": {
         "code": "gd",
-        "name": "G\u00e4lisch (Schottland)"
+        "name": "Gälisch (Schottland)"
     },
     "sr_Cyrl": {
         "code": "sr_Cyrl",
@@ -453,7 +453,7 @@
     },
     "th": {
         "code": "th",
-        "name": "Thail\u00e4ndisch"
+        "name": "Thailändisch"
     },
     "ti": {
         "code": "ti",
@@ -461,7 +461,7 @@
     },
     "tr": {
         "code": "tr",
-        "name": "T\u00fcrkisch"
+        "name": "Türkisch"
     },
     "tk": {
         "code": "tk",
