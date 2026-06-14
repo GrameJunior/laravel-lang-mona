@@ -1,518 +1,905 @@
 {
     "af": {
         "code": "af",
-        "name": "африкаанс"
+        "name": "африкаанс",
+        "regional": "af_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sq": {
         "code": "sq",
-        "name": "албанӣ"
+        "name": "албанӣ",
+        "regional": "sq_AL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "am": {
         "code": "am",
-        "name": "амҳарӣ"
+        "name": "амҳарӣ",
+        "regional": "am_ET",
+        "type": "Ethi",
+        "direction": "ltr"
     },
     "ar": {
         "code": "ar",
-        "name": "арабӣ"
+        "name": "арабӣ",
+        "regional": "ar_EG",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "hy": {
         "code": "hy",
-        "name": "арманӣ"
+        "name": "арманӣ",
+        "regional": "hy_AM",
+        "type": "Armn",
+        "direction": "ltr"
     },
     "as": {
         "code": "as",
-        "name": "ассомӣ"
+        "name": "ассомӣ",
+        "regional": "as_IN",
+        "type": "Beng",
+        "direction": "ltr"
     },
     "az": {
         "code": "az",
-        "name": "озарбойҷонӣ"
+        "name": "озарбойҷонӣ",
+        "regional": "az_AZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "bm": {
         "code": "bm",
-        "name": "Bambara"
+        "name": "Bambara",
+        "regional": "bm_ML",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "eu": {
         "code": "eu",
-        "name": "баскӣ"
+        "name": "баскӣ",
+        "regional": "eu_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "be": {
         "code": "be",
-        "name": "белорусӣ"
+        "name": "белорусӣ",
+        "regional": "be_BY",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "bn": {
         "code": "bn",
-        "name": "бинғолӣ"
+        "name": "бинғолӣ",
+        "regional": "bn_BD",
+        "type": "Beng",
+        "direction": "ltr"
     },
     "bho": {
         "code": "bho",
-        "name": "Bhojpuri"
+        "name": "Bhojpuri",
+        "regional": "bho_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "bs": {
         "code": "bs",
-        "name": "босниягӣ"
+        "name": "босниягӣ",
+        "regional": "bs_BA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "bg": {
         "code": "bg",
-        "name": "булғорӣ"
+        "name": "булғорӣ",
+        "regional": "bg_BG",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "en_CA": {
         "code": "en_CA",
-        "name": "англисии канадагӣ"
+        "name": "англисии канадагӣ",
+        "regional": "en_CA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ca": {
         "code": "ca",
-        "name": "каталонӣ"
+        "name": "каталонӣ",
+        "regional": "ca_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ceb": {
         "code": "ceb",
-        "name": "себуано"
+        "name": "себуано",
+        "regional": "ceb_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "km": {
         "code": "km",
-        "name": "кхмерӣ"
+        "name": "кхмерӣ",
+        "regional": "km_KH",
+        "type": "Khmr",
+        "direction": "ltr"
     },
     "zh_CN": {
         "code": "zh_CN",
-        "name": "хитоӣ"
+        "name": "хитоӣ",
+        "regional": "zh_CN",
+        "type": "Hans",
+        "direction": "ltr"
     },
     "zh_HK": {
         "code": "zh_HK",
-        "name": "хитоӣ"
+        "name": "хитоӣ",
+        "regional": "zh_HK",
+        "type": "Hant",
+        "direction": "ltr"
     },
     "zh_TW": {
         "code": "zh_TW",
-        "name": "хитоӣ"
+        "name": "хитоӣ",
+        "regional": "zh_TW",
+        "type": "Hant",
+        "direction": "ltr"
     },
     "hr": {
         "code": "hr",
-        "name": "хорватӣ"
+        "name": "хорватӣ",
+        "regional": "hr_HR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "cs": {
         "code": "cs",
-        "name": "чехӣ"
+        "name": "чехӣ",
+        "regional": "cs_CZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "da": {
         "code": "da",
-        "name": "даниягӣ"
+        "name": "даниягӣ",
+        "regional": "da_DK",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "doi": {
         "code": "doi",
-        "name": "Dogri"
+        "name": "Dogri",
+        "regional": "doi_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "nl": {
         "code": "nl",
-        "name": "голландӣ"
+        "name": "голландӣ",
+        "regional": "nl_NL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "en": {
         "code": "en",
-        "name": "англисӣ"
+        "name": "англисӣ",
+        "regional": "en_US",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "eo": {
         "code": "eo",
-        "name": "эсперанто"
+        "name": "эсперанто",
+        "regional": "eo_001",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "et": {
         "code": "et",
-        "name": "эстонӣ"
+        "name": "эстонӣ",
+        "regional": "et_EE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ee": {
         "code": "ee",
-        "name": "Ewe"
+        "name": "Ewe",
+        "regional": "ee_GH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fi": {
         "code": "fi",
-        "name": "финӣ"
+        "name": "финӣ",
+        "regional": "fi_FI",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fr": {
         "code": "fr",
-        "name": "франсузӣ"
+        "name": "франсузӣ",
+        "regional": "fr_FR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fy": {
         "code": "fy",
-        "name": "фризии ғарбӣ"
+        "name": "фризии ғарбӣ",
+        "regional": "fy_NL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "gl": {
         "code": "gl",
-        "name": "галисиягӣ"
+        "name": "галисиягӣ",
+        "regional": "gl_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ka": {
         "code": "ka",
-        "name": "гурҷӣ"
+        "name": "гурҷӣ",
+        "regional": "ka_GE",
+        "type": "Geor",
+        "direction": "ltr"
     },
     "de": {
         "code": "de",
-        "name": "немисӣ"
+        "name": "немисӣ",
+        "regional": "de_DE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "de_AT": {
         "code": "de_AT",
-        "name": "немисии австриягӣ"
+        "name": "немисии австриягӣ",
+        "regional": "de_AT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "de_CH": {
         "code": "de_CH",
-        "name": "немисии швейсарии болоӣ"
+        "name": "немисии швейсарии болоӣ",
+        "regional": "de_CH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "el": {
         "code": "el",
-        "name": "юнонӣ"
+        "name": "юнонӣ",
+        "regional": "el_GR",
+        "type": "Grek",
+        "direction": "ltr"
     },
     "gu": {
         "code": "gu",
-        "name": "гуҷаротӣ"
+        "name": "гуҷаротӣ",
+        "regional": "gu_IN",
+        "type": "Gujr",
+        "direction": "ltr"
     },
     "ht": {
         "code": "ht",
-        "name": "гаитии креолӣ"
+        "name": "гаитии креолӣ",
+        "regional": "ht_HT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ha": {
         "code": "ha",
-        "name": "ҳауса"
+        "name": "ҳауса",
+        "regional": "ha_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "haw": {
         "code": "haw",
-        "name": "ҳавайӣ"
+        "name": "ҳавайӣ",
+        "regional": "haw_US",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "he": {
         "code": "he",
-        "name": "ибронӣ"
+        "name": "ибронӣ",
+        "regional": "he_IL",
+        "type": "Hebr",
+        "direction": "rtl"
     },
     "hi": {
         "code": "hi",
-        "name": "ҳиндӣ"
+        "name": "ҳиндӣ",
+        "regional": "hi_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "hu": {
         "code": "hu",
-        "name": "маҷорӣ"
+        "name": "маҷорӣ",
+        "regional": "hu_HU",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "is": {
         "code": "is",
-        "name": "исландӣ"
+        "name": "исландӣ",
+        "regional": "is_IS",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ig": {
         "code": "ig",
-        "name": "игбо"
+        "name": "игбо",
+        "regional": "ig_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "id": {
         "code": "id",
-        "name": "индонезӣ"
+        "name": "индонезӣ",
+        "regional": "id_ID",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ga": {
         "code": "ga",
-        "name": "ирландӣ"
+        "name": "ирландӣ",
+        "regional": "ga_IE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "it": {
         "code": "it",
-        "name": "италиявӣ"
+        "name": "италиявӣ",
+        "regional": "it_IT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ja": {
         "code": "ja",
-        "name": "японӣ"
+        "name": "японӣ",
+        "regional": "ja_JP",
+        "type": "Jpan",
+        "direction": "ltr"
     },
     "kn": {
         "code": "kn",
-        "name": "каннада"
+        "name": "каннада",
+        "regional": "kn_IN",
+        "type": "Knda",
+        "direction": "ltr"
     },
     "kk": {
         "code": "kk",
-        "name": "қазоқӣ"
+        "name": "қазоқӣ",
+        "regional": "kk_KZ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "rw": {
         "code": "rw",
-        "name": "киняруанда"
+        "name": "киняруанда",
+        "regional": "rw_RW",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ko": {
         "code": "ko",
-        "name": "кореягӣ"
+        "name": "кореягӣ",
+        "regional": "ko_KR",
+        "type": "Kore",
+        "direction": "ltr"
     },
     "ku": {
         "code": "ku",
-        "name": "курдӣ"
+        "name": "курдӣ",
+        "regional": "ku_TR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ckb": {
         "code": "ckb",
-        "name": "курдии марказӣ"
+        "name": "курдии марказӣ",
+        "regional": "ckb_IQ",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "ky": {
         "code": "ky",
-        "name": "қирғизӣ"
+        "name": "қирғизӣ",
+        "regional": "ky_KG",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "lo": {
         "code": "lo",
-        "name": "лаосӣ"
+        "name": "лаосӣ",
+        "regional": "lo_LA",
+        "type": "Laoo",
+        "direction": "ltr"
     },
     "lv": {
         "code": "lv",
-        "name": "латишӣ"
+        "name": "латишӣ",
+        "regional": "lv_LV",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ln": {
         "code": "ln",
-        "name": "Lingala"
+        "name": "Lingala",
+        "regional": "ln_CD",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lt": {
         "code": "lt",
-        "name": "литвонӣ"
+        "name": "литвонӣ",
+        "regional": "lt_LT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lg": {
         "code": "lg",
-        "name": "Ganda"
+        "name": "Ganda",
+        "regional": "lg_UG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lb": {
         "code": "lb",
-        "name": "люксембургӣ"
+        "name": "люксембургӣ",
+        "regional": "lb_LU",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mk": {
         "code": "mk",
-        "name": "мақдунӣ"
+        "name": "мақдунӣ",
+        "regional": "mk_MK",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "mai": {
         "code": "mai",
-        "name": "Maithili"
+        "name": "Maithili",
+        "regional": "mai_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "mg": {
         "code": "mg",
-        "name": "малагасӣ"
+        "name": "малагасӣ",
+        "regional": "mg_MG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ms": {
         "code": "ms",
-        "name": "малайӣ"
+        "name": "малайӣ",
+        "regional": "ms_MY",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ml": {
         "code": "ml",
-        "name": "малаяламӣ"
+        "name": "малаяламӣ",
+        "regional": "ml_IN",
+        "type": "Mlym",
+        "direction": "ltr"
     },
     "mt": {
         "code": "mt",
-        "name": "малтӣ"
+        "name": "малтӣ",
+        "regional": "mt_MT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mi": {
         "code": "mi",
-        "name": "маорӣ"
+        "name": "маорӣ",
+        "regional": "mi_NZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mr": {
         "code": "mr",
-        "name": "маратҳӣ"
+        "name": "маратҳӣ",
+        "regional": "mr_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "mni_Mtei": {
         "code": "mni_Mtei",
-        "name": "манипурӣ"
+        "name": "манипурӣ",
+        "regional": "mni_IN",
+        "type": "Mtei",
+        "direction": "ltr"
     },
     "mn": {
         "code": "mn",
-        "name": "муғулӣ"
+        "name": "муғулӣ",
+        "regional": "mn_MN",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "my": {
         "code": "my",
-        "name": "бирманӣ"
+        "name": "бирманӣ",
+        "regional": "my_MM",
+        "type": "Mymr",
+        "direction": "ltr"
     },
     "ne": {
         "code": "ne",
-        "name": "непалӣ"
+        "name": "непалӣ",
+        "regional": "ne_NP",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "nb": {
         "code": "nb",
-        "name": "Norwegian Bokmål"
+        "name": "Norwegian Bokmål",
+        "regional": "nb_NO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "nn": {
         "code": "nn",
-        "name": "Norwegian Nynorsk"
+        "name": "Norwegian Nynorsk",
+        "regional": "nn_NO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "oc": {
         "code": "oc",
-        "name": "окситанӣ"
+        "name": "окситанӣ",
+        "regional": "oc_FR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "or": {
         "code": "or",
-        "name": "одия"
+        "name": "одия",
+        "regional": "or_IN",
+        "type": "Orya",
+        "direction": "ltr"
     },
     "om": {
         "code": "om",
-        "name": "оромо"
+        "name": "оромо",
+        "regional": "om_ET",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ps": {
         "code": "ps",
-        "name": "пушту"
+        "name": "пушту",
+        "regional": "ps_AF",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "fa": {
         "code": "fa",
-        "name": "форсӣ"
+        "name": "форсӣ",
+        "regional": "fa_IR",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "fil": {
         "code": "fil",
-        "name": "филиппинӣ"
+        "name": "филиппинӣ",
+        "regional": "fil_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pl": {
         "code": "pl",
-        "name": "лаҳистонӣ"
+        "name": "лаҳистонӣ",
+        "regional": "pl_PL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pt": {
         "code": "pt",
-        "name": "португалӣ"
+        "name": "португалӣ",
+        "regional": "pt_BR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pt_BR": {
         "code": "pt_BR",
-        "name": "португалии бразилиягӣ"
+        "name": "португалии бразилиягӣ",
+        "regional": "pt_BR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pa": {
         "code": "pa",
-        "name": "панҷобӣ"
+        "name": "панҷобӣ",
+        "regional": "pa_IN",
+        "type": "Guru",
+        "direction": "ltr"
     },
     "qu": {
         "code": "qu",
-        "name": "кечуа"
+        "name": "кечуа",
+        "regional": "qu_PE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ro": {
         "code": "ro",
-        "name": "руминӣ"
+        "name": "руминӣ",
+        "regional": "ro_RO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ru": {
         "code": "ru",
-        "name": "русӣ"
+        "name": "русӣ",
+        "regional": "ru_RU",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "sa": {
         "code": "sa",
-        "name": "санскрит"
+        "name": "санскрит",
+        "regional": "sa_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "sc": {
         "code": "sc",
-        "name": "Sardinian"
+        "name": "Sardinian",
+        "regional": "sc_IT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "gd": {
         "code": "gd",
-        "name": "шотландии гэлӣ"
+        "name": "шотландии гэлӣ",
+        "regional": "gd_GB",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sr_Cyrl": {
         "code": "sr_Cyrl",
-        "name": "сербӣ"
+        "name": "сербӣ",
+        "regional": "sr_RS",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "sr_Latn": {
         "code": "sr_Latn",
-        "name": "сербӣ"
+        "name": "сербӣ",
+        "regional": "sr_RS",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sr_Latn_ME": {
         "code": "sr_Latn_ME",
-        "name": "сербӣ"
+        "name": "сербӣ",
+        "regional": "sr_ME",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sn": {
         "code": "sn",
-        "name": "Shona"
+        "name": "Shona",
+        "regional": "sn_ZW",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sd": {
         "code": "sd",
-        "name": "синдӣ"
+        "name": "синдӣ",
+        "regional": "sd_PK",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "si": {
         "code": "si",
-        "name": "сингалӣ"
+        "name": "сингалӣ",
+        "regional": "si_LK",
+        "type": "Sinh",
+        "direction": "ltr"
     },
     "sk": {
         "code": "sk",
-        "name": "словакӣ"
+        "name": "словакӣ",
+        "regional": "sk_SK",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sl": {
         "code": "sl",
-        "name": "словенӣ"
+        "name": "словенӣ",
+        "regional": "sl_SI",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "so": {
         "code": "so",
-        "name": "сомалӣ"
+        "name": "сомалӣ",
+        "regional": "so_SO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "es": {
         "code": "es",
-        "name": "испанӣ"
+        "name": "испанӣ",
+        "regional": "es_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "su": {
         "code": "su",
-        "name": "Sundanese"
+        "name": "Sundanese",
+        "regional": "su_ID",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sw": {
         "code": "sw",
-        "name": "Swahili"
+        "name": "Swahili",
+        "regional": "sw_TZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sv": {
         "code": "sv",
-        "name": "шведӣ"
+        "name": "шведӣ",
+        "regional": "sv_SE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tl": {
         "code": "tl",
-        "name": "Tagalog"
+        "name": "Tagalog",
+        "regional": "tl_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tg": {
         "code": "tg",
-        "name": "тоҷикӣ"
+        "name": "тоҷикӣ",
+        "regional": "tg_TJ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "ta": {
         "code": "ta",
-        "name": "тамилӣ"
+        "name": "тамилӣ",
+        "regional": "ta_IN",
+        "type": "Taml",
+        "direction": "ltr"
     },
     "tt": {
         "code": "tt",
-        "name": "тоторӣ"
+        "name": "тоторӣ",
+        "regional": "tt_RU",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "te": {
         "code": "te",
-        "name": "телугу"
+        "name": "телугу",
+        "regional": "te_IN",
+        "type": "Telu",
+        "direction": "ltr"
     },
     "th": {
         "code": "th",
-        "name": "тайӣ"
+        "name": "тайӣ",
+        "regional": "th_TH",
+        "type": "Thai",
+        "direction": "ltr"
     },
     "ti": {
         "code": "ti",
-        "name": "тигриня"
+        "name": "тигриня",
+        "regional": "ti_ET",
+        "type": "Ethi",
+        "direction": "ltr"
     },
     "tr": {
         "code": "tr",
-        "name": "туркӣ"
+        "name": "туркӣ",
+        "regional": "tr_TR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tk": {
         "code": "tk",
-        "name": "туркманӣ"
+        "name": "туркманӣ",
+        "regional": "tk_TM",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ak": {
         "code": "ak",
-        "name": "Akan"
+        "name": "Akan",
+        "regional": "ak_GH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ug": {
         "code": "ug",
-        "name": "ӯйғурӣ"
+        "name": "ӯйғурӣ",
+        "regional": "ug_CN",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "uk": {
         "code": "uk",
-        "name": "украинӣ"
+        "name": "украинӣ",
+        "regional": "uk_UA",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "ur": {
         "code": "ur",
-        "name": "урду"
+        "name": "урду",
+        "regional": "ur_PK",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "uz_Cyrl": {
         "code": "uz_Cyrl",
-        "name": "ӯзбекӣ"
+        "name": "ӯзбекӣ",
+        "regional": "uz_UZ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "uz_Latn": {
         "code": "uz_Latn",
-        "name": "ӯзбекӣ"
+        "name": "ӯзбекӣ",
+        "regional": "uz_UZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "vi": {
         "code": "vi",
-        "name": "ветнамӣ"
+        "name": "ветнамӣ",
+        "regional": "vi_VN",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "cy": {
         "code": "cy",
-        "name": "валлӣ"
+        "name": "валлӣ",
+        "regional": "cy_GB",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "xh": {
         "code": "xh",
-        "name": "Xhosa"
+        "name": "Xhosa",
+        "regional": "xh_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "yi": {
         "code": "yi",
-        "name": "идиш"
+        "name": "идиш",
+        "regional": "yi_UA",
+        "type": "Hebr",
+        "direction": "rtl"
     },
     "yo": {
         "code": "yo",
-        "name": "йоруба"
+        "name": "йоруба",
+        "regional": "yo_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "zu": {
         "code": "zu",
-        "name": "Zulu"
+        "name": "Zulu",
+        "regional": "zu_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     }
 }

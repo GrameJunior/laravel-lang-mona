@@ -1,518 +1,905 @@
 {
     "af": {
         "code": "af",
-        "name": "Kiafrikana"
+        "name": "Kiafrikana",
+        "regional": "af_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sq": {
         "code": "sq",
-        "name": "Kialbania"
+        "name": "Kialbania",
+        "regional": "sq_AL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "am": {
         "code": "am",
-        "name": "Kiamhari"
+        "name": "Kiamhari",
+        "regional": "am_ET",
+        "type": "Ethi",
+        "direction": "ltr"
     },
     "ar": {
         "code": "ar",
-        "name": "Kiarabu"
+        "name": "Kiarabu",
+        "regional": "ar_EG",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "hy": {
         "code": "hy",
-        "name": "Kiarmenia"
+        "name": "Kiarmenia",
+        "regional": "hy_AM",
+        "type": "Armn",
+        "direction": "ltr"
     },
     "as": {
         "code": "as",
-        "name": "Kiassam"
+        "name": "Kiassam",
+        "regional": "as_IN",
+        "type": "Beng",
+        "direction": "ltr"
     },
     "az": {
         "code": "az",
-        "name": "Kiazerbaijani"
+        "name": "Kiazerbaijani",
+        "regional": "az_AZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "bm": {
         "code": "bm",
-        "name": "Kibambara"
+        "name": "Kibambara",
+        "regional": "bm_ML",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "eu": {
         "code": "eu",
-        "name": "Kibaski"
+        "name": "Kibaski",
+        "regional": "eu_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "be": {
         "code": "be",
-        "name": "Kibelarusi"
+        "name": "Kibelarusi",
+        "regional": "be_BY",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "bn": {
         "code": "bn",
-        "name": "Kibengali"
+        "name": "Kibengali",
+        "regional": "bn_BD",
+        "type": "Beng",
+        "direction": "ltr"
     },
     "bho": {
         "code": "bho",
-        "name": "Kibhojpuri"
+        "name": "Kibhojpuri",
+        "regional": "bho_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "bs": {
         "code": "bs",
-        "name": "Kibosnia"
+        "name": "Kibosnia",
+        "regional": "bs_BA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "bg": {
         "code": "bg",
-        "name": "Kibulgaria"
+        "name": "Kibulgaria",
+        "regional": "bg_BG",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "en_CA": {
         "code": "en_CA",
-        "name": "Kiingereza"
+        "name": "Kiingereza",
+        "regional": "en_CA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ca": {
         "code": "ca",
-        "name": "Kikatalani"
+        "name": "Kikatalani",
+        "regional": "ca_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ceb": {
         "code": "ceb",
-        "name": "Kichebuano"
+        "name": "Kichebuano",
+        "regional": "ceb_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "km": {
         "code": "km",
-        "name": "Kikambodia"
+        "name": "Kikambodia",
+        "regional": "km_KH",
+        "type": "Khmr",
+        "direction": "ltr"
     },
     "zh_CN": {
         "code": "zh_CN",
-        "name": "Kichina"
+        "name": "Kichina",
+        "regional": "zh_CN",
+        "type": "Hans",
+        "direction": "ltr"
     },
     "zh_HK": {
         "code": "zh_HK",
-        "name": "Kichina"
+        "name": "Kichina",
+        "regional": "zh_HK",
+        "type": "Hant",
+        "direction": "ltr"
     },
     "zh_TW": {
         "code": "zh_TW",
-        "name": "Kichina"
+        "name": "Kichina",
+        "regional": "zh_TW",
+        "type": "Hant",
+        "direction": "ltr"
     },
     "hr": {
         "code": "hr",
-        "name": "Kikorasia"
+        "name": "Kikorasia",
+        "regional": "hr_HR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "cs": {
         "code": "cs",
-        "name": "Kicheki"
+        "name": "Kicheki",
+        "regional": "cs_CZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "da": {
         "code": "da",
-        "name": "Kidenmaki"
+        "name": "Kidenmaki",
+        "regional": "da_DK",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "doi": {
         "code": "doi",
-        "name": "Kidogri"
+        "name": "Kidogri",
+        "regional": "doi_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "nl": {
         "code": "nl",
-        "name": "Kiholanzi"
+        "name": "Kiholanzi",
+        "regional": "nl_NL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "en": {
         "code": "en",
-        "name": "Kiingereza"
+        "name": "Kiingereza",
+        "regional": "en_US",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "eo": {
         "code": "eo",
-        "name": "Kiesperanto"
+        "name": "Kiesperanto",
+        "regional": "eo_001",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "et": {
         "code": "et",
-        "name": "Kiestonia"
+        "name": "Kiestonia",
+        "regional": "et_EE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ee": {
         "code": "ee",
-        "name": "Kiewe"
+        "name": "Kiewe",
+        "regional": "ee_GH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fi": {
         "code": "fi",
-        "name": "Kifini"
+        "name": "Kifini",
+        "regional": "fi_FI",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fr": {
         "code": "fr",
-        "name": "Kifaransa"
+        "name": "Kifaransa",
+        "regional": "fr_FR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fy": {
         "code": "fy",
-        "name": "Kifrisia cha Magharibi"
+        "name": "Kifrisia cha Magharibi",
+        "regional": "fy_NL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "gl": {
         "code": "gl",
-        "name": "Kigalisi"
+        "name": "Kigalisi",
+        "regional": "gl_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ka": {
         "code": "ka",
-        "name": "Kijojia"
+        "name": "Kijojia",
+        "regional": "ka_GE",
+        "type": "Geor",
+        "direction": "ltr"
     },
     "de": {
         "code": "de",
-        "name": "Kijerumani"
+        "name": "Kijerumani",
+        "regional": "de_DE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "de_AT": {
         "code": "de_AT",
-        "name": "Kijerumani"
+        "name": "Kijerumani",
+        "regional": "de_AT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "de_CH": {
         "code": "de_CH",
-        "name": "Kijerumani"
+        "name": "Kijerumani",
+        "regional": "de_CH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "el": {
         "code": "el",
-        "name": "Kigiriki"
+        "name": "Kigiriki",
+        "regional": "el_GR",
+        "type": "Grek",
+        "direction": "ltr"
     },
     "gu": {
         "code": "gu",
-        "name": "Kigujarati"
+        "name": "Kigujarati",
+        "regional": "gu_IN",
+        "type": "Gujr",
+        "direction": "ltr"
     },
     "ht": {
         "code": "ht",
-        "name": "Kihaiti"
+        "name": "Kihaiti",
+        "regional": "ht_HT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ha": {
         "code": "ha",
-        "name": "Kihausa"
+        "name": "Kihausa",
+        "regional": "ha_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "haw": {
         "code": "haw",
-        "name": "Kihawai"
+        "name": "Kihawai",
+        "regional": "haw_US",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "he": {
         "code": "he",
-        "name": "Kiebrania"
+        "name": "Kiebrania",
+        "regional": "he_IL",
+        "type": "Hebr",
+        "direction": "rtl"
     },
     "hi": {
         "code": "hi",
-        "name": "Kihindi"
+        "name": "Kihindi",
+        "regional": "hi_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "hu": {
         "code": "hu",
-        "name": "Kihungaria"
+        "name": "Kihungaria",
+        "regional": "hu_HU",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "is": {
         "code": "is",
-        "name": "Kiisilandi"
+        "name": "Kiisilandi",
+        "regional": "is_IS",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ig": {
         "code": "ig",
-        "name": "Kiigbo"
+        "name": "Kiigbo",
+        "regional": "ig_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "id": {
         "code": "id",
-        "name": "Kiindonesia"
+        "name": "Kiindonesia",
+        "regional": "id_ID",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ga": {
         "code": "ga",
-        "name": "Kiayalandi"
+        "name": "Kiayalandi",
+        "regional": "ga_IE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "it": {
         "code": "it",
-        "name": "Kiitaliano"
+        "name": "Kiitaliano",
+        "regional": "it_IT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ja": {
         "code": "ja",
-        "name": "Kijapani"
+        "name": "Kijapani",
+        "regional": "ja_JP",
+        "type": "Jpan",
+        "direction": "ltr"
     },
     "kn": {
         "code": "kn",
-        "name": "Kikannada"
+        "name": "Kikannada",
+        "regional": "kn_IN",
+        "type": "Knda",
+        "direction": "ltr"
     },
     "kk": {
         "code": "kk",
-        "name": "Kikazakh"
+        "name": "Kikazakh",
+        "regional": "kk_KZ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "rw": {
         "code": "rw",
-        "name": "Kinyarwanda"
+        "name": "Kinyarwanda",
+        "regional": "rw_RW",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ko": {
         "code": "ko",
-        "name": "Kikorea"
+        "name": "Kikorea",
+        "regional": "ko_KR",
+        "type": "Kore",
+        "direction": "ltr"
     },
     "ku": {
         "code": "ku",
-        "name": "Kikurdi"
+        "name": "Kikurdi",
+        "regional": "ku_TR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ckb": {
         "code": "ckb",
-        "name": "Kikurdi cha Sorani"
+        "name": "Kikurdi cha Sorani",
+        "regional": "ckb_IQ",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "ky": {
         "code": "ky",
-        "name": "Kikyrgyz"
+        "name": "Kikyrgyz",
+        "regional": "ky_KG",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "lo": {
         "code": "lo",
-        "name": "Kilaosi"
+        "name": "Kilaosi",
+        "regional": "lo_LA",
+        "type": "Laoo",
+        "direction": "ltr"
     },
     "lv": {
         "code": "lv",
-        "name": "Kilatvia"
+        "name": "Kilatvia",
+        "regional": "lv_LV",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ln": {
         "code": "ln",
-        "name": "Kilingala"
+        "name": "Kilingala",
+        "regional": "ln_CD",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lt": {
         "code": "lt",
-        "name": "Kilithuania"
+        "name": "Kilithuania",
+        "regional": "lt_LT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lg": {
         "code": "lg",
-        "name": "Kiganda"
+        "name": "Kiganda",
+        "regional": "lg_UG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lb": {
         "code": "lb",
-        "name": "Kilasembagi"
+        "name": "Kilasembagi",
+        "regional": "lb_LU",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mk": {
         "code": "mk",
-        "name": "Kimacedonia"
+        "name": "Kimacedonia",
+        "regional": "mk_MK",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "mai": {
         "code": "mai",
-        "name": "Kimaithili"
+        "name": "Kimaithili",
+        "regional": "mai_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "mg": {
         "code": "mg",
-        "name": "Kimalagasi"
+        "name": "Kimalagasi",
+        "regional": "mg_MG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ms": {
         "code": "ms",
-        "name": "Kimalei"
+        "name": "Kimalei",
+        "regional": "ms_MY",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ml": {
         "code": "ml",
-        "name": "Kimalayalamu"
+        "name": "Kimalayalamu",
+        "regional": "ml_IN",
+        "type": "Mlym",
+        "direction": "ltr"
     },
     "mt": {
         "code": "mt",
-        "name": "Kimalta"
+        "name": "Kimalta",
+        "regional": "mt_MT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mi": {
         "code": "mi",
-        "name": "Kimaori"
+        "name": "Kimaori",
+        "regional": "mi_NZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mr": {
         "code": "mr",
-        "name": "Kimarathi"
+        "name": "Kimarathi",
+        "regional": "mr_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "mni_Mtei": {
         "code": "mni_Mtei",
-        "name": "Kimanipuri"
+        "name": "Kimanipuri",
+        "regional": "mni_IN",
+        "type": "Mtei",
+        "direction": "ltr"
     },
     "mn": {
         "code": "mn",
-        "name": "Kimongolia"
+        "name": "Kimongolia",
+        "regional": "mn_MN",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "my": {
         "code": "my",
-        "name": "Kiburma"
+        "name": "Kiburma",
+        "regional": "my_MM",
+        "type": "Mymr",
+        "direction": "ltr"
     },
     "ne": {
         "code": "ne",
-        "name": "Kinepali"
+        "name": "Kinepali",
+        "regional": "ne_NP",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "nb": {
         "code": "nb",
-        "name": "Kinorwe cha Bokmal"
+        "name": "Kinorwe cha Bokmal",
+        "regional": "nb_NO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "nn": {
         "code": "nn",
-        "name": "Kinorwe cha Nynorsk"
+        "name": "Kinorwe cha Nynorsk",
+        "regional": "nn_NO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "oc": {
         "code": "oc",
-        "name": "Kiokitani"
+        "name": "Kiokitani",
+        "regional": "oc_FR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "or": {
         "code": "or",
-        "name": "Kioriya"
+        "name": "Kioriya",
+        "regional": "or_IN",
+        "type": "Orya",
+        "direction": "ltr"
     },
     "om": {
         "code": "om",
-        "name": "Kioromo"
+        "name": "Kioromo",
+        "regional": "om_ET",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ps": {
         "code": "ps",
-        "name": "Kipashto"
+        "name": "Kipashto",
+        "regional": "ps_AF",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "fa": {
         "code": "fa",
-        "name": "Kiajemi"
+        "name": "Kiajemi",
+        "regional": "fa_IR",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "fil": {
         "code": "fil",
-        "name": "Kifilipino"
+        "name": "Kifilipino",
+        "regional": "fil_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pl": {
         "code": "pl",
-        "name": "Kipolandi"
+        "name": "Kipolandi",
+        "regional": "pl_PL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pt": {
         "code": "pt",
-        "name": "Kireno"
+        "name": "Kireno",
+        "regional": "pt_BR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pt_BR": {
         "code": "pt_BR",
-        "name": "Kireno (Brazili)"
+        "name": "Kireno (Brazili)",
+        "regional": "pt_BR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pa": {
         "code": "pa",
-        "name": "Kipunjabi"
+        "name": "Kipunjabi",
+        "regional": "pa_IN",
+        "type": "Guru",
+        "direction": "ltr"
     },
     "qu": {
         "code": "qu",
-        "name": "Kikechua"
+        "name": "Kikechua",
+        "regional": "qu_PE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ro": {
         "code": "ro",
-        "name": "Kiromania"
+        "name": "Kiromania",
+        "regional": "ro_RO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ru": {
         "code": "ru",
-        "name": "Kirusi"
+        "name": "Kirusi",
+        "regional": "ru_RU",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "sa": {
         "code": "sa",
-        "name": "Kisanskriti"
+        "name": "Kisanskriti",
+        "regional": "sa_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "sc": {
         "code": "sc",
-        "name": "Kisardinia"
+        "name": "Kisardinia",
+        "regional": "sc_IT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "gd": {
         "code": "gd",
-        "name": "Kigaeli cha Uskoti"
+        "name": "Kigaeli cha Uskoti",
+        "regional": "gd_GB",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sr_Cyrl": {
         "code": "sr_Cyrl",
-        "name": "Kiserbia"
+        "name": "Kiserbia",
+        "regional": "sr_RS",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "sr_Latn": {
         "code": "sr_Latn",
-        "name": "Kiserbia"
+        "name": "Kiserbia",
+        "regional": "sr_RS",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sr_Latn_ME": {
         "code": "sr_Latn_ME",
-        "name": "Kiserbia"
+        "name": "Kiserbia",
+        "regional": "sr_ME",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sn": {
         "code": "sn",
-        "name": "Kishona"
+        "name": "Kishona",
+        "regional": "sn_ZW",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sd": {
         "code": "sd",
-        "name": "Kisindhi"
+        "name": "Kisindhi",
+        "regional": "sd_PK",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "si": {
         "code": "si",
-        "name": "Kisinhala"
+        "name": "Kisinhala",
+        "regional": "si_LK",
+        "type": "Sinh",
+        "direction": "ltr"
     },
     "sk": {
         "code": "sk",
-        "name": "Kislovakia"
+        "name": "Kislovakia",
+        "regional": "sk_SK",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sl": {
         "code": "sl",
-        "name": "Kislovenia"
+        "name": "Kislovenia",
+        "regional": "sl_SI",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "so": {
         "code": "so",
-        "name": "Kisomali"
+        "name": "Kisomali",
+        "regional": "so_SO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "es": {
         "code": "es",
-        "name": "Kihispania"
+        "name": "Kihispania",
+        "regional": "es_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "su": {
         "code": "su",
-        "name": "Kisunda"
+        "name": "Kisunda",
+        "regional": "su_ID",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sw": {
         "code": "sw",
-        "name": "Kiswahili"
+        "name": "Kiswahili",
+        "regional": "sw_TZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sv": {
         "code": "sv",
-        "name": "Kiswidi"
+        "name": "Kiswidi",
+        "regional": "sv_SE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tl": {
         "code": "tl",
-        "name": "Tagalog"
+        "name": "Tagalog",
+        "regional": "tl_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tg": {
         "code": "tg",
-        "name": "Kitajiki"
+        "name": "Kitajiki",
+        "regional": "tg_TJ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "ta": {
         "code": "ta",
-        "name": "Kitamili"
+        "name": "Kitamili",
+        "regional": "ta_IN",
+        "type": "Taml",
+        "direction": "ltr"
     },
     "tt": {
         "code": "tt",
-        "name": "Kitatari"
+        "name": "Kitatari",
+        "regional": "tt_RU",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "te": {
         "code": "te",
-        "name": "Kitelugu"
+        "name": "Kitelugu",
+        "regional": "te_IN",
+        "type": "Telu",
+        "direction": "ltr"
     },
     "th": {
         "code": "th",
-        "name": "Kithai"
+        "name": "Kithai",
+        "regional": "th_TH",
+        "type": "Thai",
+        "direction": "ltr"
     },
     "ti": {
         "code": "ti",
-        "name": "Kitigrinya"
+        "name": "Kitigrinya",
+        "regional": "ti_ET",
+        "type": "Ethi",
+        "direction": "ltr"
     },
     "tr": {
         "code": "tr",
-        "name": "Kituruki"
+        "name": "Kituruki",
+        "regional": "tr_TR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tk": {
         "code": "tk",
-        "name": "Kiturukimeni"
+        "name": "Kiturukimeni",
+        "regional": "tk_TM",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ak": {
         "code": "ak",
-        "name": "Kiakani"
+        "name": "Kiakani",
+        "regional": "ak_GH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ug": {
         "code": "ug",
-        "name": "Kiuyghur"
+        "name": "Kiuyghur",
+        "regional": "ug_CN",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "uk": {
         "code": "uk",
-        "name": "Kiukraini"
+        "name": "Kiukraini",
+        "regional": "uk_UA",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "ur": {
         "code": "ur",
-        "name": "Kiurdu"
+        "name": "Kiurdu",
+        "regional": "ur_PK",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "uz_Cyrl": {
         "code": "uz_Cyrl",
-        "name": "Kiuzbeki"
+        "name": "Kiuzbeki",
+        "regional": "uz_UZ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "uz_Latn": {
         "code": "uz_Latn",
-        "name": "Kiuzbeki"
+        "name": "Kiuzbeki",
+        "regional": "uz_UZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "vi": {
         "code": "vi",
-        "name": "Kivietinamu"
+        "name": "Kivietinamu",
+        "regional": "vi_VN",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "cy": {
         "code": "cy",
-        "name": "Kiwelisi"
+        "name": "Kiwelisi",
+        "regional": "cy_GB",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "xh": {
         "code": "xh",
-        "name": "Kixhosa"
+        "name": "Kixhosa",
+        "regional": "xh_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "yi": {
         "code": "yi",
-        "name": "Kiyiddi"
+        "name": "Kiyiddi",
+        "regional": "yi_UA",
+        "type": "Hebr",
+        "direction": "rtl"
     },
     "yo": {
         "code": "yo",
-        "name": "Kiyoruba"
+        "name": "Kiyoruba",
+        "regional": "yo_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "zu": {
         "code": "zu",
-        "name": "Kizulu"
+        "name": "Kizulu",
+        "regional": "zu_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     }
 }

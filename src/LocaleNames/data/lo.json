@@ -1,518 +1,905 @@
 {
     "af": {
         "code": "af",
-        "name": "ອາຟຣິການ"
+        "name": "ອາຟຣິການ",
+        "regional": "af_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sq": {
         "code": "sq",
-        "name": "ອານບານຽນ"
+        "name": "ອານບານຽນ",
+        "regional": "sq_AL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "am": {
         "code": "am",
-        "name": "ອຳຮາຣິກ"
+        "name": "ອຳຮາຣິກ",
+        "regional": "am_ET",
+        "type": "Ethi",
+        "direction": "ltr"
     },
     "ar": {
         "code": "ar",
-        "name": "ອາຣັບ"
+        "name": "ອາຣັບ",
+        "regional": "ar_EG",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "hy": {
         "code": "hy",
-        "name": "ອາເມນຽນ"
+        "name": "ອາເມນຽນ",
+        "regional": "hy_AM",
+        "type": "Armn",
+        "direction": "ltr"
     },
     "as": {
         "code": "as",
-        "name": "ອັສຊາມີສ"
+        "name": "ອັສຊາມີສ",
+        "regional": "as_IN",
+        "type": "Beng",
+        "direction": "ltr"
     },
     "az": {
         "code": "az",
-        "name": "ອາເຊີໄບຈານິ"
+        "name": "ອາເຊີໄບຈານິ",
+        "regional": "az_AZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "bm": {
         "code": "bm",
-        "name": "ບາມບາຣາ"
+        "name": "ບາມບາຣາ",
+        "regional": "bm_ML",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "eu": {
         "code": "eu",
-        "name": "ບັສກີ"
+        "name": "ບັສກີ",
+        "regional": "eu_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "be": {
         "code": "be",
-        "name": "ເບລາຣັສຊຽນ"
+        "name": "ເບລາຣັສຊຽນ",
+        "regional": "be_BY",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "bn": {
         "code": "bn",
-        "name": "ເບັງກາລີ"
+        "name": "ເບັງກາລີ",
+        "regional": "bn_BD",
+        "type": "Beng",
+        "direction": "ltr"
     },
     "bho": {
         "code": "bho",
-        "name": "ໂບພູຣິ"
+        "name": "ໂບພູຣິ",
+        "regional": "bho_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "bs": {
         "code": "bs",
-        "name": "ບອສນຽນ"
+        "name": "ບອສນຽນ",
+        "regional": "bs_BA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "bg": {
         "code": "bg",
-        "name": "ບັງກາຣຽນ"
+        "name": "ບັງກາຣຽນ",
+        "regional": "bg_BG",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "en_CA": {
         "code": "en_CA",
-        "name": "ອັງກິດ"
+        "name": "ອັງກິດ",
+        "regional": "en_CA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ca": {
         "code": "ca",
-        "name": "ຄາຕາລານ"
+        "name": "ຄາຕາລານ",
+        "regional": "ca_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ceb": {
         "code": "ceb",
-        "name": "ຊີບູໂນ"
+        "name": "ຊີບູໂນ",
+        "regional": "ceb_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "km": {
         "code": "km",
-        "name": "ຂະເໝນ"
+        "name": "ຂະເໝນ",
+        "regional": "km_KH",
+        "type": "Khmr",
+        "direction": "ltr"
     },
     "zh_CN": {
         "code": "zh_CN",
-        "name": "ຈີນ"
+        "name": "ຈີນ",
+        "regional": "zh_CN",
+        "type": "Hans",
+        "direction": "ltr"
     },
     "zh_HK": {
         "code": "zh_HK",
-        "name": "ຈີນ"
+        "name": "ຈີນ",
+        "regional": "zh_HK",
+        "type": "Hant",
+        "direction": "ltr"
     },
     "zh_TW": {
         "code": "zh_TW",
-        "name": "ຈີນ"
+        "name": "ຈີນ",
+        "regional": "zh_TW",
+        "type": "Hant",
+        "direction": "ltr"
     },
     "hr": {
         "code": "hr",
-        "name": "ໂຄຣເອທຽນ"
+        "name": "ໂຄຣເອທຽນ",
+        "regional": "hr_HR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "cs": {
         "code": "cs",
-        "name": "ເຊກ"
+        "name": "ເຊກ",
+        "regional": "cs_CZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "da": {
         "code": "da",
-        "name": "ແດນິຊ"
+        "name": "ແດນິຊ",
+        "regional": "da_DK",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "doi": {
         "code": "doi",
-        "name": "ດອກຣີ"
+        "name": "ດອກຣີ",
+        "regional": "doi_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "nl": {
         "code": "nl",
-        "name": "ດັຊ"
+        "name": "ດັຊ",
+        "regional": "nl_NL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "en": {
         "code": "en",
-        "name": "ອັງກິດ"
+        "name": "ອັງກິດ",
+        "regional": "en_US",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "eo": {
         "code": "eo",
-        "name": "ເອສປາຍ"
+        "name": "ເອສປາຍ",
+        "regional": "eo_001",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "et": {
         "code": "et",
-        "name": "ເອສໂຕນຽນ"
+        "name": "ເອສໂຕນຽນ",
+        "regional": "et_EE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ee": {
         "code": "ee",
-        "name": "ອິວາ"
+        "name": "ອິວາ",
+        "regional": "ee_GH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fi": {
         "code": "fi",
-        "name": "ຟິນນິຊ"
+        "name": "ຟິນນິຊ",
+        "regional": "fi_FI",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fr": {
         "code": "fr",
-        "name": "ຝຣັ່ງ"
+        "name": "ຝຣັ່ງ",
+        "regional": "fr_FR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fy": {
         "code": "fy",
-        "name": "ຟຣິຊຽນ ຕາເວັນຕົກ"
+        "name": "ຟຣິຊຽນ ຕາເວັນຕົກ",
+        "regional": "fy_NL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "gl": {
         "code": "gl",
-        "name": "ກາລິຊຽນ"
+        "name": "ກາລິຊຽນ",
+        "regional": "gl_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ka": {
         "code": "ka",
-        "name": "ຈໍຈຽນ"
+        "name": "ຈໍຈຽນ",
+        "regional": "ka_GE",
+        "type": "Geor",
+        "direction": "ltr"
     },
     "de": {
         "code": "de",
-        "name": "ເຢຍລະມັນ"
+        "name": "ເຢຍລະມັນ",
+        "regional": "de_DE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "de_AT": {
         "code": "de_AT",
-        "name": "ເຢຍລະມັນ (ໂອສຕຣິດ)"
+        "name": "ເຢຍລະມັນ (ໂອສຕຣິດ)",
+        "regional": "de_AT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "de_CH": {
         "code": "de_CH",
-        "name": "ສະວິສ ໄຮ ເຈີແມນ"
+        "name": "ສະວິສ ໄຮ ເຈີແມນ",
+        "regional": "de_CH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "el": {
         "code": "el",
-        "name": "ກຣີກ"
+        "name": "ກຣີກ",
+        "regional": "el_GR",
+        "type": "Grek",
+        "direction": "ltr"
     },
     "gu": {
         "code": "gu",
-        "name": "ກູຈາຣາຕິ"
+        "name": "ກູຈາຣາຕິ",
+        "regional": "gu_IN",
+        "type": "Gujr",
+        "direction": "ltr"
     },
     "ht": {
         "code": "ht",
-        "name": "ໄຮຕຽນ"
+        "name": "ໄຮຕຽນ",
+        "regional": "ht_HT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ha": {
         "code": "ha",
-        "name": "ເຮົາຊາ"
+        "name": "ເຮົາຊາ",
+        "regional": "ha_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "haw": {
         "code": "haw",
-        "name": "ຮາໄວອຽນ"
+        "name": "ຮາໄວອຽນ",
+        "regional": "haw_US",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "he": {
         "code": "he",
-        "name": "ຮີບຣິວ"
+        "name": "ຮີບຣິວ",
+        "regional": "he_IL",
+        "type": "Hebr",
+        "direction": "rtl"
     },
     "hi": {
         "code": "hi",
-        "name": "ຮິນດິ"
+        "name": "ຮິນດິ",
+        "regional": "hi_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "hu": {
         "code": "hu",
-        "name": "ຮັງກາຣຽນ"
+        "name": "ຮັງກາຣຽນ",
+        "regional": "hu_HU",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "is": {
         "code": "is",
-        "name": "ໄອສແລນດິກ"
+        "name": "ໄອສແລນດິກ",
+        "regional": "is_IS",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ig": {
         "code": "ig",
-        "name": "ອິກໂບ"
+        "name": "ອິກໂບ",
+        "regional": "ig_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "id": {
         "code": "id",
-        "name": "ອິນໂດເນຊຽນ"
+        "name": "ອິນໂດເນຊຽນ",
+        "regional": "id_ID",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ga": {
         "code": "ga",
-        "name": "ໄອຣິສ"
+        "name": "ໄອຣິສ",
+        "regional": "ga_IE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "it": {
         "code": "it",
-        "name": "ອິຕາລຽນ"
+        "name": "ອິຕາລຽນ",
+        "regional": "it_IT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ja": {
         "code": "ja",
-        "name": "ຍີ່ປຸ່ນ"
+        "name": "ຍີ່ປຸ່ນ",
+        "regional": "ja_JP",
+        "type": "Jpan",
+        "direction": "ltr"
     },
     "kn": {
         "code": "kn",
-        "name": "ຄັນນາດາ"
+        "name": "ຄັນນາດາ",
+        "regional": "kn_IN",
+        "type": "Knda",
+        "direction": "ltr"
     },
     "kk": {
         "code": "kk",
-        "name": "ຄາຊັກ"
+        "name": "ຄາຊັກ",
+        "regional": "kk_KZ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "rw": {
         "code": "rw",
-        "name": "ຄິນຢາວານດາ"
+        "name": "ຄິນຢາວານດາ",
+        "regional": "rw_RW",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ko": {
         "code": "ko",
-        "name": "ເກົາຫລີ"
+        "name": "ເກົາຫລີ",
+        "regional": "ko_KR",
+        "type": "Kore",
+        "direction": "ltr"
     },
     "ku": {
         "code": "ku",
-        "name": "ເຄີດິສ"
+        "name": "ເຄີດິສ",
+        "regional": "ku_TR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ckb": {
         "code": "ckb",
-        "name": "ໂຊຣານິ ເຄີດິຊ"
+        "name": "ໂຊຣານິ ເຄີດິຊ",
+        "regional": "ckb_IQ",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "ky": {
         "code": "ky",
-        "name": "ເກຍກີສ"
+        "name": "ເກຍກີສ",
+        "regional": "ky_KG",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "lo": {
         "code": "lo",
-        "name": "ລາວ"
+        "name": "ລາວ",
+        "regional": "lo_LA",
+        "type": "Laoo",
+        "direction": "ltr"
     },
     "lv": {
         "code": "lv",
-        "name": "ລັດວຽນ"
+        "name": "ລັດວຽນ",
+        "regional": "lv_LV",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ln": {
         "code": "ln",
-        "name": "ລິງກາລາ"
+        "name": "ລິງກາລາ",
+        "regional": "ln_CD",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lt": {
         "code": "lt",
-        "name": "ລິທົວນຽນ"
+        "name": "ລິທົວນຽນ",
+        "regional": "lt_LT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lg": {
         "code": "lg",
-        "name": "ແກນດາ"
+        "name": "ແກນດາ",
+        "regional": "lg_UG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lb": {
         "code": "lb",
-        "name": "ລັກເຊມບວກກິຊ"
+        "name": "ລັກເຊມບວກກິຊ",
+        "regional": "lb_LU",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mk": {
         "code": "mk",
-        "name": "ແມຊິໂດນຽນ"
+        "name": "ແມຊິໂດນຽນ",
+        "regional": "mk_MK",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "mai": {
         "code": "mai",
-        "name": "ໄມທີລິ"
+        "name": "ໄມທີລິ",
+        "regional": "mai_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "mg": {
         "code": "mg",
-        "name": "ມາລາກາສຊີ"
+        "name": "ມາລາກາສຊີ",
+        "regional": "mg_MG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ms": {
         "code": "ms",
-        "name": "ມາເລ"
+        "name": "ມາເລ",
+        "regional": "ms_MY",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ml": {
         "code": "ml",
-        "name": "ມາເລອາລຳ"
+        "name": "ມາເລອາລຳ",
+        "regional": "ml_IN",
+        "type": "Mlym",
+        "direction": "ltr"
     },
     "mt": {
         "code": "mt",
-        "name": "ມອລທີສ"
+        "name": "ມອລທີສ",
+        "regional": "mt_MT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mi": {
         "code": "mi",
-        "name": "ມາວຣິ"
+        "name": "ມາວຣິ",
+        "regional": "mi_NZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mr": {
         "code": "mr",
-        "name": "ມາຣາທີ"
+        "name": "ມາຣາທີ",
+        "regional": "mr_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "mni_Mtei": {
         "code": "mni_Mtei",
-        "name": "ມານີພູຣິ"
+        "name": "ມານີພູຣິ",
+        "regional": "mni_IN",
+        "type": "Mtei",
+        "direction": "ltr"
     },
     "mn": {
         "code": "mn",
-        "name": "ມອງໂກເລຍ"
+        "name": "ມອງໂກເລຍ",
+        "regional": "mn_MN",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "my": {
         "code": "my",
-        "name": "ມຽນມາ"
+        "name": "ມຽນມາ",
+        "regional": "my_MM",
+        "type": "Mymr",
+        "direction": "ltr"
     },
     "ne": {
         "code": "ne",
-        "name": "ເນປາລີ"
+        "name": "ເນປາລີ",
+        "regional": "ne_NP",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "nb": {
         "code": "nb",
-        "name": "ນໍເວຈຽນ ບັອກມອລ"
+        "name": "ນໍເວຈຽນ ບັອກມອລ",
+        "regional": "nb_NO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "nn": {
         "code": "nn",
-        "name": "ນໍເວຈຽນ ນີນອກ"
+        "name": "ນໍເວຈຽນ ນີນອກ",
+        "regional": "nn_NO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "oc": {
         "code": "oc",
-        "name": "ອັອກຊີຕານ"
+        "name": "ອັອກຊີຕານ",
+        "regional": "oc_FR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "or": {
         "code": "or",
-        "name": "ໂອເດຍ"
+        "name": "ໂອເດຍ",
+        "regional": "or_IN",
+        "type": "Orya",
+        "direction": "ltr"
     },
     "om": {
         "code": "om",
-        "name": "ໂອໂຣໂມ"
+        "name": "ໂອໂຣໂມ",
+        "regional": "om_ET",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ps": {
         "code": "ps",
-        "name": "ປາສໂຕ"
+        "name": "ປາສໂຕ",
+        "regional": "ps_AF",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "fa": {
         "code": "fa",
-        "name": "ເປີຊຽນ"
+        "name": "ເປີຊຽນ",
+        "regional": "fa_IR",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "fil": {
         "code": "fil",
-        "name": "ຟີລິປີໂນ"
+        "name": "ຟີລິປີໂນ",
+        "regional": "fil_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pl": {
         "code": "pl",
-        "name": "ໂປລິຊ"
+        "name": "ໂປລິຊ",
+        "regional": "pl_PL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pt": {
         "code": "pt",
-        "name": "ປອກຕຸຍກິສ"
+        "name": "ປອກຕຸຍກິສ",
+        "regional": "pt_BR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pt_BR": {
         "code": "pt_BR",
-        "name": "ປອກຕຸຍກິສ"
+        "name": "ປອກຕຸຍກິສ",
+        "regional": "pt_BR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pa": {
         "code": "pa",
-        "name": "ປັນຈາບີ"
+        "name": "ປັນຈາບີ",
+        "regional": "pa_IN",
+        "type": "Guru",
+        "direction": "ltr"
     },
     "qu": {
         "code": "qu",
-        "name": "ຄີຊົວ"
+        "name": "ຄີຊົວ",
+        "regional": "qu_PE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ro": {
         "code": "ro",
-        "name": "ໂຣແມນຽນ"
+        "name": "ໂຣແມນຽນ",
+        "regional": "ro_RO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ru": {
         "code": "ru",
-        "name": "ລັດເຊຍ"
+        "name": "ລັດເຊຍ",
+        "regional": "ru_RU",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "sa": {
         "code": "sa",
-        "name": "ສັນສະກຣິດ"
+        "name": "ສັນສະກຣິດ",
+        "regional": "sa_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "sc": {
         "code": "sc",
-        "name": "ສາດີນຽນ"
+        "name": "ສາດີນຽນ",
+        "regional": "sc_IT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "gd": {
         "code": "gd",
-        "name": "ສະກັອດເກລິກ"
+        "name": "ສະກັອດເກລິກ",
+        "regional": "gd_GB",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sr_Cyrl": {
         "code": "sr_Cyrl",
-        "name": "ເຊີບຽນ"
+        "name": "ເຊີບຽນ",
+        "regional": "sr_RS",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "sr_Latn": {
         "code": "sr_Latn",
-        "name": "ເຊີບຽນ"
+        "name": "ເຊີບຽນ",
+        "regional": "sr_RS",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sr_Latn_ME": {
         "code": "sr_Latn_ME",
-        "name": "ເຊີບຽນ"
+        "name": "ເຊີບຽນ",
+        "regional": "sr_ME",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sn": {
         "code": "sn",
-        "name": "ໂຊນາ"
+        "name": "ໂຊນາ",
+        "regional": "sn_ZW",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sd": {
         "code": "sd",
-        "name": "ສິນທິ"
+        "name": "ສິນທິ",
+        "regional": "sd_PK",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "si": {
         "code": "si",
-        "name": "ສິນຫາລາ"
+        "name": "ສິນຫາລາ",
+        "regional": "si_LK",
+        "type": "Sinh",
+        "direction": "ltr"
     },
     "sk": {
         "code": "sk",
-        "name": "ສະໂລແວັກ"
+        "name": "ສະໂລແວັກ",
+        "regional": "sk_SK",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sl": {
         "code": "sl",
-        "name": "ສະໂລເວນຽນ"
+        "name": "ສະໂລເວນຽນ",
+        "regional": "sl_SI",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "so": {
         "code": "so",
-        "name": "ໂຊມາລີ"
+        "name": "ໂຊມາລີ",
+        "regional": "so_SO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "es": {
         "code": "es",
-        "name": "ສະແປນນິຊ"
+        "name": "ສະແປນນິຊ",
+        "regional": "es_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "su": {
         "code": "su",
-        "name": "ຊຸນແດນນີສ"
+        "name": "ຊຸນແດນນີສ",
+        "regional": "su_ID",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sw": {
         "code": "sw",
-        "name": "ຊວາຮີລິ"
+        "name": "ຊວາຮີລິ",
+        "regional": "sw_TZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sv": {
         "code": "sv",
-        "name": "ສະວີດິຊ"
+        "name": "ສະວີດິຊ",
+        "regional": "sv_SE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tl": {
         "code": "tl",
-        "name": "ຕາກາລອກ"
+        "name": "ຕາກາລອກ",
+        "regional": "tl_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tg": {
         "code": "tg",
-        "name": "ທາຈິກ"
+        "name": "ທາຈິກ",
+        "regional": "tg_TJ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "ta": {
         "code": "ta",
-        "name": "ທາມິລ"
+        "name": "ທາມິລ",
+        "regional": "ta_IN",
+        "type": "Taml",
+        "direction": "ltr"
     },
     "tt": {
         "code": "tt",
-        "name": "ທາທາ"
+        "name": "ທາທາ",
+        "regional": "tt_RU",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "te": {
         "code": "te",
-        "name": "ເຕລູກູ"
+        "name": "ເຕລູກູ",
+        "regional": "te_IN",
+        "type": "Telu",
+        "direction": "ltr"
     },
     "th": {
         "code": "th",
-        "name": "ໄທ"
+        "name": "ໄທ",
+        "regional": "th_TH",
+        "type": "Thai",
+        "direction": "ltr"
     },
     "ti": {
         "code": "ti",
-        "name": "ຕິກຣິນຢາ"
+        "name": "ຕິກຣິນຢາ",
+        "regional": "ti_ET",
+        "type": "Ethi",
+        "direction": "ltr"
     },
     "tr": {
         "code": "tr",
-        "name": "ເທີຄິຊ"
+        "name": "ເທີຄິຊ",
+        "regional": "tr_TR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tk": {
         "code": "tk",
-        "name": "ເທີກເມັນ"
+        "name": "ເທີກເມັນ",
+        "regional": "tk_TM",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ak": {
         "code": "ak",
-        "name": "ອາການ"
+        "name": "ອາການ",
+        "regional": "ak_GH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ug": {
         "code": "ug",
-        "name": "ອຸຍເຄີ"
+        "name": "ອຸຍເຄີ",
+        "regional": "ug_CN",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "uk": {
         "code": "uk",
-        "name": "ຢູເຄຣນຽນ"
+        "name": "ຢູເຄຣນຽນ",
+        "regional": "uk_UA",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "ur": {
         "code": "ur",
-        "name": "ອູຣດູ"
+        "name": "ອູຣດູ",
+        "regional": "ur_PK",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "uz_Cyrl": {
         "code": "uz_Cyrl",
-        "name": "ອຸສເບກ"
+        "name": "ອຸສເບກ",
+        "regional": "uz_UZ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "uz_Latn": {
         "code": "uz_Latn",
-        "name": "ອຸສເບກ"
+        "name": "ອຸສເບກ",
+        "regional": "uz_UZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "vi": {
         "code": "vi",
-        "name": "ຫວຽດນາມ"
+        "name": "ຫວຽດນາມ",
+        "regional": "vi_VN",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "cy": {
         "code": "cy",
-        "name": "ເວວ"
+        "name": "ເວວ",
+        "regional": "cy_GB",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "xh": {
         "code": "xh",
-        "name": "ໂຮຊາ"
+        "name": "ໂຮຊາ",
+        "regional": "xh_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "yi": {
         "code": "yi",
-        "name": "ຢິວ"
+        "name": "ຢິວ",
+        "regional": "yi_UA",
+        "type": "Hebr",
+        "direction": "rtl"
     },
     "yo": {
         "code": "yo",
-        "name": "ໂຢຣູບາ"
+        "name": "ໂຢຣູບາ",
+        "regional": "yo_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "zu": {
         "code": "zu",
-        "name": "ຊູລູ"
+        "name": "ຊູລູ",
+        "regional": "zu_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     }
 }

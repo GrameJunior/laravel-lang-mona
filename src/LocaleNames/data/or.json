@@ -1,518 +1,905 @@
 {
     "af": {
         "code": "af",
-        "name": "ଆଫ୍ରିକୀୟ"
+        "name": "ଆଫ୍ରିକୀୟ",
+        "regional": "af_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sq": {
         "code": "sq",
-        "name": "ଆଲବାନିଆନ୍"
+        "name": "ଆଲବାନିଆନ୍",
+        "regional": "sq_AL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "am": {
         "code": "am",
-        "name": "ଆମହାରକି"
+        "name": "ଆମହାରକି",
+        "regional": "am_ET",
+        "type": "Ethi",
+        "direction": "ltr"
     },
     "ar": {
         "code": "ar",
-        "name": "ଆରବିକ୍"
+        "name": "ଆରବିକ୍",
+        "regional": "ar_EG",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "hy": {
         "code": "hy",
-        "name": "ଆର୍ମେନିଆନ୍"
+        "name": "ଆର୍ମେନିଆନ୍",
+        "regional": "hy_AM",
+        "type": "Armn",
+        "direction": "ltr"
     },
     "as": {
         "code": "as",
-        "name": "ଆସାମୀୟ"
+        "name": "ଆସାମୀୟ",
+        "regional": "as_IN",
+        "type": "Beng",
+        "direction": "ltr"
     },
     "az": {
         "code": "az",
-        "name": "ଆଜେରବାଇଜାନି"
+        "name": "ଆଜେରବାଇଜାନି",
+        "regional": "az_AZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "bm": {
         "code": "bm",
-        "name": "ବାମ୍ବାରା"
+        "name": "ବାମ୍ବାରା",
+        "regional": "bm_ML",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "eu": {
         "code": "eu",
-        "name": "ବାସ୍କ୍ୱି"
+        "name": "ବାସ୍କ୍ୱି",
+        "regional": "eu_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "be": {
         "code": "be",
-        "name": "ବେଲାରୁଷିଆନ୍"
+        "name": "ବେଲାରୁଷିଆନ୍",
+        "regional": "be_BY",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "bn": {
         "code": "bn",
-        "name": "ବଙ୍ଗଳା"
+        "name": "ବଙ୍ଗଳା",
+        "regional": "bn_BD",
+        "type": "Beng",
+        "direction": "ltr"
     },
     "bho": {
         "code": "bho",
-        "name": "ଭୋଜପୁରୀ"
+        "name": "ଭୋଜପୁରୀ",
+        "regional": "bho_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "bs": {
         "code": "bs",
-        "name": "ବୋସନିଆନ୍"
+        "name": "ବୋସନିଆନ୍",
+        "regional": "bs_BA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "bg": {
         "code": "bg",
-        "name": "ବୁଲଗେରିଆନ୍"
+        "name": "ବୁଲଗେରିଆନ୍",
+        "regional": "bg_BG",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "en_CA": {
         "code": "en_CA",
-        "name": "କାନାଡିୟ ଇଂରାଜୀ"
+        "name": "କାନାଡିୟ ଇଂରାଜୀ",
+        "regional": "en_CA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ca": {
         "code": "ca",
-        "name": "କାଟାଲାନ୍"
+        "name": "କାଟାଲାନ୍",
+        "regional": "ca_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ceb": {
         "code": "ceb",
-        "name": "ସୀବୁଆନୋ"
+        "name": "ସୀବୁଆନୋ",
+        "regional": "ceb_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "km": {
         "code": "km",
-        "name": "ଖାମେର୍"
+        "name": "ଖାମେର୍",
+        "regional": "km_KH",
+        "type": "Khmr",
+        "direction": "ltr"
     },
     "zh_CN": {
         "code": "zh_CN",
-        "name": "ଚାଇନିଜ୍‌"
+        "name": "ଚାଇନିଜ୍‌",
+        "regional": "zh_CN",
+        "type": "Hans",
+        "direction": "ltr"
     },
     "zh_HK": {
         "code": "zh_HK",
-        "name": "ଚାଇନିଜ୍‌"
+        "name": "ଚାଇନିଜ୍‌",
+        "regional": "zh_HK",
+        "type": "Hant",
+        "direction": "ltr"
     },
     "zh_TW": {
         "code": "zh_TW",
-        "name": "ଚାଇନିଜ୍‌"
+        "name": "ଚାଇନିଜ୍‌",
+        "regional": "zh_TW",
+        "type": "Hant",
+        "direction": "ltr"
     },
     "hr": {
         "code": "hr",
-        "name": "କ୍ରୋଏସୀୟ"
+        "name": "କ୍ରୋଏସୀୟ",
+        "regional": "hr_HR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "cs": {
         "code": "cs",
-        "name": "ଚେକ୍"
+        "name": "ଚେକ୍",
+        "regional": "cs_CZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "da": {
         "code": "da",
-        "name": "ଡାନିସ୍‌"
+        "name": "ଡାନିସ୍‌",
+        "regional": "da_DK",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "doi": {
         "code": "doi",
-        "name": "ଡୋଗ୍ରୀ"
+        "name": "ଡୋଗ୍ରୀ",
+        "regional": "doi_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "nl": {
         "code": "nl",
-        "name": "ଡଚ୍"
+        "name": "ଡଚ୍",
+        "regional": "nl_NL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "en": {
         "code": "en",
-        "name": "ଇଂରାଜୀ"
+        "name": "ଇଂରାଜୀ",
+        "regional": "en_US",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "eo": {
         "code": "eo",
-        "name": "ଏସ୍ପାରେଣ୍ଟୋ"
+        "name": "ଏସ୍ପାରେଣ୍ଟୋ",
+        "regional": "eo_001",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "et": {
         "code": "et",
-        "name": "ଏସ୍ତୋନିଆନ୍"
+        "name": "ଏସ୍ତୋନିଆନ୍",
+        "regional": "et_EE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ee": {
         "code": "ee",
-        "name": "ଇୱେ"
+        "name": "ଇୱେ",
+        "regional": "ee_GH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fi": {
         "code": "fi",
-        "name": "ଫିନ୍ନିସ୍"
+        "name": "ଫିନ୍ନିସ୍",
+        "regional": "fi_FI",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fr": {
         "code": "fr",
-        "name": "ଫରାସୀ"
+        "name": "ଫରାସୀ",
+        "regional": "fr_FR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fy": {
         "code": "fy",
-        "name": "ପାଶ୍ଚାତ୍ୟ ଫ୍ରିସିଆନ୍"
+        "name": "ପାଶ୍ଚାତ୍ୟ ଫ୍ରିସିଆନ୍",
+        "regional": "fy_NL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "gl": {
         "code": "gl",
-        "name": "ଗାଲିସିଆନ୍‌"
+        "name": "ଗାଲିସିଆନ୍‌",
+        "regional": "gl_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ka": {
         "code": "ka",
-        "name": "ଜର୍ଜିଆନ୍‌"
+        "name": "ଜର୍ଜିଆନ୍‌",
+        "regional": "ka_GE",
+        "type": "Geor",
+        "direction": "ltr"
     },
     "de": {
         "code": "de",
-        "name": "ଜର୍ମାନ"
+        "name": "ଜର୍ମାନ",
+        "regional": "de_DE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "de_AT": {
         "code": "de_AT",
-        "name": "ଅଷ୍ଟ୍ରିଆନ୍ ଜର୍ମାନ"
+        "name": "ଅଷ୍ଟ୍ରିଆନ୍ ଜର୍ମାନ",
+        "regional": "de_AT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "de_CH": {
         "code": "de_CH",
-        "name": "ସ୍ୱିସ୍‌ ହାଇ ଜର୍ମାନ"
+        "name": "ସ୍ୱିସ୍‌ ହାଇ ଜର୍ମାନ",
+        "regional": "de_CH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "el": {
         "code": "el",
-        "name": "ଗ୍ରୀକ୍"
+        "name": "ଗ୍ରୀକ୍",
+        "regional": "el_GR",
+        "type": "Grek",
+        "direction": "ltr"
     },
     "gu": {
         "code": "gu",
-        "name": "ଗୁଜରାଟୀ"
+        "name": "ଗୁଜରାଟୀ",
+        "regional": "gu_IN",
+        "type": "Gujr",
+        "direction": "ltr"
     },
     "ht": {
         "code": "ht",
-        "name": "ହୈତାୟିନ୍"
+        "name": "ହୈତାୟିନ୍",
+        "regional": "ht_HT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ha": {
         "code": "ha",
-        "name": "ହୌସା"
+        "name": "ହୌସା",
+        "regional": "ha_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "haw": {
         "code": "haw",
-        "name": "ହାୱାଇନ୍"
+        "name": "ହାୱାଇନ୍",
+        "regional": "haw_US",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "he": {
         "code": "he",
-        "name": "ହିବ୍ରୁ"
+        "name": "ହିବ୍ରୁ",
+        "regional": "he_IL",
+        "type": "Hebr",
+        "direction": "rtl"
     },
     "hi": {
         "code": "hi",
-        "name": "ହିନ୍ଦୀ"
+        "name": "ହିନ୍ଦୀ",
+        "regional": "hi_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "hu": {
         "code": "hu",
-        "name": "ହଙ୍ଗେରୀୟ"
+        "name": "ହଙ୍ଗେରୀୟ",
+        "regional": "hu_HU",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "is": {
         "code": "is",
-        "name": "ଆଇସଲାଣ୍ଡିକ୍"
+        "name": "ଆଇସଲାଣ୍ଡିକ୍",
+        "regional": "is_IS",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ig": {
         "code": "ig",
-        "name": "ଇଗବୋ"
+        "name": "ଇଗବୋ",
+        "regional": "ig_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "id": {
         "code": "id",
-        "name": "ଇଣ୍ଡୋନେସୀୟ"
+        "name": "ଇଣ୍ଡୋନେସୀୟ",
+        "regional": "id_ID",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ga": {
         "code": "ga",
-        "name": "ଆଇରିସ୍‌"
+        "name": "ଆଇରିସ୍‌",
+        "regional": "ga_IE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "it": {
         "code": "it",
-        "name": "ଇଟାଲୀୟ"
+        "name": "ଇଟାଲୀୟ",
+        "regional": "it_IT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ja": {
         "code": "ja",
-        "name": "ଜାପାନୀ"
+        "name": "ଜାପାନୀ",
+        "regional": "ja_JP",
+        "type": "Jpan",
+        "direction": "ltr"
     },
     "kn": {
         "code": "kn",
-        "name": "କନ୍ନଡ"
+        "name": "କନ୍ନଡ",
+        "regional": "kn_IN",
+        "type": "Knda",
+        "direction": "ltr"
     },
     "kk": {
         "code": "kk",
-        "name": "କାଜାଖ୍‌"
+        "name": "କାଜାଖ୍‌",
+        "regional": "kk_KZ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "rw": {
         "code": "rw",
-        "name": "କିନ୍ୟାରୱାଣ୍ଡା"
+        "name": "କିନ୍ୟାରୱାଣ୍ଡା",
+        "regional": "rw_RW",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ko": {
         "code": "ko",
-        "name": "କୋରିଆନ୍"
+        "name": "କୋରିଆନ୍",
+        "regional": "ko_KR",
+        "type": "Kore",
+        "direction": "ltr"
     },
     "ku": {
         "code": "ku",
-        "name": "କୁର୍ଦ୍ଦିଶ୍"
+        "name": "କୁର୍ଦ୍ଦିଶ୍",
+        "regional": "ku_TR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ckb": {
         "code": "ckb",
-        "name": "କେନ୍ଦ୍ରୀୟ କୁରଡିସ୍"
+        "name": "କେନ୍ଦ୍ରୀୟ କୁରଡିସ୍",
+        "regional": "ckb_IQ",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "ky": {
         "code": "ky",
-        "name": "କୀରଗୀଜ୍"
+        "name": "କୀରଗୀଜ୍",
+        "regional": "ky_KG",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "lo": {
         "code": "lo",
-        "name": "ଲାଓ"
+        "name": "ଲାଓ",
+        "regional": "lo_LA",
+        "type": "Laoo",
+        "direction": "ltr"
     },
     "lv": {
         "code": "lv",
-        "name": "ଲାଟଭିଆନ୍"
+        "name": "ଲାଟଭିଆନ୍",
+        "regional": "lv_LV",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ln": {
         "code": "ln",
-        "name": "ଲିଙ୍ଗାଲା"
+        "name": "ଲିଙ୍ଗାଲା",
+        "regional": "ln_CD",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lt": {
         "code": "lt",
-        "name": "ଲିଥୁଆନିଆନ୍"
+        "name": "ଲିଥୁଆନିଆନ୍",
+        "regional": "lt_LT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lg": {
         "code": "lg",
-        "name": "ଗନ୍ଦା"
+        "name": "ଗନ୍ଦା",
+        "regional": "lg_UG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lb": {
         "code": "lb",
-        "name": "ଲକ୍ସେମବର୍ଗିସ୍"
+        "name": "ଲକ୍ସେମବର୍ଗିସ୍",
+        "regional": "lb_LU",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mk": {
         "code": "mk",
-        "name": "ମାସେଡୋନିଆନ୍"
+        "name": "ମାସେଡୋନିଆନ୍",
+        "regional": "mk_MK",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "mai": {
         "code": "mai",
-        "name": "ମୈଥିଳୀ"
+        "name": "ମୈଥିଳୀ",
+        "regional": "mai_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "mg": {
         "code": "mg",
-        "name": "ମାଲାଗାସୀ"
+        "name": "ମାଲାଗାସୀ",
+        "regional": "mg_MG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ms": {
         "code": "ms",
-        "name": "ମାଲୟ"
+        "name": "ମାଲୟ",
+        "regional": "ms_MY",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ml": {
         "code": "ml",
-        "name": "ମାଲାୟଲମ୍"
+        "name": "ମାଲାୟଲମ୍",
+        "regional": "ml_IN",
+        "type": "Mlym",
+        "direction": "ltr"
     },
     "mt": {
         "code": "mt",
-        "name": "ମାଲଟୀଜ୍"
+        "name": "ମାଲଟୀଜ୍",
+        "regional": "mt_MT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mi": {
         "code": "mi",
-        "name": "ମାଓରୀ"
+        "name": "ମାଓରୀ",
+        "regional": "mi_NZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mr": {
         "code": "mr",
-        "name": "ମରାଠୀ"
+        "name": "ମରାଠୀ",
+        "regional": "mr_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "mni_Mtei": {
         "code": "mni_Mtei",
-        "name": "ମଣିପୁରୀ"
+        "name": "ମଣିପୁରୀ",
+        "regional": "mni_IN",
+        "type": "Mtei",
+        "direction": "ltr"
     },
     "mn": {
         "code": "mn",
-        "name": "ମଙ୍ଗୋଲୀୟ"
+        "name": "ମଙ୍ଗୋଲୀୟ",
+        "regional": "mn_MN",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "my": {
         "code": "my",
-        "name": "ବର୍ମୀଜ୍"
+        "name": "ବର୍ମୀଜ୍",
+        "regional": "my_MM",
+        "type": "Mymr",
+        "direction": "ltr"
     },
     "ne": {
         "code": "ne",
-        "name": "ନେପାଳୀ"
+        "name": "ନେପାଳୀ",
+        "regional": "ne_NP",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "nb": {
         "code": "nb",
-        "name": "ନରୱେଜିଆନ୍ ବୋକମଲ୍"
+        "name": "ନରୱେଜିଆନ୍ ବୋକମଲ୍",
+        "regional": "nb_NO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "nn": {
         "code": "nn",
-        "name": "ନରୱେଜିଆନ୍ ନିନର୍ସ୍କ୍‌"
+        "name": "ନରୱେଜିଆନ୍ ନିନର୍ସ୍କ୍‌",
+        "regional": "nn_NO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "oc": {
         "code": "oc",
-        "name": "ଓସିଟାନ୍"
+        "name": "ଓସିଟାନ୍",
+        "regional": "oc_FR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "or": {
         "code": "or",
-        "name": "ଓଡ଼ିଆ"
+        "name": "ଓଡ଼ିଆ",
+        "regional": "or_IN",
+        "type": "Orya",
+        "direction": "ltr"
     },
     "om": {
         "code": "om",
-        "name": "ଓରୋମୋ"
+        "name": "ଓରୋମୋ",
+        "regional": "om_ET",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ps": {
         "code": "ps",
-        "name": "ପାସ୍ତୋ"
+        "name": "ପାସ୍ତୋ",
+        "regional": "ps_AF",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "fa": {
         "code": "fa",
-        "name": "ପର୍ସିଆନ୍"
+        "name": "ପର୍ସିଆନ୍",
+        "regional": "fa_IR",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "fil": {
         "code": "fil",
-        "name": "ଫିଲିପିନୋ"
+        "name": "ଫିଲିପିନୋ",
+        "regional": "fil_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pl": {
         "code": "pl",
-        "name": "ପୋଲିଶ୍"
+        "name": "ପୋଲିଶ୍",
+        "regional": "pl_PL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pt": {
         "code": "pt",
-        "name": "ପର୍ତ୍ତୁଗୀଜ୍‌"
+        "name": "ପର୍ତ୍ତୁଗୀଜ୍‌",
+        "regional": "pt_BR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pt_BR": {
         "code": "pt_BR",
-        "name": "ବ୍ରାଜିଲିଆନ୍ ପର୍ତ୍ତୁଗୀଜ୍"
+        "name": "ବ୍ରାଜିଲିଆନ୍ ପର୍ତ୍ତୁଗୀଜ୍",
+        "regional": "pt_BR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pa": {
         "code": "pa",
-        "name": "ପଞ୍ଜାବୀ"
+        "name": "ପଞ୍ଜାବୀ",
+        "regional": "pa_IN",
+        "type": "Guru",
+        "direction": "ltr"
     },
     "qu": {
         "code": "qu",
-        "name": "କ୍ୱେଚୁଆ"
+        "name": "କ୍ୱେଚୁଆ",
+        "regional": "qu_PE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ro": {
         "code": "ro",
-        "name": "ରୋମାନିଆନ୍"
+        "name": "ରୋମାନିଆନ୍",
+        "regional": "ro_RO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ru": {
         "code": "ru",
-        "name": "ରୁଷିୟ"
+        "name": "ରୁଷିୟ",
+        "regional": "ru_RU",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "sa": {
         "code": "sa",
-        "name": "ସଂସ୍କୃତ"
+        "name": "ସଂସ୍କୃତ",
+        "regional": "sa_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "sc": {
         "code": "sc",
-        "name": "ସାର୍ଡିନିଆନ୍‌"
+        "name": "ସାର୍ଡିନିଆନ୍‌",
+        "regional": "sc_IT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "gd": {
         "code": "gd",
-        "name": "ସ୍କଟିସ୍ ଗାଏଲିକ୍"
+        "name": "ସ୍କଟିସ୍ ଗାଏଲିକ୍",
+        "regional": "gd_GB",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sr_Cyrl": {
         "code": "sr_Cyrl",
-        "name": "ସର୍ବିୟ"
+        "name": "ସର୍ବିୟ",
+        "regional": "sr_RS",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "sr_Latn": {
         "code": "sr_Latn",
-        "name": "ସର୍ବିୟ"
+        "name": "ସର୍ବିୟ",
+        "regional": "sr_RS",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sr_Latn_ME": {
         "code": "sr_Latn_ME",
-        "name": "ସର୍ବିୟ"
+        "name": "ସର୍ବିୟ",
+        "regional": "sr_ME",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sn": {
         "code": "sn",
-        "name": "ଶୋନା"
+        "name": "ଶୋନା",
+        "regional": "sn_ZW",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sd": {
         "code": "sd",
-        "name": "ସିନ୍ଧୀ"
+        "name": "ସିନ୍ଧୀ",
+        "regional": "sd_PK",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "si": {
         "code": "si",
-        "name": "ସିଂହଳ"
+        "name": "ସିଂହଳ",
+        "regional": "si_LK",
+        "type": "Sinh",
+        "direction": "ltr"
     },
     "sk": {
         "code": "sk",
-        "name": "ସ୍ଲୋଭାକ୍"
+        "name": "ସ୍ଲୋଭାକ୍",
+        "regional": "sk_SK",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sl": {
         "code": "sl",
-        "name": "ସ୍ଲୋଭେନିଆନ୍"
+        "name": "ସ୍ଲୋଭେନିଆନ୍",
+        "regional": "sl_SI",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "so": {
         "code": "so",
-        "name": "ସୋମାଲିଆ"
+        "name": "ସୋମାଲିଆ",
+        "regional": "so_SO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "es": {
         "code": "es",
-        "name": "ସ୍ପାନିସ୍‌"
+        "name": "ସ୍ପାନିସ୍‌",
+        "regional": "es_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "su": {
         "code": "su",
-        "name": "ସୁଦାନୀଜ୍"
+        "name": "ସୁଦାନୀଜ୍",
+        "regional": "su_ID",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sw": {
         "code": "sw",
-        "name": "ସ୍ୱାହିଲି"
+        "name": "ସ୍ୱାହିଲି",
+        "regional": "sw_TZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sv": {
         "code": "sv",
-        "name": "ସ୍ୱେଡିସ୍"
+        "name": "ସ୍ୱେଡିସ୍",
+        "regional": "sv_SE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tl": {
         "code": "tl",
-        "name": "ଟାଗାଲଗ୍"
+        "name": "ଟାଗାଲଗ୍",
+        "regional": "tl_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tg": {
         "code": "tg",
-        "name": "ତାଜିକ୍"
+        "name": "ତାଜିକ୍",
+        "regional": "tg_TJ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "ta": {
         "code": "ta",
-        "name": "ତାମିଲ୍"
+        "name": "ତାମିଲ୍",
+        "regional": "ta_IN",
+        "type": "Taml",
+        "direction": "ltr"
     },
     "tt": {
         "code": "tt",
-        "name": "ତାତାର୍"
+        "name": "ତାତାର୍",
+        "regional": "tt_RU",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "te": {
         "code": "te",
-        "name": "ତେଲୁଗୁ"
+        "name": "ତେଲୁଗୁ",
+        "regional": "te_IN",
+        "type": "Telu",
+        "direction": "ltr"
     },
     "th": {
         "code": "th",
-        "name": "ଥାଇ"
+        "name": "ଥାଇ",
+        "regional": "th_TH",
+        "type": "Thai",
+        "direction": "ltr"
     },
     "ti": {
         "code": "ti",
-        "name": "ଟାଇଗ୍ରିନିଆ"
+        "name": "ଟାଇଗ୍ରିନିଆ",
+        "regional": "ti_ET",
+        "type": "Ethi",
+        "direction": "ltr"
     },
     "tr": {
         "code": "tr",
-        "name": "ତୁର୍କିସ୍"
+        "name": "ତୁର୍କିସ୍",
+        "regional": "tr_TR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tk": {
         "code": "tk",
-        "name": "ତୁର୍କମେନ୍"
+        "name": "ତୁର୍କମେନ୍",
+        "regional": "tk_TM",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ak": {
         "code": "ak",
-        "name": "ଅକନ୍"
+        "name": "ଅକନ୍",
+        "regional": "ak_GH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ug": {
         "code": "ug",
-        "name": "ୟୁଘୁର୍"
+        "name": "ୟୁଘୁର୍",
+        "regional": "ug_CN",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "uk": {
         "code": "uk",
-        "name": "ୟୁକ୍ରେନିଆନ୍"
+        "name": "ୟୁକ୍ରେନିଆନ୍",
+        "regional": "uk_UA",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "ur": {
         "code": "ur",
-        "name": "ଉର୍ଦ୍ଦୁ"
+        "name": "ଉର୍ଦ୍ଦୁ",
+        "regional": "ur_PK",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "uz_Cyrl": {
         "code": "uz_Cyrl",
-        "name": "ଉଜବେକ୍"
+        "name": "ଉଜବେକ୍",
+        "regional": "uz_UZ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "uz_Latn": {
         "code": "uz_Latn",
-        "name": "ଉଜବେକ୍"
+        "name": "ଉଜବେକ୍",
+        "regional": "uz_UZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "vi": {
         "code": "vi",
-        "name": "ଭିଏତନାମିଜ୍"
+        "name": "ଭିଏତନାମିଜ୍",
+        "regional": "vi_VN",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "cy": {
         "code": "cy",
-        "name": "ୱେଲ୍ସ"
+        "name": "ୱେଲ୍ସ",
+        "regional": "cy_GB",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "xh": {
         "code": "xh",
-        "name": "ଖୋସା"
+        "name": "ଖୋସା",
+        "regional": "xh_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "yi": {
         "code": "yi",
-        "name": "ୟିଡିସ୍"
+        "name": "ୟିଡିସ୍",
+        "regional": "yi_UA",
+        "type": "Hebr",
+        "direction": "rtl"
     },
     "yo": {
         "code": "yo",
-        "name": "ୟୋରୁବା"
+        "name": "ୟୋରୁବା",
+        "regional": "yo_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "zu": {
         "code": "zu",
-        "name": "ଜୁଲୁ"
+        "name": "ଜୁଲୁ",
+        "regional": "zu_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     }
 }

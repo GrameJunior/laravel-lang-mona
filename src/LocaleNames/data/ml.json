@@ -1,518 +1,905 @@
 {
     "af": {
         "code": "af",
-        "name": "ആഫ്രിക്കാൻസ്"
+        "name": "ആഫ്രിക്കാൻസ്",
+        "regional": "af_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sq": {
         "code": "sq",
-        "name": "അൽബേനിയൻ"
+        "name": "അൽബേനിയൻ",
+        "regional": "sq_AL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "am": {
         "code": "am",
-        "name": "അംഹാരിക്"
+        "name": "അംഹാരിക്",
+        "regional": "am_ET",
+        "type": "Ethi",
+        "direction": "ltr"
     },
     "ar": {
         "code": "ar",
-        "name": "അറബിക്"
+        "name": "അറബിക്",
+        "regional": "ar_EG",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "hy": {
         "code": "hy",
-        "name": "അർമേനിയൻ"
+        "name": "അർമേനിയൻ",
+        "regional": "hy_AM",
+        "type": "Armn",
+        "direction": "ltr"
     },
     "as": {
         "code": "as",
-        "name": "ആസ്സാമീസ്"
+        "name": "ആസ്സാമീസ്",
+        "regional": "as_IN",
+        "type": "Beng",
+        "direction": "ltr"
     },
     "az": {
         "code": "az",
-        "name": "അസർബൈജാനി"
+        "name": "അസർബൈജാനി",
+        "regional": "az_AZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "bm": {
         "code": "bm",
-        "name": "ബംബാറ"
+        "name": "ബംബാറ",
+        "regional": "bm_ML",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "eu": {
         "code": "eu",
-        "name": "ബാസ്‌ക്"
+        "name": "ബാസ്‌ക്",
+        "regional": "eu_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "be": {
         "code": "be",
-        "name": "ബെലാറുഷ്യൻ"
+        "name": "ബെലാറുഷ്യൻ",
+        "regional": "be_BY",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "bn": {
         "code": "bn",
-        "name": "ബംഗ്ലാ"
+        "name": "ബംഗ്ലാ",
+        "regional": "bn_BD",
+        "type": "Beng",
+        "direction": "ltr"
     },
     "bho": {
         "code": "bho",
-        "name": "ഭോജ്‌പുരി"
+        "name": "ഭോജ്‌പുരി",
+        "regional": "bho_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "bs": {
         "code": "bs",
-        "name": "ബോസ്നിയൻ"
+        "name": "ബോസ്നിയൻ",
+        "regional": "bs_BA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "bg": {
         "code": "bg",
-        "name": "ബൾഗേറിയൻ"
+        "name": "ബൾഗേറിയൻ",
+        "regional": "bg_BG",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "en_CA": {
         "code": "en_CA",
-        "name": "കനേഡിയൻ ഇംഗ്ലീഷ്"
+        "name": "കനേഡിയൻ ഇംഗ്ലീഷ്",
+        "regional": "en_CA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ca": {
         "code": "ca",
-        "name": "കറ്റാലാൻ"
+        "name": "കറ്റാലാൻ",
+        "regional": "ca_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ceb": {
         "code": "ceb",
-        "name": "സെബുവാനോ"
+        "name": "സെബുവാനോ",
+        "regional": "ceb_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "km": {
         "code": "km",
-        "name": "ഖമെർ"
+        "name": "ഖമെർ",
+        "regional": "km_KH",
+        "type": "Khmr",
+        "direction": "ltr"
     },
     "zh_CN": {
         "code": "zh_CN",
-        "name": "ചൈനീസ്"
+        "name": "ചൈനീസ്",
+        "regional": "zh_CN",
+        "type": "Hans",
+        "direction": "ltr"
     },
     "zh_HK": {
         "code": "zh_HK",
-        "name": "ചൈനീസ്"
+        "name": "ചൈനീസ്",
+        "regional": "zh_HK",
+        "type": "Hant",
+        "direction": "ltr"
     },
     "zh_TW": {
         "code": "zh_TW",
-        "name": "ചൈനീസ്"
+        "name": "ചൈനീസ്",
+        "regional": "zh_TW",
+        "type": "Hant",
+        "direction": "ltr"
     },
     "hr": {
         "code": "hr",
-        "name": "ക്രൊയേഷ്യൻ"
+        "name": "ക്രൊയേഷ്യൻ",
+        "regional": "hr_HR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "cs": {
         "code": "cs",
-        "name": "ചെക്ക്"
+        "name": "ചെക്ക്",
+        "regional": "cs_CZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "da": {
         "code": "da",
-        "name": "ഡാനിഷ്"
+        "name": "ഡാനിഷ്",
+        "regional": "da_DK",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "doi": {
         "code": "doi",
-        "name": "ഡോഗ്രി"
+        "name": "ഡോഗ്രി",
+        "regional": "doi_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "nl": {
         "code": "nl",
-        "name": "ഡച്ച്"
+        "name": "ഡച്ച്",
+        "regional": "nl_NL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "en": {
         "code": "en",
-        "name": "ഇംഗ്ലീഷ്"
+        "name": "ഇംഗ്ലീഷ്",
+        "regional": "en_US",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "eo": {
         "code": "eo",
-        "name": "എസ്‌പരാന്റോ"
+        "name": "എസ്‌പരാന്റോ",
+        "regional": "eo_001",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "et": {
         "code": "et",
-        "name": "എസ്റ്റോണിയൻ"
+        "name": "എസ്റ്റോണിയൻ",
+        "regional": "et_EE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ee": {
         "code": "ee",
-        "name": "യൂ"
+        "name": "യൂ",
+        "regional": "ee_GH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fi": {
         "code": "fi",
-        "name": "ഫിന്നിഷ്"
+        "name": "ഫിന്നിഷ്",
+        "regional": "fi_FI",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fr": {
         "code": "fr",
-        "name": "ഫ്രഞ്ച്"
+        "name": "ഫ്രഞ്ച്",
+        "regional": "fr_FR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fy": {
         "code": "fy",
-        "name": "പശ്ചിമ ഫ്രിഷിയൻ"
+        "name": "പശ്ചിമ ഫ്രിഷിയൻ",
+        "regional": "fy_NL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "gl": {
         "code": "gl",
-        "name": "ഗലീഷ്യൻ"
+        "name": "ഗലീഷ്യൻ",
+        "regional": "gl_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ka": {
         "code": "ka",
-        "name": "ജോർജിയൻ"
+        "name": "ജോർജിയൻ",
+        "regional": "ka_GE",
+        "type": "Geor",
+        "direction": "ltr"
     },
     "de": {
         "code": "de",
-        "name": "ജർമ്മൻ"
+        "name": "ജർമ്മൻ",
+        "regional": "de_DE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "de_AT": {
         "code": "de_AT",
-        "name": "ഓസ്‌ട്രിയൻ ജർമ്മൻ"
+        "name": "ഓസ്‌ട്രിയൻ ജർമ്മൻ",
+        "regional": "de_AT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "de_CH": {
         "code": "de_CH",
-        "name": "സ്വിസ് ഹൈ ജർമ്മൻ"
+        "name": "സ്വിസ് ഹൈ ജർമ്മൻ",
+        "regional": "de_CH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "el": {
         "code": "el",
-        "name": "ഗ്രീക്ക്"
+        "name": "ഗ്രീക്ക്",
+        "regional": "el_GR",
+        "type": "Grek",
+        "direction": "ltr"
     },
     "gu": {
         "code": "gu",
-        "name": "ഗുജറാത്തി"
+        "name": "ഗുജറാത്തി",
+        "regional": "gu_IN",
+        "type": "Gujr",
+        "direction": "ltr"
     },
     "ht": {
         "code": "ht",
-        "name": "ഹെയ്‌തിയൻ ക്രിയോൾ"
+        "name": "ഹെയ്‌തിയൻ ക്രിയോൾ",
+        "regional": "ht_HT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ha": {
         "code": "ha",
-        "name": "ഹൗസ"
+        "name": "ഹൗസ",
+        "regional": "ha_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "haw": {
         "code": "haw",
-        "name": "ഹവായിയൻ"
+        "name": "ഹവായിയൻ",
+        "regional": "haw_US",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "he": {
         "code": "he",
-        "name": "ഹീബ്രു"
+        "name": "ഹീബ്രു",
+        "regional": "he_IL",
+        "type": "Hebr",
+        "direction": "rtl"
     },
     "hi": {
         "code": "hi",
-        "name": "ഹിന്ദി"
+        "name": "ഹിന്ദി",
+        "regional": "hi_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "hu": {
         "code": "hu",
-        "name": "ഹംഗേറിയൻ"
+        "name": "ഹംഗേറിയൻ",
+        "regional": "hu_HU",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "is": {
         "code": "is",
-        "name": "ഐസ്‌ലാൻഡിക്"
+        "name": "ഐസ്‌ലാൻഡിക്",
+        "regional": "is_IS",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ig": {
         "code": "ig",
-        "name": "ഇഗ്ബോ"
+        "name": "ഇഗ്ബോ",
+        "regional": "ig_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "id": {
         "code": "id",
-        "name": "ഇന്തോനേഷ്യൻ"
+        "name": "ഇന്തോനേഷ്യൻ",
+        "regional": "id_ID",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ga": {
         "code": "ga",
-        "name": "ഐറിഷ്"
+        "name": "ഐറിഷ്",
+        "regional": "ga_IE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "it": {
         "code": "it",
-        "name": "ഇറ്റാലിയൻ"
+        "name": "ഇറ്റാലിയൻ",
+        "regional": "it_IT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ja": {
         "code": "ja",
-        "name": "ജാപ്പനീസ്"
+        "name": "ജാപ്പനീസ്",
+        "regional": "ja_JP",
+        "type": "Jpan",
+        "direction": "ltr"
     },
     "kn": {
         "code": "kn",
-        "name": "കന്നഡ"
+        "name": "കന്നഡ",
+        "regional": "kn_IN",
+        "type": "Knda",
+        "direction": "ltr"
     },
     "kk": {
         "code": "kk",
-        "name": "കസാഖ്"
+        "name": "കസാഖ്",
+        "regional": "kk_KZ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "rw": {
         "code": "rw",
-        "name": "കിന്യാർവാണ്ട"
+        "name": "കിന്യാർവാണ്ട",
+        "regional": "rw_RW",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ko": {
         "code": "ko",
-        "name": "കൊറിയൻ"
+        "name": "കൊറിയൻ",
+        "regional": "ko_KR",
+        "type": "Kore",
+        "direction": "ltr"
     },
     "ku": {
         "code": "ku",
-        "name": "കുർദ്ദിഷ്"
+        "name": "കുർദ്ദിഷ്",
+        "regional": "ku_TR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ckb": {
         "code": "ckb",
-        "name": "സെൻട്രൽ കുർദിഷ്"
+        "name": "സെൻട്രൽ കുർദിഷ്",
+        "regional": "ckb_IQ",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "ky": {
         "code": "ky",
-        "name": "കിർഗിസ്"
+        "name": "കിർഗിസ്",
+        "regional": "ky_KG",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "lo": {
         "code": "lo",
-        "name": "ലാവോ"
+        "name": "ലാവോ",
+        "regional": "lo_LA",
+        "type": "Laoo",
+        "direction": "ltr"
     },
     "lv": {
         "code": "lv",
-        "name": "ലാറ്റ്വിയൻ"
+        "name": "ലാറ്റ്വിയൻ",
+        "regional": "lv_LV",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ln": {
         "code": "ln",
-        "name": "ലിംഗാല"
+        "name": "ലിംഗാല",
+        "regional": "ln_CD",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lt": {
         "code": "lt",
-        "name": "ലിത്വാനിയൻ"
+        "name": "ലിത്വാനിയൻ",
+        "regional": "lt_LT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lg": {
         "code": "lg",
-        "name": "ഗാണ്ട"
+        "name": "ഗാണ്ട",
+        "regional": "lg_UG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lb": {
         "code": "lb",
-        "name": "ലക്‌സംബർഗിഷ്"
+        "name": "ലക്‌സംബർഗിഷ്",
+        "regional": "lb_LU",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mk": {
         "code": "mk",
-        "name": "മാസിഡോണിയൻ"
+        "name": "മാസിഡോണിയൻ",
+        "regional": "mk_MK",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "mai": {
         "code": "mai",
-        "name": "മൈഥിലി"
+        "name": "മൈഥിലി",
+        "regional": "mai_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "mg": {
         "code": "mg",
-        "name": "മലഗാസി"
+        "name": "മലഗാസി",
+        "regional": "mg_MG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ms": {
         "code": "ms",
-        "name": "മലെയ്"
+        "name": "മലെയ്",
+        "regional": "ms_MY",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ml": {
         "code": "ml",
-        "name": "മലയാളം"
+        "name": "മലയാളം",
+        "regional": "ml_IN",
+        "type": "Mlym",
+        "direction": "ltr"
     },
     "mt": {
         "code": "mt",
-        "name": "മാൾട്ടീസ്"
+        "name": "മാൾട്ടീസ്",
+        "regional": "mt_MT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mi": {
         "code": "mi",
-        "name": "മവോറി"
+        "name": "മവോറി",
+        "regional": "mi_NZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mr": {
         "code": "mr",
-        "name": "മറാത്തി"
+        "name": "മറാത്തി",
+        "regional": "mr_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "mni_Mtei": {
         "code": "mni_Mtei",
-        "name": "മണിപ്പൂരി"
+        "name": "മണിപ്പൂരി",
+        "regional": "mni_IN",
+        "type": "Mtei",
+        "direction": "ltr"
     },
     "mn": {
         "code": "mn",
-        "name": "മംഗോളിയൻ"
+        "name": "മംഗോളിയൻ",
+        "regional": "mn_MN",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "my": {
         "code": "my",
-        "name": "ബർമീസ്"
+        "name": "ബർമീസ്",
+        "regional": "my_MM",
+        "type": "Mymr",
+        "direction": "ltr"
     },
     "ne": {
         "code": "ne",
-        "name": "നേപ്പാളി"
+        "name": "നേപ്പാളി",
+        "regional": "ne_NP",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "nb": {
         "code": "nb",
-        "name": "നോർവീജിയൻ ബുക്‌മൽ"
+        "name": "നോർവീജിയൻ ബുക്‌മൽ",
+        "regional": "nb_NO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "nn": {
         "code": "nn",
-        "name": "നോർവീജിയൻ നൈനോർക്‌സ്"
+        "name": "നോർവീജിയൻ നൈനോർക്‌സ്",
+        "regional": "nn_NO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "oc": {
         "code": "oc",
-        "name": "ഓക്‌സിറ്റൻ"
+        "name": "ഓക്‌സിറ്റൻ",
+        "regional": "oc_FR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "or": {
         "code": "or",
-        "name": "ഒഡിയ"
+        "name": "ഒഡിയ",
+        "regional": "or_IN",
+        "type": "Orya",
+        "direction": "ltr"
     },
     "om": {
         "code": "om",
-        "name": "ഒറോമോ"
+        "name": "ഒറോമോ",
+        "regional": "om_ET",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ps": {
         "code": "ps",
-        "name": "പഷ്‌തോ"
+        "name": "പഷ്‌തോ",
+        "regional": "ps_AF",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "fa": {
         "code": "fa",
-        "name": "പേർഷ്യൻ"
+        "name": "പേർഷ്യൻ",
+        "regional": "fa_IR",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "fil": {
         "code": "fil",
-        "name": "ഫിലിപ്പിനോ"
+        "name": "ഫിലിപ്പിനോ",
+        "regional": "fil_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pl": {
         "code": "pl",
-        "name": "പോളിഷ്"
+        "name": "പോളിഷ്",
+        "regional": "pl_PL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pt": {
         "code": "pt",
-        "name": "പോർച്ചുഗീസ്"
+        "name": "പോർച്ചുഗീസ്",
+        "regional": "pt_BR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pt_BR": {
         "code": "pt_BR",
-        "name": "ബ്രസീലിയൻ പോർച്ചുഗീസ്"
+        "name": "ബ്രസീലിയൻ പോർച്ചുഗീസ്",
+        "regional": "pt_BR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pa": {
         "code": "pa",
-        "name": "പഞ്ചാബി"
+        "name": "പഞ്ചാബി",
+        "regional": "pa_IN",
+        "type": "Guru",
+        "direction": "ltr"
     },
     "qu": {
         "code": "qu",
-        "name": "ക്വെച്ചുവ"
+        "name": "ക്വെച്ചുവ",
+        "regional": "qu_PE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ro": {
         "code": "ro",
-        "name": "റൊമാനിയൻ"
+        "name": "റൊമാനിയൻ",
+        "regional": "ro_RO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ru": {
         "code": "ru",
-        "name": "റഷ്യൻ"
+        "name": "റഷ്യൻ",
+        "regional": "ru_RU",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "sa": {
         "code": "sa",
-        "name": "സംസ്‌കൃതം"
+        "name": "സംസ്‌കൃതം",
+        "regional": "sa_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "sc": {
         "code": "sc",
-        "name": "സർഡിനിയാൻ"
+        "name": "സർഡിനിയാൻ",
+        "regional": "sc_IT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "gd": {
         "code": "gd",
-        "name": "സ്കോട്ടിഷ് ഗൈലിക്"
+        "name": "സ്കോട്ടിഷ് ഗൈലിക്",
+        "regional": "gd_GB",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sr_Cyrl": {
         "code": "sr_Cyrl",
-        "name": "സെർബിയൻ"
+        "name": "സെർബിയൻ",
+        "regional": "sr_RS",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "sr_Latn": {
         "code": "sr_Latn",
-        "name": "സെർബിയൻ"
+        "name": "സെർബിയൻ",
+        "regional": "sr_RS",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sr_Latn_ME": {
         "code": "sr_Latn_ME",
-        "name": "സെർബിയൻ"
+        "name": "സെർബിയൻ",
+        "regional": "sr_ME",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sn": {
         "code": "sn",
-        "name": "ഷോണ"
+        "name": "ഷോണ",
+        "regional": "sn_ZW",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sd": {
         "code": "sd",
-        "name": "സിന്ധി"
+        "name": "സിന്ധി",
+        "regional": "sd_PK",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "si": {
         "code": "si",
-        "name": "സിംഹള"
+        "name": "സിംഹള",
+        "regional": "si_LK",
+        "type": "Sinh",
+        "direction": "ltr"
     },
     "sk": {
         "code": "sk",
-        "name": "സ്ലോവാക്"
+        "name": "സ്ലോവാക്",
+        "regional": "sk_SK",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sl": {
         "code": "sl",
-        "name": "സ്ലോവേനിയൻ"
+        "name": "സ്ലോവേനിയൻ",
+        "regional": "sl_SI",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "so": {
         "code": "so",
-        "name": "സോമാലി"
+        "name": "സോമാലി",
+        "regional": "so_SO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "es": {
         "code": "es",
-        "name": "സ്‌പാനിഷ്"
+        "name": "സ്‌പാനിഷ്",
+        "regional": "es_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "su": {
         "code": "su",
-        "name": "സുണ്ടാനീസ്"
+        "name": "സുണ്ടാനീസ്",
+        "regional": "su_ID",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sw": {
         "code": "sw",
-        "name": "സ്വാഹിലി"
+        "name": "സ്വാഹിലി",
+        "regional": "sw_TZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sv": {
         "code": "sv",
-        "name": "സ്വീഡിഷ്"
+        "name": "സ്വീഡിഷ്",
+        "regional": "sv_SE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tl": {
         "code": "tl",
-        "name": "തഗാലോഗ്"
+        "name": "തഗാലോഗ്",
+        "regional": "tl_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tg": {
         "code": "tg",
-        "name": "താജിക്"
+        "name": "താജിക്",
+        "regional": "tg_TJ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "ta": {
         "code": "ta",
-        "name": "തമിഴ്"
+        "name": "തമിഴ്",
+        "regional": "ta_IN",
+        "type": "Taml",
+        "direction": "ltr"
     },
     "tt": {
         "code": "tt",
-        "name": "ടാട്ടർ"
+        "name": "ടാട്ടർ",
+        "regional": "tt_RU",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "te": {
         "code": "te",
-        "name": "തെലുങ്ക്"
+        "name": "തെലുങ്ക്",
+        "regional": "te_IN",
+        "type": "Telu",
+        "direction": "ltr"
     },
     "th": {
         "code": "th",
-        "name": "തായ്"
+        "name": "തായ്",
+        "regional": "th_TH",
+        "type": "Thai",
+        "direction": "ltr"
     },
     "ti": {
         "code": "ti",
-        "name": "ടൈഗ്രിന്യ"
+        "name": "ടൈഗ്രിന്യ",
+        "regional": "ti_ET",
+        "type": "Ethi",
+        "direction": "ltr"
     },
     "tr": {
         "code": "tr",
-        "name": "ടർക്കിഷ്"
+        "name": "ടർക്കിഷ്",
+        "regional": "tr_TR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tk": {
         "code": "tk",
-        "name": "തുർക്‌മെൻ"
+        "name": "തുർക്‌മെൻ",
+        "regional": "tk_TM",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ak": {
         "code": "ak",
-        "name": "അകാൻ‌"
+        "name": "അകാൻ‌",
+        "regional": "ak_GH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ug": {
         "code": "ug",
-        "name": "ഉയ്ഘുർ"
+        "name": "ഉയ്ഘുർ",
+        "regional": "ug_CN",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "uk": {
         "code": "uk",
-        "name": "ഉക്രേനിയൻ"
+        "name": "ഉക്രേനിയൻ",
+        "regional": "uk_UA",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "ur": {
         "code": "ur",
-        "name": "ഉറുദു"
+        "name": "ഉറുദു",
+        "regional": "ur_PK",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "uz_Cyrl": {
         "code": "uz_Cyrl",
-        "name": "ഉസ്‌ബെക്ക്"
+        "name": "ഉസ്‌ബെക്ക്",
+        "regional": "uz_UZ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "uz_Latn": {
         "code": "uz_Latn",
-        "name": "ഉസ്‌ബെക്ക്"
+        "name": "ഉസ്‌ബെക്ക്",
+        "regional": "uz_UZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "vi": {
         "code": "vi",
-        "name": "വിയറ്റ്നാമീസ്"
+        "name": "വിയറ്റ്നാമീസ്",
+        "regional": "vi_VN",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "cy": {
         "code": "cy",
-        "name": "വെൽഷ്"
+        "name": "വെൽഷ്",
+        "regional": "cy_GB",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "xh": {
         "code": "xh",
-        "name": "ഖോസ"
+        "name": "ഖോസ",
+        "regional": "xh_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "yi": {
         "code": "yi",
-        "name": "യിദ്ദിഷ്"
+        "name": "യിദ്ദിഷ്",
+        "regional": "yi_UA",
+        "type": "Hebr",
+        "direction": "rtl"
     },
     "yo": {
         "code": "yo",
-        "name": "യൊറൂബാ"
+        "name": "യൊറൂബാ",
+        "regional": "yo_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "zu": {
         "code": "zu",
-        "name": "സുലു"
+        "name": "സുലു",
+        "regional": "zu_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     }
 }

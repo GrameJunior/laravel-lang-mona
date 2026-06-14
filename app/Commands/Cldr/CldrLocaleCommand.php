@@ -6,6 +6,7 @@ namespace LaravelLang\Mona\Commands\Cldr;
 
 use LaravelLang\LocaleNames\LocaleData;
 use LaravelLang\Mona\Concerns\HasLanguages;
+use LaravelLang\Mona\Concerns\HasLocaleMetadata;
 use RuntimeException;
 
 use function sprintf;
@@ -13,6 +14,7 @@ use function sprintf;
 final class CldrLocaleCommand extends CldrCommand
 {
     use HasLanguages;
+    use HasLocaleMetadata;
 
     protected string $targetDirectory = __DIR__ . '/../../../src/LocaleNames/data';
 
@@ -32,9 +34,14 @@ final class CldrLocaleCommand extends CldrCommand
                 sprintf('Unable to find CLDR locale name for [%s] in [%s].', $locale, $forCode)
             );
 
+        $metadata = $this->localeMetadata($locale);
+
         return new LocaleData(
-            code: $locale,
-            name: $name,
+            code     : $locale,
+            name     : $name,
+            regional : $metadata['regional'],
+            type     : $metadata['type'],
+            direction: $metadata['direction'],
         );
     }
 }

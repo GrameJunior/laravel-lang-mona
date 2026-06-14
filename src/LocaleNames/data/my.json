@@ -1,518 +1,905 @@
 {
     "af": {
         "code": "af",
-        "name": "အာဖရိကန်"
+        "name": "အာဖရိကန်",
+        "regional": "af_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sq": {
         "code": "sq",
-        "name": "အယ်လ်ဘေးနီးယား"
+        "name": "အယ်လ်ဘေးနီးယား",
+        "regional": "sq_AL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "am": {
         "code": "am",
-        "name": "အမ်ဟာရစ်ခ်"
+        "name": "အမ်ဟာရစ်ခ်",
+        "regional": "am_ET",
+        "type": "Ethi",
+        "direction": "ltr"
     },
     "ar": {
         "code": "ar",
-        "name": "အာရဗီ"
+        "name": "အာရဗီ",
+        "regional": "ar_EG",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "hy": {
         "code": "hy",
-        "name": "အာမေးနီးယား"
+        "name": "အာမေးနီးယား",
+        "regional": "hy_AM",
+        "type": "Armn",
+        "direction": "ltr"
     },
     "as": {
         "code": "as",
-        "name": "အာသံ"
+        "name": "အာသံ",
+        "regional": "as_IN",
+        "type": "Beng",
+        "direction": "ltr"
     },
     "az": {
         "code": "az",
-        "name": "အဇာဘိုင်ဂျန်"
+        "name": "အဇာဘိုင်ဂျန်",
+        "regional": "az_AZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "bm": {
         "code": "bm",
-        "name": "ဘန်ဘာရာ"
+        "name": "ဘန်ဘာရာ",
+        "regional": "bm_ML",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "eu": {
         "code": "eu",
-        "name": "ဘာစ်ခ်"
+        "name": "ဘာစ်ခ်",
+        "regional": "eu_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "be": {
         "code": "be",
-        "name": "ဘီလာရုစ်"
+        "name": "ဘီလာရုစ်",
+        "regional": "be_BY",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "bn": {
         "code": "bn",
-        "name": "ဘင်္ဂါလီ"
+        "name": "ဘင်္ဂါလီ",
+        "regional": "bn_BD",
+        "type": "Beng",
+        "direction": "ltr"
     },
     "bho": {
         "code": "bho",
-        "name": "ဘို့ဂျ်ပူရီ"
+        "name": "ဘို့ဂျ်ပူရီ",
+        "regional": "bho_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "bs": {
         "code": "bs",
-        "name": "ဘော့စ်နီးယား"
+        "name": "ဘော့စ်နီးယား",
+        "regional": "bs_BA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "bg": {
         "code": "bg",
-        "name": "ဘူလ်ဂေးရီးယား"
+        "name": "ဘူလ်ဂေးရီးယား",
+        "regional": "bg_BG",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "en_CA": {
         "code": "en_CA",
-        "name": "ကနေဒါ အင်္ဂလိပ်"
+        "name": "ကနေဒါ အင်္ဂလိပ်",
+        "regional": "en_CA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ca": {
         "code": "ca",
-        "name": "ကတ်တလန်"
+        "name": "ကတ်တလန်",
+        "regional": "ca_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ceb": {
         "code": "ceb",
-        "name": "စီဗူအာနို"
+        "name": "စီဗူအာနို",
+        "regional": "ceb_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "km": {
         "code": "km",
-        "name": "ခမာ"
+        "name": "ခမာ",
+        "regional": "km_KH",
+        "type": "Khmr",
+        "direction": "ltr"
     },
     "zh_CN": {
         "code": "zh_CN",
-        "name": "တရုတ်"
+        "name": "တရုတ်",
+        "regional": "zh_CN",
+        "type": "Hans",
+        "direction": "ltr"
     },
     "zh_HK": {
         "code": "zh_HK",
-        "name": "တရုတ်"
+        "name": "တရုတ်",
+        "regional": "zh_HK",
+        "type": "Hant",
+        "direction": "ltr"
     },
     "zh_TW": {
         "code": "zh_TW",
-        "name": "တရုတ်"
+        "name": "တရုတ်",
+        "regional": "zh_TW",
+        "type": "Hant",
+        "direction": "ltr"
     },
     "hr": {
         "code": "hr",
-        "name": "ခရိုအေးရှား"
+        "name": "ခရိုအေးရှား",
+        "regional": "hr_HR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "cs": {
         "code": "cs",
-        "name": "ချက်"
+        "name": "ချက်",
+        "regional": "cs_CZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "da": {
         "code": "da",
-        "name": "ဒိန်းမတ်"
+        "name": "ဒိန်းမတ်",
+        "regional": "da_DK",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "doi": {
         "code": "doi",
-        "name": "ဒိုဂရီ"
+        "name": "ဒိုဂရီ",
+        "regional": "doi_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "nl": {
         "code": "nl",
-        "name": "ဒတ်ခ်ျ"
+        "name": "ဒတ်ခ်ျ",
+        "regional": "nl_NL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "en": {
         "code": "en",
-        "name": "အင်္ဂလိပ်"
+        "name": "အင်္ဂလိပ်",
+        "regional": "en_US",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "eo": {
         "code": "eo",
-        "name": "အက်စ်ပရန်တို"
+        "name": "အက်စ်ပရန်တို",
+        "regional": "eo_001",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "et": {
         "code": "et",
-        "name": "အက်စ်တိုးနီးယား"
+        "name": "အက်စ်တိုးနီးယား",
+        "regional": "et_EE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ee": {
         "code": "ee",
-        "name": "အီဝီ"
+        "name": "အီဝီ",
+        "regional": "ee_GH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fi": {
         "code": "fi",
-        "name": "ဖင်လန်"
+        "name": "ဖင်လန်",
+        "regional": "fi_FI",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fr": {
         "code": "fr",
-        "name": "ပြင်သစ်"
+        "name": "ပြင်သစ်",
+        "regional": "fr_FR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "fy": {
         "code": "fy",
-        "name": "အနောက် ဖရီစီရန်"
+        "name": "အနောက် ဖရီစီရန်",
+        "regional": "fy_NL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "gl": {
         "code": "gl",
-        "name": "ဂါလီစီယာ"
+        "name": "ဂါလီစီယာ",
+        "regional": "gl_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ka": {
         "code": "ka",
-        "name": "ဂျော်ဂျီယာ"
+        "name": "ဂျော်ဂျီယာ",
+        "regional": "ka_GE",
+        "type": "Geor",
+        "direction": "ltr"
     },
     "de": {
         "code": "de",
-        "name": "ဂျာမန်"
+        "name": "ဂျာမန်",
+        "regional": "de_DE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "de_AT": {
         "code": "de_AT",
-        "name": "ဩစတြီးယား ဂျာမန်"
+        "name": "ဩစတြီးယား ဂျာမန်",
+        "regional": "de_AT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "de_CH": {
         "code": "de_CH",
-        "name": "အလီမဲန်နစ် ဂျာမန်"
+        "name": "အလီမဲန်နစ် ဂျာမန်",
+        "regional": "de_CH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "el": {
         "code": "el",
-        "name": "ဂရိ"
+        "name": "ဂရိ",
+        "regional": "el_GR",
+        "type": "Grek",
+        "direction": "ltr"
     },
     "gu": {
         "code": "gu",
-        "name": "ဂူဂျာရသီ"
+        "name": "ဂူဂျာရသီ",
+        "regional": "gu_IN",
+        "type": "Gujr",
+        "direction": "ltr"
     },
     "ht": {
         "code": "ht",
-        "name": "ဟေတီ"
+        "name": "ဟေတီ",
+        "regional": "ht_HT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ha": {
         "code": "ha",
-        "name": "ဟာဥစာ"
+        "name": "ဟာဥစာ",
+        "regional": "ha_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "haw": {
         "code": "haw",
-        "name": "ဟာဝိုင်ယီ"
+        "name": "ဟာဝိုင်ယီ",
+        "regional": "haw_US",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "he": {
         "code": "he",
-        "name": "ဟီဘရူး"
+        "name": "ဟီဘရူး",
+        "regional": "he_IL",
+        "type": "Hebr",
+        "direction": "rtl"
     },
     "hi": {
         "code": "hi",
-        "name": "ဟိန္ဒီ"
+        "name": "ဟိန္ဒီ",
+        "regional": "hi_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "hu": {
         "code": "hu",
-        "name": "ဟန်ဂေရီ"
+        "name": "ဟန်ဂေရီ",
+        "regional": "hu_HU",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "is": {
         "code": "is",
-        "name": "အိုက်စ်လန်"
+        "name": "အိုက်စ်လန်",
+        "regional": "is_IS",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ig": {
         "code": "ig",
-        "name": "အစ္ဂဘို"
+        "name": "အစ္ဂဘို",
+        "regional": "ig_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "id": {
         "code": "id",
-        "name": "အင်ဒိုနီးရှား"
+        "name": "အင်ဒိုနီးရှား",
+        "regional": "id_ID",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ga": {
         "code": "ga",
-        "name": "အိုင်းရစ်ရှ်"
+        "name": "အိုင်းရစ်ရှ်",
+        "regional": "ga_IE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "it": {
         "code": "it",
-        "name": "အီတလီ"
+        "name": "အီတလီ",
+        "regional": "it_IT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ja": {
         "code": "ja",
-        "name": "ဂျပန်"
+        "name": "ဂျပန်",
+        "regional": "ja_JP",
+        "type": "Jpan",
+        "direction": "ltr"
     },
     "kn": {
         "code": "kn",
-        "name": "ကန်နာဒါ"
+        "name": "ကန်နာဒါ",
+        "regional": "kn_IN",
+        "type": "Knda",
+        "direction": "ltr"
     },
     "kk": {
         "code": "kk",
-        "name": "ကာဇာချ"
+        "name": "ကာဇာချ",
+        "regional": "kk_KZ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "rw": {
         "code": "rw",
-        "name": "ကင်ရာဝန်ဒါ"
+        "name": "ကင်ရာဝန်ဒါ",
+        "regional": "rw_RW",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ko": {
         "code": "ko",
-        "name": "ကိုရီးယား"
+        "name": "ကိုရီးယား",
+        "regional": "ko_KR",
+        "type": "Kore",
+        "direction": "ltr"
     },
     "ku": {
         "code": "ku",
-        "name": "ကဒ်"
+        "name": "ကဒ်",
+        "regional": "ku_TR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ckb": {
         "code": "ckb",
-        "name": "ဗဟိုဒေသသုံး ကဒ်ဘာသာ"
+        "name": "ဗဟိုဒေသသုံး ကဒ်ဘာသာ",
+        "regional": "ckb_IQ",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "ky": {
         "code": "ky",
-        "name": "ကာဂျစ်"
+        "name": "ကာဂျစ်",
+        "regional": "ky_KG",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "lo": {
         "code": "lo",
-        "name": "လာအို"
+        "name": "လာအို",
+        "regional": "lo_LA",
+        "type": "Laoo",
+        "direction": "ltr"
     },
     "lv": {
         "code": "lv",
-        "name": "လတ်ဗီးယား"
+        "name": "လတ်ဗီးယား",
+        "regional": "lv_LV",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ln": {
         "code": "ln",
-        "name": "လင်ဂါလာ"
+        "name": "လင်ဂါလာ",
+        "regional": "ln_CD",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lt": {
         "code": "lt",
-        "name": "လစ်သူဝေးနီးယား"
+        "name": "လစ်သူဝေးနီးယား",
+        "regional": "lt_LT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lg": {
         "code": "lg",
-        "name": "ဂန်ဒါ"
+        "name": "ဂန်ဒါ",
+        "regional": "lg_UG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "lb": {
         "code": "lb",
-        "name": "လူဇင်ဘတ်"
+        "name": "လူဇင်ဘတ်",
+        "regional": "lb_LU",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mk": {
         "code": "mk",
-        "name": "မက်ဆီဒိုးနီးယား"
+        "name": "မက်ဆီဒိုးနီးယား",
+        "regional": "mk_MK",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "mai": {
         "code": "mai",
-        "name": "မိုင်သီလီ"
+        "name": "မိုင်သီလီ",
+        "regional": "mai_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "mg": {
         "code": "mg",
-        "name": "မာလဂက်စီ"
+        "name": "မာလဂက်စီ",
+        "regional": "mg_MG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ms": {
         "code": "ms",
-        "name": "မလေး"
+        "name": "မလေး",
+        "regional": "ms_MY",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ml": {
         "code": "ml",
-        "name": "မလေယာလမ်"
+        "name": "မလေယာလမ်",
+        "regional": "ml_IN",
+        "type": "Mlym",
+        "direction": "ltr"
     },
     "mt": {
         "code": "mt",
-        "name": "မော်လ်တာ"
+        "name": "မော်လ်တာ",
+        "regional": "mt_MT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mi": {
         "code": "mi",
-        "name": "မာအိုရီ"
+        "name": "မာအိုရီ",
+        "regional": "mi_NZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "mr": {
         "code": "mr",
-        "name": "မာရသီ"
+        "name": "မာရသီ",
+        "regional": "mr_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "mni_Mtei": {
         "code": "mni_Mtei",
-        "name": "မနိပူရ"
+        "name": "မနိပူရ",
+        "regional": "mni_IN",
+        "type": "Mtei",
+        "direction": "ltr"
     },
     "mn": {
         "code": "mn",
-        "name": "မွန်ဂိုလီးယား"
+        "name": "မွန်ဂိုလီးယား",
+        "regional": "mn_MN",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "my": {
         "code": "my",
-        "name": "မြန်မာ"
+        "name": "မြန်မာ",
+        "regional": "my_MM",
+        "type": "Mymr",
+        "direction": "ltr"
     },
     "ne": {
         "code": "ne",
-        "name": "နီပေါ"
+        "name": "နီပေါ",
+        "regional": "ne_NP",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "nb": {
         "code": "nb",
-        "name": "နော်ဝေ ဘွတ်ခ်မော်လ်"
+        "name": "နော်ဝေ ဘွတ်ခ်မော်လ်",
+        "regional": "nb_NO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "nn": {
         "code": "nn",
-        "name": "နော်ဝေ နီးနောစ်"
+        "name": "နော်ဝေ နီးနောစ်",
+        "regional": "nn_NO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "oc": {
         "code": "oc",
-        "name": "အိုစီတန်"
+        "name": "အိုစီတန်",
+        "regional": "oc_FR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "or": {
         "code": "or",
-        "name": "အိုရီရာ"
+        "name": "အိုရီရာ",
+        "regional": "or_IN",
+        "type": "Orya",
+        "direction": "ltr"
     },
     "om": {
         "code": "om",
-        "name": "အိုရိုမို"
+        "name": "အိုရိုမို",
+        "regional": "om_ET",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ps": {
         "code": "ps",
-        "name": "ပက်ရှ်တွန်း"
+        "name": "ပက်ရှ်တွန်း",
+        "regional": "ps_AF",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "fa": {
         "code": "fa",
-        "name": "ပါရှန်"
+        "name": "ပါရှန်",
+        "regional": "fa_IR",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "fil": {
         "code": "fil",
-        "name": "ဖိလစ်ပိုင်"
+        "name": "ဖိလစ်ပိုင်",
+        "regional": "fil_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pl": {
         "code": "pl",
-        "name": "ပိုလန်"
+        "name": "ပိုလန်",
+        "regional": "pl_PL",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pt": {
         "code": "pt",
-        "name": "ပေါ်တူဂီ"
+        "name": "ပေါ်တူဂီ",
+        "regional": "pt_BR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pt_BR": {
         "code": "pt_BR",
-        "name": "ဘရာဇီး ပေါ်တူဂီ"
+        "name": "ဘရာဇီး ပေါ်တူဂီ",
+        "regional": "pt_BR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "pa": {
         "code": "pa",
-        "name": "ပန်ချာပီ"
+        "name": "ပန်ချာပီ",
+        "regional": "pa_IN",
+        "type": "Guru",
+        "direction": "ltr"
     },
     "qu": {
         "code": "qu",
-        "name": "ခီချူဝါအိုဝါ"
+        "name": "ခီချူဝါအိုဝါ",
+        "regional": "qu_PE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ro": {
         "code": "ro",
-        "name": "ရိုမေနီယား"
+        "name": "ရိုမေနီယား",
+        "regional": "ro_RO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ru": {
         "code": "ru",
-        "name": "ရုရှ"
+        "name": "ရုရှ",
+        "regional": "ru_RU",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "sa": {
         "code": "sa",
-        "name": "သင်္သကရိုက်"
+        "name": "သင်္သကရိုက်",
+        "regional": "sa_IN",
+        "type": "Deva",
+        "direction": "ltr"
     },
     "sc": {
         "code": "sc",
-        "name": "ဆာဒီနီးယား"
+        "name": "ဆာဒီနီးယား",
+        "regional": "sc_IT",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "gd": {
         "code": "gd",
-        "name": "စကော့တစ်ရှ် ဂေးလစ်ခ်"
+        "name": "စကော့တစ်ရှ် ဂေးလစ်ခ်",
+        "regional": "gd_GB",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sr_Cyrl": {
         "code": "sr_Cyrl",
-        "name": "ဆားဘီးယား"
+        "name": "ဆားဘီးယား",
+        "regional": "sr_RS",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "sr_Latn": {
         "code": "sr_Latn",
-        "name": "ဆားဘီးယား"
+        "name": "ဆားဘီးယား",
+        "regional": "sr_RS",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sr_Latn_ME": {
         "code": "sr_Latn_ME",
-        "name": "ဆားဘီးယား"
+        "name": "ဆားဘီးယား",
+        "regional": "sr_ME",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sn": {
         "code": "sn",
-        "name": "ရှိုနာ"
+        "name": "ရှိုနာ",
+        "regional": "sn_ZW",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sd": {
         "code": "sd",
-        "name": "စင်ဒီ"
+        "name": "စင်ဒီ",
+        "regional": "sd_PK",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "si": {
         "code": "si",
-        "name": "စင်ဟာလာ"
+        "name": "စင်ဟာလာ",
+        "regional": "si_LK",
+        "type": "Sinh",
+        "direction": "ltr"
     },
     "sk": {
         "code": "sk",
-        "name": "ဆလိုဗက်"
+        "name": "ဆလိုဗက်",
+        "regional": "sk_SK",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sl": {
         "code": "sl",
-        "name": "ဆလိုဗေးနီးယား"
+        "name": "ဆလိုဗေးနီးယား",
+        "regional": "sl_SI",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "so": {
         "code": "so",
-        "name": "ဆိုမာလီ"
+        "name": "ဆိုမာလီ",
+        "regional": "so_SO",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "es": {
         "code": "es",
-        "name": "စပိန်"
+        "name": "စပိန်",
+        "regional": "es_ES",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "su": {
         "code": "su",
-        "name": "ဆူဒန်"
+        "name": "ဆူဒန်",
+        "regional": "su_ID",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sw": {
         "code": "sw",
-        "name": "ဆွာဟီလီ"
+        "name": "ဆွာဟီလီ",
+        "regional": "sw_TZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "sv": {
         "code": "sv",
-        "name": "ဆွီဒင်"
+        "name": "ဆွီဒင်",
+        "regional": "sv_SE",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tl": {
         "code": "tl",
-        "name": "Tagalog"
+        "name": "Tagalog",
+        "regional": "tl_PH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tg": {
         "code": "tg",
-        "name": "တာဂျစ်"
+        "name": "တာဂျစ်",
+        "regional": "tg_TJ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "ta": {
         "code": "ta",
-        "name": "တမီးလ်"
+        "name": "တမီးလ်",
+        "regional": "ta_IN",
+        "type": "Taml",
+        "direction": "ltr"
     },
     "tt": {
         "code": "tt",
-        "name": "တာတာ"
+        "name": "တာတာ",
+        "regional": "tt_RU",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "te": {
         "code": "te",
-        "name": "တီလီဂူ"
+        "name": "တီလီဂူ",
+        "regional": "te_IN",
+        "type": "Telu",
+        "direction": "ltr"
     },
     "th": {
         "code": "th",
-        "name": "ထိုင်း"
+        "name": "ထိုင်း",
+        "regional": "th_TH",
+        "type": "Thai",
+        "direction": "ltr"
     },
     "ti": {
         "code": "ti",
-        "name": "တီဂ်ရင်ယာ"
+        "name": "တီဂ်ရင်ယာ",
+        "regional": "ti_ET",
+        "type": "Ethi",
+        "direction": "ltr"
     },
     "tr": {
         "code": "tr",
-        "name": "တူရကီ"
+        "name": "တူရကီ",
+        "regional": "tr_TR",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "tk": {
         "code": "tk",
-        "name": "တာ့ခ်မင်နစ္စတန်"
+        "name": "တာ့ခ်မင်နစ္စတန်",
+        "regional": "tk_TM",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ak": {
         "code": "ak",
-        "name": "အာကန်"
+        "name": "အာကန်",
+        "regional": "ak_GH",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "ug": {
         "code": "ug",
-        "name": "ဝီဂါ"
+        "name": "ဝီဂါ",
+        "regional": "ug_CN",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "uk": {
         "code": "uk",
-        "name": "ယူကရိန်း"
+        "name": "ယူကရိန်း",
+        "regional": "uk_UA",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "ur": {
         "code": "ur",
-        "name": "အူရ်ဒူ"
+        "name": "အူရ်ဒူ",
+        "regional": "ur_PK",
+        "type": "Arab",
+        "direction": "rtl"
     },
     "uz_Cyrl": {
         "code": "uz_Cyrl",
-        "name": "ဥဇဘတ်"
+        "name": "ဥဇဘတ်",
+        "regional": "uz_UZ",
+        "type": "Cyrl",
+        "direction": "ltr"
     },
     "uz_Latn": {
         "code": "uz_Latn",
-        "name": "ဥဇဘတ်"
+        "name": "ဥဇဘတ်",
+        "regional": "uz_UZ",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "vi": {
         "code": "vi",
-        "name": "ဗီယက်နမ်"
+        "name": "ဗီယက်နမ်",
+        "regional": "vi_VN",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "cy": {
         "code": "cy",
-        "name": "ဝေလ"
+        "name": "ဝေလ",
+        "regional": "cy_GB",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "xh": {
         "code": "xh",
-        "name": "ဇိုစာ"
+        "name": "ဇိုစာ",
+        "regional": "xh_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "yi": {
         "code": "yi",
-        "name": "ရဟူဒီ"
+        "name": "ရဟူဒီ",
+        "regional": "yi_UA",
+        "type": "Hebr",
+        "direction": "rtl"
     },
     "yo": {
         "code": "yo",
-        "name": "ယိုရူဘာ"
+        "name": "ယိုရူဘာ",
+        "regional": "yo_NG",
+        "type": "Latn",
+        "direction": "ltr"
     },
     "zu": {
         "code": "zu",
-        "name": "ဇူးလူး"
+        "name": "ဇူးလူး",
+        "regional": "zu_ZA",
+        "type": "Latn",
+        "direction": "ltr"
     }
 }
