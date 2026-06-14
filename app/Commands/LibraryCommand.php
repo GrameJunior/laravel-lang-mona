@@ -11,7 +11,6 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Attribute\Option;
 use Symfony\Component\Console\Command\Command;
 
-use function array_merge;
 use function file_exists;
 use function Laravel\Prompts\task;
 use function realpath;
@@ -23,6 +22,21 @@ class LibraryCommand extends Command
     protected string $sourceDirectory = __DIR__ . '/../../src/';
 
     protected string $targetDirectory = __DIR__ . '/../../src/Library/locales';
+
+    protected array $files = [
+        'json',
+        'php',
+    ];
+
+    protected array $styles = [
+        'formal',
+        'informal',
+    ];
+
+    protected array $inlines = [
+        '',
+        '-inline',
+    ];
 
     public function __construct(
         protected Filesystem $filesystem = new Filesystem,
@@ -43,31 +57,56 @@ class LibraryCommand extends Command
 
     protected function handle(string $locale, bool $purge): void
     {
-        $json       = [];
-        $jsonInline = [];
-        $php        = [];
-        $phpInline  = [];
-        $excludes   = [];
+        //$json       = [];
+        //$jsonInline = [];
+        //$php        = [];
+        //$phpInline  = [];
+        //$excludes   = [];
+        //
+        //foreach ($this->directories() as $directory) {
+        //    $json = array_merge($json, $this->load($directory, $locale, 'json'));
+        //    $php  = array_merge($php, $this->load($directory, $locale, 'php'));
+        //
+        //    $jsonInline = array_merge($jsonInline, $this->load($directory, $locale, 'json-inline'));
+        //    $phpInline  = array_merge($phpInline, $this->load($directory, $locale, 'php-inline'));
+        //
+        //    $excludes = array_merge($excludes, $this->load($directory, $locale, '_excludes'));
+        //
+        //    $this->clear($directory, $locale, $purge);
+        //}
+        //
+        //$this->store($locale, 'json', $json);
+        //$this->store($locale, 'json-inline', $jsonInline);
+        //
+        //$this->store($locale, 'php', $php);
+        //$this->store($locale, 'php-inline', $phpInline);
+        //
+        //$this->store($locale, '_excludes', $excludes);
+        ///
 
-        foreach ($this->directories() as $directory) {
-            $json = array_merge($json, $this->load($directory, $locale, 'json'));
-            $php  = array_merge($php, $this->load($directory, $locale, 'php'));
+        $files = $this->mapFiles();
 
-            $jsonInline = array_merge($jsonInline, $this->load($directory, $locale, 'json-inline'));
-            $phpInline  = array_merge($phpInline, $this->load($directory, $locale, 'php-inline'));
+        $this->exportFiles($files);
+    }
 
-            $excludes = array_merge($excludes, $this->load($directory, $locale, '_excludes'));
+    protected function mapFiles(): Collection
+    {
+        return (new Collection($this->files))->crossJoin(
+            $this->styles,
+            $this->inlines,
+        );
+    }
 
-            $this->clear($directory, $locale, $purge);
-        }
+    protected function exportFiles(Collection $files): void
+    {
+        $files
+            ->each(function (array $file) {
+                $export = [];
 
-        $this->store($locale, 'json', $json);
-        $this->store($locale, 'json-inline', $jsonInline);
+                foreach ($this->directories() as $directory) {
 
-        $this->store($locale, 'php', $php);
-        $this->store($locale, 'php-inline', $phpInline);
-
-        $this->store($locale, '_excludes', $excludes);
+                }
+            });
     }
 
     protected function directories(): array
