@@ -20,7 +20,7 @@
 - [x] Lang
 - [x] Library
 - [x] LocaleList
-- [ ] Config
+- [x] Config
 - [ ] Locales
 - [ ] Models
 - [x] MoonShine
