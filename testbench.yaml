@@ -1,7 +1,7 @@
 laravel: '@testbench'
 
 providers:
-# - Workbench\App\Providers\WorkbenchServiceProvider
+    - LaravelLang\Config\LaravelLangConfigServiceProvider
 
 migrations:
     - workbench/database/migrations

@@ -1,6 +1,6 @@
 <?php
 
-use Tests\TestCase;
+use Orchestra\Testbench\TestCase;
 
 pest()
     ->extend(TestCase::class)
