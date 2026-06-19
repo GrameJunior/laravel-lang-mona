@@ -23,7 +23,7 @@ jobs:
         outputs:
             files: ${{ steps.readme.outputs.files }}
         steps:
-            -   uses: actions/checkout@v6
+            -   uses: actions/checkout@v7
 
             -   name: Searching for README files
                 id: readme
@@ -55,7 +55,7 @@ jobs:
         name: Update preview for ${{ matrix.package.name }}
 
         steps:
-            -   uses: actions/checkout@v6
+            -   uses: actions/checkout@v7
                 with:
                     fetch-depth: 0
 

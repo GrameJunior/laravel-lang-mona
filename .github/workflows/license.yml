@@ -17,7 +17,7 @@ jobs:
         outputs:
             directories: ${{ steps.set-dirs.outputs.directories }}
         steps:
-            -   uses: actions/checkout@v6
+            -   uses: actions/checkout@v7
 
             -   id: set-dirs
                 run: |
