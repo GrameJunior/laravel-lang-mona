@@ -10,32 +10,6 @@
 [![Github Workflow Status][badge_build]][link_build]
 [![License][badge_license]][link_license]
 
-## TODO
-
-- [x] Actions
-- [x] Attributes
-- [x] Common
-- [x] HttpStatuses
-- [x] JsonFallback
-- [x] Lang
-- [x] Library
-- [x] LocaleList
-- [x] Config
-- [ ] Locales
-- [ ] Models
-- [x] MoonShine
-- [x] NativeCountryNames
-- [x] NativeCurrencyNames
-- [x] NativeLocaleNames
-- [ ] Publisher
-- [ ] Routes
-- [x] StarterKits
-- [x] TranslationsTemplate
-- [ ] tests
-- [ ] readme
-- [ ] composer.json
-- [ ] documentation
-
 ## Documentation
 
 See the [documentation](https://laravel-lang.com) for detailed installation.
@@ -43,10 +17,6 @@ See the [documentation](https://laravel-lang.com) for detailed installation.
 ## Contributing
 
 Please see [CONTRIBUTING](https://laravel-lang.com/contributions.html) for details.
-
-## Support Us
-
-❤️ Laravel Lang? Please consider supporting our collective on [Boosty](https://boosty.to/laravel-lang).
 
 ## License
 

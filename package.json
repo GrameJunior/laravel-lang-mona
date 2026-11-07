@@ -1,7 +1,0 @@
-{
-  "devDependencies": {
-    "cldr-core": "^48.2.0",
-    "cldr-localenames-full": "^48.2.0",
-    "cldr-numbers-full": "^48.2.0"
-  }
-}
