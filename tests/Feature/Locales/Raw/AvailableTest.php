@@ -1,26 +1,15 @@
 <?php
 
 declare(strict_types=1);
-
-namespace Tests\Feature\Locales\Raw;
-
 use LaravelLang\Locales\Facades\Locales;
-use Tests\TestCase;
+test('correct', function () {
+    $locales = Locales::raw()->available();
 
-class AvailableTest extends TestCase
-{
-    public function testCorrect(): void
-    {
-        $locales = Locales::raw()->available();
+    expect($locales)->toContain('fr_alias');
+    expect($locales)->not->toContain('fr');
+});
+test('incorrect', function () {
+    $locales = Locales::raw()->available();
 
-        $this->assertContains('fr_alias', $locales);
-        $this->assertNotContains('fr', $locales);
-    }
-
-    public function testIncorrect(): void
-    {
-        $locales = Locales::raw()->available();
-
-        $this->assertNotContains('foo', $locales);
-    }
-}
+    expect($locales)->not->toContain('foo');
+});

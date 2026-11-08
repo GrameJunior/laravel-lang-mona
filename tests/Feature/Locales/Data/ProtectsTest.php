@@ -1,34 +1,23 @@
 <?php
 
 declare(strict_types=1);
-
-namespace Tests\Feature\Locales\Data;
-
 use LaravelLang\Locales\Facades\Locales;
-use Tests\TestCase;
+test('main', function () {
+    $locales = Locales::protects()->pluck('code')->all();
 
-class ProtectsTest extends TestCase
-{
-    public function testMain(): void
-    {
-        $locales = Locales::protects()->pluck('code')->all();
+    expect($locales)->toContain('fr_alias');
+    expect($locales)->toContain('de');
+    expect($locales)->not->toContain('en');
 
-        $this->assertContains('fr_alias', $locales);
-        $this->assertContains('de', $locales);
-        $this->assertNotContains('en', $locales);
+    expect($locales)->toHaveCount(2);
+});
+test('incorrect', function () {
+    app()->setLocale('foo');
+    app()->setFallbackLocale('bar');
 
-        $this->assertCount(2, $locales);
-    }
+    $locales = Locales::protects()->pluck('code')->all();
 
-    public function testIncorrect(): void
-    {
-        app()->setLocale('foo');
-        app()->setFallbackLocale('bar');
+    expect($locales)->toContain('en');
 
-        $locales = Locales::protects()->pluck('code')->all();
-
-        $this->assertContains('en', $locales);
-
-        $this->assertCount(1, $locales);
-    }
-}
+    expect($locales)->toHaveCount(1);
+});

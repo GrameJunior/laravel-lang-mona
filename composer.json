@@ -54,7 +54,6 @@
         "laravel/pao": "^1.1",
         "orchestra/testbench": "^11.0",
         "pestphp/pest": "^5.3",
-        "pestphp/pest-plugin-drift": "^5.0",
         "spatie/laravel-data": "^4.23",
         "symfony/var-dumper": "^7.0 || ^8.0"
     },
@@ -103,6 +102,6 @@
             "@build",
             "@php vendor/bin/testbench serve --ansi"
         ],
-        "test": "vendor/bin/phpunit"
+        "test": "vendor/bin/pest --parallel --tia"
     }
 }

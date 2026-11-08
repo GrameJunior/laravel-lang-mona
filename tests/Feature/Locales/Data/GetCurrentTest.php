@@ -1,30 +1,19 @@
 <?php
 
 declare(strict_types=1);
-
-namespace Tests\Feature\Locales\Data;
-
 use LaravelLang\Locales\Facades\Locales;
-use Tests\TestCase;
+test('main', function () {
+    Locales::set('de');
 
-class GetCurrentTest extends TestCase
-{
-    public function testMain(): void
-    {
-        Locales::set('de');
+    $locale = Locales::getCurrent()->code;
 
-        $locale = Locales::getCurrent()->code;
+    expect($locale)->toBe('de');
+});
+test('aliased', function () {
+    Locales::set('fr');
 
-        $this->assertSame('de', $locale);
-    }
+    $locale = Locales::getCurrent()->code;
 
-    public function testAliased(): void
-    {
-        Locales::set('fr');
-
-        $locale = Locales::getCurrent()->code;
-
-        $this->assertSame('fr_alias', $locale);
-        $this->assertNotSame('fr', $locale);
-    }
-}
+    expect($locale)->toBe('fr_alias');
+    $this->assertNotSame('fr', $locale);
+});

@@ -1,20 +1,11 @@
 <?php
 
 declare(strict_types=1);
-
-namespace Tests\Feature\Locales\Raw;
-
 use LaravelLang\Locales\Facades\Locales;
-use Tests\TestCase;
+test('main', function () {
+    $locales = Locales::raw()->notInstalled();
 
-class NotInstalledTest extends TestCase
-{
-    public function testMain(): void
-    {
-        $locales = Locales::raw()->notInstalled();
-
-        $this->assertNotContains('en', $locales);
-        $this->assertNotContains(app()->getLocale(), $locales);
-        $this->assertNotContains(app()->getFallbackLocale(), $locales);
-    }
-}
+    expect($locales)->not->toContain('en');
+    expect($locales)->not->toContain(app()->getLocale());
+    expect($locales)->not->toContain(app()->getFallbackLocale());
+});
