@@ -8,6 +8,8 @@ use LaravelLang\LocaleList\Locale;
 use LaravelLang\Models\Exceptions\UnavailableLocaleException;
 use Tests\Constants\FakeValue;
 
+use Workbench\App\Constants\FakeLocale;
+
 use function Pest\Laravel\assertDatabaseEmpty;
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
@@ -17,13 +19,13 @@ test('single', function () {
     assertDatabaseEmpty(TestModelTranslation::class);
 
     $model = TestModel::create([
-        'key' => 'foo',
+        'key' => FakeLocale::Incorrect1,
 
         FakeValue::ColumnTitle       => 'qwerty 10',
         FakeValue::ColumnDescription => 'qwerty 20',
     ]);
 
-    expect($model->key)->toBeString()->toBe('foo');
+    expect($model->key)->toBeString()->toBe(FakeLocale::Incorrect1);
     expect($model->title)->toBeString()->toBe('qwerty 10');
     expect($model->description)->toBeString()->toBe('qwerty 20');
 
@@ -62,7 +64,7 @@ test('array', function () {
     assertDatabaseEmpty(TestModelTranslation::class);
 
     $model = TestModel::create([
-        'key' => 'foo',
+        'key' => FakeLocale::Incorrect1,
 
         FakeValue::ColumnTitle => [
             FakeValue::LocaleMain     => 'qwerty 10',
@@ -77,7 +79,7 @@ test('array', function () {
         ],
     ]);
 
-    expect($model->key)->toBeString()->toBe('foo');
+    expect($model->key)->toBeString()->toBe(FakeLocale::Incorrect1);
     expect($model->title)->toBeString()->toBe('qwerty 10');
     expect($model->description)->toBeString()->toBe('qwerty 20');
 
@@ -119,7 +121,7 @@ test('collection', function () {
     assertDatabaseEmpty(TestModelTranslation::class);
 
     $model = TestModel::create([
-        'key' => 'foo',
+        'key' => FakeLocale::Incorrect1,
 
         FakeValue::ColumnTitle => collect([
             FakeValue::LocaleMain     => 'qwerty 10',
@@ -134,7 +136,7 @@ test('collection', function () {
         ]),
     ]);
 
-    expect($model->key)->toBeString()->toBe('foo');
+    expect($model->key)->toBeString()->toBe(FakeLocale::Incorrect1);
     expect($model->title)->toBeString()->toBe('qwerty 10');
     expect($model->description)->toBeString()->toBe('qwerty 20');
 
@@ -173,7 +175,7 @@ test('collection', function () {
 
 test('uninstalled', function () {
     TestModel::create([
-        'key' => 'foo',
+        'key' => FakeLocale::Incorrect1,
 
         FakeValue::ColumnTitle => [
             FakeValue::LocaleMain        => 'qwerty 10',
@@ -189,7 +191,7 @@ test('uninstalled', function () {
 
 test('unknown', function () {
     TestModel::create([
-        'key' => 'foo',
+        'key' => FakeLocale::Incorrect1,
 
         FakeValue::ColumnTitle => [
             'qwerty' => 'qwerty 10',

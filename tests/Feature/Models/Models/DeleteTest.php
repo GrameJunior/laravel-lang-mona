@@ -7,11 +7,13 @@ use App\Models\TestModelTranslation;
 use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Facades\Locales;
 
+use Workbench\App\Constants\FakeLocale;
+
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
 
 test('soft delete', function () {
-    $model = fakeModel(main: 'foo');
+    $model = fakeModel(main: FakeLocale::Incorrect1);
 
     assertDatabaseHas(TestModel::class, [
         'id'         => $model->id,
@@ -41,7 +43,7 @@ test('soft delete', function () {
 });
 
 test('force delete', function () {
-    $model = fakeModel(main: 'foo');
+    $model = fakeModel(main: FakeLocale::Incorrect1);
 
     assertDatabaseHas(TestModel::class, [
         'id'         => $model->id,
@@ -67,7 +69,7 @@ test('force delete', function () {
 });
 
 test('restore', function () {
-    $model = fakeModel(main: 'foo');
+    $model = fakeModel(main: FakeLocale::Incorrect1);
 
     assertDatabaseHas(TestModel::class, [
         'id'         => $model->id,

@@ -7,6 +7,8 @@ use App\Models\TestModelTranslation;
 use LaravelLang\Models\Exceptions\UnavailableLocaleException;
 use Tests\Constants\FakeValue;
 
+use Workbench\App\Constants\FakeLocale;
+
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
 
@@ -105,5 +107,5 @@ test('all', function () {
 test('non-translatable locale', function () {
     $model = fakeModel();
 
-    $model->forgetTranslation(FakeValue::ColumnTitle, 'foo');
+    $model->forgetTranslation(FakeValue::ColumnTitle, FakeLocale::Incorrect1);
 })->throws(UnavailableLocaleException::class);

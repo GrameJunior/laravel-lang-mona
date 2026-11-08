@@ -14,6 +14,8 @@ use LaravelLang\Models\Exceptions\AttributeIsNotTranslatableException;
 use LaravelLang\Models\Exceptions\UnavailableLocaleException;
 use Tests\Constants\FakeValue;
 
+use Workbench\App\Constants\FakeLocale;
+
 use function Pest\Laravel\assertDatabaseEmpty;
 use function Pest\Laravel\assertDatabaseHas;
 
@@ -124,7 +126,7 @@ test('lazy loading', function (bool $enabled, int $count, array $locales) {
         }
     });
 
-    $model1 = fakeModel(main: 'Foo');
+    $model1 = fakeModel(main: FakeLocale::Incorrect1);
     $model2 = fakeModel(main: 'Bar');
 
     $model1->load('translations');
@@ -157,7 +159,7 @@ test('non-translatable attribute', function () {
 test('not translatable attribute', function () {
     $model = fakeModel();
 
-    $model->getTranslation('foo');
+    $model->getTranslation(FakeLocale::Incorrect1);
 })->throws(AttributeIsNotTranslatableException::class);
 
 test('translated scope returns records with at least one translation', function () {
@@ -321,8 +323,10 @@ test('orderByTranslation sorts by key asc', function () {
         FakeValue::LocaleMain
     );
     expect(
-        TestModel::query()->orderByTranslation(FakeValue::ColumnTitle, 'asc', FakeValue::LocaleFallback)->get()->first(
-        )->key
+        TestModel::query()
+            ->orderByTranslation(FakeValue::ColumnTitle, 'asc', FakeValue::LocaleFallback)
+            ->get()
+            ->first()->key
     )->toBe(FakeValue::LocaleFallback);
 });
 
@@ -346,8 +350,10 @@ test('orderByTranslation sorts by key desc', function () {
         FakeValue::LocaleFallback
     );
     expect(
-        TestModel::query()->orderByTranslation(FakeValue::ColumnTitle, 'desc', FakeValue::LocaleFallback)->get()->first(
-        )->key
+        TestModel::query()
+            ->orderByTranslation(FakeValue::ColumnTitle, 'desc', FakeValue::LocaleFallback)
+            ->get()
+            ->first()->key
     )->toBe(FakeValue::LocaleMain);
 });
 
