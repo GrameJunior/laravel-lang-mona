@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Models;
+namespace Workbench\App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use LaravelLang\Models\HasTranslations;
@@ -20,7 +19,7 @@ use LaravelLang\Models\HasTranslations;
  * @method  HasMany translations
  * @method HasMany translationsRaw()
  */
-class TestModel extends Model
+class TestModel
 {
     use HasTranslations;
     use SoftDeletes;
