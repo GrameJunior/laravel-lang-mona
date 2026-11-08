@@ -6,7 +6,7 @@
 - [x] Очистить проекты от ненужных файлов.
 - [ ] Перенести PHPUnit тесты в Mona:
     - [x] JsonFallback
-    - [ ] Locales
+    - [x] Locales
     - [ ] Models
     - [ ] Routes
     - [ ] Publisher

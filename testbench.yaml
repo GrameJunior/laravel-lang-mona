@@ -1,9 +1,10 @@
 laravel: '@testbench'
 
 providers:
-    - Workbench\App\Providers\WorkbenchServiceProvider
-    - Spatie\LaravelData\LaravelDataServiceProvider
     - LaravelLang\Config\ServiceProvider
+    - LaravelLang\Models\ServiceProvider
+    - Spatie\LaravelData\LaravelDataServiceProvider
+    - Workbench\App\Providers\WorkbenchServiceProvider
 
 migrations:
     - workbench/database/migrations
@@ -17,7 +18,7 @@ workbench:
     health: false
     discovers:
         api: true
-        web: true
+        web: false
         commands: true
         components: false
         config: true
