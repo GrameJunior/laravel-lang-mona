@@ -4,14 +4,27 @@
     "license": "MIT",
     "type": "library",
     "keywords": [
+        "actions",
+        "attributes",
+        "country-names",
+        "currency-names",
+        "http-statuses",
+        "json-fallback",
         "lang",
         "languages",
         "laravel",
         "laravel-lang",
         "locale",
+        "locale-list",
+        "locale-names",
         "locales",
         "localization",
-        "translation",
+        "models",
+        "moonshine",
+        "routes",
+        "starter-kits",
+        "translatable-routes",
+        "translate-models",
         "translations"
     ],
     "authors": [
@@ -37,9 +50,9 @@
     "require-dev": {
         "dragon-code/benchmark": "^4.6",
         "laravel/pao": "^1.1",
-        "orchestra/testbench": "^10.0 || ^11.0",
-        "pestphp/pest": "^4.0 || ^5.0",
-        "symfony/var-dumper": "^7.4 || ^8.0"
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest": "^5.0",
+        "symfony/var-dumper": "^8.0"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
@@ -53,18 +66,13 @@
             "LaravelLang\\LocaleNames\\": "src/LocaleNames/src/",
             "LaravelLang\\Locales\\": "src/Locales/src/",
             "LaravelLang\\Models\\": "src/Models/src/",
-            "LaravelLang\\Mona\\": "app/",
             "LaravelLang\\Publisher\\": "src/Publisher/src/",
-            "LaravelLang\\Routes\\": "src/Routes/src/",
-            "LaravelLang\\Support\\": "src/Support/src/"
+            "LaravelLang\\Routes\\": "src/Routes/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/",
-            "Workbench\\App\\": "workbench/app/",
-            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
-            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+            "Tests\\": "tests/"
         }
     },
     "config": {
@@ -74,34 +82,5 @@
         },
         "preferred-install": "dist",
         "sort-packages": true
-    },
-    "scripts": {
-        "test": "vendor/bin/pest",
-        "cldr:update": [
-            "@disableProcessTimeout",
-            "@php bin/mona cldr:country",
-            "@php bin/mona cldr:country:native",
-            "@php bin/mona cldr:currency",
-            "@php bin/mona cldr:currency:native",
-            "@php bin/mona cldr:locale",
-            "@php bin/mona cldr:locale:native"
-        ],
-        "library:collect": [
-            "@disableProcessTimeout",
-            "@php bin/mona library"
-        ],
-        "disableProcessTimeout": "Composer\\Config::disableProcessTimeout",
-        "post-autoload-dump": [
-            "@clear",
-            "@prepare"
-        ],
-        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
-        "prepare": "@php vendor/bin/testbench package:discover --ansi",
-        "build": "@php vendor/bin/testbench workbench:build --ansi",
-        "serve": [
-            "@disableProcessTimeout",
-            "@build",
-            "@php vendor/bin/testbench serve --ansi"
-        ]
     }
 }
