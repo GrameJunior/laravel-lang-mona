@@ -16,8 +16,9 @@
 composer.lock
 
 # Cache & Temp
-.cache
-.temp
+/.cache
+/.temp
+/.phpunit.cache
 
 *.bak
 *.cache
@@ -28,4 +29,4 @@ composer.lock
 .env
 
 # Extra
-playground.php
+/playground.php
