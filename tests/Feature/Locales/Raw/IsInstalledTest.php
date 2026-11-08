@@ -2,39 +2,27 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Locales\Raw;
-
-use Illuminate\Filesystem\Filesystem;
 use LaravelLang\Locales\Facades\Locales;
-use Tests\TestCase;
 
-class IsInstalledTest extends TestCase
-{
-    public function testMain(): void
-    {
-        $this->assertTrue(Locales::raw()->isInstalled('en'));
-        $this->assertTrue(Locales::raw()->isInstalled('de'));
-        $this->assertTrue(Locales::raw()->isInstalled('fr'));
-        $this->assertTrue(Locales::raw()->isInstalled('fr_alias'));
-    }
+test('main', function () {
+    expect(Locales::raw()->isInstalled('en'))->toBeTrue();
+    expect(Locales::raw()->isInstalled('de'))->toBeTrue();
+    expect(Locales::raw()->isInstalled('fr'))->toBeTrue();
+    expect(Locales::raw()->isInstalled('fr_alias'))->toBeTrue();
+});
+test('empty', function () {
+    $asNull   = Locales::raw()->isInstalled(null);
+    $asString = Locales::raw()->isInstalled('');
 
-    public function testEmpty(): void
-    {
-        $asNull   = Locales::raw()->isInstalled(null);
-        $asString = Locales::raw()->isInstalled('');
+    expect($asNull)->toBeFalse();
+    expect($asString)->toBeFalse();
+});
+test('incorrect', function () {
+    ensureLang('bar');
 
-        $this->assertFalse($asNull);
-        $this->assertFalse($asString);
-    }
+    $foo = Locales::raw()->isInstalled('foo');
+    $bar = Locales::raw()->isInstalled('bar');
 
-    public function testIncorrect(): void
-    {
-        (new Filesystem())->ensureDirectoryExists(lang_path('bar'));
-
-        $foo = Locales::raw()->isInstalled('foo');
-        $bar = Locales::raw()->isInstalled('bar');
-
-        $this->assertFalse($foo);
-        $this->assertFalse($bar);
-    }
-}
+    expect($foo)->toBeFalse();
+    expect($bar)->toBeFalse();
+});

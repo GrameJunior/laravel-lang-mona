@@ -1,29 +1,18 @@
 <?php
 
 declare(strict_types=1);
-
-namespace Tests\Feature\Locales\Raw;
-
 use LaravelLang\Locales\Facades\Locales;
-use Tests\TestCase;
+test('main', function () {
+    app()->setFallbackLocale('de');
 
-class GetFallbackTest extends TestCase
-{
-    public function testMain(): void
-    {
-        app()->setFallbackLocale('de');
+    $locale = Locales::raw()->getFallback();
 
-        $locale = Locales::raw()->getFallback();
+    expect($locale)->toBe('de');
+});
+test('alias', function () {
+    app()->setFallbackLocale('fr');
 
-        $this->assertSame('de', $locale);
-    }
+    $locale = Locales::raw()->getFallback();
 
-    public function testAlias(): void
-    {
-        app()->setFallbackLocale('fr');
-
-        $locale = Locales::raw()->getFallback();
-
-        $this->assertSame('fr_alias', $locale);
-    }
-}
+    expect($locale)->toBe('fr_alias');
+});

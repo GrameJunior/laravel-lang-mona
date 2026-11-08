@@ -2,69 +2,54 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Locales\Raw;
-
-use BackedEnum;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Events\LocaleUpdated;
 use Illuminate\Support\Facades\Event;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
-use PHPUnit\Framework\Attributes\DataProviderExternal;
-use PHPUnit\Framework\Attributes\TestWith;
-use Tests\TestCase;
 
 use function Illuminate\Support\enum_value;
 
-class SetTest extends TestCase
-{
-    #[TestWith([Locale::Swedish])]
-    #[TestWith([Locale::Swedish->value])]
-    public function testDefault(BackedEnum|string $locale): void
-    {
-        $value = enum_value($locale);
+test('default', function (BackedEnum|string $locale) {
+    $value = enum_value($locale);
 
-        (new Filesystem())->ensureDirectoryExists(lang_path($value));
+    ensureLang($value);
 
-        Event::fake();
+    Event::fake();
 
-        Locales::set($locale);
+    Locales::set($locale);
 
-        $this->assertSame($value, app()->getLocale());
+    expect(app()->getLocale())->toBe($value);
 
-        Event::assertDispatchedOnce(LocaleUpdated::class);
+    Event::assertDispatchedOnce(LocaleUpdated::class);
 
-        Event::assertDispatched(LocaleUpdated::class, function (LocaleUpdated $event) use ($value) {
-            if ($event->locale !== $value) {
-                return false;
-            }
+    Event::assertDispatched(LocaleUpdated::class, function (LocaleUpdated $event) use ($value) {
+        if ($event->locale !== $value) {
+            return false;
+        }
 
-            return $event->previousLocale === 'fr';
-        });
-    }
+        return $event->previousLocale === 'fr';
+    });
+})->with([
+    Locale::Swedish,
+    Locale::Swedish->value,
+]);
+test('uninstalled', function () {
+    Event::fake();
 
-    public function testUninstalled(): void
-    {
-        Event::fake();
+    Locales::set(Locale::Swedish);
 
-        Locales::set(Locale::Swedish);
+    expect(app()->getLocale())->toBe('fr');
 
-        $this->assertSame('fr', app()->getLocale());
+    Event::assertNothingDispatched();
+});
+test('incorrect', function (mixed $locale) {
+    Event::fake();
 
-        Event::assertNothingDispatched();
-    }
+    ensureLang((string) $locale);
 
-    #[DataProviderExternal(TestCase::class, 'dateIncorrectLocales')]
-    public function testIncorrect(mixed $locale): void
-    {
-        Event::fake();
+    Locales::set($locale);
 
-        (new Filesystem())->ensureDirectoryExists(lang_path((string) $locale));
+    expect(app()->getLocale())->toBe('fr');
 
-        Locales::set($locale);
-
-        $this->assertSame('fr', app()->getLocale());
-
-        Event::assertNothingDispatched();
-    }
-}
+    Event::assertNothingDispatched();
+})->with('incorrect locales');

@@ -1,49 +1,32 @@
 <?php
 
 declare(strict_types=1);
-
-namespace Tests\Feature\Locales\Raw;
-
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
-use Tests\TestCase;
+test('installed', function () {
+    $locales = Locales::raw();
 
-class GetTest extends TestCase
-{
-    public function testInstalled(): void
-    {
-        $locales = Locales::raw();
+    expect($locales->get(Locale::English))->toBe('en');
+    expect($locales->get(Locale::German))->toBe('de');
+    expect($locales->get(Locale::French))->toBe('fr_alias');
+    expect($locales->get(Locale::French->value))->toBe('fr_alias');
+});
+test('uninstalled', function () {
+    $locales = Locales::raw();
 
-        $this->assertSame('en', $locales->get(Locale::English));
-        $this->assertSame('de', $locales->get(Locale::German));
-        $this->assertSame('fr_alias', $locales->get(Locale::French));
-        $this->assertSame('fr_alias', $locales->get(Locale::French->value));
-    }
+    expect($locales->get(Locale::Swedish))->toBe('fr_alias');
+    expect($locales->get(Locale::Swedish->value))->toBe('fr_alias');
+});
+test('incorrect', function (mixed $value) {
+    $locales = Locales::raw();
 
-    public function testUninstalled(): void
-    {
-        $locales = Locales::raw();
+    expect($locales->get($value))->toBe('fr_alias');
+})->with('incorrect locales');
+test('invalid fallback', function (mixed $value) {
+    app()->setLocale($value);
 
-        $this->assertSame('fr_alias', $locales->get(Locale::Swedish));
-        $this->assertSame('fr_alias', $locales->get(Locale::Swedish->value));
-    }
+    $locales = Locales::raw();
 
-    #[DataProviderExternal(TestCase::class, 'dateIncorrectLocales')]
-    public function testIncorrect(mixed $value): void
-    {
-        $locales = Locales::raw();
-
-        $this->assertSame('fr_alias', $locales->get($value));
-    }
-
-    #[DataProviderExternal(TestCase::class, 'dateIncorrectLocales')]
-    public function testInvalidFallback(mixed $value): void
-    {
-        app()->setLocale($value);
-
-        $locales = Locales::raw();
-
-        $this->assertSame('de', $locales->get('foo'));
-    }
-}
+    expect($locales->get('foo'))->toBe('de');
+})->with('incorrect locales');

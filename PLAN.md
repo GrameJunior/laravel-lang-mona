@@ -10,7 +10,7 @@
     - [ ] Models
     - [ ] Routes
     - [ ] Publisher
-- [ ] Заменить тесты на Pest.
+- [x] Заменить тесты на Pest.
 - [ ] Заменить `laravel_lang.yaml` на json вариант и актуализировать файлы:
     - [ ] Actions
     - [ ] Attributes
@@ -22,15 +22,15 @@
     - [ ] MoonShine
     - [ ] Starter Kits
 - [ ] Убрать CLDR из Native.
-- [ ] Рефакторинг Конфигов.
-- [ ] Рефакторинг Паблишера:
-    - [ ] Добавить чтение файлов (https://github.com/Laravel-Lang/mona/issues/6).
-    - [ ] Добавить JSON Schema для новых файлов конфигураций.
-    - [ ] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
-    - [ ] Изменить структуру (https://github.com/Laravel-Lang/mona/issues/3).
-    - [ ] Добавить пропуск установок (https://github.com/Laravel-Lang/mona/issues/5).
 - [ ] Написать утилиту для миграции файлов переводов.
 - [ ] Рефакторинг:
+    - [ ] Config
+    - [ ] Publisher
+        - [ ] Добавить чтение файлов (https://github.com/Laravel-Lang/mona/issues/6).
+        - [ ] Добавить JSON Schema для новых файлов конфигураций.
+        - [ ] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
+        - [ ] Изменить структуру (https://github.com/Laravel-Lang/mona/issues/3).
+        - [ ] Добавить пропуск установок (https://github.com/Laravel-Lang/mona/issues/5).
     - [ ] Actions
     - [ ] Attributes
     - [ ] Common

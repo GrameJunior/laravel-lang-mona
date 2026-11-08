@@ -2,37 +2,27 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Locales\Data;
-
-use Illuminate\Filesystem\Filesystem;
 use LaravelLang\Locales\Facades\Locales;
-use Tests\TestCase;
 
-class InstalledTest extends TestCase
-{
-    public function testCorrect(): void
-    {
-        $locales = Locales::installed()->pluck('code')->all();
+test('correct', function () {
+    $locales = Locales::installed()->pluck('code')->all();
 
-        $this->assertContains('en', $locales);
-        $this->assertContains('de', $locales);
-        $this->assertContains('fr_alias', $locales);
+    expect($locales)->toContain('en');
+    expect($locales)->toContain('de');
+    expect($locales)->toContain('fr_alias');
 
-        $this->assertCount(3, $locales);
-    }
+    expect($locales)->toHaveCount(3);
+});
+test('incorrect', function () {
+    ensureLang('foo');
 
-    public function testIncorrect(): void
-    {
-        (new Filesystem())->ensureDirectoryExists(lang_path('foo'));
+    $locales = Locales::installed()->pluck('code')->all();
 
-        $locales = Locales::installed()->pluck('code')->all();
+    expect($locales)->toContain('en');
+    expect($locales)->toContain('de');
+    expect($locales)->toContain('fr_alias');
 
-        $this->assertContains('en', $locales);
-        $this->assertContains('de', $locales);
-        $this->assertContains('fr_alias', $locales);
+    expect($locales)->not->toContain('foo');
 
-        $this->assertNotContains('foo', $locales);
-
-        $this->assertCount(3, $locales);
-    }
-}
+    expect($locales)->toHaveCount(3);
+});
