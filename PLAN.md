@@ -19,6 +19,23 @@
     - [ ] Изменить структуру (https://github.com/Laravel-Lang/mona/issues/3).
     - [ ] Добавить пропуск установок (https://github.com/Laravel-Lang/mona/issues/5).
 - [ ] Написать утилиту для миграции файлов переводов.
+- [ ] Рефакторинг:
+    - [ ] Actions
+    - [ ] Attributes
+    - [ ] Common
+    - [ ] Country Names
+    - [ ] Currency Names
+    - [ ] Locale Names
+    - [ ] HTTP Statuses
+    - [ ] Json Fallback
+    - [ ] Lang
+    - [ ] Locale List
+    - [ ] Locales
+    - [ ] Models
+    - [ ] MoonShine
+    - [ ] Routes
+    - [ ] Starter Kits
+    - [ ] Translations Template
 - [ ] Удалить из документации статусы переводов.
 - [ ] Мигрировать документацию на Docusaurus.
 - [ ] Обновить README в проектах.
