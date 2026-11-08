@@ -20,6 +20,12 @@ workbench:
         components: false
         factories: true
         views: false
+    sync:
+        -   from: lang/fr
+            to: workbench/lang/fr
+        -   from: storage
+            to: workbench/storage
+            reverse: true
     build:
         - asset-publish
         - create-sqlite-db
@@ -27,9 +33,7 @@ workbench:
         - migrate-fresh
     assets:
         - laravel-assets
-    sync:
-        -   from: lang
-            to: workbench/lang
-        -   from: storage
-            to: workbench/storage
-            reverse: true
+
+purge:
+    directories:
+        - lang
