@@ -3,26 +3,17 @@
 declare(strict_types=1);
 
 use LaravelLang\Locales\Facades\Locales;
+use Workbench\App\Constants\FakeLocale;
 
 test('main', function () {
-    expect(Locales::raw()->isInstalled('en'))->toBeTrue();
-    expect(Locales::raw()->isInstalled('de'))->toBeTrue();
-    expect(Locales::raw()->isInstalled('fr'))->toBeTrue();
-    expect(Locales::raw()->isInstalled('fr_alias'))->toBeTrue();
+    expect(Locales::raw()->isInstalled(FakeLocale::Custom))->toBeTrue();
+    expect(Locales::raw()->isInstalled(FakeLocale::Fallback))->toBeTrue();
+    expect(Locales::raw()->isInstalled(FakeLocale::Default))->toBeTrue();
+    expect(Locales::raw()->isInstalled(FakeLocale::DefaultAlias))->toBeTrue();
 });
-test('empty', function () {
-    $asNull   = Locales::raw()->isInstalled(null);
-    $asString = Locales::raw()->isInstalled('');
 
-    expect($asNull)->toBeFalse();
-    expect($asString)->toBeFalse();
-});
-test('incorrect', function () {
-    ensureLang('bar');
+test('incorrect', function (mixed $locale) {
+    ensureLang($locale);
 
-    $foo = Locales::raw()->isInstalled('foo');
-    $bar = Locales::raw()->isInstalled('bar');
-
-    expect($foo)->toBeFalse();
-    expect($bar)->toBeFalse();
-});
+    expect(Locales::raw()->isInstalled($locale))->toBeFalse();
+})->with('incorrect locales');

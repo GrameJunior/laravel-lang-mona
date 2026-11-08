@@ -1,8 +1,11 @@
 <?php
 
 declare(strict_types=1);
+
+use Workbench\App\Constants\FakeLocale;
+
 beforeEach(function () {
-    config()->set('app.locale', 'foo');
+    config()->set('app.locale', FakeLocale::Incorrect1);
 });
 test('php', function () {
     expect(__('custom.failed'))->toBe('German Custom Failed');

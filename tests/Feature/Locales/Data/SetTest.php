@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Event;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
+use Workbench\App\Constants\FakeLocale;
+
 use function Illuminate\Support\enum_value;
 
 test('default', function (BackedEnum|string $locale) {
@@ -27,7 +29,7 @@ test('default', function (BackedEnum|string $locale) {
             return false;
         }
 
-        return $event->previousLocale === 'fr';
+        return $event->previousLocale === FakeLocale::Default;
     });
 })->with([
     Locale::Swedish,
@@ -38,7 +40,7 @@ test('uninstalled', function () {
 
     Locales::set(Locale::Swedish);
 
-    expect(app()->getLocale())->toBe('fr');
+    expect(app()->getLocale())->toBe(FakeLocale::Default);
 
     Event::assertNothingDispatched();
 });
@@ -49,7 +51,7 @@ test('incorrect', function (mixed $locale) {
 
     Locales::set($locale);
 
-    expect(app()->getLocale())->toBe('fr');
+    expect(app()->getLocale())->toBe(FakeLocale::Default);
 
     Event::assertNothingDispatched();
 })->with('incorrect locales');

@@ -3,9 +3,10 @@
 declare(strict_types=1);
 
 use LaravelLang\LocaleList\Locale;
+use Workbench\App\Constants\FakeLocale;
 
 dataset('incorrect locales', [
-    'foo',
+    FakeLocale::Incorrect1,
     '0',
     null,
 ]);
