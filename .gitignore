@@ -1,8 +1,21 @@
-/.idea/
-/.junie
-/vendor/
-/node_modules/
+# IDEs
+/.idea
+/.vscode
 
+# Agents
+/.ai
+/.claude
+/.codex
+/.cursor
+/.junie
+
+# Dependencies
+/node_modules
+/vendor
+
+composer.lock
+
+# Cache & Temp
 .cache
 .temp
 
@@ -11,11 +24,8 @@
 *.clover
 *.orig
 
+# Environments
 .env
 
-biome.json
-pint.json
-rector.php
-phpstan.neon
-
+# Extra
 playground.php
