@@ -37,7 +37,7 @@ class IsAvailableTest extends TestCase
         $this->assertFalse($asString);
     }
 
-    public function testInvorrect(): void
+    public function testIncorrect(): void
     {
         $available = Locales::raw()->isAvailable('foo');
 
