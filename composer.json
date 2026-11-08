@@ -54,7 +54,7 @@
         "laravel/pao": "^1.1",
         "orchestra/testbench": "^11.0",
         "spatie/laravel-data": "^4.23",
-        "symfony/var-dumper": "^8.0"
+        "symfony/var-dumper": "^7.0 || ^8.0"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
