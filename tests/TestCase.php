@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
+use Illuminate\Support\Facades\ParallelTesting;
 use Illuminate\Translation\TranslationServiceProvider;
 use LaravelLang\JsonFallback\TranslationServiceProvider as FixedTranslationServiceProvider;
 use Orchestra\Testbench\Concerns\WithWorkbench;
@@ -18,5 +19,16 @@ class TestCase extends BaseTests
         return [
             TranslationServiceProvider::class => FixedTranslationServiceProvider::class,
         ];
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $token = ParallelTesting::token();
+
+        $this->app->useLangPath(
+            $this->app->basePath('lang/' . $token)
+        );
     }
 }
