@@ -11,9 +11,11 @@ class GetCurrentTest extends TestCase
 {
     public function testMain(): void
     {
+        Locales::set('de');
+
         $locale = Locales::raw()->getCurrent();
 
-        $this->assertSame('en', $locale);
+        $this->assertSame('de', $locale);
     }
 
     public function testAliased(): void

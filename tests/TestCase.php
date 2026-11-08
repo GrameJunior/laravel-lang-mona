@@ -21,6 +21,15 @@ class TestCase extends BaseTests
         return array_map(static fn (Locale $locale): array => [$locale], Locale::cases());
     }
 
+    public static function dateIncorrectLocales(): array
+    {
+        return [
+            ['foo'],
+            ['0'],
+            [null],
+        ];
+    }
+
     protected function overrideApplicationProviders($app): array
     {
         return [
