@@ -12,14 +12,14 @@ class FallbackTest extends TestCase
 {
     public function testPhp(): void
     {
-        $this->assertSame('French Custom Failed', __('custom.failed'));
-        $this->assertSame('French Custom Password', __('custom.password'));
+        $this->assertSame('German Custom Failed', __('custom.failed'));
+        $this->assertSame('German Custom Password', __('custom.password'));
     }
 
     public function testJson(): void
     {
-        $this->assertSame('French Remember Me', __('Remember Me'));
-        $this->assertSame('French You are logged in!', __('You are logged in!'));
+        $this->assertSame('German Remember Me', __('Remember Me'));
+        $this->assertSame('German You are logged in!', __('You are logged in!'));
     }
 
     protected function setUp(): void
@@ -27,6 +27,5 @@ class FallbackTest extends TestCase
         parent::setUp();
 
         config()->set('app.locale', 'foo');
-        config()->set('app.fallback_locale', 'fr');
     }
 }

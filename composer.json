@@ -48,23 +48,26 @@
         "ext-json": "*"
     },
     "require-dev": {
+        "archtechx/enums": "^1.1",
         "dragon-code/benchmark": "^4.6",
+        "dragon-code/support": "^6.17",
         "laravel/pao": "^1.1",
         "orchestra/testbench": "^11.0",
-        "symfony/var-dumper": "^8.0"
+        "spatie/laravel-data": "^4.23",
+        "symfony/var-dumper": "^7.0 || ^8.0"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "LaravelLang\\Config\\": "src/Config/src/",
-            "LaravelLang\\CountryNames\\": "src/CountryNames/src/",
-            "LaravelLang\\CurrencyNames\\": "src/CurrencyNames/src/",
             "LaravelLang\\JsonFallback\\": "src/JsonFallback/src/",
             "LaravelLang\\LocaleList\\": "src/LocaleList/src/",
-            "LaravelLang\\LocaleNames\\": "src/LocaleNames/src/",
             "LaravelLang\\Locales\\": "src/Locales/src/",
             "LaravelLang\\Models\\": "src/Models/src/",
+            "LaravelLang\\NativeCountryNames\\": "src/NativeCountryNames/src/",
+            "LaravelLang\\NativeCurrencyNames\\": "src/NativeCurrencyNames/src/",
+            "LaravelLang\\NativeLocaleNames\\": "src/NativeLocaleNames/src/",
             "LaravelLang\\Publisher\\": "src/Publisher/src/",
             "LaravelLang\\Routes\\": "src/Routes/src/"
         }

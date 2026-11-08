@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Services;
 
 use Illuminate\Support\Collection;
-use LaravelLang\Config\Data\ConfigData;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Concerns\Aliases;
 use LaravelLang\Locales\Concerns\Application;
@@ -37,7 +36,6 @@ class Locales
 
     public function __construct(
         protected RawLocales $raw,
-        protected ConfigData $config,
     ) {}
 
     public function raw(): RawLocales
@@ -56,7 +54,7 @@ class Locales
     public function installed(
         bool $withProtects = true,
         bool $withCountries = false,
-        bool $withCurrencies = false
+        bool $withCurrencies = false,
     ): Collection {
         return $this->registry(
             [__METHOD__, $withProtects],
@@ -113,15 +111,16 @@ class Locales
 
     public function getCurrent(bool $withCountry = false, bool $withCurrency = false): LocaleData
     {
-        return $this->getDefault($withCountry, $withCurrency);
-    }
-
-    public function getDefault(bool $withCountry = false, bool $withCurrency = false): LocaleData
-    {
         return $this->registry(
             [__METHOD__, $this->appLocale()],
             fn () => $this->map($this->raw->getDefault(), $withCountry, $withCurrency)
         );
+    }
+
+    /** @deprecated Use `getCurrent` instead */
+    public function getDefault(bool $withCountry = false, bool $withCurrency = false): LocaleData
+    {
+        return $this->getCurrent($withCountry, $withCurrency);
     }
 
     public function getFallback(bool $withCountry = false, bool $withCurrency = false): LocaleData

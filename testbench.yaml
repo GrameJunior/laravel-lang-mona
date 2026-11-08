@@ -2,6 +2,8 @@ laravel: '@testbench'
 
 providers:
     - Workbench\App\Providers\WorkbenchServiceProvider
+    - Spatie\LaravelData\LaravelDataServiceProvider
+    - LaravelLang\Config\ServiceProvider
 
 migrations:
     - workbench/database/migrations
@@ -14,10 +16,11 @@ workbench:
     install: true
     health: false
     discovers:
-        web: true
         api: true
+        web: true
         commands: true
         components: false
+        config: true
         factories: true
         views: false
     sync:
