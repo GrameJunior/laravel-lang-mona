@@ -11,6 +11,16 @@
     - [ ] Routes
     - [ ] Publisher
 - [ ] Заменить тесты на Pest.
+- [ ] Заменить `laravel_lang.yaml` на json вариант и актуализировать файлы:
+    - [ ] Actions
+    - [ ] Attributes
+    - [ ] Country Names
+    - [ ] Currency Names
+    - [ ] HTTP Statuses
+    - [ ] Lang
+    - [ ] Locale Names
+    - [ ] MoonShine
+    - [ ] Starter Kits
 - [ ] Убрать CLDR из Native.
 - [ ] Рефакторинг Конфигов.
 - [ ] Рефакторинг Паблишера:
