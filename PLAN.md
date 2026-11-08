@@ -5,7 +5,7 @@
 - [x] Перенести в проект документацию "как есть".
 - [x] Очистить проекты от ненужных файлов.
 - [ ] Перенести PHPUnit тесты в Mona:
-    - [ ] JsonFallback
+    - [x] JsonFallback
     - [ ] Locales
     - [ ] Models
     - [ ] Routes

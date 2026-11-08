@@ -14,7 +14,7 @@
          warnWhenPhpIsNotConfiguredForDevelopment="true">
     <testsuites>
         <testsuite name="default">
-            <directory>tests</directory>
+            <directory>tests/Feature</directory>
         </testsuite>
     </testsuites>
 
@@ -23,4 +23,7 @@
             <directory>src</directory>
         </include>
     </source>
+    <php>
+        <env name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
+    </php>
 </phpunit>
