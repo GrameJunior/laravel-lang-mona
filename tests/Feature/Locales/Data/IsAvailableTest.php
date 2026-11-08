@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Locales\Raw;
+namespace Tests\Feature\Locales\Data;
 
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
@@ -14,8 +14,8 @@ class IsAvailableTest extends TestCase
     #[DataProviderExternal(TestCase::class, 'dataLocales')]
     public function testList(Locale $locale): void
     {
-        $asEnum   = Locales::raw()->isAvailable($locale);
-        $asString = Locales::raw()->isAvailable($locale->value);
+        $asEnum   = Locales::isAvailable($locale);
+        $asString = Locales::isAvailable($locale->value);
 
         $this->assertTrue($asEnum);
         $this->assertTrue($asString);
@@ -23,15 +23,17 @@ class IsAvailableTest extends TestCase
 
     public function testAlias(): void
     {
-        $available = Locales::raw()->isAvailable('fr_alias');
+        $main  = Locales::isAvailable('fr');
+        $alias = Locales::isAvailable('fr_alias');
 
-        $this->assertTrue($available);
+        $this->assertTrue($main);
+        $this->assertTrue($alias);
     }
 
     public function testEmpty(): void
     {
-        $asNull   = Locales::raw()->isAvailable(null);
-        $asString = Locales::raw()->isAvailable('');
+        $asNull   = Locales::isAvailable(null);
+        $asString = Locales::isAvailable('');
 
         $this->assertFalse($asNull);
         $this->assertFalse($asString);
@@ -39,7 +41,7 @@ class IsAvailableTest extends TestCase
 
     public function testIncorrect(): void
     {
-        $available = Locales::raw()->isAvailable('foo');
+        $available = Locales::isAvailable('foo');
 
         $this->assertFalse($available);
     }
