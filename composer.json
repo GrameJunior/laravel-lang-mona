@@ -48,9 +48,12 @@
         "ext-json": "*"
     },
     "require-dev": {
+        "archtechx/enums": "^1.1",
         "dragon-code/benchmark": "^4.6",
+        "dragon-code/support": "^6.17",
         "laravel/pao": "^1.1",
         "orchestra/testbench": "^11.0",
+        "spatie/laravel-data": "^4.23",
         "symfony/var-dumper": "^8.0"
     },
     "minimum-stability": "stable",
