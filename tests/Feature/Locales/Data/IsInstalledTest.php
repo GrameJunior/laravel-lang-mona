@@ -3,12 +3,13 @@
 declare(strict_types=1);
 
 use LaravelLang\Locales\Facades\Locales;
+use Workbench\App\Constants\FakeLocale;
 
 test('main', function () {
-    expect(Locales::isInstalled('en'))->toBeTrue();
-    expect(Locales::isInstalled('de'))->toBeTrue();
-    expect(Locales::isInstalled('fr'))->toBeTrue();
-    expect(Locales::isInstalled('fr_alias'))->toBeTrue();
+    expect(Locales::isInstalled(FakeLocale::Custom))->toBeTrue();
+    expect(Locales::isInstalled(FakeLocale::Fallback))->toBeTrue();
+    expect(Locales::isInstalled(FakeLocale::Default))->toBeTrue();
+    expect(Locales::isInstalled(FakeLocale::DefaultAlias))->toBeTrue();
 });
 test('empty', function () {
     $asNull   = Locales::isInstalled(null);
@@ -18,10 +19,10 @@ test('empty', function () {
     expect($asString)->toBeFalse();
 });
 test('incorrect', function () {
-    ensureLang('bar');
+    ensureLang(FakeLocale::Incorrect2);
 
-    $foo = Locales::isInstalled('foo');
-    $bar = Locales::isInstalled('bar');
+    $foo = Locales::isInstalled(FakeLocale::Incorrect1);
+    $bar = Locales::isInstalled(FakeLocale::Incorrect2);
 
     expect($foo)->toBeFalse();
     expect($bar)->toBeFalse();

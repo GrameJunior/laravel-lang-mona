@@ -1,9 +1,11 @@
 <?php
 
 declare(strict_types=1);
+
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
-use PHPUnit\Framework\Attributes\DataProviderExternal;
+use Workbench\App\Constants\FakeLocale;
+
 test('list', function (Locale $locale) {
     $asEnum   = Locales::isAvailable($locale);
     $asString = Locales::isAvailable($locale->value);
@@ -12,8 +14,8 @@ test('list', function (Locale $locale) {
     expect($asString)->toBeTrue();
 })->with('correct locales');
 test('alias', function () {
-    $main  = Locales::isAvailable('fr');
-    $alias = Locales::isAvailable('fr_alias');
+    $main  = Locales::isAvailable(FakeLocale::Default);
+    $alias = Locales::isAvailable(FakeLocale::DefaultAlias);
 
     expect($main)->toBeTrue();
     expect($alias)->toBeTrue();
@@ -26,7 +28,7 @@ test('empty', function () {
     expect($asString)->toBeFalse();
 });
 test('incorrect', function () {
-    $available = Locales::isAvailable('foo');
+    $available = Locales::isAvailable(FakeLocale::Incorrect1);
 
     expect($available)->toBeFalse();
 });
