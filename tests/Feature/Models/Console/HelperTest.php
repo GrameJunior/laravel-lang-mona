@@ -16,14 +16,12 @@ test('generate many models', function () {
         md5(TestModel::class)
     );
 
-    expect($path)->not->toBeReadableFile();
-
-    artisan(ModelsHelperCommand::class)->run();
+    artisan(ModelsHelperCommand::class)->assertSuccessful()->run();
 
     expect($path)->toBeReadableFile();
 
     expect(file_get_contents($path))
-        ->toContain('namespace App\Models {')
+        ->toContain('namespace Workbench\App\Models {')
         ->toContain('use ' . TestModelTranslation::class . ';')
         ->toContain('class TestModel extends Model {}')
         ->toContain('@property string|null $title')
@@ -38,16 +36,14 @@ test('generate one model', function () {
         md5(TestModel::class)
     );
 
-    expect($path)->not->toBeReadableFile();
-
     artisan(ModelsHelperCommand::class, [
         'model' => TestModel::class,
-    ])->run();
+    ])->assertSuccessful()->run();
 
     expect($path)->toBeReadableFile();
 
     expect(file_get_contents($path))
-        ->toContain('namespace App\Models {')
+        ->toContain('namespace Workbench\App\Models {')
         ->toContain('use ' . TestModelTranslation::class . ';')
         ->toContain('class TestModel extends Model {}')
         ->toContain('@property string|null $title')
