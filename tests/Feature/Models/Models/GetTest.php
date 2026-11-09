@@ -169,7 +169,7 @@ test('translated scope returns records with at least one translation', function 
 
     TestModel::create(['key' => FakeLocale::Fallback]);
     TestModel::create([
-        'key'                  => FakeLocale::Default,
+        'key'            => FakeLocale::Default,
         FakeValue::Title => [
             FakeLocale::Default => $text,
         ],
@@ -183,7 +183,7 @@ test('whereTranslation filters by translation', function () {
     $text = 'Hello world';
 
     $model = TestModel::create([
-        'key'                  => FakeLocale::Default,
+        'key'            => FakeLocale::Default,
         FakeValue::Title => [
             FakeLocale::Default => $text,
         ],
@@ -195,13 +195,13 @@ test('whereTranslation filters by translation', function () {
 
 test('or whereTranslation filters by translation', function () {
     $model1 = TestModel::create([
-        'key'                  => FakeLocale::Default,
+        'key'            => FakeLocale::Default,
         FakeValue::Title => [
             FakeLocale::Default => 'Texte en français',
         ],
     ]);
     $model2 = TestModel::create([
-        'key'                  => FakeLocale::Fallback,
+        'key'            => FakeLocale::Fallback,
         FakeValue::Title => [
             FakeLocale::Fallback => 'Text auf Deutsch',
         ],
@@ -221,13 +221,13 @@ test('where translation filters by translation and locale', function () {
     $text = 'Hello world';
 
     $model1 = TestModel::create([
-        'key'                  => FakeLocale::Default,
+        'key'            => FakeLocale::Default,
         FakeValue::Title => [
             FakeLocale::Default => $text,
         ],
     ]);
     TestModel::create([
-        'key'                  => FakeLocale::Fallback,
+        'key'            => FakeLocale::Fallback,
         FakeValue::Title => [
             FakeLocale::Fallback => $text,
         ],
@@ -247,7 +247,7 @@ test('whereTranslationLike filters by translation', function () {
     $text = 'Hello world';
 
     TestModel::create([
-        'key'                  => FakeLocale::Default,
+        'key'            => FakeLocale::Default,
         FakeValue::Title => [
             FakeLocale::Default => $text,
         ],
@@ -259,13 +259,13 @@ test('whereTranslationLike filters by translation', function () {
 
 test('or whereTranslationLike filters by translation', function () {
     $model1 = TestModel::create([
-        'key'                  => FakeLocale::Default,
+        'key'            => FakeLocale::Default,
         FakeValue::Title => [
             FakeLocale::Default => 'Texte en français',
         ],
     ]);
     $model2 = TestModel::create([
-        'key'                  => FakeLocale::Fallback,
+        'key'            => FakeLocale::Fallback,
         FakeValue::Title => [
             FakeLocale::Fallback => 'Text auf Deutsch',
         ],
@@ -285,13 +285,13 @@ test('whereTranslationLike filters by translation and locale', function () {
     $text = 'Hello world';
 
     $model1 = TestModel::create([
-        'key'                  => FakeLocale::Default,
+        'key'            => FakeLocale::Default,
         FakeValue::Title => [
             FakeLocale::Default => $text,
         ],
     ]);
     TestModel::create([
-        'key'                  => FakeLocale::Fallback,
+        'key'            => FakeLocale::Fallback,
         FakeValue::Title => [
             FakeLocale::Fallback => $text,
         ],
@@ -305,72 +305,56 @@ test('whereTranslationLike filters by translation and locale', function () {
     expect($result->first()->id)->toBe($model1->id);
 });
 
-test('orderByTranslation sorts by key asc', function () {
-    TestModel::create([
-        'key'                  => FakeLocale::Default,
-        FakeValue::Title => [
-            FakeLocale::Default     => 'A',
-            FakeLocale::Fallback => 'D',
-        ],
-    ]);
-    TestModel::create([
-        'key'                  => FakeLocale::Fallback,
-        FakeValue::Title => [
-            FakeLocale::Default     => 'B',
-            FakeLocale::Fallback => 'C',
-        ],
-    ]);
+test(
+    'orderByTranslation sorts by key',
+    function (string $sortMethod, ?string $sortLocale, string $firstLocale, string $secondLocale) {
+        TestModel::create([
+            'key' => FakeLocale::Default,
 
-    expect(TestModel::query()->orderByTranslation(FakeValue::Title, 'asc')->get()->first()->key)->toBe(
-        FakeLocale::Default
-    );
-    expect(
-        TestModel::query()
-            ->orderByTranslation(FakeValue::Title, 'asc', FakeLocale::Fallback)
-            ->get()
-            ->first()->key
-    )->toBe(FakeLocale::Fallback);
-});
+            FakeValue::Title => [
+                FakeLocale::Default  => 'A',
+                FakeLocale::Fallback => 'D',
+            ],
+        ]);
 
-test('orderByTranslation sorts by key desc', function () {
-    TestModel::create([
-        'key'                  => FakeLocale::Default,
-        FakeValue::Title => [
-            FakeLocale::Default     => 'A',
-            FakeLocale::Fallback => 'D',
-        ],
-    ]);
-    TestModel::create([
-        'key'                  => FakeLocale::Fallback,
-        FakeValue::Title => [
-            FakeLocale::Default     => 'B',
-            FakeLocale::Fallback => 'C',
-        ],
-    ]);
+        TestModel::create([
+            'key' => FakeLocale::Fallback,
 
-    expect(TestModel::query()->orderByTranslation(FakeValue::Title, 'desc')->get()->first()->key)->toBe(
-        FakeLocale::Fallback
-    );
-    expect(
-        TestModel::query()
-            ->orderByTranslation(FakeValue::Title, 'desc', FakeLocale::Fallback)
-            ->get()
-            ->first()->key
-    )->toBe(FakeLocale::Default);
-});
+            FakeValue::Title => [
+                FakeLocale::Default  => 'B',
+                FakeLocale::Fallback => 'C',
+            ],
+        ]);
+
+        expect(TestModel::query()->orderByTranslation(FakeValue::Title, $sortMethod, $sortLocale)->get()->first()->key)
+            ->toBe($firstLocale);
+
+        expect(
+            TestModel::query()
+                ->orderByTranslation(FakeValue::Title, 'asc', $secondLocale)
+                ->get()
+                ->first()->key
+        )->toBe($secondLocale);
+    }
+)->with([
+    'asc without locale' => ['asc', null, FakeLocale::Default, FakeLocale::Fallback],
+    'asc with locale'    => ['asc', FakeLocale::Default, FakeLocale::Default, FakeLocale::Fallback],
+
+    'desc' => ['desc', null, FakeLocale::Fallback, FakeLocale::Fallback],
+]);
 
 test('orderByTranslation sorts by key asc even if locale is missing', function () {
     TestModel::create([
-        'key'                  => FakeLocale::Default,
+        'key'            => FakeLocale::Default,
         FakeValue::Title => [
-            FakeLocale::Default     => 'Pommes de Terre',
+            FakeLocale::Default  => 'Pommes de Terre',
             FakeLocale::Fallback => 'Kartoffeln',
         ],
     ]);
     TestModel::create([
-        'key'                  => FakeLocale::Fallback,
+        'key'            => FakeLocale::Fallback,
         FakeValue::Title => [
-            FakeLocale::Default     => 'Fraises',
+            FakeLocale::Default  => 'Fraises',
             FakeLocale::Fallback => 'Erdbeeren',
         ],
     ]);
