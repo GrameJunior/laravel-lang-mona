@@ -148,7 +148,7 @@ test('lazy loading', function (bool $enabled, int $count, array $locales) {
 
     expect($hasNonFilteredQuery)->toBe(! $enabled);
     expect($hasFilteredQuery)->toBe($enabled);
-})->with('locales-filter');
+})->with('locales filter');
 
 test('non-translatable attribute', function () {
     $key = fake()->word;
