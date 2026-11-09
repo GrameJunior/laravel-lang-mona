@@ -3,7 +3,8 @@
 declare(strict_types=1);
 
 use LaravelLang\Config\Facades\Config;
-use Tests\Constants\LocaleValue;
+
+use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\withSession;
 
@@ -11,53 +12,53 @@ test('main locale', function (string $locale) {
     $foo = 'test';
 
     withSession([Config::shared()->routes->names->session => $locale])
-        ->getJson(route('via.session', compact('foo')))
+        ->getJson(route('via.session', ['key' => $foo]))
         ->assertSuccessful()
-        ->assertJsonPath($foo, LocaleValue::TranslationFrench);
+        ->assertJsonPath($foo, FakeTranslation::French);
 
     assertEventDispatched();
-})->with('main-locales');
+})->with('main locales');
 
 test('aliased locale', function (string $locale) {
     $foo = 'test';
 
     withSession([Config::shared()->routes->names->session => $locale])
-        ->getJson(route('via.session', compact('foo')))
+        ->getJson(route('via.session', ['key' => $foo]))
         ->assertSuccessful()
-        ->assertJsonPath($foo, LocaleValue::TranslationGerman);
+        ->assertJsonPath($foo, FakeTranslation::German);
 
     assertEventDispatched();
-})->with('aliased-locales');
+})->with('aliased locales');
 
 test('empty locale', function (int|string|null $locale) {
     $foo = 'test';
 
     withSession([Config::shared()->routes->names->session => $locale])
-        ->getJson(route('via.session', compact('foo')))
+        ->getJson(route('via.session', ['key' => $foo]))
         ->assertSuccessful()
-        ->assertJsonPath($foo, LocaleValue::TranslationFrench);
+        ->assertJsonPath($foo, FakeTranslation::French);
 
     assertEventNotDispatched();
-})->with('empty-locales');
+})->with('incorrect locales');
 
 test('uninstalled locale', function (string $locale) {
     $foo = 'test';
 
     withSession([Config::shared()->routes->names->session => $locale])
-        ->getJson(route('via.session', compact('foo')))
+        ->getJson(route('via.session', ['key' => $foo]))
         ->assertSuccessful()
-        ->assertJsonPath($foo, LocaleValue::TranslationFrench);
+        ->assertJsonPath($foo, FakeTranslation::French);
 
     assertEventDispatched();
-})->with('uninstalled-locales');
+})->with('uninstalled locales');
 
 test('unknown locale', function (int|string $locale) {
     $foo = 'test';
 
     withSession([Config::shared()->routes->names->session => $locale])
-        ->getJson(route('via.session', compact('foo')))
+        ->getJson(route('via.session', ['key' => $foo]))
         ->assertSuccessful()
-        ->assertJsonPath($foo, LocaleValue::TranslationFrench);
+        ->assertJsonPath($foo, FakeTranslation::French);
 
     assertEventDispatched();
-})->with('unknown-locales');
+})->with('unknown locales');

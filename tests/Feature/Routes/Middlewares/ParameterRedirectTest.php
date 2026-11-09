@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-use Tests\Constants\LocaleValue;
+use Workbench\App\Constants\FakeLocale;
+use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\getJson;
 
@@ -11,63 +12,63 @@ test('main locale', function (string $locale) {
 
     getJson(route('via.parameter.redirect', compact('foo', 'locale')))
         ->assertSuccessful()
-        ->assertJsonPath($foo, LocaleValue::TranslationFrench);
+        ->assertJsonPath($foo, FakeTranslation::French);
 
     assertEventDispatched();
-})->with('main-locales');
+})->with('main locales');
 
 test('aliased locale', function (string $locale) {
     $foo = 'test';
 
     getJson(route('via.parameter.redirect', compact('foo', 'locale')))
         ->assertSuccessful()
-        ->assertJsonPath($foo, LocaleValue::TranslationGerman);
+        ->assertJsonPath($foo, FakeTranslation::German);
 
     assertEventDispatched();
-})->with('aliased-locales');
+})->with('aliased locales');
 
 test('empty locale', function (int|string|null $locale) {
     $foo = 'test';
 
     getJson(route('via.parameter.redirect', compact('foo', 'locale')))
         ->assertRedirectToRoute('via.parameter.redirect', [
-            'locale' => LocaleValue::LocaleMain,
+            'locale' => FakeLocale::Default,
             'foo'    => $foo,
         ]);
 
     assertEventNotDispatched();
-})->with('empty-locales');
+})->with('incorrect locales');
 
 test('uninstalled locale', function (string $locale) {
     $foo = 'test';
 
     getJson(route('via.parameter.redirect', compact('foo', 'locale')))
         ->assertRedirectToRoute('via.parameter.redirect', [
-            'locale' => LocaleValue::LocaleMain,
+            'locale' => FakeLocale::Default,
             'foo'    => $foo,
         ]);
 
     assertEventNotDispatched();
-})->with('uninstalled-locales');
+})->with('uninstalled locales');
 
 test('unknown locale', function (int|string $locale) {
     $foo = 'test';
 
     getJson(route('via.parameter.redirect', compact('foo', 'locale')))
         ->assertRedirectToRoute('via.parameter.redirect', [
-            'locale' => LocaleValue::LocaleMain,
+            'locale' => FakeLocale::Default,
             'foo'    => $foo,
         ]);
 
     assertEventNotDispatched();
-})->with('unknown-locales');
+})->with('unknown locales');
 
 test('not named', function (int|string|null $locale) {
     $foo = 'test';
 
     getJson(url('not-named/redirect/' . $foo . '/' . $locale))
         ->assertSuccessful()
-        ->assertJsonPath($foo, LocaleValue::TranslationFrench);
+        ->assertJsonPath($foo, FakeTranslation::French);
 
     assertEventNotDispatched();
-})->with('empty-locales');
+})->with('incorrect locales');

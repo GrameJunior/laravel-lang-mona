@@ -5,8 +5,9 @@ declare(strict_types=1);
 use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Constants\FakeValue;
 use Workbench\App\Models\TestModel;
+use Workbench\App\Models\User;
 
-function fakeModel(
+function fakeTestModel(
     ?string $key = null,
     ?string $main = null,
     ?string $fallback = null,
@@ -32,7 +33,14 @@ function fakeTranslation(TestModel $model, ?string $text, ?string $fallback, ?st
     ])->save();
 }
 
-function findFakeModel(): TestModel
+function findFakeTestModel(): TestModel
 {
     return TestModel::firstOrFail();
+}
+
+function fakeUser(int|string|null $locale = null): User
+{
+    return User::create([
+        'locale' => $locale,
+    ]);
 }
