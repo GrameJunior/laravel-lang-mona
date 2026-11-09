@@ -5,7 +5,6 @@ namespace Workbench\App\Providers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\ParallelTesting;
 use Illuminate\Support\ServiceProvider;
-use LaravelLang\Config\Enums\Name;
 
 class WorkbenchServiceProvider extends ServiceProvider
 {
@@ -14,7 +13,6 @@ class WorkbenchServiceProvider extends ServiceProvider
         $this->setBootstrapPath();
         $this->setDatabasePath();
         $this->setLangPath();
-        $this->setHelpersPath();
     }
 
     public function boot(): void
@@ -47,14 +45,6 @@ class WorkbenchServiceProvider extends ServiceProvider
         );
 
         $this->app->useLangPath($path);
-    }
-
-    protected function setHelpersPath(): void
-    {
-        $this->app['config']->set(
-            Name::Shared() . '.models.helpers',
-            $this->app->basePath('vendor/_laravel_lang/' . $this->parallelToken())
-        );
     }
 
     protected function parallelToken(): string
