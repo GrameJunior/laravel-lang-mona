@@ -105,6 +105,6 @@
             "@build",
             "@php vendor/bin/testbench serve --ansi"
         ],
-        "test": "@php vendor/bin/pest --parallel --tia"
+        "test": "@php vendor/bin/pest --parallel"
     }
 }
