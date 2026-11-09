@@ -10,8 +10,8 @@ dataset('locales filter', [
         'count'   => 2,
 
         'locales' => [
-            FakeLocale::Default,
             FakeLocale::Fallback,
+            FakeLocale::Default,
         ],
     ],
 
@@ -20,9 +20,9 @@ dataset('locales filter', [
         'count'   => 3,
 
         'locales' => [
-            FakeLocale::Default,
             FakeLocale::Fallback,
             FakeLocale::Custom,
+            FakeLocale::Default,
         ],
     ],
 ]);
