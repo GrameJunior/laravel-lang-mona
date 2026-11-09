@@ -7,7 +7,7 @@
 - [ ] Перенести PHPUnit тесты в Mona:
     - [x] JsonFallback
     - [x] Locales
-    - [ ] Models
+    - [x] Models
     - [ ] Routes
     - [ ] Publisher
 - [x] Заменить тесты на Pest.
@@ -47,6 +47,9 @@
     - [ ] Routes
     - [ ] Starter Kits
     - [ ] Translations Template
+- [ ] Применить код-стайл (Pint)
+- [ ] Применить quality code (Rector)
+- [ ] Применить стат анализ (PhpStan)
 - [ ] Удалить из документации статусы переводов.
 - [ ] Мигрировать документацию на Docusaurus.
 - [ ] Обновить README в проектах.
