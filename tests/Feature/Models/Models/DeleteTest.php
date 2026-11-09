@@ -25,7 +25,7 @@ test('soft delete', function () {
     Locales::installed()->each(
         fn (LocaleData $data) => assertDatabaseHas(TestModelTranslation::class, [
             'item_id' => $model->id,
-            'locale'  => $data->code,
+            'locale'  => $data->locale->value,
         ])
     );
 
@@ -39,7 +39,7 @@ test('soft delete', function () {
     Locales::installed()->each(
         fn (LocaleData $data) => assertDatabaseHas(TestModelTranslation::class, [
             'item_id' => $model->id,
-            'locale'  => $data->code,
+            'locale'  => $data->locale->value,
         ])
     );
 });
@@ -55,7 +55,7 @@ test('force delete', function () {
     Locales::installed()->each(
         fn (LocaleData $data) => assertDatabaseHas(TestModelTranslation::class, [
             'item_id' => $model->id,
-            'locale'  => $data->code,
+            'locale'  => $data->locale->value,
         ])
     );
 
@@ -81,7 +81,7 @@ test('restore', function () {
     Locales::installed()->each(
         fn (LocaleData $data) => assertDatabaseHas(TestModelTranslation::class, [
             'item_id' => $model->id,
-            'locale'  => $data->code,
+            'locale'  => $data->locale->value,
         ])
     );
 
@@ -95,7 +95,7 @@ test('restore', function () {
     Locales::installed()->each(
         fn (LocaleData $data) => assertDatabaseHas(TestModelTranslation::class, [
             'item_id' => $model->id,
-            'locale'  => $data->code,
+            'locale'  => $data->locale->value,
         ])
     );
 
@@ -109,7 +109,7 @@ test('restore', function () {
     Locales::installed()->each(
         fn (LocaleData $data) => assertDatabaseHas(TestModelTranslation::class, [
             'item_id' => $model->id,
-            'locale'  => $data->code,
+            'locale'  => $data->locale->value,
         ])
     );
 });
