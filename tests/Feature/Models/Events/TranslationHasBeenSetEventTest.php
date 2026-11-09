@@ -74,7 +74,7 @@ test('custom locale', function () {
     Event::assertDispatched(function (TranslationHasBeenSetEvent $event) use ($model, $oldText, $newText) {
         return $event->model->getKey() === $model->getKey()
             && $event->column === FakeValue::Title
-            && $event->locale === Locale::Assamese
+            && $event->locale === Locale::English
             && $event->oldValue === $oldText
             && $event->newValue === $newText;
     });

@@ -54,7 +54,7 @@ test('single', function () {
     assertDatabaseMissing(TestModelTranslation::class, [
         'item_id' => $model->id,
 
-        'locale' => Locale::Assamese,
+        'locale' => Locale::English,
     ]);
 });
 
