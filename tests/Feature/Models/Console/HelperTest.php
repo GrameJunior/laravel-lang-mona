@@ -2,17 +2,12 @@
 
 declare(strict_types=1);
 
-use App\Models\TestModel;
-use App\Models\TestModelTranslation;
-use DragonCode\Support\Facades\Filesystem\Directory;
 use LaravelLang\Config\Facades\Config;
 use LaravelLang\Models\Console\ModelsHelperCommand;
+use Workbench\App\Models\TestModel;
+use Workbench\App\Models\TestModelTranslation;
 
 use function Pest\Laravel\artisan;
-
-beforeEach(fn () => Directory::ensureDelete(
-    Config::shared()->models->helpers
-));
 
 test('generate many models', function () {
     $path = sprintf(
@@ -21,14 +16,12 @@ test('generate many models', function () {
         md5(TestModel::class)
     );
 
-    expect($path)->not->toBeReadableFile();
-
-    artisan(ModelsHelperCommand::class)->run();
+    artisan(ModelsHelperCommand::class)->assertSuccessful()->run();
 
     expect($path)->toBeReadableFile();
 
     expect(file_get_contents($path))
-        ->toContain('namespace App\Models {')
+        ->toContain('namespace Workbench\App\Models {')
         ->toContain('use ' . TestModelTranslation::class . ';')
         ->toContain('class TestModel extends Model {}')
         ->toContain('@property string|null $title')
@@ -43,16 +36,14 @@ test('generate one model', function () {
         md5(TestModel::class)
     );
 
-    expect($path)->not->toBeReadableFile();
-
     artisan(ModelsHelperCommand::class, [
         'model' => TestModel::class,
-    ])->run();
+    ])->assertSuccessful()->run();
 
     expect($path)->toBeReadableFile();
 
     expect(file_get_contents($path))
-        ->toContain('namespace App\Models {')
+        ->toContain('namespace Workbench\App\Models {')
         ->toContain('use ' . TestModelTranslation::class . ';')
         ->toContain('class TestModel extends Model {}')
         ->toContain('@property string|null $title')

@@ -2,49 +2,42 @@
 
 declare(strict_types=1);
 
-use DragonCode\Support\Facades\Filesystem\File;
-use DragonCode\Support\Facades\Filesystem\Path;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Console\ModelMakeCommand as LaravelMakeModel;
-use Illuminate\Support\Str;
 use LaravelLang\Config\Facades\Config;
 use LaravelLang\Models\Console\ModelMakeCommand as PackageMakeModel;
 
 use function Pest\Laravel\artisan;
 
-beforeEach(fn () => File::ensureDelete([
-    base_path('app/Models/Some.php'),
-    base_path('app/Models/SomeTranslation.php'),
-]));
+$cleanUp = function () {
+    $filesystem = new Filesystem();
 
-afterEach(function () {
-    $migrations = File::allPaths(database_path('migrations'), function (string $path) {
-        if (Path::extension($path) !== 'php') {
-            return false;
-        }
+    $filesystem->delete([
+        app_path('Models/Some.php'),
+        app_path('Models/SomeTranslation.php'),
+        ...$filesystem->glob(database_path('migrations/*_create_some_translations_table.php')),
+    ]);
+};
 
-        return ! Str::contains($path, [
-            '2024_06_11_031722_create_fixture_test_models_table',
-            '2024_06_19_212226_create_fixture_test_model_translations_table',
-        ]);
-    });
-
-    File::ensureDelete($migrations);
-});
+beforeEach($cleanUp);
+afterEach($cleanUp);
 
 test('from scratch', function () {
     artisan(LaravelMakeModel::class, [
         'name' => 'Some',
-    ])->run();
+    ])->assertSuccessful()->run();
+
+    require_once app_path('Models/Some.php');
 
     artisan(PackageMakeModel::class, [
         'model'     => '\App\Models\Some',
         '--columns' => ['title', 'description'],
-    ])->run();
+    ])->assertSuccessful()->run();
 
-    $model  = base_path('app/Models/SomeTranslation.php');
+    $model  = app_path('Models/SomeTranslation.php');
     $helper = sprintf('%s/_ide_helper_models_%s.php', Config::shared()->models->helpers, md5('App\Models\Some'));
 
-    $migrations = File::allPaths(database_path('migrations'), fn (string $path) => Path::extension($path) === 'php');
+    $migrations = (new Filesystem())->glob(database_path('migrations/*_create_some_translations_table.php'));
 
     expect($migrations)->toHaveCount(1);
 

@@ -10,8 +10,8 @@ dataset('locales filter', [
         'count'   => 2,
 
         'locales' => [
-            FakeLocale::Default,
             FakeLocale::Fallback,
+            FakeLocale::Default,
         ],
     ],
 
@@ -20,17 +20,15 @@ dataset('locales filter', [
         'count'   => 3,
 
         'locales' => [
-            FakeLocale::Default,
             FakeLocale::Fallback,
             FakeLocale::Custom,
+            FakeLocale::Default,
         ],
     ],
 ]);
 
 dataset('mixed values', [
-    'filled string'     => [
-        FakeLocale::Incorrect1, FakeLocale::Incorrect1,
-    ],
+    'filled string'     => [FakeLocale::Incorrect1, FakeLocale::Incorrect1],
     'empty string'      => ['', null],
     'string with space' => [' ', null],
 

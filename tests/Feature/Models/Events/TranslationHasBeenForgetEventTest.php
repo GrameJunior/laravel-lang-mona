@@ -2,23 +2,24 @@
 
 declare(strict_types=1);
 
-use App\Models\TestModel;
 use Illuminate\Support\Facades\Event;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
-use Tests\Constants\FakeValue;
+use Workbench\App\Constants\FakeLocale;
+use Workbench\App\Constants\FakeValue;
+use Workbench\App\Models\TestModel;
 
 beforeEach(fn () => TestModel::create([
     'key' => fake()->word,
 
-    FakeValue::ColumnTitle => [
-        FakeValue::LocaleMain     => 'qwerty 10',
-        FakeValue::LocaleFallback => 'qwerty 11',
+    FakeValue::Title => [
+        FakeLocale::Default  => 'qwerty 10',
+        FakeLocale::Fallback => 'qwerty 11',
     ],
 
-    FakeValue::ColumnDescription => [
-        FakeValue::LocaleMain     => 'qwerty 20',
-        FakeValue::LocaleFallback => 'qwerty 21',
+    FakeValue::Description => [
+        FakeLocale::Default  => 'qwerty 20',
+        FakeLocale::Fallback => 'qwerty 21',
     ],
 ]));
 
@@ -27,10 +28,10 @@ test('forget locale', function () {
 
     $model = findFakeModel();
 
-    $model->forgetTranslation(FakeValue::LocaleMain);
+    $model->forgetTranslation(FakeLocale::Default);
 
     Event::assertDispatched(function (TranslationHasBeenForgetEvent $event) use ($model) {
         return $event->model->getKey() === $model->getKey()
-            && $event->locale          === Locale::French;
+            && $event->locale === Locale::French;
     });
 });

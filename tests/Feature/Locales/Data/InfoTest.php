@@ -13,8 +13,8 @@ test('installed', function () {
     expect(Locales::info(Locale::French->value)->code)->toBe(FakeLocale::DefaultAlias);
 });
 test('uninstalled', function () {
-    expect(Locales::info(Locale::Swedish)->code)->toBe(FakeLocale::Swedish);
-    expect(Locales::info(Locale::Swedish->value)->code)->toBe(FakeLocale::Swedish);
+    expect(Locales::info(Locale::Swedish)->code)->toBe(FakeLocale::Uninstalled);
+    expect(Locales::info(Locale::Swedish->value)->code)->toBe(FakeLocale::Uninstalled);
 });
 test('incorrect', function (mixed $value) {
     expect(Locales::info($value)->code)->toBe(FakeLocale::DefaultAlias);

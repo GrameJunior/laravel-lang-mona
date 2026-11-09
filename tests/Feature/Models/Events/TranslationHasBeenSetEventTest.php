@@ -5,7 +5,8 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Event;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
-use Tests\Constants\FakeValue;
+use Workbench\App\Constants\FakeLocale;
+use Workbench\App\Constants\FakeValue;
 
 beforeEach(
     fn () => Event::fake(TranslationHasBeenSetEvent::class)
@@ -17,14 +18,14 @@ test('default locale', function () {
 
     $model = fakeModel(main: $oldText);
 
-    $model->setTranslation(FakeValue::ColumnTitle, $newText);
+    $model->setTranslation(FakeValue::Title, $newText);
 
     Event::assertDispatched(function (TranslationHasBeenSetEvent $event) use ($model, $oldText, $newText) {
         return $event->model->getKey() === $model->getKey()
-            && $event->column          === FakeValue::ColumnTitle
-            && $event->locale          === null
-            && $event->oldValue        === $oldText
-            && $event->newValue        === $newText;
+            && $event->column === FakeValue::Title
+            && $event->locale === null
+            && $event->oldValue === $oldText
+            && $event->newValue === $newText;
     });
 });
 
@@ -34,14 +35,14 @@ test('main locale', function () {
 
     $model = fakeModel(main: $oldText);
 
-    $model->setTranslation(FakeValue::ColumnTitle, $newText, FakeValue::LocaleMain);
+    $model->setTranslation(FakeValue::Title, $newText, FakeLocale::Default);
 
     Event::assertDispatched(function (TranslationHasBeenSetEvent $event) use ($model, $oldText, $newText) {
         return $event->model->getKey() === $model->getKey()
-            && $event->column          === FakeValue::ColumnTitle
-            && $event->locale          === Locale::French
-            && $event->oldValue        === $oldText
-            && $event->newValue        === $newText;
+            && $event->column === FakeValue::Title
+            && $event->locale === Locale::French
+            && $event->oldValue === $oldText
+            && $event->newValue === $newText;
     });
 });
 
@@ -51,14 +52,14 @@ test('fallback locale', function () {
 
     $model = fakeModel(fallback: $oldText);
 
-    $model->setTranslation(FakeValue::ColumnTitle, $newText, FakeValue::LocaleFallback);
+    $model->setTranslation(FakeValue::Title, $newText, FakeLocale::Fallback);
 
     Event::assertDispatched(function (TranslationHasBeenSetEvent $event) use ($model, $oldText, $newText) {
         return $event->model->getKey() === $model->getKey()
-            && $event->column          === FakeValue::ColumnTitle
-            && $event->locale          === Locale::German
-            && $event->oldValue        === $oldText
-            && $event->newValue        === $newText;
+            && $event->column === FakeValue::Title
+            && $event->locale === Locale::German
+            && $event->oldValue === $oldText
+            && $event->newValue === $newText;
     });
 });
 
@@ -68,13 +69,13 @@ test('custom locale', function () {
 
     $model = fakeModel(custom: $oldText);
 
-    $model->setTranslation(FakeValue::ColumnTitle, $newText, FakeValue::LocaleCustom);
+    $model->setTranslation(FakeValue::Title, $newText, FakeLocale::Custom);
 
     Event::assertDispatched(function (TranslationHasBeenSetEvent $event) use ($model, $oldText, $newText) {
         return $event->model->getKey() === $model->getKey()
-            && $event->column          === FakeValue::ColumnTitle
-            && $event->locale          === Locale::Assamese
-            && $event->oldValue        === $oldText
-            && $event->newValue        === $newText;
+            && $event->column === FakeValue::Title
+            && $event->locale === Locale::English
+            && $event->oldValue === $oldText
+            && $event->newValue === $newText;
     });
 });

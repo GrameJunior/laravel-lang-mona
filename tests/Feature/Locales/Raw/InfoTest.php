@@ -17,8 +17,8 @@ test('installed', function () {
 test('uninstalled', function () {
     $locales = Locales::raw();
 
-    expect($locales->info(Locale::Swedish))->toBe(FakeLocale::Swedish);
-    expect($locales->info(Locale::Swedish->value))->toBe(FakeLocale::Swedish);
+    expect($locales->info(Locale::Swedish))->toBe(FakeLocale::Uninstalled);
+    expect($locales->info(Locale::Swedish->value))->toBe(FakeLocale::Uninstalled);
 });
 test('incorrect', function (mixed $value) {
     $locales = Locales::raw();

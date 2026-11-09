@@ -2,16 +2,20 @@
 
 declare(strict_types=1);
 
-use App\Models\TestModel;
-use App\Models\TestModelTranslation;
 use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Facades\Locales;
+
+use Workbench\App\Constants\FakeLocale;
+
+use Workbench\App\Models\TestModel;
+
+use Workbench\App\Models\TestModelTranslation;
 
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
 
 test('soft delete', function () {
-    $model = fakeModel(main: 'foo');
+    $model = fakeModel(main: FakeLocale::Incorrect1);
 
     assertDatabaseHas(TestModel::class, [
         'id'         => $model->id,
@@ -21,7 +25,7 @@ test('soft delete', function () {
     Locales::installed()->each(
         fn (LocaleData $data) => assertDatabaseHas(TestModelTranslation::class, [
             'item_id' => $model->id,
-            'locale'  => $data->code,
+            'locale'  => $data->locale->value,
         ])
     );
 
@@ -35,13 +39,13 @@ test('soft delete', function () {
     Locales::installed()->each(
         fn (LocaleData $data) => assertDatabaseHas(TestModelTranslation::class, [
             'item_id' => $model->id,
-            'locale'  => $data->code,
+            'locale'  => $data->locale->value,
         ])
     );
 });
 
 test('force delete', function () {
-    $model = fakeModel(main: 'foo');
+    $model = fakeModel(main: FakeLocale::Incorrect1);
 
     assertDatabaseHas(TestModel::class, [
         'id'         => $model->id,
@@ -51,7 +55,7 @@ test('force delete', function () {
     Locales::installed()->each(
         fn (LocaleData $data) => assertDatabaseHas(TestModelTranslation::class, [
             'item_id' => $model->id,
-            'locale'  => $data->code,
+            'locale'  => $data->locale->value,
         ])
     );
 
@@ -67,7 +71,7 @@ test('force delete', function () {
 });
 
 test('restore', function () {
-    $model = fakeModel(main: 'foo');
+    $model = fakeModel(main: FakeLocale::Incorrect1);
 
     assertDatabaseHas(TestModel::class, [
         'id'         => $model->id,
@@ -77,7 +81,7 @@ test('restore', function () {
     Locales::installed()->each(
         fn (LocaleData $data) => assertDatabaseHas(TestModelTranslation::class, [
             'item_id' => $model->id,
-            'locale'  => $data->code,
+            'locale'  => $data->locale->value,
         ])
     );
 
@@ -91,7 +95,7 @@ test('restore', function () {
     Locales::installed()->each(
         fn (LocaleData $data) => assertDatabaseHas(TestModelTranslation::class, [
             'item_id' => $model->id,
-            'locale'  => $data->code,
+            'locale'  => $data->locale->value,
         ])
     );
 
@@ -105,7 +109,7 @@ test('restore', function () {
     Locales::installed()->each(
         fn (LocaleData $data) => assertDatabaseHas(TestModelTranslation::class, [
             'item_id' => $model->id,
-            'locale'  => $data->code,
+            'locale'  => $data->locale->value,
         ])
     );
 });

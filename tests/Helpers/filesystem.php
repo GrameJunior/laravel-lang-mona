@@ -3,18 +3,8 @@
 declare(strict_types=1);
 
 use Illuminate\Filesystem\Filesystem;
-use LaravelLang\Config\Facades\Config;
 
 use function Orchestra\Testbench\workbench_path;
-
-function cleanUpHelpers(): void
-{
-    $filesystem = new Filesystem();
-
-    $filesystem->deleteDirectory(
-        Config::shared()->models->helpers
-    );
-}
 
 function cleanUpLang(): void
 {
