@@ -9,37 +9,35 @@ use LaravelLang\Models\Console\ModelMakeCommand as PackageMakeModel;
 
 use function Pest\Laravel\artisan;
 
-beforeEach(fn () => (new Filesystem())->delete([
-    base_path('app/Models/Some.php'),
-    base_path('app/Models/SomeTranslation.php'),
-]));
-
-afterEach(function () {
+$cleanUp = function () {
     $filesystem = new Filesystem();
 
-    $files = $filesystem->allFiles(database_path('migrations'));
+    $filesystem->delete([
+        app_path('Models/Some.php'),
+        app_path('Models/SomeTranslation.php'),
+        ...$filesystem->glob(database_path('migrations/*_create_some_translations_table.php')),
+    ]);
+};
 
-    foreach ($files as $file) {
-        if (str_contains($file->getFilename(), 'create_fixture')) {
-            $filesystem->delete($file->getRealPath());
-        }
-    }
-});
+beforeEach($cleanUp);
+afterEach($cleanUp);
 
 test('from scratch', function () {
     artisan(LaravelMakeModel::class, [
         'name' => 'Some',
-    ])->run();
+    ])->assertSuccessful()->run();
+
+    require_once app_path('Models/Some.php');
 
     artisan(PackageMakeModel::class, [
         'model'     => '\App\Models\Some',
         '--columns' => ['title', 'description'],
-    ])->run();
+    ])->assertSuccessful()->run();
 
-    $model  = base_path('app/Models/SomeTranslation.php');
+    $model  = app_path('Models/SomeTranslation.php');
     $helper = sprintf('%s/_ide_helper_models_%s.php', Config::shared()->models->helpers, md5('App\Models\Some'));
 
-    $migrations = (new Filesystem())->files(database_path('migrations'));
+    $migrations = (new Filesystem())->glob(database_path('migrations/*_create_some_translations_table.php'));
 
     expect($migrations)->toHaveCount(1);
 
@@ -62,7 +60,7 @@ test('from scratch', function () {
             )
         );
 
-    expect($migrations[0]->getContents())
+    expect(file_get_contents($migrations[0]))
         ->toContain('Schema::create(\'some_translations\'')
         ->toContain('Schema::dropIfExists(\'some_translations\')')
         ->toContain('$table->string(\'title\')->nullable()')
