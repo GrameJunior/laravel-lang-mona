@@ -11,6 +11,7 @@ class WorkbenchServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->setBootstrapPath();
         $this->setDatabasePath();
         $this->setLangPath();
         $this->setHelpersPath();
@@ -19,6 +20,13 @@ class WorkbenchServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::preventLazyLoading();
+    }
+
+    protected function setBootstrapPath(): void
+    {
+        $this->app->useBootstrapPath(
+            $this->app->basePath('bootstrap/' . $this->parallelToken())
+        );
     }
 
     protected function setDatabasePath(): void
