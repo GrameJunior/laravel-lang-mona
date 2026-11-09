@@ -2,17 +2,12 @@
 
 declare(strict_types=1);
 
-use App\Models\TestModel;
-use App\Models\TestModelTranslation;
-use DragonCode\Support\Facades\Filesystem\Directory;
 use LaravelLang\Config\Facades\Config;
 use LaravelLang\Models\Console\ModelsHelperCommand;
+use Workbench\App\Models\TestModel;
+use Workbench\App\Models\TestModelTranslation;
 
 use function Pest\Laravel\artisan;
-
-beforeEach(fn () => Directory::ensureDelete(
-    Config::shared()->models->helpers
-));
 
 test('generate many models', function () {
     $path = sprintf(

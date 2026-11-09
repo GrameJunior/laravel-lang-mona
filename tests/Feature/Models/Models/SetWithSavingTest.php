@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-use App\Models\TestModelTranslation;
-use Tests\Constants\FakeValue;
+use Workbench\App\Constants\FakeLocale;
+use Workbench\App\Constants\FakeValue;
+
+use Workbench\App\Models\TestModelTranslation;
 
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
@@ -14,31 +16,31 @@ test('main locale', function () {
 
     $model = fakeModel(main: $oldText);
 
-    expect($model->{FakeValue::ColumnTitle})->toBeString()->toBe($oldText);
-    expect($model->getTranslation(FakeValue::ColumnTitle))->toBe($oldText);
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleMain))->toBe($oldText);
+    expect($model->{FakeValue::Title})->toBeString()->toBe($oldText);
+    expect($model->getTranslation(FakeValue::Title))->toBe($oldText);
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Default))->toBe($oldText);
 
     // That one
-    $model->setTranslation(FakeValue::ColumnTitle, $newText);
+    $model->setTranslation(FakeValue::Title, $newText);
     $model->save();
 
-    expect($model->{FakeValue::ColumnTitle})->toBeString()->toBe($newText);
-    expect($model->getTranslation(FakeValue::ColumnTitle))->toBe($newText);
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleMain))->toBe($newText);
+    expect($model->{FakeValue::Title})->toBeString()->toBe($newText);
+    expect($model->getTranslation(FakeValue::Title))->toBe($newText);
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Default))->toBe($newText);
 
     // Check database
     assertDatabaseMissing(TestModelTranslation::class, [
         'item_id' => $model->id,
-        'locale'  => FakeValue::LocaleMain,
+        'locale'  => FakeLocale::Default,
 
-        FakeValue::ColumnTitle => $oldText,
+        FakeValue::Title => $oldText,
     ]);
 
     assertDatabaseHas(TestModelTranslation::class, [
         'item_id' => $model->id,
-        'locale'  => FakeValue::LocaleMain,
+        'locale'  => FakeLocale::Default,
 
-        FakeValue::ColumnTitle => $newText,
+        FakeValue::Title => $newText,
     ]);
 });
 
@@ -48,31 +50,31 @@ test('fallback locale', function () {
 
     $model = fakeModel(fallback: $oldText);
 
-    expect($model->{FakeValue::ColumnTitle})->toBeString()->toBe($oldText);
-    expect($model->getTranslation(FakeValue::ColumnTitle))->toBe($oldText);
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleFallback))->toBe($oldText);
+    expect($model->{FakeValue::Title})->toBeString()->toBe($oldText);
+    expect($model->getTranslation(FakeValue::Title))->toBe($oldText);
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Fallback))->toBe($oldText);
 
     // That one
-    $model->setTranslation(FakeValue::ColumnTitle, $newText, FakeValue::LocaleFallback);
+    $model->setTranslation(FakeValue::Title, $newText, FakeLocale::Fallback);
     $model->save();
 
-    expect($model->{FakeValue::ColumnTitle})->toBeString()->toBe($newText);
-    expect($model->getTranslation(FakeValue::ColumnTitle))->toBe($newText);
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleFallback))->toBe($newText);
+    expect($model->{FakeValue::Title})->toBeString()->toBe($newText);
+    expect($model->getTranslation(FakeValue::Title))->toBe($newText);
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Fallback))->toBe($newText);
 
     // Check database
     assertDatabaseMissing(TestModelTranslation::class, [
         'item_id' => $model->id,
-        'locale'  => FakeValue::LocaleFallback,
+        'locale'  => FakeLocale::Fallback,
 
-        FakeValue::ColumnTitle => $oldText,
+        FakeValue::Title => $oldText,
     ]);
 
     assertDatabaseHas(TestModelTranslation::class, [
         'item_id' => $model->id,
-        'locale'  => FakeValue::LocaleFallback,
+        'locale'  => FakeLocale::Fallback,
 
-        FakeValue::ColumnTitle => $newText,
+        FakeValue::Title => $newText,
     ]);
 });
 
@@ -82,49 +84,49 @@ test('custom locale', function () {
 
     $model = fakeModel(custom: $oldText);
 
-    expect($model->{FakeValue::ColumnTitle})->toBeNull();
-    expect($model->getTranslation(FakeValue::ColumnTitle))->toBeNull();
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleCustom))->toBe($oldText);
+    expect($model->{FakeValue::Title})->toBeNull();
+    expect($model->getTranslation(FakeValue::Title))->toBeNull();
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Custom))->toBe($oldText);
 
     // That one
-    $model->setTranslation(FakeValue::ColumnTitle, $newText, FakeValue::LocaleCustom);
+    $model->setTranslation(FakeValue::Title, $newText, FakeLocale::Custom);
     $model->save();
 
-    expect($model->{FakeValue::ColumnTitle})->toBeNull();
-    expect($model->getTranslation(FakeValue::ColumnTitle))->toBeNull();
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleCustom))->toBe($newText);
+    expect($model->{FakeValue::Title})->toBeNull();
+    expect($model->getTranslation(FakeValue::Title))->toBeNull();
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Custom))->toBe($newText);
 
     // Check database
     assertDatabaseMissing(TestModelTranslation::class, [
         'item_id' => $model->id,
-        'locale'  => FakeValue::LocaleCustom,
+        'locale'  => FakeLocale::Custom,
 
-        FakeValue::ColumnTitle => $oldText,
+        FakeValue::Title => $oldText,
     ]);
 
     assertDatabaseHas(TestModelTranslation::class, [
         'item_id' => $model->id,
-        'locale'  => FakeValue::LocaleCustom,
+        'locale'  => FakeLocale::Custom,
 
-        FakeValue::ColumnTitle => $newText,
+        FakeValue::Title => $newText,
     ]);
 });
 
 test('mixed symbols', function (mixed $source, mixed $saved) {
     $model = fakeModel();
 
-    $model->setTranslation(FakeValue::ColumnTitle, $source, FakeValue::LocaleMain);
+    $model->setTranslation(FakeValue::Title, $source, FakeLocale::Default);
     $model->save();
 
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleMain))->toBe($saved);
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Default))->toBe($saved);
 
     assertDatabaseHas(TestModelTranslation::class, [
         'item_id' => $model->id,
-        'locale'  => FakeValue::LocaleMain,
+        'locale'  => FakeLocale::Default,
 
-        FakeValue::ColumnTitle => $saved,
+        FakeValue::Title => $saved,
     ]);
-})->with('mixed-values');
+})->with('mixed values');
 
 test('array', function () {
     $oldText = fake()->paragraph;
@@ -132,25 +134,25 @@ test('array', function () {
 
     $model = fakeModel(main: $oldText);
 
-    expect($model->{FakeValue::ColumnTitle})->toBeString()->toBe($oldText);
-    expect($model->getTranslation(FakeValue::ColumnTitle))->toBe($oldText);
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleMain))->toBe($oldText);
+    expect($model->{FakeValue::Title})->toBeString()->toBe($oldText);
+    expect($model->getTranslation(FakeValue::Title))->toBe($oldText);
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Default))->toBe($oldText);
 
     // That one
     $model->update([
-        FakeValue::ColumnTitle => [
-            FakeValue::LocaleMain => $newText,
+        FakeValue::Title => [
+            FakeLocale::Default => $newText,
         ],
     ]);
 
-    expect($model->{FakeValue::ColumnTitle})->toBeString()->toBe($newText);
-    expect($model->getTranslation(FakeValue::ColumnTitle))->toBe($newText);
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleMain))->toBe($newText);
+    expect($model->{FakeValue::Title})->toBeString()->toBe($newText);
+    expect($model->getTranslation(FakeValue::Title))->toBe($newText);
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Default))->toBe($newText);
 
     assertDatabaseHas(TestModelTranslation::class, [
         'item_id' => $model->id,
-        'locale'  => FakeValue::LocaleMain,
+        'locale'  => FakeLocale::Default,
 
-        FakeValue::ColumnTitle => $newText,
+        FakeValue::Title => $newText,
     ]);
 });

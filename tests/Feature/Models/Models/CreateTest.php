@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-use App\Models\TestModel;
-use App\Models\TestModelTranslation;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Models\Exceptions\UnavailableLocaleException;
-use Tests\Constants\FakeValue;
-
 use Workbench\App\Constants\FakeLocale;
+use Workbench\App\Constants\FakeValue;
+use Workbench\App\Models\TestModel;
+use Workbench\App\Models\TestModelTranslation;
 
 use function Pest\Laravel\assertDatabaseEmpty;
 use function Pest\Laravel\assertDatabaseHas;
@@ -21,8 +20,8 @@ test('single', function () {
     $model = TestModel::create([
         'key' => FakeLocale::Incorrect1,
 
-        FakeValue::ColumnTitle       => 'qwerty 10',
-        FakeValue::ColumnDescription => 'qwerty 20',
+        FakeValue::Title       => 'qwerty 10',
+        FakeValue::Description => 'qwerty 20',
     ]);
 
     expect($model->key)->toBeString()->toBe(FakeLocale::Incorrect1);
@@ -39,8 +38,8 @@ test('single', function () {
 
         'locale' => Locale::French,
 
-        FakeValue::ColumnTitle       => 'qwerty 10',
-        FakeValue::ColumnDescription => 'qwerty 20',
+        FakeValue::Title       => 'qwerty 10',
+        FakeValue::Description => 'qwerty 20',
     ]);
 
     assertDatabaseHas(TestModelTranslation::class, [
@@ -48,8 +47,8 @@ test('single', function () {
 
         'locale' => Locale::German,
 
-        FakeValue::ColumnTitle       => null,
-        FakeValue::ColumnDescription => null,
+        FakeValue::Title       => null,
+        FakeValue::Description => null,
     ]);
 
     assertDatabaseMissing(TestModelTranslation::class, [
@@ -66,16 +65,16 @@ test('array', function () {
     $model = TestModel::create([
         'key' => FakeLocale::Incorrect1,
 
-        FakeValue::ColumnTitle => [
-            FakeValue::LocaleMain     => 'qwerty 10',
-            FakeValue::LocaleFallback => 'qwerty 11',
-            FakeValue::LocaleCustom   => 'qwerty 12',
+        FakeValue::Title => [
+            FakeLocale::Default  => 'qwerty 10',
+            FakeLocale::Fallback => 'qwerty 11',
+            FakeLocale::Custom   => 'qwerty 12',
         ],
 
-        FakeValue::ColumnDescription => [
-            FakeValue::LocaleMain     => 'qwerty 20',
-            FakeValue::LocaleFallback => 'qwerty 21',
-            FakeValue::LocaleCustom   => 'qwerty 22',
+        FakeValue::Description => [
+            FakeLocale::Default  => 'qwerty 20',
+            FakeLocale::Fallback => 'qwerty 21',
+            FakeLocale::Custom   => 'qwerty 22',
         ],
     ]);
 
@@ -91,28 +90,28 @@ test('array', function () {
     assertDatabaseHas(TestModelTranslation::class, [
         'item_id' => $model->id,
 
-        'locale' => FakeValue::LocaleMain,
+        'locale' => FakeLocale::Default,
 
-        FakeValue::ColumnTitle       => 'qwerty 10',
-        FakeValue::ColumnDescription => 'qwerty 20',
+        FakeValue::Title       => 'qwerty 10',
+        FakeValue::Description => 'qwerty 20',
     ]);
 
     assertDatabaseHas(TestModelTranslation::class, [
         'item_id' => $model->id,
 
-        'locale' => FakeValue::LocaleFallback,
+        'locale' => FakeLocale::Fallback,
 
-        FakeValue::ColumnTitle       => 'qwerty 11',
-        FakeValue::ColumnDescription => 'qwerty 21',
+        FakeValue::Title       => 'qwerty 11',
+        FakeValue::Description => 'qwerty 21',
     ]);
 
     assertDatabaseHas(TestModelTranslation::class, [
         'item_id' => $model->id,
 
-        'locale' => FakeValue::LocaleCustom,
+        'locale' => FakeLocale::Custom,
 
-        FakeValue::ColumnTitle       => 'qwerty 12',
-        FakeValue::ColumnDescription => 'qwerty 22',
+        FakeValue::Title       => 'qwerty 12',
+        FakeValue::Description => 'qwerty 22',
     ]);
 });
 
@@ -123,16 +122,16 @@ test('collection', function () {
     $model = TestModel::create([
         'key' => FakeLocale::Incorrect1,
 
-        FakeValue::ColumnTitle => collect([
-            FakeValue::LocaleMain     => 'qwerty 10',
-            FakeValue::LocaleFallback => 'qwerty 11',
-            FakeValue::LocaleCustom   => 'qwerty 12',
+        FakeValue::Title => collect([
+            FakeLocale::Default  => 'qwerty 10',
+            FakeLocale::Fallback => 'qwerty 11',
+            FakeLocale::Custom   => 'qwerty 12',
         ]),
 
-        FakeValue::ColumnDescription => collect([
-            FakeValue::LocaleMain     => 'qwerty 20',
-            FakeValue::LocaleFallback => 'qwerty 21',
-            FakeValue::LocaleCustom   => 'qwerty 22',
+        FakeValue::Description => collect([
+            FakeLocale::Default  => 'qwerty 20',
+            FakeLocale::Fallback => 'qwerty 21',
+            FakeLocale::Custom   => 'qwerty 22',
         ]),
     ]);
 
@@ -148,28 +147,28 @@ test('collection', function () {
     assertDatabaseHas(TestModelTranslation::class, [
         'item_id' => $model->id,
 
-        'locale' => FakeValue::LocaleMain,
+        'locale' => FakeLocale::Default,
 
-        FakeValue::ColumnTitle       => 'qwerty 10',
-        FakeValue::ColumnDescription => 'qwerty 20',
+        FakeValue::Title       => 'qwerty 10',
+        FakeValue::Description => 'qwerty 20',
     ]);
 
     assertDatabaseHas(TestModelTranslation::class, [
         'item_id' => $model->id,
 
-        'locale' => FakeValue::LocaleFallback,
+        'locale' => FakeLocale::Fallback,
 
-        FakeValue::ColumnTitle       => 'qwerty 11',
-        FakeValue::ColumnDescription => 'qwerty 21',
+        FakeValue::Title       => 'qwerty 11',
+        FakeValue::Description => 'qwerty 21',
     ]);
 
     assertDatabaseHas(TestModelTranslation::class, [
         'item_id' => $model->id,
 
-        'locale' => FakeValue::LocaleCustom,
+        'locale' => FakeLocale::Custom,
 
-        FakeValue::ColumnTitle       => 'qwerty 12',
-        FakeValue::ColumnDescription => 'qwerty 22',
+        FakeValue::Title       => 'qwerty 12',
+        FakeValue::Description => 'qwerty 22',
     ]);
 });
 
@@ -177,14 +176,14 @@ test('uninstalled', function () {
     TestModel::create([
         'key' => FakeLocale::Incorrect1,
 
-        FakeValue::ColumnTitle => [
-            FakeValue::LocaleMain        => 'qwerty 10',
-            FakeValue::LocaleUninstalled => 'qwerty 11',
+        FakeValue::Title => [
+            FakeLocale::Default     => 'qwerty 10',
+            FakeLocale::Uninstalled => 'qwerty 11',
         ],
 
-        FakeValue::ColumnDescription => [
-            FakeValue::LocaleMain        => 'qwerty 20',
-            FakeValue::LocaleUninstalled => 'qwerty 21',
+        FakeValue::Description => [
+            FakeLocale::Default     => 'qwerty 20',
+            FakeLocale::Uninstalled => 'qwerty 21',
         ],
     ]);
 })->throws(UnavailableLocaleException::class);
@@ -193,11 +192,11 @@ test('unknown', function () {
     TestModel::create([
         'key' => FakeLocale::Incorrect1,
 
-        FakeValue::ColumnTitle => [
+        FakeValue::Title => [
             'qwerty' => 'qwerty 10',
         ],
 
-        FakeValue::ColumnDescription => [
+        FakeValue::Description => [
             'qwerty' => 'qwerty 20',
         ],
     ]);

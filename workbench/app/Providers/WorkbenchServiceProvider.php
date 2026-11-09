@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\ParallelTesting;
 use Illuminate\Support\ServiceProvider;
 use LaravelLang\Config\Enums\Name;
 
-use function Orchestra\Testbench\workbench_path;
-
 class WorkbenchServiceProvider extends ServiceProvider
 {
     public function register(): void
@@ -47,7 +45,7 @@ class WorkbenchServiceProvider extends ServiceProvider
     {
         $this->app['config']->set(
             Name::Shared() . '.models.helpers',
-            workbench_path('vendor/_laravel_lang/' . $this->parallelToken())
+            $this->app->basePath('vendor/_laravel_lang/' . $this->parallelToken())
         );
     }
 

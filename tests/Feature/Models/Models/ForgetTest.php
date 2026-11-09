@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
-use App\Models\TestModel;
-use App\Models\TestModelTranslation;
 use LaravelLang\Models\Exceptions\UnavailableLocaleException;
-use Tests\Constants\FakeValue;
 
 use Workbench\App\Constants\FakeLocale;
+
+use Workbench\App\Constants\FakeValue;
+use Workbench\App\Models\TestModel;
+
+use Workbench\App\Models\TestModelTranslation;
 
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
@@ -16,16 +18,16 @@ beforeEach(
     fn () => TestModel::create([
         'key' => fake()->word,
 
-        FakeValue::ColumnTitle => [
-            FakeValue::LocaleMain     => 'qwerty 10',
-            FakeValue::LocaleFallback => 'qwerty 11',
-            FakeValue::LocaleCustom   => 'qwerty 12',
+        FakeValue::Title => [
+            FakeLocale::Default  => 'qwerty 10',
+            FakeLocale::Fallback => 'qwerty 11',
+            FakeLocale::Custom   => 'qwerty 12',
         ],
 
-        FakeValue::ColumnDescription => [
-            FakeValue::LocaleMain     => 'qwerty 20',
-            FakeValue::LocaleFallback => 'qwerty 21',
-            FakeValue::LocaleCustom   => 'qwerty 22',
+        FakeValue::Description => [
+            FakeLocale::Default  => 'qwerty 20',
+            FakeLocale::Fallback => 'qwerty 21',
+            FakeLocale::Custom   => 'qwerty 22',
         ],
     ])
 );
@@ -33,71 +35,71 @@ beforeEach(
 test('locale', function () {
     $model = findFakeModel();
 
-    expect($model->hasTranslated(FakeValue::ColumnTitle, FakeValue::LocaleMain))->toBeTrue();
-    expect($model->hasTranslated(FakeValue::ColumnTitle, FakeValue::LocaleFallback))->toBeTrue();
-    expect($model->hasTranslated(FakeValue::ColumnDescription, FakeValue::LocaleMain))->toBeTrue();
-    expect($model->hasTranslated(FakeValue::ColumnDescription, FakeValue::LocaleFallback))->toBeTrue();
+    expect($model->hasTranslated(FakeValue::Title, FakeLocale::Default))->toBeTrue();
+    expect($model->hasTranslated(FakeValue::Title, FakeLocale::Fallback))->toBeTrue();
+    expect($model->hasTranslated(FakeValue::Description, FakeLocale::Default))->toBeTrue();
+    expect($model->hasTranslated(FakeValue::Description, FakeLocale::Fallback))->toBeTrue();
 
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleMain))->toBe('qwerty 10');
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleFallback))->toBe('qwerty 11');
-    expect($model->getTranslation(FakeValue::ColumnDescription, FakeValue::LocaleMain))->toBe('qwerty 20');
-    expect($model->getTranslation(FakeValue::ColumnDescription, FakeValue::LocaleFallback))->toBe('qwerty 21');
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Default))->toBe('qwerty 10');
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Fallback))->toBe('qwerty 11');
+    expect($model->getTranslation(FakeValue::Description, FakeLocale::Default))->toBe('qwerty 20');
+    expect($model->getTranslation(FakeValue::Description, FakeLocale::Fallback))->toBe('qwerty 21');
 
-    $model->forgetTranslation(FakeValue::LocaleMain);
+    $model->forgetTranslation(FakeLocale::Default);
 
-    expect($model->hasTranslated(FakeValue::ColumnTitle, FakeValue::LocaleMain))->toBeFalse();
-    expect($model->hasTranslated(FakeValue::ColumnTitle, FakeValue::LocaleFallback))->toBeTrue();
-    expect($model->hasTranslated(FakeValue::ColumnDescription, FakeValue::LocaleMain))->toBeFalse();
-    expect($model->hasTranslated(FakeValue::ColumnDescription, FakeValue::LocaleFallback))->toBeTrue();
+    expect($model->hasTranslated(FakeValue::Title, FakeLocale::Default))->toBeFalse();
+    expect($model->hasTranslated(FakeValue::Title, FakeLocale::Fallback))->toBeTrue();
+    expect($model->hasTranslated(FakeValue::Description, FakeLocale::Default))->toBeFalse();
+    expect($model->hasTranslated(FakeValue::Description, FakeLocale::Fallback))->toBeTrue();
 
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleMain))->toBeNull();
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleFallback))->toBe('qwerty 11');
-    expect($model->getTranslation(FakeValue::ColumnDescription, FakeValue::LocaleMain))->toBeNull();
-    expect($model->getTranslation(FakeValue::ColumnDescription, FakeValue::LocaleFallback))->toBe('qwerty 21');
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Default))->toBeNull();
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Fallback))->toBe('qwerty 11');
+    expect($model->getTranslation(FakeValue::Description, FakeLocale::Default))->toBeNull();
+    expect($model->getTranslation(FakeValue::Description, FakeLocale::Fallback))->toBe('qwerty 21');
 
     assertDatabaseMissing(TestModelTranslation::class, [
         'item_id' => $model->id,
-        'locale'  => FakeValue::LocaleMain,
+        'locale'  => FakeLocale::Default,
     ]);
 
     assertDatabaseHas(TestModelTranslation::class, [
         'item_id' => $model->id,
-        'locale'  => FakeValue::LocaleFallback,
+        'locale'  => FakeLocale::Fallback,
     ]);
 });
 
 test('all', function () {
     $model = findFakeModel();
 
-    expect($model->hasTranslated(FakeValue::ColumnTitle, FakeValue::LocaleMain))->toBeTrue();
-    expect($model->hasTranslated(FakeValue::ColumnTitle, FakeValue::LocaleFallback))->toBeTrue();
-    expect($model->hasTranslated(FakeValue::ColumnTitle, FakeValue::LocaleCustom))->toBeTrue();
-    expect($model->hasTranslated(FakeValue::ColumnDescription, FakeValue::LocaleMain))->toBeTrue();
-    expect($model->hasTranslated(FakeValue::ColumnDescription, FakeValue::LocaleFallback))->toBeTrue();
-    expect($model->hasTranslated(FakeValue::ColumnDescription, FakeValue::LocaleCustom))->toBeTrue();
+    expect($model->hasTranslated(FakeValue::Title, FakeLocale::Default))->toBeTrue();
+    expect($model->hasTranslated(FakeValue::Title, FakeLocale::Fallback))->toBeTrue();
+    expect($model->hasTranslated(FakeValue::Title, FakeLocale::Custom))->toBeTrue();
+    expect($model->hasTranslated(FakeValue::Description, FakeLocale::Default))->toBeTrue();
+    expect($model->hasTranslated(FakeValue::Description, FakeLocale::Fallback))->toBeTrue();
+    expect($model->hasTranslated(FakeValue::Description, FakeLocale::Custom))->toBeTrue();
 
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleMain))->toBe('qwerty 10');
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleFallback))->toBe('qwerty 11');
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleCustom))->toBe('qwerty 12');
-    expect($model->getTranslation(FakeValue::ColumnDescription, FakeValue::LocaleMain))->toBe('qwerty 20');
-    expect($model->getTranslation(FakeValue::ColumnDescription, FakeValue::LocaleFallback))->toBe('qwerty 21');
-    expect($model->getTranslation(FakeValue::ColumnDescription, FakeValue::LocaleCustom))->toBe('qwerty 22');
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Default))->toBe('qwerty 10');
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Fallback))->toBe('qwerty 11');
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Custom))->toBe('qwerty 12');
+    expect($model->getTranslation(FakeValue::Description, FakeLocale::Default))->toBe('qwerty 20');
+    expect($model->getTranslation(FakeValue::Description, FakeLocale::Fallback))->toBe('qwerty 21');
+    expect($model->getTranslation(FakeValue::Description, FakeLocale::Custom))->toBe('qwerty 22');
 
     $model->forgetAllTranslations();
 
-    expect($model->hasTranslated(FakeValue::ColumnTitle, FakeValue::LocaleMain))->toBeFalse();
-    expect($model->hasTranslated(FakeValue::ColumnTitle, FakeValue::LocaleFallback))->toBeFalse();
-    expect($model->hasTranslated(FakeValue::ColumnTitle, FakeValue::LocaleCustom))->toBeFalse();
-    expect($model->hasTranslated(FakeValue::ColumnDescription, FakeValue::LocaleMain))->toBeFalse();
-    expect($model->hasTranslated(FakeValue::ColumnDescription, FakeValue::LocaleFallback))->toBeFalse();
-    expect($model->hasTranslated(FakeValue::ColumnDescription, FakeValue::LocaleCustom))->toBeFalse();
+    expect($model->hasTranslated(FakeValue::Title, FakeLocale::Default))->toBeFalse();
+    expect($model->hasTranslated(FakeValue::Title, FakeLocale::Fallback))->toBeFalse();
+    expect($model->hasTranslated(FakeValue::Title, FakeLocale::Custom))->toBeFalse();
+    expect($model->hasTranslated(FakeValue::Description, FakeLocale::Default))->toBeFalse();
+    expect($model->hasTranslated(FakeValue::Description, FakeLocale::Fallback))->toBeFalse();
+    expect($model->hasTranslated(FakeValue::Description, FakeLocale::Custom))->toBeFalse();
 
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleMain))->toBeNull();
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleFallback))->toBeNull();
-    expect($model->getTranslation(FakeValue::ColumnTitle, FakeValue::LocaleCustom))->toBeNull();
-    expect($model->getTranslation(FakeValue::ColumnDescription, FakeValue::LocaleMain))->toBeNull();
-    expect($model->getTranslation(FakeValue::ColumnDescription, FakeValue::LocaleFallback))->toBeNull();
-    expect($model->getTranslation(FakeValue::ColumnDescription, FakeValue::LocaleCustom))->toBeNull();
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Default))->toBeNull();
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Fallback))->toBeNull();
+    expect($model->getTranslation(FakeValue::Title, FakeLocale::Custom))->toBeNull();
+    expect($model->getTranslation(FakeValue::Description, FakeLocale::Default))->toBeNull();
+    expect($model->getTranslation(FakeValue::Description, FakeLocale::Fallback))->toBeNull();
+    expect($model->getTranslation(FakeValue::Description, FakeLocale::Custom))->toBeNull();
 
     assertDatabaseMissing(TestModelTranslation::class, [
         'item_id' => $model->id,
@@ -107,5 +109,5 @@ test('all', function () {
 test('non-translatable locale', function () {
     $model = fakeModel();
 
-    $model->forgetTranslation(FakeValue::ColumnTitle, FakeLocale::Incorrect1);
+    $model->forgetTranslation(FakeLocale::Incorrect1);
 })->throws(UnavailableLocaleException::class);

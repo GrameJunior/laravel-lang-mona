@@ -28,9 +28,7 @@ dataset('locales filter', [
 ]);
 
 dataset('mixed values', [
-    'filled string'     => [
-        FakeLocale::Incorrect1, FakeLocale::Incorrect1,
-    ],
+    'filled string'     => [FakeLocale::Incorrect1, FakeLocale::Incorrect1],
     'empty string'      => ['', null],
     'string with space' => [' ', null],
 

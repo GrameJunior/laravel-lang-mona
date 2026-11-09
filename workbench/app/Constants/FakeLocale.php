@@ -11,6 +11,6 @@ class FakeLocale
     public const string DefaultAlias = 'fr_alias';
     public const string Fallback     = 'de';
     public const string Incorrect1   = 'foo';
-    public const string Incorrect2   = 'bar';
-    public const string Swedish      = 'sv';
+    public const string Incorrect2  = 'bar';
+    public const string Uninstalled = 'sv';
 }
