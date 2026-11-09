@@ -8,7 +8,7 @@
     - [x] JsonFallback
     - [x] Locales
     - [x] Models
-    - [ ] Routes
+    - [x] Routes
     - [ ] Publisher
 - [x] Заменить тесты на Pest.
 - [ ] Заменить `laravel_lang.yaml` на json вариант и актуализировать файлы:

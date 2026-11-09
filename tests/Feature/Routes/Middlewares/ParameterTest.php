@@ -6,22 +6,26 @@ use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\getJson;
 
-test('main locale', function (string $locale) {
+test('main locale', function (string $locale, string $translation) {
+    setCustomLocale();
+
     $foo = 'test';
 
-    getJson(route('via.parameter', compact('foo', 'locale')))
+    getJson(route('via.parameter', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
-        ->assertJsonPath($foo, FakeTranslation::French);
+        ->assertJsonPath($foo, $translation);
 
     assertEventDispatched();
-})->with('main locales');
+})->with('direct locales');
 
 test('aliased locale', function (string $locale) {
+    setCustomLocale();
+
     $foo = 'test';
 
-    getJson(route('via.parameter', compact('foo', 'locale')))
+    getJson(route('via.parameter', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
-        ->assertJsonPath($foo, FakeTranslation::German);
+        ->assertJsonPath($foo, FakeTranslation::French);
 
     assertEventDispatched();
 })->with('aliased locales');
@@ -29,7 +33,7 @@ test('aliased locale', function (string $locale) {
 test('empty locale', function (int|string|null $locale) {
     $foo = 'test';
 
-    getJson(route('via.parameter', compact('foo', 'locale')))
+    getJson(route('via.parameter', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
 
@@ -39,19 +43,19 @@ test('empty locale', function (int|string|null $locale) {
 test('uninstalled locale', function (string $locale) {
     $foo = 'test';
 
-    getJson(route('via.parameter', compact('foo', 'locale')))
+    getJson(route('via.parameter', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
 
-    assertEventDispatched();
+    assertEventNotDispatched();
 })->with('uninstalled locales');
 
 test('unknown locale', function (int|string $locale) {
     $foo = 'test';
 
-    getJson(route('via.parameter', compact('foo', 'locale')))
+    getJson(route('via.parameter', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
 
-    assertEventDispatched();
+    assertEventNotDispatched();
 })->with('unknown locales');

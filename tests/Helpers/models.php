@@ -40,7 +40,7 @@ function findFakeTestModel(): TestModel
 
 function fakeUser(int|string|null $locale = null): User
 {
-    return User::create([
+    return User::factory()->createOne([
         'locale' => $locale,
     ]);
 }

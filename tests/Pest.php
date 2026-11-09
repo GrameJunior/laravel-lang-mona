@@ -21,5 +21,5 @@ pest()
     ->beforeEach(function () {
         Event::fake();
 
-        withHeader('Accept-Language', 'zxc');
+        withHeader('Accept-Language', 'qwerty');
     });

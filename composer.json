@@ -49,6 +49,7 @@
     },
     "require-dev": {
         "archtechx/enums": "^1.1",
+        "codezero/browser-locale": "^3.4",
         "composer/class-map-generator": "^1.9",
         "dragon-code/benchmark": "^4.6",
         "dragon-code/support": "^6.17",

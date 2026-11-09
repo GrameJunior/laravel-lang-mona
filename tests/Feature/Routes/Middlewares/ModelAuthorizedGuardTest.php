@@ -2,31 +2,34 @@
 
 declare(strict_types=1);
 
+use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\getJson;
 
 test('main locale', function () {
-    actingAs(fakeUser(), 'foo');
+    actingAs(fakeUser(FakeLocale::Fallback));
 
     $foo = 'test';
 
     getJson(route('via.model.guard', ['key' => $foo]))
         ->assertSuccessful()
-        ->assertJsonPath($foo, FakeTranslation::French);
+        ->assertJsonPath($foo, FakeTranslation::German);
 
-    assertEventNotDispatched();
+    assertEventDispatched();
 });
 
 test('aliased locale', function (string $locale) {
     actingAs(fakeUser($locale));
 
+    setCustomLocale();
+
     $foo = 'test';
 
-    getJson(route('via.model.guard', compact('foo', 'locale')))
+    getJson(route('via.model.guard', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
-        ->assertJsonPath($foo, FakeTranslation::German);
+        ->assertJsonPath($foo, FakeTranslation::French);
 
     assertEventDispatched();
 })->with('aliased locales');
@@ -36,7 +39,7 @@ test('empty locale', function (int|string|null $locale) {
 
     $foo = 'test';
 
-    getJson(route('via.model.guard', compact('foo', 'locale')))
+    getJson(route('via.model.guard', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
 
@@ -48,11 +51,11 @@ test('uninstalled locale', function (string $locale) {
 
     $foo = 'test';
 
-    getJson(route('via.model.guard', compact('foo', 'locale')))
+    getJson(route('via.model.guard', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
 
-    assertEventDispatched();
+    assertEventNotDispatched();
 })->with('uninstalled locales');
 
 test('unknown locale', function (int|string $locale) {
@@ -60,9 +63,9 @@ test('unknown locale', function (int|string $locale) {
 
     $foo = 'test';
 
-    getJson(route('via.model.guard', compact('foo', 'locale')))
+    getJson(route('via.model.guard', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
 
-    assertEventDispatched();
+    assertEventNotDispatched();
 })->with('unknown locales');

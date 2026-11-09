@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use LaravelLang\LocaleList\Locale;
 use Workbench\App\Constants\FakeLocale;
+use Workbench\App\Constants\FakeTranslation;
 
 dataset('incorrect locales', [
     FakeLocale::Incorrect1,
@@ -14,8 +15,9 @@ dataset('incorrect locales', [
 
 dataset('correct locales', array_map(static fn (Locale $locale): array => [$locale], Locale::cases()));
 
-dataset('main locales', [
-    FakeLocale::Fallback,
+dataset('direct locales', [
+    FakeLocale::Default  => [FakeLocale::Default, FakeTranslation::French],
+    FakeLocale::Fallback => [FakeLocale::Fallback, FakeTranslation::German],
 ]);
 
 dataset('aliased locales', [
@@ -33,6 +35,5 @@ dataset('unknown locales', [
     'foo',
     'bar',
     'qwerty',
-    'en_US',
     123,
 ]);

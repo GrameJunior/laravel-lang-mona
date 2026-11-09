@@ -8,26 +8,30 @@ use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\withCredentials;
 
-test('main locale', function (string $locale) {
+test('direct locale', function (string $locale, string $translated) {
     $foo = 'test';
+
+    setCustomLocale();
+
+    withCredentials()
+        ->withCookie(Config::shared()->routes->names->cookie, $locale)
+        ->getJson(route('via.cookie', ['key' => $foo]))
+        ->assertSuccessful()
+        ->assertJsonPath($foo, $translated);
+
+    assertEventDispatched();
+})->with('direct locales');
+
+test('aliased locale', function (string $locale) {
+    $foo = 'test';
+
+    setCustomLocale();
 
     withCredentials()
         ->withCookie(Config::shared()->routes->names->cookie, $locale)
         ->getJson(route('via.cookie', ['key' => $foo]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
-
-    assertEventDispatched();
-})->with('main locales');
-
-test('aliased locale', function (string $locale) {
-    $foo = 'test';
-
-    withCredentials()
-        ->withCookie(Config::shared()->routes->names->cookie, $locale)
-        ->getJson(route('via.cookie', ['key' => $foo]))
-        ->assertSuccessful()
-        ->assertJsonPath($foo, FakeTranslation::German);
 
     assertEventDispatched();
 })->with('aliased locales');
@@ -53,7 +57,7 @@ test('uninstalled locale', function (string $locale) {
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
 
-    assertEventDispatched();
+    assertEventNotDispatched();
 })->with('uninstalled locales');
 
 test('unknown locale', function (int|string $locale) {
@@ -65,5 +69,5 @@ test('unknown locale', function (int|string $locale) {
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
 
-    assertEventDispatched();
+    assertEventNotDispatched();
 })->with('unknown locales');

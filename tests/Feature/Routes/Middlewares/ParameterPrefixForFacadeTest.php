@@ -22,32 +22,34 @@ test('main locale with enabled redirect', function (string $locale) {
 
     $foo = 'test';
 
-    getJson(route(RouteName::prefix() . 'via.group.facade', compact('foo', 'locale')))
-        ->assertRedirectToRoute('via.group.facade', [
-            'foo' => $foo,
-        ]);
+    getJson(route(RouteName::prefix() . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
+        ->assertRedirectToRoute('via.group.facade', ['key' => $foo]);
 
     assertEventNotDispatched();
-})->with('main locales');
+})->with('aliased locales');
 
-test('main locale with disabled redirect', function (string $locale) {
+test('main locale with disabled redirect', function (string $locale, string $translation) {
     config()->set(Name::Shared() . '.routes.redirect_default', false);
+
+    setCustomLocale();
 
     $foo = 'test';
 
-    getJson(route(RouteName::prefix() . 'via.group.facade', compact('foo', 'locale')))
+    getJson(route(RouteName::prefix() . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
-        ->assertJsonPath($foo, FakeTranslation::French);
+        ->assertJsonPath($foo, $translation);
 
     assertEventDispatched();
-})->with('main locales');
+})->with('direct locales');
 
 test('aliased locale', function (string $locale) {
     $foo = 'test';
 
-    getJson(route(RouteName::prefix() . 'via.group.facade', compact('foo', 'locale')))
+    setCustomLocale();
+
+    getJson(route(RouteName::prefix() . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
-        ->assertJsonPath($foo, FakeTranslation::German);
+        ->assertJsonPath($foo, FakeTranslation::French);
 
     assertEventDispatched();
 })->with('aliased locales');
@@ -55,10 +57,10 @@ test('aliased locale', function (string $locale) {
 test('uninstalled locale', function (string $locale) {
     $foo = 'test';
 
-    getJson(route(RouteName::prefix() . 'via.group.facade', compact('foo', 'locale')))
-        ->assertRedirectToRoute('via.group.facade', [
-            'foo' => $foo,
-        ]);
+    setCustomLocale();
+
+    getJson(route(RouteName::prefix() . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
+        ->assertRedirectToRoute('via.group.facade', ['key' => $foo]);
 
     assertEventNotDispatched();
 })->with('uninstalled locales');
@@ -66,10 +68,10 @@ test('uninstalled locale', function (string $locale) {
 test('unknown locale', function (int|string $locale) {
     $foo = 'test';
 
-    getJson(route(RouteName::prefix() . 'via.group.facade', compact('foo', 'locale')))
-        ->assertRedirectToRoute('via.group.facade', [
-            'foo' => $foo,
-        ]);
+    setCustomLocale();
+
+    getJson(route(RouteName::prefix() . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
+        ->assertRedirectToRoute('via.group.facade', ['key' => $foo]);
 
     assertEventNotDispatched();
 })->with('unknown locales');
