@@ -24,7 +24,7 @@ use function Pest\Laravel\assertDatabaseHas;
 test('main locale', function () {
     $text = fake()->paragraph;
 
-    $model = fakeModel(main: $text);
+    $model = fakeTestModel(main: $text);
 
     expect($model->title)->toBeString()->toBe($text);
     expect($model->description)->toBeNull();
@@ -38,7 +38,7 @@ test('main locale', function () {
 test('fallback locale', function () {
     $text = fake()->paragraph;
 
-    $model = fakeModel(fallback: $text);
+    $model = fakeTestModel(fallback: $text);
 
     expect($model->title)->toBeString()->toBe($text);
 
@@ -51,7 +51,7 @@ test('fallback locale', function () {
 test('custom locale', function () {
     $text = fake()->paragraph;
 
-    $model = fakeModel(custom: $text);
+    $model = fakeTestModel(custom: $text);
 
     expect($model->title)->toBeNull();
 
@@ -76,7 +76,7 @@ test('aliased locale', function () {
 
     $text = fake()->paragraph;
 
-    $model = fakeModel();
+    $model = fakeTestModel();
 
     $model->setTranslation(FakeValue::Title, $text, 'zh');
     $model->save();
@@ -94,13 +94,13 @@ test('aliased locale', function () {
 });
 
 test('uninstalled', function () {
-    $model = fakeModel();
+    $model = fakeTestModel();
 
     $model->getTranslation(FakeValue::Title, FakeLocale::Uninstalled);
 })->throws(UnavailableLocaleException::class);
 
 test('without translations model', function () {
-    $model = fakeModel();
+    $model = fakeTestModel();
 
     assertDatabaseEmpty(TestModelTranslation::class);
 
@@ -128,8 +128,8 @@ test('lazy loading', function (bool $enabled, int $count, array $locales) {
         }
     });
 
-    $model1 = fakeModel(main: FakeLocale::Incorrect1);
-    $model2 = fakeModel(main: 'Bar');
+    $model1 = fakeTestModel(main: FakeLocale::Incorrect1);
+    $model2 = fakeTestModel(main: 'Bar');
 
     $model1->load('translations');
     $model2->load('translations');
@@ -153,13 +153,13 @@ test('lazy loading', function (bool $enabled, int $count, array $locales) {
 test('non-translatable attribute', function () {
     $key = fake()->word;
 
-    $model = fakeModel($key);
+    $model = fakeTestModel($key);
 
     expect($model->key)->toBeString()->toBe($key);
 });
 
 test('not translatable attribute', function () {
-    $model = fakeModel();
+    $model = fakeTestModel();
 
     $model->getTranslation(FakeLocale::Incorrect1);
 })->throws(AttributeIsNotTranslatableException::class);

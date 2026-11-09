@@ -15,7 +15,7 @@ use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
 
 test('soft delete', function () {
-    $model = fakeModel(main: FakeLocale::Incorrect1);
+    $model = fakeTestModel(main: FakeLocale::Incorrect1);
 
     assertDatabaseHas(TestModel::class, [
         'id'         => $model->id,
@@ -45,7 +45,7 @@ test('soft delete', function () {
 });
 
 test('force delete', function () {
-    $model = fakeModel(main: FakeLocale::Incorrect1);
+    $model = fakeTestModel(main: FakeLocale::Incorrect1);
 
     assertDatabaseHas(TestModel::class, [
         'id'         => $model->id,
@@ -71,7 +71,7 @@ test('force delete', function () {
 });
 
 test('restore', function () {
-    $model = fakeModel(main: FakeLocale::Incorrect1);
+    $model = fakeTestModel(main: FakeLocale::Incorrect1);
 
     assertDatabaseHas(TestModel::class, [
         'id'         => $model->id,

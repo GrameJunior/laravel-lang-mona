@@ -3,6 +3,7 @@ laravel: '@testbench'
 providers:
     - LaravelLang\Config\ServiceProvider
     - LaravelLang\Models\ServiceProvider
+    - LaravelLang\Routes\ServiceProvider
     - Spatie\LaravelData\LaravelDataServiceProvider
     - Workbench\App\Providers\WorkbenchServiceProvider
 
@@ -17,8 +18,8 @@ workbench:
     install: true
     health: false
     discovers:
-        api: true
-        web: false
+        api: false
+        web: true
         commands: true
         components: false
         config: true

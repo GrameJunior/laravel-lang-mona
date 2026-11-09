@@ -8,7 +8,7 @@ use Workbench\App\Constants\FakeLocale;
 test('non-translatable attribute', function () {
     $key = fake()->word;
 
-    $model = fakeModel();
+    $model = fakeTestModel();
 
     $model->key = $key;
     $model->save();
@@ -17,7 +17,7 @@ test('non-translatable attribute', function () {
 });
 
 test('not translatable attribute', function () {
-    $model = fakeModel();
+    $model = fakeTestModel();
 
     $model->setTranslation(
         FakeLocale::Incorrect1,

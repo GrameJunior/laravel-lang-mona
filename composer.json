@@ -49,6 +49,7 @@
     },
     "require-dev": {
         "archtechx/enums": "^1.1",
+        "codezero/browser-locale": "^3.4",
         "composer/class-map-generator": "^1.9",
         "dragon-code/benchmark": "^4.6",
         "dragon-code/support": "^6.17",
@@ -82,7 +83,10 @@
             "Workbench\\App\\": "workbench/app/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
-        }
+        },
+        "files": [
+            "src/Routes/helpers.php"
+        ]
     },
     "config": {
         "allow-plugins": {

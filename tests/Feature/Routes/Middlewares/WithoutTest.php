@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-use Tests\Constants\LocaleValue;
+use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\getJson;
 
 test('without locale passing', function () {
     $foo = 'test';
 
-    getJson(route('clean', compact('foo')))
+    getJson(route('clean', ['key' => $foo]))
         ->assertSuccessful()
-        ->assertJsonPath($foo, LocaleValue::TranslationFrench);
+        ->assertJsonPath($foo, FakeTranslation::French);
 
     assertEventNotDispatched();
 });

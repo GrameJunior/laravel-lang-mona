@@ -16,7 +16,7 @@ test('default locale', function () {
     $oldText = fake()->paragraph;
     $newText = fake()->paragraph;
 
-    $model = fakeModel(main: $oldText);
+    $model = fakeTestModel(main: $oldText);
 
     $model->setTranslation(FakeValue::Title, $newText);
 
@@ -33,7 +33,7 @@ test('main locale', function () {
     $oldText = fake()->paragraph;
     $newText = fake()->paragraph;
 
-    $model = fakeModel(main: $oldText);
+    $model = fakeTestModel(main: $oldText);
 
     $model->setTranslation(FakeValue::Title, $newText, FakeLocale::Default);
 
@@ -50,7 +50,7 @@ test('fallback locale', function () {
     $oldText = fake()->paragraph;
     $newText = fake()->paragraph;
 
-    $model = fakeModel(fallback: $oldText);
+    $model = fakeTestModel(fallback: $oldText);
 
     $model->setTranslation(FakeValue::Title, $newText, FakeLocale::Fallback);
 
@@ -67,7 +67,7 @@ test('custom locale', function () {
     $oldText = fake()->paragraph;
     $newText = fake()->paragraph;
 
-    $model = fakeModel(custom: $oldText);
+    $model = fakeTestModel(custom: $oldText);
 
     $model->setTranslation(FakeValue::Title, $newText, FakeLocale::Custom);
 

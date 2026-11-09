@@ -8,7 +8,7 @@
     - [x] JsonFallback
     - [x] Locales
     - [x] Models
-    - [ ] Routes
+    - [x] Routes
     - [ ] Publisher
 - [x] Заменить тесты на Pest.
 - [ ] Заменить `laravel_lang.yaml` на json вариант и актуализировать файлы:
@@ -47,6 +47,7 @@
     - [ ] Routes
     - [ ] Starter Kits
     - [ ] Translations Template
+- [ ] Добавить архитектурные тесты
 - [ ] Применить код-стайл (Pint)
 - [ ] Применить quality code (Rector)
 - [ ] Применить стат анализ (PhpStan)

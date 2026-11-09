@@ -33,7 +33,7 @@ beforeEach(
 );
 
 test('locale', function () {
-    $model = findFakeModel();
+    $model = findFakeTestModel();
 
     expect($model->hasTranslated(FakeValue::Title, FakeLocale::Default))->toBeTrue();
     expect($model->hasTranslated(FakeValue::Title, FakeLocale::Fallback))->toBeTrue();
@@ -69,7 +69,7 @@ test('locale', function () {
 });
 
 test('all', function () {
-    $model = findFakeModel();
+    $model = findFakeTestModel();
 
     expect($model->hasTranslated(FakeValue::Title, FakeLocale::Default))->toBeTrue();
     expect($model->hasTranslated(FakeValue::Title, FakeLocale::Fallback))->toBeTrue();
@@ -107,7 +107,7 @@ test('all', function () {
 });
 
 test('non-translatable locale', function () {
-    $model = fakeModel();
+    $model = fakeTestModel();
 
     $model->forgetTranslation(FakeLocale::Incorrect1);
 })->throws(UnavailableLocaleException::class);

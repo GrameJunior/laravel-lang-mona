@@ -26,7 +26,7 @@ beforeEach(fn () => TestModel::create([
 test('forget locale', function () {
     Event::fake(TranslationHasBeenForgetEvent::class);
 
-    $model = findFakeModel();
+    $model = findFakeTestModel();
 
     $model->forgetTranslation(FakeLocale::Default);
 

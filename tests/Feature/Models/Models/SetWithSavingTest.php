@@ -14,7 +14,7 @@ test('main locale', function () {
     $oldText = fake()->paragraph;
     $newText = fake()->paragraph;
 
-    $model = fakeModel(main: $oldText);
+    $model = fakeTestModel(main: $oldText);
 
     expect($model->{FakeValue::Title})->toBeString()->toBe($oldText);
     expect($model->getTranslation(FakeValue::Title))->toBe($oldText);
@@ -48,7 +48,7 @@ test('fallback locale', function () {
     $oldText = fake()->paragraph;
     $newText = fake()->paragraph;
 
-    $model = fakeModel(fallback: $oldText);
+    $model = fakeTestModel(fallback: $oldText);
 
     expect($model->{FakeValue::Title})->toBeString()->toBe($oldText);
     expect($model->getTranslation(FakeValue::Title))->toBe($oldText);
@@ -82,7 +82,7 @@ test('custom locale', function () {
     $oldText = fake()->paragraph;
     $newText = fake()->paragraph;
 
-    $model = fakeModel(custom: $oldText);
+    $model = fakeTestModel(custom: $oldText);
 
     expect($model->{FakeValue::Title})->toBeNull();
     expect($model->getTranslation(FakeValue::Title))->toBeNull();
@@ -113,7 +113,7 @@ test('custom locale', function () {
 });
 
 test('mixed symbols', function (mixed $source, mixed $saved) {
-    $model = fakeModel();
+    $model = fakeTestModel();
 
     $model->setTranslation(FakeValue::Title, $source, FakeLocale::Default);
     $model->save();
@@ -132,7 +132,7 @@ test('array', function () {
     $oldText = fake()->paragraph;
     $newText = fake()->paragraph;
 
-    $model = fakeModel(main: $oldText);
+    $model = fakeTestModel(main: $oldText);
 
     expect($model->{FakeValue::Title})->toBeString()->toBe($oldText);
     expect($model->getTranslation(FakeValue::Title))->toBe($oldText);

@@ -27,7 +27,7 @@ beforeEach(function () {
 });
 
 test('all', function () {
-    $model = findFakeModel();
+    $model = findFakeTestModel();
 
     expect($model->hasTranslated(FakeValue::Title, FakeLocale::Default))->toBeTrue();
     expect($model->hasTranslated(FakeValue::Title, FakeLocale::Fallback))->toBeTrue();

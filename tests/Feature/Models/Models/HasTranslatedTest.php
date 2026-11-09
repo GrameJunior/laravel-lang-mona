@@ -6,7 +6,7 @@ use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Constants\FakeValue;
 
 test('main', function () {
-    $model = fakeModel(
+    $model = fakeTestModel(
         main: fake()->paragraph
     );
 
@@ -16,7 +16,7 @@ test('main', function () {
 });
 
 test('fallback', function () {
-    $model = fakeModel(
+    $model = fakeTestModel(
         fallback: fake()->paragraph
     );
 
@@ -26,7 +26,7 @@ test('fallback', function () {
 });
 
 test('custom', function () {
-    $model = fakeModel(
+    $model = fakeTestModel(
         custom: fake()->paragraph
     );
 
