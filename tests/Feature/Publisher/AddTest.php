@@ -12,8 +12,6 @@ test('add locale', function (bool $inline, string $foo, string $bar, string $baz
 
     $locale = Locale::Swedish->value;
 
-    // Установить директорию фейкового плагина
-
     expect(__('auth.foo'))->toBe('auth.foo');
     expect(__('bar.bar'))->toBe('bar.bar');
     expect(__('baz'))->toBe('baz');
