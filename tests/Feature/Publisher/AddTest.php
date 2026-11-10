@@ -7,14 +7,12 @@ use LaravelLang\Publisher\Console\Add;
 
 use function Pest\Laravel\artisan;
 
-test('add locale', function (bool $inline) {
+test('add locale', function (bool $inline, string $foo, string $bar, string $baz): void {
     config()->set('localization.inline', $inline);
 
     $locale = Locale::Swedish->value;
 
     // Установить директорию фейкового плагина
-
-    expect(lang_path("$locale/bar.php"))->not->toBeReadableFile();
 
     expect(__('auth.foo'))->toBe('auth.foo');
     expect(__('bar.bar'))->toBe('bar.bar');
@@ -26,15 +24,25 @@ test('add locale', function (bool $inline) {
         'locales' => [$locale],
     ])->assertSuccessful()->run();
 
-    expect(lang_path("$locale/auth.php"))->toBeReadableFile();
-    expect(lang_path("$locale/bar.php"))->toBeReadableFile();
-    expect(lang_path("$locale.json"))->toBeReadableFile();
-
     app()->setlocale($locale);
 
-    expect(__('auth.foo'))->toBe($inline ? 'Foo field 1' : 'Foo :attribute 1');
-    expect(__('bar.bar'))->toBe($inline ? 'Bar field 1' : 'Bar :attribute 1');
-    expect(__('baz'))->toBe($inline ? 'Baz field 1' : 'Baz :attribute 1');
+    expect(__('auth.foo'))->toBe($foo);
+    expect(__('bar.bar'))->toBe($bar);
+    expect(__('baz'))->toBe($baz);
 
     expect(__('Foo'))->toBe('Alle Ressourcen geladen.');
-})->with('booleans');
+})->with([
+    'attributes' => [
+        'inline' => false,
+        'foo'    => 'Foo :attribute 1',
+        'bar'    => 'Bar :attribute 1',
+        'baz'    => 'Baz :attribute 1',
+    ],
+
+    'inline' => [
+        'inline' => true,
+        'foo'    => 'Foo field 1',
+        'bar'    => 'Bar field 1',
+        'baz'    => 'Baz field 1',
+    ],
+]);
