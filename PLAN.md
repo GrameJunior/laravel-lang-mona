@@ -4,13 +4,14 @@
 - [x] Перенести в проект существующие библиотеки "как есть".
 - [x] Перенести в проект документацию "как есть".
 - [x] Очистить проекты от ненужных файлов.
-- [ ] Перенести PHPUnit тесты в Mona:
+- [x] Перенести PHPUnit тесты в Mona:
     - [x] JsonFallback
     - [x] Locales
     - [x] Models
     - [x] Routes
-    - [ ] Publisher
+    - [x] Publisher
 - [x] Заменить тесты на Pest.
+- [ ] Удалить `laravel/pao`
 - [ ] Заменить `laravel_lang.yaml` на json вариант и актуализировать файлы:
     - [ ] Actions
     - [ ] Attributes

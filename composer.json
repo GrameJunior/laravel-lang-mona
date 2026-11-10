@@ -81,6 +81,7 @@
         "psr-4": {
             "Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Package\\": "workbench/package/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         },
