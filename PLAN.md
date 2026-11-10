@@ -13,15 +13,15 @@
 - [x] Заменить тесты на Pest.
 - [x] Удалить `laravel/pao`
 - [x] Заменить `laravel_lang.yaml` на json вариант и актуализировать файлы:
-    - [ ] Actions
-    - [ ] Attributes
-    - [ ] Country Names
-    - [ ] Currency Names
-    - [ ] HTTP Statuses
-    - [ ] Lang
-    - [ ] Locale Names
-    - [ ] MoonShine
-    - [ ] Starter Kits
+    - [x] Actions
+    - [x] Attributes
+    - [x] Country Names
+    - [x] Currency Names
+    - [x] HTTP Statuses
+    - [x] Lang
+    - [x] Locale Names
+    - [x] MoonShine
+    - [x] Starter Kits
 - [ ] Убрать CLDR из Native.
 - [ ] Написать утилиту для миграции файлов переводов.
 - [ ] Рефакторинг:
