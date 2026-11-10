@@ -23,7 +23,7 @@
     - [x] MoonShine
     - [x] Starter Kits
 - [x] Добавить JSON Schema для новых файлов конфигураций.
-- [ ] Убрать CLDR из Native.
+- [x] Убрать CLDR из Native.
 - [ ] Рефакторинг:
     - [ ] Config
     - [ ] Publisher
