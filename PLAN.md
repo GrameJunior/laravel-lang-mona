@@ -22,13 +22,13 @@
     - [x] Locale Names
     - [x] MoonShine
     - [x] Starter Kits
+- [ ] Добавить JSON Schema для новых файлов конфигураций.
 - [ ] Убрать CLDR из Native.
 - [ ] Написать утилиту для миграции файлов переводов.
 - [ ] Рефакторинг:
     - [ ] Config
     - [ ] Publisher
         - [ ] Добавить чтение файлов (https://github.com/Laravel-Lang/mona/issues/6).
-        - [ ] Добавить JSON Schema для новых файлов конфигураций.
         - [ ] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
         - [ ] Изменить структуру (https://github.com/Laravel-Lang/mona/issues/3).
         - [ ] Добавить пропуск установок (https://github.com/Laravel-Lang/mona/issues/5).
