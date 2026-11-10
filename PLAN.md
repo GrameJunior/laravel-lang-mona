@@ -11,6 +11,7 @@
     - [x] Routes
     - [ ] Publisher
 - [x] Заменить тесты на Pest.
+- [ ] Удалить `laravel/pao`
 - [ ] Заменить `laravel_lang.yaml` на json вариант и актуализировать файлы:
     - [ ] Actions
     - [ ] Attributes
