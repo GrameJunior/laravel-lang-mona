@@ -12,7 +12,7 @@
     - [x] Publisher
 - [x] Заменить тесты на Pest.
 - [x] Удалить `laravel/pao`
-- [ ] Заменить `laravel_lang.yaml` на json вариант и актуализировать файлы:
+- [x] Заменить `laravel_lang.yaml` на json вариант и актуализировать файлы:
     - [ ] Actions
     - [ ] Attributes
     - [ ] Country Names
