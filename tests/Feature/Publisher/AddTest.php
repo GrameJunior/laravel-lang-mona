@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Publisher\Console\Add;
+use LaravelLang\Publisher\Exceptions\UnknownLocaleCodeException;
+use Workbench\App\Constants\FakeLocale;
 
 use function Pest\Laravel\artisan;
 
@@ -44,3 +46,39 @@ test('add locale', function (bool $inline, string $foo, string $bar, string $baz
         'baz'    => 'Baz field 1',
     ],
 ]);
+
+test('all - yes', function () {
+    artisan(Add::class)
+        ->expectsConfirmation('Do you want to install all localizations?', 'yes')
+        ->assertSuccessful()
+        ->run();
+
+    foreach (Locale::values() as $locale) {
+        expect(lang_path($locale))->toBeReadableDirectory();
+    }
+});
+
+test('all - no', function () {
+    $installed = [
+        FakeLocale::Default,
+        FakeLocale::Fallback,
+        FakeLocale::English,
+    ];
+
+    artisan(Add::class)
+        ->expectsConfirmation('Do you want to install all localizations?')
+        ->assertSuccessful()
+        ->run();
+
+    foreach (Locale::values() as $locale) {
+        in_array($locale, $installed, true)
+            ? expect(lang_path($locale))->toBeReadableDirectory()
+            : expect(lang_path($locale))->not->toBeReadableDirectory();
+    }
+});
+
+test('unknown locale', function () {
+    artisan(Add::class, [
+        'locales' => [FakeLocale::Incorrect1],
+    ])->run();
+})->throws(UnknownLocaleCodeException::class);
