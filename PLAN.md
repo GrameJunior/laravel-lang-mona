@@ -22,9 +22,8 @@
     - [x] Locale Names
     - [x] MoonShine
     - [x] Starter Kits
-- [ ] Добавить JSON Schema для новых файлов конфигураций.
+- [x] Добавить JSON Schema для новых файлов конфигураций.
 - [ ] Убрать CLDR из Native.
-- [ ] Написать утилиту для миграции файлов переводов.
 - [ ] Рефакторинг:
     - [ ] Config
     - [ ] Publisher
@@ -48,6 +47,7 @@
     - [ ] Routes
     - [ ] Starter Kits
     - [ ] Translations Template
+- [ ] Написать утилиту для миграции файлов переводов.
 - [ ] Добавить архитектурные тесты
 - [ ] Применить код-стайл (Pint)
 - [ ] Применить quality code (Rector)
