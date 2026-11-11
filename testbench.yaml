@@ -1,7 +1,7 @@
 laravel: '@testbench'
 
 providers:
-    - LaravelLang\Config\ServiceProvider
+    - LaravelLang\Config\LaravelLangConfigServiceProvider
     - LaravelLang\Models\ServiceProvider
     - LaravelLang\Publisher\ServiceProvider
     - LaravelLang\Routes\ServiceProvider
