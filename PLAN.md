@@ -25,7 +25,7 @@
 - [x] Добавить JSON Schema для новых файлов конфигураций.
 - [x] Убрать CLDR из Native.
 - [ ] Рефакторинг:
-    - [ ] Config
+    - [x] Config
     - [ ] Publisher
         - [ ] Добавить чтение файлов (https://github.com/Laravel-Lang/mona/issues/6).
         - [ ] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
