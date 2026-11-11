@@ -12,7 +12,7 @@ test('list', function (Locale $locale) {
 
     expect($asEnum)->toBeTrue();
     expect($asString)->toBeTrue();
-})->with('correct locales');
+})->with('enum locales');
 test('alias', function () {
     $main  = Locales::isAvailable(FakeLocale::Default);
     $alias = Locales::isAvailable(FakeLocale::DefaultAlias);
