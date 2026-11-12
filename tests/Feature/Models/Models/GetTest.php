@@ -6,15 +6,11 @@ use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use LaravelLang\Config\Enums\Name;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Models\Exceptions\AttributeIsNotTranslatableException;
 use LaravelLang\Models\Exceptions\UnavailableLocaleException;
-
 use Workbench\App\Constants\FakeLocale;
-
 use Workbench\App\Constants\FakeValue;
-
 use Workbench\App\Models\TestModel;
 use Workbench\App\Models\TestModelTranslation;
 
@@ -113,7 +109,7 @@ test('without translations model', function () {
 });
 
 test('lazy loading', function (bool $enabled, int $count, array $locales) {
-    config()->set(Name::Shared() . '.models.filter.enabled', $enabled);
+    config()->set('localization_models.filter', $enabled);
 
     $hasNonFilteredQuery = false;
     $hasFilteredQuery    = false;

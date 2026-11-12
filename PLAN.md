@@ -29,7 +29,7 @@
         - [x] main
         - [x] punctuation
         - [x] routes
-        - [ ] models
+        - [x] models
         - [ ] private
     - [ ] Publisher
         - [ ] Добавить чтение файлов (https://github.com/Laravel-Lang/mona/issues/6).
@@ -56,6 +56,7 @@
     - Пример: https://github.com/roxblnfk/skills/blob/master/resources/skills.schema.json
     - Предполагаемое название файла: `resources/laravel-lang.schema.json`
 - [ ] Написать утилиту для миграции файлов переводов.
+- [ ] Добавить Coverage тесты и удалить лишний код.
 - [ ] Добавить архитектурные тесты
 - [ ] Применить код-стайл (Pint)
 - [ ] Применить quality code (Rector)

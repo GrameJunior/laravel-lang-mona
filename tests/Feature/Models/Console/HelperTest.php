@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Config\Facades\Config;
+use LaravelLang\Config\Services\ModelConfig;
 use LaravelLang\Models\Console\ModelsHelperCommand;
 use Workbench\App\Models\TestModel;
 use Workbench\App\Models\TestModelTranslation;
@@ -12,7 +12,7 @@ use function Pest\Laravel\artisan;
 test('generate many models', function () {
     $path = sprintf(
         '%s/_ide_helper_models_%s.php',
-        Config::shared()->models->helpers,
+        app(ModelConfig::class)->helpers,
         md5(TestModel::class)
     );
 
@@ -32,7 +32,7 @@ test('generate many models', function () {
 test('generate one model', function () {
     $path = sprintf(
         '%s/_ide_helper_models_%s.php',
-        Config::shared()->models->helpers,
+        app(ModelConfig::class)->helpers,
         md5(TestModel::class)
     );
 
