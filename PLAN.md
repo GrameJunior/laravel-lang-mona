@@ -38,7 +38,7 @@
     - [x] Lang
     - [x] MoonShine
     - [x] Starter Kits
-    - [ ] Translations Template
+    - [x] Translations Template
     - [ ] Publisher
         - [ ] Добавить чтение файлов (https://github.com/Laravel-Lang/mona/issues/6).
         - [ ] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
