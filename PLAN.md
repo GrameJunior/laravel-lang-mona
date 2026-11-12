@@ -58,6 +58,7 @@
     - [ ] Models
     - [ ] Routes
     - [ ] Json Fallback
+    - [ ] Проверить, что у всех классов есть нужные суффиксы.
 - [x] Переместить схему конфигурации в папку `resources`.
     - Пример: https://github.com/roxblnfk/skills/blob/master/resources/skills.schema.json
     - Предполагаемое название файла: `resources/laravel-lang.schema.json`
