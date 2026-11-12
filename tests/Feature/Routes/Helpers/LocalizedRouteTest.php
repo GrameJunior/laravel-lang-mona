@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 use LaravelLang\Config\Enums\Name;
-use LaravelLang\Config\Facades\Config;
+use LaravelLang\Config\Services\RouteConfig;
 use Workbench\App\Constants\FakeLocale;
 
 test('route groups', function () {
-    $name        = Config::shared()->routes->namePrefix;
+    $name        = app(RouteConfig::class)->prefix;
     $locale      = FakeLocale::Default;
     $localeAlias = FakeLocale::DefaultAlias;
 

@@ -65,7 +65,7 @@ test('aliased locale', function () {
     config([
         'app.locale' => 'zh_CN',
 
-        'localization.aliases' => [
+        'localization_main.aliases' => [
             Locale::Chinese->value => 'zh',
         ],
     ]);

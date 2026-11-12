@@ -9,7 +9,7 @@ use LaravelLang\Publisher\Console\Update;
 use function Pest\Laravel\artisan;
 
 test('update locale', function (bool $inline, array $foo, array $bar, array $baz): void {
-    config()->set('localization.inline', $inline);
+    config()->set('localization_main.inline', $inline);
 
     $locale = Locale::Swedish->value;
 

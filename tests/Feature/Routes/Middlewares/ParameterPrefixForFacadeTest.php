@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use LaravelLang\Config\Enums\Name;
-use LaravelLang\Routes\Helpers\Route as RouteName;
 
+use LaravelLang\Config\Services\RouteConfig;
 use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\getJson;
@@ -22,7 +22,7 @@ test('main locale with enabled redirect', function (string $locale) {
 
     $foo = 'test';
 
-    getJson(route(RouteName::prefix() . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
+    getJson(route(app(RouteConfig::class)->prefix . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
         ->assertRedirectToRoute('via.group.facade', ['key' => $foo]);
 
     assertEventNotDispatched();
@@ -35,7 +35,7 @@ test('main locale with disabled redirect', function (string $locale, string $tra
 
     $foo = 'test';
 
-    getJson(route(RouteName::prefix() . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
+    getJson(route(app(RouteConfig::class)->prefix . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
         ->assertJsonPath($foo, $translation);
 
@@ -47,7 +47,7 @@ test('aliased locale', function (string $locale) {
 
     setCustomLocale();
 
-    getJson(route(RouteName::prefix() . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
+    getJson(route(app(RouteConfig::class)->prefix . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
 
@@ -59,7 +59,7 @@ test('uninstalled locale', function (string $locale) {
 
     setCustomLocale();
 
-    getJson(route(RouteName::prefix() . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
+    getJson(route(app(RouteConfig::class)->prefix . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
         ->assertRedirectToRoute('via.group.facade', ['key' => $foo]);
 
     assertEventNotDispatched();
@@ -70,7 +70,7 @@ test('unknown locale', function (int|string $locale) {
 
     setCustomLocale();
 
-    getJson(route(RouteName::prefix() . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
+    getJson(route(app(RouteConfig::class)->prefix . 'via.group.facade', ['key' => $foo, 'locale' => $locale]))
         ->assertRedirectToRoute('via.group.facade', ['key' => $foo]);
 
     assertEventNotDispatched();
