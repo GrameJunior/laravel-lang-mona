@@ -40,14 +40,15 @@
     - [x] Starter Kits
     - [x] Translations Template
     - [ ] Publisher
+        - [ ] Удалить консольную команду Remove
         - [ ] Добавить чтение файлов (https://github.com/Laravel-Lang/mona/issues/6).
-        - [ ] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
         - [ ] Изменить структуру и добавить установку из них с учётом приоритета. Дефолтный - default всегда
           (https://github.com/Laravel-Lang/mona/issues/3).
           - Приоритет - это, например, указываю `['что-то специфичное', 'юморной', 'персональный']`.
           - Если в локализации нет такого файла, тогда берём следующий по этому списку.
           - Если локаль вообще не содержит таких файлов - берём дефолтные.
         - [ ] Добавить пропуск установок (https://github.com/Laravel-Lang/mona/issues/5).
+        - [ ] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
     - [ ] Common
     - [ ] Country Names
     - [ ] Currency Names
