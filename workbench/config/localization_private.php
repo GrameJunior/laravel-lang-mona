@@ -2,14 +2,12 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Config\Helpers\Path;
-
 use function Orchestra\Testbench\workbench_path;
 
 return [
     'models' => [
         'directory' => [
-            Path::app(),
+            app_path('Models'),
             workbench_path('app/Models'),
         ],
     ],
