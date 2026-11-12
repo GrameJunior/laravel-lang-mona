@@ -24,6 +24,7 @@
     - [x] Starter Kits
 - [x] Добавить JSON Schema для новых файлов конфигураций.
 - [x] Убрать CLDR из Native.
+- [ ] Написать утилиту для миграции файлов переводов.
 - [ ] Рефакторинг:
     - [x] Config
         - [x] main
@@ -31,31 +32,30 @@
         - [x] routes
         - [x] models
         - [x] private
+    - [ ] Actions
+    - [ ] Attributes
+    - [ ] HTTP Statuses
+    - [ ] Lang
+    - [ ] MoonShine
+    - [ ] Starter Kits
+    - [ ] Translations Template
     - [ ] Publisher
         - [ ] Добавить чтение файлов (https://github.com/Laravel-Lang/mona/issues/6).
         - [ ] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
         - [ ] Изменить структуру (https://github.com/Laravel-Lang/mona/issues/3).
         - [ ] Добавить пропуск установок (https://github.com/Laravel-Lang/mona/issues/5).
-    - [ ] Actions
-    - [ ] Attributes
     - [ ] Common
     - [ ] Country Names
     - [ ] Currency Names
     - [ ] Locale Names
-    - [ ] HTTP Statuses
-    - [ ] Json Fallback
-    - [ ] Lang
     - [ ] Locale List
     - [ ] Locales
     - [ ] Models
-    - [ ] MoonShine
     - [ ] Routes
-    - [ ] Starter Kits
-    - [ ] Translations Template
-- [ ] Переместить схему конфигурации в папку `resources`.
+    - [ ] Json Fallback
+- [x] Переместить схему конфигурации в папку `resources`.
     - Пример: https://github.com/roxblnfk/skills/blob/master/resources/skills.schema.json
     - Предполагаемое название файла: `resources/laravel-lang.schema.json`
-- [ ] Написать утилиту для миграции файлов переводов.
 - [ ] Добавить Coverage тесты и удалить лишний код.
 - [ ] Добавить архитектурные тесты
 - [ ] Применить код-стайл (Pint)
