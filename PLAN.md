@@ -30,7 +30,7 @@
         - [x] punctuation
         - [x] routes
         - [x] models
-        - [ ] private
+        - [x] private
     - [ ] Publisher
         - [ ] Добавить чтение файлов (https://github.com/Laravel-Lang/mona/issues/6).
         - [ ] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
