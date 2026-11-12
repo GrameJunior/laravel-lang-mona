@@ -4,19 +4,29 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
-use LaravelLang\Config\Facades\Config;
+use LaravelLang\Config\Services\RouteConfig;
+use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
-use LaravelLang\Routes\Helpers\Route as RouteHelper;
 
 if (! function_exists('localizedRoute')) {
     function localizedRoute(string $route, array $parameters = [], bool $absolute = true): string
     {
-        $locale = Config::shared()->routes->names->parameter;
-        $prefix = Config::shared()->routes->namePrefix;
+        $config = app()->make(RouteConfig::class);
+
+        $locale = $config->name->parameter;
+        $prefix = $config->prefix;
 
         $parameters[$locale] ??= Locales::raw()->getFallback();
 
-        if (RouteHelper::hidingFallback($parameters[$locale])) {
+        $hide = static function (Locale|string $locale) use ($config): bool {
+            if (! $config->hide || ! Locales::isInstalled($locale)) {
+                return false;
+            }
+
+            return Locales::raw()->get($locale) === Locales::raw()->getFallback();
+        };
+
+        if ($hide($parameters[$locale])) {
             unset($parameters[$locale]);
 
             return route($route, $parameters, $absolute);

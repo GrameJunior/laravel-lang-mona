@@ -6,10 +6,9 @@ namespace LaravelLang\Routes\Middlewares;
 
 use Closure;
 use Illuminate\Http\Request;
-use LaravelLang\Config\Facades\Config;
+use LaravelLang\Config\Services\RouteConfig;
 use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Facades\Locales;
-use LaravelLang\Routes\Concerns\RouteParameters;
 use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
 
 use function app;
@@ -18,9 +17,11 @@ use function trim;
 
 abstract class Middleware
 {
-    use RouteParameters;
-
     abstract protected function detect(Request $request): bool|float|int|string|null;
+
+    public function __construct(
+        protected RouteConfig $routeConfig,
+    ) {}
 
     public function __invoke(Request $request, Closure $next)
     {
@@ -57,7 +58,7 @@ abstract class Middleware
         app()->setLocale($locale);
 
         if (session()) {
-            session()->put(Config::shared()->routes->names->session, $locale);
+            session()->put($this->routeConfig->name->session, $locale);
         }
     }
 
@@ -74,7 +75,7 @@ abstract class Middleware
     protected function forgetParameter(Request $request): Request
     {
         $request->route()->forgetParameter(
-            $this->names()->parameter
+          $this->routeConfig->name->parameter
         );
 
         return $request;

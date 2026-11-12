@@ -2,19 +2,11 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Config\Helpers\Path;
 use LaravelLang\LocaleList\Direction;
 use LaravelLang\LocaleList\Locale;
 
 return [
-    'plugins'  => [],
-    'packages' => [],
-
-    'models' => [
-        'directory' => Path::app(),
-    ],
-
-    'map' => [
+    'locales' => [
         Locale::Afrikaans->value => [
             'type'     => 'Latn',
             'regional' => 'af_ZA',

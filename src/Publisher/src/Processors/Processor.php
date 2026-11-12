@@ -18,7 +18,8 @@ declare(strict_types=1);
 namespace LaravelLang\Publisher\Processors;
 
 use Illuminate\Console\OutputStyle;
-use LaravelLang\Locales\Concerns\Aliases;
+use Illuminate\Container\Attributes\Config as ConfigAttribute;
+use LaravelLang\Config\Services\AliasConfig;
 use LaravelLang\Publisher\Concerns\Decorator;
 use LaravelLang\Publisher\Concerns\Has;
 use LaravelLang\Publisher\Concerns\Output;
@@ -34,7 +35,6 @@ use LaravelLang\Publisher\Services\Filesystem\Manager;
 
 abstract class Processor
 {
-    use Aliases;
     use Decorator;
     use Has;
     use Output;
@@ -51,7 +51,10 @@ abstract class Processor
         protected readonly Config $config,
         protected Manager $filesystem = new Manager,
         protected ArrHelper $arr = new ArrHelper,
-        protected Translation $translation = new Translation
+        protected Translation $translation = new Translation,
+        #[ConfigAttribute('localization_main.inline')]
+        protected bool $inline,
+        protected AliasConfig $alias,
     ) {}
 
     public function prepare(): self
@@ -117,23 +120,21 @@ abstract class Processor
             $keys = array_keys($this->translation->getSource($filename));
 
             foreach ($this->locales as $locale) {
-                $locale = $this->fromAlias($locale?->value ?? $locale);
-
-                $locale_alias = $this->fromAlias($locale);
+                $locale = $this->alias->from($locale?->value ?? $locale);
 
                 foreach ($this->file_types as $type) {
-                    $main_path   = $this->localeFilename($locale_alias, "$directory/locales/$locale/$type.json");
-                    $inline_path = $this->localeFilename($locale_alias, "$directory/locales/$locale/$type.json", true);
+                    $main_path = $this->localeFilename($locale, "$directory/locales/$locale/$type.json");
+                    $inline_path = $this->localeFilename($locale, "$directory/locales/$locale/$type.json", true);
 
                     $values = $this->filesystem->load($main_path);
 
-                    if ($main_path !== $inline_path && $this->config->hasInline()) {
+                    if ($main_path !== $inline_path && $this->inline) {
                         $values = $this->arr->merge($values, $this->filesystem->load($inline_path));
                     }
 
                     $values = collect($values)->only($keys)->toArray();
 
-                    $this->translation->setTranslations($filename, $locale_alias, $values);
+                    $this->translation->setTranslations($filename, $locale, $values);
                 }
             }
         }

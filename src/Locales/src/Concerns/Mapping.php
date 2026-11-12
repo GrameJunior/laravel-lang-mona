@@ -18,8 +18,8 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Concerns;
 
 use Illuminate\Support\Collection;
-use LaravelLang\Config\Facades\Config;
-use LaravelLang\LocaleList\Locale as LocaleEnum;
+use LaravelLang\Config\Services\MapConfig;
+use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Data\LocaleData;
 
 trait Mapping
@@ -44,15 +44,15 @@ trait Mapping
         );
     }
 
-    protected function findLocale(string $locale): LocaleEnum
+    protected function findLocale(string $locale): Locale
     {
-        return LocaleEnum::tryFrom($this->toAlias($locale))
-            ?: LocaleEnum::tryFrom($this->fromAlias($locale))
-                ?: LocaleEnum::English;
+        return Locale::tryFrom($this->aliasConfig->to($locale))
+            ?: Locale::tryFrom($this->aliasConfig->from($locale))
+                ?: Locale::English;
     }
 
-    protected function mapData(LocaleEnum $locale): array
+    protected function mapData(Locale $locale): array
     {
-        return Config::hidden()->map->get($locale);
+        return app(MapConfig::class)->get($locale);
     }
 }

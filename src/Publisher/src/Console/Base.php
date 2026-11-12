@@ -19,9 +19,9 @@ namespace LaravelLang\Publisher\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use LaravelLang\Config\Services\PunctuationConfig;
 use LaravelLang\Locales\Facades\Locales;
 use LaravelLang\Publisher\Contracts\TextDecorator;
-use LaravelLang\Publisher\Helpers\Config;
 use LaravelLang\Publisher\Processors\Processor;
 use LaravelLang\Publisher\Services\Converters\Text\CommonDecorator;
 use LaravelLang\Publisher\Services\Converters\Text\SmartPunctuationDecorator;
@@ -32,6 +32,12 @@ abstract class Base extends Command
 
     protected Processor|string $processor;
 
+    public function __construct(
+        protected PunctuationConfig $punctuation,
+    ) {
+        parent::__construct();
+    }
+
     public function handle(): void
     {
         $this->resolveProcessor()->prepare()->collect()->store();
@@ -41,9 +47,11 @@ abstract class Base extends Command
 
     protected function resolveProcessor(): Processor
     {
-        $config = $this->config();
-
-        return new $this->processor($this->output, $this->locales(), $this->decorator($config), $config);
+        return app($this->processor, [
+            'output'    => $this->output,
+            'locales'   => $this->locales(),
+            'decorator' => $this->decorator(),
+        ]);
     }
 
     protected function locales(): array
@@ -51,14 +59,11 @@ abstract class Base extends Command
         return Locales::raw()->installed();
     }
 
-    protected function decorator(Config $config): TextDecorator
+    protected function decorator(): TextDecorator
     {
-        return $config->hasSmartPunctuation() ? new SmartPunctuationDecorator($config) : new CommonDecorator($config);
-    }
-
-    protected function config(): Config
-    {
-        return new Config;
+        return $this->punctuation->enabled
+            ? new SmartPunctuationDecorator()
+            : new CommonDecorator();
     }
 
     protected function confirmAll(): bool

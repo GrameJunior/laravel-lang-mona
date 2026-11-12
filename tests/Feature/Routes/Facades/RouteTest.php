@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Config\Services\RouteConfig;
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\Routes\Helpers\Route as RouteName;
 
 test('group', function (string $routeName, string $uri) {
     expect(route($routeName, ['key' => 'test']))
         ->toBeString()
         ->toBe('http://localhost/' . $uri);
 
-    expect(route(RouteName::prefix() . $routeName, [
+    expect(route(app(RouteConfig::class)->prefix . $routeName, [
         'locale' => Locale::French->value,
         'key'    => 'test',
     ]))->toBeString()->toBe('http://localhost/fr/' . $uri);

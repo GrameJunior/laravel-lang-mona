@@ -10,7 +10,7 @@ use Workbench\App\Constants\FakeLocale;
 use function Pest\Laravel\artisan;
 
 test('add locale', function (bool $inline, string $foo, string $bar, string $baz): void {
-    config()->set('localization.inline', $inline);
+    config()->set('localization_main.inline', $inline);
 
     $locale = Locale::Swedish->value;
 
