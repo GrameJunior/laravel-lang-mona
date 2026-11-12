@@ -26,6 +26,11 @@
 - [x] Убрать CLDR из Native.
 - [ ] Рефакторинг:
     - [x] Config
+        - [x] main
+        - [x] punctuation
+        - [x] routes
+        - [ ] models
+        - [ ] private
     - [ ] Publisher
         - [ ] Добавить чтение файлов (https://github.com/Laravel-Lang/mona/issues/6).
         - [ ] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
@@ -47,6 +52,9 @@
     - [ ] Routes
     - [ ] Starter Kits
     - [ ] Translations Template
+- [ ] Переместить схему конфигурации в папку `resources`.
+    - Пример: https://github.com/roxblnfk/skills/blob/master/resources/skills.schema.json
+    - Предполагаемое название файла: `resources/laravel-lang.schema.json`
 - [ ] Написать утилиту для миграции файлов переводов.
 - [ ] Добавить архитектурные тесты
 - [ ] Применить код-стайл (Pint)
