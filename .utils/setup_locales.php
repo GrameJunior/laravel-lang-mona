@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 $projects = [
     __DIR__ . '/../src/Actions/',
@@ -25,13 +25,22 @@ foreach ($projects as $project) {
 
     $composer->modify(function (array $data): array {
         unset(
-            $data['funding'],
-            $data['require-dev'],
             $data['autoload'],
             $data['autoload-dev'],
             $data['config']['allow-plugins'],
-            $data['extra']
+            $data['conflict'],
+            $data['extra'],
+            $data['funding'],
+            $data['replace'],
+            $data['require-dev'],
+            $data['scripts'],
         );
+
+        $data['homepage'] = 'https://laravel-lang.com';
+
+        $data['support'] = [
+            'source' => 'https://github.com/Laravel-Lang/mona',
+        ];
 
         $data['require'] = [
             'require' => '^8.3',
