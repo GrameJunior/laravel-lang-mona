@@ -86,7 +86,7 @@ test('multiple accept-language', function () {
 });
 
 test('custom header', function () {
-    config(['localization_main.routes.names.header' => 'X-Custom-Lang']);
+    config(['localization_routes.names.header' => 'X-Custom-Lang']);
 
     $foo = 'test';
 

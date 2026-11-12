@@ -18,7 +18,7 @@ test('main without prefix', function () {
 });
 
 test('main locale with enabled redirect', function (string $locale) {
-    config()->set(Name::Shared() . '.routes.redirect_default', true);
+    config()->set('localization_routes.redirect', true);
 
     $foo = 'test';
 
@@ -29,7 +29,7 @@ test('main locale with enabled redirect', function (string $locale) {
 })->with('aliased locales');
 
 test('main locale with disabled redirect', function (string $locale, string $translation) {
-    config()->set(Name::Shared() . '.routes.redirect_default', false);
+    config()->set('localization_routes.redirect', false);
 
     setCustomLocale();
 

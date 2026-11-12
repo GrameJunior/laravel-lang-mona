@@ -2,26 +2,25 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Config\Enums\Name;
 use LaravelLang\Config\Services\RouteConfig;
 use Workbench\App\Constants\FakeLocale;
 
 test('route groups', function () {
-    $name        = app(RouteConfig::class)->prefix;
-    $locale      = FakeLocale::Default;
-    $localeAlias = FakeLocale::DefaultAlias;
+    $name     = app(RouteConfig::class)->prefix;
+    $locale   = FakeLocale::Default;
+    $fallback = FakeLocale::Fallback;
 
     expect(localizedRoute($name . 'via.group.facade', ['key' => 'bar', 'locale' => $locale]))
         ->toEndWith("localhost/$locale/group/facade/bar");
 
-    expect(localizedRoute($name . 'via.group.macro', ['key' => 'bar', 'locale' => $localeAlias]))
-        ->toEndWith("localhost/$localeAlias/group/macro/bar");
+    expect(localizedRoute($name . 'via.group.macro', ['key' => 'bar', 'locale' => $fallback]))
+        ->toEndWith("localhost/$fallback/group/macro/bar");
 
     expect(localizedRoute('via.group.facade', ['key' => 'bar', 'locale' => $locale]))
         ->toEndWith("localhost/$locale/group/facade/bar");
 
-    expect(localizedRoute('via.group.macro', ['key' => 'bar', 'locale' => $localeAlias]))
-        ->toEndWith("localhost/$localeAlias/group/macro/bar");
+    expect(localizedRoute('via.group.macro', ['key' => 'bar', 'locale' => $fallback]))
+        ->toEndWith("localhost/$fallback/group/macro/bar");
 });
 
 test('routes without groups', function () {
@@ -35,7 +34,7 @@ test('routes hide fallback', function (bool $set) {
     $locale   = FakeLocale::Default;
     $fallback = FakeLocale::Default;
 
-    config()->set(Name::Shared() . '.routes.hide_default', true);
+    config()->set('localization_routes.hide', true);
     config()->set('app.fallback_locale', $fallback);
 
     $params = $set
@@ -50,7 +49,8 @@ test('routes hide manual', function () {
     $locale   = FakeLocale::Default;
     $fallback = FakeLocale::Fallback;
 
-    config()->set(Name::Shared() . '.routes.hide_default', true);
+    config()->set('localization_routes.hide', true);
+    config()->set('app.fallback_locale', $fallback);
 
     expect(localizedRoute('via.parameter', ['key' => 'bar', 'locale' => $locale]))
         ->toEndWith("localhost/path/bar/$locale");
@@ -62,7 +62,8 @@ test('routes hide manual', function () {
 test('routes does not hide', function () {
     $fallback = FakeLocale::Fallback;
 
-    config()->set(Name::Shared() . '.routes.hide_default', true);
+    config()->set('localization_routes.hide', true);
+    config()->set('app.fallback_locale', $fallback);
 
     expect(localizedRoute('via.parameter', ['key' => 'bar']))
         ->toEndWith('localhost/path/bar');
