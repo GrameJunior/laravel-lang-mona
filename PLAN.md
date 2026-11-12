@@ -32,12 +32,12 @@
         - [x] routes
         - [x] models
         - [x] private
-    - [ ] Actions
-    - [ ] Attributes
-    - [ ] HTTP Statuses
-    - [ ] Lang
-    - [ ] MoonShine
-    - [ ] Starter Kits
+    - [x] Actions
+    - [x] Attributes
+    - [x] HTTP Statuses
+    - [x] Lang
+    - [x] MoonShine
+    - [x] Starter Kits
     - [ ] Translations Template
     - [ ] Publisher
         - [ ] Добавить чтение файлов (https://github.com/Laravel-Lang/mona/issues/6).
@@ -60,6 +60,7 @@
 - [x] Переместить схему конфигурации в папку `resources`.
     - Пример: https://github.com/roxblnfk/skills/blob/master/resources/skills.schema.json
     - Предполагаемое название файла: `resources/laravel-lang.schema.json`
+- [ ] Удалить из проектов локализаций старые и неактуальные проекты.
 - [ ] Добавить Coverage тесты и удалить лишний код.
 - [ ] Добавить архитектурные тесты
 - [ ] Применить код-стайл (Pint)
