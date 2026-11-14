@@ -187,6 +187,9 @@ class MigrateTranslations extends Storage
 
 foreach ($projects as $project) {
     (new MigrateExcludes())->move($project);
+
     (new MigrateTranslations())->move($project, ['json.json', 'php.json'], 'default.json');
     (new MigrateTranslations())->move($project, ['json-inline.json', 'php-inline.json'], 'inline.json');
+
+    (new Filesystem)->deleteDirectory($project . '/locales');
 }
