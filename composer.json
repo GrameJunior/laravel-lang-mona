@@ -45,8 +45,12 @@
     },
     "require": {
         "php": "^8.3",
-        "ext-json": "*"
+        "ext-json": "*",
+        "symfony/console": "^7.4 || ^8.1"
     },
+    "bin": [
+        "src/ToolKit/bin/toolkit.php"
+    ],
     "require-dev": {
         "archtechx/enums": "^1.1",
         "codezero/browser-locale": "^3.4",
@@ -73,7 +77,8 @@
             "LaravelLang\\NativeCurrencyNames\\": "src/NativeCurrencyNames/src/",
             "LaravelLang\\NativeLocaleNames\\": "src/NativeLocaleNames/src/",
             "LaravelLang\\Publisher\\": "src/Publisher/src/",
-            "LaravelLang\\Routes\\": "src/Routes/src/"
+            "LaravelLang\\Routes\\": "src/Routes/src/",
+            "LaravelLang\\Toolkit\\": "src/Toolkit/src/"
         }
     },
     "autoload-dev": {
