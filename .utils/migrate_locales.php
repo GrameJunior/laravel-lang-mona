@@ -19,14 +19,6 @@ $projects = [
 
 $target = __DIR__ . '/../src/Library/locales';
 
-$files = [
-    'json.json'        => 'json-default.json',
-    'json-inline.json' => 'json-default-inline.json',
-    'php.json'         => 'php-default.json',
-    'php-inline.json'  => 'php-default-inline.json',
-];
-// todo: куда-то потерялось много ключей. Например, "The provided password was incorrect."
-
 class Storage
 {
     public function __construct(
@@ -97,28 +89,52 @@ class MigrateTranslations extends Storage
     {
         ['json' => $jsonSource, 'php' => $phpSource] = $this->loadSource($project);
 
-        // todo теперь формируем массив переводов
+        $inline = str_contains($toFile, 'inline');
+
         foreach (Locale::values() as $locale) {
             $result = $this->readJson($this->target($locale, $toFile));
 
             foreach ($fromFiles as $fromFile) {
                 $translated = $this->readJson($project . '/locales/' . $locale . '/' . $fromFile);
 
-                if (str_starts_with($fromFile, 'json')) {
-                    foreach ($jsonSource as $value => $key) {
-                        $result[$value] = $translated[$value] ?? $value;
+                $handle = static function (array $array, array $translated, bool $isJson): array {
+                    foreach ($array as $key => &$value) {
+                        $translatedKey = $isJson ? $key : $value;
+
+                        if (! isset($translated[$translatedKey])) {
+                            unset($array[$translatedKey]);
+
+                            continue;
+                        }
+
+                        $value = $translated[$translatedKey];
                     }
 
-                    continue;
-                }
+                    return $array;
+                };
 
-                foreach ($phpSource as $value => $key) {
-                    $result[$value] = $translated[$key] ?? $value;
-                }
+                $resultJson = $handle($jsonSource, $translated, true);
+                $resultPhp  = $handle($phpSource, $translated, false);
+
+                $result = array_merge($result, $resultJson, $resultPhp);
             }
 
             $result = (new Collection($result))
-                ->filter()
+                ->filter(function (int|string|null $value, string $key) use ($inline): bool {
+                    if (! $value) {
+                        return false;
+                    }
+
+                    if (! $inline) {
+                        return true;
+                    }
+
+                    if (str_contains(mb_strtolower($key), ':attribute')) {
+                        return true;
+                    }
+
+                    return false;
+                })
                 ->unique(strict: true)
                 ->sortKeys()
                 ->all();
@@ -136,7 +152,7 @@ class MigrateTranslations extends Storage
         $php  = [];
 
         foreach ($jsonSourceFiles as $jsonSourceFile) {
-            $json += array_keys($this->readJson($jsonSourceFile));
+            $json = array_merge($json, array_keys($this->readJson($jsonSourceFile)));
         }
 
         foreach ($phpSourceFiles as $phpSourceFile) {
@@ -174,26 +190,3 @@ foreach ($projects as $project) {
     (new MigrateTranslations())->move($project, ['json.json', 'php.json'], 'default.json');
     (new MigrateTranslations())->move($project, ['json-inline.json', 'php-inline.json'], 'inline.json');
 }
-
-return;
-/*
- * Задумка следующая:
- * Сейчас файлы локализаций, по сути, жёстко привязаны к ключам.
- * Хочу сделать универсальное средство.
- * 
- * В качестве ключа должна быть переведённая фраза на английском, а в качестве значения - на нужном языке.
- * С учётом стилизаций, конечные файлы будут иметь вид:
- * 
- * locales/
- *   ru/
- *     _settings.json
- *     default.json
- *     inline.json
- *     personal.json
- *     funny.json
- * 
- * Таким образом, мы избавимся от зоопарка inline переводов, и их не нужно будет поддерживать для каждого вида перевода.
- * А также _excludes мигрирует в _settings, дабы также не плодить сущности ради сущностей.
- * 
- * Вследствие этого удаляем параметр `inline` в конфигах, заменив его на стиль перевода.
- */
