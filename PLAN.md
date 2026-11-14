@@ -40,7 +40,7 @@
     - [x] Starter Kits
     - [x] Translations Template
     - [x] Система локализации
-    - [ ] Translation Status
+    - [x] Translation Status
     - [ ] Publisher
         - [ ] Удалить консольную команду Remove
         - [ ] Добавить чтение файлов (https://github.com/Laravel-Lang/mona/issues/6).
