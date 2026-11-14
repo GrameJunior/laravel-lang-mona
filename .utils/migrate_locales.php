@@ -3,18 +3,17 @@
 declare(strict_types=1);
 
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use LaravelLang\LocaleList\Locale;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $projects = [
-    //__DIR__ . '/../src/Actions',
-    //__DIR__ . '/../src/Attributes',
-    //__DIR__ . '/../src/HttpStatuses',
-    //__DIR__ . '/../src/MoonShine',
-    //__DIR__ . '/../src/StarterKits',
+    __DIR__ . '/../src/Actions',
+    __DIR__ . '/../src/Attributes',
+    __DIR__ . '/../src/HttpStatuses',
+    __DIR__ . '/../src/MoonShine',
+    __DIR__ . '/../src/StarterKits',
     __DIR__ . '/../src/Lang',
 ];
 
@@ -26,6 +25,7 @@ $files = [
     'php.json'         => 'php-default.json',
     'php-inline.json'  => 'php-default-inline.json',
 ];
+// todo: куда-то потерялось много ключей. Например, "The provided password was incorrect."
 
 class Storage
 {
@@ -45,14 +45,19 @@ class Storage
         );
     }
 
-    protected function read(string $path): array
+    protected function readJson(string $path): array
     {
         if (! $this->filesystem->exists($path)) {
             return [];
         }
 
-        if (str_ends_with($path, '.json')) {
-            return $this->filesystem->json($path);
+        return $this->filesystem->json($path);
+    }
+
+    protected function readPhp(string $path): array
+    {
+        if (! $this->filesystem->exists($path)) {
+            return [];
         }
 
         return require $path;
@@ -66,8 +71,8 @@ class MigrateExcludes extends Storage
         foreach (Locale::values() as $locale) {
             $this->filesystem->ensureDirectoryExists($this->target . '/' . $locale);
 
-            $sourceContent = $this->read($project . '/locales/' . $locale . '/_excludes.json');
-            $targetContent = $this->read($this->target($locale));
+            $sourceContent = $this->readJson($project . '/locales/' . $locale . '/_excludes.json');
+            $targetContent = $this->readJson($this->target($locale));
 
             $settings['excludes'] = (new Collection($targetContent['excludes'] ?? []))
                 ->merge($sourceContent)
@@ -90,48 +95,52 @@ class MigrateTranslations extends Storage
 {
     public function move(string $project, array $fromFiles, string $toFile): void
     {
-        // todo сперва читаем исходники и составляем карту ключей
-        ['json' => $jsonSource, 'php' => $phpSource] = $this->loadSource($project, $toFile);
-
-        // todo: карты готовы. Теперь нужно прочесть переводы, сопоставить и записать результат в локализации
-        // ключ это фраза на английском из source. значение - переведённый вариант
-        dd(
-            $jsonSource
-        );
+        ['json' => $jsonSource, 'php' => $phpSource] = $this->loadSource($project);
 
         // todo теперь формируем массив переводов
         foreach (Locale::values() as $locale) {
-            $this->filesystem->ensureDirectoryExists($this->target . '/' . $locale);
+            $result = $this->readJson($this->target($locale, $toFile));
 
-            $sourceContent = $this->read($project . '/locales/' . $locale . '/_excludes.json');
-            $targetContent = $this->read($this->target($locale));
+            foreach ($fromFiles as $fromFile) {
+                $translated = $this->readJson($project . '/locales/' . $locale . '/' . $fromFile);
 
-            $settings['excludes'] = (new Collection($targetContent['excludes'] ?? []))
-                ->merge($sourceContent)
+                if (str_starts_with($fromFile, 'json')) {
+                    foreach ($jsonSource as $value => $key) {
+                        $result[$value] = $translated[$value] ?? $value;
+                    }
+
+                    continue;
+                }
+
+                foreach ($phpSource as $value => $key) {
+                    $result[$value] = $translated[$key] ?? $value;
+                }
+            }
+
+            $result = (new Collection($result))
+                ->filter()
                 ->unique(strict: true)
-                ->sort()
-                ->values()
+                ->sortKeys()
                 ->all();
 
-            $this->store($this->target($locale), $settings);
+            $this->store($this->target($locale, $toFile), $result);
         }
     }
 
-    protected function loadSource(string $project, string $toFile): array
+    protected function loadSource(string $project): array
     {
         $jsonSourceFiles = $this->filesystem->glob($project . '/source/{,*/,*/*/,*/*/*/}*/*.json', GLOB_BRACE);
         $phpSourceFiles  = $this->filesystem->glob($project . '/source/{,*/,*/*/,*/*/*/}*/*.php', GLOB_BRACE);
-        $context         = $this->read($this->target . '/' . $toFile);
 
         $json = [];
         $php  = [];
 
         foreach ($jsonSourceFiles as $jsonSourceFile) {
-            $json += array_keys($this->filesystem->json($jsonSourceFile));
+            $json += array_keys($this->readJson($jsonSourceFile));
         }
 
         foreach ($phpSourceFiles as $phpSourceFile) {
-            $array = require $phpSourceFile;
+            $array = $this->readPhp($phpSourceFile);
 
             $collection = (new Collection($array))
                 ->dot()
@@ -188,50 +197,3 @@ return;
  * 
  * Вследствие этого удаляем параметр `inline` в конфигах, заменив его на стиль перевода.
  */
-
-foreach (Locale::values() as $locale) {
-    dump($locale . '...');
-
-    foreach ($files as $fromFilename => $toFilename) {
-        $result = [];
-
-        foreach ($projects as $project) {
-            $sourcePath = $project . "/" . $locale . "/" . $fromFilename;
-            $targetPath = $target . "/" . $locale . "/" . $toFilename;
-
-            if (! file_exists($sourcePath)) {
-                continue;
-            }
-
-            $content = json_decode(file_get_contents($sourcePath), true);
-
-            if (str_starts_with($fromFilename, 'php')) {
-                $content = Arr::dot($content);
-            }
-
-            if ($content) {
-                $result = array_merge($result[$fromFilename] ?? [], $content);
-            }
-        }
-
-        if (! is_dir($target . "/" . $locale)) {
-            mkdir($target . "/" . $locale, 0777, true);
-        }
-
-        ksort($result);
-
-        if (str_starts_with($fromFilename, 'php') && $result) {
-            $result = Arr::undot($result);
-        }
-
-        if ($result) {
-            file_put_contents(
-                $targetPath,
-                json_encode(
-                    $result,
-                    JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
-                )
-            );
-        }
-    }
-}
