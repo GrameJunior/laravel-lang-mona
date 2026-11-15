@@ -1,3 +1,9 @@
+## Git Commits
+
+- Always write Git commit messages in English, regardless of the conversation language.
+- This requirement applies to both commit subjects and bodies.
+- Use the `aif-commit` skill when creating commits.
+
 ## Subagents
 
 Use subagents selectively.
