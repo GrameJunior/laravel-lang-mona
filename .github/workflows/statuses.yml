@@ -24,7 +24,7 @@ jobs:
                 run: composer update --no-progress --no-interaction
 
             -   name: Update status
-                run: src/Toolkit/bin/toolkit.php src/Library
+                run: src/Toolkit/bin/toolkit src/Library
 
             -   name: Create a Pull Request
                 uses: peter-evans/create-pull-request@v8
