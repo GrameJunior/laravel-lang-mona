@@ -3,7 +3,7 @@ laravel: '@testbench'
 providers:
     - LaravelLang\Config\LaravelLangConfigServiceProvider
     - LaravelLang\Models\ServiceProvider
-    - LaravelLang\Publisher\ServiceProvider
+    - LaravelLang\Publisher\LangPublisherServiceProvider
     - LaravelLang\Routes\ServiceProvider
     - Spatie\LaravelData\LaravelDataServiceProvider
     - Workbench\App\Providers\WorkbenchServiceProvider
