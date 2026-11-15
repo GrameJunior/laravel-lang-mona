@@ -52,8 +52,8 @@
         - [x] Удалить консольную команду Reset
         - [x] Удалить вывод в About
         - [x] Добавить команду создания локализаций
+        - [x] Добавить команду удаления локализаций
         - [ ] Добавить команду обновления локализаций
-        - [ ] Добавить команду удаления локализаций
         - [ ] Добавить чтение файлов (https://github.com/Laravel-Lang/mona/issues/6).
         - [ ] Изменить структуру и добавить установку из них с учётом приоритета. Дефолтный - default всегда
           (https://github.com/Laravel-Lang/mona/issues/3).
@@ -82,6 +82,27 @@
 - [ ] Применить код-стайл (Pint)
 - [ ] Применить quality code (Rector)
 - [ ] Применить стат анализ (PhpStan)
+- [ ] Проверить файлы `composer.json`:
+    - [ ] Actions
+    - [ ] Attributes
+    - [ ] Common
+    - [ ] Config
+    - [ ] HttpStatuses
+    - [ ] JsonFallback
+    - [ ] Lang
+    - [ ] Library
+    - [ ] LocaleList
+    - [ ] Locales
+    - [ ] Models
+    - [ ] MoonShine
+    - [ ] CountryNames
+    - [ ] CurrencyNames
+    - [ ] LocaleNames
+    - [ ] Publisher
+    - [ ] Routes
+    - [ ] StarterKits
+    - [ ] Toolkit
+    - [ ] TranslationsTemplate
 - [ ] Удалить из документации статусы переводов.
 - [ ] Мигрировать документацию на Docusaurus.
 - [ ] Обновить README в проектах.
