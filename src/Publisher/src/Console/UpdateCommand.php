@@ -15,6 +15,16 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\Publisher\Processors;
+namespace LaravelLang\Publisher\Console;
 
-class Update extends Processor {}
+use LaravelLang\Publisher\Processors\Processor;
+use LaravelLang\Publisher\Processors\Update as UpdateProcessor;
+
+class UpdateCommand extends Base
+{
+    protected $signature = 'lang:update';
+
+    protected $description = 'Updating installed localizations.';
+
+    protected Processor|string $processor = UpdateProcessor::class;
+}

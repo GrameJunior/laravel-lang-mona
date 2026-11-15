@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\Publisher\Console\Add;
+use LaravelLang\Publisher\Console\AddCommand;
 use LaravelLang\Publisher\Exceptions\UnknownLocaleCodeException;
 use Workbench\App\Constants\FakeLocale;
 
@@ -20,7 +20,7 @@ test('add locale', function (bool $inline, string $foo, string $bar, string $baz
 
     expect(__('Foo'))->toBe('Toutes les données ont été chargées.');
 
-    artisan(Add::class, [
+    artisan(AddCommand::class, [
         'locales' => [$locale],
     ])->assertSuccessful()->run();
 
@@ -48,7 +48,7 @@ test('add locale', function (bool $inline, string $foo, string $bar, string $baz
 ]);
 
 test('all - yes', function () {
-    artisan(Add::class)
+    artisan(AddCommand::class)
         ->expectsConfirmation('Do you want to install all localizations?', 'yes')
         ->assertSuccessful()
         ->run();
@@ -65,7 +65,7 @@ test('all - no', function () {
         FakeLocale::English,
     ];
 
-    artisan(Add::class)
+    artisan(AddCommand::class)
         ->expectsConfirmation('Do you want to install all localizations?')
         ->assertSuccessful()
         ->run();
@@ -78,7 +78,7 @@ test('all - no', function () {
 });
 
 test('unknown locale', function () {
-    artisan(Add::class, [
+    artisan(AddCommand::class, [
         'locales' => [FakeLocale::Incorrect1],
     ])->run();
 })->throws(UnknownLocaleCodeException::class);

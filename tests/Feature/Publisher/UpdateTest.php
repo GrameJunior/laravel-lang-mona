@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
-use LaravelLang\Publisher\Console\Update;
+use LaravelLang\Publisher\Console\UpdateCommand;
 
 use function Pest\Laravel\artisan;
 
@@ -19,7 +19,7 @@ test('update locale', function (bool $inline, array $foo, array $bar, array $baz
 
     expect(__('Foo'))->toBe('Toutes les données ont été chargées.');
 
-    artisan(Update::class)->assertSuccessful()->run();
+    artisan(UpdateCommand::class)->assertSuccessful()->run();
 
     Locales::reload();
 
@@ -33,7 +33,7 @@ test('update locale', function (bool $inline, array $foo, array $bar, array $baz
 
     Locales::reload();
 
-    artisan(Update::class)->assertSuccessful()->run();
+    artisan(UpdateCommand::class)->assertSuccessful()->run();
 
     app()->setlocale($locale);
 
