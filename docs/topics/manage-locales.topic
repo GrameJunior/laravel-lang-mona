@@ -42,8 +42,8 @@
             if the parameter is not passed during the call, the script will ask two questions:
         </li>
         <li>
-            <code>Do you want to %s all localizations?</code>, when <code>%s</code> is <code>install</code>,
-            <code>remove</code> or <code>reset</code>;
+            <code>Do you want to %s all localizations?</code>, when <code>%s</code> is <code>install</code>
+            or <code>reset</code>;
         </li>
         <li>
             If <code>no</code>, then next question is
@@ -52,7 +52,7 @@
     </list>
 
     <note>
-        When performing any work with files (<code>install</code>, <code>uninstall</code>, <code>reset</code> and
+        When performing any work with files (<code>install</code>, <code>reset</code> and
         <code>update</code>), in addition to php files, work with json files, including translation for
         <include from="library-lists.topic" element-id="lists-laravel-projects-inline" />
         , will also be automatically performed.

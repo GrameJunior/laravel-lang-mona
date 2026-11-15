@@ -15,10 +15,6 @@
     <var name="command-models-make-helpers-simple" value="lang:models-helper" />
     <var name="command-models-make-storage" value="php artisan make:model-translation" />
     <var name="command-models-make-storage-simple" value="make:model-translation" />
-    <var name="command-remove" value="php artisan lang:rm" />
-    <var name="command-remove-empty" value="php artisan lang:rm <locale>" />
-    <var name="command-remove-force" value="php artisan lang:rm en --force" />
-    <var name="command-remove-many" value="php artisan lang:rm fr de de_AT de_CH vi zh_CN" />
     <var name="command-reset" value="php artisan lang:reset" />
     <var name="command-update" value="php artisan lang:update" />
     <var name="command-update-simple" value="lang:update" />
