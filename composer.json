@@ -49,6 +49,7 @@
         "symfony/console": "^7.4 || ^8.1"
     },
     "require-dev": {
+        "ext-zip": "*",
         "archtechx/enums": "^1.1",
         "codezero/browser-locale": "^3.4",
         "composer/class-map-generator": "^1.9",
