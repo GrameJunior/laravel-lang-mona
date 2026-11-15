@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Workbench\Package;
 
-use LaravelLang\Publisher\Plugins\Provider;
-
 use function Orchestra\Testbench\workbench_path;
 
-class FakePluginProvider extends Provider
+class FakePluginProvider
 {
     protected array $plugins = [
         FakePlugin::class,
