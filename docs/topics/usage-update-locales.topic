@@ -29,14 +29,7 @@
 
     <tip>
         <p>
-            Some minor versions of Laravel may remove keys from their repositories, causing them to disappear
-            from the application.
-            This is very rare, but it does happen.
-        </p>
-        <p>
             The Localization Update command only adds new or updates existing translation phrases.
-            To remove unused phrases, use the
-            <a href="usage-reset-locales.topic"><code>%command-reset%</code></a> console command .
         </p>
     </tip>
 </topic>

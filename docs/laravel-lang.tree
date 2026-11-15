@@ -37,7 +37,6 @@
     <toc-element topic="manage-locales.topic">
         <toc-element topic="usage-add-locales.topic" />
         <toc-element topic="usage-update-locales.topic" />
-        <toc-element topic="usage-reset-locales.topic" />
     </toc-element>
     <toc-element toc-title="Packages">
         <toc-element topic="packages-starter-kits.topic" />
