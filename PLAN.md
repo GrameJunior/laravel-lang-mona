@@ -64,7 +64,7 @@
         - [x] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
     - [x] Common
     - [x] Country Names
-    - [ ] Currency Names
+    - [x] Currency Names
     - [ ] Locale Names
     - [ ] Locale List
     - [ ] Locales

@@ -1,76 +1,65 @@
 <?php
 
-/**
- * This file is part of the "laravel-lang/native-currency-names" project.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * @author Andrey Helldar <helldar@dragon-code.pro>
- * @copyright 2024 Laravel Lang Team
- * @license MIT
- *
- * @see https://laravel-lang.com
- */
-
 declare(strict_types=1);
 
 namespace LaravelLang\NativeCurrencyNames;
 
-use BackedEnum;
 use Illuminate\Support\Collection;
+use LaravelLang\Config\Services\AliasConfig;
+use LaravelLang\Filesystem\Filesystem;
+use LaravelLang\LocaleList\Locale;
 use LaravelLang\NativeCurrencyNames\Data\CurrencyData;
-use LaravelLang\NativeCurrencyNames\Enums\SortBy;
-use LaravelLang\NativeCurrencyNames\Helpers\Path;
-use LaravelLang\NativeCurrencyNames\Services\Filesystem;
+use SortDirection;
 
 class CurrencyNames
 {
-    public static string $default = '_native';
+    protected string $default = '_native';
 
-    /** @return Collection<CurrencyData> */
-    public static function get(BackedEnum|string|null $locale = null, SortBy $sortBy = SortBy::None): Collection
+    public function __construct(
+        protected AliasConfig $config,
+        protected Filesystem $filesystem,
+    ) {}
+
+    public function all(Locale|string|null $forLocale, ?SortDirection $direction = null): Collection
     {
-        if ($locale = static::locale($locale)) {
-            return static::forLocale($locale, $sortBy);
+        return (new Collection($this->read($forLocale)))
+            ->map(fn (array $item, string $locale) => $this->map($locale, $item))
+            ->when($direction !== null, fn (Collection $items) => $items->sortBy('localized', $direction));
+    }
+
+    public function one(Locale|string|null $forLocale, Locale|string $locale): CurrencyData
+    {
+        $normalized = $this->normalize($locale);
+
+        $items = $this->read($forLocale);
+
+        return $this->map($locale, $items[$normalized]);
+    }
+
+    protected function map(string $locale, array $item): CurrencyData
+    {
+        return new CurrencyData(
+            locale   : $locale,
+            code     : $item['code'],
+            numeric  : $item['numeric'],
+            native   : $item['native'],
+            localized: $item['localized'],
+        );
+    }
+
+    protected function read(Locale|string|null $locale): array
+    {
+        $normalized = $this->normalize($locale);
+
+        return $this->filesystem->fromJson(__DIR__ . "/../data/$normalized.json");
+    }
+
+    protected function normalize(Locale|string|null $locale): string
+    {
+        if ($locale === $this->default) {
+            return $locale;
         }
 
-        return static::forLocale(static::$default, $sortBy);
-    }
-
-    protected static function forLocale(string $locale, SortBy $sortBy): Collection
-    {
-        return collect(static::load(static::path($locale)))
-            ->when($sortBy === SortBy::Key, fn (Collection $items) => $items->sortKeys())
-            ->when($sortBy === SortBy::Value, fn (Collection $items) => $items->sortBy('name'))
-            ->map(fn (array $item) => new CurrencyData(
-                $item['code'],
-                $item['numeric'],
-                $item['native'],
-                $item['localized']
-            ));
-    }
-
-    protected static function load(string $path): array
-    {
-        return Filesystem::load($path);
-    }
-
-    protected static function path(string $locale): bool|string
-    {
-        return Path::resolve($locale) ?: Path::resolve(static::$default);
-    }
-
-    protected static function locale(BackedEnum|string|null $locale): ?string
-    {
-        if (empty($locale)) {
-            return null;
-        }
-
-        if ($locale instanceof BackedEnum) {
-            $locale = $locale->value;
-        }
-
-        return Path::exists((string) $locale) ? $locale : null;
+        return $this->config->from($locale);
     }
 }
