@@ -63,7 +63,7 @@
         - [x] Добавить пропуск установок (https://github.com/Laravel-Lang/mona/issues/5).
         - [x] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
     - [x] Common
-    - [ ] Country Names
+    - [x] Country Names
     - [ ] Currency Names
     - [ ] Locale Names
     - [ ] Locale List
