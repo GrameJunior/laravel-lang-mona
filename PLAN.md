@@ -47,7 +47,7 @@
         - [x] Добавить команду на удаление локализаций
         - [x] Добавить команду на обновление исходников (download)
         - [x] Добавить команду на синхронизацию ключей
-    - [ ] Publisher
+    - [x] Publisher
         - [x] Удалить консольную команду Remove
         - [x] Удалить консольную команду Reset
         - [x] Удалить вывод в About
@@ -61,7 +61,7 @@
             - Если в локализации нет такого файла, тогда берём следующий по этому списку.
             - Если локаль вообще не содержит таких файлов - берём дефолтные.
         - [x] Добавить пропуск установок (https://github.com/Laravel-Lang/mona/issues/5).
-        - [ ] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
+        - [x] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
     - [ ] Common
     - [ ] Country Names
     - [ ] Currency Names
