@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\NativeCountryNames\Data;
+namespace LaravelLang\NativeCountryNames;
 
 readonly class CountryData
 {

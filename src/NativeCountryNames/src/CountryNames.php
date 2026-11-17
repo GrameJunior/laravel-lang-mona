@@ -8,7 +8,6 @@ use Illuminate\Support\Collection;
 use LaravelLang\Config\Services\AliasConfig;
 use LaravelLang\Filesystem\Filesystem;
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\NativeCountryNames\Data\CountryData;
 use SortDirection;
 
 class CountryNames

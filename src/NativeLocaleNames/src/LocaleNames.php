@@ -1,66 +1,63 @@
 <?php
 
-/**
- * This file is part of the "laravel-lang/native-locale-names" project.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * @author Andrey Helldar <helldar@dragon-code.pro>
- * @copyright 2023 Laravel Lang Team
- * @license MIT
- *
- * @see https://laravel-lang.com
- */
-
 declare(strict_types=1);
 
 namespace LaravelLang\NativeLocaleNames;
 
-use BackedEnum;
-use LaravelLang\NativeLocaleNames\Enums\SortBy;
-use LaravelLang\NativeLocaleNames\Helpers\Arr;
-use LaravelLang\NativeLocaleNames\Helpers\Path;
-use LaravelLang\NativeLocaleNames\Services\Filesystem;
+use Illuminate\Support\Collection;
+use LaravelLang\Config\Services\AliasConfig;
+use LaravelLang\Filesystem\Filesystem;
+use LaravelLang\LocaleList\Locale;
+use SortDirection;
 
 class LocaleNames
 {
-    public static string $default = '_native';
+    protected string $default = '_native';
 
-    public static function get(BackedEnum|string|null $locale = null, SortBy $sortBy = SortBy::None): array
+    public function __construct(
+        protected AliasConfig $config,
+        protected Filesystem $filesystem,
+    ) {}
+
+    public function all(Locale|string|null $forLocale, ?SortDirection $direction = null): Collection
     {
-        if ($locale = static::locale($locale)) {
-            return static::forLocale($locale, $sortBy);
+        return (new Collection($this->read($forLocale)))
+            ->map(fn (array $item, string $locale) => $this->map($locale, $item))
+            ->when($direction !== null, fn (Collection $items) => $items->sortBy('localized', $direction));
+    }
+
+    public function one(Locale|string|null $forLocale, Locale|string $locale): LocaleData
+    {
+        $normalized = $this->normalize($locale);
+
+        $items = $this->read($forLocale);
+
+        return $this->map($locale, $items[$normalized]);
+    }
+
+    protected function map(string $locale, array $item): LocaleData
+    {
+        return new LocaleData(
+            code     : $locale,
+            alias    : $item['alias'],
+            native   : $item['native'],
+            localized: $item['localized'],
+        );
+    }
+
+    protected function read(Locale|string|null $locale): array
+    {
+        $normalized = $this->normalize($locale);
+
+        return $this->filesystem->fromJson(__DIR__ . "/../data/$normalized.json");
+    }
+
+    protected function normalize(Locale|string|null $locale): string
+    {
+        if ($locale === $this->default) {
+            return $locale;
         }
 
-        return static::forLocale(static::$default, $sortBy);
-    }
-
-    protected static function forLocale(string $locale, SortBy $sortBy): array
-    {
-        return Arr::sortBy(static::load(static::path($locale)), $sortBy);
-    }
-
-    protected static function load(string $path): array
-    {
-        return Filesystem::load($path);
-    }
-
-    protected static function path(string $locale): bool|string
-    {
-        return Path::resolve($locale) ?: Path::resolve(static::$default);
-    }
-
-    protected static function locale(BackedEnum|string|null $locale): ?string
-    {
-        if (empty($locale)) {
-            return null;
-        }
-
-        if ($locale instanceof BackedEnum) {
-            $locale = $locale->value;
-        }
-
-        return Path::exists((string) $locale) ? $locale : null;
+        return $this->config->from($locale);
     }
 }
