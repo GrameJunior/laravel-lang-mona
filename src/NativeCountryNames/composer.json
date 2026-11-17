@@ -45,6 +45,7 @@
     "require": {
         "php": "^8.1",
         "ext-json": "*",
+        "symfony/polyfill-php86": "^1.43",
         "dragon-code/support": "^6.11",
         "illuminate/collections": "^10.0 || ^11.0 || ^12.0 || ^13.0"
     },

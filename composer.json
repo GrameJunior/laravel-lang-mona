@@ -46,7 +46,8 @@
     "require": {
         "php": "^8.3",
         "ext-json": "*",
-        "symfony/console": "^7.4 || ^8.1"
+        "symfony/console": "^7.4 || ^8.1",
+        "symfony/polyfill-php86": "^1.43"
     },
     "require-dev": {
         "ext-zip": "*",
