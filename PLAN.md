@@ -65,7 +65,7 @@
     - [x] Common
     - [x] Country Names
     - [x] Currency Names
-    - [ ] Locale Names
+    - [x] Locale Names
     - [ ] Locale List
     - [ ] Locales
     - [ ] Models
