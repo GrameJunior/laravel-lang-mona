@@ -68,6 +68,7 @@
     - [x] Locale Names
     - [x] Locales
     - [ ] Models
+        - [ ] Заменить nullable поле на `not null` с целью улучшения работы индексов
     - [ ] Routes
     - [ ] Json Fallback
     - [ ] Locale List
