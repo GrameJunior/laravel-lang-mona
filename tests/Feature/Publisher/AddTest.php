@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Exceptions\UnknownLocaleCodeException;
+use LaravelLang\Exceptions\UnknownLocaleException;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Publisher\Console\AddCommand;
 use Workbench\App\Constants\FakeLocale;
@@ -67,4 +67,4 @@ test('unknown locale', function () {
     artisan(AddCommand::class, [
         'locales' => [FakeLocale::Incorrect1],
     ])->run();
-})->throws(UnknownLocaleCodeException::class);
+})->throws(UnknownLocaleException::class);

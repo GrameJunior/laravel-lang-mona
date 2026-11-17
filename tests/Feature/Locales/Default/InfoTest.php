@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Exceptions\UnknownLocaleCodeException;
+use LaravelLang\Exceptions\UnknownLocaleException;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
 use Workbench\App\Constants\FakeLocale;
@@ -45,4 +45,4 @@ test('incorrect', function (Locale|string $locale) {
 })->with([
     'data'   => [FakeLocale::Incorrect1],
     'string' => [FakeLocale::Incorrect2],
-])->throws(UnknownLocaleCodeException::class);
+])->throws(UnknownLocaleException::class);
