@@ -62,7 +62,7 @@
             - Если локаль вообще не содержит таких файлов - берём дефолтные.
         - [x] Добавить пропуск установок (https://github.com/Laravel-Lang/mona/issues/5).
         - [x] Добавить force install (https://github.com/Laravel-Lang/mona/issues/2).
-    - [ ] Common
+    - [x] Common
     - [ ] Country Names
     - [ ] Currency Names
     - [ ] Locale Names
