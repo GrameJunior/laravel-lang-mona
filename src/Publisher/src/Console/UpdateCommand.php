@@ -1,30 +1,108 @@
 <?php
 
-/**
- * This file is part of the "laravel-lang/publisher" project.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * @author Andrey Helldar <helldar@dragon-code.pro>
- * @copyright 2025 Laravel Lang Team
- * @license MIT
- *
- * @see https://laravel-lang.com
- */
-
 declare(strict_types=1);
 
 namespace LaravelLang\Publisher\Console;
 
-use LaravelLang\Publisher\Processors\Processor;
-use LaravelLang\Publisher\Processors\Update as UpdateProcessor;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
+use Illuminate\Console\Command;
+use LaravelLang\Config\Services\AliasConfig;
+use LaravelLang\Filesystem\Filesystem;
+use LaravelLang\Locales\Facades\Locales;
+use LaravelLang\Publisher\Collectors\PluginCollector;
 
-class UpdateCommand extends Base
+use LaravelLang\Publisher\Collectors\SourceCollector;
+
+use LaravelLang\Publisher\Loaders\TranslationLoader;
+
+use function array_merge;
+use function is_array;
+use function lang_path;
+use function Laravel\Prompts\task;
+use function str_replace;
+
+#[Signature('lang:update')]
+#[Description('Updating installed localizations')]
+final class UpdateCommand extends Command
 {
-    protected $signature = 'lang:update';
+    public function __invoke(
+        Filesystem $filesystem,
+        PluginCollector $pluginCollector,
+        SourceCollector $sourceCollector,
+        TranslationLoader $translationLoader,
+        AliasConfig $aliasConfig,
+    ): int {
+        task('Find plugins', function () use ($pluginCollector, &$plugins) {
+            $plugins = $pluginCollector->find();
+        });
 
-    protected $description = 'Updating installed localizations.';
+        task('Collecting source', function () use ($sourceCollector, $plugins, &$source) {
+            $source = $sourceCollector->all($plugins);
+        });
 
-    protected Processor|string $processor = UpdateProcessor::class;
+        task('Updating locales', function () use ($filesystem, $translationLoader, $aliasConfig, $source) {
+            $this->updateLocales($filesystem, $translationLoader, $aliasConfig, $source);
+        });
+
+        return self::SUCCESS;
+    }
+
+    protected function updateLocales(
+        Filesystem $filesystem,
+        TranslationLoader $loader,
+        AliasConfig $aliasConfig,
+        array $source,
+    ): void {
+        foreach (Locales::raw()->installed() as $locale) {
+            $library = $loader->get($filesystem->libraryPath(), $locale);
+
+            foreach ($source as $filename => $translatable) {
+                foreach ($translatable as $data) {
+                    $package = $loader->get($data['directory'], $locale);
+
+                    $filled = $this->fill($library, $package, $data['items']);
+
+                    $this->store($filesystem, $aliasConfig, $filename, $locale, $filled);
+                }
+            }
+        }
+    }
+
+    protected function fill(array $library, array $package, array $items): array
+    {
+        return $this->translate(array_merge($library, $package), $items);
+    }
+
+    protected function translate(array $library, array $items): array
+    {
+        foreach ($items as &$value) {
+            if (is_array($value)) {
+                $value = $this->translate($library, $value);
+
+                continue;
+            }
+
+            $value = $library[$value] ?? $value;
+        }
+
+        return $items;
+    }
+
+    protected function store(
+        Filesystem $filesystem,
+        AliasConfig $aliasConfig,
+        string $filename,
+        string $locale,
+        array $translations,
+    ): void {
+        $path = $this->targetPath($aliasConfig, $filename, $locale);
+
+        $filesystem->store($path, $translations, true);
+    }
+
+    protected function targetPath(AliasConfig $aliasConfig, string $filename, string $locale): string
+    {
+        return lang_path(str_replace('{locale}', $aliasConfig->from($locale), $filename));
+    }
 }

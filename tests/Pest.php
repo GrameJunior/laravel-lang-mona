@@ -14,6 +14,7 @@ pest()
     ->in('Feature')
     ->beforeEach(function () {
         cleanUpLang();
+        fakePluginCollector();
     });
 
 pest()

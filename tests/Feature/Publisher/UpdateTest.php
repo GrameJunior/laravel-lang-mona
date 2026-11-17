@@ -8,8 +8,8 @@ use LaravelLang\Publisher\Console\UpdateCommand;
 
 use function Pest\Laravel\artisan;
 
-test('update locale', function (bool $inline, array $foo, array $bar, array $baz): void {
-    config()->set('localization_main.inline', $inline);
+test('update styles', function (array $config, array $foo, array $bar, array $baz): void {
+    config()->set('localization_main.styles', $config);
 
     $locale = Locale::Swedish->value;
 
@@ -43,17 +43,24 @@ test('update locale', function (bool $inline, array $foo, array $bar, array $baz
 
     expect(__('Foo'))->toBe('Alle Ressourcen geladen.');
 })->with([
-    'attributes' => [
-        'inline' => false,
+    'default' => [
+        'config' => ['default'],
         'foo'    => ['Foo :attribute 0', 'Foo :attribute 1'],
         'bar'    => ['Bar :attribute 0', 'Bar :attribute 1'],
         'baz'    => ['Baz :attribute 0', 'Baz :attribute 1'],
     ],
 
-    'inline' => [
-        'inline' => true,
-        'foo'    => ['Foo :attribute 0', 'Foo field 1'],
-        'bar'    => ['Bar :attribute 0', 'Bar field 1'],
-        'baz'    => ['Baz :attribute 0', 'Baz field 1'],
-    ],
+    //'inline' => [
+    //    'config' => ['inline'],
+    //    'foo'    => ['Foo :attribute 0', 'Foo field 1'],
+    //    'bar'    => ['Bar :attribute 0', 'Bar field 1'],
+    //    'baz'    => ['Baz :attribute 0', 'Baz field 1'],
+    //],
+    //
+    //'empty'         => [
+    //    'config' => [],
+    //    'foo'    => ['Foo :attribute 0', 'Foo :attribute 1'],
+    //    'bar'    => ['Bar :attribute 0', 'Bar :attribute 1'],
+    //    'baz'    => ['Baz :attribute 0', 'Baz :attribute 1'],
+    //],
 ]);

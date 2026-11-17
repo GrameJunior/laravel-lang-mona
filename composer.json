@@ -53,6 +53,7 @@
         "archtechx/enums": "^1.1",
         "codezero/browser-locale": "^3.4",
         "composer/class-map-generator": "^1.9",
+        "composer/semver": "^3.6",
         "dragon-code/benchmark": "^4.6",
         "dragon-code/support": "^6.17",
         "laravel/prompts": "^0.3.26",
@@ -60,13 +61,15 @@
         "pestphp/pest": "^4.7.8 || ^5.3.5",
         "pestphp/pest-plugin-laravel": "^4.0 || ^5.0",
         "spatie/laravel-data": "^4.23",
-        "symfony/var-dumper": "^7.0 || ^8.0"
+        "symfony/var-dumper": "^7.0 || ^8.0",
+        "symfony/var-exporter": "^7.0 || ^8.0"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "LaravelLang\\Config\\": "src/Config/src/",
+            "LaravelLang\\Filesystem\\": "src/Filesystem/src/",
             "LaravelLang\\JsonFallback\\": "src/JsonFallback/src/",
             "LaravelLang\\LocaleList\\": "src/LocaleList/src/",
             "LaravelLang\\Locales\\": "src/Locales/src/",
