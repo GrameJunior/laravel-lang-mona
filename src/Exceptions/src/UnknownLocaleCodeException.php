@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\Publisher\Exceptions;
+namespace LaravelLang\Exceptions;
 
 use LaravelLang\LocaleList\Locale;
 use RuntimeException;

@@ -7,5 +7,5 @@ use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
 use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
 
 AllTranslationsHasBeenForgetEvent::dispatch($model);
-TranslationHasBeenForgetEvent::dispatch($model, $locale);
-TranslationHasBeenSetEvent::dispatch($model, $column, $locale, $oldValue, $newValue);
+TranslationHasBeenForgetEvent::dispatch($model, $code);
+TranslationHasBeenSetEvent::dispatch($model, $column, $code, $oldValue, $newValue);

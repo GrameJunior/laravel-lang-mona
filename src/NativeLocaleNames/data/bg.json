@@ -1,131 +1,518 @@
 {
-    "af": "Африканс",
-    "ak": "Акан",
-    "am": "Амхарски",
-    "ar": "Арабски",
-    "as": "Асамски",
-    "az": "Азербайджански",
-    "be": "Беларуски",
-    "bg": "Български",
-    "bho": "Боджпури",
-    "bm": "Бамбара",
-    "bn": "Бенгалски",
-    "bs": "Босненски",
-    "ca": "Каталонски",
-    "ceb": "Себуански",
-    "ckb": "Кюрдски (Централен)",
-    "cs": "Чешки",
-    "cy": "Уелски",
-    "da": "Датски",
-    "de": "Немски",
-    "de_AT": "Немски (Австрия)",
-    "de_CH": "Немски (Швейцария)",
-    "doi": "Догри",
-    "ee": "Еве",
-    "el": "Гръцки",
-    "en": "Английски",
-    "en_CA": "Английски (Канада)",
-    "eo": "Есперанто",
-    "es": "Испански",
-    "et": "Естонски",
-    "eu": "Баски",
-    "fa": "Персийски",
-    "fi": "Фински",
-    "fil": "Филипински",
-    "fr": "Френски",
-    "fy": "Западнофризийски",
-    "ga": "Ирландски",
-    "gd": "Шотландски Келтски",
-    "gl": "Галисийски",
-    "gu": "Гуджарати",
-    "ha": "Хауса",
-    "haw": "Хавайски",
-    "he": "Иврит",
-    "hi": "Хинди",
-    "hr": "Хърватски",
-    "ht": "Хаитянски Креолски",
-    "hu": "Унгарски",
-    "hy": "Арменски",
-    "id": "Индонезийски",
-    "ig": "Игбо",
-    "is": "Исландски",
-    "it": "Италиански",
-    "ja": "Японски",
-    "ka": "Грузински",
-    "kk": "Казахски",
-    "km": "Кхмерски",
-    "kn": "Каннада",
-    "ko": "Корейски",
-    "ku": "Кюрдски",
-    "ky": "Киргизки",
-    "lb": "Люксембургски",
-    "lg": "Ганда",
-    "ln": "Лингала",
-    "lo": "Лаоски",
-    "lt": "Литовски",
-    "lv": "Латвийски",
-    "mai": "Майтхили",
-    "mg": "Малгашки",
-    "mi": "Маорски",
-    "mk": "Македонски",
-    "ml": "Малаялам",
-    "mn": "Монголски",
-    "mni_Mtei": "Манипурски",
-    "mr": "Марати",
-    "ms": "Малайски",
-    "mt": "Малтийски",
-    "my": "Бирмански",
-    "nb": "Норвежки (Букмол)",
-    "ne": "Непалски",
-    "nl": "Нидерландски",
-    "nn": "Норвежки (Нюношк)",
-    "oc": "Окситански",
-    "om": "Оромо",
-    "or": "Ория",
-    "pa": "Пенджабски",
-    "pl": "Полски",
-    "ps": "Пущу",
-    "pt": "Португалски",
-    "pt_BR": "Португалски (Бразилия)",
-    "qu": "Кечуа",
-    "ro": "Румънски",
-    "ru": "Руски",
-    "rw": "Киняруанда",
-    "sa": "Санскрит",
-    "sc": "Сардински",
-    "sd": "Синдхи",
-    "si": "Синхалски",
-    "sk": "Словашки",
-    "sl": "Словенски",
-    "sn": "Шона",
-    "so": "Сомалийски",
-    "sq": "Албански",
-    "sr_Cyrl": "Сръбски",
-    "sr_Latn": "Сръбски",
-    "sr_Latn_ME": "Сръбски (Черна Гора)",
-    "su": "Сундански",
-    "sv": "Шведски",
-    "sw": "Суахили",
-    "ta": "Тамилски",
-    "te": "Телугу",
-    "tg": "Таджикски",
-    "th": "Тайски",
-    "ti": "Тигриня",
-    "tk": "Туркменски",
-    "tl": "Тагалог",
-    "tr": "Турски",
-    "tt": "Татарски",
-    "ug": "Уйгурски",
-    "uk": "Украински",
-    "ur": "Урду",
-    "uz_Cyrl": "Узбекски",
-    "uz_Latn": "Узбекски",
-    "vi": "Виетнамски",
-    "xh": "Кхоса",
-    "yi": "Идиш",
-    "yo": "Йоруба",
-    "zh_CN": "Китайски (Китай)",
-    "zh_HK": "Китайски (Хонконг, Сар На Китай)",
-    "zh_TW": "Китайски (Тайван)",
-    "zu": "Зулуски"
+    "af": {
+        "native": "Afrikaans",
+        "localized": "Африканс"
+    },
+    "ak": {
+        "native": "Akan",
+        "localized": "Акан"
+    },
+    "am": {
+        "native": "አማርኛ",
+        "localized": "Амхарски"
+    },
+    "ar": {
+        "native": "العربية",
+        "localized": "Арабски"
+    },
+    "as": {
+        "native": "অসমীয়া",
+        "localized": "Асамски"
+    },
+    "az": {
+        "native": "Azərbaycan",
+        "localized": "Азербайджански"
+    },
+    "be": {
+        "native": "Беларуская",
+        "localized": "Беларуски"
+    },
+    "bg": {
+        "native": "Български",
+        "localized": "Български"
+    },
+    "bho": {
+        "native": "भोजपुरी",
+        "localized": "Боджпури"
+    },
+    "bm": {
+        "native": "Bamanakan",
+        "localized": "Бамбара"
+    },
+    "bn": {
+        "native": "বাংলা",
+        "localized": "Бенгалски"
+    },
+    "bs": {
+        "native": "Bosanski",
+        "localized": "Босненски"
+    },
+    "ca": {
+        "native": "Català",
+        "localized": "Каталонски"
+    },
+    "ceb": {
+        "native": "Cebuano",
+        "localized": "Себуански"
+    },
+    "ckb": {
+        "native": "کوردیی ناوەندی",
+        "localized": "Кюрдски (Централен)"
+    },
+    "cs": {
+        "native": "Čeština",
+        "localized": "Чешки"
+    },
+    "cy": {
+        "native": "Cymraeg",
+        "localized": "Уелски"
+    },
+    "da": {
+        "native": "Dansk",
+        "localized": "Датски"
+    },
+    "de": {
+        "native": "Deutsch",
+        "localized": "Немски"
+    },
+    "de_AT": {
+        "native": "Deutsch (Österreich)",
+        "localized": "Немски (Австрия)"
+    },
+    "de_CH": {
+        "native": "Deutsch (Schweiz)",
+        "localized": "Немски (Швейцария)"
+    },
+    "doi": {
+        "native": "डोगरी",
+        "localized": "Догри"
+    },
+    "ee": {
+        "native": "Eʋegbe",
+        "localized": "Еве"
+    },
+    "el": {
+        "native": "Ελληνικά",
+        "localized": "Гръцки"
+    },
+    "en": {
+        "native": "English",
+        "localized": "Английски"
+    },
+    "en_CA": {
+        "native": "English (Canada)",
+        "localized": "Английски (Канада)"
+    },
+    "eo": {
+        "native": "Esperanto",
+        "localized": "Есперанто"
+    },
+    "es": {
+        "native": "Español",
+        "localized": "Испански"
+    },
+    "et": {
+        "native": "Eesti",
+        "localized": "Естонски"
+    },
+    "eu": {
+        "native": "Euskara",
+        "localized": "Баски"
+    },
+    "fa": {
+        "native": "فارسی",
+        "localized": "Персийски"
+    },
+    "fi": {
+        "native": "Suomi",
+        "localized": "Фински"
+    },
+    "fil": {
+        "native": "Filipino",
+        "localized": "Филипински"
+    },
+    "fr": {
+        "native": "Français",
+        "localized": "Френски"
+    },
+    "fy": {
+        "native": "Frysk",
+        "localized": "Западнофризийски"
+    },
+    "ga": {
+        "native": "Gaeilge",
+        "localized": "Ирландски"
+    },
+    "gd": {
+        "native": "Gàidhlig",
+        "localized": "Шотландски Келтски"
+    },
+    "gl": {
+        "native": "Galego",
+        "localized": "Галисийски"
+    },
+    "gu": {
+        "native": "ગુજરાતી",
+        "localized": "Гуджарати"
+    },
+    "ha": {
+        "native": "Hausa",
+        "localized": "Хауса"
+    },
+    "haw": {
+        "native": "ʻŌlelo Hawaiʻi",
+        "localized": "Хавайски"
+    },
+    "he": {
+        "native": "עברית",
+        "localized": "Иврит"
+    },
+    "hi": {
+        "native": "हिन्दी",
+        "localized": "Хинди"
+    },
+    "hr": {
+        "native": "Hrvatski",
+        "localized": "Хърватски"
+    },
+    "ht": {
+        "native": "Créole Haïtien",
+        "localized": "Хаитянски Креолски"
+    },
+    "hu": {
+        "native": "Magyar",
+        "localized": "Унгарски"
+    },
+    "hy": {
+        "native": "Հայերեն",
+        "localized": "Арменски"
+    },
+    "id": {
+        "native": "Indonesia",
+        "localized": "Индонезийски"
+    },
+    "ig": {
+        "native": "Igbo",
+        "localized": "Игбо"
+    },
+    "is": {
+        "native": "Íslenska",
+        "localized": "Исландски"
+    },
+    "it": {
+        "native": "Italiano",
+        "localized": "Италиански"
+    },
+    "ja": {
+        "native": "日本語",
+        "localized": "Японски"
+    },
+    "ka": {
+        "native": "ქართული",
+        "localized": "Грузински"
+    },
+    "kk": {
+        "native": "Қазақ Тілі",
+        "localized": "Казахски"
+    },
+    "km": {
+        "native": "ខ្មែរ",
+        "localized": "Кхмерски"
+    },
+    "kn": {
+        "native": "ಕನ್ನಡ",
+        "localized": "Каннада"
+    },
+    "ko": {
+        "native": "한국어",
+        "localized": "Корейски"
+    },
+    "ku": {
+        "native": "Kurdî",
+        "localized": "Кюрдски"
+    },
+    "ky": {
+        "native": "Кыргызча",
+        "localized": "Киргизки"
+    },
+    "lb": {
+        "native": "Lëtzebuergesch",
+        "localized": "Люксембургски"
+    },
+    "lg": {
+        "native": "Luganda",
+        "localized": "Ганда"
+    },
+    "ln": {
+        "native": "Lingála",
+        "localized": "Лингала"
+    },
+    "lo": {
+        "native": "ລາວ",
+        "localized": "Лаоски"
+    },
+    "lt": {
+        "native": "Lietuvių",
+        "localized": "Литовски"
+    },
+    "lv": {
+        "native": "Latviešu",
+        "localized": "Латвийски"
+    },
+    "mai": {
+        "native": "मैथिली",
+        "localized": "Майтхили"
+    },
+    "mg": {
+        "native": "Malagasy",
+        "localized": "Малгашки"
+    },
+    "mi": {
+        "native": "Māori",
+        "localized": "Маорски"
+    },
+    "mk": {
+        "native": "Македонски",
+        "localized": "Македонски"
+    },
+    "ml": {
+        "native": "മലയാളം",
+        "localized": "Малаялам"
+    },
+    "mn": {
+        "native": "Монгол",
+        "localized": "Монголски"
+    },
+    "mni_Mtei": {
+        "native": "Manipuri",
+        "localized": "Манипурски"
+    },
+    "mr": {
+        "native": "मराठी",
+        "localized": "Марати"
+    },
+    "ms": {
+        "native": "Melayu",
+        "localized": "Малайски"
+    },
+    "mt": {
+        "native": "Malti",
+        "localized": "Малтийски"
+    },
+    "my": {
+        "native": "မြန်မာ",
+        "localized": "Бирмански"
+    },
+    "nb": {
+        "native": "Norsk Bokmål",
+        "localized": "Норвежки (Букмол)"
+    },
+    "ne": {
+        "native": "नेपाली",
+        "localized": "Непалски"
+    },
+    "nl": {
+        "native": "Nederlands",
+        "localized": "Нидерландски"
+    },
+    "nn": {
+        "native": "Norsk Nynorsk",
+        "localized": "Норвежки (Нюношк)"
+    },
+    "oc": {
+        "native": "Occitan",
+        "localized": "Окситански"
+    },
+    "om": {
+        "native": "Oromoo",
+        "localized": "Оромо"
+    },
+    "or": {
+        "native": "ଓଡ଼ିଆ",
+        "localized": "Ория"
+    },
+    "pa": {
+        "native": "ਪੰਜਾਬੀ",
+        "localized": "Пенджабски"
+    },
+    "pl": {
+        "native": "Polski",
+        "localized": "Полски"
+    },
+    "ps": {
+        "native": "پښتو",
+        "localized": "Пущу"
+    },
+    "pt": {
+        "native": "Português",
+        "localized": "Португалски"
+    },
+    "pt_BR": {
+        "native": "Português (Brasil)",
+        "localized": "Португалски (Бразилия)"
+    },
+    "qu": {
+        "native": "Runasimi",
+        "localized": "Кечуа"
+    },
+    "ro": {
+        "native": "Română",
+        "localized": "Румънски"
+    },
+    "ru": {
+        "native": "Русский",
+        "localized": "Руски"
+    },
+    "rw": {
+        "native": "Kinyarwanda",
+        "localized": "Киняруанда"
+    },
+    "sa": {
+        "native": "संस्कृत भाषा",
+        "localized": "Санскрит"
+    },
+    "sc": {
+        "native": "Sardu",
+        "localized": "Сардински"
+    },
+    "sd": {
+        "native": "سنڌي",
+        "localized": "Синдхи"
+    },
+    "si": {
+        "native": "සිංහල",
+        "localized": "Синхалски"
+    },
+    "sk": {
+        "native": "Slovenčina",
+        "localized": "Словашки"
+    },
+    "sl": {
+        "native": "Slovenščina",
+        "localized": "Словенски"
+    },
+    "sn": {
+        "native": "Chishona",
+        "localized": "Шона"
+    },
+    "so": {
+        "native": "Soomaali",
+        "localized": "Сомалийски"
+    },
+    "sq": {
+        "native": "Shqip",
+        "localized": "Албански"
+    },
+    "sr_Cyrl": {
+        "native": "Српски",
+        "localized": "Сръбски"
+    },
+    "sr_Latn": {
+        "native": "Srpski",
+        "localized": "Сръбски"
+    },
+    "sr_Latn_ME": {
+        "native": "Srpski (Crna Gora)",
+        "localized": "Сръбски (Черна Гора)"
+    },
+    "su": {
+        "native": "Basa Sunda",
+        "localized": "Сундански"
+    },
+    "sv": {
+        "native": "Svenska",
+        "localized": "Шведски"
+    },
+    "sw": {
+        "native": "Kiswahili",
+        "localized": "Суахили"
+    },
+    "ta": {
+        "native": "தமிழ்",
+        "localized": "Тамилски"
+    },
+    "te": {
+        "native": "తెలుగు",
+        "localized": "Телугу"
+    },
+    "tg": {
+        "native": "Тоҷикӣ",
+        "localized": "Таджикски"
+    },
+    "th": {
+        "native": "ไทย",
+        "localized": "Тайски"
+    },
+    "ti": {
+        "native": "ትግርኛ",
+        "localized": "Тигриня"
+    },
+    "tk": {
+        "native": "Türkmen Dili",
+        "localized": "Туркменски"
+    },
+    "tl": {
+        "native": "Tagalog",
+        "localized": "Тагалог"
+    },
+    "tr": {
+        "native": "Türkçe",
+        "localized": "Турски"
+    },
+    "tt": {
+        "native": "Татар",
+        "localized": "Татарски"
+    },
+    "ug": {
+        "native": "ئۇيغۇرچە",
+        "localized": "Уйгурски"
+    },
+    "uk": {
+        "native": "Українська",
+        "localized": "Украински"
+    },
+    "ur": {
+        "native": "اردو",
+        "localized": "Урду"
+    },
+    "uz_Cyrl": {
+        "native": "Ўзбекча",
+        "localized": "Узбекски"
+    },
+    "uz_Latn": {
+        "native": "O‘zbek",
+        "localized": "Узбекски"
+    },
+    "vi": {
+        "native": "Tiếng Việt",
+        "localized": "Виетнамски"
+    },
+    "xh": {
+        "native": "Isixhosa",
+        "localized": "Кхоса"
+    },
+    "yi": {
+        "native": "ייִדיש",
+        "localized": "Идиш"
+    },
+    "yo": {
+        "native": "Èdè Yorùbá",
+        "localized": "Йоруба"
+    },
+    "zh_CN": {
+        "native": "中文 (中国)",
+        "localized": "Китайски (Китай)"
+    },
+    "zh_HK": {
+        "native": "中文 (中国香港特别行政区)",
+        "localized": "Китайски (Хонконг, Сар На Китай)"
+    },
+    "zh_TW": {
+        "native": "中文 (台湾)",
+        "localized": "Китайски (Тайван)"
+    },
+    "zu": {
+        "native": "Isizulu",
+        "localized": "Зулуски"
+    }
 }

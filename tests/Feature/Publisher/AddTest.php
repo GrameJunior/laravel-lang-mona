@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Exceptions\UnknownLocaleCodeException;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Publisher\Console\AddCommand;
-use LaravelLang\Publisher\Exceptions\UnknownLocaleCodeException;
 use Workbench\App\Constants\FakeLocale;
 
 use function Pest\Laravel\artisan;

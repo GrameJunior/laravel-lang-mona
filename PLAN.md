@@ -66,11 +66,11 @@
     - [x] Country Names
     - [x] Currency Names
     - [x] Locale Names
-    - [ ] Locale List
-    - [ ] Locales
+    - [x] Locales
     - [ ] Models
     - [ ] Routes
     - [ ] Json Fallback
+    - [ ] Locale List
     - [ ] Проверить, что у всех классов есть нужные суффиксы.
 - [x] Переместить схему конфигурации в папку `resources`.
     - Пример: https://github.com/roxblnfk/skills/blob/master/resources/skills.schema.json
