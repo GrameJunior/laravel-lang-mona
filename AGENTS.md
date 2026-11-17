@@ -20,6 +20,15 @@
 - For changes in all other folders, always prefix the header with `[app]: `.
 
 
+## Task Coordination and Acceptance
+
+- Study the task specification and requirements before starting work.
+- Create a work plan, split it into tasks, and assign them to separate chats.
+- Thoroughly review each chat's completed work against the specification and plan.
+- Return work with defects, inconsistencies, or deviations to the responsible chat for revision.
+- Accept the work only after verifying that all identified issues have been resolved and the requirements are met.
+
+
 ## Subagents
 
 Use subagents selectively.
