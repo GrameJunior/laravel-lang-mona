@@ -9,8 +9,8 @@ use Workbench\App\Constants\FakeLocale;
 
 use function Pest\Laravel\artisan;
 
-test('add locale', function (bool $inline, string $foo, string $bar, string $baz): void {
-    config()->set('localization_main.inline', $inline);
+test('add locale', function (array $config, array $foo, array $bar, array $baz): void {
+    config()->set('localization_main.styles', $config);
 
     $locale = Locale::Swedish->value;
 
@@ -26,26 +26,12 @@ test('add locale', function (bool $inline, string $foo, string $bar, string $baz
 
     app()->setlocale($locale);
 
-    expect(__('auth.foo'))->toBe($foo);
-    expect(__('bar.bar'))->toBe($bar);
-    expect(__('baz'))->toBe($baz);
+    expect(__('auth.foo'))->toBe($foo[1]);
+    expect(__('bar.bar'))->toBe($bar[1]);
+    expect(__('baz'))->toBe($baz[1]);
 
     expect(__('Foo'))->toBe('Alle Ressourcen geladen.');
-})->with([
-    'attributes' => [
-        'inline' => false,
-        'foo'    => 'Foo :attribute 1',
-        'bar'    => 'Bar :attribute 1',
-        'baz'    => 'Baz :attribute 1',
-    ],
-
-    'inline' => [
-        'inline' => true,
-        'foo'    => 'Foo field 1',
-        'bar'    => 'Bar field 1',
-        'baz'    => 'Baz field 1',
-    ],
-]);
+})->with('translations');
 
 test('all - yes', function () {
     artisan(AddCommand::class)
