@@ -2,13 +2,10 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Models\Exceptions\UnavailableLocaleException;
-
+use LaravelLang\Exceptions\UnknownLocaleException;
 use Workbench\App\Constants\FakeLocale;
-
 use Workbench\App\Constants\FakeValue;
 use Workbench\App\Models\TestModel;
-
 use Workbench\App\Models\TestModelTranslation;
 
 use function Pest\Laravel\assertDatabaseHas;
@@ -110,4 +107,4 @@ test('non-translatable locale', function () {
     $model = fakeTestModel();
 
     $model->forgetTranslation(FakeLocale::Incorrect1);
-})->throws(UnavailableLocaleException::class);
+})->throws(UnknownLocaleException::class);
