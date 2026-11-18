@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Facades\Locales;
 use LaravelLang\Models\Eloquent\Scopes\FilterTranslationsScope;
 use LaravelLang\Models\Eloquent\Translation;
 use LaravelLang\Models\Services\Attribute;
 use LaravelLang\Models\Services\Registry;
 use LaravelLang\Models\Services\Relation;
+
+use LaravelLang\NativeLocaleNames\LocaleData;
 
 use function app;
 use function in_array;
@@ -140,14 +141,16 @@ trait HasTranslations
         });
     }
 
-    public function translation(?LocaleData $locale): Translation
+    public function translation(?string $locale): Translation
     {
-        $locale ??= Locales::getCurrent();
+        $normalized = $locale
+            ? Locales::fromAlias($locale)
+            : Locales::current(false);
 
-        if (! $this->translations->has($locale->locale->value)) {
-            $this->translations->put($locale->locale->value, Relation::initializeLocale($this, $locale));
+        if (! $this->translations->has($normalized)) {
+            $this->translations->put($normalized, Relation::initializeLocale($this, $normalized));
         }
 
-        return $this->translations->get($locale->locale->value);
+        return $this->translations->get($normalized);
     }
 }

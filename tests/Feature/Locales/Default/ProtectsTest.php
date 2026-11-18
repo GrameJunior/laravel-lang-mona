@@ -6,7 +6,7 @@ use LaravelLang\Locales\Facades\Locales;
 use Workbench\App\Constants\FakeLocale;
 
 test('main', function () {
-    $locales = Locales::protects()->pluck('code')->all();
+    $locales = Locales::protects();
 
     expect($locales)->toContain(FakeLocale::DefaultAlias);
     expect($locales)->toContain(FakeLocale::Fallback);
@@ -18,7 +18,7 @@ test('incorrect', function () {
     app()->setLocale(FakeLocale::Incorrect1);
     app()->setFallbackLocale(FakeLocale::Incorrect2);
 
-    $locales = Locales::protects()->pluck('code')->all();
+    $locales = Locales::protects();
 
     expect($locales)->toContain(FakeLocale::Custom);
 

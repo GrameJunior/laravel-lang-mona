@@ -14,9 +14,11 @@ class FilterTranslationsScope
 {
     public function __invoke(Builder $builder): void
     {
-        if ($this->enabled()) {
-            $builder->whereIn('locale', $this->locales());
+        if (! $this->enabled()) {
+            return;
         }
+
+        $builder->whereIn('locale', $this->locales());
     }
 
     protected function enabled(): bool
@@ -27,8 +29,8 @@ class FilterTranslationsScope
     protected function locales(): array
     {
         return array_unique([
-            Locales::getCurrent()->locale->value,
-            Locales::getFallback()->locale->value,
+            Locales::current(false),
+            Locales::fallback(false),
         ]);
     }
 }

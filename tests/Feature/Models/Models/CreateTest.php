@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Exceptions\UnknownLocaleException;
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\Models\Exceptions\UnavailableLocaleException;
 use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Constants\FakeValue;
 use Workbench\App\Models\TestModel;
@@ -186,7 +186,7 @@ test('uninstalled', function () {
             FakeLocale::Uninstalled => 'qwerty 21',
         ],
     ]);
-})->throws(UnavailableLocaleException::class);
+})->throws(UnknownLocaleException::class);
 
 test('unknown', function () {
     TestModel::create([
@@ -200,4 +200,4 @@ test('unknown', function () {
             'qwerty' => 'qwerty 20',
         ],
     ]);
-})->throws(UnavailableLocaleException::class);
+})->throws(UnknownLocaleException::class);

@@ -6,9 +6,9 @@ use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use LaravelLang\Exceptions\UnknownLocaleException;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Models\Exceptions\AttributeIsNotTranslatableException;
-use LaravelLang\Models\Exceptions\UnavailableLocaleException;
 use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Constants\FakeValue;
 use Workbench\App\Models\TestModel;
@@ -93,7 +93,7 @@ test('uninstalled', function () {
     $model = fakeTestModel();
 
     $model->getTranslation(FakeValue::Title, FakeLocale::Uninstalled);
-})->throws(UnavailableLocaleException::class);
+})->throws(UnknownLocaleException::class);
 
 test('without translations model', function () {
     $model = fakeTestModel();
@@ -164,15 +164,17 @@ test('translated scope returns records with at least one translation', function 
     $text = fake()->paragraph;
 
     TestModel::create(['key' => FakeLocale::Fallback]);
+
     TestModel::create([
-        'key'            => FakeLocale::Default,
+        'key' => FakeLocale::Default,
+
         FakeValue::Title => [
             FakeLocale::Default => $text,
         ],
     ]);
 
     expect(TestModel::translated()->count())->toBe(1);
-    expect(TestModel::translated()->first()->{FakeValue::Title})->toBe($text);
+    expect(TestModel::translated()->first()->getAttribute(FakeValue::Title))->toBe($text);
 });
 
 test('whereTranslation filters by translation', function () {
@@ -336,7 +338,8 @@ test(
     'asc without locale' => ['asc', null, FakeLocale::Default, FakeLocale::Fallback],
     'asc with locale'    => ['asc', FakeLocale::Default, FakeLocale::Default, FakeLocale::Fallback],
 
-    'desc' => ['desc', null, FakeLocale::Fallback, FakeLocale::Fallback],
+    'desc without locale' => ['desc', null, FakeLocale::Fallback, FakeLocale::Fallback],
+    'desc with locale'    => ['desc', FakeLocale::Default, FakeLocale::Fallback, FakeLocale::Fallback],
 ]);
 
 test('orderByTranslation sorts by key asc even if locale is missing', function () {

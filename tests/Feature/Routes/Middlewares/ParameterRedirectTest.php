@@ -36,7 +36,7 @@ test('empty locale', function (int|string|null $locale) {
 
     getJson(route('via.parameter.redirect', ['key' => $foo, 'locale' => $locale]))
         ->assertRedirectToRoute('via.parameter.redirect', [
-            'locale' => FakeLocale::Default,
+            'locale' => FakeLocale::DefaultAlias,
             'key'    => $foo,
         ]);
 
@@ -48,7 +48,7 @@ test('uninstalled locale', function (string $locale) {
 
     getJson(route('via.parameter.redirect', ['key' => $foo, 'locale' => $locale]))
         ->assertRedirectToRoute('via.parameter.redirect', [
-            'locale' => FakeLocale::Default,
+            'locale' => FakeLocale::DefaultAlias,
             'key'    => $foo,
         ]);
 
@@ -60,7 +60,7 @@ test('unknown locale', function (int|string $locale) {
 
     getJson(route('via.parameter.redirect', ['key' => $foo, 'locale' => $locale]))
         ->assertRedirectToRoute('via.parameter.redirect', [
-            'locale' => FakeLocale::Default,
+            'locale' => FakeLocale::DefaultAlias,
             'key'    => $foo,
         ]);
 

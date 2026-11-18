@@ -1,131 +1,518 @@
 {
-    "af": "Afrikoota",
-    "ak": "Akan",
-    "am": "Afaan Sidaamaa",
-    "ar": "Arabiffaa",
-    "as": "Assamese",
-    "az": "Afaan Azerbaijani",
-    "be": "Afaan Belarusia",
-    "bg": "Afaan Bulgariya",
-    "bho": "Bhojpuri",
-    "bm": "Bambara",
-    "bn": "Afaan Baangladeshi",
-    "bs": "Afaan Bosniyaa",
-    "ca": "Afaan Katalaa",
-    "ceb": "Cebuano",
-    "ckb": "Central Kurdish",
-    "cs": "Afaan Czech",
-    "cy": "Welishiffaa",
-    "da": "Afaan Deenmaark",
-    "de": "Afaan Jarmanii",
-    "de_AT": "Afaan Jarmanii (At)",
-    "de_CH": "Afaan Jarmanii (Ch)",
-    "doi": "Dogri",
-    "ee": "Ewe",
-    "el": "Afaan Giriiki",
-    "en": "Ingliffa",
-    "en_CA": "Ingliffa (Ca)",
-    "eo": "Afaan Esperantoo",
-    "es": "Afaan Ispeen",
-    "et": "Afaan Istooniya",
-    "eu": "Afaan Baskuu",
-    "fa": "Afaan Persia",
-    "fi": "Afaan Fiilaandi",
-    "fil": "Afaan Filippinii",
-    "fr": "Afaan Faransaayii",
-    "fy": "Afaan Firisiyaani",
-    "ga": "Afaan Ayirishii",
-    "gd": "Scots Gaelic",
-    "gl": "Afaan Galishii",
-    "gu": "Afaan Gujarati",
-    "ha": "Hausa",
-    "haw": "Hawaiian",
-    "he": "Afaan Hebrew",
-    "hi": "Afaan Hindii",
-    "hr": "Afaan Croatian",
-    "ht": "Haitian Creole",
-    "hu": "Afaan Hangaari",
-    "hy": "Armenian",
-    "id": "Afaan Indoneziya",
-    "ig": "Igbo",
-    "is": "Ayiislandiffaa",
-    "it": "Afaan Xaaliyaani",
-    "ja": "Afaan Japanii",
-    "ka": "Afaan Georgian",
-    "kk": "Kazakh",
-    "km": "Khmer",
-    "kn": "Afaan Kannada",
-    "ko": "Afaan Korea",
-    "ku": "Kurdish",
-    "ky": "Kyrgyz",
-    "lb": "Luxembourgish",
-    "lg": "Ganda",
-    "ln": "Lingala",
-    "lo": "Lao",
-    "lt": "Afaan Liituniyaa",
-    "lv": "Afaan Lativiyaa",
-    "mai": "Maithili",
-    "mg": "Malagasy",
-    "mi": "Māori",
-    "mk": "Afaan Macedooniyaa",
-    "ml": "Malayaalamiffaa",
-    "mn": "Mongolian",
-    "mni_Mtei": "Mni",
-    "mr": "Afaan Maratii",
-    "ms": "Malaayiffaa",
-    "mt": "Afaan Maltesii",
-    "my": "Burmese",
-    "nb": "Norwegian Bokmål",
-    "ne": "Afaan Nepalii",
-    "nl": "Afaan Dachii",
-    "nn": "Afaan Norwegian",
-    "oc": "Afaan Occit",
-    "om": "Oromoo",
-    "or": "Odia",
-    "pa": "Afaan Punjabii",
-    "pl": "Afaan Polandii",
-    "ps": "Pashto",
-    "pt": "Afaan Porchugaal",
-    "pt_BR": "Afaan Porchugaal (Brazil)",
-    "qu": "Quechua",
-    "ro": "Afaan Romaniyaa",
-    "ru": "Afaan Rushiyaa",
-    "rw": "Kinyarwanda",
-    "sa": "Sanskrit",
-    "sc": "Sardinian",
-    "sd": "Sindhi",
-    "si": "Afaan Sinhalese",
-    "sk": "Afaan Slovak",
-    "sl": "Afaan Islovaniyaa",
-    "sn": "Shona",
-    "so": "Somali",
-    "sq": "Afaan Albaniyaa",
-    "sr_Cyrl": "Afaan Serbiya",
-    "sr_Latn": "Afaan Serbiya",
-    "sr_Latn_ME": "Afaan Serbiya (Me)",
-    "su": "Afaan Sudaanii",
-    "sv": "Afaan Suwidiin",
-    "sw": "Suwahilii",
-    "ta": "Afaan Tamilii",
-    "te": "Afaan Telugu",
-    "tg": "Tajik",
-    "th": "Afaan Tayii",
-    "ti": "Afaan Tigiree",
-    "tk": "Lammii Turkii",
-    "tl": "Tagalog",
-    "tr": "Afaan Turkii",
-    "tt": "Tatar",
-    "ug": "Uyghur",
-    "uk": "Afaan Ukreenii",
-    "ur": "Afaan Urdu",
-    "uz_Cyrl": "Afaan Uzbek",
-    "uz_Latn": "Afaan Uzbek",
-    "vi": "Afaan Veetinam",
-    "xh": "Afaan Xhosa",
-    "yi": "Yiddish",
-    "yo": "Yoruba",
-    "zh_CN": "Chinese (China)",
-    "zh_HK": "Chinese (Hk)",
-    "zh_TW": "Chinese (Tw)",
-    "zu": "Afaan Zuulu"
+    "af": {
+        "native": "Afrikaans",
+        "localized": "Afrikoota"
+    },
+    "ak": {
+        "native": "Akan",
+        "localized": "Akan"
+    },
+    "am": {
+        "native": "አማርኛ",
+        "localized": "Afaan Sidaamaa"
+    },
+    "ar": {
+        "native": "العربية",
+        "localized": "Arabiffaa"
+    },
+    "as": {
+        "native": "অসমীয়া",
+        "localized": "Assamese"
+    },
+    "az": {
+        "native": "Azərbaycan",
+        "localized": "Afaan Azerbaijani"
+    },
+    "be": {
+        "native": "Беларуская",
+        "localized": "Afaan Belarusia"
+    },
+    "bg": {
+        "native": "Български",
+        "localized": "Afaan Bulgariya"
+    },
+    "bho": {
+        "native": "भोजपुरी",
+        "localized": "Bhojpuri"
+    },
+    "bm": {
+        "native": "Bamanakan",
+        "localized": "Bambara"
+    },
+    "bn": {
+        "native": "বাংলা",
+        "localized": "Afaan Baangladeshi"
+    },
+    "bs": {
+        "native": "Bosanski",
+        "localized": "Afaan Bosniyaa"
+    },
+    "ca": {
+        "native": "Català",
+        "localized": "Afaan Katalaa"
+    },
+    "ceb": {
+        "native": "Cebuano",
+        "localized": "Cebuano"
+    },
+    "ckb": {
+        "native": "کوردیی ناوەندی",
+        "localized": "Central Kurdish"
+    },
+    "cs": {
+        "native": "Čeština",
+        "localized": "Afaan Czech"
+    },
+    "cy": {
+        "native": "Cymraeg",
+        "localized": "Welishiffaa"
+    },
+    "da": {
+        "native": "Dansk",
+        "localized": "Afaan Deenmaark"
+    },
+    "de": {
+        "native": "Deutsch",
+        "localized": "Afaan Jarmanii"
+    },
+    "de_AT": {
+        "native": "Deutsch (Österreich)",
+        "localized": "Afaan Jarmanii (At)"
+    },
+    "de_CH": {
+        "native": "Deutsch (Schweiz)",
+        "localized": "Afaan Jarmanii (Ch)"
+    },
+    "doi": {
+        "native": "डोगरी",
+        "localized": "Dogri"
+    },
+    "ee": {
+        "native": "Eʋegbe",
+        "localized": "Ewe"
+    },
+    "el": {
+        "native": "Ελληνικά",
+        "localized": "Afaan Giriiki"
+    },
+    "en": {
+        "native": "English",
+        "localized": "Ingliffa"
+    },
+    "en_CA": {
+        "native": "English (Canada)",
+        "localized": "Ingliffa (Ca)"
+    },
+    "eo": {
+        "native": "Esperanto",
+        "localized": "Afaan Esperantoo"
+    },
+    "es": {
+        "native": "Español",
+        "localized": "Afaan Ispeen"
+    },
+    "et": {
+        "native": "Eesti",
+        "localized": "Afaan Istooniya"
+    },
+    "eu": {
+        "native": "Euskara",
+        "localized": "Afaan Baskuu"
+    },
+    "fa": {
+        "native": "فارسی",
+        "localized": "Afaan Persia"
+    },
+    "fi": {
+        "native": "Suomi",
+        "localized": "Afaan Fiilaandi"
+    },
+    "fil": {
+        "native": "Filipino",
+        "localized": "Afaan Filippinii"
+    },
+    "fr": {
+        "native": "Français",
+        "localized": "Afaan Faransaayii"
+    },
+    "fy": {
+        "native": "Frysk",
+        "localized": "Afaan Firisiyaani"
+    },
+    "ga": {
+        "native": "Gaeilge",
+        "localized": "Afaan Ayirishii"
+    },
+    "gd": {
+        "native": "Gàidhlig",
+        "localized": "Scots Gaelic"
+    },
+    "gl": {
+        "native": "Galego",
+        "localized": "Afaan Galishii"
+    },
+    "gu": {
+        "native": "ગુજરાતી",
+        "localized": "Afaan Gujarati"
+    },
+    "ha": {
+        "native": "Hausa",
+        "localized": "Hausa"
+    },
+    "haw": {
+        "native": "ʻŌlelo Hawaiʻi",
+        "localized": "Hawaiian"
+    },
+    "he": {
+        "native": "עברית",
+        "localized": "Afaan Hebrew"
+    },
+    "hi": {
+        "native": "हिन्दी",
+        "localized": "Afaan Hindii"
+    },
+    "hr": {
+        "native": "Hrvatski",
+        "localized": "Afaan Croatian"
+    },
+    "ht": {
+        "native": "Créole Haïtien",
+        "localized": "Haitian Creole"
+    },
+    "hu": {
+        "native": "Magyar",
+        "localized": "Afaan Hangaari"
+    },
+    "hy": {
+        "native": "Հայերեն",
+        "localized": "Armenian"
+    },
+    "id": {
+        "native": "Indonesia",
+        "localized": "Afaan Indoneziya"
+    },
+    "ig": {
+        "native": "Igbo",
+        "localized": "Igbo"
+    },
+    "is": {
+        "native": "Íslenska",
+        "localized": "Ayiislandiffaa"
+    },
+    "it": {
+        "native": "Italiano",
+        "localized": "Afaan Xaaliyaani"
+    },
+    "ja": {
+        "native": "日本語",
+        "localized": "Afaan Japanii"
+    },
+    "ka": {
+        "native": "ქართული",
+        "localized": "Afaan Georgian"
+    },
+    "kk": {
+        "native": "Қазақ Тілі",
+        "localized": "Kazakh"
+    },
+    "km": {
+        "native": "ខ្មែរ",
+        "localized": "Khmer"
+    },
+    "kn": {
+        "native": "ಕನ್ನಡ",
+        "localized": "Afaan Kannada"
+    },
+    "ko": {
+        "native": "한국어",
+        "localized": "Afaan Korea"
+    },
+    "ku": {
+        "native": "Kurdî",
+        "localized": "Kurdish"
+    },
+    "ky": {
+        "native": "Кыргызча",
+        "localized": "Kyrgyz"
+    },
+    "lb": {
+        "native": "Lëtzebuergesch",
+        "localized": "Luxembourgish"
+    },
+    "lg": {
+        "native": "Luganda",
+        "localized": "Ganda"
+    },
+    "ln": {
+        "native": "Lingála",
+        "localized": "Lingala"
+    },
+    "lo": {
+        "native": "ລາວ",
+        "localized": "Lao"
+    },
+    "lt": {
+        "native": "Lietuvių",
+        "localized": "Afaan Liituniyaa"
+    },
+    "lv": {
+        "native": "Latviešu",
+        "localized": "Afaan Lativiyaa"
+    },
+    "mai": {
+        "native": "मैथिली",
+        "localized": "Maithili"
+    },
+    "mg": {
+        "native": "Malagasy",
+        "localized": "Malagasy"
+    },
+    "mi": {
+        "native": "Māori",
+        "localized": "Māori"
+    },
+    "mk": {
+        "native": "Македонски",
+        "localized": "Afaan Macedooniyaa"
+    },
+    "ml": {
+        "native": "മലയാളം",
+        "localized": "Malayaalamiffaa"
+    },
+    "mn": {
+        "native": "Монгол",
+        "localized": "Mongolian"
+    },
+    "mni_Mtei": {
+        "native": "Manipuri",
+        "localized": "Mni"
+    },
+    "mr": {
+        "native": "मराठी",
+        "localized": "Afaan Maratii"
+    },
+    "ms": {
+        "native": "Melayu",
+        "localized": "Malaayiffaa"
+    },
+    "mt": {
+        "native": "Malti",
+        "localized": "Afaan Maltesii"
+    },
+    "my": {
+        "native": "မြန်မာ",
+        "localized": "Burmese"
+    },
+    "nb": {
+        "native": "Norsk Bokmål",
+        "localized": "Norwegian Bokmål"
+    },
+    "ne": {
+        "native": "नेपाली",
+        "localized": "Afaan Nepalii"
+    },
+    "nl": {
+        "native": "Nederlands",
+        "localized": "Afaan Dachii"
+    },
+    "nn": {
+        "native": "Norsk Nynorsk",
+        "localized": "Afaan Norwegian"
+    },
+    "oc": {
+        "native": "Occitan",
+        "localized": "Afaan Occit"
+    },
+    "om": {
+        "native": "Oromoo",
+        "localized": "Oromoo"
+    },
+    "or": {
+        "native": "ଓଡ଼ିଆ",
+        "localized": "Odia"
+    },
+    "pa": {
+        "native": "ਪੰਜਾਬੀ",
+        "localized": "Afaan Punjabii"
+    },
+    "pl": {
+        "native": "Polski",
+        "localized": "Afaan Polandii"
+    },
+    "ps": {
+        "native": "پښتو",
+        "localized": "Pashto"
+    },
+    "pt": {
+        "native": "Português",
+        "localized": "Afaan Porchugaal"
+    },
+    "pt_BR": {
+        "native": "Português (Brasil)",
+        "localized": "Afaan Porchugaal (Brazil)"
+    },
+    "qu": {
+        "native": "Runasimi",
+        "localized": "Quechua"
+    },
+    "ro": {
+        "native": "Română",
+        "localized": "Afaan Romaniyaa"
+    },
+    "ru": {
+        "native": "Русский",
+        "localized": "Afaan Rushiyaa"
+    },
+    "rw": {
+        "native": "Kinyarwanda",
+        "localized": "Kinyarwanda"
+    },
+    "sa": {
+        "native": "संस्कृत भाषा",
+        "localized": "Sanskrit"
+    },
+    "sc": {
+        "native": "Sardu",
+        "localized": "Sardinian"
+    },
+    "sd": {
+        "native": "سنڌي",
+        "localized": "Sindhi"
+    },
+    "si": {
+        "native": "සිංහල",
+        "localized": "Afaan Sinhalese"
+    },
+    "sk": {
+        "native": "Slovenčina",
+        "localized": "Afaan Slovak"
+    },
+    "sl": {
+        "native": "Slovenščina",
+        "localized": "Afaan Islovaniyaa"
+    },
+    "sn": {
+        "native": "Chishona",
+        "localized": "Shona"
+    },
+    "so": {
+        "native": "Soomaali",
+        "localized": "Somali"
+    },
+    "sq": {
+        "native": "Shqip",
+        "localized": "Afaan Albaniyaa"
+    },
+    "sr_Cyrl": {
+        "native": "Српски",
+        "localized": "Afaan Serbiya"
+    },
+    "sr_Latn": {
+        "native": "Srpski",
+        "localized": "Afaan Serbiya"
+    },
+    "sr_Latn_ME": {
+        "native": "Srpski (Crna Gora)",
+        "localized": "Afaan Serbiya (Me)"
+    },
+    "su": {
+        "native": "Basa Sunda",
+        "localized": "Afaan Sudaanii"
+    },
+    "sv": {
+        "native": "Svenska",
+        "localized": "Afaan Suwidiin"
+    },
+    "sw": {
+        "native": "Kiswahili",
+        "localized": "Suwahilii"
+    },
+    "ta": {
+        "native": "தமிழ்",
+        "localized": "Afaan Tamilii"
+    },
+    "te": {
+        "native": "తెలుగు",
+        "localized": "Afaan Telugu"
+    },
+    "tg": {
+        "native": "Тоҷикӣ",
+        "localized": "Tajik"
+    },
+    "th": {
+        "native": "ไทย",
+        "localized": "Afaan Tayii"
+    },
+    "ti": {
+        "native": "ትግርኛ",
+        "localized": "Afaan Tigiree"
+    },
+    "tk": {
+        "native": "Türkmen Dili",
+        "localized": "Lammii Turkii"
+    },
+    "tl": {
+        "native": "Tagalog",
+        "localized": "Tagalog"
+    },
+    "tr": {
+        "native": "Türkçe",
+        "localized": "Afaan Turkii"
+    },
+    "tt": {
+        "native": "Татар",
+        "localized": "Tatar"
+    },
+    "ug": {
+        "native": "ئۇيغۇرچە",
+        "localized": "Uyghur"
+    },
+    "uk": {
+        "native": "Українська",
+        "localized": "Afaan Ukreenii"
+    },
+    "ur": {
+        "native": "اردو",
+        "localized": "Afaan Urdu"
+    },
+    "uz_Cyrl": {
+        "native": "Ўзбекча",
+        "localized": "Afaan Uzbek"
+    },
+    "uz_Latn": {
+        "native": "O‘zbek",
+        "localized": "Afaan Uzbek"
+    },
+    "vi": {
+        "native": "Tiếng Việt",
+        "localized": "Afaan Veetinam"
+    },
+    "xh": {
+        "native": "Isixhosa",
+        "localized": "Afaan Xhosa"
+    },
+    "yi": {
+        "native": "ייִדיש",
+        "localized": "Yiddish"
+    },
+    "yo": {
+        "native": "Èdè Yorùbá",
+        "localized": "Yoruba"
+    },
+    "zh_CN": {
+        "native": "中文 (中国)",
+        "localized": "Chinese (China)"
+    },
+    "zh_HK": {
+        "native": "中文 (中国香港特别行政区)",
+        "localized": "Chinese (Hk)"
+    },
+    "zh_TW": {
+        "native": "中文 (台湾)",
+        "localized": "Chinese (Tw)"
+    },
+    "zu": {
+        "native": "Isizulu",
+        "localized": "Afaan Zuulu"
+    }
 }

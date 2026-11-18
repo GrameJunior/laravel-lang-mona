@@ -66,11 +66,13 @@
     - [x] Country Names
     - [x] Currency Names
     - [x] Locale Names
-    - [ ] Locale List
-    - [ ] Locales
+    - [x] Locales
     - [ ] Models
+        - [ ] Заменить nullable поле на `not null` с целью улучшения работы индексов
     - [ ] Routes
     - [ ] Json Fallback
+    - [ ] Locale List
+        - [ ] Добавить метод `collection` для возврата инстанса Collection
     - [ ] Проверить, что у всех классов есть нужные суффиксы.
 - [x] Переместить схему конфигурации в папку `resources`.
     - Пример: https://github.com/roxblnfk/skills/blob/master/resources/skills.schema.json

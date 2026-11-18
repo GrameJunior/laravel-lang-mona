@@ -1,131 +1,518 @@
 {
-    "af": "Afrikánština",
-    "ak": "Akanština",
-    "am": "Amharština",
-    "ar": "Arabština",
-    "as": "Ásámština",
-    "az": "Ázerbájdžánština",
-    "be": "Běloruština",
-    "bg": "Bulharština",
-    "bho": "Bhódžpurština",
-    "bm": "Bambarština",
-    "bn": "Bengálština",
-    "bs": "Bosenština",
-    "ca": "Katalánština",
-    "ceb": "Cebuánština",
-    "ckb": "Kurdština (Sorání)",
-    "cs": "Čeština",
-    "cy": "Velština",
-    "da": "Dánština",
-    "de": "Němčina",
-    "de_AT": "Němčina (Rakousko)",
-    "de_CH": "Němčina (Švýcarsko)",
-    "doi": "Dogarština",
-    "ee": "Eweština",
-    "el": "Řečtina",
-    "en": "Angličtina",
-    "en_CA": "Angličtina (Kanada)",
-    "eo": "Esperanto",
-    "es": "Španělština",
-    "et": "Estonština",
-    "eu": "Baskičtina",
-    "fa": "Perština",
-    "fi": "Finština",
-    "fil": "Filipínština",
-    "fr": "Francouzština",
-    "fy": "Fríština (Západní)",
-    "ga": "Irština",
-    "gd": "Skotská Gaelština",
-    "gl": "Galicijština",
-    "gu": "Gudžarátština",
-    "ha": "Hauština",
-    "haw": "Havajština",
-    "he": "Hebrejština",
-    "hi": "Hindština",
-    "hr": "Chorvatština",
-    "ht": "Haitština",
-    "hu": "Maďarština",
-    "hy": "Arménština",
-    "id": "Indonéština",
-    "ig": "Igboština",
-    "is": "Islandština",
-    "it": "Italština",
-    "ja": "Japonština",
-    "ka": "Gruzínština",
-    "kk": "Kazaština",
-    "km": "Khmérština",
-    "kn": "Kannadština",
-    "ko": "Korejština",
-    "ku": "Kurdština",
-    "ky": "Kyrgyzština",
-    "lb": "Lucemburština",
-    "lg": "Gandština",
-    "ln": "Lingalština",
-    "lo": "Laoština",
-    "lt": "Litevština",
-    "lv": "Lotyština",
-    "mai": "Maithiliština",
-    "mg": "Malgaština",
-    "mi": "Maorština",
-    "mk": "Makedonština",
-    "ml": "Malajálamština",
-    "mn": "Mongolština",
-    "mni_Mtei": "Manipurština",
-    "mr": "Maráthština",
-    "ms": "Malajština",
-    "mt": "Maltština",
-    "my": "Barmština",
-    "nb": "Norština (Bokmål)",
-    "ne": "Nepálština",
-    "nl": "Nizozemština",
-    "nn": "Norština (Nynorsk)",
-    "oc": "Okcitánština",
-    "om": "Oromština",
-    "or": "Urijština",
-    "pa": "Paňdžábština",
-    "pl": "Polština",
-    "ps": "Paštština",
-    "pt": "Portugalština",
-    "pt_BR": "Portugalština (Brazílie)",
-    "qu": "Kečuánština",
-    "ro": "Rumunština",
-    "ru": "Ruština",
-    "rw": "Kiňarwandština",
-    "sa": "Sanskrt",
-    "sc": "Sardština",
-    "sd": "Sindhština",
-    "si": "Sinhálština",
-    "sk": "Slovenština",
-    "sl": "Slovinština",
-    "sn": "Šonština",
-    "so": "Somálština",
-    "sq": "Albánština",
-    "sr_Cyrl": "Srbština",
-    "sr_Latn": "Srbština",
-    "sr_Latn_ME": "Srbština (Černá Hora)",
-    "su": "Sundština",
-    "sv": "Švédština",
-    "sw": "Svahilština",
-    "ta": "Tamilština",
-    "te": "Telugština",
-    "tg": "Tádžičtina",
-    "th": "Thajština",
-    "ti": "Tigrinijština",
-    "tk": "Turkmenština",
-    "tl": "Tagalog",
-    "tr": "Turečtina",
-    "tt": "Tatarština",
-    "ug": "Ujgurština",
-    "uk": "Ukrajinština",
-    "ur": "Urdština",
-    "uz_Cyrl": "Uzbečtina",
-    "uz_Latn": "Uzbečtina",
-    "vi": "Vietnamština",
-    "xh": "Xhoština",
-    "yi": "Jidiš",
-    "yo": "Jorubština",
-    "zh_CN": "Čínština (Čína)",
-    "zh_HK": "Čínština (Hongkong – Zao Číny)",
-    "zh_TW": "Čínština (Tchaj-Wan)",
-    "zu": "Zuluština"
+    "af": {
+        "native": "Afrikaans",
+        "localized": "Afrikánština"
+    },
+    "ak": {
+        "native": "Akan",
+        "localized": "Akanština"
+    },
+    "am": {
+        "native": "አማርኛ",
+        "localized": "Amharština"
+    },
+    "ar": {
+        "native": "العربية",
+        "localized": "Arabština"
+    },
+    "as": {
+        "native": "অসমীয়া",
+        "localized": "Ásámština"
+    },
+    "az": {
+        "native": "Azərbaycan",
+        "localized": "Ázerbájdžánština"
+    },
+    "be": {
+        "native": "Беларуская",
+        "localized": "Běloruština"
+    },
+    "bg": {
+        "native": "Български",
+        "localized": "Bulharština"
+    },
+    "bho": {
+        "native": "भोजपुरी",
+        "localized": "Bhódžpurština"
+    },
+    "bm": {
+        "native": "Bamanakan",
+        "localized": "Bambarština"
+    },
+    "bn": {
+        "native": "বাংলা",
+        "localized": "Bengálština"
+    },
+    "bs": {
+        "native": "Bosanski",
+        "localized": "Bosenština"
+    },
+    "ca": {
+        "native": "Català",
+        "localized": "Katalánština"
+    },
+    "ceb": {
+        "native": "Cebuano",
+        "localized": "Cebuánština"
+    },
+    "ckb": {
+        "native": "کوردیی ناوەندی",
+        "localized": "Kurdština (Sorání)"
+    },
+    "cs": {
+        "native": "Čeština",
+        "localized": "Čeština"
+    },
+    "cy": {
+        "native": "Cymraeg",
+        "localized": "Velština"
+    },
+    "da": {
+        "native": "Dansk",
+        "localized": "Dánština"
+    },
+    "de": {
+        "native": "Deutsch",
+        "localized": "Němčina"
+    },
+    "de_AT": {
+        "native": "Deutsch (Österreich)",
+        "localized": "Němčina (Rakousko)"
+    },
+    "de_CH": {
+        "native": "Deutsch (Schweiz)",
+        "localized": "Němčina (Švýcarsko)"
+    },
+    "doi": {
+        "native": "डोगरी",
+        "localized": "Dogarština"
+    },
+    "ee": {
+        "native": "Eʋegbe",
+        "localized": "Eweština"
+    },
+    "el": {
+        "native": "Ελληνικά",
+        "localized": "Řečtina"
+    },
+    "en": {
+        "native": "English",
+        "localized": "Angličtina"
+    },
+    "en_CA": {
+        "native": "English (Canada)",
+        "localized": "Angličtina (Kanada)"
+    },
+    "eo": {
+        "native": "Esperanto",
+        "localized": "Esperanto"
+    },
+    "es": {
+        "native": "Español",
+        "localized": "Španělština"
+    },
+    "et": {
+        "native": "Eesti",
+        "localized": "Estonština"
+    },
+    "eu": {
+        "native": "Euskara",
+        "localized": "Baskičtina"
+    },
+    "fa": {
+        "native": "فارسی",
+        "localized": "Perština"
+    },
+    "fi": {
+        "native": "Suomi",
+        "localized": "Finština"
+    },
+    "fil": {
+        "native": "Filipino",
+        "localized": "Filipínština"
+    },
+    "fr": {
+        "native": "Français",
+        "localized": "Francouzština"
+    },
+    "fy": {
+        "native": "Frysk",
+        "localized": "Fríština (Západní)"
+    },
+    "ga": {
+        "native": "Gaeilge",
+        "localized": "Irština"
+    },
+    "gd": {
+        "native": "Gàidhlig",
+        "localized": "Skotská Gaelština"
+    },
+    "gl": {
+        "native": "Galego",
+        "localized": "Galicijština"
+    },
+    "gu": {
+        "native": "ગુજરાતી",
+        "localized": "Gudžarátština"
+    },
+    "ha": {
+        "native": "Hausa",
+        "localized": "Hauština"
+    },
+    "haw": {
+        "native": "ʻŌlelo Hawaiʻi",
+        "localized": "Havajština"
+    },
+    "he": {
+        "native": "עברית",
+        "localized": "Hebrejština"
+    },
+    "hi": {
+        "native": "हिन्दी",
+        "localized": "Hindština"
+    },
+    "hr": {
+        "native": "Hrvatski",
+        "localized": "Chorvatština"
+    },
+    "ht": {
+        "native": "Créole Haïtien",
+        "localized": "Haitština"
+    },
+    "hu": {
+        "native": "Magyar",
+        "localized": "Maďarština"
+    },
+    "hy": {
+        "native": "Հայերեն",
+        "localized": "Arménština"
+    },
+    "id": {
+        "native": "Indonesia",
+        "localized": "Indonéština"
+    },
+    "ig": {
+        "native": "Igbo",
+        "localized": "Igboština"
+    },
+    "is": {
+        "native": "Íslenska",
+        "localized": "Islandština"
+    },
+    "it": {
+        "native": "Italiano",
+        "localized": "Italština"
+    },
+    "ja": {
+        "native": "日本語",
+        "localized": "Japonština"
+    },
+    "ka": {
+        "native": "ქართული",
+        "localized": "Gruzínština"
+    },
+    "kk": {
+        "native": "Қазақ Тілі",
+        "localized": "Kazaština"
+    },
+    "km": {
+        "native": "ខ្មែរ",
+        "localized": "Khmérština"
+    },
+    "kn": {
+        "native": "ಕನ್ನಡ",
+        "localized": "Kannadština"
+    },
+    "ko": {
+        "native": "한국어",
+        "localized": "Korejština"
+    },
+    "ku": {
+        "native": "Kurdî",
+        "localized": "Kurdština"
+    },
+    "ky": {
+        "native": "Кыргызча",
+        "localized": "Kyrgyzština"
+    },
+    "lb": {
+        "native": "Lëtzebuergesch",
+        "localized": "Lucemburština"
+    },
+    "lg": {
+        "native": "Luganda",
+        "localized": "Gandština"
+    },
+    "ln": {
+        "native": "Lingála",
+        "localized": "Lingalština"
+    },
+    "lo": {
+        "native": "ລາວ",
+        "localized": "Laoština"
+    },
+    "lt": {
+        "native": "Lietuvių",
+        "localized": "Litevština"
+    },
+    "lv": {
+        "native": "Latviešu",
+        "localized": "Lotyština"
+    },
+    "mai": {
+        "native": "मैथिली",
+        "localized": "Maithiliština"
+    },
+    "mg": {
+        "native": "Malagasy",
+        "localized": "Malgaština"
+    },
+    "mi": {
+        "native": "Māori",
+        "localized": "Maorština"
+    },
+    "mk": {
+        "native": "Македонски",
+        "localized": "Makedonština"
+    },
+    "ml": {
+        "native": "മലയാളം",
+        "localized": "Malajálamština"
+    },
+    "mn": {
+        "native": "Монгол",
+        "localized": "Mongolština"
+    },
+    "mni_Mtei": {
+        "native": "Manipuri",
+        "localized": "Manipurština"
+    },
+    "mr": {
+        "native": "मराठी",
+        "localized": "Maráthština"
+    },
+    "ms": {
+        "native": "Melayu",
+        "localized": "Malajština"
+    },
+    "mt": {
+        "native": "Malti",
+        "localized": "Maltština"
+    },
+    "my": {
+        "native": "မြန်မာ",
+        "localized": "Barmština"
+    },
+    "nb": {
+        "native": "Norsk Bokmål",
+        "localized": "Norština (Bokmål)"
+    },
+    "ne": {
+        "native": "नेपाली",
+        "localized": "Nepálština"
+    },
+    "nl": {
+        "native": "Nederlands",
+        "localized": "Nizozemština"
+    },
+    "nn": {
+        "native": "Norsk Nynorsk",
+        "localized": "Norština (Nynorsk)"
+    },
+    "oc": {
+        "native": "Occitan",
+        "localized": "Okcitánština"
+    },
+    "om": {
+        "native": "Oromoo",
+        "localized": "Oromština"
+    },
+    "or": {
+        "native": "ଓଡ଼ିଆ",
+        "localized": "Urijština"
+    },
+    "pa": {
+        "native": "ਪੰਜਾਬੀ",
+        "localized": "Paňdžábština"
+    },
+    "pl": {
+        "native": "Polski",
+        "localized": "Polština"
+    },
+    "ps": {
+        "native": "پښتو",
+        "localized": "Paštština"
+    },
+    "pt": {
+        "native": "Português",
+        "localized": "Portugalština"
+    },
+    "pt_BR": {
+        "native": "Português (Brasil)",
+        "localized": "Portugalština (Brazílie)"
+    },
+    "qu": {
+        "native": "Runasimi",
+        "localized": "Kečuánština"
+    },
+    "ro": {
+        "native": "Română",
+        "localized": "Rumunština"
+    },
+    "ru": {
+        "native": "Русский",
+        "localized": "Ruština"
+    },
+    "rw": {
+        "native": "Kinyarwanda",
+        "localized": "Kiňarwandština"
+    },
+    "sa": {
+        "native": "संस्कृत भाषा",
+        "localized": "Sanskrt"
+    },
+    "sc": {
+        "native": "Sardu",
+        "localized": "Sardština"
+    },
+    "sd": {
+        "native": "سنڌي",
+        "localized": "Sindhština"
+    },
+    "si": {
+        "native": "සිංහල",
+        "localized": "Sinhálština"
+    },
+    "sk": {
+        "native": "Slovenčina",
+        "localized": "Slovenština"
+    },
+    "sl": {
+        "native": "Slovenščina",
+        "localized": "Slovinština"
+    },
+    "sn": {
+        "native": "Chishona",
+        "localized": "Šonština"
+    },
+    "so": {
+        "native": "Soomaali",
+        "localized": "Somálština"
+    },
+    "sq": {
+        "native": "Shqip",
+        "localized": "Albánština"
+    },
+    "sr_Cyrl": {
+        "native": "Српски",
+        "localized": "Srbština"
+    },
+    "sr_Latn": {
+        "native": "Srpski",
+        "localized": "Srbština"
+    },
+    "sr_Latn_ME": {
+        "native": "Srpski (Crna Gora)",
+        "localized": "Srbština (Černá Hora)"
+    },
+    "su": {
+        "native": "Basa Sunda",
+        "localized": "Sundština"
+    },
+    "sv": {
+        "native": "Svenska",
+        "localized": "Švédština"
+    },
+    "sw": {
+        "native": "Kiswahili",
+        "localized": "Svahilština"
+    },
+    "ta": {
+        "native": "தமிழ்",
+        "localized": "Tamilština"
+    },
+    "te": {
+        "native": "తెలుగు",
+        "localized": "Telugština"
+    },
+    "tg": {
+        "native": "Тоҷикӣ",
+        "localized": "Tádžičtina"
+    },
+    "th": {
+        "native": "ไทย",
+        "localized": "Thajština"
+    },
+    "ti": {
+        "native": "ትግርኛ",
+        "localized": "Tigrinijština"
+    },
+    "tk": {
+        "native": "Türkmen Dili",
+        "localized": "Turkmenština"
+    },
+    "tl": {
+        "native": "Tagalog",
+        "localized": "Tagalog"
+    },
+    "tr": {
+        "native": "Türkçe",
+        "localized": "Turečtina"
+    },
+    "tt": {
+        "native": "Татар",
+        "localized": "Tatarština"
+    },
+    "ug": {
+        "native": "ئۇيغۇرچە",
+        "localized": "Ujgurština"
+    },
+    "uk": {
+        "native": "Українська",
+        "localized": "Ukrajinština"
+    },
+    "ur": {
+        "native": "اردو",
+        "localized": "Urdština"
+    },
+    "uz_Cyrl": {
+        "native": "Ўзбекча",
+        "localized": "Uzbečtina"
+    },
+    "uz_Latn": {
+        "native": "O‘zbek",
+        "localized": "Uzbečtina"
+    },
+    "vi": {
+        "native": "Tiếng Việt",
+        "localized": "Vietnamština"
+    },
+    "xh": {
+        "native": "Isixhosa",
+        "localized": "Xhoština"
+    },
+    "yi": {
+        "native": "ייִדיש",
+        "localized": "Jidiš"
+    },
+    "yo": {
+        "native": "Èdè Yorùbá",
+        "localized": "Jorubština"
+    },
+    "zh_CN": {
+        "native": "中文 (中国)",
+        "localized": "Čínština (Čína)"
+    },
+    "zh_HK": {
+        "native": "中文 (中国香港特别行政区)",
+        "localized": "Čínština (Hongkong – Zao Číny)"
+    },
+    "zh_TW": {
+        "native": "中文 (台湾)",
+        "localized": "Čínština (Tchaj-Wan)"
+    },
+    "zu": {
+        "native": "Isizulu",
+        "localized": "Zuluština"
+    }
 }

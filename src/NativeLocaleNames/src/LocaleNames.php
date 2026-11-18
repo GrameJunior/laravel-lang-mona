@@ -39,7 +39,7 @@ class LocaleNames
     {
         return new LocaleData(
             code     : $locale,
-            alias    : $item['alias'],
+            alias    : $this->config->to($locale),
             native   : $item['native'],
             localized: $item['localized'],
         );

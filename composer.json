@@ -70,6 +70,7 @@
     "autoload": {
         "psr-4": {
             "LaravelLang\\Config\\": "src/Config/src/",
+            "LaravelLang\\Exceptions\\": "src/Exceptions/src/",
             "LaravelLang\\Filesystem\\": "src/Filesystem/src/",
             "LaravelLang\\JsonFallback\\": "src/JsonFallback/src/",
             "LaravelLang\\LocaleList\\": "src/LocaleList/src/",
@@ -92,7 +93,7 @@
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         },
         "files": [
-            "src/Routes/helpers.php"
+            "src/Routes/src/helpers.php"
         ]
     },
     "config": {

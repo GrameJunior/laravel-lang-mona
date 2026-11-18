@@ -6,7 +6,7 @@ use LaravelLang\Locales\Facades\Locales;
 use Workbench\App\Constants\FakeLocale;
 
 test('main', function () {
-    $locales = Locales::notInstalled()->pluck('code')->all();
+    $locales = Locales::uninstalled();
 
     expect($locales)->not->toContain(FakeLocale::Custom);
     expect($locales)->not->toContain(app()->getLocale());

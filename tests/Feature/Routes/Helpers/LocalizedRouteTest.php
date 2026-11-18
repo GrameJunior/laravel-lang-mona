@@ -5,28 +5,30 @@ declare(strict_types=1);
 use LaravelLang\Config\Services\RouteConfig;
 use Workbench\App\Constants\FakeLocale;
 
+use function LaravelLang\Routes\localizedRoute;
+
 test('route groups', function () {
     $name     = app(RouteConfig::class)->prefix;
     $locale   = FakeLocale::Default;
     $fallback = FakeLocale::Fallback;
 
-    expect(localizedRoute($name . 'via.group.facade', ['key' => 'bar', 'locale' => $locale]))
+    expect(LaravelLang\Routes\localizedRoute($name . 'via.group.facade', ['key' => 'bar', 'locale' => $locale]))
         ->toEndWith("localhost/$locale/group/facade/bar");
 
-    expect(localizedRoute($name . 'via.group.macro', ['key' => 'bar', 'locale' => $fallback]))
+    expect(LaravelLang\Routes\localizedRoute($name . 'via.group.macro', ['key' => 'bar', 'locale' => $fallback]))
         ->toEndWith("localhost/$fallback/group/macro/bar");
 
-    expect(localizedRoute('via.group.facade', ['key' => 'bar', 'locale' => $locale]))
+    expect(LaravelLang\Routes\localizedRoute('via.group.facade', ['key' => 'bar', 'locale' => $locale]))
         ->toEndWith("localhost/$locale/group/facade/bar");
 
-    expect(localizedRoute('via.group.macro', ['key' => 'bar', 'locale' => $fallback]))
+    expect(LaravelLang\Routes\localizedRoute('via.group.macro', ['key' => 'bar', 'locale' => $fallback]))
         ->toEndWith("localhost/$fallback/group/macro/bar");
 });
 
 test('routes without groups', function () {
     $locale = FakeLocale::Default;
 
-    expect(localizedRoute('via.model.default', ['key' => 'bar', 'locale' => $locale]))
+    expect(LaravelLang\Routes\localizedRoute('via.model.default', ['key' => 'bar', 'locale' => $locale]))
         ->toEndWith('localhost/model/default/bar?locale=' . $locale);
 });
 
@@ -52,10 +54,10 @@ test('routes hide manual', function () {
     config()->set('localization_routes.hide', true);
     config()->set('app.fallback_locale', $fallback);
 
-    expect(localizedRoute('via.parameter', ['key' => 'bar', 'locale' => $locale]))
+    expect(LaravelLang\Routes\localizedRoute('via.parameter', ['key' => 'bar', 'locale' => $locale]))
         ->toEndWith("localhost/path/bar/$locale");
 
-    expect(localizedRoute('via.parameter', ['key' => 'bar', 'locale' => $fallback]))
+    expect(LaravelLang\Routes\localizedRoute('via.parameter', ['key' => 'bar', 'locale' => $fallback]))
         ->toEndWith('localhost/path/bar');
 });
 
@@ -65,6 +67,6 @@ test('routes does not hide', function () {
     config()->set('localization_routes.hide', true);
     config()->set('app.fallback_locale', $fallback);
 
-    expect(localizedRoute('via.parameter', ['key' => 'bar']))
+    expect(LaravelLang\Routes\localizedRoute('via.parameter', ['key' => 'bar']))
         ->toEndWith('localhost/path/bar');
 });
