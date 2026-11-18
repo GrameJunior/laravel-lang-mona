@@ -74,6 +74,7 @@
     - [ ] Locale List
         - [ ] Добавить метод `collection` для возврата инстанса Collection
     - [ ] Проверить, что у всех классов есть нужные суффиксы.
+    - [ ] Вынести все экспешены в `laravel-lang/exceptions`
 - [x] Переместить схему конфигурации в папку `resources`.
     - Пример: https://github.com/roxblnfk/skills/blob/master/resources/skills.schema.json
     - Предполагаемое название файла: `resources/laravel-lang.schema.json`
