@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\Models\Exceptions;
+namespace LaravelLang\Exceptions;
 
 use RuntimeException;
 

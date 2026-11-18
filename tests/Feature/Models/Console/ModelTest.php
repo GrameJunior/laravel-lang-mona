@@ -35,37 +35,15 @@ test('from scratch', function () {
     ])->assertSuccessful()->run();
 
     $model  = app_path('Models/SomeTranslation.php');
-    $helper = sprintf('%s/_ide_helper_models_%s.php', app(ModelConfig::class)->helpers, md5('App\Models\Some'));
+    $helper =
+        sprintf('%s/_ide_helper_models_%s.php', app(ModelConfig::class)->helpers, hash('xxh128', 'App\Models\Some'));
 
     $migrations = (new Filesystem())->glob(database_path('migrations/*_create_some_translations_table.php'));
 
     expect($migrations)->toHaveCount(1);
 
-    $fillableMatches = collect(['locale', 'title', 'description'])
-        ->map(fn (string $column) => sprintf('(\s{8}\'%s\',\r?\n?)', $column))
-        ->implode('');
-
-    $castsMatches = collect(['title', 'description'])
-        ->map(fn (string $column) => sprintf('(\s{8}\'%s\'\s=>\sTrimCast::class,\r?\n?)', $column))
-        ->implode('');
-
-    expect(file_get_contents($model))
-        ->toContain('App\Models')
-        ->toContain('class SomeTranslation extends Translation')
-        ->toMatch(sprintf('/protected\s\$fillable\s=\s\[\r?\n?%s\s+];/', $fillableMatches))
-        ->toMatch(
-            sprintf(
-                '/\s{4}protected\s+\$casts\s+=\s+\[\r?\n?%s\r?\n?\s{4}\]/',
-                $castsMatches
-            )
-        );
-
-    expect(file_get_contents($migrations[0]))
-        ->toContain('Schema::create(\'some_translations\'')
-        ->toContain('Schema::dropIfExists(\'some_translations\')')
-        ->toContain('$table->string(\'title\')->nullable()')
-        ->toContain('$table->string(\'description\')->nullable()')
-        ->toContain('->constrained(\'somes\')');
+    expect(file_get_contents($model))->toMatchSnapshot();
+    expect(file_get_contents($migrations[0]))->toMatchSnapshot();
 
     expect($helper)->toBeReadableFile();
 });

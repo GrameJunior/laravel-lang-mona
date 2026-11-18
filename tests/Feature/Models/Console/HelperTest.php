@@ -5,7 +5,6 @@ declare(strict_types=1);
 use LaravelLang\Config\Services\ModelConfig;
 use LaravelLang\Models\Console\ModelsHelperCommand;
 use Workbench\App\Models\TestModel;
-use Workbench\App\Models\TestModelTranslation;
 
 use function Pest\Laravel\artisan;
 
@@ -13,27 +12,21 @@ test('generate many models', function () {
     $path = sprintf(
         '%s/_ide_helper_models_%s.php',
         app(ModelConfig::class)->helpers,
-        md5(TestModel::class)
+        hash('xxh128', TestModel::class)
     );
 
     artisan(ModelsHelperCommand::class)->assertSuccessful()->run();
 
     expect($path)->toBeReadableFile();
 
-    expect(file_get_contents($path))
-        ->toContain('namespace Workbench\App\Models {')
-        ->toContain('use ' . TestModelTranslation::class . ';')
-        ->toContain('class TestModel extends Model {}')
-        ->toContain('@property string|null $title')
-        ->toContain('@property string|null $description')
-        ->toContain('@property-read Collection<TestModelTranslation> $translation');
+    expect(file_get_contents($path))->toMatchSnapshot();
 });
 
 test('generate one model', function () {
     $path = sprintf(
         '%s/_ide_helper_models_%s.php',
         app(ModelConfig::class)->helpers,
-        md5(TestModel::class)
+        hash('xxh128', TestModel::class)
     );
 
     artisan(ModelsHelperCommand::class, [
@@ -42,11 +35,5 @@ test('generate one model', function () {
 
     expect($path)->toBeReadableFile();
 
-    expect(file_get_contents($path))
-        ->toContain('namespace Workbench\App\Models {')
-        ->toContain('use ' . TestModelTranslation::class . ';')
-        ->toContain('class TestModel extends Model {}')
-        ->toContain('@property string|null $title')
-        ->toContain('@property string|null $description')
-        ->toContain('@property-read Collection<TestModelTranslation> $translation');
+    expect(file_get_contents($path))->toMatchSnapshot();
 });

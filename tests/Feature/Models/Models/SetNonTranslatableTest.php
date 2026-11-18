@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Models\Exceptions\AttributeIsNotTranslatableException;
+use LaravelLang\Exceptions\AttributeIsNotTranslatableException;
 use Workbench\App\Constants\FakeLocale;
 
 test('non-translatable attribute', function () {

@@ -1,0 +1,25 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use LaravelLang\Models\Casts\TrimCast;
+use LaravelLang\Models\Eloquent\Translation;
+
+#[Fillable([
+    'locale',
+    'title',
+    'description',
+])]
+class SomeTranslation extends Translation
+{
+    protected function casts(): array
+    {
+        return [
+            'title' => TrimCast::class,
+            'description' => TrimCast::class,
+        ];
+    }
+}
