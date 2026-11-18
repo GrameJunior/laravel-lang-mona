@@ -67,8 +67,8 @@
     - [x] Currency Names
     - [x] Locale Names
     - [x] Locales
-    - [ ] Models
-        - [ ] Заменить nullable поле на `not null` с целью улучшения работы индексов
+    - [x] Models
+        - [x] Заменить nullable поле на `not null` с целью улучшения работы индексов
     - [ ] Routes
     - [ ] Json Fallback
     - [ ] Locale List
