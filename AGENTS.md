@@ -29,28 +29,21 @@
 ## Task Coordination and Acceptance
 
 - Study the task specification and requirements before starting work.
-- Create a work plan, split it into tasks, and assign them to separate chats.
-- Thoroughly review each chat's completed work against the specification and plan.
-- Return work with defects, inconsistencies, or deviations to the responsible chat for revision.
+- Make a plan suited to the task and delegate according to [Subagents](#subagents).
+- Review each delegated result against the specification and plan.
+- Send defects, inconsistencies, and deviations back to the assigned subagent for correction.
 - Accept the work only after verifying that all identified issues have been resolved and the requirements are met.
 
 
 ## Subagents
 
-Use subagents selectively.
-Delegate work only when the task contains substantial independent workstreams that can be executed in parallel and
-delegation is expected to materially improve quality or reduce completion time.
-Keep short tasks, routine repository exploration, sequential work, and tasks that depend heavily on shared context in
-the current agent.
-Avoid delegating work that would require a subagent to reconstruct most of the parent agent's context.
-Prefer completing the task directly when delegation provides only a marginal benefit.
-When delegating work, use the configured default subagent model and reasoning effort. Do not use a stronger model or
-higher reasoning effort for a subagent unless the delegated task clearly requires it.
-Do not use GPT-6 Astra for subagents unless explicitly requested by the user.
-Subagents should not create additional subagents by default. They may do so only when their assigned task itself
-contains substantial independent workstreams and further delegation provides a clear material benefit.
-Do not delegate merely to perform independent verification, obtain a second opinion, or re-check work that the current
-agent can reasonably verify itself. Delegate verification only when the task is sufficiently complex or high-risk that
-an independent context materially improves reliability.
-Messages that you send to other agents and your final answer may be read by a human, so ensure they are legible. Always
-put proper spaces between words and/or numbers.
+- Delegate substantial, independent work that can run in parallel when it is expected to materially improve quality
+  or reduce completion time. Handle short tasks, routine exploration, sequential work, and work that depends heavily
+  on the current agent's context directly.
+- Give each subagent a clear scope, the relevant context, and an expected deliverable. Subagents may delegate further
+  only if their own work meets the same threshold.
+- Delegate verification only when an independent review materially improves reliability on complex or high-risk work.
+- Use the configured subagent defaults. When neither the model nor the reasoning effort is configured, Codex inherits
+  both from the parent agent. Override these settings only when the subtask clearly requires it. Explicitly select an
+  Astra model for a subagent only at the user's request.
+- Use clear wording and proper spacing in subagent messages and final responses.
