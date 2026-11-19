@@ -2,33 +2,33 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Routes\Middlewares\LocalizationByCookie;
-use LaravelLang\Routes\Middlewares\LocalizationByHeader;
-use LaravelLang\Routes\Middlewares\LocalizationByModel;
-use LaravelLang\Routes\Middlewares\LocalizationByParameter;
-use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
-use LaravelLang\Routes\Middlewares\LocalizationBySession;
+use LaravelLang\Routes\Middlewares\LocalizationByCookieMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationByHeaderMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationByModelMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirectMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationBySessionMiddleware;
 
 app('router')
-    ->middleware(LocalizationByParameter::class)
+    ->middleware(LocalizationByParameterMiddleware::class)
     ->get('some/{locale}', fn () => view('welcome'));
 
 app('router')
-    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->middleware(LocalizationByParameterWithRedirectMiddleware::class)
     ->get('some/{locale?}', fn () => view('welcome'));
 
 app('router')
-    ->middleware(LocalizationByHeader::class)
+    ->middleware(LocalizationByHeaderMiddleware::class)
     ->get('some', fn () => view('welcome'));
 
 app('router')
-    ->middleware(LocalizationByCookie::class)
+    ->middleware(LocalizationByCookieMiddleware::class)
     ->get('some', fn () => view('welcome'));
 
 app('router')
-    ->middleware(LocalizationBySession::class)
+    ->middleware(LocalizationBySessionMiddleware::class)
     ->get('some', fn () => view('welcome'));
 
 app('router')
-    ->middleware(LocalizationByModel::class)
+    ->middleware(LocalizationByModelMiddleware::class)
     ->get('some', fn () => view('welcome'));

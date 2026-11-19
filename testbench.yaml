@@ -4,7 +4,7 @@ providers:
     - LaravelLang\Config\LaravelLangConfigServiceProvider
     - LaravelLang\Models\LaravelLangModelsServiceProvider
     - LaravelLang\Publisher\LangPublisherServiceProvider
-    - LaravelLang\Routes\ServiceProvider
+    - LaravelLang\Routes\LaravelLangRoutesServiceProvider
     - Spatie\LaravelData\LaravelDataServiceProvider
     - Workbench\App\Providers\WorkbenchServiceProvider
 

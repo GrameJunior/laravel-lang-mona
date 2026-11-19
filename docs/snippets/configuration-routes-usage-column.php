@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByModelMiddleware;
 
 app('router')
-    ->middleware(LocalizationByModel::class)
+    ->middleware(LocalizationByModelMiddleware::class)
     ->get('foo/{bar}', function (string $bar) {
         return response()->json([
             $bar => __('Foo'),

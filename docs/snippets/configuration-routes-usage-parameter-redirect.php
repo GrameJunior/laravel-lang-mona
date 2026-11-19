@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirectMiddleware;
 
 app('router')
-    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->middleware(LocalizationByParameterWithRedirectMiddleware::class)
     ->get('some/{foo}/bar/{locale?}', function (string $foo) {
         return response()->json([
             $foo => __('Foo'),
