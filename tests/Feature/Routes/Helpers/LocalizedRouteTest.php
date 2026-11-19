@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Config\Services\RouteConfig;
+use LaravelLang\Config\Services\RouteLangConfig;
 use Workbench\App\Constants\FakeLocale;
 
 use function LaravelLang\Routes\localizedRoute;
 
 test('route groups', function () {
-    $name     = app(RouteConfig::class)->prefix;
+    $name     = app(RouteLangConfig::class)->prefix;
     $locale   = FakeLocale::Default;
     $fallback = FakeLocale::Fallback;
 

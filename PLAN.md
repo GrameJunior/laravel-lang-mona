@@ -73,9 +73,11 @@
     - [x] Json Fallback
     - [x] Locale List
         - [x] Добавить метод `collection` для возврата инстанса Collection
-    - [ ] Проверить, что у всех классов есть нужные суффиксы.
+    - [x] Проверить, что у всех классов есть нужные суффиксы.
     - [ ] Вынести все экспешены в `laravel-lang/exceptions`
     - [ ] Удалить `dragon-code/support`
+- [ ] Удалить комментарии из файлов
+- [ ] Добавить снапшот тестирование там, где это необходимо
 - [x] Переместить схему конфигурации в папку `resources`.
     - Пример: https://github.com/roxblnfk/skills/blob/master/resources/skills.schema.json
     - Предполагаемое название файла: `resources/laravel-lang.schema.json`

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Config\Services\ModelConfig;
+use LaravelLang\Config\Services\ModelLangConfig;
 use LaravelLang\Models\Console\ModelsHelperCommand;
 use Workbench\App\Models\TestModel;
 
@@ -11,7 +11,7 @@ use function Pest\Laravel\artisan;
 test('generate many models', function () {
     $path = sprintf(
         '%s/_ide_helper_models_%s.php',
-        app(ModelConfig::class)->helpers,
+        app(ModelLangConfig::class)->helpers,
         hash('xxh128', TestModel::class)
     );
 
@@ -25,7 +25,7 @@ test('generate many models', function () {
 test('generate one model', function () {
     $path = sprintf(
         '%s/_ide_helper_models_%s.php',
-        app(ModelConfig::class)->helpers,
+        app(ModelLangConfig::class)->helpers,
         hash('xxh128', TestModel::class)
     );
 

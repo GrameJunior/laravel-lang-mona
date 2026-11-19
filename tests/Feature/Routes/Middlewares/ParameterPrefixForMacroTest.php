@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use LaravelLang\Config\Enums\Name;
 
-use LaravelLang\Config\Services\RouteConfig;
+use LaravelLang\Config\Services\RouteLangConfig;
 use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\getJson;
@@ -22,7 +22,7 @@ test('main locale with enabled redirect', function (string $locale) {
 
     $foo = 'test';
 
-    getJson(route(app(RouteConfig::class)->prefix . 'via.group.macro', ['key' => $foo, 'locale' => $locale]))
+    getJson(route(app(RouteLangConfig::class)->prefix . 'via.group.macro', ['key' => $foo, 'locale' => $locale]))
         ->assertRedirectToRoute('via.group.macro', ['key' => $foo]);
 
     assertEventNotDispatched();
@@ -35,7 +35,7 @@ test('main locale with disabled redirect', function (string $locale, string $tra
 
     $foo = 'test';
 
-    getJson(route(app(RouteConfig::class)->prefix . 'via.group.macro', ['key' => $foo, 'locale' => $locale]))
+    getJson(route(app(RouteLangConfig::class)->prefix . 'via.group.macro', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
         ->assertJsonPath($foo, $translation);
 
@@ -47,7 +47,7 @@ test('aliased locale', function (string $locale) {
 
     setCustomLocale();
 
-    getJson(route(app(RouteConfig::class)->prefix . 'via.group.macro', ['key' => $foo, 'locale' => $locale]))
+    getJson(route(app(RouteLangConfig::class)->prefix . 'via.group.macro', ['key' => $foo, 'locale' => $locale]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
 
@@ -57,7 +57,7 @@ test('aliased locale', function (string $locale) {
 test('uninstalled locale', function (string $locale) {
     $foo = 'test';
 
-    getJson(route(app(RouteConfig::class)->prefix . 'via.group.macro', ['key' => $foo, 'locale' => $locale]))
+    getJson(route(app(RouteLangConfig::class)->prefix . 'via.group.macro', ['key' => $foo, 'locale' => $locale]))
         ->assertRedirectToRoute('via.group.macro', ['key' => $foo]);
 
     assertEventNotDispatched();
@@ -66,7 +66,7 @@ test('uninstalled locale', function (string $locale) {
 test('unknown locale', function (int|string $locale) {
     $foo = 'test';
 
-    getJson(route(app(RouteConfig::class)->prefix . 'via.group.macro', ['key' => $foo, 'locale' => $locale]))
+    getJson(route(app(RouteLangConfig::class)->prefix . 'via.group.macro', ['key' => $foo, 'locale' => $locale]))
         ->assertRedirectToRoute('via.group.macro', ['key' => $foo]);
 
     assertEventNotDispatched();

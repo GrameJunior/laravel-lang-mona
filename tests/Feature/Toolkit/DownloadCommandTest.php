@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Client\Factory;
 use LaravelLang\Toolkit\Commands\DownloadCommand;
-use LaravelLang\Toolkit\Services\TranslationFiles;
+use LaravelLang\Toolkit\Services\TranslationFilesService;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -93,7 +93,7 @@ it('downloads discovers and merges JSON into the exact destination', function ()
             throw new RuntimeException('Directory moves can fail across volumes.');
         }
     };
-    $translations = new TranslationFiles();
+    $translations = new TranslationFilesService();
     $target = $this->downloadRoot . '/source/laravel/framework/13.x';
     $this->downloadFilesystem->ensureDirectoryExists($target);
     $translations->store($target . '/en.json', ['kept' => 'Local value', 'failed' => 'Old value']);
@@ -156,7 +156,7 @@ it('copies several paths without changing discovered keys in only-copy mode', fu
         '--paths' => ['first', 'second'],
         '--only-copy' => true,
     ])))->toBe(Command::SUCCESS)
-        ->and((new TranslationFiles())->load($target . '/en.json'))->toBe([
+        ->and((new TranslationFilesService())->load($target . '/en.json'))->toBe([
             'First' => 'First', 'Second' => 'Second', 'Shared' => 'New',
         ])
         ->and($this->downloadFilesystem->get($target . '/en.php'))->toBe('<?php /* Last copy wins. */ return ["second" => "Second"];')

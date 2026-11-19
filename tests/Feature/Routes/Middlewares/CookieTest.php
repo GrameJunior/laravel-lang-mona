@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Config\Services\RouteNameConfig;
+use LaravelLang\Config\Services\RouteNameLangConfig;
 use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\withCredentials;
@@ -13,7 +13,7 @@ test('direct locale', function (string $locale, string $translated) {
     setCustomLocale();
 
     withCredentials()
-        ->withCookie(app(RouteNameConfig::class)->cookie, $locale)
+        ->withCookie(app(RouteNameLangConfig::class)->cookie, $locale)
         ->getJson(route('via.cookie', ['key' => $foo]))
         ->assertSuccessful()
         ->assertJsonPath($foo, $translated);
@@ -27,7 +27,7 @@ test('aliased locale', function (string $locale) {
     setCustomLocale();
 
     withCredentials()
-        ->withCookie(app(RouteNameConfig::class)->cookie, $locale)
+        ->withCookie(app(RouteNameLangConfig::class)->cookie, $locale)
         ->getJson(route('via.cookie', ['key' => $foo]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
@@ -39,7 +39,7 @@ test('empty locale', function (int|string|null $locale) {
     $foo = 'test';
 
     withCredentials()
-        ->withCookie(app(RouteNameConfig::class)->cookie, (string) $locale)
+        ->withCookie(app(RouteNameLangConfig::class)->cookie, (string) $locale)
         ->getJson(route('via.cookie', ['key' => $foo]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
@@ -51,7 +51,7 @@ test('uninstalled locale', function (string $locale) {
     $foo = 'test';
 
     withCredentials()
-        ->withCookie(app(RouteNameConfig::class)->cookie, $locale)
+        ->withCookie(app(RouteNameLangConfig::class)->cookie, $locale)
         ->getJson(route('via.cookie', ['key' => $foo]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
@@ -63,7 +63,7 @@ test('unknown locale', function (int|string $locale) {
     $foo = 'test';
 
     withCredentials()
-        ->withCookie(app(RouteNameConfig::class)->cookie, (string) $locale)
+        ->withCookie(app(RouteNameLangConfig::class)->cookie, (string) $locale)
         ->getJson(route('via.cookie', ['key' => $foo]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);

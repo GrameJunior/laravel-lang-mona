@@ -3,13 +3,13 @@
 declare(strict_types=1);
 
 use Illuminate\Filesystem\Filesystem;
-use LaravelLang\Toolkit\Services\TranslationFiles;
+use LaravelLang\Toolkit\Services\TranslationFilesService;
 
 beforeEach(function () {
     $this->translationsDirectory = sys_get_temp_dir() . '/mona-translations-' . bin2hex(random_bytes(8));
     $this->translationFilesystem = new Filesystem();
     $this->translationFilesystem->ensureDirectoryExists($this->translationsDirectory);
-    $this->translationFiles = new TranslationFiles($this->translationFilesystem);
+    $this->translationFiles = new TranslationFilesService($this->translationFilesystem);
 });
 
 afterEach(function () {
