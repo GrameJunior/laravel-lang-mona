@@ -6,7 +6,7 @@ namespace Tests;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Translation\TranslationServiceProvider;
-use LaravelLang\JsonFallback\TranslationServiceProvider as FixedTranslationServiceProvider;
+use LaravelLang\JsonFallback\LangJsonFallbackServiceProvider as FixedTranslationServiceProvider;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as BaseTests;
 
