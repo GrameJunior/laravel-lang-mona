@@ -1,10 +1,10 @@
 laravel: '@testbench'
 
 providers:
-    - LaravelLang\Config\LaravelLangConfigServiceProvider
-    - LaravelLang\Models\LaravelLangModelsServiceProvider
+    - LaravelLang\Config\LangConfigServiceProvider
+    - LaravelLang\Models\LangModelsServiceProvider
     - LaravelLang\Publisher\LangPublisherServiceProvider
-    - LaravelLang\Routes\LaravelLangRoutesServiceProvider
+    - LaravelLang\Routes\LangRoutesServiceProvider
     - Spatie\LaravelData\LaravelDataServiceProvider
     - Workbench\App\Providers\WorkbenchServiceProvider
 
@@ -33,12 +33,9 @@ workbench:
             to: workbench/storage
             reverse: true
     build:
-        - asset-publish
         - create-sqlite-db
         - db-wipe
         - migrate-fresh
-    assets:
-        - laravel-assets
 
 purge:
     directories:
