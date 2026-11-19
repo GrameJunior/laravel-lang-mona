@@ -25,7 +25,7 @@
 - [x] Добавить JSON Schema для новых файлов конфигураций.
 - [x] Убрать CLDR из Native.
 - [x] Написать утилиту для миграции файлов переводов.
-- [x] Рефакторинг:
+- [ ] Рефакторинг:
     - [x] Config
         - [x] main
         - [x] punctuation
@@ -66,7 +66,9 @@
     - [x] Country Names
     - [x] Currency Names
     - [x] Locale Names
-    - [x] Locales
+    - [ ] Locales
+        - [x] Raw / Default
+        - [ ] Data
     - [x] Models
         - [x] Заменить nullable поле на `not null` с целью улучшения работы индексов
     - [x] Routes
@@ -78,7 +80,7 @@
     - [x] Удалить `dragon-code/support`
     - [x] Вынести сохранение JSON и PHP из Filesystem в отдельные процессоры
 - [x] Удалить комментарии из файлов
-- [ ] Добавить снапшот тестирование там, где это необходимо
+- [x] Добавить снапшот тестирование там, где это необходимо
 - [x] Переместить схему конфигурации в папку `resources`.
     - Пример: https://github.com/roxblnfk/skills/blob/master/resources/skills.schema.json
     - Предполагаемое название файла: `resources/laravel-lang.schema.json`

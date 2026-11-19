@@ -13,11 +13,12 @@ test('update styles', function (array $config, array $foo, array $bar, array $ba
 
     $locale = Locale::Swedish->value;
 
-    expect(__('auth.foo'))->toBe('auth.foo');
-    expect(__('bar.bar'))->toBe('bar.bar');
-    expect(__('baz'))->toBe('baz');
-
-    expect(__('Foo'))->toBe('Toutes les données ont été chargées.');
+    expect([
+        __('auth.foo'),
+        __('bar.bar'),
+        __('baz'),
+        __('Foo'),
+    ])->toMatchSnapshot();
 
     artisan(UpdateCommand::class)->assertSuccessful()->run();
 
@@ -27,7 +28,7 @@ test('update styles', function (array $config, array $foo, array $bar, array $ba
     expect(__('bar.bar'))->toBe($bar [0]);
     expect(__('baz'))->toBe($baz[0]);
 
-    expect(__('Foo'))->toBe('Toutes les données ont été chargées.');
+    expect(__('Foo'))->toMatchSnapshot();
 
     ensureLang($locale);
 
@@ -41,5 +42,5 @@ test('update styles', function (array $config, array $foo, array $bar, array $ba
     expect(__('bar.bar'))->toBe($bar[1]);
     expect(__('baz'))->toBe($baz[1]);
 
-    expect(__('Foo'))->toBe('Alle Ressourcen geladen.');
+    expect(__('Foo'))->toMatchSnapshot();
 })->with('translations');

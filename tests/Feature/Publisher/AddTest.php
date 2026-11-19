@@ -14,11 +14,12 @@ test('add locale', function (array $config, array $foo, array $bar, array $baz):
 
     $locale = Locale::Swedish->value;
 
-    expect(__('auth.foo'))->toBe('auth.foo');
-    expect(__('bar.bar'))->toBe('bar.bar');
-    expect(__('baz'))->toBe('baz');
-
-    expect(__('Foo'))->toBe('Toutes les données ont été chargées.');
+    expect([
+        __('auth.foo'),
+        __('bar.bar'),
+        __('baz'),
+        __('Foo'),
+    ])->toMatchSnapshot();
 
     artisan(AddCommand::class, [
         'locales' => [$locale],
@@ -30,7 +31,7 @@ test('add locale', function (array $config, array $foo, array $bar, array $baz):
     expect(__('bar.bar'))->toBe($bar[1]);
     expect(__('baz'))->toBe($baz[1]);
 
-    expect(__('Foo'))->toBe('Alle Ressourcen geladen.');
+    expect(__('Foo'))->toMatchSnapshot();
 })->with('translations');
 
 test('all - yes', function () {
