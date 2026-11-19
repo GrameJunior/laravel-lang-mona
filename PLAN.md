@@ -70,7 +70,7 @@
     - [x] Models
         - [x] Заменить nullable поле на `not null` с целью улучшения работы индексов
     - [x] Routes
-    - [ ] Json Fallback
+    - [x] Json Fallback
     - [ ] Locale List
         - [ ] Добавить метод `collection` для возврата инстанса Collection
     - [ ] Проверить, что у всех классов есть нужные суффиксы.
