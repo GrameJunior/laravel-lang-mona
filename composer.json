@@ -115,6 +115,7 @@
             "@build",
             "@php vendor/bin/testbench serve --ansi"
         ],
-        "test": "@php vendor/bin/pest --parallel"
+        "test": "@php vendor/bin/pest --parallel",
+        "test:coverage": "@php vendor/bin/pest --coverage"
     }
 }
