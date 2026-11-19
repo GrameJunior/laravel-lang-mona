@@ -77,7 +77,7 @@
     - [x] Вынести все экспешены в `laravel-lang/exceptions`
     - [x] Удалить `dragon-code/support`
     - [x] Вынести сохранение JSON и PHP из Filesystem в отдельные процессоры
-- [ ] Удалить комментарии из файлов
+- [x] Удалить комментарии из файлов
 - [ ] Добавить снапшот тестирование там, где это необходимо
 - [x] Переместить схему конфигурации в папку `resources`.
     - Пример: https://github.com/roxblnfk/skills/blob/master/resources/skills.schema.json
