@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 test('php', function () {
-    expect(__('custom.failed'))->toBe('French Custom Failed');
-    expect(__('custom.password'))->toBe('French Custom Password');
+    expect(__('custom.failed'))->toMatchSnapshot();
+    expect(__('custom.password'))->toMatchSnapshot();
 });
 test('json', function () {
-    expect(__('Remember Me'))->toBe('French Remember Me');
-    expect(__('You are logged in!'))->toBe('French You are logged in!');
+    expect(__('Remember Me'))->toMatchSnapshot();
+    expect(__('You are logged in!'))->toMatchSnapshot();
 });

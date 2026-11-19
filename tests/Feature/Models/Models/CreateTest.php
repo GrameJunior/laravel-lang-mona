@@ -24,9 +24,11 @@ test('single', function () {
         FakeValue::Description => 'qwerty 20',
     ]);
 
-    expect($model->key)->toBeString()->toBe(FakeLocale::Incorrect1);
-    expect($model->title)->toBeString()->toBe('qwerty 10');
-    expect($model->description)->toBeString()->toBe('qwerty 20');
+    expect([
+        $model->key,
+        $model->title,
+        $model->description,
+    ])->toMatchSnapshot();
 
     assertDatabaseHas(TestModel::class, [
         'id'  => $model->id,
@@ -78,9 +80,11 @@ test('array', function () {
         ],
     ]);
 
-    expect($model->key)->toBeString()->toBe(FakeLocale::Incorrect1);
-    expect($model->title)->toBeString()->toBe('qwerty 10');
-    expect($model->description)->toBeString()->toBe('qwerty 20');
+    expect([
+        $model->key,
+        $model->title,
+        $model->description,
+    ])->toMatchSnapshot();
 
     assertDatabaseHas(TestModel::class, [
         'id'  => $model->id,
@@ -135,9 +139,11 @@ test('collection', function () {
         ]),
     ]);
 
-    expect($model->key)->toBeString()->toBe(FakeLocale::Incorrect1);
-    expect($model->title)->toBeString()->toBe('qwerty 10');
-    expect($model->description)->toBeString()->toBe('qwerty 20');
+    expect([
+        $model->key,
+        $model->title,
+        $model->description,
+    ])->toMatchSnapshot();
 
     assertDatabaseHas(TestModel::class, [
         'id'  => $model->id,

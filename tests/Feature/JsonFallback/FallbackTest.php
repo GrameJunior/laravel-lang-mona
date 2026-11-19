@@ -8,10 +8,10 @@ beforeEach(function () {
     config()->set('app.locale', FakeLocale::Incorrect1);
 });
 test('php', function () {
-    expect(__('custom.failed'))->toBe('German Custom Failed');
-    expect(__('custom.password'))->toBe('German Custom Password');
+    expect(__('custom.failed'))->toMatchSnapshot();
+    expect(__('custom.password'))->toMatchSnapshot();
 });
 test('json', function () {
-    expect(__('Remember Me'))->toBe('German Remember Me');
-    expect(__('You are logged in!'))->toBe('German You are logged in!');
+    expect(__('Remember Me'))->toMatchSnapshot();
+    expect(__('You are logged in!'))->toMatchSnapshot();
 });
