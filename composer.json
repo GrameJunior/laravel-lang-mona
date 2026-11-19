@@ -55,7 +55,6 @@
         "composer/class-map-generator": "^1.9",
         "composer/semver": "^3.6",
         "dragon-code/benchmark": "^4.6",
-        "dragon-code/support": "^6.17",
         "laravel/prompts": "^0.3.26",
         "orchestra/testbench": "^11.0",
         "pestphp/pest": "^4.7.8 || ^5.3.5",
