@@ -71,21 +71,21 @@ test('unknown locale', function (int|string $locale) {
     assertEventNotDispatched();
 })->with('unknown locales');
 
-test('multiple accept-language', function () {
+test('multiple accept-language', function (string $locale) {
     $foo = 'test';
 
     setCustomLocale();
 
     getJson(route('via.header', ['key' => $foo]), [
-        app(RouteNameConfig::class)->header => 'fr-FR,fr;q=0.8,de',
+        app(RouteNameConfig::class)->header => $locale,
     ])
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
 
     assertEventDispatched();
-});
+})->with('locale headers');
 
-test('custom header', function () {
+test('custom header', function (string $locale) {
     config(['localization_routes.names.header' => 'X-Custom-Lang']);
 
     $foo = 'test';
@@ -93,10 +93,10 @@ test('custom header', function () {
     setCustomLocale();
 
     getJson(route('via.header', ['key' => $foo]), [
-        'X-Custom-Lang' => 'fr-FR,fr;q=0.8,de',
+        'X-Custom-Lang' => $locale,
     ])
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
 
     assertEventDispatched();
-});
+})->with('locale headers');

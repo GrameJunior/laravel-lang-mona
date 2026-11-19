@@ -69,7 +69,7 @@
     - [x] Locales
     - [x] Models
         - [x] Заменить nullable поле на `not null` с целью улучшения работы индексов
-    - [ ] Routes
+    - [x] Routes
     - [ ] Json Fallback
     - [ ] Locale List
         - [ ] Добавить метод `collection` для возврата инстанса Collection

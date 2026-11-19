@@ -3,61 +3,61 @@
 declare(strict_types=1);
 
 use LaravelLang\Routes\Facades\LocalizationRoute;
-use LaravelLang\Routes\Middlewares\LocalizationByCookie;
-use LaravelLang\Routes\Middlewares\LocalizationByHeader;
-use LaravelLang\Routes\Middlewares\LocalizationByModel;
-use LaravelLang\Routes\Middlewares\LocalizationByParameter;
-use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
-use LaravelLang\Routes\Middlewares\LocalizationBySession;
+use LaravelLang\Routes\Middlewares\LocalizationByCookieMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationByHeaderMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationByModelMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirectMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationBySessionMiddleware;
 use Workbench\App\Http\Controllers\TestController;
 
 app('router')
-    ->middleware(LocalizationByParameter::class)
+    ->middleware(LocalizationByParameterMiddleware::class)
     ->get('path/{key}/{locale?}', TestController::class)
     ->name('via.parameter');
 
 app('router')
-    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->middleware(LocalizationByParameterWithRedirectMiddleware::class)
     ->get('redirect/{key}/{locale?}', TestController::class)
     ->name('via.parameter.redirect');
 
 app('router')
-    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->middleware(LocalizationByParameterWithRedirectMiddleware::class)
     ->get('not-named/redirect/{key}/{locale?}', TestController::class);
 
 app('router')
-    ->middleware(LocalizationByHeader::class)
+    ->middleware(LocalizationByHeaderMiddleware::class)
     ->get('header/{key}', TestController::class)
     ->name('via.header');
 
 app('router')
-    ->middleware(LocalizationByCookie::class)
+    ->middleware(LocalizationByCookieMiddleware::class)
     ->get('cookie/{key}', TestController::class)
     ->name('via.cookie');
 
 app('router')
-    ->middleware(LocalizationBySession::class)
+    ->middleware(LocalizationBySessionMiddleware::class)
     ->get('session/{key}', TestController::class)
     ->name('via.session');
 
 app('router')
-    ->middleware(LocalizationByModel::class)
+    ->middleware(LocalizationByModelMiddleware::class)
     ->get('model/default/{key}', TestController::class)
     ->name('via.model.default');
 
 app('router')
-    ->middleware(LocalizationByModel::class . ':foo')
+    ->middleware(LocalizationByModelMiddleware::class . ':foo')
     ->get('model/guard/{key}', TestController::class)
     ->name('via.model.guard');
 
 app('router')
     ->middleware([
-        LocalizationByParameter::class,
-        LocalizationByParameterWithRedirect::class,
-        LocalizationByHeader::class,
-        LocalizationByCookie::class,
-        LocalizationBySession::class,
-        LocalizationByModel::class,
+        LocalizationByParameterMiddleware::class,
+        LocalizationByParameterWithRedirectMiddleware::class,
+        LocalizationByHeaderMiddleware::class,
+        LocalizationByCookieMiddleware::class,
+        LocalizationBySessionMiddleware::class,
+        LocalizationByModelMiddleware::class,
     ])
     ->get('clean/{key}', TestController::class)
     ->name('clean');
