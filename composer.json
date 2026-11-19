@@ -52,7 +52,6 @@
     },
     "require-dev": {
         "ext-zip": "*",
-        "archtechx/enums": "^1.1",
         "composer/class-map-generator": "^1.9",
         "composer/semver": "^3.6",
         "dragon-code/benchmark": "^4.6",
