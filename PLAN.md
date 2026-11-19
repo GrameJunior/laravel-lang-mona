@@ -25,7 +25,7 @@
 - [x] Добавить JSON Schema для новых файлов конфигураций.
 - [x] Убрать CLDR из Native.
 - [x] Написать утилиту для миграции файлов переводов.
-- [ ] Рефакторинг:
+- [x] Рефакторинг:
     - [x] Config
         - [x] main
         - [x] punctuation
@@ -66,9 +66,9 @@
     - [x] Country Names
     - [x] Currency Names
     - [x] Locale Names
-    - [ ] Locales
+    - [x] Locales
         - [x] Raw / Default
-        - [ ] Data
+        - [x] Data
     - [x] Models
         - [x] Заменить nullable поле на `not null` с целью улучшения работы индексов
     - [x] Routes
