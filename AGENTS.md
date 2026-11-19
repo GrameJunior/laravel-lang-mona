@@ -20,6 +20,12 @@
 - For changes in all other folders, always prefix the header with `[app]: `.
 
 
+## Testing
+
+- When writing tests, verify the feature's observable behavior through its normal entry points.
+- Unit tests are optional.
+
+
 ## Task Coordination and Acceptance
 
 - Study the task specification and requirements before starting work.
