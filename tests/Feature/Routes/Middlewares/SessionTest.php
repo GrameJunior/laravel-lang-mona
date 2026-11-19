@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Config\Services\RouteNameConfig;
+use LaravelLang\Config\Services\RouteNameLangConfig;
 use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\withSession;
@@ -12,7 +12,7 @@ test('main locale', function (string $locale, string $translation) {
 
     $foo = 'test';
 
-    withSession([app(RouteNameConfig::class)->session => $locale])
+    withSession([app(RouteNameLangConfig::class)->session => $locale])
         ->getJson(route('via.session', ['key' => $foo]))
         ->assertSuccessful()
         ->assertJsonPath($foo, $translation);
@@ -25,7 +25,7 @@ test('aliased locale', function (string $locale) {
 
     $foo = 'test';
 
-    withSession([app(RouteNameConfig::class)->session => $locale])
+    withSession([app(RouteNameLangConfig::class)->session => $locale])
         ->getJson(route('via.session', ['key' => $foo]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
@@ -36,7 +36,7 @@ test('aliased locale', function (string $locale) {
 test('empty locale', function (int|string|null $locale) {
     $foo = 'test';
 
-    withSession([app(RouteNameConfig::class)->session => $locale])
+    withSession([app(RouteNameLangConfig::class)->session => $locale])
         ->getJson(route('via.session', ['key' => $foo]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
@@ -47,7 +47,7 @@ test('empty locale', function (int|string|null $locale) {
 test('uninstalled locale', function (string $locale) {
     $foo = 'test';
 
-    withSession([app(RouteNameConfig::class)->session => $locale])
+    withSession([app(RouteNameLangConfig::class)->session => $locale])
         ->getJson(route('via.session', ['key' => $foo]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
@@ -58,7 +58,7 @@ test('uninstalled locale', function (string $locale) {
 test('unknown locale', function (int|string $locale) {
     $foo = 'test';
 
-    withSession([app(RouteNameConfig::class)->session => $locale])
+    withSession([app(RouteNameLangConfig::class)->session => $locale])
         ->getJson(route('via.session', ['key' => $foo]))
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);

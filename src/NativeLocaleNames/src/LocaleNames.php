@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace LaravelLang\NativeLocaleNames;
 
 use Illuminate\Support\Collection;
-use LaravelLang\Config\Services\AliasConfig;
+use LaravelLang\Config\Services\AliasLangConfig;
 use LaravelLang\Filesystem\Filesystem;
 use LaravelLang\LocaleList\Locale;
 use SortDirection;
@@ -15,7 +15,7 @@ class LocaleNames
     protected string $default = '_native';
 
     public function __construct(
-        protected AliasConfig $config,
+        protected AliasLangConfig $config,
         protected Filesystem $filesystem,
     ) {}
 

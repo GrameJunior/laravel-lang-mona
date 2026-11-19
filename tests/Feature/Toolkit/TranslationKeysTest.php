@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Filesystem\Filesystem;
-use LaravelLang\Toolkit\Services\TranslationKeys;
+use LaravelLang\Toolkit\Services\TranslationKeysService;
 
 beforeEach(function () {
     $this->translationDirectory = sys_get_temp_dir().'/mona-translation-keys-'.bin2hex(random_bytes(8));
@@ -57,7 +57,7 @@ test('finds supported translation calls recursively in supported source files', 
 
     $keys = ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliet', 'Kilo', 'Lima', 'Mike', 'November'];
 
-    expect((new TranslationKeys())->find($this->translationDirectory))->toBe(array_combine($keys, $keys));
+    expect((new TranslationKeysService())->find($this->translationDirectory))->toBe(array_combine($keys, $keys));
 });
 
 test('reads escaped quotes and multiline literals and returns unique sorted keys', function () {
@@ -76,7 +76,7 @@ test('reads escaped quotes and multiline literals and returns unique sorted keys
 
     $keys = ['Alpha', "It's ready", "Multiple\nlines", 'Say "Hello"', 'Zulu'];
 
-    expect((new TranslationKeys())->find($this->translationDirectory))->toBe(array_combine($keys, $keys));
+    expect((new TranslationKeysService())->find($this->translationDirectory))->toBe(array_combine($keys, $keys));
 });
 
 test('excludes dynamic expressions generic methods and non translatable keys', function () {
@@ -111,7 +111,7 @@ test('excludes dynamic expressions generic methods and non translatable keys', f
         $service->choice('Service choice');
         SOURCE);
 
-    expect((new TranslationKeys())->find($this->translationDirectory))->toBe(['Keep this' => 'Keep this']);
+    expect((new TranslationKeysService())->find($this->translationDirectory))->toBe(['Keep this' => 'Keep this']);
 });
 
 test('starts fresh when the same finder is used for another directory', function () {
@@ -121,7 +121,7 @@ test('starts fresh when the same finder is used for another directory', function
     $filesystem->put($this->translationDirectory.'/first/source.php', "__('First')");
     $filesystem->put($this->translationDirectory.'/second/source.php', "__('Second')");
 
-    $finder = new TranslationKeys();
+    $finder = new TranslationKeysService();
 
     expect($finder->find($this->translationDirectory.'/first'))->toBe(['First' => 'First'])
         ->and($finder->find($this->translationDirectory.'/second'))->toBe(['Second' => 'Second']);

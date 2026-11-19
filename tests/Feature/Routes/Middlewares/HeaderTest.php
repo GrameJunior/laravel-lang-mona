@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Config\Services\RouteNameConfig;
+use LaravelLang\Config\Services\RouteNameLangConfig;
 use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\getJson;
@@ -13,7 +13,7 @@ test('direct locale', function (string $locale, string $translated) {
     setCustomLocale();
 
     getJson(route('via.header', ['key' => $foo]), [
-        app(RouteNameConfig::class)->header => $locale,
+        app(RouteNameLangConfig::class)->header => $locale,
     ])
         ->assertSuccessful()
         ->assertJsonPath($foo, $translated);
@@ -27,7 +27,7 @@ test('aliased locale', function (string $locale) {
     setCustomLocale();
 
     getJson(route('via.header', ['key' => $foo]), [
-        app(RouteNameConfig::class)->header => $locale,
+        app(RouteNameLangConfig::class)->header => $locale,
     ])
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
@@ -39,7 +39,7 @@ test('empty locale', function (int|string|null $locale) {
     $foo = 'test';
 
     getJson(route('via.header', ['key' => $foo]), [
-        app(RouteNameConfig::class)->header => $locale,
+        app(RouteNameLangConfig::class)->header => $locale,
     ])
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
@@ -51,7 +51,7 @@ test('uninstalled locale', function (string $locale) {
     $foo = 'test';
 
     getJson(route('via.header', ['key' => $foo]), [
-        app(RouteNameConfig::class)->header => $locale,
+        app(RouteNameLangConfig::class)->header => $locale,
     ])
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
@@ -63,7 +63,7 @@ test('unknown locale', function (int|string $locale) {
     $foo = 'test';
 
     getJson(route('via.header', ['key' => $foo]), [
-        app(RouteNameConfig::class)->header => $locale,
+        app(RouteNameLangConfig::class)->header => $locale,
     ])
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);
@@ -77,7 +77,7 @@ test('multiple accept-language', function (string $locale) {
     setCustomLocale();
 
     getJson(route('via.header', ['key' => $foo]), [
-        app(RouteNameConfig::class)->header => $locale,
+        app(RouteNameLangConfig::class)->header => $locale,
     ])
         ->assertSuccessful()
         ->assertJsonPath($foo, FakeTranslation::French);

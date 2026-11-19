@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Console\ModelMakeCommand as LaravelMakeModel;
-use LaravelLang\Config\Services\ModelConfig;
+use LaravelLang\Config\Services\ModelLangConfig;
 use LaravelLang\Models\Console\ModelMakeCommand as PackageMakeModel;
 
 use function Pest\Laravel\artisan;
@@ -36,7 +36,7 @@ test('from scratch', function () {
 
     $model  = app_path('Models/SomeTranslation.php');
     $helper =
-        sprintf('%s/_ide_helper_models_%s.php', app(ModelConfig::class)->helpers, hash('xxh128', 'App\Models\Some'));
+        sprintf('%s/_ide_helper_models_%s.php', app(ModelLangConfig::class)->helpers, hash('xxh128', 'App\Models\Some'));
 
     $migrations = (new Filesystem())->glob(database_path('migrations/*_create_some_translations_table.php'));
 
