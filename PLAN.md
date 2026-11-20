@@ -102,7 +102,7 @@
 - [x] Добавить GitHub Action для код-стайла
 - [x] Добавить Cooldown для Composer и тесты аудита
 - [x] Удалить трейт Dispatchable из эвентов
-- [ ] Применить стат анализ (PhpStan)
+- [x] Применить стат анализ (PhpStan)
 - [ ] Добавить мутационные тесты (`"vendor/bin/pest --mutate --covered-only --min=85"`)
 - [ ] Проверить файлы `composer.json`:
     - [ ] Actions
@@ -147,5 +147,7 @@
   перспективе, но сделать это как-нибудь нестандартно, под углом.
 - [ ] Перевести Mona в публичную область видимости.
 - [ ] Обновить Social Preview в настройках репозитория.
+- [ ] Включить "Require actions to be pinned to a full-length commit SHA" в настройках
+  (https://github.com/organizations/Laravel-Lang/settings/actions)
 - [ ] Релиз.
 - [ ] Отключить Issue во всех репозиториях.
