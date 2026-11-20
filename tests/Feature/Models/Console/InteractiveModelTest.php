@@ -9,7 +9,7 @@ use Workbench\App\Models\User;
 
 use function Pest\Laravel\artisan;
 
-test('generates a translation model from the console prompts', function (string $name, array $answers, array $columns) {
+test('generates a translation model from prompts and preserves the parent', function (string $name, array $answers, array $columns) {
     $filesystem       = app(Filesystem::class);
     $path             = sys_get_temp_dir() . '/mona-model-prompt-' . Str::uuid();
     $models           = $path . '/Models';
@@ -17,19 +17,23 @@ test('generates a translation model from the console prompts', function (string 
     $class            = 'App\\Models\\' . $name;
     $translationClass = $class . 'Translation';
 
+    $original = <<<PHP
+        <?php
+
+        namespace App\\Models;
+
+        use Illuminate\\Database\\Eloquent\\Model;
+        use LaravelLang\\Models\\HasTranslations;
+
+        class $name extends Model
+        {
+            use HasTranslations;
+        }
+        PHP;
+
     try {
         $filesystem->ensureDirectoryExists($models);
-        $filesystem->put($source, <<<PHP
-            <?php
-
-            namespace App\\Models;
-
-            use Illuminate\\Database\\Eloquent\\Model;
-
-            class $name extends Model
-            {
-            }
-            PHP);
+        $filesystem->put($source, $original);
         require $source;
 
         app()->useDatabasePath($path . '/database');
@@ -53,7 +57,8 @@ test('generates a translation model from the console prompts', function (string 
             ->assertSuccessful()
             ->run();
 
-        expect((new $translationClass)->getFillable())->toBe(['locale', ...$columns]);
+        expect((new $translationClass)->getFillable())->toBe(['locale', ...$columns])
+            ->and($filesystem->get($source))->toBe($original);
     } finally {
         $filesystem->deleteDirectory($path);
     }
