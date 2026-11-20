@@ -4,7 +4,7 @@
         "tests/Fixtures"
     ],
     "rules": {
-        "@PHP8x3Migration": true,
+        "@PHP8x2Migration": true,
         "concat_space": {
             "spacing": "one"
         },
