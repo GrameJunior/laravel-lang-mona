@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Rector\CodeQuality\Rector\If_\ExplicitNullableObjectInstanceRector;
 use Rector\Config\RectorConfig;
 use RectorLaravel\Rector\Class_\AppendsPropertyToAppendsAttributeRector;
 use RectorLaravel\Rector\Class_\ConnectionPropertyToConnectionAttributeRector;
@@ -63,6 +64,7 @@ return RectorConfig::configure()
         AppToResolveRector::class,
         ConnectionPropertyToConnectionAttributeRector::class,
         DescriptionPropertyToDescriptionAttributeRector::class,
+        ExplicitNullableObjectInstanceRector::class,
         FillablePropertyToFillableAttributeRector::class,
         SignaturePropertyToSignatureAttributeRector::class,
         TablePropertyToTableAttributeRector::class,

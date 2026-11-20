@@ -22,7 +22,7 @@ class CurrencyNames
     public function all(Locale|string|null $forLocale, ?SortDirection $direction = null): Collection
     {
         return (new Collection($this->read($forLocale)))
-            ->map(fn (array $item, string $locale) => $this->map($locale, $item))
+            ->map(fn (array $item, string $locale): CurrencyData => $this->map($locale, $item))
             ->when($direction !== null, fn (Collection $items) => $items->sortBy(
                 'localized', descending: $direction === SortDirection::Descending
             ));
