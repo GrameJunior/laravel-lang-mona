@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Constants\FakeValue;
 
-test('attributes', function () {
+test('attributes', function (): void {
     $model = fakeTestModel();
 
     expect($model->isTranslatable(FakeValue::Title))->toBeTrue();

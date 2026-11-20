@@ -5,8 +5,8 @@ declare(strict_types=1);
 use LaravelLang\Exceptions\AttributeIsNotTranslatableException;
 use Workbench\App\Constants\FakeLocale;
 
-test('non-translatable attribute', function () {
-    $key = fake()->word;
+test('non-translatable attribute', function (): void {
+    $key = fake()->word();
 
     $model = fakeTestModel();
 
@@ -16,7 +16,7 @@ test('non-translatable attribute', function () {
     expect($model->key)->toBeString()->toBe($key);
 });
 
-test('not translatable attribute', function () {
+test('not translatable attribute', function (): void {
     $model = fakeTestModel();
 
     $model->setTranslation(

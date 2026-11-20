@@ -8,7 +8,7 @@ use LaravelLang\Publisher\Collectors\PluginCollector;
 
 use function Pest\Laravel\artisan;
 
-beforeEach(function () {
+beforeEach(function (): void {
     $this->publisherRoot = sys_get_temp_dir() . '/mona-publisher-' . bin2hex(random_bytes(8));
 
     app()->setBasePath($this->publisherRoot);
@@ -22,12 +22,12 @@ beforeEach(function () {
     ]);
 });
 
-afterEach(function () {
+afterEach(function (): void {
     File::deleteDirectory($this->publisherRoot);
 });
 
-describe('removing locales', function () {
-    beforeEach(function () {
+describe('removing locales', function (): void {
+    beforeEach(function (): void {
         config()->set('localization_main.aliases', ['sv' => 'sv_SE', 'fr' => 'fr_FR']);
 
         writePublisherPackage('tests/translations', [], [
@@ -36,15 +36,15 @@ describe('removing locales', function () {
             'vendor.php'    => 'vendor/demo/{locale}/messages.php',
             'vendor.json'   => 'vendor/demo/{locale}.json',
         ], [
-            'source/messages.php'    => ['greeting' => 'Hello'],
-            'source/messages.json'   => ['Hello' => 'Hello'],
-            'source/vendor.php'      => ['greeting' => 'Hello'],
-            'source/vendor.json'     => ['Hello' => 'Hello'],
+            'source/messages.php'     => ['greeting' => 'Hello'],
+            'source/messages.json'    => ['Hello' => 'Hello'],
+            'source/vendor.php'       => ['greeting' => 'Hello'],
+            'source/vendor.json'      => ['Hello' => 'Hello'],
             'locales/sv/default.json' => ['Hello' => 'Hej'],
         ]);
     });
 
-    test('removes application and vendor translations by code or alias', function (string $add, string $remove) {
+    test('removes application and vendor translations by code or alias', function (string $add, string $remove): void {
         artisan('lang:add', ['locales' => [$add, 'en']])->assertSuccessful()->run();
         artisan('lang:update')->assertSuccessful()->run();
 
@@ -97,10 +97,10 @@ describe('removing locales', function () {
         'from alias to code'         => ['sv_SE', 'sv'],
     ]);
 
-    test('keeps the vendor directory when a locale alias matches its name', function () {
+    test('keeps the vendor directory when a locale alias matches its name', function (): void {
         artisan('lang:add', ['locales' => ['sv', 'en']])->assertSuccessful()->run();
 
-        $path = lang_path('vendor/demo/de/messages.php');
+        $path     = lang_path('vendor/demo/de/messages.php');
         $contents = File::get($path);
 
         config()->set('localization_main.aliases.sv', 'vendor');
@@ -111,9 +111,9 @@ describe('removing locales', function () {
             ->and(File::get($path))->toBe($contents);
     });
 
-    test('protects the current locale when its code is also an alias', function () {
+    test('protects the current locale when its code is also an alias', function (): void {
         artisan('lang:add', ['locales' => ['sv']])->assertSuccessful()->run();
-        $paths = publisherTranslationPaths('fr');
+        $paths    = publisherTranslationPaths('fr');
         $contents = array_map(File::get(...), $paths);
 
         config()->set('localization_main.aliases', ['fr' => 'fr_FR', 'sv' => 'fr']);
@@ -126,10 +126,10 @@ describe('removing locales', function () {
         expect(array_map(File::get(...), $paths))->toBe($contents);
     });
 
-    test('leaves translations alone for an unknown code', function () {
+    test('leaves translations alone for an unknown code', function (): void {
         artisan('lang:add', ['locales' => ['en']])->assertSuccessful()->run();
 
-        $paths = publisherTranslationPaths('en');
+        $paths    = publisherTranslationPaths('en');
         $contents = array_map(File::get(...), $paths);
 
         artisan('lang:rm', ['locales' => ['not-a-locale']])
@@ -140,7 +140,7 @@ describe('removing locales', function () {
         expect(array_map(File::get(...), $paths))->toBe($contents);
     });
 
-    test('skips removing a locale twice', function () {
+    test('skips removing a locale twice', function (): void {
         artisan('lang:add', ['locales' => ['sv']])->assertSuccessful()->run();
         artisan('lang:rm', ['locales' => ['sv']])->assertSuccessful()->run();
         artisan('lang:rm', ['locales' => ['sv_SE']])
@@ -153,13 +153,13 @@ describe('removing locales', function () {
         }
     });
 
-    test('asks before removing all unprotected locales', function (string $confirmation) {
+    test('asks before removing all unprotected locales', function (string $confirmation): void {
         artisan('lang:add', ['locales' => ['en', 'sv']])->assertSuccessful()->run();
 
-        $protected = [...publisherTranslationPaths('fr'), ...publisherTranslationPaths('de')];
+        $protected         = [...publisherTranslationPaths('fr'), ...publisherTranslationPaths('de')];
         $protectedContents = array_map(File::get(...), $protected);
-        $optional = [...publisherTranslationPaths('en'), ...publisherTranslationPaths('sv')];
-        $optionalContents = array_map(File::get(...), $optional);
+        $optional          = [...publisherTranslationPaths('en'), ...publisherTranslationPaths('sv')];
+        $optionalContents  = array_map(File::get(...), $optional);
 
         artisan('lang:rm')
             ->expectsConfirmation('Do you want to remove all localizations?', $confirmation)
@@ -179,10 +179,10 @@ describe('removing locales', function () {
         }
     })->with(['yes', 'no']);
 
-    test('keeps localizations when run without interactive confirmation', function () {
+    test('keeps localizations when run without interactive confirmation', function (): void {
         artisan('lang:add', ['locales' => ['sv']])->assertSuccessful()->run();
 
-        $paths = publisherTranslationPaths('sv');
+        $paths    = publisherTranslationPaths('sv');
         $contents = array_map(File::get(...), $paths);
 
         $this->withoutMockingConsoleOutput();
@@ -192,14 +192,14 @@ describe('removing locales', function () {
     });
 });
 
-describe('updating locales from installed manifests', function () {
-    beforeEach(function () {
+describe('updating locales from installed manifests', function (): void {
+    beforeEach(function (): void {
         writePublisherPackage('tests/compatible', ['vendor' => 'composer/semver', 'version' => '^3.6'], [
             'messages.php'  => '{locale}/messages.php',
             'messages.json' => '{locale}.json',
         ], [
-            'source/messages.php'    => ['nested' => ['greeting' => 'Hello', 'farewell' => 'Goodbye']],
-            'source/messages.json'   => ['Hello' => 'Hello', 'Goodbye' => 'Goodbye'],
+            'source/messages.php'     => ['nested' => ['greeting' => 'Hello', 'farewell' => 'Goodbye']],
+            'source/messages.json'    => ['Hello' => 'Hello', 'Goodbye' => 'Goodbye'],
             'locales/fr/default.json' => ['Hello' => 'From the package'],
         ]);
 
@@ -229,7 +229,7 @@ describe('updating locales from installed manifests', function () {
         ]);
     });
 
-    test('merges compatible translations and writes the same files on repeat', function () {
+    test('merges compatible translations and writes the same files on repeat', function (): void {
         artisan('lang:update')->assertSuccessful()->run();
 
         expect(File::getRequire(lang_path('fr/messages.php')))->toEqual([
@@ -245,7 +245,7 @@ describe('updating locales from installed manifests', function () {
         ])->and(lang_path('fr/incompatible.php'))->not->toBeFile()
             ->and(lang_path('fr/missing.php'))->not->toBeFile();
 
-        $paths = [lang_path('fr/messages.php'), lang_path('fr.json'), lang_path('de/messages.php'), lang_path('de.json')];
+        $paths    = [lang_path('fr/messages.php'), lang_path('fr.json'), lang_path('de/messages.php'), lang_path('de.json')];
         $contents = array_map(File::get(...), $paths);
 
         artisan('lang:update')->assertSuccessful()->run();
@@ -253,7 +253,7 @@ describe('updating locales from installed manifests', function () {
         expect(array_map(File::get(...), $paths))->toBe($contents);
     });
 
-    test('forces missing and incompatible dependencies while respecting source and target skips', function () {
+    test('forces missing and incompatible dependencies while respecting source and target skips', function (): void {
         config()->set([
             'localization_main.force' => ['composer/semver', 'tests/absent-dependency'],
             'localization_main.skip'  => ['*/tests/incompatible/source/skip-source.php', '*/lang/*/skip-target.php'],
@@ -276,13 +276,13 @@ test('updates translations from project manifests based on the root project and 
     array $requirements,
     array $forced,
     bool $expected,
-) {
+): void {
     config()->set('localization_main.force', $forced);
 
     writePublisherPackage('tests/project', ['project' => true] + $requirements, [
         'project.php' => '{locale}/project.php',
     ], [
-        'source/project.php'     => ['message' => 'Hello'],
+        'source/project.php'      => ['message' => 'Hello'],
         'locales/fr/default.json' => ['Hello' => 'Bonjour'],
     ]);
 
@@ -302,7 +302,7 @@ test('updates translations from project manifests based on the root project and 
     'forced non-root project' => [['vendor' => 'tests/other-project'], ['tests/other-project'], true],
 ]);
 
-test('updates nested JSON translations and skips empty sources and excluded styles', function () {
+test('updates nested JSON translations and skips empty sources and excluded styles', function (): void {
     config()->set([
         'localization_main.styles' => ['default', 'formal'],
         'localization_main.skip'   => ['*/tests/translations/locales/fr/formal.json'],

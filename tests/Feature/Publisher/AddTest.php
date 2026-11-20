@@ -34,7 +34,7 @@ test('add locale', function (array $config, array $foo, array $bar, array $baz):
     expect(__('Foo'))->toMatchSnapshot();
 })->with('translations');
 
-test('all - yes', function () {
+test('all - yes', function (): void {
     artisan(AddCommand::class)
         ->expectsConfirmation('Do you want to install all localizations?', 'yes')
         ->assertSuccessful()
@@ -45,7 +45,7 @@ test('all - yes', function () {
     }
 });
 
-test('all - no', function () {
+test('all - no', function (): void {
     $installed = [
         FakeLocale::Default,
         FakeLocale::Fallback,
@@ -64,7 +64,7 @@ test('all - no', function () {
     }
 });
 
-test('unknown locale', function () {
+test('unknown locale', function (): void {
     artisan(AddCommand::class, [
         'locales' => [FakeLocale::Incorrect1],
     ])->run();

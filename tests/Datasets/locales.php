@@ -13,8 +13,8 @@ dataset('incorrect locales', [
     null,
 ]);
 
-dataset('enum locales', fn () => Locale::cases());
-dataset('string locales', fn () => Locale::values());
+dataset('enum locales', fn (): array => Locale::cases());
+dataset('string locales', fn (): array => Locale::values());
 
 dataset('direct locales', [
     FakeLocale::Default  => [FakeLocale::Default, FakeTranslation::French],

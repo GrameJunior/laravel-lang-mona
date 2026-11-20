@@ -14,7 +14,7 @@ use Workbench\App\Models\TestModelTranslation;
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
 
-test('soft delete', function () {
+test('soft delete', function (): void {
     $model = fakeTestModel(main: FakeLocale::Incorrect1);
 
     assertDatabaseHas(TestModel::class, [
@@ -44,7 +44,7 @@ test('soft delete', function () {
     );
 });
 
-test('force delete', function () {
+test('force delete', function (): void {
     $model = fakeTestModel(main: FakeLocale::Incorrect1);
 
     assertDatabaseHas(TestModel::class, [
@@ -70,7 +70,7 @@ test('force delete', function () {
     ]);
 });
 
-test('restore', function () {
+test('restore', function (): void {
     $model = fakeTestModel(main: FakeLocale::Incorrect1);
 
     assertDatabaseHas(TestModel::class, [
@@ -114,7 +114,7 @@ test('restore', function () {
     );
 });
 
-test('forgetting a translation respects soft deletion on its translation model', function () {
+test('forgetting a translation respects soft deletion on its translation model', function (): void {
     Schema::table('test_model_translations', fn (Blueprint $table) => $table->softDeletes());
 
     $model = SoftDeletingTestModel::create([

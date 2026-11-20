@@ -13,7 +13,7 @@ function fakeTestModel(
     ?string $fallback = null,
     ?string $custom = null,
 ): TestModel {
-    $key ??= fake()->word;
+    $key ??= fake()->word();
 
     $model = TestModel::create(compact('key'));
 

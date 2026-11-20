@@ -9,7 +9,7 @@ use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\getJson;
 
-test('direct locale', function (string $locale, string $translated) {
+test('direct locale', function (string $locale, string $translated): void {
     $foo = 'test';
 
     setCustomLocale();
@@ -23,7 +23,7 @@ test('direct locale', function (string $locale, string $translated) {
     assertEventDispatched();
 })->with('direct locales');
 
-test('aliased locale', function (string $locale) {
+test('aliased locale', function (string $locale): void {
     $foo = 'test';
 
     setCustomLocale();
@@ -37,7 +37,7 @@ test('aliased locale', function (string $locale) {
     assertEventDispatched();
 })->with('aliased locales');
 
-test('empty locale', function (int|string|null $locale) {
+test('empty locale', function (int|string|null $locale): void {
     $foo = 'test';
 
     getJson(route('via.header', ['key' => $foo]), [
@@ -49,7 +49,7 @@ test('empty locale', function (int|string|null $locale) {
     assertEventNotDispatched();
 })->with('incorrect locales');
 
-test('uninstalled locale', function (string $locale) {
+test('uninstalled locale', function (string $locale): void {
     $foo = 'test';
 
     getJson(route('via.header', ['key' => $foo]), [
@@ -61,7 +61,7 @@ test('uninstalled locale', function (string $locale) {
     assertEventNotDispatched();
 })->with('uninstalled locales');
 
-test('unknown locale', function (int|string $locale) {
+test('unknown locale', function (int|string $locale): void {
     $foo = 'test';
 
     getJson(route('via.header', ['key' => $foo]), [
@@ -73,7 +73,7 @@ test('unknown locale', function (int|string $locale) {
     assertEventNotDispatched();
 })->with('unknown locales');
 
-test('uses the fallback when an installed locale cannot be resolved', function () {
+test('uses the fallback when an installed locale cannot be resolved', function (): void {
     $locales = Mockery::mock(Locales::getFacadeRoot());
     $locales->shouldReceive('info')->once()->with('en')->andThrow(new UnknownLocaleException('en'));
     Locales::swap($locales);
@@ -86,7 +86,7 @@ test('uses the fallback when an installed locale cannot be resolved', function (
     assertEventNotDispatched();
 });
 
-test('multiple accept-language', function (string $locale) {
+test('multiple accept-language', function (string $locale): void {
     $foo = 'test';
 
     setCustomLocale();
@@ -100,7 +100,7 @@ test('multiple accept-language', function (string $locale) {
     assertEventDispatched();
 })->with('locale headers');
 
-test('custom header', function (string $locale) {
+test('custom header', function (string $locale): void {
     config(['localization_routes.names.header' => 'X-Custom-Lang']);
 
     $foo = 'test';
