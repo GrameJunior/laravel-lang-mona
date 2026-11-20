@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Models\SomeTranslation;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Console\ModelMakeCommand as LaravelMakeModel;
 use LaravelLang\Config\Services\ModelLangConfig;
@@ -34,15 +35,22 @@ test('from scratch', function () {
         '--columns' => ['title', 'description'],
     ])->assertSuccessful()->run();
 
-    $model  = app_path('Models/SomeTranslation.php');
-    $helper =
-        sprintf('%s/_ide_helper_models_%s.php', app(ModelLangConfig::class)->helpers, hash('xxh128', 'App\Models\Some'));
+    $model = new SomeTranslation([
+        'locale'      => 'en',
+        'title'       => ' Title ',
+        'description' => ' Description ',
+    ]);
+
+    expect($model->locale)->toBe('en')
+        ->and($model->title)->toBe('Title')
+        ->and($model->description)->toBe('Description');
 
     $migrations = (new Filesystem())->glob(database_path('migrations/*_create_some_translations_table.php'));
+    $helper     =
+        sprintf('%s/_ide_helper_models_%s.php', app(ModelLangConfig::class)->helpers, hash('xxh128', 'App\Models\Some'));
 
     expect($migrations)->toHaveCount(1);
 
-    expect(file_get_contents($model))->toMatchSnapshot();
     expect(file_get_contents($migrations[0]))->toMatchSnapshot();
 
     expect($helper)->toBeReadableFile();
