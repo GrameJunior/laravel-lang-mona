@@ -43,7 +43,7 @@ jobs:
                 run: composer require --dev laravel/framework:^${{ matrix.laravel }}
 
             -   name: Execute tests
-            -   run: composer test --exclude-group=arch
+                run: composer test --exclude-group=arch
 
     feature-master:
         runs-on: ubuntu-latest
