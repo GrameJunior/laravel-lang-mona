@@ -62,14 +62,14 @@ app('router')
     ->get('clean/{key}', TestController::class)
     ->name('clean');
 
-app('router')->localizedGroup(function () {
+app('router')->localizedGroup(function (): void {
     app('router')
         ->middleware('web')
         ->get('group/macro/{key}', TestController::class)
         ->name('via.group.macro');
 });
 
-LocalizationRoute::group(function () {
+LocalizationRoute::group(function (): void {
     app('router')
         ->middleware('web')
         ->get('group/facade/{key}', TestController::class)

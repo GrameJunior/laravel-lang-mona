@@ -15,8 +15,11 @@ class TestModelTranslation extends Translation
         'description',
     ];
 
-    protected $casts = [
-        'title'       => TrimStringCast::class,
-        'description' => TrimStringCast::class,
-    ];
+    protected function casts(): array
+    {
+        return [
+            'title'       => TrimStringCast::class,
+            'description' => TrimStringCast::class,
+        ];
+    }
 }
