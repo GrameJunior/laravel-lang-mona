@@ -21,7 +21,7 @@ test('the middleware uses the requested guard and accepts a locale enum from the
     Auth::guard('foo')->setUser(new class extends User {
         protected function locale(): Attribute
         {
-            return Attribute::make(get: fn(): Locale => Locale::German);
+            return Attribute::make(get: fn (): Locale => Locale::German);
         }
     });
 

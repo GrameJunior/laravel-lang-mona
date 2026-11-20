@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\Facades\File;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Symfony\Component\Process\Process;
 
