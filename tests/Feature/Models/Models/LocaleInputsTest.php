@@ -7,7 +7,7 @@ use LaravelLang\Locales\Facades\Locales;
 use LaravelLang\NativeLocaleNames\LocaleData;
 use Workbench\App\Constants\FakeLocale;
 
-test('all forms of a locale refer to the same translation', function (Locale|LocaleData|string $input) {
+test('all forms of a locale refer to the same translation', function (Locale|LocaleData|string $input): void {
     $model         = fakeTestModel(main: 'Bonjour', fallback: 'Hallo');
     $translationId = $model->translationsRaw()->where('locale', FakeLocale::Default)->sole()->getKey();
 
@@ -36,10 +36,10 @@ test('all forms of a locale refer to the same translation', function (Locale|Loc
     'code'        => FakeLocale::Default,
     'alias'       => FakeLocale::DefaultAlias,
     'enum'        => Locale::French,
-    'locale data' => fn () => new LocaleData(FakeLocale::Default, FakeLocale::DefaultAlias, 'Français', 'Français'),
+    'locale data' => fn (): LocaleData => new LocaleData(FakeLocale::Default, FakeLocale::DefaultAlias, 'Français', 'Français'),
 ]);
 
-test('the translation filter omits a third installed locale while the raw relation keeps it', function (bool $filter) {
+test('the translation filter omits a third installed locale while the raw relation keeps it', function (bool $filter): void {
     config()->set('localization_models.filter', $filter);
 
     expect(Locales::isInstalled(FakeLocale::Custom))->toBeTrue();

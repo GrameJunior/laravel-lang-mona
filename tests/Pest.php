@@ -20,14 +20,14 @@ pest()
     ->extend(TestCase::class)
     ->in('Feature')
     ->group('feature')
-    ->beforeEach(function () {
+    ->beforeEach(function (): void {
         cleanUpLang();
         fakePluginCollector();
     });
 
 pest()
     ->in('Feature/Routes')
-    ->beforeEach(function () {
+    ->beforeEach(function (): void {
         Event::fake();
 
         withHeader('Accept-Language', 'qwerty');

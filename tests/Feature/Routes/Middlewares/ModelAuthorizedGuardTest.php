@@ -8,7 +8,7 @@ use Workbench\App\Constants\FakeTranslation;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\getJson;
 
-test('main locale', function () {
+test('main locale', function (): void {
     actingAs(fakeUser(FakeLocale::Fallback), 'foo');
 
     $foo = 'test';
@@ -20,7 +20,7 @@ test('main locale', function () {
     assertEventDispatched();
 });
 
-test('aliased locale', function (string $locale) {
+test('aliased locale', function (string $locale): void {
     actingAs(fakeUser($locale), 'foo');
 
     setCustomLocale();
@@ -34,7 +34,7 @@ test('aliased locale', function (string $locale) {
     assertEventDispatched();
 })->with('aliased locales');
 
-test('empty locale', function (int|string|null $locale) {
+test('empty locale', function (int|string|null $locale): void {
     actingAs(fakeUser($locale), 'foo');
 
     $foo = 'test';
@@ -46,7 +46,7 @@ test('empty locale', function (int|string|null $locale) {
     assertEventNotDispatched();
 })->with('incorrect locales');
 
-test('uninstalled locale', function (string $locale) {
+test('uninstalled locale', function (string $locale): void {
     actingAs(fakeUser($locale), 'foo');
 
     $foo = 'test';
@@ -58,7 +58,7 @@ test('uninstalled locale', function (string $locale) {
     assertEventNotDispatched();
 })->with('uninstalled locales');
 
-test('unknown locale', function (int|string $locale) {
+test('unknown locale', function (int|string $locale): void {
     actingAs(fakeUser($locale), 'foo');
 
     $foo = 'test';

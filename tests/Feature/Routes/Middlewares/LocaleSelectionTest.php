@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
@@ -15,12 +16,12 @@ use function Pest\Laravel\getJson;
 test('the middleware uses the requested guard and accepts a locale enum from the model', function (
     string $route,
     string $translation
-) {
+): void {
     Auth::guard('web')->setUser(new User(['locale' => 'fr']));
     Auth::guard('foo')->setUser(new class extends User {
-        public function getLocaleAttribute(): Locale
+        protected function locale(): Attribute
         {
-            return Locale::German;
+            return Attribute::make(get: fn(): Locale => Locale::German);
         }
     });
 
@@ -34,10 +35,10 @@ test('the middleware uses the requested guard and accepts a locale enum from the
     'named guard'   => ['via.model.guard', FakeTranslation::German],
 ]);
 
-test('a later locale source wins and its choice is restored from the session', function () {
-    Route::middleware('web')->group(function () {
-        Route::localizedGroup(function () {
-            Route::get('locale-selection', fn () => ['locale' => app()->getLocale()])->name('locale.selection');
+test('a later locale source wins and its choice is restored from the session', function (): void {
+    Route::middleware('web')->group(function (): void {
+        Route::localizedGroup(function (): void {
+            Route::get('locale-selection', fn (): array => ['locale' => app()->getLocale()])->name('locale.selection');
         });
     });
 
@@ -46,8 +47,8 @@ test('a later locale source wins and its choice is restored from the session', f
         ->assertJsonPath('locale', 'de')
         ->assertSessionHas('Accept-Language', 'de');
 
-    Event::assertDispatched(LocaleHasBeenSetEvent::class, fn ($event) => $event->locale->code === 'en');
-    Event::assertDispatched(LocaleHasBeenSetEvent::class, fn ($event) => $event->locale->code === 'de');
+    Event::assertDispatched(fn (LocaleHasBeenSetEvent $event): bool => $event->locale->code === 'en');
+    Event::assertDispatched(fn (LocaleHasBeenSetEvent $event): bool => $event->locale->code === 'de');
 
     app()->setLocale('fr');
 

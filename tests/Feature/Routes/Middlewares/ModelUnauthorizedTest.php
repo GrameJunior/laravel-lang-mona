@@ -6,7 +6,7 @@ use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\getJson;
 
-test('with guard', function () {
+test('with guard', function (): void {
     $foo = 'test';
 
     getJson(route('via.model.guard', ['key' => $foo]))
@@ -16,7 +16,7 @@ test('with guard', function () {
     assertEventNotDispatched();
 });
 
-test('without guard', function () {
+test('without guard', function (): void {
     $foo = 'test';
 
     getJson(route('via.model.default', ['key' => $foo]))

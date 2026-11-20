@@ -5,17 +5,17 @@ declare(strict_types=1);
 use Illuminate\Filesystem\Filesystem;
 use LaravelLang\Toolkit\Services\TranslationKeysService;
 
-beforeEach(function () {
+beforeEach(function (): void {
     $this->translationDirectory = sys_get_temp_dir() . '/mona-translation-keys-' . bin2hex(random_bytes(8));
 
     (new Filesystem)->makeDirectory($this->translationDirectory);
 });
 
-afterEach(function () {
+afterEach(function (): void {
     (new Filesystem)->deleteDirectory($this->translationDirectory);
 });
 
-test('finds supported translation calls recursively in supported source files', function () {
+test('finds supported translation calls recursively in supported source files', function (): void {
     $filesystem = new Filesystem;
     $filesystem->makeDirectory($this->translationDirectory . '/nested');
 
@@ -60,7 +60,7 @@ test('finds supported translation calls recursively in supported source files', 
     expect((new TranslationKeysService)->find($this->translationDirectory))->toBe(array_combine($keys, $keys));
 });
 
-test('reads escaped quotes and multiline literals and returns unique sorted keys', function () {
+test('reads escaped quotes and multiline literals and returns unique sorted keys', function (): void {
     (new Filesystem)->put($this->translationDirectory . '/source.php', <<<'SOURCE'
         <?php
         __('Zulu');
@@ -79,7 +79,7 @@ test('reads escaped quotes and multiline literals and returns unique sorted keys
     expect((new TranslationKeysService)->find($this->translationDirectory))->toBe(array_combine($keys, $keys));
 });
 
-test('excludes dynamic expressions generic methods and non translatable keys', function () {
+test('excludes dynamic expressions generic methods and non translatable keys', function (): void {
     (new Filesystem)->put($this->translationDirectory . '/source.php', <<<'SOURCE'
         <?php
         __('Keep this');
@@ -114,7 +114,7 @@ test('excludes dynamic expressions generic methods and non translatable keys', f
     expect((new TranslationKeysService)->find($this->translationDirectory))->toBe(['Keep this' => 'Keep this']);
 });
 
-test('starts fresh when the same finder is used for another directory', function () {
+test('starts fresh when the same finder is used for another directory', function (): void {
     $filesystem = new Filesystem;
     $filesystem->makeDirectory($this->translationDirectory . '/first');
     $filesystem->makeDirectory($this->translationDirectory . '/second');

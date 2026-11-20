@@ -5,18 +5,18 @@ declare(strict_types=1);
 use Illuminate\Filesystem\Filesystem;
 use LaravelLang\Toolkit\Services\TranslationFilesService;
 
-beforeEach(function () {
+beforeEach(function (): void {
     $this->translationsDirectory = sys_get_temp_dir() . '/mona-translations-' . bin2hex(random_bytes(8));
     $this->translationFilesystem = new Filesystem;
     $this->translationFilesystem->ensureDirectoryExists($this->translationsDirectory);
     $this->translationFiles = new TranslationFilesService($this->translationFilesystem);
 });
 
-afterEach(function () {
+afterEach(function (): void {
     $this->translationFilesystem->deleteDirectory($this->translationsDirectory);
 });
 
-test('JSON translations preserve nested values and sort associative keys', function () {
+test('JSON translations preserve nested values and sort associative keys', function (): void {
     $path   = $this->translationsDirectory . '/messages.json';
     $values = [
         'z' => '00123',
@@ -46,7 +46,7 @@ test('JSON translations preserve nested values and sort associative keys', funct
     expect($this->translationFilesystem->get($path))->toBe($content);
 });
 
-test('JSON translations accept object and array roots', function (string $content, array $expected) {
+test('JSON translations accept object and array roots', function (string $content, array $expected): void {
     $path = $this->translationsDirectory . '/messages.json';
     $this->translationFilesystem->put($path, $content);
 
@@ -57,7 +57,7 @@ test('JSON translations accept object and array roots', function (string $conten
     ['{}', []],
 ]);
 
-test('invalid translation files fail with their path', function (string $extension, string $content) {
+test('invalid translation files fail with their path', function (string $extension, string $content): void {
     $path = $this->translationsDirectory . '/invalid.' . $extension;
     $this->translationFilesystem->put($path, $content);
 
@@ -74,14 +74,14 @@ test('invalid translation files fail with their path', function (string $extensi
     ['txt', '[]'],
 ]);
 
-test('the JSON reader does not interpret PHP arrays', function () {
+test('the JSON reader does not interpret PHP arrays', function (): void {
     $path = $this->translationsDirectory . '/messages.php';
     $this->translationFilesystem->put($path, '<?php return ["message" => "Hello"];');
 
     expect(fn () => $this->translationFiles->load($path))->toThrow(RuntimeException::class, $path);
 });
 
-test('unsupported values fail before replacing a translation file', function () {
+test('unsupported values fail before replacing a translation file', function (): void {
     $path = $this->translationsDirectory . '/messages.json';
     $this->translationFilesystem->put($path, 'original');
 
@@ -89,7 +89,7 @@ test('unsupported values fail before replacing a translation file', function () 
         ->and($this->translationFilesystem->get($path))->toBe('original');
 });
 
-test('storing translations in a non-JSON file leaves it untouched', function () {
+test('storing translations in a non-JSON file leaves it untouched', function (): void {
     $path    = $this->translationsDirectory . '/messages.php';
     $content = '<?php return ["message" => "Original"];';
     $this->translationFilesystem->put($path, $content);

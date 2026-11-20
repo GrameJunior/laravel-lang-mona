@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 use Symfony\Component\Process\Process;
@@ -54,8 +55,8 @@ function withCleanModelApplication(Closure $scenario): void
     }
 }
 
-test('a clean Laravel application discovers and publishes the localization configuration', function () {
-    withCleanModelApplication(function (string $path, Closure $run) {
+test('a clean Laravel application discovers and publishes the localization configuration', function (): void {
+    withCleanModelApplication(function (string $path, Closure $run): void {
         $run('artisan', 'package:discover', '--no-interaction');
         $run('artisan', 'vendor:publish', '--tag=localization', '--no-interaction');
 
@@ -73,8 +74,8 @@ test('a clean Laravel application discovers and publishes the localization confi
     });
 });
 
-test('a clean Laravel application can generate, use and roll back a translation model', function () {
-    withCleanModelApplication(function (string $path, Closure $run) {
+test('a clean Laravel application can generate, use and roll back a translation model', function (): void {
+    withCleanModelApplication(function (string $path, Closure $run): void {
         $run('artisan', 'make:model', 'Article', '--migration', '--no-interaction');
         $run('artisan', 'migrate', '--no-interaction');
         $run('artisan', 'make:model-translation', 'App\\Models\\Article', '--no-interaction');
@@ -83,7 +84,7 @@ test('a clean Laravel application can generate, use and roll back a translation 
         $helper = $path . '/vendor/_laravel_lang/_ide_helper_models_' . hash('xxh128', 'App\\Models\\Article') . '.php';
 
         expect($helper)->toBeReadableFile();
-        unlink($helper);
+        File::delete($helper);
 
         $run('artisan', 'lang:models-helper', 'App\\Models\\Article', '--no-interaction');
 
