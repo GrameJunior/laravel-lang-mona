@@ -23,7 +23,9 @@ class CountryNames
     {
         return (new Collection($this->read($forLocale)))
             ->map(fn (array $item, string $locale) => $this->map($locale, $item))
-            ->when($direction !== null, fn (Collection $items) => $items->sortBy('localized', $direction));
+            ->when($direction !== null, fn (Collection $items) => $items->sortBy(
+                'localized', descending: $direction
+            ));
     }
 
     public function one(Locale|string|null $forLocale, Locale|string $locale): CountryData
@@ -32,7 +34,7 @@ class CountryNames
 
         $items = $this->read($forLocale);
 
-        return $this->map($locale, $items[$normalized]);
+        return $this->map($normalized, $items[$normalized]);
     }
 
     protected function map(string $locale, array $item): CountryData
