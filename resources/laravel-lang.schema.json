@@ -4,7 +4,9 @@
     "title": "Laravel Lang translation manifest",
     "type": "object",
     "additionalProperties": false,
-    "required": ["plugins"],
+    "required": [
+        "plugins"
+    ],
     "properties": {
         "$schema": {
             "type": "string",
@@ -22,10 +24,16 @@
         "plugin": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["files"],
+            "required": [
+                "files"
+            ],
             "dependentRequired": {
-                "version": ["vendor"],
-                "project": ["vendor"]
+                "version": [
+                    "vendor"
+                ],
+                "project": [
+                    "vendor"
+                ]
             },
             "properties": {
                 "vendor": {
@@ -54,7 +62,10 @@
         "file": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["source", "target"],
+            "required": [
+                "source",
+                "target"
+            ],
             "properties": {
                 "source": {
                     "description": "Path relative to the package's translation source directory.",

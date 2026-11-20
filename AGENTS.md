@@ -19,12 +19,10 @@
 - For changes in the `src/*/locales` folder, always prefix the header with the affected locale subfolder names using `[<locales>]: `, e.g., `[fr]: `, `[de,zh_CN]: `, etc.
 - For changes in all other folders, always prefix the header with `[app]: `.
 
-
 ## Testing
 
 - When writing tests, verify the feature's observable behavior through its normal entry points.
 - Unit tests are optional.
-
 
 ## Task Coordination and Acceptance
 
@@ -33,7 +31,6 @@
 - Review each delegated result against the specification and plan.
 - Send defects, inconsistencies, and deviations back to the assigned subagent for correction.
 - Accept the work only after verifying that all identified issues have been resolved and the requirements are met.
-
 
 ## Subagents
 
