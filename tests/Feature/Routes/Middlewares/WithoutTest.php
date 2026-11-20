@@ -6,7 +6,7 @@ use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\getJson;
 
-test('without locale passing', function (): void {
+test('without locale passing', function () {
     $foo = 'test';
 
     getJson(route('clean', ['key' => $foo]))

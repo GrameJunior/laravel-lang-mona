@@ -7,7 +7,7 @@ use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\withSession;
 
-test('main locale', function (string $locale, string $translation): void {
+test('main locale', function (string $locale, string $translation) {
     setCustomLocale();
 
     $foo = 'test';
@@ -20,7 +20,7 @@ test('main locale', function (string $locale, string $translation): void {
     assertEventDispatched();
 })->with('direct locales');
 
-test('aliased locale', function (string $locale): void {
+test('aliased locale', function (string $locale) {
     setCustomLocale();
 
     $foo = 'test';
@@ -33,7 +33,7 @@ test('aliased locale', function (string $locale): void {
     assertEventDispatched();
 })->with('aliased locales');
 
-test('empty locale', function (int|string|null $locale): void {
+test('empty locale', function (int|string|null $locale) {
     $foo = 'test';
 
     withSession([app(RouteNameLangConfig::class)->session => $locale])
@@ -44,7 +44,7 @@ test('empty locale', function (int|string|null $locale): void {
     assertEventNotDispatched();
 })->with('incorrect locales');
 
-test('uninstalled locale', function (string $locale): void {
+test('uninstalled locale', function (string $locale) {
     $foo = 'test';
 
     withSession([app(RouteNameLangConfig::class)->session => $locale])
@@ -55,7 +55,7 @@ test('uninstalled locale', function (string $locale): void {
     assertEventNotDispatched();
 })->with('uninstalled locales');
 
-test('unknown locale', function (int|string $locale): void {
+test('unknown locale', function (int|string $locale) {
     $foo = 'test';
 
     withSession([app(RouteNameLangConfig::class)->session => $locale])

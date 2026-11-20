@@ -5,9 +5,9 @@ declare(strict_types=1);
 use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Constants\FakeValue;
 
-test('main', function (): void {
+test('main', function () {
     $model = fakeTestModel(
-        main: fake()->paragraph()
+        main: fake()->paragraph
     );
 
     expect($model->hasTranslated(FakeValue::Title))->toBeTrue();
@@ -15,9 +15,9 @@ test('main', function (): void {
     expect($model->hasTranslated(FakeValue::Title, FakeLocale::Fallback))->toBeFalse();
 });
 
-test('fallback', function (): void {
+test('fallback', function () {
     $model = fakeTestModel(
-        fallback: fake()->paragraph()
+        fallback: fake()->paragraph
     );
 
     expect($model->hasTranslated(FakeValue::Title))->toBeTrue();
@@ -25,9 +25,9 @@ test('fallback', function (): void {
     expect($model->hasTranslated(FakeValue::Title, FakeLocale::Fallback))->toBeTrue();
 });
 
-test('custom', function (): void {
+test('custom', function () {
     $model = fakeTestModel(
-        custom: fake()->paragraph()
+        custom: fake()->paragraph
     );
 
     expect($model->hasTranslated(FakeValue::Title))->toBeFalse();

@@ -12,8 +12,8 @@ use Orchestra\Testbench\TestCase as BaseTests;
 
 class TestCase extends BaseTests
 {
-    use RefreshDatabase;
     use WithWorkbench;
+    use RefreshDatabase;
 
     protected function overrideApplicationProviders($app): array
     {

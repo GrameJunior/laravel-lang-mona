@@ -5,7 +5,7 @@ declare(strict_types=1);
 use LaravelLang\Config\Services\RouteLangConfig;
 use LaravelLang\LocaleList\Locale;
 
-test('group', function (string $routeName, string $uri): void {
+test('group', function (string $routeName, string $uri) {
     expect(route($routeName, ['key' => 'test']))
         ->toBeString()
         ->toBe('http://localhost/' . $uri);

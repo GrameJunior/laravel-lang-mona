@@ -25,7 +25,7 @@ test('update styles', function (array $config, array $foo, array $bar, array $ba
     Locales::reload();
 
     expect(__('auth.foo'))->toBe($foo[0]);
-    expect(__('bar.bar'))->toBe($bar[0]);
+    expect(__('bar.bar'))->toBe($bar [0]);
     expect(__('baz'))->toBe($baz[0]);
 
     expect(__('Foo'))->toMatchSnapshot();

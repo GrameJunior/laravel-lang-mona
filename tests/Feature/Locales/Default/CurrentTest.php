@@ -5,7 +5,7 @@ declare(strict_types=1);
 use LaravelLang\Locales\Facades\Locales;
 use Workbench\App\Constants\FakeLocale;
 
-test('default', function (): void {
+test('default', function () {
     Locales::set(FakeLocale::Fallback);
 
     $locale = Locales::current();
@@ -13,7 +13,7 @@ test('default', function (): void {
     expect($locale)->toBe(FakeLocale::Fallback);
 });
 
-test('aliased', function (): void {
+test('aliased', function () {
     Locales::set(FakeLocale::Default);
 
     $locale = Locales::current();
@@ -22,7 +22,7 @@ test('aliased', function (): void {
     $this->assertNotSame(FakeLocale::Default, $locale);
 });
 
-test('incorrect', function (): void {
+test('incorrect', function () {
     app()->setLocale(FakeLocale::Incorrect1);
 
     $locale = Locales::current();

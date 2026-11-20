@@ -9,7 +9,7 @@ use Workbench\App\Models\User;
 
 use function Pest\Laravel\artisan;
 
-test('generates a translation model from prompts and preserves the parent', function (string $name, array $answers, array $columns): void {
+test('generates a translation model from prompts and preserves the parent', function (string $name, array $answers, array $columns) {
     $filesystem       = app(Filesystem::class);
     $path             = sys_get_temp_dir() . '/mona-model-prompt-' . Str::uuid();
     $models           = $path . '/Models';

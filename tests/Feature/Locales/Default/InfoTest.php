@@ -9,7 +9,7 @@ use Workbench\App\Constants\FakeLocale;
 
 test(
     'installed',
-    function (Locale|string|null $locale, string $code, string $alias, string $native, string $localized): void {
+    function (Locale|string|null $locale, string $code, string $alias, string $native, string $localized) {
         expect(Locales::info($locale))
             ->code->toBe($code)
             ->alias->toBe($alias)
@@ -28,7 +28,7 @@ test(
 
 test(
     'uninstalled',
-    function (Locale|string|null $locale, string $code, string $alias, string $native, string $localized): void {
+    function (Locale|string|null $locale, string $code, string $alias, string $native, string $localized) {
         expect(Locales::info($locale))
             ->code->toBe($code)
             ->alias->toBe($alias)
@@ -40,7 +40,7 @@ test(
     'string' => [Locale::Swedish->value, FakeLocale::Uninstalled, FakeLocale::Uninstalled, 'Svenska', 'Suédois'],
 ]);
 
-test('incorrect', function (Locale|string $locale): void {
+test('incorrect', function (Locale|string $locale) {
     Locales::info($locale);
 })->with([
     'data'   => [FakeLocale::Incorrect1],

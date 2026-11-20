@@ -5,7 +5,7 @@ declare(strict_types=1);
 use LaravelLang\Locales\Facades\Locales;
 use Workbench\App\Constants\FakeLocale;
 
-test('main', function (): void {
+test('main', function () {
     $locales = Locales::uninstalled();
 
     expect($locales)->not->toContain(FakeLocale::Custom);
@@ -13,7 +13,7 @@ test('main', function (): void {
     expect($locales)->not->toContain(app()->getFallbackLocale());
 });
 
-test('an installed locale is excluded by both its code and its alias', function (): void {
+test('an installed locale is excluded by both its code and its alias', function () {
     config()->set('localization_main.aliases.fr', 'fr_FR');
 
     expect(Locales::installed())->toContain('fr_FR')

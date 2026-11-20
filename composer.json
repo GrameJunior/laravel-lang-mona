@@ -55,7 +55,6 @@
         "composer/class-map-generator": "^1.9",
         "composer/semver": "^3.6",
         "dragon-code/benchmark": "^4.6",
-        "dragon-code/codestyler": "^6.8",
         "laravel/prompts": "^0.3.26",
         "orchestra/testbench": "^10.0 || ^11.0",
         "pestphp/pest": "^4.7.8 || ^5.3.5",
@@ -87,9 +86,9 @@
         "psr-4": {
             "Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Package\\": "workbench/package/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
-            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/",
-            "Workbench\\Package\\": "workbench/package/"
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         },
         "files": [
             "src/Routes/src/helpers.php"
@@ -104,27 +103,17 @@
         "sort-packages": true
     },
     "scripts": {
-        "post-update-cmd": [
-            "vendor/bin/codestyle pint 8.3",
-            "vendor/bin/codestyle rector laravel",
-            "vendor/bin/codestyle editorconfig"
-        ],
         "post-autoload-dump": [
             "@clear",
             "@prepare"
         ],
-        "build": "@php vendor/bin/testbench workbench:build --ansi",
         "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
         "serve": [
             "Composer\\Config::disableProcessTimeout",
             "@build",
             "@php vendor/bin/testbench serve --ansi"
-        ],
-        "style": [
-            "@composer normalize",
-            "@php vendor/bin/rector --ansi",
-            "@php vendor/bin/pint --parallel --ansi"
         ],
         "test": "@php vendor/bin/pest --parallel",
         "test:coverage": "@php -d xdebug.mode=coverage vendor/bin/pest --coverage --min=95"

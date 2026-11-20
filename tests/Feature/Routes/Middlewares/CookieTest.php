@@ -7,7 +7,7 @@ use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\withCredentials;
 
-test('direct locale', function (string $locale, string $translated): void {
+test('direct locale', function (string $locale, string $translated) {
     $foo = 'test';
 
     setCustomLocale();
@@ -21,7 +21,7 @@ test('direct locale', function (string $locale, string $translated): void {
     assertEventDispatched();
 })->with('direct locales');
 
-test('aliased locale', function (string $locale): void {
+test('aliased locale', function (string $locale) {
     $foo = 'test';
 
     setCustomLocale();
@@ -35,7 +35,7 @@ test('aliased locale', function (string $locale): void {
     assertEventDispatched();
 })->with('aliased locales');
 
-test('empty locale', function (int|string|null $locale): void {
+test('empty locale', function (int|string|null $locale) {
     $foo = 'test';
 
     withCredentials()
@@ -47,7 +47,7 @@ test('empty locale', function (int|string|null $locale): void {
     assertEventNotDispatched();
 })->with('incorrect locales');
 
-test('uninstalled locale', function (string $locale): void {
+test('uninstalled locale', function (string $locale) {
     $foo = 'test';
 
     withCredentials()
@@ -59,7 +59,7 @@ test('uninstalled locale', function (string $locale): void {
     assertEventNotDispatched();
 })->with('uninstalled locales');
 
-test('unknown locale', function (int|string $locale): void {
+test('unknown locale', function (int|string $locale) {
     $foo = 'test';
 
     withCredentials()

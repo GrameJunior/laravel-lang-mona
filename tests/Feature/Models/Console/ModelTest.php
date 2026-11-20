@@ -14,8 +14,8 @@ use Workbench\App\Models\User;
 
 use function Pest\Laravel\artisan;
 
-$cleanUp = function (): void {
-    $filesystem = new Filesystem;
+$cleanUp = function () {
+    $filesystem = new Filesystem();
 
     $filesystem->delete([
         app_path('Models/Some.php'),
@@ -27,7 +27,7 @@ $cleanUp = function (): void {
 beforeEach($cleanUp);
 afterEach($cleanUp);
 
-test('from scratch', function (): void {
+test('from scratch', function () {
     artisan(LaravelMakeModel::class, [
         'name' => 'Some',
     ])->assertSuccessful()->run();
@@ -49,9 +49,9 @@ test('from scratch', function (): void {
         ->and($model->title)->toBe('Title')
         ->and($model->description)->toBe('Description');
 
-    $migrations = (new Filesystem)->glob(database_path('migrations/*_create_some_translations_table.php'));
-    $helper
-        = sprintf('%s/_ide_helper_models_%s.php', app(ModelLangConfig::class)->helpers, hash('xxh128', 'App\Models\Some'));
+    $migrations = (new Filesystem())->glob(database_path('migrations/*_create_some_translations_table.php'));
+    $helper     =
+        sprintf('%s/_ide_helper_models_%s.php', app(ModelLangConfig::class)->helpers, hash('xxh128', 'App\Models\Some'));
 
     expect($migrations)->toHaveCount(1);
 
@@ -62,17 +62,17 @@ test('from scratch', function (): void {
         ->toContain('use ' . HasTranslations::class . ';', 'use HasTranslations;');
 });
 
-test('rejects invalid models before generating translations', function (string $model, string $message): void {
+test('rejects invalid models before generating translations', function (string $model, string $message) {
     artisan('make:model-translation', ['model' => $model])
         ->expectsOutputToContain($message)
         ->assertFailed()
         ->run();
 })->with([
-    'unknown model'              => ['App\\Models\\Missing', 'was not found.'],
+    'unknown model'               => ['App\\Models\\Missing', 'was not found.'],
     'existing translation model' => [TestModel::class, 'already has a translation repository.'],
 ]);
 
-test('reports when the selected model is outside the configured directories', function (): void {
+test('reports when the selected model is outside the configured directories', function () {
     config(['localization_models.directories' => []]);
 
     artisan('make:model-translation', ['model' => User::class, '--columns' => ['title']])->run();

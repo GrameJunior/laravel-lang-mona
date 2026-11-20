@@ -17,8 +17,8 @@ use Workbench\App\Models\TestModelTranslation;
 use function Pest\Laravel\assertDatabaseEmpty;
 use function Pest\Laravel\assertDatabaseHas;
 
-test('main locale', function (): void {
-    $text = fake()->paragraph();
+test('main locale', function () {
+    $text = fake()->paragraph;
 
     $model = fakeTestModel(main: $text);
 
@@ -31,8 +31,8 @@ test('main locale', function (): void {
     expect($model->getTranslation(FakeValue::Title, FakeLocale::Custom))->toBeNull();
 });
 
-test('fallback locale', function (): void {
-    $text = fake()->paragraph();
+test('fallback locale', function () {
+    $text = fake()->paragraph;
 
     $model = fakeTestModel(fallback: $text);
 
@@ -44,8 +44,8 @@ test('fallback locale', function (): void {
     expect($model->getTranslation(FakeValue::Title, FakeLocale::Custom))->toBeNull();
 });
 
-test('custom locale', function (): void {
-    $text = fake()->paragraph();
+test('custom locale', function () {
+    $text = fake()->paragraph;
 
     $model = fakeTestModel(custom: $text);
 
@@ -57,7 +57,7 @@ test('custom locale', function (): void {
     expect($model->getTranslation(FakeValue::Title, FakeLocale::Custom))->toBe($text);
 });
 
-test('aliased locale', function (): void {
+test('aliased locale', function () {
     config([
         'app.locale' => 'zh_CN',
 
@@ -70,7 +70,7 @@ test('aliased locale', function (): void {
         lang_path('zh')
     );
 
-    $text = fake()->paragraph();
+    $text = fake()->paragraph;
 
     $model = fakeTestModel();
 
@@ -89,13 +89,13 @@ test('aliased locale', function (): void {
     ]);
 });
 
-test('uninstalled', function (): void {
+test('uninstalled', function () {
     $model = fakeTestModel();
 
     $model->getTranslation(FakeValue::Title, FakeLocale::Uninstalled);
 })->throws(UnknownLocaleException::class);
 
-test('without translations model', function (): void {
+test('without translations model', function () {
     $model = fakeTestModel();
 
     assertDatabaseEmpty(TestModelTranslation::class);
@@ -108,7 +108,7 @@ test('without translations model', function (): void {
     expect($model->getTranslation(FakeValue::Title, FakeLocale::Custom))->toBeNull();
 });
 
-test('loads raw translations as an ordinary Eloquent relation', function (): void {
+test('loads raw translations as an ordinary Eloquent relation', function () {
     $model        = fakeTestModel();
     $translations = [
         FakeLocale::Default  => 'French title',
@@ -122,13 +122,13 @@ test('loads raw translations as an ordinary Eloquent relation', function (): voi
         ->and($model->translationsRaw->pluck('title', 'locale')->all())->toMatchArray($translations);
 });
 
-test('lazy loading', function (bool $enabled, int $count, array $locales): void {
+test('lazy loading', function (bool $enabled, int $count, array $locales) {
     config()->set('localization_models.filter', $enabled);
 
     $hasNonFilteredQuery = false;
     $hasFilteredQuery    = false;
 
-    DB::listen(function (QueryExecuted $query) use (&$hasNonFilteredQuery, &$hasFilteredQuery): void {
+    DB::listen(function (QueryExecuted $query) use (&$hasNonFilteredQuery, &$hasFilteredQuery) {
         if (Str::is('select * where *."item_id" = ? and *."item_id" is not null', $query->sql)) {
             $hasNonFilteredQuery = true;
         }
@@ -160,22 +160,22 @@ test('lazy loading', function (bool $enabled, int $count, array $locales): void 
     expect($hasFilteredQuery)->toBe($enabled);
 })->with('locales filter');
 
-test('non-translatable attribute', function (): void {
-    $key = fake()->word();
+test('non-translatable attribute', function () {
+    $key = fake()->word;
 
     $model = fakeTestModel($key);
 
     expect($model->key)->toBeString()->toBe($key);
 });
 
-test('not translatable attribute', function (): void {
+test('not translatable attribute', function () {
     $model = fakeTestModel();
 
     $model->getTranslation(FakeLocale::Incorrect1);
 })->throws(AttributeIsNotTranslatableException::class);
 
-test('translated scope returns records with at least one translation', function (): void {
-    $text = fake()->paragraph();
+test('translated scope returns records with at least one translation', function () {
+    $text = fake()->paragraph;
 
     TestModel::create(['key' => FakeLocale::Fallback]);
 
@@ -191,7 +191,7 @@ test('translated scope returns records with at least one translation', function 
     expect(TestModel::translated()->first()->getAttribute(FakeValue::Title))->toBe($text);
 });
 
-test('whereTranslation filters by translation', function (): void {
+test('whereTranslation filters by translation', function () {
     $text = 'Hello world';
 
     $model = TestModel::create([
@@ -205,7 +205,7 @@ test('whereTranslation filters by translation', function (): void {
     expect(TestModel::whereTranslation(FakeValue::Title, 'Hello world')->first()->id)->toBe($model->id);
 });
 
-test('or whereTranslation filters by translation', function (): void {
+test('or whereTranslation filters by translation', function () {
     $model1 = TestModel::create([
         'key'            => FakeLocale::Default,
         FakeValue::Title => [
@@ -229,7 +229,7 @@ test('or whereTranslation filters by translation', function (): void {
     expect($result->last()->id)->toBe($model2->id);
 });
 
-test('where translation filters by translation and locale', function (): void {
+test('where translation filters by translation and locale', function () {
     $text = 'Hello world';
 
     $model1 = TestModel::create([
@@ -255,7 +255,7 @@ test('where translation filters by translation and locale', function (): void {
     expect($result->first()->id)->toBe($model1->id);
 });
 
-test('whereTranslationLike filters by translation', function (): void {
+test('whereTranslationLike filters by translation', function () {
     $text = 'Hello world';
 
     TestModel::create([
@@ -269,7 +269,7 @@ test('whereTranslationLike filters by translation', function (): void {
     expect(TestModel::whereTranslationLike(FakeValue::Title, '%wor%')->count())->toBe(1);
 });
 
-test('or whereTranslationLike filters by translation', function (): void {
+test('or whereTranslationLike filters by translation', function () {
     $model1 = TestModel::create([
         'key'            => FakeLocale::Default,
         FakeValue::Title => [
@@ -293,7 +293,7 @@ test('or whereTranslationLike filters by translation', function (): void {
     expect($result->last()->id)->toBe($model2->id);
 });
 
-test('whereTranslationLike filters by translation and locale', function (): void {
+test('whereTranslationLike filters by translation and locale', function () {
     $text = 'Hello world';
 
     $model1 = TestModel::create([
@@ -319,7 +319,7 @@ test('whereTranslationLike filters by translation and locale', function (): void
 
 test(
     'orderByTranslation sorts by key',
-    function (SortDirection|string $sortMethod, ?string $sortLocale, string $firstLocale, string $secondLocale): void {
+    function (SortDirection|string $sortMethod, ?string $sortLocale, string $firstLocale, string $secondLocale) {
         TestModel::create([
             'key' => FakeLocale::Default,
 
@@ -359,7 +359,7 @@ test(
     'descending enum' => [SortDirection::Descending, null, FakeLocale::Fallback, FakeLocale::Fallback],
 ]);
 
-test('orderByTranslation sorts by key asc even if locale is missing', function (): void {
+test('orderByTranslation sorts by key asc even if locale is missing', function () {
     TestModel::create([
         'key'            => FakeLocale::Default,
         FakeValue::Title => [

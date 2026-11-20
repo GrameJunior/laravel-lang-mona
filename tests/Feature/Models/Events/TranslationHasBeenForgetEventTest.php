@@ -9,7 +9,7 @@ use Workbench\App\Constants\FakeValue;
 use Workbench\App\Models\TestModel;
 
 beforeEach(fn () => TestModel::create([
-    'key' => fake()->word(),
+    'key' => fake()->word,
 
     FakeValue::Title => [
         FakeLocale::Default  => 'qwerty 10',
@@ -22,13 +22,15 @@ beforeEach(fn () => TestModel::create([
     ],
 ]));
 
-test('forget locale', function (): void {
+test('forget locale', function () {
     Event::fake(TranslationHasBeenForgetEvent::class);
 
     $model = findFakeTestModel();
 
     $model->forgetTranslation(FakeLocale::Default);
 
-    Event::assertDispatched(fn (TranslationHasBeenForgetEvent $event): bool => $event->model->getKey() === $model->getKey()
-        && $event->locale                                                                              === FakeLocale::DefaultAlias);
+    Event::assertDispatched(function (TranslationHasBeenForgetEvent $event) use ($model) {
+        return $event->model->getKey() === $model->getKey()
+            && $event->locale === FakeLocale::DefaultAlias;
+    });
 });

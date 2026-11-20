@@ -10,7 +10,7 @@ use LaravelLang\NativeCurrencyNames\CurrencyNames;
 use LaravelLang\NativeLocaleNames\LocaleData;
 use LaravelLang\NativeLocaleNames\LocaleNames;
 
-beforeEach(function (): void {
+beforeEach(function () {
     config()->set('localization_main.aliases', ['de' => 'de_DE', 'fr' => 'fr_FR']);
 });
 
@@ -20,7 +20,7 @@ dataset('native name services', [
     'currency names' => [CurrencyNames::class, new CurrencyData('fr', 'EUR', 978, 'euro', 'Euro')],
 ]);
 
-test('looks up localized names by code, alias and enum', function (string $service, object $french): void {
+test('looks up localized names by code, alias and enum', function (string $service, object $french) {
     $names = app($service);
 
     expect($names->one('de', 'fr'))->toEqual($french)
@@ -28,14 +28,14 @@ test('looks up localized names by code, alias and enum', function (string $servi
         ->and($names->one(Locale::German, Locale::French))->toEqual($french);
 })->with('native name services');
 
-test('looks up native names without translating them to a display locale', function (string $service, object $french): void {
+test('looks up native names without translating them to a display locale', function (string $service, object $french) {
     $names = app($service);
 
     expect($names->one('_native', 'fr_FR'))->native->toBe($french->native)
         ->localized->toBe($french->native);
 })->with('native name services');
 
-test('sorts localized names for codes, aliases and enums', function (string $service, object $french): void {
+test('sorts localized names for codes, aliases and enums', function (string $service, object $french) {
     $names = app($service);
 
     foreach (['de', 'de_DE', Locale::German] as $display) {

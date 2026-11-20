@@ -5,7 +5,7 @@ declare(strict_types=1);
 use LaravelLang\Locales\Facades\Locales;
 use Workbench\App\Constants\FakeLocale;
 
-test('main codes', function (): void {
+test('main codes', function () {
     $locales = Locales::data()->protects()->pluck('code')->all();
 
     expect($locales)->not->toContain(FakeLocale::DefaultAlias);
@@ -15,7 +15,7 @@ test('main codes', function (): void {
     expect($locales)->toHaveCount(2);
 });
 
-test('main aliases', function (): void {
+test('main aliases', function () {
     $locales = Locales::data()->protects()->pluck('alias')->all();
 
     expect($locales)->toContain(FakeLocale::DefaultAlias);
@@ -25,7 +25,7 @@ test('main aliases', function (): void {
     expect($locales)->toHaveCount(2);
 });
 
-test('incorrect', function (): void {
+test('incorrect', function () {
     app()->setLocale(FakeLocale::Incorrect1);
     app()->setFallbackLocale(FakeLocale::Incorrect2);
 

@@ -6,14 +6,14 @@ use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
 use Workbench\App\Constants\FakeLocale;
 
-test('default', function (): void {
+test('default', function () {
     app()->setFallbackLocale(FakeLocale::Fallback);
 
     $locale = Locales::fallback();
 
     expect($locale)->toBe(FakeLocale::Fallback);
 });
-test('alias', function (): void {
+test('alias', function () {
     app()->setFallbackLocale(FakeLocale::Default);
 
     $locale = Locales::fallback();
@@ -21,7 +21,7 @@ test('alias', function (): void {
     expect($locale)->toBe(FakeLocale::DefaultAlias);
 });
 
-test('incorrect', function (): void {
+test('incorrect', function () {
     app()->setFallbackLocale(FakeLocale::Incorrect1);
 
     $locale = Locales::fallback();

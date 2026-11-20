@@ -13,7 +13,7 @@ use function Pest\Laravel\assertDatabaseEmpty;
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
 
-test('single', function (): void {
+test('single', function () {
     assertDatabaseEmpty(TestModel::class);
     assertDatabaseEmpty(TestModelTranslation::class);
 
@@ -60,7 +60,7 @@ test('single', function (): void {
     ]);
 });
 
-test('array', function (): void {
+test('array', function () {
     assertDatabaseEmpty(TestModel::class);
     assertDatabaseEmpty(TestModelTranslation::class);
 
@@ -119,7 +119,7 @@ test('array', function (): void {
     ]);
 });
 
-test('collection', function (): void {
+test('collection', function () {
     assertDatabaseEmpty(TestModel::class);
     assertDatabaseEmpty(TestModelTranslation::class);
 
@@ -178,7 +178,7 @@ test('collection', function (): void {
     ]);
 });
 
-test('uninstalled', function (): void {
+test('uninstalled', function () {
     TestModel::create([
         'key' => FakeLocale::Incorrect1,
 
@@ -194,7 +194,7 @@ test('uninstalled', function (): void {
     ]);
 })->throws(UnknownLocaleException::class);
 
-test('unknown', function (): void {
+test('unknown', function () {
     TestModel::create([
         'key' => FakeLocale::Incorrect1,
 

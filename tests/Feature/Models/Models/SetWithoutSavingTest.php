@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Constants\FakeValue;
+
 use Workbench\App\Models\TestModelTranslation;
 
 use function Pest\Laravel\assertDatabaseEmpty;
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
 
-test('main locale', function (): void {
-    $oldText = fake()->paragraph();
-    $newText = fake()->paragraph();
+test('main locale', function () {
+    $oldText = fake()->paragraph;
+    $newText = fake()->paragraph;
 
     $model = fakeTestModel(main: $oldText);
 
@@ -43,9 +44,9 @@ test('main locale', function (): void {
     ]);
 });
 
-test('fallback locale', function (): void {
-    $oldText = fake()->paragraph();
-    $newText = fake()->paragraph();
+test('fallback locale', function () {
+    $oldText = fake()->paragraph;
+    $newText = fake()->paragraph;
 
     $model = fakeTestModel(fallback: $oldText);
 
@@ -76,9 +77,9 @@ test('fallback locale', function (): void {
     ]);
 });
 
-test('custom locale', function (): void {
-    $oldText = fake()->paragraph();
-    $newText = fake()->paragraph();
+test('custom locale', function () {
+    $oldText = fake()->paragraph;
+    $newText = fake()->paragraph;
 
     $model = fakeTestModel(custom: $oldText);
 
@@ -109,7 +110,7 @@ test('custom locale', function (): void {
     ]);
 });
 
-test('mixed symbols', function (mixed $source, mixed $saved): void {
+test('mixed symbols', function (mixed $source, mixed $saved) {
     $model = fakeTestModel();
 
     $model->setTranslation(FakeValue::Title, $source, FakeLocale::Default);

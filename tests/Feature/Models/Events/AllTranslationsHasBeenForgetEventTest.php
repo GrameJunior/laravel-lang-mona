@@ -8,9 +8,9 @@ use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Constants\FakeValue;
 use Workbench\App\Models\TestModel;
 
-beforeEach(function (): void {
+beforeEach(function () {
     TestModel::create([
-        'key' => fake()->word(),
+        'key' => fake()->word,
 
         FakeValue::Title => [
             FakeLocale::Default  => 'qwerty 10',
@@ -26,7 +26,7 @@ beforeEach(function (): void {
     Event::fake(AllTranslationsHasBeenForgetEvent::class);
 });
 
-test('all', function (): void {
+test('all', function () {
     $model = findFakeTestModel();
 
     expect($model->hasTranslated(FakeValue::Title, FakeLocale::Default))->toBeTrue();

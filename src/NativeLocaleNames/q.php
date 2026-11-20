@@ -6,7 +6,7 @@ use Illuminate\Filesystem\Filesystem;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-$fs = new Filesystem;
+$fs = new Filesystem();
 
 $native = $fs->json(__DIR__ . '/data/_native.json');
 

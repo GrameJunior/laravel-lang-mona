@@ -13,7 +13,7 @@ use function Pest\Laravel\assertDatabaseMissing;
 
 beforeEach(
     fn () => TestModel::create([
-        'key' => fake()->word(),
+        'key' => fake()->word,
 
         FakeValue::Title => [
             FakeLocale::Default  => 'qwerty 10',
@@ -29,7 +29,7 @@ beforeEach(
     ])
 );
 
-test('locale', function (): void {
+test('locale', function () {
     $model = findFakeTestModel();
 
     expect($model->hasTranslated(FakeValue::Title, FakeLocale::Default))->toBeTrue();
@@ -65,7 +65,7 @@ test('locale', function (): void {
     ]);
 });
 
-test('all', function (): void {
+test('all', function () {
     $model = findFakeTestModel();
 
     expect($model->hasTranslated(FakeValue::Title, FakeLocale::Default))->toBeTrue();
@@ -103,7 +103,7 @@ test('all', function (): void {
     ]);
 });
 
-test('non-translatable locale', function (): void {
+test('non-translatable locale', function () {
     $model = fakeTestModel();
 
     $model->forgetTranslation(FakeLocale::Incorrect1);

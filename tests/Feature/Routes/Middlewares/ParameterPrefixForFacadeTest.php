@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Config\Enums\Name;
+
 use LaravelLang\Config\Services\RouteLangConfig;
 use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\getJson;
 
-test('main without prefix', function (): void {
+test('main without prefix', function () {
     $foo = 'test';
 
     getJson(route('via.group.facade', ['key' => $foo]))
@@ -15,7 +17,7 @@ test('main without prefix', function (): void {
         ->assertJsonPath($foo, FakeTranslation::French);
 });
 
-test('main locale with enabled redirect', function (string $locale): void {
+test('main locale with enabled redirect', function (string $locale) {
     config()->set('localization_routes.redirect', true);
 
     $foo = 'test';
@@ -26,7 +28,7 @@ test('main locale with enabled redirect', function (string $locale): void {
     assertEventNotDispatched();
 })->with('aliased locales');
 
-test('main locale with disabled redirect', function (string $locale, string $translation): void {
+test('main locale with disabled redirect', function (string $locale, string $translation) {
     config()->set('localization_routes.redirect', false);
 
     setCustomLocale();
@@ -40,7 +42,7 @@ test('main locale with disabled redirect', function (string $locale, string $tra
     assertEventDispatched();
 })->with('direct locales');
 
-test('aliased locale', function (string $locale): void {
+test('aliased locale', function (string $locale) {
     $foo = 'test';
 
     setCustomLocale();
@@ -52,7 +54,7 @@ test('aliased locale', function (string $locale): void {
     assertEventDispatched();
 })->with('aliased locales');
 
-test('uninstalled locale', function (string $locale): void {
+test('uninstalled locale', function (string $locale) {
     $foo = 'test';
 
     setCustomLocale();
@@ -63,7 +65,7 @@ test('uninstalled locale', function (string $locale): void {
     assertEventNotDispatched();
 })->with('uninstalled locales');
 
-test('unknown locale', function (int|string $locale): void {
+test('unknown locale', function (int|string $locale) {
     $foo = 'test';
 
     setCustomLocale();
