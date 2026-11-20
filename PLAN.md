@@ -100,6 +100,7 @@
 - [x] Применить quality code (Rector)
 - [x] Применить Biome
 - [ ] Добавить GitHub Action для код-стайла
+- [x] Добавить Cooldown для Composer и тесты аудита
 - [ ] Удалить трейт Dispatchable из эвентов
 - [ ] Применить стат анализ (PhpStan)
 - [ ] Проверить файлы `composer.json`:

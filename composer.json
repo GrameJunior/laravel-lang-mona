@@ -56,7 +56,7 @@
         "composer/semver": "^3.6",
         "dragon-code/benchmark": "^4.6",
         "driftingly/rector-laravel": "^2.7",
-        "ergebnis/composer-normalize": "^2.58",
+        "ergebnis/composer-normalize": "^2.57",
         "laravel/pint": "^1.32",
         "laravel/prompts": "^0.3.26",
         "orchestra/testbench": "^10.0 || ^11.0",
@@ -104,7 +104,16 @@
             "pestphp/pest-plugin": true
         },
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "policy": {
+            "abandoned": {
+                "block": false,
+                "audit": "report"
+            },
+            "cooldown": {
+                "period": "3 days"
+            }
+        }
     },
     "scripts": {
         "post-autoload-dump": [
