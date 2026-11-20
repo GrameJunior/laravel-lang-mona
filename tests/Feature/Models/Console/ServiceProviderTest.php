@@ -1,0 +1,42 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Tests\Feature\Models\Console;
+
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Env;
+use LaravelLang\Models\LangModelsServiceProvider;
+use Tests\TestCase;
+
+class ServiceProviderTest extends TestCase
+{
+    public function createApplication()
+    {
+        $env = Env::getRepository();
+        $key = 'APP_RUNNING_IN_CONSOLE';
+        $previous = $env->get($key);
+        $env->set($key, 'false');
+
+        try {
+            return parent::createApplication();
+        } finally {
+            if ($previous === null) {
+                $env->clear($key);
+            } else {
+                $env->set($key, $previous);
+            }
+        }
+    }
+
+    public function test_the_provider_does_not_register_artisan_commands_outside_the_console(): void
+    {
+        $this->assertFalse($this->app->runningInConsole());
+        $this->assertNotNull($this->app->getProvider(LangModelsServiceProvider::class));
+
+        $commands = Artisan::all();
+
+        $this->assertArrayNotHasKey('lang:models-helper', $commands);
+        $this->assertArrayNotHasKey('make:model-translation', $commands);
+    }
+}

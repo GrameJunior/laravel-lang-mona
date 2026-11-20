@@ -272,6 +272,58 @@ describe('updating locales from installed manifests', function () {
     });
 });
 
+test('updates translations from project manifests based on the root project and force configuration', function (
+    array $requirements,
+    array $forced,
+    bool $expected,
+) {
+    config()->set('localization_main.force', $forced);
+
+    writePublisherPackage('tests/project', ['project' => true] + $requirements, [
+        'project.php' => '{locale}/project.php',
+    ], [
+        'source/project.php'     => ['message' => 'Hello'],
+        'locales/fr/default.json' => ['Hello' => 'Bonjour'],
+    ]);
+
+    artisan('lang:update')->assertSuccessful()->run();
+
+    $path = lang_path('fr/project.php');
+
+    if ($expected) {
+        expect(File::getRequire($path))->toBe(['message' => 'Bonjour']);
+    } else {
+        expect($path)->not->toBeFile();
+    }
+})->with([
+    'no project name'         => [[], [], true],
+    'root project'            => [['vendor' => 'laravel-lang/mona'], [], true],
+    'installed dependency'    => [['vendor' => 'composer/semver'], [], false],
+    'forced non-root project' => [['vendor' => 'tests/other-project'], ['tests/other-project'], true],
+]);
+
+test('updates nested JSON translations and skips empty sources and excluded styles', function () {
+    config()->set([
+        'localization_main.styles' => ['default', 'formal'],
+        'localization_main.skip'   => ['*/tests/translations/locales/fr/formal.json'],
+    ]);
+
+    writePublisherPackage('tests/translations', [], [
+        'nested.json' => '{locale}/nested.json',
+        'empty.php'   => '{locale}/empty.php',
+    ], [
+        'source/nested.json'      => ['menu' => ['hello' => 'Hello', 'bye' => 'Bye']],
+        'source/empty.php'        => [],
+        'locales/fr/default.json' => ['Hello' => 'Bonjour', 'Bye' => 'Au revoir'],
+        'locales/fr/formal.json'  => ['Hello' => 'Salutations'],
+    ]);
+
+    artisan('lang:update')->assertSuccessful()->run();
+
+    expect(File::json(lang_path('fr/nested.json')))->toBe(['menu' => ['hello' => 'Bonjour', 'bye' => 'Au revoir']])
+        ->and(lang_path('fr/empty.php'))->not->toBeFile();
+});
+
 function publisherTranslationPaths(string $locale): array
 {
     return [

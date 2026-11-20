@@ -16,6 +16,7 @@ test('main', function () {
 test('not protected', function () {
     expect(Locales::isProtected(Locale::English))->toBeFalse();
     expect(Locales::isProtected(Locale::Swedish))->toBeFalse();
+    expect(Locales::isProtected(null))->toBeFalse();
 });
 test('incorrect', function () {
     app()->setLocale(FakeLocale::Incorrect1);
