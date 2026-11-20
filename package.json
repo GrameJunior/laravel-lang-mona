@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "check": "npx biome check",
+        "format": "npx biome check --write"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "2.6.8"
+    }
+}
