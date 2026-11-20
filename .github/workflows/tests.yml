@@ -45,6 +45,34 @@ jobs:
             -   name: Execute tests
                 run: composer test
 
+    feature-master:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: true
+            matrix:
+                php: [ "8.4", "8.5" ]
+
+        name: PHP ${{ matrix.php }}, Laravel dev-master
+
+        steps:
+            -   uses: actions/checkout@v7
+
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php }}
+
+            -   name: Install Laravel master and Testbench
+                run: |
+                    # Pest's Laravel plugin still requires the Laravel 13 series.
+                    composer require --dev --no-update --no-interaction \
+                        'laravel/framework:dev-master as 13.99.x-dev' \
+                        orchestra/testbench:12.x-dev orchestra/testbench-core:12.x-dev \
+                        orchestra/workbench:12.x-dev orchestra/canvas:12.x-dev orchestra/canvas-core:12.x-dev
+                    composer update --no-interaction --no-progress
+
+            -   name: Execute tests
+                run: composer test
+
     coverage:
         runs-on: ubuntu-latest
 

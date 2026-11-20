@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaravelLang\Filesystem;
 
 use Composer\InstalledVersions;
+use Composer\Semver\Semver;
 use Composer\Semver\VersionParser;
 use Illuminate\Container\Attributes\Config;
 use Illuminate\Support\Arr;
@@ -54,7 +55,11 @@ class Composer
             return true;
         }
 
-        return InstalledVersions::satisfies(new VersionParser(), $vendor, $version);
+        $installed = InstalledVersions::getVersion($vendor);
+
+        return $installed === null
+            ? InstalledVersions::satisfies(new VersionParser(), $vendor, $version)
+            : Semver::satisfies($installed, $version);
     }
 
     protected function projectName(): ?string

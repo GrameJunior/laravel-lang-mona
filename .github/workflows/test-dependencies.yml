@@ -40,3 +40,24 @@ jobs:
             -   name: Install dependencies
                 working-directory: ${{ matrix.directory }}
                 run: composer require --dev --update-with-all-dependencies 'laravel/framework:^${{ matrix.laravel }}' --no-interaction --no-progress
+
+    install-master:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: true
+            matrix:
+                php: [ "8.4", "8.5" ]
+
+        name: src/JsonFallback, p${{ matrix.php }}, dev-master
+
+        steps:
+            -   uses: actions/checkout@v7
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php }}
+
+            -   name: Install dependencies
+                working-directory: src/JsonFallback
+                run: |
+                    composer require --dev --no-update laravel/framework:dev-master --no-interaction
+                    composer update --no-interaction --no-progress
