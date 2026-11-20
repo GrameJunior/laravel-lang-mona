@@ -7,7 +7,7 @@ use Tests\Fixtures\ProjectNamespace;
 arch('enum suffix')
     ->expect(ProjectNamespace::All)
     ->enums()
-    ->toHaveSuffix('Enum');
+    ->not->toHaveSuffix('Enum');
 
 arch('all is string backed')
     ->expect(ProjectNamespace::All)
