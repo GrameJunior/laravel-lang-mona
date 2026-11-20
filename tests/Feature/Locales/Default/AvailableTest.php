@@ -5,13 +5,13 @@ declare(strict_types=1);
 use LaravelLang\Locales\Facades\Locales;
 use Workbench\App\Constants\FakeLocale;
 
-test('correct', function () {
+test('correct', function (): void {
     $locales = Locales::available();
 
     expect($locales)->toContain(FakeLocale::DefaultAlias);
     expect($locales)->not->toContain(FakeLocale::Default);
 });
-test('incorrect', function () {
+test('incorrect', function (): void {
     $locales = Locales::available();
 
     expect($locales)->not->toContain(FakeLocale::Incorrect1);

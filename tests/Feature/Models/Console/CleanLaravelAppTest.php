@@ -40,12 +40,12 @@ function withCleanModelApplication(Closure $scenario): void
             'APP_LOCALE'          => 'en',
             'APP_FALLBACK_LOCALE' => 'de',
             'COMPOSER_VENDOR_DIR' => false,
-            'DB_CONNECTION'      => 'sqlite',
-            'DB_DATABASE'        => $database,
-            'DB_FOREIGN_KEYS'    => 'true',
-            'DB_URL'             => false,
-            'MONA_TEST_AUTOLOAD' => $project . '/vendor/autoload.php',
-            'VENDOR_PATH'        => false,
+            'DB_CONNECTION'       => 'sqlite',
+            'DB_DATABASE'         => $database,
+            'DB_FOREIGN_KEYS'     => 'true',
+            'DB_URL'              => false,
+            'MONA_TEST_AUTOLOAD'  => $project . '/vendor/autoload.php',
+            'VENDOR_PATH'         => false,
         ]))->mustRun()->getOutput();
 
         $scenario($path, $run);
@@ -54,8 +54,8 @@ function withCleanModelApplication(Closure $scenario): void
     }
 }
 
-test('a clean Laravel application discovers and publishes the localization configuration', function () {
-    withCleanModelApplication(function (string $path, Closure $run) {
+test('a clean Laravel application discovers and publishes the localization configuration', function (): void {
+    withCleanModelApplication(function (string $path, Closure $run): void {
         $run('artisan', 'package:discover', '--no-interaction');
         $run('artisan', 'vendor:publish', '--tag=localization', '--no-interaction');
 
@@ -73,8 +73,8 @@ test('a clean Laravel application discovers and publishes the localization confi
     });
 });
 
-test('a clean Laravel application can generate, use and roll back a translation model', function () {
-    withCleanModelApplication(function (string $path, Closure $run) {
+test('a clean Laravel application can generate, use and roll back a translation model', function (): void {
+    withCleanModelApplication(function (string $path, Closure $run): void {
         $run('artisan', 'make:model', 'Article', '--migration', '--no-interaction');
         $run('artisan', 'migrate', '--no-interaction');
         $run('artisan', 'make:model-translation', 'App\\Models\\Article', '--no-interaction');

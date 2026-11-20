@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Models\Console;
 
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Env;
+use Illuminate\Support\Facades\Artisan;
 use LaravelLang\Models\LangModelsServiceProvider;
 use Tests\TestCase;
 
@@ -13,8 +13,8 @@ class ServiceProviderTest extends TestCase
 {
     public function createApplication()
     {
-        $env = Env::getRepository();
-        $key = 'APP_RUNNING_IN_CONSOLE';
+        $env      = Env::getRepository();
+        $key      = 'APP_RUNNING_IN_CONSOLE';
         $previous = $env->get($key);
         $env->set($key, 'false');
 
@@ -29,7 +29,7 @@ class ServiceProviderTest extends TestCase
         }
     }
 
-    public function test_the_provider_does_not_register_artisan_commands_outside_the_console(): void
+    public function testTheProviderDoesNotRegisterArtisanCommandsOutsideTheConsole(): void
     {
         $this->assertFalse($this->app->runningInConsole());
         $this->assertNotNull($this->app->getProvider(LangModelsServiceProvider::class));

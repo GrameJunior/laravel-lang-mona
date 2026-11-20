@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Facades\Event;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Tests\TestCase;
@@ -18,14 +20,14 @@ pest()
     ->extend(TestCase::class)
     ->in('Feature')
     ->group('feature')
-    ->beforeEach(function () {
+    ->beforeEach(function (): void {
         cleanUpLang();
         fakePluginCollector();
     });
 
 pest()
     ->in('Feature/Routes')
-    ->beforeEach(function () {
+    ->beforeEach(function (): void {
         Event::fake();
 
         withHeader('Accept-Language', 'qwerty');

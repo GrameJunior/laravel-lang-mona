@@ -5,7 +5,7 @@ declare(strict_types=1);
 use LaravelLang\Locales\Facades\Locales;
 use Workbench\App\Constants\FakeLocale;
 
-test('correct', function () {
+test('correct', function (): void {
     $locales = Locales::installed();
 
     expect($locales)->toContain(FakeLocale::Custom);
@@ -17,7 +17,7 @@ test('correct', function () {
 
     expect($locales)->toHaveCount(3);
 });
-test('incorrect', function () {
+test('incorrect', function (): void {
     ensureLang(FakeLocale::Incorrect1);
 
     $locales = Locales::installed();

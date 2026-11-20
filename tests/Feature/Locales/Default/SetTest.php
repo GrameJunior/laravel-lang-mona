@@ -6,12 +6,11 @@ use Illuminate\Foundation\Events\LocaleUpdated;
 use Illuminate\Support\Facades\Event;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
-
 use Workbench\App\Constants\FakeLocale;
 
 use function Illuminate\Support\enum_value;
 
-test('default', function (BackedEnum|string $locale) {
+test('default', function (BackedEnum|string $locale): void {
     $value = enum_value($locale);
 
     ensureLang($value);
@@ -24,7 +23,7 @@ test('default', function (BackedEnum|string $locale) {
 
     Event::assertDispatchedOnce(LocaleUpdated::class);
 
-    Event::assertDispatched(LocaleUpdated::class, function (LocaleUpdated $event) use ($value) {
+    Event::assertDispatched(function (LocaleUpdated $event) use ($value): bool {
         if ($event->locale !== $value) {
             return false;
         }
@@ -35,7 +34,7 @@ test('default', function (BackedEnum|string $locale) {
     Locale::Swedish,
     Locale::Swedish->value,
 ]);
-test('uninstalled', function () {
+test('uninstalled', function (): void {
     Event::fake();
 
     Locales::set(Locale::Swedish);
@@ -44,7 +43,7 @@ test('uninstalled', function () {
 
     Event::assertNothingDispatched();
 });
-test('incorrect', function (mixed $locale) {
+test('incorrect', function (mixed $locale): void {
     Event::fake();
 
     ensureLang((string) $locale);

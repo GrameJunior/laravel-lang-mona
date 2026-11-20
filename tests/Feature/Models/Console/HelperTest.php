@@ -8,7 +8,7 @@ use Workbench\App\Models\TestModel;
 
 use function Pest\Laravel\artisan;
 
-test('generate many models', function () {
+test('generate many models', function (): void {
     $path = sprintf(
         '%s/_ide_helper_models_%s.php',
         app(ModelLangConfig::class)->helpers,
@@ -22,7 +22,7 @@ test('generate many models', function () {
     expect(file_get_contents($path))->toMatchSnapshot();
 });
 
-test('generate one model', function () {
+test('generate one model', function (): void {
     $path = sprintf(
         '%s/_ide_helper_models_%s.php',
         app(ModelLangConfig::class)->helpers,

@@ -5,19 +5,19 @@ declare(strict_types=1);
 use Illuminate\Filesystem\Filesystem;
 use LaravelLang\Toolkit\Services\TranslationKeysService;
 
-beforeEach(function () {
-    $this->translationDirectory = sys_get_temp_dir().'/mona-translation-keys-'.bin2hex(random_bytes(8));
+beforeEach(function (): void {
+    $this->translationDirectory = sys_get_temp_dir() . '/mona-translation-keys-' . bin2hex(random_bytes(8));
 
-    (new Filesystem())->makeDirectory($this->translationDirectory);
+    (new Filesystem)->makeDirectory($this->translationDirectory);
 });
 
-afterEach(function () {
-    (new Filesystem())->deleteDirectory($this->translationDirectory);
+afterEach(function (): void {
+    (new Filesystem)->deleteDirectory($this->translationDirectory);
 });
 
-test('finds supported translation calls recursively in supported source files', function () {
-    $filesystem = new Filesystem();
-    $filesystem->makeDirectory($this->translationDirectory.'/nested');
+test('finds supported translation calls recursively in supported source files', function (): void {
+    $filesystem = new Filesystem;
+    $filesystem->makeDirectory($this->translationDirectory . '/nested');
 
     $sources = [
         'php' => <<<'SOURCE'
@@ -50,18 +50,18 @@ test('finds supported translation calls recursively in supported source files', 
     ];
 
     foreach ($sources as $extension => $source) {
-        $filesystem->put($this->translationDirectory.'/nested/source.'.$extension, $source);
+        $filesystem->put($this->translationDirectory . '/nested/source.' . $extension, $source);
     }
 
-    $filesystem->put($this->translationDirectory.'/ignored.txt', "__('Ignored')");
+    $filesystem->put($this->translationDirectory . '/ignored.txt', "__('Ignored')");
 
     $keys = ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliet', 'Kilo', 'Lima', 'Mike', 'November'];
 
-    expect((new TranslationKeysService())->find($this->translationDirectory))->toBe(array_combine($keys, $keys));
+    expect((new TranslationKeysService)->find($this->translationDirectory))->toBe(array_combine($keys, $keys));
 });
 
-test('reads escaped quotes and multiline literals and returns unique sorted keys', function () {
-    (new Filesystem())->put($this->translationDirectory.'/source.php', <<<'SOURCE'
+test('reads escaped quotes and multiline literals and returns unique sorted keys', function (): void {
+    (new Filesystem)->put($this->translationDirectory . '/source.php', <<<'SOURCE'
         <?php
         __('Zulu');
         __('It\'s ready');
@@ -76,11 +76,11 @@ test('reads escaped quotes and multiline literals and returns unique sorted keys
 
     $keys = ['Alpha', "It's ready", "Multiple\nlines", 'Say "Hello"', 'Zulu'];
 
-    expect((new TranslationKeysService())->find($this->translationDirectory))->toBe(array_combine($keys, $keys));
+    expect((new TranslationKeysService)->find($this->translationDirectory))->toBe(array_combine($keys, $keys));
 });
 
-test('excludes dynamic expressions generic methods and non translatable keys', function () {
-    (new Filesystem())->put($this->translationDirectory.'/source.php', <<<'SOURCE'
+test('excludes dynamic expressions generic methods and non translatable keys', function (): void {
+    (new Filesystem)->put($this->translationDirectory . '/source.php', <<<'SOURCE'
         <?php
         __('Keep this');
         __($key);
@@ -111,18 +111,18 @@ test('excludes dynamic expressions generic methods and non translatable keys', f
         $service->choice('Service choice');
         SOURCE);
 
-    expect((new TranslationKeysService())->find($this->translationDirectory))->toBe(['Keep this' => 'Keep this']);
+    expect((new TranslationKeysService)->find($this->translationDirectory))->toBe(['Keep this' => 'Keep this']);
 });
 
-test('starts fresh when the same finder is used for another directory', function () {
-    $filesystem = new Filesystem();
-    $filesystem->makeDirectory($this->translationDirectory.'/first');
-    $filesystem->makeDirectory($this->translationDirectory.'/second');
-    $filesystem->put($this->translationDirectory.'/first/source.php', "__('First')");
-    $filesystem->put($this->translationDirectory.'/second/source.php', "__('Second')");
+test('starts fresh when the same finder is used for another directory', function (): void {
+    $filesystem = new Filesystem;
+    $filesystem->makeDirectory($this->translationDirectory . '/first');
+    $filesystem->makeDirectory($this->translationDirectory . '/second');
+    $filesystem->put($this->translationDirectory . '/first/source.php', "__('First')");
+    $filesystem->put($this->translationDirectory . '/second/source.php', "__('Second')");
 
-    $finder = new TranslationKeysService();
+    $finder = new TranslationKeysService;
 
-    expect($finder->find($this->translationDirectory.'/first'))->toBe(['First' => 'First'])
-        ->and($finder->find($this->translationDirectory.'/second'))->toBe(['Second' => 'Second']);
+    expect($finder->find($this->translationDirectory . '/first'))->toBe(['First' => 'First'])
+        ->and($finder->find($this->translationDirectory . '/second'))->toBe(['Second' => 'Second']);
 });
