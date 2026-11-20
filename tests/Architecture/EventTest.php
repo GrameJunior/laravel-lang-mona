@@ -17,7 +17,7 @@ arch('dispatchable')
         'LaravelLang\Models\Events',
         'LaravelLang\Routes\Events',
     ])
-    ->toUseTrait(Dispatchable::class);
+    ->not->toUseTrait(Dispatchable::class);
 
 arch('naming')
     ->expect([
