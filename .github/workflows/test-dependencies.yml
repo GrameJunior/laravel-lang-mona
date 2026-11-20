@@ -43,13 +43,18 @@ jobs:
 
     install-master:
         runs-on: ubuntu-latest
-        name: src/JsonFallback, p8.4, dev-master
+        strategy:
+            fail-fast: true
+            matrix:
+                php: [ "8.4", "8.5" ]
+
+        name: src/JsonFallback, p${{ matrix.php }}, dev-master
 
         steps:
             -   uses: actions/checkout@v7
             -   uses: shivammathur/setup-php@v2
                 with:
-                    php-version: '8.4'
+                    php-version: ${{ matrix.php }}
 
             -   name: Install dependencies
                 working-directory: src/JsonFallback
