@@ -148,6 +148,7 @@ it('copies several paths without changing discovered keys in only-copy mode', fu
         'repo/second/en.json' => '{"Second": "Second", "Shared": "New"}',
         'repo/first/en.php' => '<?php return ["first" => "First"];',
         'repo/second/en.php' => '<?php /* Last copy wins. */ return ["second" => "Second"];',
+        'repo/first/README.txt' => 'Ignore files that are not translations.',
     ]);
     downloadFake($this->downloadHttp, $this->downloadWorkspaces, $body);
     $tester = downloadTester($this->downloadFilesystem, $this->downloadHttp);
@@ -160,7 +161,8 @@ it('copies several paths without changing discovered keys in only-copy mode', fu
             'First' => 'First', 'Second' => 'Second', 'Shared' => 'New',
         ])
         ->and($this->downloadFilesystem->get($target . '/en.php'))->toBe('<?php /* Last copy wins. */ return ["second" => "Second"];')
-        ->and($this->downloadFilesystem->get($target . '/framework.json'))->toBe('{"Original": "Original"}');
+        ->and($this->downloadFilesystem->get($target . '/framework.json'))->toBe('{"Original": "Original"}')
+        ->and($this->downloadFilesystem->exists($target . '/README.txt'))->toBeFalse();
 });
 
 it('copies PHP bytes without parsing or executing downloaded code', function () {
@@ -245,6 +247,8 @@ it('rejects missing or unsafe options before downloading', function (array $opti
     'missing directory' => [['--directory' => '']],
     'file URL' => [['--url' => 'file:///etc/passwd']],
     'destination traversal' => [['--directory' => '../outside']],
+    'filesystem root destination' => [['--directory' => '/']],
+    'Windows drive root destination' => [['--directory' => 'C:/']],
     'Windows drive-relative path' => [['--directory' => 'C:outside']],
     'copy traversal' => [['--paths' => ['../outside']]],
     'absolute copy path' => [['--paths' => ['/outside']]],
@@ -278,6 +282,93 @@ it('preserves prior files and cleans temporary data on download or processing fa
         ->and($this->downloadFilesystem->get($this->downloadRoot . '/tmp/unrelated/keep.txt'))->toBe('Keep');
     expect(is_dir($this->downloadWorkspaces[0]))->toBeFalse();
 })->with(['HTTP failure', 'invalid ZIP', 'traversal', 'backslash entry', 'symlink', 'invalid JSON', 'missing path']);
+
+it('rejects an empty ZIP archive and cleans up the download', function () {
+    // An empty ZIP consists of the end-of-central-directory record.
+    $body = "PK\x05\x06" . str_repeat("\0", 18);
+    downloadFake($this->downloadHttp, $this->downloadWorkspaces, $body);
+    $tester = downloadTester($this->downloadFilesystem, $this->downloadHttp);
+
+    expect($tester->execute(downloadOptions($this->downloadRoot)))->toBe(Command::FAILURE)
+        ->and($tester->getDisplay())->toContain('The downloaded ZIP archive is empty.')
+        ->and($this->downloadFilesystem->isDirectory($this->downloadWorkspaces[0]))->toBeFalse();
+});
+
+it('reports a ZIP extraction failure without publishing', function () {
+    $body = downloadZip($this->downloadRoot, ['repo/app.php' => '<?php __("A message");']);
+    $this->downloadHttp->fake(function ($request, array $options) use ($body) {
+        $workspace = dirname($options['sink']);
+        $this->downloadWorkspaces[] = $workspace;
+        $this->downloadFilesystem->put($workspace . '/repository/repo', 'Blocks the repository directory.');
+
+        return Factory::response($body);
+    });
+    $tester = downloadTester($this->downloadFilesystem, $this->downloadHttp);
+
+    set_error_handler(static fn (int $level, string $message): bool => str_starts_with($message, 'ZipArchive::extractTo('), E_WARNING);
+
+    try {
+        $status = $tester->execute(downloadOptions($this->downloadRoot));
+    } finally {
+        restore_error_handler();
+    }
+
+    expect($status)->toBe(Command::FAILURE)
+        ->and($tester->getDisplay())->toContain('Unable to extract the ZIP archive.')
+        ->and($this->downloadFilesystem->isDirectory($this->downloadRoot . '/source'))->toBeFalse()
+        ->and($this->downloadFilesystem->isDirectory($this->downloadWorkspaces[0]))->toBeFalse();
+});
+
+it('leaves an existing destination with a symbolic link untouched', function () {
+    $target = $this->downloadRoot . '/source/framework/13.x';
+    $linkedFile = $this->downloadRoot . '/original.txt';
+    $this->downloadFilesystem->ensureDirectoryExists($target);
+    $this->downloadFilesystem->put($linkedFile, 'Original');
+
+    if (! function_exists('symlink') || ! @symlink($linkedFile, $target . '/link.txt')) {
+        $this->markTestSkipped('Creating symbolic links is unavailable.');
+    }
+
+    downloadFake($this->downloadHttp, $this->downloadWorkspaces, downloadZip($this->downloadRoot, [
+        'repo/app.php' => '<?php __("A message");',
+    ]));
+    $tester = downloadTester($this->downloadFilesystem, $this->downloadHttp);
+
+    expect($tester->execute(downloadOptions($this->downloadRoot)))->toBe(Command::FAILURE)
+        ->and($tester->getDisplay())->toContain('Symbolic links are not allowed in source files:')
+        ->and(is_link($target . '/link.txt'))->toBeTrue()
+        ->and($this->downloadFilesystem->get($linkedFile))->toBe('Original')
+        ->and($this->downloadFilesystem->exists($target . '/framework.json'))->toBeFalse();
+});
+
+it('preserves existing files when preparing, copying, or backing up fails', function (string $method, string $filename, string $message) {
+    $filesystem = Mockery::mock(Filesystem::class)->makePartial();
+    $filesystem->shouldReceive($method)
+        ->once()
+        ->withArgs(fn (string $from, string $to): bool => basename($to) === $filename)
+        ->andReturnUsing(function (string $from, string $to) use ($method): bool {
+            $this->downloadFilesystem->{$method}($from, $to);
+
+            return false;
+        });
+    $target = $this->downloadRoot . '/source/framework/13.x';
+    $this->downloadFilesystem->ensureDirectoryExists($target);
+    $this->downloadFilesystem->put($target . '/original.txt', 'Original');
+    downloadFake($this->downloadHttp, $this->downloadWorkspaces, downloadZip($this->downloadRoot, [
+        'repo/lang/messages.php' => '<?php return ["message" => "Hello"];',
+    ]));
+    $tester = downloadTester($filesystem, $this->downloadHttp);
+
+    expect($tester->execute(downloadOptions($this->downloadRoot, ['--paths' => ['lang']])))->toBe(Command::FAILURE)
+        ->and($tester->getDisplay())->toContain($message)
+        ->and($this->downloadFilesystem->get($target . '/original.txt'))->toBe('Original')
+        ->and($this->downloadFilesystem->exists($target . '/messages.php'))->toBeFalse()
+        ->and($this->downloadFilesystem->isDirectory($this->downloadWorkspaces[0]))->toBeFalse();
+})->with([
+    'staging' => ['copyDirectory', 'result', 'Unable to prepare the existing source files.'],
+    'copying a translation' => ['copy', 'messages.php', 'Unable to copy translation file:'],
+    'backing up' => ['copyDirectory', 'previous', 'Unable to back up the existing source files.'],
+]);
 
 it('restores previous files and removes new files after a partial publish fails', function () {
     $filesystem = new class extends Filesystem
@@ -319,6 +410,38 @@ it('restores previous files and removes new files after a partial publish fails'
         ->and(is_dir($this->downloadWorkspaces[0]))->toBeFalse()
         ->and($filesystem->glob($this->downloadRoot . '/source/.download-*'))->toBe([]);
 });
+
+it('cleans up an incomplete first publish or reports the affected directory', function (bool $canRemove, string $message) {
+    $target = str_replace('\\', '/', $this->downloadRoot) . '/source/framework/13.x';
+    $file = $target . '/framework.json';
+    $filesystem = Mockery::mock(Filesystem::class)->makePartial();
+    $filesystem->shouldReceive('copyDirectory')
+        ->once()
+        ->withArgs(fn (string $from, string $to): bool => $to === $target)
+        ->andReturnUsing(function (string $from, string $to): bool {
+            $this->downloadFilesystem->copyDirectory($from, $to);
+
+            return false;
+        });
+
+    if (! $canRemove) {
+        $filesystem->shouldReceive('delete')->once()->with($file)->andReturnFalse();
+    }
+
+    downloadFake($this->downloadHttp, $this->downloadWorkspaces, downloadZip($this->downloadRoot, [
+        'repo/app.php' => '<?php __("A message");',
+    ]));
+    $tester = downloadTester($filesystem, $this->downloadHttp);
+
+    expect($tester->execute(downloadOptions($this->downloadRoot)))->toBe(Command::FAILURE)
+        ->and($tester->getDisplay())->toContain($message)
+        ->and($this->downloadFilesystem->isDirectory($target))->toBe(! $canRemove)
+        ->and($this->downloadFilesystem->exists($file))->toBe(! $canRemove)
+        ->and($this->downloadFilesystem->isDirectory($this->downloadWorkspaces[0]))->toBeFalse();
+})->with([
+    'rollback succeeds' => [true, 'Unable to publish the source files; previous files were preserved.'],
+    'the file cannot be removed' => [false, 'Incomplete files may remain at'],
+]);
 
 it('retains the recovery snapshot if the filesystem also refuses rollback', function () {
     $filesystem = new class extends Filesystem

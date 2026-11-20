@@ -108,6 +108,20 @@ test('without translations model', function () {
     expect($model->getTranslation(FakeValue::Title, FakeLocale::Custom))->toBeNull();
 });
 
+test('loads raw translations as an ordinary Eloquent relation', function () {
+    $model        = fakeTestModel();
+    $translations = [
+        FakeLocale::Default  => 'French title',
+        FakeLocale::Fallback => 'German title',
+    ];
+
+    $model->setTranslations('title', $translations)->save();
+    $model->load('translationsRaw');
+
+    expect($model->translationsRaw->keys()->all())->toBe([0, 1])
+        ->and($model->translationsRaw->pluck('title', 'locale')->all())->toMatchArray($translations);
+});
+
 test('lazy loading', function (bool $enabled, int $count, array $locales) {
     config()->set('localization_models.filter', $enabled);
 

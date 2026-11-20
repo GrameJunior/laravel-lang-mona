@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use LaravelLang\Config\Services\RouteNameLangConfig;
+use LaravelLang\Exceptions\UnknownLocaleException;
+use LaravelLang\Locales\Facades\Locales;
 use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\getJson;
@@ -70,6 +72,19 @@ test('unknown locale', function (int|string $locale) {
 
     assertEventNotDispatched();
 })->with('unknown locales');
+
+test('uses the fallback when an installed locale cannot be resolved', function () {
+    $locales = Mockery::mock(Locales::getFacadeRoot());
+    $locales->shouldReceive('info')->once()->with('en')->andThrow(new UnknownLocaleException('en'));
+    Locales::swap($locales);
+
+    getJson(route('via.header', ['key' => 'test']), ['Accept-Language' => 'en'])
+        ->assertOk()
+        ->assertJsonPath('test', FakeTranslation::German);
+
+    expect(app()->getLocale())->toBe('de');
+    assertEventNotDispatched();
+});
 
 test('multiple accept-language', function (string $locale) {
     $foo = 'test';

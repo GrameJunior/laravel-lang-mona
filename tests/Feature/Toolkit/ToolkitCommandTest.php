@@ -4,7 +4,14 @@ declare(strict_types=1);
 
 use Illuminate\Filesystem\Filesystem;
 use LaravelLang\LocaleList\Locale;
+use LaravelLang\Toolkit\Commands\CreateLocaleCommand;
+use LaravelLang\Toolkit\Commands\DeleteLocaleCommand;
+use LaravelLang\Toolkit\Commands\StatusCommand;
+use LaravelLang\Toolkit\Commands\SyncLibraryCommand;
+use LaravelLang\Toolkit\Commands\SyncPackageCommand;
+use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Tester\ApplicationTester;
 use Symfony\Component\Process\Process;
 
 beforeEach(function () {
@@ -24,13 +31,32 @@ function toolkitFile(string $path, string $contents): void
     $filesystem->put($path, $contents);
 }
 
-function runToolkit(string ...$arguments): Process
+function runToolkit(string $command, array $arguments): ApplicationTester
 {
-    $process = new Process([PHP_BINARY, dirname(__DIR__, 3) . '/src/Toolkit/bin/toolkit', ...$arguments]);
+    $application = new Application();
+    $application->setAutoExit(false);
+    $application->addCommand(new CreateLocaleCommand());
+    $application->addCommand(new DeleteLocaleCommand());
+    $application->addCommand(new StatusCommand());
+    $application->addCommand(new SyncLibraryCommand());
+    $application->addCommand(new SyncPackageCommand());
+
+    $tester = new ApplicationTester($application);
+    $tester->run(['command' => $command, ...$arguments], ['capture_stderr_separately' => true]);
+
+    return $tester;
+}
+
+it('registers the locale and synchronization commands in the Toolkit executable', function () {
+    $process = new Process([PHP_BINARY, dirname(__DIR__, 3) . '/src/Toolkit/bin/toolkit', 'list', '--raw']);
     $process->run();
 
-    return $process;
-}
+    expect($process->getExitCode())->toBe(Command::SUCCESS, $process->getErrorOutput());
+
+    preg_match_all('/^\S+/m', $process->getOutput(), $commands);
+
+    expect($commands[0])->toContain('create-locale', 'delete-locale', 'status', 'sync:library', 'sync:package');
+});
 
 it('prunes obsolete translations and preserves active translations and metadata', function (string $command) {
     $root = $this->toolkitDirectory;
@@ -46,18 +72,20 @@ it('prunes obsolete translations and preserves active translations and metadata'
     toolkitFile($locales . '/fr/numeric.json', '{"0":"Zéro","Obsolete":"Périmé"}');
     toolkitFile($locales . '/fr/_settings.json', '{"excludes":["Hello"]}');
     toolkitFile($locales . '/fr/_status.json', '{"messages":{"Hello":"Hello"}}');
+    toolkitFile($locales . '/retired/messages.json', '{"Obsolete":"Périmé"}');
 
-    $process = runToolkit($command, $directory);
+    $tester = runToolkit($command, ['path' => $directory]);
 
-    expect($process->getExitCode())->toBe(Command::SUCCESS, $process->getErrorOutput())
-        ->and($process->getErrorOutput())->toBe('')
+    expect($tester->getStatusCode())->toBe(Command::SUCCESS, $tester->getErrorOutput())
+        ->and($tester->getErrorOutput())->toBe('')
         ->and($this->toolkitFilesystem->json($locales . '/fr/messages.json'))->toBe([
             'Hello' => 'Bonjour', 'World' => 'Monde', 0 => 'Zéro',
         ])
         ->and(json_decode($this->toolkitFilesystem->get($locales . '/fr/numeric.json'), flags: JSON_THROW_ON_ERROR))
         ->toEqual((object) ['0' => 'Zéro'])
         ->and($this->toolkitFilesystem->get($locales . '/fr/_settings.json'))->toBe('{"excludes":["Hello"]}')
-        ->and($this->toolkitFilesystem->get($locales . '/fr/_status.json'))->toBe('{"messages":{"Hello":"Hello"}}');
+        ->and($this->toolkitFilesystem->get($locales . '/fr/_status.json'))->toBe('{"messages":{"Hello":"Hello"}}')
+        ->and($this->toolkitFilesystem->get($locales . '/retired/messages.json'))->toBe('{"Obsolete":"Périmé"}');
 })->with(['sync:package', 'sync:library']);
 
 it('keeps synchronized PHP translations readable on repeated runs', function () {
@@ -65,10 +93,13 @@ it('keeps synchronized PHP translations readable on repeated runs', function () 
     $path = $root . '/locales/fr/messages.php';
     toolkitFile($root . '/source/messages.php', '<?php return ["greeting" => "Hello"];');
     toolkitFile($path, '<?php return ["Hello" => "Bonjour", "Obsolete" => "Périmé"];');
+    $obsolete = $root . '/locales/fr/obsolete.php';
+    toolkitFile($obsolete, '<?php return ["Obsolete" => "Périmé"];');
 
     for ($run = 0; $run < 2; $run++) {
-        expect(runToolkit('sync:package', $root)->getExitCode())->toBe(Command::SUCCESS)
-            ->and($this->toolkitFilesystem->get($path))->toStartWith('<?php');
+        expect(runToolkit('sync:package', ['path' => $root])->getStatusCode())->toBe(Command::SUCCESS)
+            ->and($this->toolkitFilesystem->get($path))->toStartWith('<?php')
+            ->and($this->toolkitFilesystem->exists($obsolete))->toBeFalse();
         expect(require $path)->toBe(['Hello' => 'Bonjour']);
     }
 });
@@ -89,7 +120,7 @@ it('preserves translation files when synchronization sources are incomplete', fu
         toolkitFile($package . '/source/messages.' . $extension, $source);
     }
 
-    expect(runToolkit($command, $directory)->getExitCode())->toBe(Command::FAILURE)
+    expect(runToolkit($command, ['path' => $directory])->getStatusCode())->toBe(Command::FAILURE)
         ->and($this->toolkitFilesystem->get($locales . '/fr/messages.json'))->toBe($translation);
 })->with(['sync:package', 'sync:library'])->with([
     'no source files' => [null],
@@ -101,27 +132,54 @@ it('preserves translation files when synchronization sources are incomplete', fu
     'invalid PHP translation value' => ['<?php return ["label" => false];', 'php'],
 ]);
 
+it('reports missing synchronization inputs', function (string $command, string $suffix, string $error) {
+    $tester = runToolkit($command, ['path' => $this->toolkitDirectory . $suffix]);
+
+    expect($tester->getStatusCode())->toBe(Command::FAILURE)
+        ->and($tester->getErrorOutput())->toContain($error);
+})->with([
+    'missing package directory' => ['sync:package', '/missing', 'Directory does not exist.'],
+    'missing package locales'   => ['sync:package', '', 'Locales directory does not exist.'],
+    'missing library packages'  => ['sync:library', '', 'No translation packages found'],
+]);
+
 it('uses locale settings when reporting missing translations and removes an obsolete status file', function () {
     $root = $this->toolkitDirectory;
     $locale = $root . '/locales/fr';
     toolkitFile($root . '/locales/_settings.json', '{"excludes":["Global"]}');
     toolkitFile($locale . '/_settings.json', '{"excludes":["Local"]}');
-    toolkitFile($locale . '/messages.json', '{"Zoo":"Zoo","ant":"ant","Local":"Local","Global":"Global","Hello":"Bonjour"}');
+    toolkitFile($locale . '/messages.json', '{"Zoo":"Zoo","ant":"ant","Ant":"Ant","Local":"Local","Global":"Global","Hello":"Bonjour"}');
     toolkitFile($locale . '/other.json', '{"World":"Monde"}');
     toolkitFile($locale . '/_status.json', '{"outdated":{}}');
 
-    $process = runToolkit('status', $root);
+    $tester = runToolkit('status', ['directory' => $root]);
 
-    expect($process->getExitCode())->toBe(Command::SUCCESS, $process->getErrorOutput())
+    expect($tester->getStatusCode())->toBe(Command::SUCCESS, $tester->getErrorOutput())
         ->and($this->toolkitFilesystem->json($locale . '/_status.json'))->toBe([
-            'messages' => ['ant' => 'ant', 'Zoo' => 'Zoo'],
+            'messages' => ['ant' => 'ant', 'Ant' => 'Ant', 'Zoo' => 'Zoo'],
         ]);
 
     toolkitFile($locale . '/messages.json', '{"Zoo":"Parc","ant":"Fourmi","Local":"Local","Global":"Global"}');
 
-    expect(runToolkit('status', $root)->getExitCode())->toBe(Command::SUCCESS)
+    expect(runToolkit('status', ['directory' => $root])->getStatusCode())->toBe(Command::SUCCESS)
         ->and($this->toolkitFilesystem->exists($locale . '/_status.json'))->toBeFalse()
         ->and($this->toolkitFilesystem->get($locale . '/_settings.json'))->toBe('{"excludes":["Local"]}');
+});
+
+it('reports an error when the locales directory is missing', function () {
+    $tester = runToolkit('status', ['directory' => $this->toolkitDirectory]);
+
+    expect($tester->getStatusCode())->toBe(Command::FAILURE)
+        ->and($tester->getDisplay())->toContain('The "locales" directory doesn\'t exists!');
+});
+
+it('omits the status file when a locale without settings is fully translated', function () {
+    $root = $this->toolkitDirectory;
+    $locale = $root . '/locales/fr';
+    toolkitFile($locale . '/messages.json', '{"Hello":"Bonjour"}');
+
+    expect(runToolkit('status', ['directory' => $root])->getStatusCode())->toBe(Command::SUCCESS)
+        ->and($this->toolkitFilesystem->exists($locale . '/_status.json'))->toBeFalse();
 });
 
 it('creates and removes only the intended locale directories on repeated runs', function () {
@@ -135,13 +193,13 @@ it('creates and removes only the intended locale directories on repeated runs', 
     toolkitFile($neighbor . '/retired/messages.json', '{"Hello":"Neighbor"}');
 
     for ($run = 0; $run < 2; $run++) {
-        expect(runToolkit('create-locale', $root)->getExitCode())->toBe(Command::SUCCESS)
+        expect(runToolkit('create-locale', ['directory' => $root])->getStatusCode())->toBe(Command::SUCCESS)
             ->and(array_map(basename(...), $this->toolkitFilesystem->directories($locales)))
             ->toEqualCanonicalizing([...Locale::values(), 'retired']);
     }
 
     for ($run = 0; $run < 2; $run++) {
-        expect(runToolkit('delete-locale', $root)->getExitCode())->toBe(Command::SUCCESS)
+        expect(runToolkit('delete-locale', ['directory' => $root])->getStatusCode())->toBe(Command::SUCCESS)
             ->and(array_map(basename(...), $this->toolkitFilesystem->directories($locales)))
             ->toEqualCanonicalizing(Locale::values());
     }

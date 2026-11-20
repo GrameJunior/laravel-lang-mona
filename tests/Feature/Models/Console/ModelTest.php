@@ -6,7 +6,11 @@ use App\Models\SomeTranslation;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Console\ModelMakeCommand as LaravelMakeModel;
 use LaravelLang\Config\Services\ModelLangConfig;
+use LaravelLang\Exceptions\UnknownModelPathException;
 use LaravelLang\Models\Console\ModelMakeCommand as PackageMakeModel;
+use LaravelLang\Models\HasTranslations;
+use Workbench\App\Models\TestModel;
+use Workbench\App\Models\User;
 
 use function Pest\Laravel\artisan;
 
@@ -53,5 +57,23 @@ test('from scratch', function () {
 
     expect(file_get_contents($migrations[0]))->toMatchSnapshot();
 
-    expect($helper)->toBeReadableFile();
+    expect($helper)->toBeReadableFile()
+        ->and(file_get_contents(app_path('Models/Some.php')))
+        ->toContain('use ' . HasTranslations::class . ';', 'use HasTranslations;');
 });
+
+test('rejects invalid models before generating translations', function (string $model, string $message) {
+    artisan('make:model-translation', ['model' => $model])
+        ->expectsOutputToContain($message)
+        ->assertFailed()
+        ->run();
+})->with([
+    'unknown model'               => ['App\\Models\\Missing', 'was not found.'],
+    'existing translation model' => [TestModel::class, 'already has a translation repository.'],
+]);
+
+test('reports when the selected model is outside the configured directories', function () {
+    config(['localization_models.directories' => []]);
+
+    artisan('make:model-translation', ['model' => User::class, '--columns' => ['title']])->run();
+})->throws(UnknownModelPathException::class, 'Could not find path to model file `\\' . User::class . '`.');

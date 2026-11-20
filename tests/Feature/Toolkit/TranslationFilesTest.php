@@ -88,3 +88,13 @@ test('unsupported values fail before replacing a translation file', function () 
     expect(fn () => $this->translationFiles->store($path, ['value' => new stdClass()]))->toThrow(RuntimeException::class, $path)
         ->and($this->translationFilesystem->get($path))->toBe('original');
 });
+
+test('storing translations in a non-JSON file leaves it untouched', function () {
+    $path = $this->translationsDirectory . '/messages.php';
+    $content = '<?php return ["message" => "Original"];';
+    $this->translationFilesystem->put($path, $content);
+
+    expect(fn () => $this->translationFiles->store($path, ['message' => 'New']))
+        ->toThrow(RuntimeException::class, "Unable to write translation file [$path]: Only JSON translation files are merged.")
+        ->and($this->translationFilesystem->get($path))->toBe($content);
+});

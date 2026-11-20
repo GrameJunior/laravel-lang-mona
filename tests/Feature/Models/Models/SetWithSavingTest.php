@@ -44,6 +44,14 @@ test('main locale', function () {
     ]);
 });
 
+test('assigning a translatable property persists the value for the current locale', function () {
+    $model = fakeTestModel(main: 'Old title');
+    $model->title = 'Updated title';
+    $model->save();
+
+    expect($model->fresh()->getTranslation('title', FakeLocale::Default))->toBe('Updated title');
+});
+
 test('fallback locale', function () {
     $oldText = fake()->paragraph;
     $newText = fake()->paragraph;

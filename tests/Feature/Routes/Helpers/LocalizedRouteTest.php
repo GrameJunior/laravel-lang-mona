@@ -96,3 +96,10 @@ test('uses the configured parameter and preserves the remaining route parameters
     get($url)->assertRedirect('/catalog/books/42');
     get('/catalog/books/42')->assertOk()->assertSee('fr');
 });
+
+test('keeps the localized route helper usable when its file is loaded again', function () {
+    require dirname(__DIR__, 4) . '/src/Routes/src/helpers.php';
+
+    expect(localizedRoute('via.group.macro', ['key' => 'bar', 'locale' => 'de'], absolute: false))
+        ->toBe('/de/group/macro/bar');
+});

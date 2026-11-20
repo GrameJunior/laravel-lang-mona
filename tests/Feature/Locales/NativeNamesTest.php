@@ -28,6 +28,13 @@ test('looks up localized names by code, alias and enum', function (string $servi
         ->and($names->one(Locale::German, Locale::French))->toEqual($french);
 })->with('native name services');
 
+test('looks up native names without translating them to a display locale', function (string $service, object $french) {
+    $names = app($service);
+
+    expect($names->one('_native', 'fr_FR'))->native->toBe($french->native)
+        ->localized->toBe($french->native);
+})->with('native name services');
+
 test('sorts localized names for codes, aliases and enums', function (string $service, object $french) {
     $names = app($service);
 
