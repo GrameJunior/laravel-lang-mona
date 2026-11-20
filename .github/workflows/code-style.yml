@@ -184,6 +184,20 @@ jobs:
                     name: fixes-pint
                     path: .artifacts/pint
 
+    php_stan:
+        name: PHPStan
+        runs-on: ubuntu-latest
+
+        steps:
+            -   uses: actions/checkout@v7
+            -   uses: shivammathur/setup-php@v2
+
+            -   name: Install Composer dependencies
+                run: composer update
+
+            -   name: Check styles
+                run: php vendor/bin/phpstan analyse --memory-limit=-1
+
     node_lint:
         name: Lint
         runs-on: ubuntu-latest
@@ -323,6 +337,7 @@ jobs:
             - php_composer
             - php_rector
             - php_pint
+            - php_stan
             - node_lint
             - node_format
         
