@@ -21,6 +21,7 @@ return RectorConfig::configure()
     ->withPaths([
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/workbench',
         __DIR__ . '/rector.php',
     ])
     ->withFileExtensions(['php'])

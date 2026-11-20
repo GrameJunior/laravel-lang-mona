@@ -10,7 +10,7 @@ use Workbench\App\Models\TestModel;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('test_model_translations', function (Blueprint $table) {
+        Schema::create('test_model_translations', function (Blueprint $table): void {
             $table->id();
 
             $table->foreignIdFor(TestModel::class, 'item_id')
