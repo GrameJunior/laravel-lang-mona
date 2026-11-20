@@ -17,8 +17,7 @@ test('the middleware uses the requested guard and accepts a locale enum from the
     string $translation
 ) {
     Auth::guard('web')->setUser(new User(['locale' => 'fr']));
-    Auth::guard('foo')->setUser(new class extends User
-    {
+    Auth::guard('foo')->setUser(new class extends User {
         public function getLocaleAttribute(): Locale
         {
             return Locale::German;

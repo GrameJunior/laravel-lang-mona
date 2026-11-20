@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Constants\FakeValue;
-
 use Workbench\App\Models\TestModelTranslation;
 
 use function Pest\Laravel\assertDatabaseHas;
@@ -45,7 +44,7 @@ test('main locale', function () {
 });
 
 test('assigning a translatable property persists the value for the current locale', function () {
-    $model = fakeTestModel(main: 'Old title');
+    $model        = fakeTestModel(main: 'Old title');
     $model->title = 'Updated title';
     $model->save();
 

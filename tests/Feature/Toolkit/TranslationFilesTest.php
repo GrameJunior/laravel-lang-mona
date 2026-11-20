@@ -7,7 +7,7 @@ use LaravelLang\Toolkit\Services\TranslationFilesService;
 
 beforeEach(function () {
     $this->translationsDirectory = sys_get_temp_dir() . '/mona-translations-' . bin2hex(random_bytes(8));
-    $this->translationFilesystem = new Filesystem();
+    $this->translationFilesystem = new Filesystem;
     $this->translationFilesystem->ensureDirectoryExists($this->translationsDirectory);
     $this->translationFiles = new TranslationFilesService($this->translationFilesystem);
 });
@@ -17,7 +17,7 @@ afterEach(function () {
 });
 
 test('JSON translations preserve nested values and sort associative keys', function () {
-    $path = $this->translationsDirectory . '/messages.json';
+    $path   = $this->translationsDirectory . '/messages.json';
     $values = [
         'z' => '00123',
         'a' => [
@@ -85,12 +85,12 @@ test('unsupported values fail before replacing a translation file', function () 
     $path = $this->translationsDirectory . '/messages.json';
     $this->translationFilesystem->put($path, 'original');
 
-    expect(fn () => $this->translationFiles->store($path, ['value' => new stdClass()]))->toThrow(RuntimeException::class, $path)
+    expect(fn () => $this->translationFiles->store($path, ['value' => new stdClass]))->toThrow(RuntimeException::class, $path)
         ->and($this->translationFilesystem->get($path))->toBe('original');
 });
 
 test('storing translations in a non-JSON file leaves it untouched', function () {
-    $path = $this->translationsDirectory . '/messages.php';
+    $path    = $this->translationsDirectory . '/messages.php';
     $content = '<?php return ["message" => "Original"];';
     $this->translationFilesystem->put($path, $content);
 

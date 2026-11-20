@@ -40,12 +40,12 @@ function withCleanModelApplication(Closure $scenario): void
             'APP_LOCALE'          => 'en',
             'APP_FALLBACK_LOCALE' => 'de',
             'COMPOSER_VENDOR_DIR' => false,
-            'DB_CONNECTION'      => 'sqlite',
-            'DB_DATABASE'        => $database,
-            'DB_FOREIGN_KEYS'    => 'true',
-            'DB_URL'             => false,
-            'MONA_TEST_AUTOLOAD' => $project . '/vendor/autoload.php',
-            'VENDOR_PATH'        => false,
+            'DB_CONNECTION'       => 'sqlite',
+            'DB_DATABASE'         => $database,
+            'DB_FOREIGN_KEYS'     => 'true',
+            'DB_URL'              => false,
+            'MONA_TEST_AUTOLOAD'  => $project . '/vendor/autoload.php',
+            'VENDOR_PATH'         => false,
         ]))->mustRun()->getOutput();
 
         $scenario($path, $run);

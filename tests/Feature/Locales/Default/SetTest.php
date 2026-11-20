@@ -6,7 +6,6 @@ use Illuminate\Foundation\Events\LocaleUpdated;
 use Illuminate\Support\Facades\Event;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
-
 use Workbench\App\Constants\FakeLocale;
 
 use function Illuminate\Support\enum_value;

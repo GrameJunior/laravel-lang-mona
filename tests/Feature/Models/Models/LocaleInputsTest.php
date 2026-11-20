@@ -8,7 +8,7 @@ use LaravelLang\NativeLocaleNames\LocaleData;
 use Workbench\App\Constants\FakeLocale;
 
 test('all forms of a locale refer to the same translation', function (Locale|LocaleData|string $input) {
-    $model = fakeTestModel(main: 'Bonjour', fallback: 'Hallo');
+    $model         = fakeTestModel(main: 'Bonjour', fallback: 'Hallo');
     $translationId = $model->translationsRaw()->where('locale', FakeLocale::Default)->sole()->getKey();
 
     $model = $model->fresh();
@@ -18,7 +18,7 @@ test('all forms of a locale refer to the same translation', function (Locale|Loc
 
     $model->setTranslation('title', 'Salut', $input)->save();
 
-    $model = $model->fresh();
+    $model       = $model->fresh();
     $translation = $model->translationsRaw()->where('locale', FakeLocale::Default)->sole();
 
     expect($translation->getKey())->toBe($translationId)

@@ -15,8 +15,8 @@ use Symfony\Component\Console\Tester\ApplicationTester;
 use Symfony\Component\Process\Process;
 
 beforeEach(function () {
-    $this->toolkitFilesystem = new Filesystem();
-    $this->toolkitDirectory = sys_get_temp_dir() . '/mona-toolkit-' . bin2hex(random_bytes(8));
+    $this->toolkitFilesystem = new Filesystem;
+    $this->toolkitDirectory  = sys_get_temp_dir() . '/mona-toolkit-' . bin2hex(random_bytes(8));
     $this->toolkitFilesystem->ensureDirectoryExists($this->toolkitDirectory);
 });
 
@@ -26,20 +26,20 @@ afterEach(function () {
 
 function toolkitFile(string $path, string $contents): void
 {
-    $filesystem = new Filesystem();
+    $filesystem = new Filesystem;
     $filesystem->ensureDirectoryExists(dirname($path));
     $filesystem->put($path, $contents);
 }
 
 function runToolkit(string $command, array $arguments): ApplicationTester
 {
-    $application = new Application();
+    $application = new Application;
     $application->setAutoExit(false);
-    $application->addCommand(new CreateLocaleCommand());
-    $application->addCommand(new DeleteLocaleCommand());
-    $application->addCommand(new StatusCommand());
-    $application->addCommand(new SyncLibraryCommand());
-    $application->addCommand(new SyncPackageCommand());
+    $application->addCommand(new CreateLocaleCommand);
+    $application->addCommand(new DeleteLocaleCommand);
+    $application->addCommand(new StatusCommand);
+    $application->addCommand(new SyncLibraryCommand);
+    $application->addCommand(new SyncPackageCommand);
 
     $tester = new ApplicationTester($application);
     $tester->run(['command' => $command, ...$arguments], ['capture_stderr_separately' => true]);
@@ -59,9 +59,9 @@ it('registers the locale and synchronization commands in the Toolkit executable'
 });
 
 it('prunes obsolete translations and preserves active translations and metadata', function (string $command) {
-    $root = $this->toolkitDirectory;
-    $package = $root . '/Package';
-    $locales = ($command === 'sync:package' ? $package : $root . '/Library') . '/locales';
+    $root      = $this->toolkitDirectory;
+    $package   = $root . '/Package';
+    $locales   = ($command === 'sync:package' ? $package : $root . '/Library') . '/locales';
     $directory = $command === 'sync:package' ? $package : $root;
 
     toolkitFile($package . '/laravel_lang.json', '{}');
@@ -105,10 +105,10 @@ it('keeps synchronized PHP translations readable on repeated runs', function () 
 });
 
 it('preserves translation files when synchronization sources are incomplete', function (string $command, ?string $source, string $extension = 'json') {
-    $root = $this->toolkitDirectory;
-    $package = $root . '/Package';
-    $locales = ($command === 'sync:package' ? $package : $root . '/Library') . '/locales';
-    $directory = $command === 'sync:package' ? $package : $root;
+    $root        = $this->toolkitDirectory;
+    $package     = $root . '/Package';
+    $locales     = ($command === 'sync:package' ? $package : $root . '/Library') . '/locales';
+    $directory   = $command === 'sync:package' ? $package : $root;
     $translation = '{"Hello":"Bonjour","World":"Monde"}';
 
     toolkitFile($package . '/laravel_lang.json', '{}');
@@ -123,12 +123,12 @@ it('preserves translation files when synchronization sources are incomplete', fu
     expect(runToolkit($command, ['path' => $directory])->getStatusCode())->toBe(Command::FAILURE)
         ->and($this->toolkitFilesystem->get($locales . '/fr/messages.json'))->toBe($translation);
 })->with(['sync:package', 'sync:library'])->with([
-    'no source files' => [null],
-    'empty source file' => ['{}'],
-    'invalid JSON' => ['{broken'],
-    'non-object JSON' => ['"World"'],
-    'invalid PHP' => ['<?php return [', 'php'],
-    'non-array PHP' => ['<?php return "World";', 'php'],
+    'no source files'               => [null],
+    'empty source file'             => ['{}'],
+    'invalid JSON'                  => ['{broken'],
+    'non-object JSON'               => ['"World"'],
+    'invalid PHP'                   => ['<?php return [', 'php'],
+    'non-array PHP'                 => ['<?php return "World";', 'php'],
     'invalid PHP translation value' => ['<?php return ["label" => false];', 'php'],
 ]);
 
@@ -144,7 +144,7 @@ it('reports missing synchronization inputs', function (string $command, string $
 ]);
 
 it('uses locale settings when reporting missing translations and removes an obsolete status file', function () {
-    $root = $this->toolkitDirectory;
+    $root   = $this->toolkitDirectory;
     $locale = $root . '/locales/fr';
     toolkitFile($root . '/locales/_settings.json', '{"excludes":["Global"]}');
     toolkitFile($locale . '/_settings.json', '{"excludes":["Local"]}');
@@ -174,7 +174,7 @@ it('reports an error when the locales directory is missing', function () {
 });
 
 it('omits the status file when a locale without settings is fully translated', function () {
-    $root = $this->toolkitDirectory;
+    $root   = $this->toolkitDirectory;
     $locale = $root . '/locales/fr';
     toolkitFile($locale . '/messages.json', '{"Hello":"Bonjour"}');
 
@@ -183,8 +183,8 @@ it('omits the status file when a locale without settings is fully translated', f
 });
 
 it('creates and removes only the intended locale directories on repeated runs', function () {
-    $root = $this->toolkitDirectory . '/target';
-    $locales = $root . '/locales';
+    $root     = $this->toolkitDirectory . '/target';
+    $locales  = $root . '/locales';
     $neighbor = $this->toolkitDirectory . '/neighbor/locales';
     toolkitFile($root . '/source/messages.json', '{"Hello":"Hello"}');
     toolkitFile($locales . '/_settings.json', '{"excludes":[]}');

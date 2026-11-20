@@ -15,7 +15,7 @@ use Workbench\App\Models\User;
 use function Pest\Laravel\artisan;
 
 $cleanUp = function () {
-    $filesystem = new Filesystem();
+    $filesystem = new Filesystem;
 
     $filesystem->delete([
         app_path('Models/Some.php'),
@@ -49,9 +49,9 @@ test('from scratch', function () {
         ->and($model->title)->toBe('Title')
         ->and($model->description)->toBe('Description');
 
-    $migrations = (new Filesystem())->glob(database_path('migrations/*_create_some_translations_table.php'));
-    $helper     =
-        sprintf('%s/_ide_helper_models_%s.php', app(ModelLangConfig::class)->helpers, hash('xxh128', 'App\Models\Some'));
+    $migrations = (new Filesystem)->glob(database_path('migrations/*_create_some_translations_table.php'));
+    $helper
+        = sprintf('%s/_ide_helper_models_%s.php', app(ModelLangConfig::class)->helpers, hash('xxh128', 'App\Models\Some'));
 
     expect($migrations)->toHaveCount(1);
 
@@ -68,7 +68,7 @@ test('rejects invalid models before generating translations', function (string $
         ->assertFailed()
         ->run();
 })->with([
-    'unknown model'               => ['App\\Models\\Missing', 'was not found.'],
+    'unknown model'              => ['App\\Models\\Missing', 'was not found.'],
     'existing translation model' => [TestModel::class, 'already has a translation repository.'],
 ]);
 

@@ -31,6 +31,6 @@ test('forget locale', function () {
 
     Event::assertDispatched(function (TranslationHasBeenForgetEvent $event) use ($model) {
         return $event->model->getKey() === $model->getKey()
-            && $event->locale === FakeLocale::DefaultAlias;
+            && $event->locale          === FakeLocale::DefaultAlias;
     });
 });

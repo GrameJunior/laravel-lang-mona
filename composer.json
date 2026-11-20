@@ -55,6 +55,9 @@
         "composer/class-map-generator": "^1.9",
         "composer/semver": "^3.6",
         "dragon-code/benchmark": "^4.6",
+        "driftingly/rector-laravel": "^2.7",
+        "ergebnis/composer-normalize": "^2.58",
+        "laravel/pint": "^1.32",
         "laravel/prompts": "^0.3.26",
         "orchestra/testbench": "^10.0 || ^11.0",
         "pestphp/pest": "^4.7.8 || ^5.3.5",
@@ -116,6 +119,9 @@
             "@php vendor/bin/testbench serve --ansi"
         ],
         "test": "@php vendor/bin/pest --parallel",
-        "test:coverage": "@php -d xdebug.mode=coverage vendor/bin/pest --coverage --min=95"
+        "test:coverage": "@php -d xdebug.mode=coverage vendor/bin/pest --coverage --min=95",
+        "style": [
+            "@php vendor/bin/pint --parallel --ansi"
+        ]
     }
 }

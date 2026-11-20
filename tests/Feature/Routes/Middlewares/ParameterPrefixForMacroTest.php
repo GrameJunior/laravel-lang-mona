@@ -3,8 +3,6 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
-use LaravelLang\Config\Enums\Name;
-
 use LaravelLang\Config\Services\RouteLangConfig;
 use LaravelLang\Routes\Middlewares\LocalizationByParameterPrefixMiddlewareMiddleware;
 use Workbench\App\Constants\FakeTranslation;

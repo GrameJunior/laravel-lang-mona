@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Config\Enums\Name;
-
 use LaravelLang\Config\Services\RouteLangConfig;
 use Workbench\App\Constants\FakeTranslation;
 

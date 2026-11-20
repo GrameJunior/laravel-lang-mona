@@ -21,10 +21,10 @@ test('default locale', function () {
 
     Event::assertDispatched(function (TranslationHasBeenSetEvent $event) use ($model, $oldText, $newText) {
         return $event->model->getKey() === $model->getKey()
-            && $event->column === FakeValue::Title
-            && $event->locale === null
-            && $event->oldValue === $oldText
-            && $event->newValue === $newText;
+            && $event->column          === FakeValue::Title
+            && $event->locale          === null
+            && $event->oldValue        === $oldText
+            && $event->newValue        === $newText;
     });
 });
 
@@ -38,10 +38,10 @@ test('main locale', function () {
 
     Event::assertDispatched(function (TranslationHasBeenSetEvent $event) use ($model, $oldText, $newText) {
         return $event->model->getKey() === $model->getKey()
-            && $event->column === FakeValue::Title
-            && $event->locale === FakeLocale::DefaultAlias
-            && $event->oldValue === $oldText
-            && $event->newValue === $newText;
+            && $event->column          === FakeValue::Title
+            && $event->locale          === FakeLocale::DefaultAlias
+            && $event->oldValue        === $oldText
+            && $event->newValue        === $newText;
     });
 });
 
@@ -55,10 +55,10 @@ test('fallback locale', function () {
 
     Event::assertDispatched(function (TranslationHasBeenSetEvent $event) use ($model, $oldText, $newText) {
         return $event->model->getKey() === $model->getKey()
-            && $event->column === FakeValue::Title
-            && $event->locale === FakeLocale::Fallback
-            && $event->oldValue === $oldText
-            && $event->newValue === $newText;
+            && $event->column          === FakeValue::Title
+            && $event->locale          === FakeLocale::Fallback
+            && $event->oldValue        === $oldText
+            && $event->newValue        === $newText;
     });
 });
 
@@ -72,9 +72,9 @@ test('custom locale', function () {
 
     Event::assertDispatched(function (TranslationHasBeenSetEvent $event) use ($model, $oldText, $newText) {
         return $event->model->getKey() === $model->getKey()
-            && $event->column === FakeValue::Title
-            && $event->locale === FakeLocale::English
-            && $event->oldValue === $oldText
-            && $event->newValue === $newText;
+            && $event->column          === FakeValue::Title
+            && $event->locale          === FakeLocale::English
+            && $event->oldValue        === $oldText
+            && $event->newValue        === $newText;
     });
 });
