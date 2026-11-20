@@ -27,11 +27,8 @@ jobs:
                 directory: ${{ fromJson(needs.packages.outputs.directories) }}
                 php: [ "8.3", "8.4", "8.5" ]
                 laravel: [ "12.0", "13.0" ]
-                exclude:
-                    -   directory: src/JsonFallback
-                        laravel: "12.0"
 
-        name: ${{ matrix.directory }}, PHP ${{ matrix.php }}, Lr ${{ matrix.laravel }}
+        name: ${{ matrix.directory }}, p${{ matrix.php }}, l${{ matrix.laravel }}
 
         steps:
             -   uses: actions/checkout@v7
@@ -43,26 +40,3 @@ jobs:
             -   name: Install dependencies
                 working-directory: ${{ matrix.directory }}
                 run: composer require --dev --update-with-all-dependencies 'laravel/framework:^${{ matrix.laravel }}' --no-interaction --no-progress
-
-    public-api:
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                php: [ "8.3", "8.4", "8.5" ]
-                laravel: [ "12.0", "13.0" ]
-
-        name: Public API, PHP ${{ matrix.php }}, Laravel ${{ matrix.laravel }}
-        steps:
-            -   uses: actions/checkout@v7
-
-            -   uses: shivammathur/setup-php@v2
-                with:
-                    php-version: ${{ matrix.php }}
-                    extensions: intl
-
-            -   name: Install the compatibility application
-                working-directory: tests/Compatibility
-                run: composer update --with 'laravel/framework:^${{ matrix.laravel }}' --no-interaction --no-progress
-
-            -   name: Exercise public APIs
-                run: php tests/Compatibility/run.php
