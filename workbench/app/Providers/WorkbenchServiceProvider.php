@@ -17,6 +17,8 @@ class WorkbenchServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        $this->app['config']->set('auth.guards.foo', $this->app['config']->get('auth.guards.web'));
+
         Model::preventLazyLoading();
     }
 

@@ -6,6 +6,10 @@
     "additionalProperties": false,
     "required": ["plugins"],
     "properties": {
+        "$schema": {
+            "type": "string",
+            "const": "https://raw.githubusercontent.com/Laravel-Lang/mona/main/resources/laravel-lang.schema.json"
+        },
         "plugins": {
             "type": "array",
             "minItems": 1,

@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 use LaravelLang\Locales\Facades\Locales;
+use Tests\Fixtures\Models\SoftDeletingTestModel;
+use Tests\Fixtures\Models\SoftDeletingTestModelTranslation;
 use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Models\TestModel;
 use Workbench\App\Models\TestModelTranslation;
@@ -108,4 +112,23 @@ test('restore', function () {
             'locale'  => Locales::fromAlias($locale),
         ])
     );
+});
+
+test('forgetting a translation respects soft deletion on its translation model', function () {
+    Schema::table('test_model_translations', fn (Blueprint $table) => $table->softDeletes());
+
+    $model = SoftDeletingTestModel::create([
+        'key'   => 'article',
+        'title' => [FakeLocale::Default => 'Bonjour', FakeLocale::Fallback => 'Hallo'],
+    ]);
+    $translation = $model->translationsRaw()->where('locale', FakeLocale::Default)->sole();
+
+    $model->forgetTranslation(FakeLocale::DefaultAlias);
+
+    $model = $model->fresh();
+
+    expect($model->getTranslation('title', FakeLocale::Default))->toBeNull();
+    expect($model->getTranslation('title', FakeLocale::Fallback))->toBe('Hallo');
+    expect($model->translationsRaw()->pluck('locale')->all())->toBe([FakeLocale::Fallback]);
+    expect(SoftDeletingTestModelTranslation::withTrashed()->findOrFail($translation->getKey())->trashed())->toBeTrue();
 });

@@ -108,11 +108,6 @@
             <code>de-CH</code> instead of <code>de_CH</code>, you can define
             <code>aliases</code> in the <a href="configuration.topic#aliases">configuration file</a>.
         </p>
-        <p>
-            After that, all adding, updating, and deleting actions will automatically use the specified aliases in
-            the <code>%config-filename%</code> config file:
-        </p>
-
         <code-block lang="php" src="usage-aliases.php" include-lines="3-" />
 
         <p>
@@ -126,18 +121,20 @@
         </p>
 
         <code-block lang="bash">
-            %command-add% de de_CH
+            %command-add% de-DE de_CH
         </code-block>
 
         <p>
-            Installed locales will use the specified aliases as folder names for PHP translations and file names for
-            JSON translations:
+            PHP translation directories and JSON translation files use canonical locale codes. You can change an
+            alias in the configuration without renaming stored translations.
         </p>
 
         <code-block lang="plain text">
-            lang
-            de-CH
-            de-DE
+            lang/
+                de/
+                de.json
+                de_CH/
+                de_CH.json
         </code-block>
 
         <include from="library-descriptions.topic" element-id="available-config-option" />

@@ -18,8 +18,8 @@ class SomeTranslation extends Translation
     protected function casts(): array
     {
         return [
-            'title' => TrimCast::class,
-            'description' => TrimCast::class,
+            'title' => StringTrimCast::class,
+            'description' => StringTrimCast::class,
         ];
     }
 }

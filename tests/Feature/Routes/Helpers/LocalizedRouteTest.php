@@ -2,10 +2,14 @@
 
 declare(strict_types=1);
 
+use Illuminate\Support\Facades\Route;
 use LaravelLang\Config\Services\RouteLangConfig;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+use LaravelLang\Routes\Services\RouteService;
 use Workbench\App\Constants\FakeLocale;
 
 use function LaravelLang\Routes\localizedRoute;
+use function Pest\Laravel\get;
 
 test('route groups', function () {
     $name     = app(RouteLangConfig::class)->prefix;
@@ -69,4 +73,26 @@ test('routes does not hide', function () {
 
     expect(LaravelLang\Routes\localizedRoute('via.parameter', ['key' => 'bar']))
         ->toEndWith('localhost/path/bar');
+});
+
+test('uses the configured parameter and preserves the remaining route parameters on redirect', function () {
+    config()->set('localization_routes.names.parameter', 'language');
+    LocalizationRoute::clearResolvedInstance(RouteService::class);
+
+    Route::localizedGroup(function () {
+        Route::get('catalog/{category}/{item}', fn () => app()->getLocale())
+            ->name('catalog.item');
+    });
+    Route::getRoutes()->refreshNameLookups();
+
+    $url = localizedRoute('catalog.item', [
+        'language' => 'invalid',
+        'category' => 'books',
+        'item'     => 42,
+    ], absolute: false);
+
+    expect($url)->toBe('/invalid/catalog/books/42');
+
+    get($url)->assertRedirect('/catalog/books/42');
+    get('/catalog/books/42')->assertOk()->assertSee('fr');
 });
