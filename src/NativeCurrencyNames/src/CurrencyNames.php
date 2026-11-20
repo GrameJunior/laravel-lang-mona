@@ -24,6 +24,7 @@ class CurrencyNames
         return (new Collection($this->read($forLocale)))
             ->map(fn (array $item, string $locale) => $this->map($locale, $item))
             ->when($direction !== null, fn (Collection $items) => $items->sortBy(
+            ->map(fn (array $item, string $locale): CurrencyData => $this->map($locale, $item))
                 'localized',
                 descending: $direction === SortDirection::Descending
             ));

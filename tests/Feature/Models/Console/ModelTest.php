@@ -14,7 +14,7 @@ use Workbench\App\Models\User;
 
 use function Pest\Laravel\artisan;
 
-$cleanUp = function () {
+$cleanUp = function (): void {
     $filesystem = new Filesystem;
 
     $filesystem->delete([
@@ -27,7 +27,7 @@ $cleanUp = function () {
 beforeEach($cleanUp);
 afterEach($cleanUp);
 
-test('from scratch', function () {
+test('from scratch', function (): void {
     artisan(LaravelMakeModel::class, [
         'name' => 'Some',
     ])->assertSuccessful()->run();
@@ -62,7 +62,7 @@ test('from scratch', function () {
         ->toContain('use ' . HasTranslations::class . ';', 'use HasTranslations;');
 });
 
-test('rejects invalid models before generating translations', function (string $model, string $message) {
+test('rejects invalid models before generating translations', function (string $model, string $message): void {
     artisan('make:model-translation', ['model' => $model])
         ->expectsOutputToContain($message)
         ->assertFailed()
@@ -72,7 +72,7 @@ test('rejects invalid models before generating translations', function (string $
     'existing translation model' => [TestModel::class, 'already has a translation repository.'],
 ]);
 
-test('reports when the selected model is outside the configured directories', function () {
+test('reports when the selected model is outside the configured directories', function (): void {
     config(['localization_models.directories' => []]);
 
     artisan('make:model-translation', ['model' => User::class, '--columns' => ['title']])->run();
