@@ -1,0 +1,176 @@
+name: Code Style
+
+on: [ push, pull_request ]
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    php:
+        name: PHP
+        runs-on: ubuntu-latest
+
+        steps:
+            -   uses: actions/checkout@v7
+            -   uses: shivammathur/setup-php@v2
+
+            -   name: Detecting to make changes
+                id: can_fix
+                shell: bash
+                run: |
+                    CAN_FIX=${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+
+                    echo "CAN_FIX=${CAN_FIX}" >> "$GITHUB_ENV"
+
+            -   name: Install Composer dependencies
+                run: composer update
+
+            -   name: Check styles
+                if: env.CAN_FIX == 'false'
+                run: composer style:check
+
+            -   name: Fix styles
+                if: env.CAN_FIX == 'true'
+                run: composer style
+
+            -   name: Collect changed files
+                if: env.CAN_FIX == 'true'
+                id: changed_php
+                shell: bash
+                run: |
+                    git config --global --add safe.directory "$GITHUB_WORKSPACE"
+                    git ls-files -m > changed.txt || true
+
+                    if [ -s changed.txt ]; then
+                        echo "has_changes=true" >> "$GITHUB_OUTPUT"
+                    else
+                        echo "has_changes=false" >> "$GITHUB_OUTPUT"
+                    fi
+
+            -   name: Stage changed files preserving paths
+                if: env.CAN_FIX == 'true' && steps.changed_php.outputs.has_changes == 'true'
+                shell: bash
+                run: |
+                    mkdir -p .artifacts/php
+                    while IFS= read -r f; do
+                        [ -f "$f" ] || continue
+                        mkdir -p ".artifacts/php/$(dirname "$f")"
+                        cp "$f" ".artifacts/php/$f"
+                    done < changed.txt
+
+            -   name: Upload changed files
+                if: env.CAN_FIX == 'true' && steps.changed_php.outputs.has_changes == 'true'
+                uses: actions/upload-artifact@v7
+                with:
+                    name: fixes-php
+                    path: .artifacts/php
+
+    node:
+        name: Node
+        runs-on: ubuntu-latest
+
+        steps:
+            -   uses: actions/checkout@v7
+            -   uses: shivammathur/setup-php@v2
+
+            -   uses: actions/setup-node@v7
+                with:
+                    node-version: 'latest'
+
+            -   name: Detecting to make changes
+                id: can_fix
+                shell: bash
+                run: |
+                    CAN_FIX=${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+                    
+                    echo "CAN_FIX=${CAN_FIX}" >> "$GITHUB_ENV"
+
+            -   name: Install dependencies
+                run: npm i
+
+            -   name: Check styles
+                if: env.CAN_FIX == 'false'
+                run: npm run check
+
+            -   name: Fix styles
+                if: env.CAN_FIX == 'true'
+                run: npm run fix
+
+            -   name: Remove node_modules
+                if: env.CAN_FIX == 'true'
+                run: rm -rf node_modules
+
+            -   name: Collect changed files
+                if: env.CAN_FIX == 'true'
+                id: changed_node
+                shell: bash
+                run: |
+                    git config --global --add safe.directory "$GITHUB_WORKSPACE"
+                    git ls-files -m > changed.txt || true
+
+                    if [ -s changed.txt ]; then
+                        echo "has_changes=true" >> "$GITHUB_OUTPUT"
+                    else
+                        echo "has_changes=false" >> "$GITHUB_OUTPUT"
+                    fi
+
+            -   name: Stage changed files preserving paths
+                if: env.CAN_FIX == 'true' && steps.changed_node.outputs.has_changes == 'true'
+                shell: bash
+                run: |
+                    mkdir -p .artifacts/node
+                    while IFS= read -r f; do
+                        [ -f "$f" ] || continue
+                        mkdir -p ".artifacts/node/$(dirname "$f")"
+                        cp "$f" ".artifacts/node/$f"
+                    done < changed.txt
+
+            -   name: Upload changed files
+                if: env.CAN_FIX == 'true' && steps.changed_node.outputs.has_changes == 'true'
+                uses: actions/upload-artifact@v7
+                with:
+                    name: fixes-node
+                    path: .artifacts/node
+
+    pr:
+        needs:
+            - php
+            - node
+        
+        name: PR
+        runs-on: ubuntu-latest
+        
+        if: |
+            always() && 
+            github.event_name == 'push' && 
+            github.ref == 'refs/heads/main' &&
+            (needs.php.result == 'success' || needs.node.result == 'success')
+
+        steps:
+            -   uses: actions/checkout@v7
+
+            -   name: Download all artifacts and merge
+                uses: actions/download-artifact@v8
+                with:
+                    merge-multiple: true
+                    path: .
+
+            -   name: Create a Pull Request
+                uses: peter-evans/create-pull-request@v8
+                id: pullRequest
+                if: ${{ !cancelled() }}
+                with:
+                    branch: code-style
+                    branch-suffix: random
+                    delete-branch: true
+                    title: "🦋 The code style has been fixed"
+                    commit-message: 🦋 The code style has been fixed
+                    body: The code style has been fixed
+                    labels: code-style
+
+            -   name: Merge PR
+                if: steps.pullRequest.outputs.pull-request-number != ''
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                run: gh pr merge --merge --delete-branch ${{ steps.pullRequest.outputs.pull-request-number }} --admin
