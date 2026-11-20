@@ -19,11 +19,13 @@ test('default locale', function (): void {
 
     $model->setTranslation(FakeValue::Title, $newText);
 
-    Event::assertDispatched(fn (TranslationHasBeenSetEvent $event): bool => $event->model->getKey() === $model->getKey()
-        && $event->column                                                                           === FakeValue::Title
-        && $event->locale                                                                           === null
-        && $event->oldValue                                                                         === $oldText
-        && $event->newValue                                                                         === $newText);
+    Event::assertDispatched(
+        fn (TranslationHasBeenSetEvent $event): bool => $event->model->getKey() === $model->getKey()
+            && $event->column                                                   === FakeValue::Title
+            && $event->locale                                                   === null
+            && $event->oldValue                                                 === $oldText
+            && $event->newValue                                                 === $newText
+    );
 });
 
 test('main locale', function (): void {
@@ -34,11 +36,13 @@ test('main locale', function (): void {
 
     $model->setTranslation(FakeValue::Title, $newText, FakeLocale::Default);
 
-    Event::assertDispatched(fn (TranslationHasBeenSetEvent $event): bool => $event->model->getKey() === $model->getKey()
-        && $event->column                                                                           === FakeValue::Title
-        && $event->locale                                                                           === FakeLocale::DefaultAlias
-        && $event->oldValue                                                                         === $oldText
-        && $event->newValue                                                                         === $newText);
+    Event::assertDispatched(
+        fn (TranslationHasBeenSetEvent $event): bool => $event->model->getKey() === $model->getKey()
+            && $event->column                                                   === FakeValue::Title
+            && $event->locale                                                   === FakeLocale::DefaultAlias
+            && $event->oldValue                                                 === $oldText
+            && $event->newValue                                                 === $newText
+    );
 });
 
 test('fallback locale', function (): void {
@@ -49,11 +53,13 @@ test('fallback locale', function (): void {
 
     $model->setTranslation(FakeValue::Title, $newText, FakeLocale::Fallback);
 
-    Event::assertDispatched(fn (TranslationHasBeenSetEvent $event): bool => $event->model->getKey() === $model->getKey()
-        && $event->column                                                                           === FakeValue::Title
-        && $event->locale                                                                           === FakeLocale::Fallback
-        && $event->oldValue                                                                         === $oldText
-        && $event->newValue                                                                         === $newText);
+    Event::assertDispatched(
+        fn (TranslationHasBeenSetEvent $event): bool => $event->model->getKey() === $model->getKey()
+            && $event->column                                                   === FakeValue::Title
+            && $event->locale                                                   === FakeLocale::Fallback
+            && $event->oldValue                                                 === $oldText
+            && $event->newValue                                                 === $newText
+    );
 });
 
 test('custom locale', function (): void {
@@ -64,9 +70,11 @@ test('custom locale', function (): void {
 
     $model->setTranslation(FakeValue::Title, $newText, FakeLocale::Custom);
 
-    Event::assertDispatched(fn (TranslationHasBeenSetEvent $event): bool => $event->model->getKey() === $model->getKey()
-        && $event->column                                                                           === FakeValue::Title
-        && $event->locale                                                                           === FakeLocale::English
-        && $event->oldValue                                                                         === $oldText
-        && $event->newValue                                                                         === $newText);
+    Event::assertDispatched(
+        fn (TranslationHasBeenSetEvent $event): bool => $event->model->getKey() === $model->getKey()
+            && $event->column                                                   === FakeValue::Title
+            && $event->locale                                                   === FakeLocale::English
+            && $event->oldValue                                                 === $oldText
+            && $event->newValue                                                 === $newText
+    );
 });

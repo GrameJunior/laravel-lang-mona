@@ -110,28 +110,17 @@ class AttributeService
 
     protected function eventSetLocale(mixed $value): void
     {
-        TranslationHasBeenSetEvent::dispatch(
-            $this->model,
-            $this->column,
-            $this->alias(),
-            $this->get(),
-            $value
-        );
+        event(new TranslationHasBeenSetEvent($this->model, $this->column, $this->alias(), $this->get(), $value));
     }
 
     protected function eventForget(): void
     {
-        TranslationHasBeenForgetEvent::dispatch(
-            $this->model,
-            $this->alias()
-        );
+        event(new TranslationHasBeenForgetEvent($this->model, $this->alias()));
     }
 
     protected function eventForgetAll(): void
     {
-        AllTranslationsHasBeenForgetEvent::dispatch(
-            $this->model
-        );
+        event(new AllTranslationsHasBeenForgetEvent($this->model));
     }
 
     protected function locale(): ?string

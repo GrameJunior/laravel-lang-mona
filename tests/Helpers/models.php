@@ -15,7 +15,7 @@ function fakeTestModel(
 ): TestModel {
     $key ??= fake()->word();
 
-    $model = TestModel::create(compact('key'));
+    $model = TestModel::create(['key' => $key]);
 
     if ($main || $fallback || $custom) {
         fakeTranslation($model, $main, $fallback, $custom);

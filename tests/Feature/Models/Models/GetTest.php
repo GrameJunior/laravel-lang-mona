@@ -66,7 +66,7 @@ test('aliased locale', function (): void {
         ],
     ]);
 
-    app(Filesystem::class)->ensureDirectoryExists(
+    resolve(Filesystem::class)->ensureDirectoryExists(
         lang_path('zh')
     );
 

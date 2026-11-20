@@ -85,7 +85,7 @@ final class StatusCommand
 
         $result = array_filter($content);
 
-        if ($result) {
+        if ($result !== []) {
             $this->filesystem->put($path, json_encode($result, $this->flags));
 
             return;

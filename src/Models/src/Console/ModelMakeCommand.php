@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace LaravelLang\Models\Console;
 
-use Illuminate\Console\Attributes\Description;
-use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use LaravelLang\Config\Services\ModelLangConfig;
@@ -17,16 +15,17 @@ use LaravelLang\Models\Services\ClassMapService;
 use function array_filter;
 use function array_merge;
 use function class_exists;
-use function compact;
 use function Laravel\Prompts\error;
 use function Laravel\Prompts\select;
 use function Laravel\Prompts\text;
 use function Laravel\Prompts\warning;
 
-#[Description('Creates a model for storing translations')]
-#[Signature('make:model-translation {model?} {--columns=*}')]
 final class ModelMakeCommand extends Command
 {
+    protected $signature = 'make:model-translation {model?} {--columns=*}';
+
+    protected $description = 'Creates a model for storing translations';
+
     protected array $columns = ['title', 'description'];
 
     public function __invoke(): int
@@ -72,7 +71,7 @@ final class ModelMakeCommand extends Command
 
     protected function generateHelper(string $model): void
     {
-        $this->call(ModelsHelperCommand::class, compact('model'));
+        $this->call(ModelsHelperCommand::class, ['model' => $model]);
     }
 
     protected function model(): ?string

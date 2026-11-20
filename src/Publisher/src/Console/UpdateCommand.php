@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace LaravelLang\Publisher\Console;
 
-use Illuminate\Console\Attributes\Description;
-use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use LaravelLang\Filesystem\Filesystem;
@@ -21,10 +19,12 @@ use function lang_path;
 use function Laravel\Prompts\task;
 use function str_replace;
 
-#[Description('Updating installed localizations')]
-#[Signature('lang:update')]
 final class UpdateCommand extends Command
 {
+    protected $signature = 'lang:update';
+
+    protected $description = 'Updating installed localizations';
+
     public function __invoke(
         Filesystem $filesystem,
         PluginCollector $pluginCollector,
