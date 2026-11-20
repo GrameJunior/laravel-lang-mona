@@ -305,7 +305,7 @@ test('whereTranslationLike filters by translation and locale', function () {
 
 test(
     'orderByTranslation sorts by key',
-    function (string $sortMethod, ?string $sortLocale, string $firstLocale, string $secondLocale) {
+    function (SortDirection|string $sortMethod, ?string $sortLocale, string $firstLocale, string $secondLocale) {
         TestModel::create([
             'key' => FakeLocale::Default,
 
@@ -340,6 +340,9 @@ test(
 
     'desc without locale' => ['desc', null, FakeLocale::Fallback, FakeLocale::Fallback],
     'desc with locale'    => ['desc', FakeLocale::Default, FakeLocale::Fallback, FakeLocale::Fallback],
+
+    'ascending enum'  => [SortDirection::Ascending, null, FakeLocale::Default, FakeLocale::Fallback],
+    'descending enum' => [SortDirection::Descending, null, FakeLocale::Fallback, FakeLocale::Fallback],
 ]);
 
 test('orderByTranslation sorts by key asc even if locale is missing', function () {
