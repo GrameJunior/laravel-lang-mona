@@ -91,7 +91,8 @@
     - Предлагаю формат `Lang*ServiceProvider`. Например:
         - `LangPublisherServiceProvider`
         - `LangRoutesServiceProvider`
-- [ ] Добавить недостающие тесты
+- [x] Добавить недостающие тесты
+- [ ] Добавить возможность установки Laravel в dev версию
 - [ ] Добавить архитектурные тесты
 - [ ] Применить код-стайл (Pint)
 - [ ] Применить quality code (Rector)
