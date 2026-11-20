@@ -1,7 +1,7 @@
 {
     "scripts": {
-        "check": "npx biome check",
-        "format": "npx biome format --write"
+        "check": "npx biome check && npx biome format",
+        "fix": "npx biome lint --write && npx biome format --write"
     },
     "devDependencies": {
         "@biomejs/biome": "2.6.8"
