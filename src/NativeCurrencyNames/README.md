@@ -25,13 +25,8 @@ Please see [CONTRIBUTING](https://laravel-lang.com/contributions.html) for detai
 
 This package is licensed under the [MIT License](https://laravel-lang.com/license.html).
 
-
-[badge_stable]:     https://img.shields.io/github/v/release/Laravel-Lang/native-currency-names?label=stable&style=flat-square
-
-[badge_downloads]:  https://img.shields.io/packagist/dt/Laravel-Lang/native-currency-names.svg?style=flat-square
-
-[badge_license]:    https://img.shields.io/packagist/l/Laravel-Lang/native-currency-names.svg?style=flat-square
-
-[link_packagist]:   https://packagist.org/packages/Laravel-Lang/native-currency-names
-
-[link_license]:     LICENSE
+[badge_stable]: https://img.shields.io/github/v/release/Laravel-Lang/native-currency-names?label=stable&style=flat-square
+[badge_downloads]: https://img.shields.io/packagist/dt/Laravel-Lang/native-currency-names.svg?style=flat-square
+[badge_license]: https://img.shields.io/packagist/l/Laravel-Lang/native-currency-names.svg?style=flat-square
+[link_packagist]: https://packagist.org/packages/Laravel-Lang/native-currency-names
+[link_license]: LICENSE

@@ -24,7 +24,7 @@ class CountryNames
         return (new Collection($this->read($forLocale)))
             ->map(fn (array $item, string $locale): CountryData => $this->map($locale, $item))
             ->when($direction !== null, fn (Collection $items) => $items->sortBy(
-                callback: 'localized',
+                callback  : 'localized',
                 descending: $direction === SortDirection::Descending
             ));
     }
