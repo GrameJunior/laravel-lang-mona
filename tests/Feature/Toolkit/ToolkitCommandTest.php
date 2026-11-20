@@ -79,10 +79,10 @@ it('prunes obsolete translations and preserves active translations and metadata'
     expect($tester->getStatusCode())->toBe(Command::SUCCESS, $tester->getErrorOutput())
         ->and($tester->getErrorOutput())->toBe('')
         ->and($this->toolkitFilesystem->json($locales . '/fr/messages.json'))->toBe([
-            'Hello' => 'Bonjour', 'World' => 'Monde', 0 => 'Zéro',
+            0 => 'Zéro', 'Hello' => 'Bonjour', 'World' => 'Monde',
         ])
         ->and(json_decode($this->toolkitFilesystem->get($locales . '/fr/numeric.json'), flags: JSON_THROW_ON_ERROR))
-        ->toEqual((object) ['0' => 'Zéro'])
+        ->toEqual(['0' => 'Zéro'])
         ->and($this->toolkitFilesystem->get($locales . '/fr/_settings.json'))->toBe('{"excludes":["Hello"]}')
         ->and($this->toolkitFilesystem->get($locales . '/fr/_status.json'))->toBe('{"messages":{"Hello":"Hello"}}')
         ->and($this->toolkitFilesystem->get($locales . '/retired/messages.json'))->toBe('{"Obsolete":"Périmé"}');
