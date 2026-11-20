@@ -7,8 +7,8 @@ permissions:
     pull-requests: write
 
 jobs:
-    php:
-        name: PHP
+    php_composer:
+        name: Composer
         runs-on: ubuntu-latest
 
         steps:
@@ -28,15 +28,15 @@ jobs:
 
             -   name: Check styles
                 if: env.CAN_FIX == 'false'
-                run: composer style:check
+                run: composer normalize --dry-run
 
             -   name: Fix styles
                 if: env.CAN_FIX == 'true'
-                run: composer style
+                run: composer normalize
 
             -   name: Collect changed files
                 if: env.CAN_FIX == 'true'
-                id: changed_php
+                id: changed_composer
                 shell: bash
                 run: |
                     git config --global --add safe.directory "$GITHUB_WORKSPACE"
@@ -49,25 +49,143 @@ jobs:
                     fi
 
             -   name: Stage changed files preserving paths
-                if: env.CAN_FIX == 'true' && steps.changed_php.outputs.has_changes == 'true'
+                if: env.CAN_FIX == 'true' && steps.changed_composer.outputs.has_changes == 'true'
                 shell: bash
                 run: |
-                    mkdir -p .artifacts/php
+                    mkdir -p .artifacts/composer
                     while IFS= read -r f; do
                         [ -f "$f" ] || continue
-                        mkdir -p ".artifacts/php/$(dirname "$f")"
-                        cp "$f" ".artifacts/php/$f"
+                        mkdir -p ".artifacts/composer/$(dirname "$f")"
+                        cp "$f" ".artifacts/composer/$f"
                     done < changed.txt
 
             -   name: Upload changed files
-                if: env.CAN_FIX == 'true' && steps.changed_php.outputs.has_changes == 'true'
+                if: env.CAN_FIX == 'true' && steps.changed_composer.outputs.has_changes == 'true'
                 uses: actions/upload-artifact@v7
                 with:
-                    name: fixes-php
-                    path: .artifacts/php
+                    name: fixes-composer
+                    path: .artifacts/composer
 
-    node:
-        name: Node
+    php_rector:
+        name: Rector
+        runs-on: ubuntu-latest
+
+        steps:
+            -   uses: actions/checkout@v7
+            -   uses: shivammathur/setup-php@v2
+
+            -   name: Detecting to make changes
+                id: can_fix
+                shell: bash
+                run: |
+                    CAN_FIX=${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+
+                    echo "CAN_FIX=${CAN_FIX}" >> "$GITHUB_ENV"
+
+            -   name: Install Composer dependencies
+                run: composer update
+
+            -   name: Check styles
+                if: env.CAN_FIX == 'false'
+                run: php vendor/bin/rector --dry-run
+
+            -   name: Fix styles
+                if: env.CAN_FIX == 'true'
+                run: php vendor/bin/rector
+
+            -   name: Collect changed files
+                if: env.CAN_FIX == 'true'
+                id: changed_rector
+                shell: bash
+                run: |
+                    git config --global --add safe.directory "$GITHUB_WORKSPACE"
+                    git ls-files -m > changed.txt || true
+
+                    if [ -s changed.txt ]; then
+                        echo "has_changes=true" >> "$GITHUB_OUTPUT"
+                    else
+                        echo "has_changes=false" >> "$GITHUB_OUTPUT"
+                    fi
+
+            -   name: Stage changed files preserving paths
+                if: env.CAN_FIX == 'true' && steps.changed_rector.outputs.has_changes == 'true'
+                shell: bash
+                run: |
+                    mkdir -p .artifacts/rector
+                    while IFS= read -r f; do
+                        [ -f "$f" ] || continue
+                        mkdir -p ".artifacts/rector/$(dirname "$f")"
+                        cp "$f" ".artifacts/rector/$f"
+                    done < changed.txt
+
+            -   name: Upload changed files
+                if: env.CAN_FIX == 'true' && steps.changed_rector.outputs.has_changes == 'true'
+                uses: actions/upload-artifact@v7
+                with:
+                    name: fixes-rector
+                    path: .artifacts/rector
+
+    php_pint:
+        name: Pint
+        runs-on: ubuntu-latest
+
+        steps:
+            -   uses: actions/checkout@v7
+            -   uses: shivammathur/setup-php@v2
+
+            -   name: Detecting to make changes
+                id: can_fix
+                shell: bash
+                run: |
+                    CAN_FIX=${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+
+                    echo "CAN_FIX=${CAN_FIX}" >> "$GITHUB_ENV"
+
+            -   name: Install Composer dependencies
+                run: composer update
+
+            -   name: Check styles
+                if: env.CAN_FIX == 'false'
+                run: php vendor/bin/pint --parallel --test
+
+            -   name: Fix styles
+                if: env.CAN_FIX == 'true'
+                run: php vendor/bin/pint --parallel
+
+            -   name: Collect changed files
+                if: env.CAN_FIX == 'true'
+                id: changed_pint
+                shell: bash
+                run: |
+                    git config --global --add safe.directory "$GITHUB_WORKSPACE"
+                    git ls-files -m > changed.txt || true
+
+                    if [ -s changed.txt ]; then
+                        echo "has_changes=true" >> "$GITHUB_OUTPUT"
+                    else
+                        echo "has_changes=false" >> "$GITHUB_OUTPUT"
+                    fi
+
+            -   name: Stage changed files preserving paths
+                if: env.CAN_FIX == 'true' && steps.changed_pint.outputs.has_changes == 'true'
+                shell: bash
+                run: |
+                    mkdir -p .artifacts/pint
+                    while IFS= read -r f; do
+                        [ -f "$f" ] || continue
+                        mkdir -p ".artifacts/pint/$(dirname "$f")"
+                        cp "$f" ".artifacts/pint/$f"
+                    done < changed.txt
+
+            -   name: Upload changed files
+                if: env.CAN_FIX == 'true' && steps.changed_pint.outputs.has_changes == 'true'
+                uses: actions/upload-artifact@v7
+                with:
+                    name: fixes-pint
+                    path: .artifacts/pint
+
+    node_lint:
+        name: Lint
         runs-on: ubuntu-latest
 
         steps:
@@ -91,11 +209,11 @@ jobs:
 
             -   name: Check styles
                 if: env.CAN_FIX == 'false'
-                run: npm run check
+                run: npx biome check
 
             -   name: Fix styles
                 if: env.CAN_FIX == 'true'
-                run: npm run fix
+                run: npx biome lint --write
 
             -   name: Remove node_modules
                 if: env.CAN_FIX == 'true'
@@ -103,7 +221,7 @@ jobs:
 
             -   name: Collect changed files
                 if: env.CAN_FIX == 'true'
-                id: changed_node
+                id: changed_lint
                 shell: bash
                 run: |
                     git config --global --add safe.directory "$GITHUB_WORKSPACE"
@@ -116,27 +234,97 @@ jobs:
                     fi
 
             -   name: Stage changed files preserving paths
-                if: env.CAN_FIX == 'true' && steps.changed_node.outputs.has_changes == 'true'
+                if: env.CAN_FIX == 'true' && steps.changed_lint.outputs.has_changes == 'true'
                 shell: bash
                 run: |
-                    mkdir -p .artifacts/node
+                    mkdir -p .artifacts/lint
                     while IFS= read -r f; do
                         [ -f "$f" ] || continue
-                        mkdir -p ".artifacts/node/$(dirname "$f")"
-                        cp "$f" ".artifacts/node/$f"
+                        mkdir -p ".artifacts/lint/$(dirname "$f")"
+                        cp "$f" ".artifacts/lint/$f"
                     done < changed.txt
 
             -   name: Upload changed files
-                if: env.CAN_FIX == 'true' && steps.changed_node.outputs.has_changes == 'true'
+                if: env.CAN_FIX == 'true' && steps.changed_lint.outputs.has_changes == 'true'
                 uses: actions/upload-artifact@v7
                 with:
-                    name: fixes-node
-                    path: .artifacts/node
+                    name: fixes-lint
+                    path: .artifacts/lint
+
+    node_format:
+        name: Format
+        runs-on: ubuntu-latest
+
+        steps:
+            -   uses: actions/checkout@v7
+            -   uses: shivammathur/setup-php@v2
+
+            -   uses: actions/setup-node@v7
+                with:
+                    node-version: 'latest'
+
+            -   name: Detecting to make changes
+                id: can_fix
+                shell: bash
+                run: |
+                    CAN_FIX=${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+                    
+                    echo "CAN_FIX=${CAN_FIX}" >> "$GITHUB_ENV"
+
+            -   name: Install dependencies
+                run: npm i
+
+            -   name: Check styles
+                if: env.CAN_FIX == 'false'
+                run: npx biome format
+
+            -   name: Fix styles
+                if: env.CAN_FIX == 'true'
+                run: npx biome format --write
+
+            -   name: Remove node_modules
+                if: env.CAN_FIX == 'true'
+                run: rm -rf node_modules
+
+            -   name: Collect changed files
+                if: env.CAN_FIX == 'true'
+                id: changed_format
+                shell: bash
+                run: |
+                    git config --global --add safe.directory "$GITHUB_WORKSPACE"
+                    git ls-files -m > changed.txt || true
+
+                    if [ -s changed.txt ]; then
+                        echo "has_changes=true" >> "$GITHUB_OUTPUT"
+                    else
+                        echo "has_changes=false" >> "$GITHUB_OUTPUT"
+                    fi
+
+            -   name: Stage changed files preserving paths
+                if: env.CAN_FIX == 'true' && steps.changed_format.outputs.has_changes == 'true'
+                shell: bash
+                run: |
+                    mkdir -p .artifacts/format
+                    while IFS= read -r f; do
+                        [ -f "$f" ] || continue
+                        mkdir -p ".artifacts/format/$(dirname "$f")"
+                        cp "$f" ".artifacts/format/$f"
+                    done < changed.txt
+
+            -   name: Upload changed files
+                if: env.CAN_FIX == 'true' && steps.changed_format.outputs.has_changes == 'true'
+                uses: actions/upload-artifact@v7
+                with:
+                    name: fixes-format
+                    path: .artifacts/format
 
     pr:
         needs:
-            - php
-            - node
+            - php_composer
+            - php_rector
+            - php_pint
+            - node_lint
+            - node_format
         
         name: PR
         runs-on: ubuntu-latest

@@ -133,11 +133,6 @@
             "@php vendor/bin/rector --ansi",
             "@php vendor/bin/pint --parallel --ansi"
         ],
-        "style:check": [
-            "@composer normalize --dry-run",
-            "@php vendor/bin/rector --dry-run --ansi",
-            "@php vendor/bin/pint --parallel --test --ansi"
-        ],
         "test": "@php vendor/bin/pest --parallel",
         "test:coverage": "@php -d xdebug.mode=coverage vendor/bin/pest --coverage --min=95"
     }
