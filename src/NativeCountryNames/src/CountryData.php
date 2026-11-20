@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\NativeCountryNames;
 
-readonly class CountryData
+final readonly class CountryData
 {
     public function __construct(
         public string $locale,

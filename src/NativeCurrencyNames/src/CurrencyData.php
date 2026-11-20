@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\NativeCurrencyNames;
 
-readonly class CurrencyData
+final readonly class CurrencyData
 {
     public function __construct(
         public string $locale,
