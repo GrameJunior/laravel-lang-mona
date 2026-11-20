@@ -43,7 +43,7 @@ jobs:
                 run: composer require --dev laravel/framework:^${{ matrix.laravel }}
 
             -   name: Execute tests
-                run: composer test
+            -   run: composer test --exclude-group=arch
 
     feature-master:
         runs-on: ubuntu-latest
@@ -71,7 +71,7 @@ jobs:
                     composer update --no-interaction --no-progress
 
             -   name: Execute tests
-                run: composer test
+                run: composer test --exclude-group=arch
 
     coverage:
         runs-on: ubuntu-latest
@@ -91,3 +91,21 @@ jobs:
 
             -   name: Execute tests
                 run: composer test:coverage
+
+    architecture:
+        runs-on: ubuntu-latest
+
+        name: Architecture
+
+        steps:
+            -   uses: actions/checkout@v7
+
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    php-version: 8.5
+
+            -   name: Install dependencies
+                run: composer update
+
+            -   name: Execute tests
+                run: composer test --group=arch

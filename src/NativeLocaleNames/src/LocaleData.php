@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\NativeLocaleNames;
 
-readonly class LocaleData
+final readonly class LocaleData
 {
     public function __construct(
         public string $code,
