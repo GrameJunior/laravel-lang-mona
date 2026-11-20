@@ -3,11 +3,15 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use RectorLaravel\Rector\Class_\AppendsPropertyToAppendsAttributeRector;
+use RectorLaravel\Rector\Class_\ConnectionPropertyToConnectionAttributeRector;
 use RectorLaravel\Rector\Class_\DescriptionPropertyToDescriptionAttributeRector;
 use RectorLaravel\Rector\Class_\FillablePropertyToFillableAttributeRector;
 use RectorLaravel\Rector\Class_\RemoveModelPropertyFromFactoriesRector;
 use RectorLaravel\Rector\Class_\SignaturePropertyToSignatureAttributeRector;
+use RectorLaravel\Rector\Class_\TablePropertyToTableAttributeRector;
 use RectorLaravel\Rector\Class_\WithoutTimestampsPropertyToWithoutTimestampsAttributeRector;
+use RectorLaravel\Rector\FuncCall\AppToResolveRector;
 use RectorLaravel\Rector\FuncCall\RemoveDumpDataDeadCodeRector;
 use RectorLaravel\Rector\MethodCall\UseComponentPropertyWithinCommandsRector;
 use RectorLaravel\Set\LaravelSetList;
@@ -55,8 +59,12 @@ return RectorConfig::configure()
         UseComponentPropertyWithinCommandsRector::class,
     ])
     ->withSkip([
+        AppendsPropertyToAppendsAttributeRector::class,
+        AppToResolveRector::class,
+        ConnectionPropertyToConnectionAttributeRector::class,
         DescriptionPropertyToDescriptionAttributeRector::class,
-        SignaturePropertyToSignatureAttributeRector::class,
         FillablePropertyToFillableAttributeRector::class,
+        SignaturePropertyToSignatureAttributeRector::class,
+        TablePropertyToTableAttributeRector::class,
         WithoutTimestampsPropertyToWithoutTimestampsAttributeRector::class,
     ]);
