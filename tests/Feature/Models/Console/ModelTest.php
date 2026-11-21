@@ -69,8 +69,13 @@ test('rejects invalid models before generating translations', function (string $
         ->run();
 })->with([
     'unknown model'              => ['App\\Models\\Missing', 'was not found.'],
+    'non-model class'            => [stdClass::class, 'was not found.'],
     'existing translation model' => [TestModel::class, 'already has a translation repository.'],
 ]);
+
+test('rejects non-string column names before generating translations', function (): void {
+    artisan('make:model-translation', ['model' => User::class, '--columns' => [123]])->run();
+})->throws(InvalidArgumentException::class, 'Column names must be strings.');
 
 test('reports when the selected model is outside the configured directories', function (): void {
     config(['localization_models.directories' => []]);

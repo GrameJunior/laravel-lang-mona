@@ -19,6 +19,7 @@ class LocaleNames
         protected Filesystem $filesystem,
     ) {}
 
+    /** @return Collection<string, LocaleData> */
     public function all(Locale|string|null $forLocale, ?SortDirection $direction = null): Collection
     {
         return (new Collection($this->read($forLocale)))
@@ -38,16 +39,18 @@ class LocaleNames
         return $this->map($normalized, $items[$normalized]);
     }
 
+    /** @param array{native: string, localized: string} $item */
     protected function map(string $locale, array $item): LocaleData
     {
         return new LocaleData(
             code     : $locale,
-            alias    : $this->config->to($locale),
+            alias    : $this->config->to($locale) ?? $locale,
             native   : $item['native'],
             localized: $item['localized'],
         );
     }
 
+    /** @return array<string, array{native: string, localized: string}> */
     protected function read(Locale|string|null $locale): array
     {
         $normalized = $this->normalize($locale);
@@ -57,10 +60,8 @@ class LocaleNames
 
     protected function normalize(Locale|string|null $locale): string
     {
-        if ($locale === $this->default) {
-            return $locale;
-        }
-
-        return $this->config->from($locale);
+        return $locale === $this->default
+            ? $locale
+            : $this->config->from($locale) ?? $this->default;
     }
 }

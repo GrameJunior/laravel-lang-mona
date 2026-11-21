@@ -351,13 +351,19 @@ test(
 )->with([
     'asc without locale' => ['asc', null, FakeLocale::Default, FakeLocale::Fallback],
     'asc with locale'    => ['asc', FakeLocale::Default, FakeLocale::Default, FakeLocale::Fallback],
+    'uppercase asc'      => ['ASC', null, FakeLocale::Default, FakeLocale::Fallback],
 
     'desc without locale' => ['desc', null, FakeLocale::Fallback, FakeLocale::Fallback],
     'desc with locale'    => ['desc', FakeLocale::Default, FakeLocale::Fallback, FakeLocale::Fallback],
+    'uppercase desc'      => ['DESC', null, FakeLocale::Fallback, FakeLocale::Fallback],
 
     'ascending enum'  => [SortDirection::Ascending, null, FakeLocale::Default, FakeLocale::Fallback],
     'descending enum' => [SortDirection::Descending, null, FakeLocale::Fallback, FakeLocale::Fallback],
 ]);
+
+test('orderByTranslation rejects an invalid direction', function (): void {
+    TestModel::query()->orderByTranslation(FakeValue::Title, 'sideways');
+})->throws(InvalidArgumentException::class, 'Order direction');
 
 test('orderByTranslation sorts by key asc even if locale is missing', function (): void {
     TestModel::create([

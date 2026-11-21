@@ -19,6 +19,7 @@ test('correct', function (): void {
 });
 test('incorrect', function (): void {
     ensureLang(FakeLocale::Incorrect1);
+    ensureLang('0');
 
     $locales = Locales::installed();
 
@@ -27,6 +28,7 @@ test('incorrect', function (): void {
     expect($locales)->toContain(FakeLocale::DefaultAlias);
 
     expect($locales)->not->toContain(FakeLocale::Incorrect1);
+    expect($locales)->not->toContain('0');
     expect($locales)->not->toContain(FakeLocale::Uninstalled);
 
     expect($locales)->toHaveCount(3);

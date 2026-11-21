@@ -104,6 +104,7 @@
 - [x] Удалить трейт Dispatchable из эвентов
 - [x] Применить стат анализ (PhpStan)
     - [ ] Повысить уровень анализа, хотя бы, до 7
+- [ ] Вынести все экспешены в `LaravelLang/Exceptions`
 - [ ] Добавить мутационные тесты (`"vendor/bin/pest --mutate --covered-only --min=85"`)
 - [ ] Переименовать репозитории Native без слова Native.
 - [ ] Проверить файлы `composer.json`:
