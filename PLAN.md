@@ -104,6 +104,7 @@
 - [ ] Удалить трейт Dispatchable из эвентов
 - [ ] Применить стат анализ (PhpStan)
 - [ ] Проверить файлы `composer.json`:
+    - [ ] Mona
     - [ ] Actions
     - [ ] Attributes
     - [ ] Common
