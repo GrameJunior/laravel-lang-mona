@@ -72,6 +72,7 @@
     "autoload": {
         "psr-4": {
             "LaravelLang\\Config\\": "src/Config/src/",
+            "LaravelLang\\CurrencyNames\\": "src/CurrencyNames/src/",
             "LaravelLang\\Exceptions\\": "src/Exceptions/src/",
             "LaravelLang\\Filesystem\\": "src/Filesystem/src/",
             "LaravelLang\\JsonFallback\\": "src/JsonFallback/src/",
@@ -80,7 +81,6 @@
             "LaravelLang\\Locales\\": "src/Locales/src/",
             "LaravelLang\\Models\\": "src/Models/src/",
             "LaravelLang\\NativeCountryNames\\": "src/NativeCountryNames/src/",
-            "LaravelLang\\NativeCurrencyNames\\": "src/NativeCurrencyNames/src/",
             "LaravelLang\\Publisher\\": "src/Publisher/src/",
             "LaravelLang\\Routes\\": "src/Routes/src/",
             "LaravelLang\\Toolkit\\": "src/Toolkit/src/"

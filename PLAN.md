@@ -107,7 +107,7 @@
 - [x] Вынести все экспешены в `LaravelLang/Exceptions`
 - [ ] Переименовать репозитории Native без слова Native.
     - [ ] NativeCountryNames
-    - [ ] NativeCurrencyNames
+    - [x] CurrencyNames
     - [x] NativeLocaleNames
 - [ ] Проверить файлы `composer.json`:
     - [ ] Mona

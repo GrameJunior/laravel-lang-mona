@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use LaravelLang\CurrencyNames\CurrencyData;
+use LaravelLang\CurrencyNames\CurrencyNames;
 use LaravelLang\Exceptions\InvalidNativeNameDataException;
 use LaravelLang\Filesystem\Processors\JsonProcessor;
 use LaravelLang\LocaleList\Locale;
@@ -9,8 +11,6 @@ use LaravelLang\LocaleNames\LocaleData;
 use LaravelLang\LocaleNames\LocaleNames;
 use LaravelLang\NativeCountryNames\CountryData;
 use LaravelLang\NativeCountryNames\CountryNames;
-use LaravelLang\NativeCurrencyNames\CurrencyData;
-use LaravelLang\NativeCurrencyNames\CurrencyNames;
 
 beforeEach(function (): void {
     config()->set('localization_main.aliases', ['de' => 'de_DE', 'fr' => 'fr_FR']);

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\NativeCurrencyNames;
+namespace LaravelLang\CurrencyNames;
 
 final readonly class CurrencyData
 {

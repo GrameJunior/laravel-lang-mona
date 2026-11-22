@@ -44,6 +44,7 @@
     <var name="package-attributes" value="laravel-lang/attributes" />
     <var name="package-common" value="laravel-lang/common" />
     <var name="package-config" value="laravel-lang/config" />
+    <var name="package-currency-names" value="laravel-lang/currency-names" />
     <var name="package-docs" value="laravel-lang/docs" />
     <var name="package-http-statuses" value="laravel-lang/http-statuses" />
     <var name="package-json-fallback" value="laravel-lang/json-fallback" />
@@ -67,6 +68,7 @@
     <var name="repository-label-attributes" value="attributes" />
     <var name="repository-label-common" value="common" />
     <var name="repository-label-config" value="config" />
+    <var name="repository-label-currency-names" value="native-currency-names" />
     <var name="repository-label-docs" value="docs" />
     <var name="repository-label-http-statuses" value="http-statuses" />
     <var name="repository-label-json-fallback" value="json-fallback" />
@@ -75,7 +77,6 @@
     <var name="repository-label-locale-names" value="native-locale-names" />
     <var name="repository-label-locales" value="locales" />
     <var name="repository-label-native-country-names" value="native-country-names" />
-    <var name="repository-label-native-currency-names" value="native-currency-names" />
     <var name="repository-label-publisher" value="publisher" />
     <var name="repository-label-status-generator" value="status-generator" />
     <var name="repository-label-translations-template" value="translations-template" />
@@ -83,6 +84,7 @@
     <var name="repository-title-attributes" value="Attributes" />
     <var name="repository-title-common" value="Common" />
     <var name="repository-title-config" value="Config" />
+    <var name="repository-title-currency-names" value="Currency Names" />
     <var name="repository-title-docs" value="Documentation" />
     <var name="repository-title-http-statuses" value="HTTP Statuses" />
     <var name="repository-title-json-fallback" value="JSON Fallback" />
@@ -93,7 +95,6 @@
     <var name="repository-title-models" value="Models" />
     <var name="repository-title-moonshine" value="MoonShine" />
     <var name="repository-title-native-country-names" value="Native Country Names" />
-    <var name="repository-title-native-currency-names" value="Native Currency Names" />
     <var name="repository-title-publisher" value="Publisher" />
     <var name="repository-title-routes" value="Routes" />
     <var name="repository-title-starter-kits" value="Starter Kits" />
