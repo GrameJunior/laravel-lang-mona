@@ -36,3 +36,18 @@ test('fallback JSON takes precedence over current PHP when fallback is enabled',
     expect(__('collision.greeting', ['name' => 'Mona']))->toBe('JSON Mona')
         ->and(Lang::get('collision.greeting', ['name' => 'Mona'], fallback: false))->toBe('PHP Mona');
 });
+
+test('fallback JSON preserves scalar replacement and array behavior', function (): void {
+    file_put_contents(lang_path('de.json'), json_encode([
+        'json.numeric' => 42,
+        'json.array'   => ['nested' => 'Value'],
+        'json.falsy'   => '0',
+    ], JSON_THROW_ON_ERROR));
+
+    expect(Lang::get('json.numeric', ['name' => 'Mona']))->toBe('42')
+        ->and(Lang::get('json.array'))->toBe(['nested' => 'Value'])
+        ->and(Lang::get('json.falsy'))->toBe('json.falsy');
+
+    expect(fn () => Lang::get('json.numeric'))->toThrow(TypeError::class);
+    expect(fn () => Lang::get('json.array', ['name' => 'Mona']))->toThrow(TypeError::class);
+});

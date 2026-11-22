@@ -64,10 +64,18 @@ trait HasTranslations
         return $this->translationAttribute($column, $locale)->set($column, $value);
     }
 
-    /** @param  iterable<Locale|LocaleData|string, mixed>  $values */
+    /**
+     * @param  iterable<mixed, mixed>  $values  Keyed by a locale string, Locale, LocaleData or null.
+     *
+     * @throws TypeError
+     */
     public function setTranslations(string $column, iterable $values): static
     {
         foreach ($values as $locale => $value) {
+            if (! Locales::acceptsInput($locale)) {
+                throw new TypeError('The translation locale key must be a Locale, a LocaleData, a string, or null.');
+            }
+
             $this->setTranslation($column, $value, $locale);
         }
 
