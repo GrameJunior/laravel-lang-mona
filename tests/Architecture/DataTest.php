@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use LaravelLang\CurrencyNames\CurrencyData;
+use LaravelLang\LocaleNames\LocaleData;
 use LaravelLang\NativeCountryNames\CountryData;
-use LaravelLang\NativeLocaleNames\LocaleData;
 
 arch('protect')
     ->expect([

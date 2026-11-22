@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\NativeLocaleNames;
+namespace LaravelLang\LocaleNames;
 
 final readonly class LocaleData
 {

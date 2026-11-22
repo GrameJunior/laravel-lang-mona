@@ -21,11 +21,11 @@ body:
                 - laravel-lang/lang
                 - laravel-lang/library
                 - laravel-lang/locale-list
+                - laravel-lang/locale-names
                 - laravel-lang/locales
                 - laravel-lang/models
                 - laravel-lang/moonshine
                 - laravel-lang/native-country-names
-                - laravel-lang/native-locale-names
                 - laravel-lang/publisher
                 - laravel-lang/routes
                 - laravel-lang/starter-kits

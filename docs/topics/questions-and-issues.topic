@@ -61,7 +61,7 @@
                     <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?assignees=%repository-assign-bugs%&amp;labels=bug%2C%repository-label-currency-names%&amp;template=bug_report.yml&amp;title=%5BBug%5D%3A+&amp;environment-package-name=%package-currency-names%">%repository-title-currency-names%</a>
                 </li>
                 <li>
-                    <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?assignees=%repository-assign-bugs%&amp;labels=bug%2C%repository-label-native-locale-names%&amp;template=bug_report.yml&amp;title=%5BBug%5D%3A+&amp;environment-package-name=%package-native-locale-names%">%repository-title-native-locale-names%</a>
+                    <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?assignees=%repository-assign-bugs%&amp;labels=bug%2C%repository-label-locale-names%&amp;template=bug_report.yml&amp;title=%5BBug%5D%3A+&amp;environment-package-name=%package-locale-names%">%repository-title-locale-names%</a>
                 </li>
             </list>
             <p><b>Service packages</b></p>
@@ -118,7 +118,7 @@
                     <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?labels=feature%2C%repository-label-currency-names%&amp;projects=&amp;template=feature_request.yml">%repository-title-currency-names%</a>
                 </li>
                 <li>
-                    <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?labels=feature%2C%repository-label-native-locale-names%&amp;projects=&amp;template=feature_request.yml">%repository-title-native-locale-names%</a>
+                    <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?labels=feature%2C%repository-label-locale-names%&amp;projects=&amp;template=feature_request.yml">%repository-title-locale-names%</a>
                 </li>
             </list>
             <p><b>Service packages</b></p>

@@ -77,10 +77,10 @@
             "LaravelLang\\Filesystem\\": "src/Filesystem/src/",
             "LaravelLang\\JsonFallback\\": "src/JsonFallback/src/",
             "LaravelLang\\LocaleList\\": "src/LocaleList/src/",
+            "LaravelLang\\LocaleNames\\": "src/LocaleNames/src/",
             "LaravelLang\\Locales\\": "src/Locales/src/",
             "LaravelLang\\Models\\": "src/Models/src/",
             "LaravelLang\\NativeCountryNames\\": "src/NativeCountryNames/src/",
-            "LaravelLang\\NativeLocaleNames\\": "src/NativeLocaleNames/src/",
             "LaravelLang\\Publisher\\": "src/Publisher/src/",
             "LaravelLang\\Routes\\": "src/Routes/src/",
             "LaravelLang\\Toolkit\\": "src/Toolkit/src/"

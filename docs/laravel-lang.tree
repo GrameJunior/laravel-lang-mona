@@ -48,7 +48,7 @@
         <toc-element topic="packages-actions.topic" />
         <toc-element topic="packages-attributes.topic" />
         <toc-element topic="packages-http-statuses.topic" />
-        <toc-element topic="packages-native-locale-names.topic" />
+        <toc-element topic="packages-locale-names.topic" accepts-web-file-names="packages-native-locale-names.html" />
         <toc-element topic="packages-native-country-names.topic" />
         <toc-element topic="packages-currency-names.topic" accepts-web-file-names="packages-native-currency-names.html" />
         <toc-element topic="packages-moonshine.topic" />
