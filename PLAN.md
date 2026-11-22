@@ -110,28 +110,30 @@
     - [x] NativeCurrencyNames
     - [x] NativeLocaleNames
 - [x] Перенести код утилит в Toolkit (папка `.utils`)
-- [ ] Проверить файлы `composer.json`:
-    - [ ] Mona
-    - [ ] Actions
-    - [ ] Attributes
-    - [ ] Common
-    - [ ] Config
-    - [ ] HttpStatuses
-    - [ ] JsonFallback
-    - [ ] Lang
-    - [ ] Library
-    - [ ] LocaleList
-    - [ ] Locales
-    - [ ] Models
-    - [ ] MoonShine
-    - [ ] CountryNames
-    - [ ] CurrencyNames
-    - [ ] LocaleNames
-    - [ ] Publisher
-    - [ ] Routes
-    - [ ] StarterKits
-    - [ ] Toolkit
-    - [ ] TranslationsTemplate
+- [x] Проверить файлы `composer.json`:
+    - [x] Mona
+    - [x] Actions
+    - [x] Attributes
+    - [x] Common
+    - [x] Config
+    - [x] CountryNames
+    - [x] CurrencyNames
+    - [x] HttpStatuses
+    - [x] JsonFallback
+    - [x] Lang
+    - [x] Library
+    - [x] LocaleList
+    - [x] LocaleNames
+    - [x] Locales
+    - [x] Models
+    - [x] MoonShine
+    - [x] Publisher
+    - [x] Routes
+    - [x] StarterKits
+    - [x] Toolkit
+    - [x] TranslationsTemplate
+- [ ] Добавить пропущенный модуль Punctuation
+- [ ] Исправить параллельные тесты
 - [ ] Рефакторинг документации
     - [ ] Заменить доку старыми файлами с заменой
     - [ ] Удалить из документации статусы переводов.
@@ -155,6 +157,28 @@
     - [ ] Найти auto-labeler
 - [x] Сгенерировать и установить новое превью репозиториев. Моя идея для превью - логотип Laravel акварелью в
   перспективе, но сделать это как-нибудь нестандартно, под углом.
+- [ ] Проверить файлы в папках проектов (`.gitattributes`, `.editorconfig`, и т.д.):
+    - [ ] Mona
+    - [ ] Actions
+    - [ ] Attributes
+    - [ ] Common
+    - [ ] Config
+    - [ ] HttpStatuses
+    - [ ] JsonFallback
+    - [ ] Lang
+    - [ ] Library
+    - [ ] LocaleList
+    - [ ] Locales
+    - [ ] Models
+    - [ ] MoonShine
+    - [ ] CountryNames
+    - [ ] CurrencyNames
+    - [ ] LocaleNames
+    - [ ] Publisher
+    - [ ] Routes
+    - [ ] StarterKits
+    - [ ] Toolkit
+    - [ ] TranslationsTemplate
 - [ ] Перевести Mona в публичную область видимости.
 - [ ] Обновить Social Preview в настройках репозитория.
 - [ ] Включить "Require actions to be pinned to a full-length commit SHA" в настройках

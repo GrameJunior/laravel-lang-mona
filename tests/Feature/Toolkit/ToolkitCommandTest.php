@@ -180,7 +180,7 @@ it('reports invalid translation status input', function (string $path, string $c
     $root = $this->toolkitDirectory;
     toolkitFile($root . '/locales/' . $path, $content);
 
-    expect(fn () => runToolkit('status', ['directory' => $root]))
+    expect(fn (): ApplicationTester => runToolkit('status', ['directory' => $root]))
         ->toThrow(function (InvalidTranslationStatusException $exception) use ($path, $diagnostic): void {
             expect($exception->getMessage())->toContain(basename($path), $diagnostic);
         });
@@ -193,7 +193,7 @@ it('reports an encoding failure when a missing translation overflows to infinity
     $root = $this->toolkitDirectory;
     toolkitFile($root . '/locales/fr/messages.json', '{"INF":1e999}');
 
-    expect(fn () => (new StatusCommand)(new BufferedOutput, $root))
+    expect(fn (): int => (new StatusCommand)(new BufferedOutput, $root))
         ->toThrow(function (InvalidJsonEncodeException $exception): void {
             expect($exception->getCode())->toBe(JSON_ERROR_INF_OR_NAN)
                 ->and($exception->getPrevious())->toBeInstanceOf(JsonException::class);

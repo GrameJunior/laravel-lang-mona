@@ -38,7 +38,7 @@ test('routes without groups', function (): void {
 });
 
 test('rejects an invalid locale parameter when generating a localized URL', function (): void {
-    expect(fn () => localizedRoute('via.parameter', ['key' => 'bar', 'locale' => ['fr']]))
+    expect(fn (): string => localizedRoute('via.parameter', ['key' => 'bar', 'locale' => ['fr']]))
         ->toThrow(InvalidLocaleInputException::class, 'The locale route parameter must be a Locale, a LocaleData, or a string');
 });
 

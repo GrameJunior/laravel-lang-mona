@@ -148,7 +148,10 @@ test('eager loads translations when the model explicitly lists the relation', fu
 
 test('supports translation casts declared as model properties', function (): void {
     $translation = new class extends Translation {
-        protected $casts = ['title' => TrimStringCast::class];
+        protected function casts(): array
+        {
+            return ['title' => TrimStringCast::class];
+        }
     };
 
     $translation->title = ' Bonjour ';
