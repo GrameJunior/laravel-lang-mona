@@ -17,6 +17,8 @@
 - For changes in the `docs` folder or `README.md`, always prefix the header with `[docs]: `.
 - For changes in the `src/*/source` folder, always prefix the header with `[source]: `.
 - For changes in the `src/*/locales` folder, always prefix the header with the affected locale subfolder names using `[<locales>]: `, e.g., `[fr]: `, `[de,zh_CN]: `, etc.
+- For changes in the `tests` folder, always prefix the header with `[tests]: `.
+- For changes in the `.agents` folder or `AGENTS.md`, always prefix the header with `[agents]: `.
 - For changes in all other folders, always prefix the header with `[app]: `.
 
 ## Testing
