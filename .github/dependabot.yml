@@ -11,6 +11,7 @@ updates:
             - src/Attributes
             - src/Common
             - src/Config
+            - src/CountryNames
             - src/HttpStatuses
             - src/JsonFallback
             - src/Lang
@@ -19,7 +20,6 @@ updates:
             - src/Locales
             - src/Models
             - src/MoonShine
-            - src/NativeCountryNames
             - src/NativeCurrencyNames
             - src/NativeLocaleNames
             - src/Publisher

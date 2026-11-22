@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
+use LaravelLang\CountryNames\CountryData;
+use LaravelLang\CountryNames\CountryNames;
 use LaravelLang\Exceptions\InvalidNativeNameDataException;
 use LaravelLang\Filesystem\Processors\JsonProcessor;
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\NativeCountryNames\CountryData;
-use LaravelLang\NativeCountryNames\CountryNames;
 use LaravelLang\NativeCurrencyNames\CurrencyData;
 use LaravelLang\NativeCurrencyNames\CurrencyNames;
 use LaravelLang\NativeLocaleNames\LocaleData;

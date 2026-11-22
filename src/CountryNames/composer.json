@@ -1,5 +1,5 @@
 {
-    "name": "laravel-lang/native-country-names",
+    "name": "laravel-lang/country-names",
     "description": "The project contains native translations of country names",
     "license": "MIT",
     "type": "library",
@@ -29,8 +29,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/Laravel-Lang/native-country-names/issues",
-        "source": "https://github.com/Laravel-Lang/native-country-names"
+        "issues": "https://github.com/Laravel-Lang/country-names/issues",
+        "source": "https://github.com/Laravel-Lang/country-names"
     },
     "funding": [
         {
@@ -62,7 +62,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "LaravelLang\\NativeCountryNames\\": "src/"
+            "LaravelLang\\CountryNames\\": "src/"
         }
     },
     "autoload-dev": {

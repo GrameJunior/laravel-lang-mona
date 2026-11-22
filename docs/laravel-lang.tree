@@ -49,7 +49,7 @@
         <toc-element topic="packages-attributes.topic" />
         <toc-element topic="packages-http-statuses.topic" />
         <toc-element topic="packages-native-locale-names.topic" />
-        <toc-element topic="packages-native-country-names.topic" />
+        <toc-element topic="packages-country-names.topic" accepts-web-file-names="packages-native-country-names.html" />
         <toc-element topic="packages-native-currency-names.topic" />
         <toc-element topic="packages-moonshine.topic" />
         <toc-element topic="packages-publisher.topic" />

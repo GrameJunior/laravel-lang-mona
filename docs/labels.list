@@ -26,7 +26,7 @@
     <secondary-label id="package-native-locale-names" name="unknown" color="purple">Latest version is unknown
     </secondary-label>
     <secondary-label id="package-locale-list" name="unknown" color="purple">Latest version is unknown</secondary-label>
-    <secondary-label id="package-native-country-names" name="unknown" color="purple">Latest version is unknown
+    <secondary-label id="package-country-names" name="unknown" color="purple">Latest version is unknown
     </secondary-label>
     <secondary-label id="package-native-currency-names" name="unknown" color="purple">Latest version is unknown
     </secondary-label>

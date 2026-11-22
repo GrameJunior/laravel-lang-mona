@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use LaravelLang\NativeCountryNames\CountryData;
+use LaravelLang\CountryNames\CountryData;
 use LaravelLang\NativeCurrencyNames\CurrencyData;
 use LaravelLang\NativeLocaleNames\LocaleData;
 
