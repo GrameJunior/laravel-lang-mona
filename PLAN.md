@@ -141,7 +141,7 @@
 - [ ] Обновить README в проектах.
 - [ ] Реализовать split репозитории (посмотреть как это сделано в
   MoonShine https://github.com/moonshine-software/moonshine/blob/5.x/repair-monorepo.sh).
-- [ ] Перенести код утилит в Toolkit (папка `.utils`)
+- [x] Перенести код утилит в Toolkit (папка `.utils`)
 - [ ] Обновить файлы переводов через утилиту миграции.
 - [ ] Актуализировать GitHub Actions
     - [ ] dependabot
