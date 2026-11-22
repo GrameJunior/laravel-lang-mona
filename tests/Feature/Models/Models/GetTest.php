@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\DB;
@@ -120,6 +121,33 @@ test('loads raw translations as an ordinary Eloquent relation', function (): voi
 
     expect($model->translationsRaw->keys()->all())->toBe([0, 1])
         ->and($model->translationsRaw->pluck('title', 'locale')->all())->toMatchArray($translations);
+});
+
+test('preserves a model constraint on default eager loaded translations', function (): void {
+    $saved = fakeTestModel(main: 'Bonjour', fallback: 'Hallo');
+
+    $model = new class extends TestModel {
+        protected $table = 'test_models';
+
+        public function __construct(array $attributes = [])
+        {
+            $this->with = [
+                'translations' => static fn (HasMany $relation) => $relation->where('locale', FakeLocale::Fallback),
+            ];
+
+            parent::__construct($attributes);
+        }
+
+        public function translationModel(): string
+        {
+            return TestModelTranslation::class;
+        }
+    };
+
+    $loaded = $model->newQuery()->findOrFail($saved->getKey());
+
+    expect($loaded->relationLoaded('translations'))->toBeTrue()
+        ->and($loaded->translations->keys()->all())->toBe([FakeLocale::Fallback]);
 });
 
 test('lazy loading', function (bool $enabled, int $count, array $locales): void {

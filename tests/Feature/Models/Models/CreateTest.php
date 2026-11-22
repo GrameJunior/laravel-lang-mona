@@ -178,6 +178,21 @@ test('collection', function (): void {
     ]);
 });
 
+test('creates translations from a generator keyed by locale enums', function (): void {
+    $titles = (static function (): Generator {
+        yield Locale::French => 'Bonjour';
+        yield Locale::German => 'Hallo';
+    })();
+
+    $model = TestModel::create([
+        'key'            => FakeLocale::Incorrect1,
+        FakeValue::Title => $titles,
+    ])->fresh();
+
+    expect($model->getTranslation(FakeValue::Title, Locale::French))->toBe('Bonjour')
+        ->and($model->getTranslation(FakeValue::Title, Locale::German))->toBe('Hallo');
+});
+
 test('uninstalled', function (): void {
     TestModel::create([
         'key' => FakeLocale::Incorrect1,
