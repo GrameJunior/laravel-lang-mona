@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Filesystem\Filesystem;
+use LaravelLang\Exceptions\TranslationFileException;
 use LaravelLang\Toolkit\Services\TranslationFilesService;
 
 beforeEach(function (): void {
@@ -95,6 +96,11 @@ test('storing translations in a non-JSON file leaves it untouched', function ():
     $this->translationFilesystem->put($path, $content);
 
     expect(fn () => $this->translationFiles->store($path, ['message' => 'New']))
-        ->toThrow(RuntimeException::class, "Unable to write translation file [$path]: Only JSON translation files are merged.")
+        ->toThrow(
+            function (TranslationFileException $exception): void {
+                expect($exception->getPrevious())->toBeInstanceOf(TranslationFileException::class);
+            },
+            "Unable to write translation file [$path]: Only JSON translation files are merged.",
+        )
         ->and($this->translationFilesystem->get($path))->toBe($content);
 });

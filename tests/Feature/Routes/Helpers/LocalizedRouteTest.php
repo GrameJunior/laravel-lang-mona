@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
 use LaravelLang\Config\Services\RouteLangConfig;
+use LaravelLang\Exceptions\InvalidLocaleInputException;
 use LaravelLang\Routes\Facades\LocalizationRoute;
 use LaravelLang\Routes\Services\RouteService;
 use Workbench\App\Constants\FakeLocale;
@@ -34,6 +35,11 @@ test('routes without groups', function (): void {
 
     expect(localizedRoute('via.model.default', ['key' => 'bar', 'locale' => $locale]))
         ->toEndWith('localhost/model/default/bar?locale=' . $locale);
+});
+
+test('rejects an invalid locale parameter when generating a localized URL', function (): void {
+    expect(fn () => localizedRoute('via.parameter', ['key' => 'bar', 'locale' => ['fr']]))
+        ->toThrow(InvalidLocaleInputException::class, 'The locale route parameter must be a Locale, a LocaleData, or a string');
 });
 
 test('routes hide fallback', function (bool $set): void {

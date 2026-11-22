@@ -6,10 +6,10 @@ namespace LaravelLang\NativeCurrencyNames;
 
 use Illuminate\Support\Collection;
 use LaravelLang\Config\Services\AliasLangConfig;
+use LaravelLang\Exceptions\InvalidNativeNameDataException;
 use LaravelLang\Filesystem\Filesystem;
 use LaravelLang\LocaleList\Locale;
 use SortDirection;
-use UnexpectedValueException;
 
 use function array_key_exists;
 use function is_array;
@@ -32,7 +32,7 @@ class CurrencyNames
 
         foreach ($this->read($forLocale) as $locale => $item) {
             if (! is_string($locale)) {
-                throw new UnexpectedValueException("Invalid locale code [$locale] in the currency data.");
+                throw InvalidNativeNameDataException::invalidLocaleCode($locale, 'currency');
             }
 
             $items[$locale] = $this->mapRow($locale, $item);
@@ -91,7 +91,7 @@ class CurrencyNames
             || ! is_string($item['native'] ?? null)
             || ! is_string($item['localized'] ?? null)
         ) {
-            throw new UnexpectedValueException("Invalid currency data for [$locale].");
+            throw InvalidNativeNameDataException::invalidRow($locale, 'currency');
         }
 
         return $this->map($locale, $item);

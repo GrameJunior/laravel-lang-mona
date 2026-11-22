@@ -2,11 +2,14 @@
 
 declare(strict_types=1);
 
+use Illuminate\Auth\GenericUser;
+use LaravelLang\Exceptions\InvalidAuthenticatedUserException;
 use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Constants\FakeTranslation;
 
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\getJson;
+use function Pest\Laravel\withoutExceptionHandling;
 
 test('main locale', function (): void {
     actingAs(fakeUser(FakeLocale::Fallback));
@@ -69,3 +72,11 @@ test('unknown locale', function (int|string $locale): void {
 
     assertEventNotDispatched();
 })->with('unknown locales');
+
+test('rejects an authenticated user that is not an Eloquent model', function (): void {
+    withoutExceptionHandling();
+    actingAs(new GenericUser(['id' => 1]));
+
+    expect(fn () => getJson(route('via.model.default', ['key' => 'test'])))
+        ->toThrow(InvalidAuthenticatedUserException::class, 'The authenticated user must be an Eloquent model');
+});

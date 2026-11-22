@@ -3,8 +3,10 @@
 declare(strict_types=1);
 
 use LaravelLang\Config\Services\RouteNameLangConfig;
+use LaravelLang\Exceptions\InvalidLocaleInputException;
 use Workbench\App\Constants\FakeTranslation;
 
+use function Pest\Laravel\withoutExceptionHandling;
 use function Pest\Laravel\withSession;
 
 test('main locale', function (string $locale, string $translation): void {
@@ -65,3 +67,12 @@ test('unknown locale', function (int|string $locale): void {
 
     assertEventNotDispatched();
 })->with('unknown locales');
+
+test('rejects a non-scalar session locale', function (): void {
+    withoutExceptionHandling();
+
+    $request = withSession([app(RouteNameLangConfig::class)->session => ['fr']]);
+
+    expect(fn () => $request->getJson(route('via.session', ['key' => 'test'])))
+        ->toThrow(InvalidLocaleInputException::class, 'The session locale must be an integer, a string, or null');
+});

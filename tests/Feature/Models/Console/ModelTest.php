@@ -6,6 +6,7 @@ use App\Models\SomeTranslation;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Console\ModelMakeCommand as LaravelMakeModel;
 use LaravelLang\Config\Services\ModelLangConfig;
+use LaravelLang\Exceptions\InvalidModelCommandInputException;
 use LaravelLang\Exceptions\UnknownModelPathException;
 use LaravelLang\Models\Console\ModelMakeCommand as PackageMakeModel;
 use LaravelLang\Models\HasTranslations;
@@ -75,7 +76,7 @@ test('rejects invalid models before generating translations', function (string $
 
 test('rejects non-string column names before generating translations', function (): void {
     artisan('make:model-translation', ['model' => User::class, '--columns' => [123]])->run();
-})->throws(InvalidArgumentException::class, 'Column names must be strings.');
+})->throws(InvalidModelCommandInputException::class, 'Column names must be strings.');
 
 test('reports when the selected model is outside the configured directories', function (): void {
     config(['localization_models.directories' => []]);
