@@ -11,17 +11,17 @@ updates:
             - src/Attributes
             - src/Common
             - src/Config
+            - src/CurrencyNames
             - src/HttpStatuses
             - src/JsonFallback
             - src/Lang
             - src/Library
             - src/LocaleList
+            - src/LocaleNames
             - src/Locales
             - src/Models
             - src/MoonShine
             - src/NativeCountryNames
-            - src/NativeCurrencyNames
-            - src/NativeLocaleNames
             - src/Publisher
             - src/Routes
             - src/StarterKits

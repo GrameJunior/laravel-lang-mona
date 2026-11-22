@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use LaravelLang\LocaleList\Locale;
+use LaravelLang\LocaleNames\LocaleData;
 use LaravelLang\Locales\Facades\Locales;
-use LaravelLang\NativeLocaleNames\LocaleData;
 use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Models\TestModel;
 use Workbench\App\Models\TestModelTranslation;

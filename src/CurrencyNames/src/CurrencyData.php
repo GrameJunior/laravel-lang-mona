@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\NativeLocaleNames;
+namespace LaravelLang\CurrencyNames;
 
-final readonly class LocaleData
+final readonly class CurrencyData
 {
     public function __construct(
+        public string $locale,
         public string $code,
-        public string $alias,
+        public ?int $numeric,
         public string $native,
         public string $localized,
     ) {}
