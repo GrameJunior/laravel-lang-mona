@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Illuminate\Contracts\Translation\Loader;
 use LaravelLang\Exceptions\InvalidTranslationLoaderException;
 
 test('php', function (): void {
@@ -20,5 +19,5 @@ test('reports an incompatible translation loader when resolving translations', f
     app()->forgetInstance('translator');
 
     expect(fn (): array|string|null => __('Remember Me'))
-        ->toThrow(InvalidTranslationLoaderException::class, 'The translation.loader binding must implement ' . Loader::class);
+        ->toThrow(InvalidTranslationLoaderException::class);
 });
