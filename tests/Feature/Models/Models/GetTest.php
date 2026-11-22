@@ -8,8 +8,11 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use LaravelLang\Exceptions\AttributeIsNotTranslatableException;
+use LaravelLang\Exceptions\InvalidStoredAttributeValueException;
 use LaravelLang\Exceptions\UnknownLocaleException;
 use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\Casts\TrimStringCast;
+use LaravelLang\Models\Eloquent\Translation;
 use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Constants\FakeValue;
 use Workbench\App\Models\TestModel;
@@ -121,6 +124,43 @@ test('loads raw translations as an ordinary Eloquent relation', function (): voi
 
     expect($model->translationsRaw->keys()->all())->toBe([0, 1])
         ->and($model->translationsRaw->pluck('title', 'locale')->all())->toMatchArray($translations);
+});
+
+test('eager loads translations when the model explicitly lists the relation', function (): void {
+    $saved = fakeTestModel(main: 'Bonjour');
+
+    $model = new class extends TestModel {
+        protected $table = 'test_models';
+
+        protected $with = ['translations'];
+
+        public function translationModel(): string
+        {
+            return TestModelTranslation::class;
+        }
+    };
+
+    $loaded = $model->newQuery()->findOrFail($saved->getKey());
+
+    expect($loaded->relationLoaded('translations'))->toBeTrue()
+        ->and($loaded->getTranslation(FakeValue::Title))->toBe('Bonjour');
+});
+
+test('supports translation casts declared as model properties', function (): void {
+    $translation = new class extends Translation {
+        protected $casts = ['title' => TrimStringCast::class];
+    };
+
+    $translation->title = ' Bonjour ';
+
+    expect($translation->title)->toBe('Bonjour');
+});
+
+test('rejects a non-scalar stored translation value on read', function (): void {
+    $translation = (new TestModelTranslation)->newFromBuilder(['title' => ['Bonjour']]);
+
+    expect(fn () => $translation->title)
+        ->toThrow(InvalidStoredAttributeValueException::class, 'The stored value must be a scalar or null.');
 });
 
 test('preserves a model constraint on default eager loaded translations', function (): void {

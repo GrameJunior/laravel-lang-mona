@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
+use Illuminate\Filesystem\Filesystem as BaseFilesystem;
 use LaravelLang\Exceptions\InvalidJsonEncodeException;
 use LaravelLang\Exceptions\InvalidTranslationFileContentException;
 use LaravelLang\Filesystem\Filesystem;
+use LaravelLang\Filesystem\Processors\JsonProcessor;
 
 test('replaces an existing PHP translation when merging is disabled', function (): void {
     $path       = lang_path('fr/replaced.php');
@@ -36,4 +38,21 @@ test('reports JSON encoding failures through the filesystem', function (): void 
 
     expect(fn () => app(Filesystem::class)->storeArray($path, ['invalid' => "\xFF"]))
         ->toThrow(InvalidJsonEncodeException::class, 'Malformed UTF-8');
+});
+
+test('preserves JSON translations when an encoder without throw-on-error fails', function (): void {
+    $this->instance(JsonProcessor::class, new class (app(BaseFilesystem::class)) extends JsonProcessor {
+        protected int $flags = JSON_PRETTY_PRINT;
+    });
+
+    $path       = lang_path('fr/encoded.json');
+    $filesystem = app(Filesystem::class);
+    $original   = ['valid' => 'Bonjour'];
+
+    $filesystem->storeArray($path, $original);
+
+    expect(fn () => $filesystem->storeArray($path, ['invalid' => "\xFF"]))
+        ->toThrow(InvalidJsonEncodeException::class, 'Malformed UTF-8');
+
+    expect($filesystem->read($path))->toBe($original);
 });

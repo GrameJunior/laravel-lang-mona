@@ -74,9 +74,20 @@ test('rejects invalid models before generating translations', function (string $
     'existing translation model' => [TestModel::class, 'already has a translation repository.'],
 ]);
 
-test('rejects non-string column names before generating translations', function (): void {
-    artisan('make:model-translation', ['model' => User::class, '--columns' => [123]])->run();
-})->throws(InvalidModelCommandInputException::class, 'Column names must be strings.');
+test('requires a model class name in programmatic calls', function (): void {
+    artisan('make:model-translation', ['model' => 123])
+        ->expectsOutputToContain('A model class name is required.')
+        ->assertFailed()
+        ->run();
+});
+
+test('rejects invalid column options before generating translations', function (array|string $columns, string $message): void {
+    expect(fn () => artisan('make:model-translation', ['model' => User::class, '--columns' => $columns])->run())
+        ->toThrow(InvalidModelCommandInputException::class, $message);
+})->with([
+    'non-string column' => [[123], 'Column names must be strings.'],
+    'non-array option'  => ['title', 'The columns option must be an array of column names.'],
+]);
 
 test('reports when the selected model is outside the configured directories', function (): void {
     config(['localization_models.directories' => []]);

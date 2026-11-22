@@ -384,6 +384,28 @@ it('preserves existing files when preparing, copying, or backing up fails', func
     'backing up'            => ['copyDirectory', 'previous', 'Unable to back up the existing source files.'],
 ]);
 
+it('reports a filesystem exception during backup and preserves the destination', function (): void {
+    $filesystem = Mockery::mock(Filesystem::class)->makePartial();
+    $filesystem->shouldReceive('copyDirectory')
+        ->once()
+        ->withArgs(fn (string $from, string $to): bool => basename($to) === 'previous')
+        ->andThrow(new RuntimeException('The backup filesystem is unavailable.'));
+
+    $target = $this->downloadRoot . '/source/framework/13.x';
+    $this->downloadFilesystem->ensureDirectoryExists($target);
+    $this->downloadFilesystem->put($target . '/original.txt', 'Original');
+    downloadFake($this->downloadHttp, $this->downloadWorkspaces, downloadZip($this->downloadRoot, [
+        'repo/app.php' => '<?php __("A message");',
+    ]));
+    $tester = downloadTester($filesystem, $this->downloadHttp);
+
+    expect($tester->execute(downloadOptions($this->downloadRoot)))->toBe(Command::FAILURE)
+        ->and($tester->getDisplay())->toContain('The backup filesystem is unavailable.')
+        ->and($this->downloadFilesystem->get($target . '/original.txt'))->toBe('Original')
+        ->and($this->downloadFilesystem->exists($target . '/framework.json'))->toBeFalse()
+        ->and($this->downloadFilesystem->isDirectory($this->downloadWorkspaces[0]))->toBeFalse();
+});
+
 it('restores previous files and removes new files after a partial publish fails', function (): void {
     $filesystem = new class extends Filesystem {
         public array $deletedDirectories = [];
