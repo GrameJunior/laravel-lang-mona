@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\NativeLocaleNames;
+namespace LaravelLang\LocaleNames;
 
 use Illuminate\Support\Collection;
 use LaravelLang\Config\Services\AliasLangConfig;

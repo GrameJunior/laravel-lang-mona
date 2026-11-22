@@ -16,12 +16,12 @@ updates:
             - src/Lang
             - src/Library
             - src/LocaleList
+            - src/LocaleNames
             - src/Locales
             - src/Models
             - src/MoonShine
             - src/NativeCountryNames
             - src/NativeCurrencyNames
-            - src/NativeLocaleNames
             - src/Publisher
             - src/Routes
             - src/StarterKits

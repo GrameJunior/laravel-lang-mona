@@ -108,7 +108,7 @@
 - [ ] Переименовать репозитории Native без слова Native.
     - [ ] NativeCountryNames
     - [ ] NativeCurrencyNames
-    - [ ] NativeLocaleNames
+    - [x] NativeLocaleNames
 - [ ] Проверить файлы `composer.json`:
     - [ ] Mona
     - [ ] Actions

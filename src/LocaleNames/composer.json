@@ -1,5 +1,5 @@
 {
-    "name": "laravel-lang/native-locale-names",
+    "name": "laravel-lang/locale-names",
     "description": "The project contains native translations of locale names",
     "license": "MIT",
     "type": "library",
@@ -25,8 +25,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/Laravel-Lang/native-locale-names/issues",
-        "source": "https://github.com/Laravel-Lang/native-locale-names"
+        "issues": "https://github.com/Laravel-Lang/locale-names/issues",
+        "source": "https://github.com/Laravel-Lang/locale-names"
     },
     "funding": [
         {
@@ -55,7 +55,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "LaravelLang\\NativeLocaleNames\\": "src/"
+            "LaravelLang\\LocaleNames\\": "src/"
         }
     },
     "autoload-dev": {
