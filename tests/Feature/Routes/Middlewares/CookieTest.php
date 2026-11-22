@@ -47,6 +47,16 @@ test('empty locale', function (int|string|null $locale): void {
     assertEventNotDispatched();
 })->with('incorrect locales');
 
+test('ignores a locale cookie containing an array', function (): void {
+    withCredentials()
+        ->withUnencryptedCookies([app(RouteNameLangConfig::class)->cookie => ['de']])
+        ->getJson(route('via.cookie', ['key' => 'test']))
+        ->assertSuccessful()
+        ->assertJsonPath('test', FakeTranslation::French);
+
+    assertEventNotDispatched();
+});
+
 test('uninstalled locale', function (string $locale): void {
     $foo = 'test';
 

@@ -57,6 +57,7 @@
         "dragon-code/benchmark": "^4.6",
         "driftingly/rector-laravel": "^2.7",
         "ergebnis/composer-normalize": "^2.57",
+        "larastan/larastan": "^3.15",
         "laravel/pint": "^1.32",
         "laravel/prompts": "^0.3.26",
         "orchestra/testbench": "^10.0 || ^11.0",
@@ -134,6 +135,7 @@
             "@php vendor/bin/pint --parallel --ansi"
         ],
         "test": "@php vendor/bin/pest --parallel",
-        "test:coverage": "@php -d xdebug.mode=coverage vendor/bin/pest --coverage --min=95"
+        "test:coverage": "@php -d xdebug.mode=coverage vendor/bin/pest --coverage --min=95",
+        "test:types": "@php vendor/bin/phpstan analyse --memory-limit=-1"
     }
 }

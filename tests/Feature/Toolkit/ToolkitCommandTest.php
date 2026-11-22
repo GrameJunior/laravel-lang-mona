@@ -65,10 +65,10 @@ it('prunes obsolete translations and preserves active translations and metadata'
     $directory = $command === 'sync:package' ? $package : $root;
 
     toolkitFile($package . '/laravel_lang.json', '{}');
-    toolkitFile($package . '/source/messages.json', '{"Hello":"Hello","0":"0"}');
+    toolkitFile($package . '/source/messages.json', '{"Hello":"Hello","0":"0","1":1}');
     toolkitFile($package . '/source/subdirectory/labels.php', '<?php return ["nested" => ["first" => "World"], "attributes" => []];');
     toolkitFile($package . '/source/_settings.json', '{"Obsolete":"Obsolete"}');
-    toolkitFile($locales . '/fr/messages.json', '{"Hello":"Bonjour","World":"Monde","Obsolete":"Périmé","0":"Zéro"}');
+    toolkitFile($locales . '/fr/messages.json', '{"Hello":"Bonjour","World":"Monde","Obsolete":"Périmé","0":"Zéro","1":"Un"}');
     toolkitFile($locales . '/fr/numeric.json', '{"0":"Zéro","Obsolete":"Périmé"}');
     toolkitFile($locales . '/fr/_settings.json', '{"excludes":["Hello"]}');
     toolkitFile($locales . '/fr/_status.json', '{"messages":{"Hello":"Hello"}}');
@@ -79,7 +79,7 @@ it('prunes obsolete translations and preserves active translations and metadata'
     expect($tester->getStatusCode())->toBe(Command::SUCCESS, $tester->getErrorOutput())
         ->and($tester->getErrorOutput())->toBe('')
         ->and($this->toolkitFilesystem->json($locales . '/fr/messages.json'))->toBe([
-            0 => 'Zéro', 'Hello' => 'Bonjour', 'World' => 'Monde',
+            0 => 'Zéro', 1 => 'Un', 'Hello' => 'Bonjour', 'World' => 'Monde',
         ])
         ->and(json_decode($this->toolkitFilesystem->get($locales . '/fr/numeric.json'), flags: JSON_THROW_ON_ERROR))
         ->toEqual(['0' => 'Zéro'])
@@ -208,4 +208,11 @@ it('creates and removes only the intended locale directories on repeated runs', 
         ->and($this->toolkitFilesystem->get($locales . '/_settings.json'))->toBe('{"excludes":[]}')
         ->and($this->toolkitFilesystem->get($locales . '/fr/messages.json'))->toBe('{"Hello":"Bonjour"}')
         ->and($this->toolkitFilesystem->get($neighbor . '/retired/messages.json'))->toBe('{"Hello":"Neighbor"}');
+});
+
+it('reports an error when deleting locales from a missing directory', function (): void {
+    $tester = runToolkit('delete-locale', ['directory' => $this->toolkitDirectory]);
+
+    expect($tester->getStatusCode())->toBe(Command::FAILURE)
+        ->and($tester->getErrorOutput())->toContain('The "locales" directory does not exist.');
 });

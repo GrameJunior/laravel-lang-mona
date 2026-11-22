@@ -73,6 +73,14 @@ test('unknown locale', function (int|string $locale): void {
     assertEventNotDispatched();
 })->with('unknown locales');
 
+test('ignores a locale header beyond the ICU length limit', function (): void {
+    getJson(route('via.header', ['key' => 'test']), ['Accept-Language' => str_repeat('a', 300)])
+        ->assertSuccessful()
+        ->assertJsonPath('test', FakeTranslation::French);
+
+    assertEventNotDispatched();
+});
+
 test('uses the fallback when an installed locale cannot be resolved', function (): void {
     $locales = Mockery::mock(Locales::getFacadeRoot());
     $locales->shouldReceive('info')->once()->with('en')->andThrow(new UnknownLocaleException('en'));

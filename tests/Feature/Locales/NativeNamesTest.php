@@ -32,7 +32,8 @@ test('looks up native names without translating them to a display locale', funct
     $names = app($service);
 
     expect($names->one('_native', 'fr_FR'))->native->toBe($french->native)
-        ->localized->toBe($french->native);
+        ->localized->toBe($french->native)
+        ->and($names->one(null, 'fr_FR'))->toEqual($names->one('_native', 'fr_FR'));
 })->with('native name services');
 
 test('sorts localized names for codes, aliases and enums', function (string $service, object $french): void {

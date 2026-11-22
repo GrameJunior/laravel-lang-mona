@@ -45,4 +45,5 @@ test('incorrect', function (Locale|string $locale): void {
 })->with([
     'data'   => [FakeLocale::Incorrect1],
     'string' => [FakeLocale::Incorrect2],
+    'empty'  => [''],
 ])->throws(UnknownLocaleException::class);

@@ -19,6 +19,7 @@ class CountryNames
         protected Filesystem $filesystem,
     ) {}
 
+    /** @return Collection<string, CountryData> */
     public function all(Locale|string|null $forLocale, ?SortDirection $direction = null): Collection
     {
         return (new Collection($this->read($forLocale)))
@@ -38,6 +39,7 @@ class CountryNames
         return $this->map($normalized, $items[$normalized]);
     }
 
+    /** @param array{code: string, native: string, localized: string} $item */
     protected function map(string $locale, array $item): CountryData
     {
         return new CountryData(
@@ -48,6 +50,7 @@ class CountryNames
         );
     }
 
+    /** @return array<string, array{code: string, native: string, localized: string}> */
     protected function read(Locale|string|null $locale): array
     {
         $normalized = $this->normalize($locale);
@@ -57,10 +60,8 @@ class CountryNames
 
     protected function normalize(Locale|string|null $locale): string
     {
-        if ($locale === $this->default) {
-            return $locale;
-        }
-
-        return $this->config->from($locale);
+        return $locale === $this->default
+            ? $locale
+            : $this->config->from($locale) ?? $this->default;
     }
 }

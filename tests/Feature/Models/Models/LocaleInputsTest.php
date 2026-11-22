@@ -6,6 +6,8 @@ use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
 use LaravelLang\NativeLocaleNames\LocaleData;
 use Workbench\App\Constants\FakeLocale;
+use Workbench\App\Models\TestModel;
+use Workbench\App\Models\TestModelTranslation;
 
 test('all forms of a locale refer to the same translation', function (Locale|LocaleData|string $input): void {
     $model         = fakeTestModel(main: 'Bonjour', fallback: 'Hallo');
@@ -51,3 +53,21 @@ test('the translation filter omits a third installed locale while the raw relati
     expect($model->translationsRaw()->orderBy('locale')->pluck('locale')->all())->toBe(['de', 'en', 'fr']);
     expect($model->getTranslation('title', FakeLocale::Custom))->toBe('Hello');
 })->with([true, false]);
+
+test('creates a translation using the configured relationship model', function (): void {
+    $model = new class extends TestModel {
+        protected $table = 'test_models';
+
+        public function translationModel(): string
+        {
+            return TestModelTranslation::class;
+        }
+    };
+
+    $translation = $model->translation(FakeLocale::Default);
+
+    expect($translation)
+        ->toBeInstanceOf(TestModelTranslation::class)
+        ->locale->toBe(FakeLocale::Default)
+        ->and($model->translation(FakeLocale::Default))->toBe($translation);
+});
