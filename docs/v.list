@@ -31,7 +31,7 @@
     <var name="install-locales" value="composer require laravel-lang/locales" />
     <var name="install-models" value="composer require laravel-lang/models" />
     <var name="install-moonshine" value="composer require --dev laravel-lang/moonshine" />
-    <var name="install-native-country-names" value="composer require laravel-lang/native-country-names" />
+    <var name="install-country-names" value="composer require laravel-lang/country-names" />
     <var name="install-native-currency-names" value="composer require laravel-lang/native-currency-names" />
     <var name="install-publisher" value="composer require --dev laravel-lang/publisher" />
     <var name="install-routes" value="composer require laravel-lang/routes" />
@@ -54,7 +54,7 @@
     <var name="package-locales" value="laravel-lang/locales" />
     <var name="package-models" value="laravel-lang/models" />
     <var name="package-moonshine" value="laravel-lang/moonshine" />
-    <var name="package-native-country-names" value="laravel-lang/native-country-names" />
+    <var name="package-country-names" value="laravel-lang/country-names" />
     <var name="package-native-currency-names" value="laravel-lang/native-currency-names" />
     <var name="package-publisher" value="laravel-lang/publisher" />
     <var name="package-routes" value="laravel-lang/routes" />
@@ -76,7 +76,7 @@
     <var name="repository-label-locale-list" value="locale-list" />
     <var name="repository-label-locale-names" value="native-locale-names" />
     <var name="repository-label-locales" value="locales" />
-    <var name="repository-label-native-country-names" value="native-country-names" />
+    <var name="repository-label-country-names" value="country-names" />
     <var name="repository-label-publisher" value="publisher" />
     <var name="repository-label-status-generator" value="status-generator" />
     <var name="repository-label-translations-template" value="translations-template" />
@@ -94,7 +94,7 @@
     <var name="repository-title-locales" value="Locales" />
     <var name="repository-title-models" value="Models" />
     <var name="repository-title-moonshine" value="MoonShine" />
-    <var name="repository-title-native-country-names" value="Native Country Names" />
+    <var name="repository-title-country-names" value="Country Names" />
     <var name="repository-title-publisher" value="Publisher" />
     <var name="repository-title-routes" value="Routes" />
     <var name="repository-title-starter-kits" value="Starter Kits" />

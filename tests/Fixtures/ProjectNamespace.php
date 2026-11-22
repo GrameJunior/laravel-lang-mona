@@ -8,6 +8,7 @@ class ProjectNamespace
 {
     public const array All = [
         'LaravelLang\Config',
+        'LaravelLang\CountryNames',
         'LaravelLang\CurrencyNames',
         'LaravelLang\Exceptions',
         'LaravelLang\Filesystem',
@@ -16,7 +17,6 @@ class ProjectNamespace
         'LaravelLang\LocaleNames',
         'LaravelLang\Locales',
         'LaravelLang\Models',
-        'LaravelLang\NativeCountryNames',
         'LaravelLang\Publisher',
         'LaravelLang\Routes',
         'LaravelLang\Toolkit',

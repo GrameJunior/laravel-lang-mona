@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
+use LaravelLang\CountryNames\CountryNames;
 use LaravelLang\CurrencyNames\CurrencyNames;
 use LaravelLang\LocaleNames\LocaleNames;
-use LaravelLang\NativeCountryNames\CountryNames;
 
 arch('facade')
     ->expect([

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
+use LaravelLang\CountryNames\CountryData;
 use LaravelLang\CurrencyNames\CurrencyData;
 use LaravelLang\LocaleNames\LocaleData;
-use LaravelLang\NativeCountryNames\CountryData;
 
 arch('protect')
     ->expect([

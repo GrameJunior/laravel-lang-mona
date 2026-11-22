@@ -106,7 +106,7 @@
     - [x] Повысить уровень анализа, хотя бы, до 7
 - [x] Вынести все экспешены в `LaravelLang/Exceptions`
 - [ ] Переименовать репозитории Native без слова Native.
-    - [ ] NativeCountryNames
+    - [x] NativeCountryNames
     - [x] CurrencyNames
     - [x] NativeLocaleNames
 - [ ] Проверить файлы `composer.json`:

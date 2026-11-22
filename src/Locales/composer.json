@@ -31,9 +31,9 @@
         "archtechx/enums": "^0.3.2 || ^1.0",
         "illuminate/collections": "^10.0 || ^11.0 || ^12.0 || ^13.0 || dev-master",
         "laravel-lang/config": "^1.12",
+        "laravel-lang/country-names": "^1.5",
         "laravel-lang/locale-list": "^1.5",
-        "laravel-lang/locale-names": "^3.0",
-        "laravel-lang/native-country-names": "^1.5"
+        "laravel-lang/locale-names": "^3.0"
     },
     "require-dev": {
         "orchestra/testbench": "^8.0 || ^9.0 || ^10.0 || ^11.0",

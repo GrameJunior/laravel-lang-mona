@@ -55,7 +55,7 @@
                     <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?assignees=%repository-assign-bugs%&amp;labels=bug%2C%repository-label-http-statuses%&amp;template=bug_report.yml&amp;title=%5BBug%5D%3A+&amp;environment-package-name=%package-http-statuses%">%repository-title-http-statuses%</a>
                 </li>
                 <li>
-                    <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?assignees=%repository-assign-bugs%&amp;labels=bug%2C%repository-label-native-country-names%&amp;template=bug_report.yml&amp;title=%5BBug%5D%3A+&amp;environment-package-name=%package-native-country-names%">%repository-title-native-country-names%</a>
+                    <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?assignees=%repository-assign-bugs%&amp;labels=bug%2C%repository-label-country-names%&amp;template=bug_report.yml&amp;title=%5BBug%5D%3A+&amp;environment-package-name=%package-country-names%">%repository-title-country-names%</a>
                 </li>
                 <li>
                     <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?assignees=%repository-assign-bugs%&amp;labels=bug%2C%repository-label-currency-names%&amp;template=bug_report.yml&amp;title=%5BBug%5D%3A+&amp;environment-package-name=%package-currency-names%">%repository-title-currency-names%</a>
@@ -112,7 +112,7 @@
                     <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?labels=feature%2C%repository-label-http-statuses%&amp;projects=&amp;template=feature_request.yml">%repository-title-http-statuses%</a>
                 </li>
                 <li>
-                    <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?labels=feature%2C%repository-label-native-country-names%&amp;projects=&amp;template=feature_request.yml">%repository-title-native-country-names%</a>
+                    <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?labels=feature%2C%repository-label-country-names%&amp;projects=&amp;template=feature_request.yml">%repository-title-country-names%</a>
                 </li>
                 <li>
                     <a href="https://github.com/Laravel-Lang/%repository-bugs%/issues/new?labels=feature%2C%repository-label-currency-names%&amp;projects=&amp;template=feature_request.yml">%repository-title-currency-names%</a>
