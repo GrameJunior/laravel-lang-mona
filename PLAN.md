@@ -105,10 +105,11 @@
 - [x] Применить стат анализ (PhpStan)
     - [x] Повысить уровень анализа, хотя бы, до 7
 - [x] Вынести все экспешены в `LaravelLang/Exceptions`
-- [ ] Переименовать репозитории Native без слова Native.
+- [x] Переименовать репозитории Native без слова Native.
     - [x] NativeCountryNames
-    - [x] CurrencyNames
+    - [x] NativeCurrencyNames
     - [x] NativeLocaleNames
+- [x] Перенести код утилит в Toolkit (папка `.utils`)
 - [ ] Проверить файлы `composer.json`:
     - [ ] Mona
     - [ ] Actions
@@ -141,7 +142,6 @@
 - [ ] Обновить README в проектах.
 - [ ] Реализовать split репозитории (посмотреть как это сделано в
   MoonShine https://github.com/moonshine-software/moonshine/blob/5.x/repair-monorepo.sh).
-- [x] Перенести код утилит в Toolkit (папка `.utils`)
 - [ ] Обновить файлы переводов через утилиту миграции.
 - [ ] Актуализировать GitHub Actions
     - [ ] dependabot
