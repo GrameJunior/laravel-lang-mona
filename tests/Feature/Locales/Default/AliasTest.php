@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use LaravelLang\LocaleList\Locale;
+use LaravelLang\LocaleNames\LocaleData;
 use LaravelLang\Locales\Facades\Locales;
-use LaravelLang\NativeLocaleNames\LocaleData;
 
 test('returns no locale code or alias for an empty string', function (): void {
     expect(Locales::fromAlias(''))->toBeNull()

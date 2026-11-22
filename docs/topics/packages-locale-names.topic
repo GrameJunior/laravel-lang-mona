@@ -4,7 +4,7 @@
 <topic
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-    title="Locale Names" id="packages-native-locale-names">
+    title="Locale Names" id="packages-locale-names">
 
     <show-structure depth="2" />
 
@@ -13,10 +13,10 @@
     <web-summary>Translation of locale names</web-summary>
 
     <primary-label ref="stable" />
-    <secondary-label ref="package-native-locale-names" />
+    <secondary-label ref="package-locale-names" />
 
     <include from="library-share.topic" element-id="view_on_github">
-        <var name="package" value="%package-native-locale-names%" />
+        <var name="package" value="%package-locale-names%" />
     </include>
 
     <tip>
@@ -24,7 +24,7 @@
     </tip>
 
     <chapter title="Installation" id="installation">
-        <link-summary>Installation information for the %repository-title-native-locale-names% package</link-summary>
+        <link-summary>Installation information for the %repository-title-locale-names% package</link-summary>
 
         <note>
             The compatibility table can be viewed <a href="#compatibility">here</a>.
@@ -35,26 +35,28 @@
         </p>
 
         <code-block lang="bash">
-            %install-native-locale-names%
+            %install-locale-names%
         </code-block>
     </chapter>
 
     <chapter title="Usage" id="usage">
-        <link-summary>Usage information for the %repository-title-native-locale-names% package</link-summary>
+        <link-summary>Usage information for the %repository-title-locale-names% package</link-summary>
 
         <chapter title="Localized Names" id="localized_names">
             <code-block lang="php">
-                use LaravelLang\NativeLocaleNames\LocaleNames;
                 use LaravelLang\LocaleList\Locale;
+                use LaravelLang\LocaleNames\LocaleNames;
 
-                return LocaleNames::get('bn');
+                $names = app(LocaleNames::class);
+
+                return $names->all('bn')->pluck('localized', 'code')->all();
                 // or
-                return LocaleNames::get(Locale::Bengali);
+                return $names->all(Locale::Bengali)->pluck('localized', 'code')->all();
             </code-block>
 
             <code-block
                 lang="php"
-                src="usage-native-locale-names-localized-names.txt"
+                src="usage-locale-names-localized-names.txt"
                 collapsed-title="Show result"
                 collapsible="true"
                 default-state="collapsed"
@@ -63,26 +65,18 @@
 
         <chapter title="Native Names" id="native_names">
             <p>
-                You can also get a list of localized names if you call the
-                <code>get</code> method without passing parameters.
-                The same thing will happen if you pass an incorrect or empty value to the parameter.
+                Pass <code>null</code> or an empty string to <code>all</code> to get names in their native languages.
             </p>
 
             <code-block lang="php">
-                use LaravelLang\NativeLocaleNames\LocaleNames;
+                use LaravelLang\LocaleNames\LocaleNames;
 
-                return LocaleNames::get();
-                // or
-                return LocaleNames::get('');
-                // or
-                return LocaleNames::get(null);
-                // or
-                return LocaleNames::get('foo');
+                return app(LocaleNames::class)->all(null)->pluck('native', 'code')->all();
             </code-block>
 
             <code-block
                 lang="php"
-                src="usage-native-locale-names-native-names.txt"
+                src="usage-locale-names-native-names.txt"
                 collapsed-title="Show result"
                 collapsible="true"
                 default-state="collapsed"
@@ -91,23 +85,20 @@
 
         <chapter title="Sorting" id="sorting">
             <p>
-                To get the result sorted by key or value, pass <code>SortBy</code> to the enum parameter.
-            </p>
-            <p>
-                By default, sorting by values is applied.
+                Use <code>sortKeys</code> on the collection to sort by locale code, or pass a <code>SortDirection</code>
+                to <code>all</code> to sort by localized name.
             </p>
 
             <chapter title="Sort by keys" id="sort_by_keys">
                 <code-block lang="php">
-                    use LaravelLang\NativeLocaleNames\LocaleNames;
-                    use LaravelLang\NativeLocaleNames\Enums\SortBy;
+                    use LaravelLang\LocaleNames\LocaleNames;
 
-                    return LocaleNames::get('en', SortBy::Key);
+                    return app(LocaleNames::class)->all('en')->sortKeys()->pluck('localized', 'code')->all();
                 </code-block>
 
                 <code-block
                     lang="php"
-                    src="usage-native-locale-names-sort-by-keys.txt"
+                    src="usage-locale-names-sort-by-keys.txt"
                     collapsed-title="Show result"
                     collapsible="true"
                     default-state="collapsed"
@@ -116,17 +107,17 @@
 
             <chapter title="Sort by values" id="sort_by_values">
                 <code-block lang="php">
-                    use LaravelLang\NativeLocaleNames\LocaleNames;
-                    use LaravelLang\NativeLocaleNames\Enums\SortBy;
+                    use LaravelLang\LocaleNames\LocaleNames;
 
-                    return LocaleNames::get('en', SortBy::Value);
-                    // or
-                    return LocaleNames::get('en');
+                    return app(LocaleNames::class)
+                        ->all('en', \SortDirection::Ascending)
+                        ->pluck('localized', 'code')
+                        ->all();
                 </code-block>
 
                 <code-block
                     lang="php"
-                    src="usage-native-locale-names-sort-by-values.txt"
+                    src="usage-locale-names-sort-by-values.txt"
                     collapsed-title="Show result"
                     collapsible="true"
                     default-state="collapsed"
@@ -136,7 +127,9 @@
     </chapter>
 
     <chapter title="Compatibility" id="compatibility">
-        <link-summary>Compatibility table for the %repository-title-native-locale-names% package</link-summary>
+        <link-summary>Compatibility table for the %repository-title-locale-names% package</link-summary>
+
+        <p>The versions below were published as <code>laravel-lang/native-locale-names</code>.</p>
 
         <table>
             <tr>

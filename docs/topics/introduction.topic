@@ -41,9 +41,9 @@
                 <a href="packages-actions.topic" />
                 <a href="packages-attributes.topic" />
                 <a href="packages-http-statuses.topic" />
-                <a href="packages-native-locale-names.topic" />
+                <a href="packages-locale-names.topic" />
                 <a href="packages-country-names.topic" />
-                <a href="packages-native-currency-names.topic" />
+                <a href="packages-currency-names.topic" />
             </cards>
 
             <cards>

@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use LaravelLang\CountryNames\CountryNames;
-use LaravelLang\NativeCurrencyNames\CurrencyNames;
-use LaravelLang\NativeLocaleNames\LocaleNames;
+use LaravelLang\CurrencyNames\CurrencyNames;
+use LaravelLang\LocaleNames\LocaleNames;
 
 arch('facade')
     ->expect([

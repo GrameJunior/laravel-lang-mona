@@ -15,17 +15,17 @@ body:
                 - laravel-lang/attributes
                 - laravel-lang/common
                 - laravel-lang/config
+                - laravel-lang/country-names
+                - laravel-lang/currency-names
                 - laravel-lang/http-statuses
                 - laravel-lang/json-fallback
                 - laravel-lang/lang
                 - laravel-lang/library
                 - laravel-lang/locale-list
+                - laravel-lang/locale-names
                 - laravel-lang/locales
                 - laravel-lang/models
                 - laravel-lang/moonshine
-                - laravel-lang/country-names
-                - laravel-lang/native-currency-names
-                - laravel-lang/native-locale-names
                 - laravel-lang/publisher
                 - laravel-lang/routes
                 - laravel-lang/starter-kits
