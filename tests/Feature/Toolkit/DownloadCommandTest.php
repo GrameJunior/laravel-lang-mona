@@ -9,6 +9,7 @@ use LaravelLang\Toolkit\Services\TranslationFilesService;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\Process\Process;
 
 beforeEach(function (): void {
     $this->downloadFilesystem = new Filesystem;
@@ -329,13 +330,17 @@ it('reports a ZIP extraction failure without publishing', function (): void {
 
 it('leaves an existing destination with a symbolic link untouched', function (): void {
     $target     = $this->downloadRoot . '/source/framework/13.x';
-    $linkedFile = $this->downloadRoot . '/original.txt';
+    $linkedFile = dirname($target) . '/original.txt';
+    $link       = $target . '/link.txt';
     $this->downloadFilesystem->ensureDirectoryExists($target);
     $this->downloadFilesystem->put($linkedFile, 'Original');
 
-    if (! function_exists('symlink') || ! @symlink($linkedFile, $target . '/link.txt')) {
-        $this->markTestSkipped('Creating symbolic links is unavailable.');
-    }
+    $relativeTarget = '../' . basename($linkedFile);
+    $command        = PHP_OS_FAMILY === 'Windows'
+        ? ['cmd.exe', '/d', '/c', 'mklink', basename($link), str_replace('/', '\\', $relativeTarget)]
+        : ['ln', '-s', $relativeTarget, basename($link)];
+
+    (new Process($command, $target))->mustRun();
 
     downloadFake($this->downloadHttp, $this->downloadWorkspaces, downloadZip($this->downloadRoot, [
         'repo/app.php' => '<?php __("A message");',
@@ -344,7 +349,8 @@ it('leaves an existing destination with a symbolic link untouched', function ():
 
     expect($tester->execute(downloadOptions($this->downloadRoot)))->toBe(Command::FAILURE)
         ->and($tester->getDisplay())->toContain('Symbolic links are not allowed in source files:')
-        ->and(is_link($target . '/link.txt'))->toBeTrue()
+        ->and(is_link($link))->toBeTrue()
+        ->and(realpath($link))->toBe(realpath($linkedFile))
         ->and($this->downloadFilesystem->get($linkedFile))->toBe('Original')
         ->and($this->downloadFilesystem->exists($target . '/framework.json'))->toBeFalse();
 });
