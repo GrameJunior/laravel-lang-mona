@@ -105,8 +105,10 @@
 - [x] Применить стат анализ (PhpStan)
     - [x] Повысить уровень анализа, хотя бы, до 7
 - [x] Вынести все экспешены в `LaravelLang/Exceptions`
-- [ ] Добавить мутационные тесты (`"vendor/bin/pest --mutate --covered-only --min=85"`)
 - [ ] Переименовать репозитории Native без слова Native.
+    - [ ] NativeCountryNames
+    - [ ] NativeCurrencyNames
+    - [ ] NativeLocaleNames
 - [ ] Проверить файлы `composer.json`:
     - [ ] Mona
     - [ ] Actions
@@ -137,7 +139,8 @@
     - [ ] Добавить новую версию на сайт
     - [ ] Добавить информацию по апгрейду до 20-й версии
 - [ ] Обновить README в проектах.
-- [ ] Реализовать split репозитории (посмотреть как это сделано в MoonShine и Laravel. Взять у них или написать своё).
+- [ ] Реализовать split репозитории (посмотреть как это сделано в
+  MoonShine https://github.com/moonshine-software/moonshine/blob/5.x/repair-monorepo.sh).
 - [ ] Перенести код утилит в Toolkit (папка `.utils`)
 - [ ] Обновить файлы переводов через утилиту миграции.
 - [ ] Актуализировать GitHub Actions
