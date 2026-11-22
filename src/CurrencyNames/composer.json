@@ -1,5 +1,5 @@
 {
-    "name": "laravel-lang/native-currency-names",
+    "name": "laravel-lang/currency-names",
     "description": "The project contains native translations of currency names",
     "license": "MIT",
     "type": "library",
@@ -26,8 +26,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/Laravel-Lang/native-currency-names/issues",
-        "source": "https://github.com/Laravel-Lang/native-currency-names"
+        "issues": "https://github.com/Laravel-Lang/mona/issues",
+        "source": "https://github.com/Laravel-Lang/mona"
     },
     "funding": [
         {
@@ -58,7 +58,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "LaravelLang\\NativeCurrencyNames\\": "src/"
+            "LaravelLang\\CurrencyNames\\": "src/"
         }
     },
     "autoload-dev": {

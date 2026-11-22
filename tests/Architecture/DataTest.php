@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
+use LaravelLang\CurrencyNames\CurrencyData;
 use LaravelLang\NativeCountryNames\CountryData;
-use LaravelLang\NativeCurrencyNames\CurrencyData;
 use LaravelLang\NativeLocaleNames\LocaleData;
 
 arch('protect')
