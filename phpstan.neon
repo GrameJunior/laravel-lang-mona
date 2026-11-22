@@ -1,5 +1,7 @@
 parameters:
-    level: 8
+    level: 9
     paths:
         - src/
         - workbench/app/Models/
+    stubFiles:
+        - resources/phpstan/Request.stub

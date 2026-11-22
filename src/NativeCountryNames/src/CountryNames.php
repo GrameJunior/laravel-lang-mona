@@ -9,6 +9,10 @@ use LaravelLang\Config\Services\AliasLangConfig;
 use LaravelLang\Filesystem\Filesystem;
 use LaravelLang\LocaleList\Locale;
 use SortDirection;
+use UnexpectedValueException;
+
+use function is_array;
+use function is_string;
 
 class CountryNames
 {
@@ -22,8 +26,17 @@ class CountryNames
     /** @return Collection<string, CountryData> */
     public function all(Locale|string|null $forLocale, ?SortDirection $direction = null): Collection
     {
-        return (new Collection($this->read($forLocale)))
-            ->map(fn (array $item, string $locale): CountryData => $this->map($locale, $item))
+        $items = [];
+
+        foreach ($this->read($forLocale) as $locale => $item) {
+            if (! is_string($locale)) {
+                throw new UnexpectedValueException("Invalid locale code [$locale] in the country data.");
+            }
+
+            $items[$locale] = $this->mapRow($locale, $item);
+        }
+
+        return (new Collection($items))
             ->when($direction !== null, fn (Collection $items) => $items->sortBy(
                 callback  : 'localized',
                 descending: $direction === SortDirection::Descending
@@ -36,10 +49,10 @@ class CountryNames
 
         $items = $this->read($forLocale);
 
-        return $this->map($normalized, $items[$normalized]);
+        return $this->mapRow($normalized, $items[$normalized]);
     }
 
-    /** @param array{code: string, native: string, localized: string} $item */
+    /** @param  array{code: string, native: string, localized: string}  $item */
     protected function map(string $locale, array $item): CountryData
     {
         return new CountryData(
@@ -50,7 +63,7 @@ class CountryNames
         );
     }
 
-    /** @return array<string, array{code: string, native: string, localized: string}> */
+    /** @return array<array-key, mixed> */
     protected function read(Locale|string|null $locale): array
     {
         $normalized = $this->normalize($locale);
@@ -63,5 +76,19 @@ class CountryNames
         return $locale === $this->default
             ? $locale
             : $this->config->from($locale) ?? $this->default;
+    }
+
+    protected function mapRow(string $locale, mixed $item): CountryData
+    {
+        if (
+            ! is_array($item)
+            || ! is_string($item['code'] ?? null)
+            || ! is_string($item['native'] ?? null)
+            || ! is_string($item['localized'] ?? null)
+        ) {
+            throw new UnexpectedValueException("Invalid country data for [$locale].");
+        }
+
+        return $this->map($locale, $item);
     }
 }
