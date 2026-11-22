@@ -2,8 +2,13 @@
 
 declare(strict_types=1);
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
+use LaravelLang\Exceptions\InvalidLocalesArgumentException;
+use LaravelLang\Exceptions\InvalidTranslationKeyException;
 use LaravelLang\Exceptions\InvalidTranslationPluginException;
+use LaravelLang\Exceptions\InvalidTranslationSkipPatternException;
+use LaravelLang\Exceptions\PathSearchException;
 use LaravelLang\Locales\Facades\Locales;
 use LaravelLang\Publisher\Collectors\PluginCollector;
 
@@ -26,6 +31,14 @@ beforeEach(function (): void {
 afterEach(function (): void {
     File::deleteDirectory($this->publisherRoot);
 });
+
+test('rejects malformed locale arguments passed through Artisan', function (string $command, mixed $locales, string $message): void {
+    expect(fn () => artisan($command, ['locales' => $locales])->run())
+        ->toThrow(InvalidLocalesArgumentException::class, $message);
+})->with(['lang:add', 'lang:rm'])->with([
+    'single value'      => ['sv', 'The locales argument must be an array.'],
+    'non-string member' => [[17], 'Each locale must be a string.'],
+]);
 
 describe('removing locales', function (): void {
     beforeEach(function (): void {
@@ -154,6 +167,21 @@ describe('removing locales', function (): void {
         }
     });
 
+    test('keeps translations when the vendor directories cannot be listed', function (): void {
+        artisan('lang:add', ['locales' => ['sv']])->assertSuccessful()->run();
+
+        $paths    = publisherTranslationPaths('sv');
+        $contents = array_map(File::get(...), $paths);
+
+        $this->partialMock(Filesystem::class)
+            ->shouldReceive('glob')->once()->with(lang_path('vendor/*'), GLOB_ONLYDIR)->andReturnFalse();
+
+        expect(fn () => artisan('lang:rm', ['locales' => ['sv']])->run())
+            ->toThrow(PathSearchException::class, 'Unable to find vendor translation directories.');
+
+        expect(array_map(File::get(...), $paths))->toBe($contents);
+    });
+
     test('asks before removing all unprotected locales', function (string $confirmation): void {
         artisan('lang:add', ['locales' => ['en', 'sv']])->assertSuccessful()->run();
 
@@ -271,6 +299,89 @@ describe('updating locales from installed manifests', function (): void {
             ->and(lang_path('fr/skip-source.php'))->not->toBeFile()
             ->and(File::get($skippedTarget))->toBe($originalTarget);
     });
+
+    test('rejects a stream resource as a skip pattern', function (): void {
+        $pattern = fopen('php://memory', 'r+');
+
+        try {
+            config()->set('localization_main.skip', [$pattern]);
+
+            expect(fn () => artisan('lang:update')->run())
+                ->toThrow(InvalidTranslationSkipPatternException::class, 'Translation skip patterns must be convertible to strings.');
+
+            expect(File::getRequire(lang_path('fr/messages.php')))->toBe(['nested' => ['custom' => 'Custom PHP']]);
+        } finally {
+            fclose($pattern);
+        }
+    });
+});
+
+test('publishes translations when a versioned dependency is replaced by Laravel', function (): void {
+    writePublisherPackage('tests/replaced', ['vendor' => 'illuminate/support', 'version' => '*'], [
+        'messages.php' => '{locale}/messages.php',
+    ], [
+        'source/messages.php'     => ['greeting' => 'Hello'],
+        'locales/fr/default.json' => ['Hello' => 'Bonjour'],
+    ]);
+
+    artisan('lang:update')->assertSuccessful()->run();
+
+    expect(File::getRequire(lang_path('fr/messages.php')))->toBe(['greeting' => 'Bonjour']);
+});
+
+test('resolves scalar PHP source values against the translation dictionary', function (): void {
+    writePublisherPackage('tests/translations', [], ['values.php' => '{locale}/values.php'], [
+        'source/values.php'       => ['boolean' => false, 'float' => 1.5, 'null' => null],
+        'locales/fr/default.json' => ['Zero', 'One', '' => 'Empty'],
+    ]);
+
+    artisan('lang:update')->assertSuccessful()->run();
+
+    expect(File::getRequire(lang_path('fr/values.php')))->toBe([
+        'boolean' => 'Zero',
+        'float'   => 'One',
+        'null'    => 'Empty',
+    ]);
+});
+
+test('rejects non-scalar PHP source values before writing the corresponding translation', function (): void {
+    $target = lang_path('fr/messages.php');
+
+    writePublisherPackage('tests/translations', [], ['messages.php' => '{locale}/messages.php'], [
+        'source/messages.php' => ['message' => new stdClass],
+    ]);
+    writePublisherFiles([$target => ['message' => 'Keep this translation']]);
+
+    expect(fn () => artisan('lang:update')->run())
+        ->toThrow(InvalidTranslationKeyException::class, 'Translation keys must be scalar or null.');
+
+    expect(File::getRequire($target))->toBe(['message' => 'Keep this translation']);
+});
+
+test('publishes valid entries alongside a non-object plugin entry', function (): void {
+    $directory = base_path('vendor/tests/translations');
+
+    writePublisherFiles([
+        "$directory/laravel_lang.json" => ['plugins' => [null, [
+            'files' => [['source' => 'messages.php', 'target' => '{locale}/messages.php']],
+        ]]],
+        "$directory/source/messages.php"     => ['greeting' => 'Hello'],
+        "$directory/locales/fr/default.json" => ['Hello' => 'Bonjour'],
+    ]);
+
+    artisan('lang:update')->assertSuccessful()->run();
+
+    expect(File::getRequire(lang_path('fr/messages.php')))->toBe(['greeting' => 'Bonjour']);
+});
+
+test('reports when installed plugin manifests cannot be listed', function (): void {
+    $pattern = base_path('vendor/*/*/laravel_lang.json');
+
+    $this->partialMock(Filesystem::class)
+        ->shouldReceive('glob')->once()->with($pattern, 0)->andReturnFalse();
+
+    expect(fn () => artisan('lang:update')->run())
+        ->toThrow(PathSearchException::class, "Unable to find paths matching [$pattern].");
 });
 
 test('updates translations from project manifests based on the root project and force configuration', function (

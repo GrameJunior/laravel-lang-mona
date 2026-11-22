@@ -135,7 +135,7 @@
             "@php vendor/bin/pint --parallel --ansi"
         ],
         "test": "@php vendor/bin/pest --parallel",
-        "test:coverage": "@php -d xdebug.mode=coverage vendor/bin/pest --coverage --min=95",
+        "test:coverage": "@php -d xdebug.mode=coverage vendor/bin/pest --coverage --min=99",
         "test:types": "@php vendor/bin/phpstan analyse --memory-limit=-1"
     }
 }

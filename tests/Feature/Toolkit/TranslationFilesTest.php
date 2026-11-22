@@ -104,3 +104,15 @@ test('storing translations in a non-JSON file leaves it untouched', function ():
         )
         ->and($this->translationFilesystem->get($path))->toBe($content);
 });
+
+test('reports a failed translation write with the destination path', function (): void {
+    $path = $this->translationsDirectory . '/messages.json';
+    $this->translationFilesystem->put($path, '{"message":"Original"}');
+
+    $filesystem = Mockery::mock(Filesystem::class);
+    $filesystem->shouldReceive('put')->once()->with($path, Mockery::type('string'))->andReturnFalse();
+
+    expect(fn () => (new TranslationFilesService($filesystem))->store($path, ['message' => 'New']))
+        ->toThrow(TranslationFileException::class, "Unable to write translation file [$path]: The translation file could not be written.")
+        ->and($this->translationFilesystem->get($path))->toBe('{"message":"Original"}');
+});
