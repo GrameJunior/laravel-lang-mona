@@ -193,6 +193,13 @@ test('creates translations from a generator keyed by locale enums', function ():
         ->and($model->getTranslation(FakeValue::Title, Locale::German))->toBe('Hallo');
 });
 
+test('rejects a translation list without locale keys', function (): void {
+    TestModel::create([
+        'key'            => FakeLocale::Incorrect1,
+        FakeValue::Title => ['Bonjour'],
+    ]);
+})->throws(TypeError::class, 'The translation locale key must be');
+
 test('uninstalled', function (): void {
     TestModel::create([
         'key' => FakeLocale::Incorrect1,
