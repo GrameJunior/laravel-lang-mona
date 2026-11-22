@@ -6,10 +6,10 @@ namespace LaravelLang\NativeLocaleNames;
 
 use Illuminate\Support\Collection;
 use LaravelLang\Config\Services\AliasLangConfig;
+use LaravelLang\Exceptions\InvalidNativeNameDataException;
 use LaravelLang\Filesystem\Filesystem;
 use LaravelLang\LocaleList\Locale;
 use SortDirection;
-use UnexpectedValueException;
 
 use function is_array;
 use function is_string;
@@ -30,7 +30,7 @@ class LocaleNames
 
         foreach ($this->read($forLocale) as $locale => $item) {
             if (! is_string($locale)) {
-                throw new UnexpectedValueException("Invalid locale code [$locale] in the locale data.");
+                throw InvalidNativeNameDataException::invalidLocaleCode($locale, 'locale');
             }
 
             $items[$locale] = $this->mapRow($locale, $item);
@@ -85,7 +85,7 @@ class LocaleNames
             || ! is_string($item['native'] ?? null)
             || ! is_string($item['localized'] ?? null)
         ) {
-            throw new UnexpectedValueException("Invalid locale data for [$locale].");
+            throw InvalidNativeNameDataException::invalidRow($locale, 'locale');
         }
 
         return $this->map($locale, $item);

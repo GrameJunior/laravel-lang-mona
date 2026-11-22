@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Filesystem\Filesystem;
+use LaravelLang\Exceptions\InvalidJsonEncodeException;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
@@ -31,8 +32,14 @@ foreach ($fs->files(__DIR__ . '/data') as $file) {
         }
     }
 
-    $fs->put(
-        $file->getPathname(),
-        json_encode($content, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
-    );
+    try {
+        $encoded = json_encode(
+            $content,
+            JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
+        );
+    } catch (JsonException $exception) {
+        throw InvalidJsonEncodeException::from($exception);
+    }
+
+    $fs->put($file->getPathname(), $encoded);
 }

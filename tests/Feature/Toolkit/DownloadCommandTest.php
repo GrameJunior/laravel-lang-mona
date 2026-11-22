@@ -253,7 +253,7 @@ it('rejects missing or unsafe options before downloading', function (array $opti
     'absolute copy path'             => [['--paths' => ['/outside']]],
 ]);
 
-it('preserves prior files and cleans temporary data on download or processing failures', function (string $failure): void {
+it('preserves prior files and cleans temporary data on download or processing failures', function (string $failure, string $message): void {
     $target = $this->downloadRoot . '/source/framework/13.x';
     $this->downloadFilesystem->ensureDirectoryExists($target);
     $this->downloadFilesystem->put($target . '/en.json', '{"Original": "Original"}');
@@ -274,13 +274,22 @@ it('preserves prior files and cleans temporary data on download or processing fa
     $tester = downloadTester($this->downloadFilesystem, $this->downloadHttp);
 
     expect($tester->execute(downloadOptions($this->downloadRoot, ['--paths' => ['lang']])))->toBe(Command::FAILURE)
+        ->and($tester->getDisplay())->toContain($message)
         ->and($this->downloadWorkspaces)->toHaveCount(1)
         ->and($this->downloadFilesystem->get($target . '/en.json'))->toBe('{"Original": "Original"}')
         ->and($this->downloadFilesystem->glob($target . '/*'))->toHaveCount(1)
         ->and($this->downloadFilesystem->glob($this->downloadRoot . '/source/.download-*'))->toBe([])
         ->and($this->downloadFilesystem->get($this->downloadRoot . '/tmp/unrelated/keep.txt'))->toBe('Keep');
     expect(is_dir($this->downloadWorkspaces[0]))->toBeFalse();
-})->with(['HTTP failure', 'invalid ZIP', 'traversal', 'backslash entry', 'symlink', 'invalid JSON', 'missing path']);
+})->with([
+    'HTTP failure'    => ['HTTP failure', 'HTTP request returned status code 404'],
+    'invalid ZIP'     => ['invalid ZIP', 'The downloaded file is not a readable ZIP archive.'],
+    'traversal'       => ['traversal', 'Unsafe relative path: ../escape.txt.'],
+    'backslash entry' => ['backslash entry', 'Invalid ZIP entry path.'],
+    'symlink'         => ['symlink', 'Symbolic links are not allowed in ZIP archives: repo/link.'],
+    'invalid JSON'    => ['invalid JSON', 'Unable to read translation file'],
+    'missing path'    => ['missing path', 'Translation directory does not exist: lang.'],
+]);
 
 it('rejects an empty ZIP archive and cleans up the download', function (): void {
     // An empty ZIP consists of the end-of-central-directory record.

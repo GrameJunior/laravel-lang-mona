@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\File;
+use LaravelLang\Exceptions\InvalidTranslationPluginException;
 use LaravelLang\Locales\Facades\Locales;
 use LaravelLang\Publisher\Collectors\PluginCollector;
 
@@ -323,6 +324,30 @@ test('updates nested JSON translations and skips empty sources and excluded styl
     expect(File::json(lang_path('fr/nested.json')))->toBe(['menu' => ['hello' => 'Bonjour', 'bye' => 'Au revoir']])
         ->and(lang_path('fr/empty.php'))->not->toBeFile();
 });
+
+test('rejects invalid translation plugin manifests', function (array $plugin, string $message): void {
+    writePublisherPackage('tests/invalid', $plugin + ['vendor' => 'composer/semver'], [], []);
+
+    expect(fn () => app(PluginCollector::class)->find())
+        ->toThrow(InvalidTranslationPluginException::class, $message);
+})->with([
+    'vendor' => [
+        ['vendor' => []],
+        'The translation plugin vendor must be a string or null.',
+    ],
+    'version' => [
+        ['version' => []],
+        'The translation plugin version must be a string or null.',
+    ],
+    'source' => [
+        ['files' => [['source' => false, 'target' => '{locale}/messages.php']]],
+        'A translation plugin file must have a string source path.',
+    ],
+    'target' => [
+        ['files' => [['source' => 'messages.php', 'target' => false]]],
+        'A translation plugin file must have a string target path.',
+    ],
+]);
 
 function publisherTranslationPaths(string $locale): array
 {

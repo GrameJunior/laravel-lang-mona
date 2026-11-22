@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use Illuminate\Filesystem\Filesystem;
+use LaravelLang\Exceptions\InvalidJsonEncodeException;
+use LaravelLang\Exceptions\InvalidTranslationStatusException;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Toolkit\Commands\CreateLocaleCommand;
 use LaravelLang\Toolkit\Commands\DeleteLocaleCommand;
@@ -11,6 +13,7 @@ use LaravelLang\Toolkit\Commands\SyncLibraryCommand;
 use LaravelLang\Toolkit\Commands\SyncPackageCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Tester\ApplicationTester;
 use Symfony\Component\Process\Process;
 
@@ -171,6 +174,31 @@ it('reports an error when the locales directory is missing', function (): void {
 
     expect($tester->getStatusCode())->toBe(Command::FAILURE)
         ->and($tester->getDisplay())->toContain('The "locales" directory doesn\'t exists!');
+});
+
+it('reports invalid translation status input', function (string $path, string $content, string $diagnostic): void {
+    $root = $this->toolkitDirectory;
+    toolkitFile($root . '/locales/' . $path, $content);
+
+    expect(fn () => runToolkit('status', ['directory' => $root]))
+        ->toThrow(function (InvalidTranslationStatusException $exception) use ($path, $diagnostic): void {
+            expect($exception->getMessage())->toContain(basename($path), $diagnostic);
+        });
+})->with([
+    'invalid excludes'       => ['_settings.json', '{"excludes":"Hello"}', 'must be an array.'],
+    'non-scalar translation' => ['fr/messages.json', '{"Hello":["Bonjour"]}', 'must be scalar.'],
+]);
+
+it('reports an encoding failure when a missing translation overflows to infinity', function (): void {
+    $root = $this->toolkitDirectory;
+    toolkitFile($root . '/locales/fr/messages.json', '{"INF":1e999}');
+
+    expect(fn () => (new StatusCommand)(new BufferedOutput, $root))
+        ->toThrow(function (InvalidJsonEncodeException $exception): void {
+            expect($exception->getCode())->toBe(JSON_ERROR_INF_OR_NAN)
+                ->and($exception->getPrevious())->toBeInstanceOf(JsonException::class);
+        })
+        ->and($this->toolkitFilesystem->exists($root . '/locales/fr/_status.json'))->toBeFalse();
 });
 
 it('omits the status file when a locale without settings is fully translated', function (): void {

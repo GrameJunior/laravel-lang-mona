@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Lang;
+use LaravelLang\Exceptions\InvalidTranslationValueException;
 use Workbench\App\Constants\FakeLocale;
 
 beforeEach(function (): void {
@@ -48,6 +49,7 @@ test('fallback JSON preserves scalar replacement and array behavior', function (
         ->and(Lang::get('json.array'))->toBe(['nested' => 'Value'])
         ->and(Lang::get('json.falsy'))->toBe('json.falsy');
 
-    expect(fn () => Lang::get('json.numeric'))->toThrow(TypeError::class);
+    expect(fn () => Lang::get('json.numeric'))
+        ->toThrow(InvalidTranslationValueException::class, 'A translation must be a string or an array.');
     expect(fn () => Lang::get('json.array', ['name' => 'Mona']))->toThrow(TypeError::class);
 });

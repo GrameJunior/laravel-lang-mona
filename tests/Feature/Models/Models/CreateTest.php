@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Exceptions\InvalidLocaleInputException;
 use LaravelLang\Exceptions\UnknownLocaleException;
 use LaravelLang\LocaleList\Locale;
 use Workbench\App\Constants\FakeLocale;
@@ -198,7 +199,7 @@ test('rejects a translation list without locale keys', function (): void {
         'key'            => FakeLocale::Incorrect1,
         FakeValue::Title => ['Bonjour'],
     ]);
-})->throws(TypeError::class, 'The translation locale key must be');
+})->throws(InvalidLocaleInputException::class, 'The translation locale key must be a Locale, a LocaleData, a string, or null.');
 
 test('uninstalled', function (): void {
     TestModel::create([

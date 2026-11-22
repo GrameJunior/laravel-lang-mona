@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Exceptions\InvalidTranslationsRelationException;
 use Workbench\App\Constants\FakeLocale;
 use Workbench\App\Constants\FakeValue;
+use Workbench\App\Models\TestModel;
 use Workbench\App\Models\TestModelTranslation;
 
 use function Pest\Laravel\assertDatabaseHas;
@@ -50,6 +52,23 @@ test('assigning a translatable property persists the value for the current local
 
     expect($model->fresh()->getTranslation('title', FakeLocale::Default))->toBe('Updated title');
 });
+
+test('rejects assigning a non-collection translations relation', function (): void {
+    $model = new TestModel;
+
+    expect(fn () => $model->setRelation('translations', []))
+        ->toThrow(InvalidTranslationsRelationException::class, 'The translations relation must be a collection.');
+});
+
+test('rejects an invalid translations relation when saving a model', function (mixed $translations, string $message): void {
+    $model = fakeTestModel();
+    $model->setRelations(['translations' => $translations]);
+
+    expect($model->save(...))->toThrow(InvalidTranslationsRelationException::class, $message);
+})->with([
+    'non-collection relation' => [[], 'The translations relation must be a collection.'],
+    'invalid related model'   => [collect(['invalid']), 'The translations relation must contain only translation models.'],
+]);
 
 test('fallback locale', function (): void {
     $oldText = fake()->paragraph();
