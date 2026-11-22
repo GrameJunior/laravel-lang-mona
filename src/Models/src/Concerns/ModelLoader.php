@@ -13,10 +13,10 @@ trait ModelLoader
 {
     public static function bootModelLoader(): void
     {
-        static::saved(function (self $model): void {
+        static::saved(static function (self $model): void {
             RelationService::resolveKey($model);
 
-            $model->translations?->each?->save();
+            $model->translations->each->save();
         });
     }
 

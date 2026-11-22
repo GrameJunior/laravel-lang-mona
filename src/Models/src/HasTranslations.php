@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Concerns\HasAttributes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection as SupportCollection;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
 use LaravelLang\Models\Concerns\HasNames;
@@ -20,6 +21,7 @@ use LaravelLang\Models\Services\AttributeService;
 use LaravelLang\Models\Services\RelationService;
 use LaravelLang\Models\Services\ValidatorService;
 use LaravelLang\NativeLocaleNames\LocaleData;
+use TypeError;
 
 use function in_array;
 use function is_iterable;
@@ -39,9 +41,11 @@ trait HasTranslations
     /** @return HasMany<Translation, $this> */
     public function translations(): HasMany
     {
-        return $this->translationsRaw()->tap(
-            new FilterTranslationsScope
-        );
+        $relation = $this->translationsRaw();
+
+        (new FilterTranslationsScope)($relation);
+
+        return $relation;
     }
 
     /** @return HasMany<Translation, $this> */
@@ -60,7 +64,7 @@ trait HasTranslations
         return $this->translationAttribute($column, $locale)->set($column, $value);
     }
 
-    /** @param iterable<Locale|LocaleData|string, mixed> $values */
+    /** @param  iterable<Locale|LocaleData|string, mixed>  $values */
     public function setTranslations(string $column, iterable $values): static
     {
         foreach ($values as $locale => $value) {
@@ -107,15 +111,26 @@ trait HasTranslations
             return $this->setTranslation($key, $value);
         }
 
-        return parent::setAttribute($key, $value);
+        $model = parent::setAttribute($key, $value);
+
+        if (! $model instanceof Model) {
+            throw new TypeError('Setting an attribute must return an Eloquent model.');
+        }
+
+        return $model;
     }
 
     public function setRelation($relation, $value): static
     {
-        $this->relations[$relation] = match ($relation) {
-            'translations' => $value->keyBy('locale'),
-            default        => $value
-        };
+        if ($relation === 'translations') {
+            if (! $value instanceof SupportCollection) {
+                throw new TypeError('The translations relation must be a collection.');
+            }
+
+            $value = $value->keyBy('locale');
+        }
+
+        $this->relations[$relation] = $value;
 
         return $this;
     }
@@ -144,13 +159,6 @@ trait HasTranslations
         return (new $class)->translatable();
     }
 
-    protected function translationAttribute(string $column, Locale|LocaleData|string|null $locale): AttributeService
-    {
-        ValidatorService::column($column, $this->isTranslatable($column), $this->translatable(...));
-
-        return (new AttributeService($this, $this->translation(...), $locale))->validateLocale();
-    }
-
     public function translation(?string $locale): Translation
     {
         $normalized = ($locale ? Locales::fromAlias($locale) : null) ?? Locales::current(false);
@@ -164,5 +172,12 @@ trait HasTranslations
             $normalized,
             fn (): Translation => RelationService::initializeLocale($this, $normalized, $this->translationsRaw()),
         );
+    }
+
+    protected function translationAttribute(string $column, Locale|LocaleData|string|null $locale): AttributeService
+    {
+        ValidatorService::column($column, $this->isTranslatable($column), $this->translatable(...));
+
+        return (new AttributeService($this, $this->translation(...), $locale))->validateLocale();
     }
 }

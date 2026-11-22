@@ -9,6 +9,10 @@ use LaravelLang\Config\Services\AliasLangConfig;
 use LaravelLang\Filesystem\Filesystem;
 use LaravelLang\LocaleList\Locale;
 use SortDirection;
+use UnexpectedValueException;
+
+use function is_array;
+use function is_string;
 
 class LocaleNames
 {
@@ -22,8 +26,17 @@ class LocaleNames
     /** @return Collection<string, LocaleData> */
     public function all(Locale|string|null $forLocale, ?SortDirection $direction = null): Collection
     {
-        return (new Collection($this->read($forLocale)))
-            ->map(fn (array $item, string $locale): LocaleData => $this->map($locale, $item))
+        $items = [];
+
+        foreach ($this->read($forLocale) as $locale => $item) {
+            if (! is_string($locale)) {
+                throw new UnexpectedValueException("Invalid locale code [$locale] in the locale data.");
+            }
+
+            $items[$locale] = $this->mapRow($locale, $item);
+        }
+
+        return (new Collection($items))
             ->when($direction !== null, fn (Collection $items) => $items->sortBy(
                 callback  : 'localized',
                 descending: $direction === SortDirection::Descending
@@ -36,7 +49,7 @@ class LocaleNames
 
         $items = $this->read($forLocale);
 
-        return $this->map($normalized, $items[$normalized]);
+        return $this->mapRow($normalized, $items[$normalized]);
     }
 
     /** @param array{native: string, localized: string} $item */
@@ -50,7 +63,7 @@ class LocaleNames
         );
     }
 
-    /** @return array<string, array{native: string, localized: string}> */
+    /** @return array<array-key, mixed> */
     protected function read(Locale|string|null $locale): array
     {
         $normalized = $this->normalize($locale);
@@ -63,5 +76,18 @@ class LocaleNames
         return $locale === $this->default
             ? $locale
             : $this->config->from($locale) ?? $this->default;
+    }
+
+    protected function mapRow(string $locale, mixed $item): LocaleData
+    {
+        if (
+            ! is_array($item)
+            || ! is_string($item['native'] ?? null)
+            || ! is_string($item['localized'] ?? null)
+        ) {
+            throw new UnexpectedValueException("Invalid locale data for [$locale].");
+        }
+
+        return $this->map($locale, $item);
     }
 }

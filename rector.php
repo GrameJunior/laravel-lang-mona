@@ -8,6 +8,7 @@ use RectorLaravel\Rector\Class_\AppendsPropertyToAppendsAttributeRector;
 use RectorLaravel\Rector\Class_\ConnectionPropertyToConnectionAttributeRector;
 use RectorLaravel\Rector\Class_\DescriptionPropertyToDescriptionAttributeRector;
 use RectorLaravel\Rector\Class_\FillablePropertyToFillableAttributeRector;
+use RectorLaravel\Rector\Class_\HiddenPropertyToHiddenAttributeRector;
 use RectorLaravel\Rector\Class_\RemoveModelPropertyFromFactoriesRector;
 use RectorLaravel\Rector\Class_\SignaturePropertyToSignatureAttributeRector;
 use RectorLaravel\Rector\Class_\TablePropertyToTableAttributeRector;
@@ -67,6 +68,7 @@ return RectorConfig::configure()
         DescriptionPropertyToDescriptionAttributeRector::class,
         ExplicitNullableObjectInstanceRector::class,
         FillablePropertyToFillableAttributeRector::class,
+        HiddenPropertyToHiddenAttributeRector::class => [__DIR__ . '/workbench/app/Models/User.php'],
         SignaturePropertyToSignatureAttributeRector::class,
         TablePropertyToTableAttributeRector::class,
         WithoutTimestampsPropertyToWithoutTimestampsAttributeRector::class,
