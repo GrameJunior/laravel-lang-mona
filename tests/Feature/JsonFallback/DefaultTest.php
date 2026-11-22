@@ -19,6 +19,6 @@ test('reports an incompatible translation loader when resolving translations', f
     app()->instance('translation.loader', new stdClass);
     app()->forgetInstance('translator');
 
-    expect(fn () => __('Remember Me'))
+    expect(fn (): array|string|null => __('Remember Me'))
         ->toThrow(InvalidTranslationLoaderException::class, 'The translation.loader binding must implement ' . Loader::class);
 });

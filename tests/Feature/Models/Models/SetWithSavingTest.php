@@ -56,7 +56,7 @@ test('assigning a translatable property persists the value for the current local
 test('rejects assigning a non-collection translations relation', function (): void {
     $model = new TestModel;
 
-    expect(fn () => $model->setRelation('translations', []))
+    expect(fn (): TestModel => $model->setRelation('translations', []))
         ->toThrow(InvalidTranslationsRelationException::class, 'The translations relation must be a collection.');
 });
 

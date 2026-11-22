@@ -5,7 +5,6 @@ providers:
     - LaravelLang\Models\LangModelsServiceProvider
     - LaravelLang\Publisher\LangPublisherServiceProvider
     - LaravelLang\Routes\LangRoutesServiceProvider
-    - Spatie\LaravelData\LaravelDataServiceProvider
     - Workbench\App\Providers\WorkbenchServiceProvider
 
 migrations:
@@ -29,13 +28,6 @@ workbench:
     sync:
         -   from: lang/fr
             to: workbench/lang/fr
-        -   from: storage
-            to: workbench/storage
-            reverse: true
-    build:
-        - create-sqlite-db
-        - db-wipe
-        - migrate-fresh
 
 purge:
     directories:
