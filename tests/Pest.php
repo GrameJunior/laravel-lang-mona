@@ -9,6 +9,8 @@ use Tests\TestCase;
 
 use function Pest\Laravel\withHeader;
 
+parallelTestingFix();
+
 pest()
     ->printer()
     ->compact();
