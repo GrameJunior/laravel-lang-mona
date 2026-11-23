@@ -10,21 +10,29 @@
         <li>
             <a href="upgrade-common.topic"/>
             <list>
-                <li><a href="upgrade-common-to-6-from-5.topic"/></li>
+                <li><a href="upgrade-common-to-6-from-5.topic" instance="!laravel-lang" />
+                    <if instance="laravel-lang">To 6 from 5</if>
+                </li>
                 <li><a href="upgrade-common-to-5-from-4.topic"/></li>
             </list>
         </li>
         <li>
             <a href="upgrade-publisher.topic"/>
             <list>
-                <li><a href="upgrade-publisher-to-16-from-15.topic"/></li>
-                <li><a href="upgrade-publisher-to-15-from-14.topic"/></li>
+                <li><a href="upgrade-publisher-to-16-from-15.topic" instance="!laravel-lang" />
+                    <if instance="laravel-lang">To 16 from 15</if>
+                </li>
+                <li><a href="upgrade-publisher-to-15-from-14.topic" instance="!laravel-lang" />
+                    <if instance="laravel-lang">To 15 from 14</if>
+                </li>
             </list>
         </li>
         <li>
             <a href="upgrade-json-fallback.topic"/>
             <list>
-                <li><a href="upgrade-json-fallback-to-2-from-1.topic"/></li>
+                <li><a href="upgrade-json-fallback-to-2-from-1.topic" instance="!laravel-lang" />
+                    <if instance="laravel-lang">To 2 from 1</if>
+                </li>
             </list>
         </li>
     </list>

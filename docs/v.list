@@ -25,23 +25,23 @@
     <var name="config-filename" value="config/localization.php" />
     <var name="config-filename-basename" value="localization" />
     <var name="config-url" value="https://raw.githubusercontent.com/Laravel-Lang/config/1.x/config/public.php" />
-    <var name="install-actions" value="composer require --dev laravel-lang/actions" />
-    <var name="install-attributes" value="composer require --dev laravel-lang/attributes" />
-    <var name="install-common" value="composer require laravel-lang/common" />
-    <var name="install-http-statuses" value="composer require --dev laravel-lang/http-statuses" />
-    <var name="install-json-fallback" value="composer require laravel-lang/json-fallback" />
-    <var name="install-lang" value="composer require --dev laravel-lang/lang" />
-    <var name="install-locale-list" value="composer require laravel-lang/locale-list" />
-    <var name="install-locales" value="composer require laravel-lang/locales" />
-    <var name="install-models" value="composer require laravel-lang/models" />
-    <var name="install-moonshine" value="composer require --dev laravel-lang/moonshine" />
-    <var name="install-native-country-names" value="composer require laravel-lang/native-country-names" />
-    <var name="install-native-currency-names" value="composer require laravel-lang/native-currency-names" />
-    <var name="install-native-locale-names" value="composer require laravel-lang/native-locale-names" />
-    <var name="install-publisher" value="composer require --dev laravel-lang/publisher" />
-    <var name="install-routes" value="composer require laravel-lang/routes" />
-    <var name="install-starter-kits" value="composer require --dev laravel-lang/starter-kits" />
-    <var name="install-translator" value="composer require laravel-lang/translator" />
+    <var name="install-actions" value="composer require --dev laravel-lang/actions:^1.13.2" />
+    <var name="install-attributes" value="composer require --dev laravel-lang/attributes:^2.16.5" />
+    <var name="install-common" value="composer require laravel-lang/common:^6.9" />
+    <var name="install-http-statuses" value="composer require --dev laravel-lang/http-statuses:^3.13.2" />
+    <var name="install-json-fallback" value="composer require laravel-lang/json-fallback:^2.3.0" />
+    <var name="install-lang" value="composer require --dev laravel-lang/lang:^15.39.1" />
+    <var name="install-locale-list" value="composer require laravel-lang/locale-list:^1.7.0" />
+    <var name="install-locales" value="composer require laravel-lang/locales:^2.11.0" />
+    <var name="install-models" value="composer require laravel-lang/models:^1.8.0" />
+    <var name="install-moonshine" value="composer require --dev laravel-lang/moonshine:^1.9.2" />
+    <var name="install-native-country-names" value="composer require laravel-lang/native-country-names:^1.8.0" />
+    <var name="install-native-currency-names" value="composer require laravel-lang/native-currency-names:^1.11.0" />
+    <var name="install-native-locale-names" value="composer require laravel-lang/native-locale-names:^2.10.0" />
+    <var name="install-publisher" value="composer require --dev laravel-lang/publisher:^16.9.0" />
+    <var name="install-routes" value="composer require laravel-lang/routes:^1.11.0" />
+    <var name="install-starter-kits" value="composer require --dev laravel-lang/starter-kits:^1.17.2" />
+    <var name="install-translator" value="composer require laravel-lang/translator:^1.0-alpha6" />
     <var name="locale-many" value="fr de de_AT de_CH vi zh_CN" />
     <var name="locale-one" value="fr" />
     <var name="locales-count" value="128" />

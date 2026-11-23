@@ -1,3 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rules SYSTEM "https://resources.jetbrains.com/writerside/1.0/redirection-rules.dtd">
-<rules></rules>
+<rules>
+    <rule id="44c1214">
+        <description>Created after removal of "To 5 from 4" from Laravel Lang</description>
+        <accepts>upgrade-common-to-5-from-4.html</accepts>
+    </rule>
+    <rule id="34b8062e">
+        <description>Created after removal of "From third-party packages" from Laravel Lang</description>
+        <accepts>upgrade-third-party.html</accepts>
+    </rule>
+    <rule id="69aa00ba">
+        <description>Created after removal of "To 6 from 5" from Laravel Lang</description>
+        <accepts>upgrade-common-to-6-from-5.html</accepts>
+    </rule>
+    <rule id="5f2ab00">
+        <description>Created after removal of "To 15 from 14" from Laravel Lang</description>
+        <accepts>upgrade-publisher-to-15-from-14.html</accepts>
+    </rule>
+    <rule id="40805b9c">
+        <description>Created after removal of "To 16 from 15" from Laravel Lang</description>
+        <accepts>upgrade-publisher-to-16-from-15.html</accepts>
+    </rule>
+    <rule id="375d6c28">
+        <description>Created after removal of "To 2 from 1" from Laravel Lang</description>
+        <accepts>upgrade-json-fallback-to-2-from-1.html</accepts>
+    </rule>
+    <rule id="65451a4e">
+        <description>Created after removal of "Questions and Issues" from Laravel Lang</description>
+        <accepts>questions-and-issues.html</accepts>
+    </rule>
+    <rule id="3cc73e89">
+        <description>Created after removal of "Our Team" from Laravel Lang</description>
+        <accepts>our-team.html</accepts>
+    </rule>
+</rules>
