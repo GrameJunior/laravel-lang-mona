@@ -3,10 +3,12 @@
 declare(strict_types=1);
 
 use Illuminate\Filesystem\Filesystem;
+use LaravelLang\Toolkit\Commands\MigrateLocalesCommand;
+use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Process\Process;
+use Symfony\Component\Console\Tester\ApplicationTester;
 
-it('migrates one legacy project through the Toolkit executable', function (bool $interactive): void {
+it('migrates one legacy project with an explicit or prompted target', function (bool $interactive): void {
     $filesystem = new Filesystem;
     $root       = sys_get_temp_dir() . '/mona-migrate-' . bin2hex(random_bytes(8));
     $project    = $root . '/Legacy project';
@@ -16,9 +18,11 @@ it('migrates one legacy project through the Toolkit executable', function (bool 
 
     try {
         $fixtures = [
-            $project . '/source/messages.json'             => '{"greeting":"Hello","0":"0","invalid":"Invalid :ATTRIBUTE"}',
+            $project . '/source/messages.json'             => '{"greeting":"Hello","0":"0","invalid":"Invalid :ATTRIBUTE","empty":"","null":null}',
             $project . '/source/framework/12/messages.php' => '<?php return ["nested" => ["name" => "Name", "invalid" => "Missing :attribute", "plain" => "Plain"]];',
-            $legacy . '/json.json'                         => '{"greeting":"Bonjour","0":"0","obsolete":"Ancien"}',
+            $project . '/source/_settings.json'            => '{"internal":"Internal label"}',
+            $project . '/source/notes.txt'                 => 'Source documentation',
+            $legacy . '/json.json'                         => '{"greeting":"Bonjour","0":"0","obsolete":"Ancien","empty":"Empty","null":"Null","internal":"Internal"}',
             $legacy . '/php.json'                          => '{"nested.name":"Nom"}',
             $legacy . '/json-inline.json'                  => '{"invalid":"Attribut invalide","greeting":"Salut"}',
             $legacy . '/php-inline.json'                   => '{"nested.invalid":"Attribut manquant","nested.plain":"Simple"}',
@@ -32,20 +36,12 @@ it('migrates one legacy project through the Toolkit executable', function (bool 
             $filesystem->put($path, $content);
         }
 
-        $arguments = [PHP_BINARY, dirname(__DIR__, 3) . '/src/Toolkit/bin/toolkit', 'migrate-locales', $project];
-        if (! $interactive) {
-            $arguments[] = '--target=' . $target;
-            $arguments[] = '--no-interaction';
-        }
+        $tester = $interactive
+            ? runLocaleMigration($project, [], [$target])
+            : runLocaleMigration($project, ['--target' => $target, '--no-interaction' => true]);
 
-        $process = new Process($arguments);
-        if ($interactive) {
-            $process->setInput($target . PHP_EOL);
-        }
-
-        $process->run();
-
-        expect($process->getExitCode())->toBe(Command::SUCCESS, $process->getErrorOutput() . $process->getOutput())
+        expect($tester->getStatusCode())->toBe(Command::SUCCESS, $tester->getErrorOutput())
+            ->and($tester->getDisplay())->toContain('Locale files migrated.')
             ->and($filesystem->json($locale . '/default.json'))->toEqual([
                 0                  => '0',
                 'Another greeting' => 'Bonjour',
@@ -66,7 +62,7 @@ it('migrates one legacy project through the Toolkit executable', function (bool 
     }
 })->with(['explicit target' => [false], 'interactive target' => [true]]);
 
-it('leaves the target unchanged when migration input is invalid', function (string $source, string $translation, string $diagnostic): void {
+it('leaves the target unchanged when migration input is invalid', function (array $files, string $diagnostic): void {
     $filesystem = new Filesystem;
     $root       = sys_get_temp_dir() . '/mona-migrate-' . bin2hex(random_bytes(8));
     $project    = $root . '/project';
@@ -74,36 +70,81 @@ it('leaves the target unchanged when migration input is invalid', function (stri
     $existing   = $target . '/de/default.json';
 
     try {
-        $fixtures = [
-            $project . '/source/messages.json' => $source,
-            $project . '/locales/de/json.json' => '{"Hello":"Hallo"}',
-            $project . '/locales/fr/json.json' => $translation,
-            $existing                          => '{"Hello":"Guten Tag"}',
+        $fixtures = $files + [
+            'project/source/messages.json' => '{"Hello":"Hello"}',
+            'project/locales/de/json.json' => '{"Hello":"Hallo"}',
+            'target/de/default.json'       => '{"Hello":"Guten Tag"}',
         ];
 
         foreach ($fixtures as $path => $content) {
+            $path = $root . '/' . $path;
             $filesystem->ensureDirectoryExists(dirname($path));
             $filesystem->put($path, $content);
         }
 
-        $process = new Process([
-            PHP_BINARY,
-            dirname(__DIR__, 3) . '/src/Toolkit/bin/toolkit',
-            'migrate-locales',
-            $project,
-            '--target=' . $target,
-            '--no-interaction',
-        ]);
-        $process->run();
+        $tester = runLocaleMigration($project, ['--target' => $target, '--no-interaction' => true]);
 
-        expect($process->getExitCode())->toBe(Command::FAILURE)
-            ->and($process->getErrorOutput())->toContain($diagnostic)
-            ->and($filesystem->get($existing))->toBe($fixtures[$existing])
+        expect($tester->getStatusCode())->toBe(Command::FAILURE)
+            ->and(preg_replace('/\s+/', ' ', $tester->getErrorOutput()))->toContain($diagnostic)
+            ->and($filesystem->get($existing))->toBe($fixtures['target/de/default.json'])
             ->and($filesystem->exists($target . '/fr'))->toBeFalse();
     } finally {
         $filesystem->deleteDirectory($root);
     }
 })->with([
-    'malformed locale JSON'    => ['{"Hello":"Hello"}', '{broken', 'Unable to read translation file'],
-    'empty translation source' => ['{}', '{"Hello":"Bonjour"}', 'No translation sources found'],
+    'malformed locale JSON'    => [['project/locales/fr/json.json' => '{broken'], 'Unable to read translation file'],
+    'empty translation source' => [['project/source/messages.json' => '{}'], 'No translation sources found'],
+    'malformed source JSON'    => [['project/source/messages.json' => '{broken'], 'Unable to read translation source'],
+    'non-string source phrase' => [['project/source/messages.json' => '{"Hello":true}'], 'neither a string nor an integer'],
+    'nested translation'       => [['project/locales/fr/json.json' => '{"Hello":["Bonjour"]}'], 'Expected a scalar translation for [Hello]'],
+    'exclusion object'         => [['project/locales/fr/_excludes.json' => '{"Hello":"Bonjour"}'], 'Expected a list of exclusions'],
+    'numeric exclusion'        => [['project/locales/fr/_excludes.json' => '[1]'], 'Expected string exclusions'],
+    'scalar target dictionary' => [['target/de/default.json' => '42'], 'Unable to read translation file'],
+    'non-finite translation'   => [['project/locales/fr/json.json' => '{"Hello":1e999}'], 'Unable to write translation file'],
 ]);
+
+it('reports missing migration inputs before creating the target', function (array $directories, bool $provideTarget, string $diagnostic): void {
+    $filesystem = new Filesystem;
+    $root       = sys_get_temp_dir() . '/mona-migrate-' . bin2hex(random_bytes(8));
+    $project    = $root . '/project';
+    $target     = $root . '/target';
+
+    try {
+        foreach ($directories as $directory) {
+            $filesystem->ensureDirectoryExists($project . '/' . $directory);
+        }
+        if ($filesystem->isDirectory($project . '/source')) {
+            $filesystem->put($project . '/source/messages.json', '{"Hello":"Hello"}');
+        }
+
+        $arguments = ['--no-interaction' => true];
+        if ($provideTarget) {
+            $arguments['--target'] = $target;
+        }
+        $tester = runLocaleMigration($project, $arguments);
+
+        expect($tester->getStatusCode())->toBe(Command::FAILURE)
+            ->and(preg_replace('/\s+/', ' ', $tester->getErrorOutput()))->toContain($diagnostic)
+            ->and($filesystem->exists($target))->toBeFalse();
+    } finally {
+        $filesystem->deleteDirectory($root);
+    }
+})->with([
+    'no source directory'  => [['locales'], true, 'Translation directory does not exist'],
+    'no locales directory' => [['source'], true, 'Translation directory does not exist'],
+    'no target option'     => [['source', 'locales'], false, 'Provide a destination for locale directories with --target.'],
+    'no locale files'      => [['source', 'locales'], true, 'No legacy locale files found'],
+]);
+
+function runLocaleMigration(string $project, array $arguments, array $answers = []): ApplicationTester
+{
+    $application = new Application;
+    $application->setAutoExit(false);
+    $application->addCommand(new MigrateLocalesCommand);
+
+    $tester = new ApplicationTester($application);
+    $tester->setInputs($answers);
+    $tester->run(['command' => 'migrate-locales', 'project' => $project, ...$arguments], ['capture_stderr_separately' => true]);
+
+    return $tester;
+}
