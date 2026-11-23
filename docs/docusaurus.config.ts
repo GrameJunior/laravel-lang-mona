@@ -35,7 +35,7 @@ const config: Config = {
                     sidebarPath: "./sidebars.ts",
                     lastVersion: "current",
                     versions: {
-                        current: {label: "20.x", path: "20.x"},
+                        current: {label: "20.x", badge: false},
                         legacy: {label: "Legacy", path: "legacy", banner: "none"},
                     },
                 },

@@ -12,7 +12,7 @@ const sidebars: SidebarsConfig = {
         {
             type: "category",
             label: "Packages and plugins",
-            items: ["packages", "plugins", "toolkit"],
+            items: ["plugins", "plugins-community", "toolkit"],
         },
         {
             type: "category",

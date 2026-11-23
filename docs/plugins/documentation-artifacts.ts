@@ -50,21 +50,25 @@ export default function documentationArtifacts({baseUrl, siteDir, siteConfig}: L
             }));
 
             await writeFile(join(outDir, "llms.txt"), [
-                `# Laravel-Lang ${current.label}`,
-                "> Mona is the Laravel-Lang monorepo. Its first-party packages share the same release version.",
-                `## ${current.label} documentation`,
+                "# Laravel-Lang",
+                "> The first-party packages share the same release version.",
+                "## Documentation",
                 links.join("\n"),
                 "## Optional",
                 `- [Legacy documentation](${new URL(legacy.path, siteConfig.url)}): Guides for pre-Mona installations.`,
                 "",
             ].join("\n\n"));
 
-            const versionIndex = join(outDir, current.path.slice(baseUrl.length), "index.html");
-            await writeFile(versionIndex, redirectPage(start.permalink));
-
-            await Promise.all(legacy.docs.filter(({slug}) => slug.endsWith(".html")).map(({slug, permalink}) =>
-                writeFile(join(outDir, slug), redirectPage(permalink)),
-            ));
+            await Promise.all(legacy.docs.filter(({slug}) => slug.endsWith(".html")).map(async ({slug, permalink}) => {
+                try {
+                    // A root route like /license already uses license.html in the output.
+                    await writeFile(join(outDir, slug), redirectPage(permalink), {flag: "wx"});
+                } catch (error) {
+                    if (!(error instanceof Error && "code" in error && error.code === "EEXIST")) {
+                        throw error;
+                    }
+                }
+            }));
         },
     };
 }

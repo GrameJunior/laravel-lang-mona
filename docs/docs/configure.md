@@ -23,9 +23,17 @@ After changing configuration, clear the config cache. Run `php artisan lang:upda
 
 ## Translation styles
 
-`localization_main.styles` defaults to `['default', 'inline']`. The Publisher loads the corresponding dictionaries in list order. A later style can override an earlier translation for the same phrase. If the list omits `default`, the Publisher prepends it.
+A translation style is a named dictionary that changes the wording of selected phrases. For example, a pack can provide `informal.json` for a friendly tone or `john.json` for wording used by a product. Style names are independent of locale codes, application names, and package names. Any translation pack can provide a style under `locales/<locale>/<style>.json` for the languages it covers. A style can contain as few as one phrase. The original use case was informal forms of address. [Informal translations discussion](https://github.com/orgs/Laravel-Lang/discussions/124)
 
-The inline style provides generic validation messages such as “This field must be accepted.” To use the standard style, set `styles` to `['default']`.
+After you install a plugin that provides `john`, put it last in `config/localization_main.php` to give it priority within each dictionary source.
+
+```php
+'styles' => ['default', 'informal', 'john'],
+```
+
+When you run `php artisan lang:update`, Publisher merges the style files for each installed locale. For each phrase, `john` wins if it supplies the phrase, followed by `informal` and then `default`. For example, a French pack can override one phrase in `locales/fr/john.json`, while German uses `locales/de/informal.json` or `locales/de/default.json` for that same phrase. Publisher applies the order separately to the shared Library and the pack contributing the file. For that file, a matching phrase from the pack takes precedence over the Library's entry.
+
+The default setting is `['default', 'inline']`. The `inline` style provides generic validation messages such as “This field must be accepted.” Set `styles` to `['default']` to use standard wording only. If you omit `default` from the list, Publisher adds it at the beginning.
 
 ## Locale aliases
 

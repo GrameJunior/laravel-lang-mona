@@ -5,28 +5,28 @@ import Layout from "@theme/Layout";
 
 import styles from "./index.module.css";
 
-const description = "Install translations and localize routes and Eloquent models with Mona 20.x, the shared release line for Laravel-Lang packages.";
+const description = "Install translations and localize routes and Eloquent models with Laravel-Lang.";
 
 const guides = [
     {
         title: "Manage locales",
         description: "Add, update, and remove translations with Artisan.",
-        to: "/20.x/translations",
+        to: "/translations",
     },
     {
         title: "Configure localization",
         description: "Set up locale aliases, localized routes, and model translations.",
-        to: "/20.x/configure",
+        to: "/configure",
     },
     {
-        title: "Explore packages",
-        description: "Choose the packages your application needs.",
-        to: "/20.x/packages",
+        title: "Translation plugins",
+        description: "Install translation packs or create your own.",
+        to: "/plugins",
     },
     {
         title: "Upgrade to Mona",
-        description: "Migrate your dependencies, configuration, and translations to 20.x.",
-        to: "/20.x/upgrade",
+        description: "Migrate your dependencies, configuration, and translations.",
+        to: "/upgrade",
     },
 ];
 
@@ -42,15 +42,15 @@ export default function Home() {
                             <h1 id="home-title">Localize your Laravel application</h1>
                             <p className={styles.summary}>{description}</p>
                             <div className={styles.actions}>
-                                <Link className="button button--primary button--lg" to="/20.x/start">
-                                    Get started with 20.x
+                                <Link className="button button--primary button--lg" to="/start">
+                                    Start in 1 minute
                                 </Link>
                                 <Link className="button button--secondary button--lg" to="/legacy">
                                     Legacy documentation
                                 </Link>
                             </div>
                             <CodeBlock className={styles.installCommand} language="bash">
-                                {'composer require "laravel-lang/common:^20.0"'}
+                                {"composer require laravel-lang/common\nphp artisan lang:update"}
                             </CodeBlock>
                         </div>
                         <div className={styles.codePreview}>

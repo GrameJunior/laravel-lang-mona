@@ -1,10 +1,10 @@
 ---
 title: Legacy documentation
 slug: /
-description: Documentation for Laravel-Lang packages released before Mona 20.x.
+description: Documentation for Laravel-Lang packages released before Mona.
 ---
 
-Use this documentation for installations that still use the earlier, independently versioned Laravel-Lang packages. To move an application to the shared release line, see [Upgrade to Mona 20.x](/20.x/upgrade).
+Use this documentation for installations that still use the earlier, independently versioned Laravel-Lang packages. To move an application to the shared release line, see [Upgrade to Mona](/upgrade).
 
 ## Quick start
 
