@@ -134,28 +134,28 @@
     - [x] TranslationsTemplate
 - [x] Добавить пропущенный модуль Punctuation
 - [x] Исправить параллельные тесты
-- [ ] Проверить файлы в папках проектов (`.gitattributes`, `.editorconfig`, и т.д.):
-    - [ ] Mona
-    - [ ] Actions
-    - [ ] Attributes
-    - [ ] Common
-    - [ ] Config
-    - [ ] HttpStatuses
-    - [ ] JsonFallback
-    - [ ] Lang
-    - [ ] Library
-    - [ ] LocaleList
-    - [ ] Locales
-    - [ ] Models
-    - [ ] MoonShine
-    - [ ] CountryNames
-    - [ ] CurrencyNames
-    - [ ] LocaleNames
-    - [ ] Publisher
-    - [ ] Routes
-    - [ ] StarterKits
-    - [ ] Toolkit
-    - [ ] TranslationsTemplate
+- [x] Проверить файлы в папках проектов (`.gitattributes`, `.editorconfig`, и т.д.):
+    - [x] Mona
+    - [x] Actions
+    - [x] Attributes
+    - [x] Common
+    - [x] Config
+    - [x] CountryNames
+    - [x] CurrencyNames
+    - [x] HttpStatuses
+    - [x] JsonFallback
+    - [x] Lang
+    - [x] Library
+    - [x] LocaleList
+    - [x] LocaleNames
+    - [x] Locales
+    - [x] Models
+    - [x] MoonShine
+    - [x] Publisher
+    - [x] Routes
+    - [x] StarterKits
+    - [x] Toolkit
+    - [x] TranslationsTemplate
 - [ ] Рефакторинг документации
     - [ ] Заменить доку старыми файлами с заменой
     - [ ] Удалить из документации статусы переводов.

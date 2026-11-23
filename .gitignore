@@ -13,6 +13,7 @@
 /vendor
 
 composer.lock
+package-lock.json
 
 # Cache & Temp
 /.cache
