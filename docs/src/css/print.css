@@ -1,0 +1,73 @@
+@media print {
+    html:root,
+    html:root[data-theme="dark"] {
+        --color-text: var(--color-print-text);
+        --color-text-muted: var(--color-print-text);
+        --color-heading: var(--color-print-text);
+        --color-code-bg: transparent;
+    }
+
+    .navbar,
+    .theme-doc-sidebar-container,
+    .theme-doc-toc-desktop,
+    .theme-doc-toc-mobile,
+    .theme-doc-footer,
+    .footer,
+    .pagination-nav {
+        display: none !important;
+    }
+
+    body,
+    .main-wrapper,
+    .theme-doc-markdown,
+    .theme-code-block,
+    .theme-code-block pre,
+    .theme-doc-markdown table,
+    .theme-doc-markdown table thead {
+        background: none !important;
+        box-shadow: none !important;
+    }
+
+    .theme-doc-markdown {
+        max-inline-size: none;
+        font-size: 11pt;
+    }
+
+    .theme-doc-markdown :is(.alert, .compatibility-status) {
+        color: var(--color-print-text);
+    }
+
+    .theme-code-block pre,
+    .theme-code-block pre .token {
+        color: var(--color-print-text) !important;
+    }
+
+    .theme-code-block,
+    .theme-code-block pre {
+        max-block-size: none;
+        overflow: visible;
+        overflow-wrap: anywhere;
+    }
+
+    .theme-doc-markdown table {
+        display: table;
+        inline-size: 100%;
+        overflow: visible;
+        overflow-wrap: anywhere;
+    }
+
+    .theme-doc-markdown table :is(th, td) {
+        padding: 0.25rem var(--space-2);
+    }
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+
+    pre,
+    table,
+    blockquote {
+        break-inside: avoid;
+    }
+}

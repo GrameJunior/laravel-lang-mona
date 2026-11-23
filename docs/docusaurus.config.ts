@@ -57,8 +57,8 @@ const config: Config = {
             copyright: `Copyright © 2013-${new Date().getFullYear()} Laravel-Lang Team`,
         },
         prism: {
-            theme: prismThemes.github,
-            darkTheme: prismThemes.dracula,
+            theme: prismThemes.vsLight,
+            darkTheme: prismThemes.vsDark,
             additionalLanguages: ["php"],
         },
     } satisfies ThemeConfig,

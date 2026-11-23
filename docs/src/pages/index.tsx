@@ -32,30 +32,32 @@ const guides = [
 export default function Home() {
     return (
         <Layout title="Documentation" description={description}>
-            <main className={`container ${styles.home}`}>
+            <main>
                 <section className={styles.hero} aria-labelledby="home-title">
-                    <div className={styles.heroCopy}>
-                        <h1 id="home-title">Localize your Laravel application</h1>
-                        <p>{description}</p>
-                        <div className={styles.actions}>
-                            <Link className="button button--primary" to="/basic-usage.html">
-                                Get started
-                            </Link>
-                            <Link className="button button--outline button--primary" to="/available-locales-list.html">
-                                Browse locales
-                            </Link>
+                    <div className={styles.heroInner}>
+                        <div className={styles.heroCopy}>
+                            <h1 id="home-title">Localize your Laravel application</h1>
+                            <p className={styles.summary}>{description}</p>
+                            <div className={styles.actions}>
+                                <Link className="button button--primary button--lg" to="/basic-usage.html">
+                                    Get started
+                                </Link>
+                                <Link className="button button--secondary button--lg" to="/available-locales-list.html">
+                                    Browse locales
+                                </Link>
+                            </div>
+                            <CodeBlock className={styles.installCommand} language="bash">
+                                {"composer require laravel-lang/common:^6.9"}
+                            </CodeBlock>
                         </div>
-                        <CodeBlock className={styles.command} language="bash">
-                            {"composer require laravel-lang/common:^6.9"}
-                        </CodeBlock>
-                    </div>
-                    <div className={styles.example}>
-                        <CodeBlock className={styles.command} language="bash" title="Install French translations">
-                            {"php artisan lang:add fr"}
-                        </CodeBlock>
-                        <CodeBlock className={styles.command} language="php" title="Use a translation">
-                            {"__('Remember me', locale: 'fr');\n// Se souvenir de moi"}
-                        </CodeBlock>
+                        <div className={styles.codePreview}>
+                            <CodeBlock language="bash" title="Install French translations">
+                                {"php artisan lang:add fr"}
+                            </CodeBlock>
+                            <CodeBlock language="php" title="Use a translation">
+                                {"__('Remember me', locale: 'fr');\n// Se souvenir de moi"}
+                            </CodeBlock>
+                        </div>
                     </div>
                 </section>
 
