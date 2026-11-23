@@ -10,9 +10,13 @@
         <li><a href="release-notes.topic"/></li>
         <li><a href="upgrade-guide.topic"/></li>
         <li><a href="security-policy.topic"/></li>
-        <li><a href="questions-and-issues.topic"/></li>
+        <li><a href="questions-and-issues.topic" instance="!laravel-lang" />
+            <if instance="laravel-lang">Questions and Issues</if>
+        </li>
         <li><a href="contributions.topic"/></li>
-        <li><a href="our-team.topic"/></li>
+        <li><a href="our-team.topic" instance="!laravel-lang" />
+            <if instance="laravel-lang">Laravel-Lang Team</if>
+        </li>
         <li><a href="license.topic"/></li>
     </list>
 </topic>

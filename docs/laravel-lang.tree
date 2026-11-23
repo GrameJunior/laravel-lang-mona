@@ -11,22 +11,14 @@
         <toc-element topic="release-notes.topic" />
         <toc-element topic="upgrade-guide.topic">
             <toc-element topic="upgrade-common.topic">
-                <toc-element topic="upgrade-common-to-6-from-5.topic" />
-                <toc-element topic="upgrade-common-to-5-from-4.topic" />
-                <toc-element topic="upgrade-third-party.topic" />
             </toc-element>
             <toc-element topic="upgrade-publisher.topic" sort-children="descending">
-                <toc-element topic="upgrade-publisher-to-16-from-15.topic" />
-                <toc-element topic="upgrade-publisher-to-15-from-14.topic" />
             </toc-element>
             <toc-element topic="upgrade-json-fallback.topic" sort-children="descending">
-                <toc-element topic="upgrade-json-fallback-to-2-from-1.topic" />
             </toc-element>
         </toc-element>
         <toc-element topic="security-policy.topic" />
-        <toc-element topic="questions-and-issues.topic" />
         <toc-element topic="contributions.topic" />
-        <toc-element toc-title="Our Team" topic="our-team.topic" />
         <toc-element toc-title="License" topic="license.topic" />
     </toc-element>
     <toc-element topic="introduction.topic">
