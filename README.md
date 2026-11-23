@@ -9,15 +9,15 @@
 
 ## Documentation
 
-See the [documentation](https://laravel-lang.com) for detailed installation.
+See the [Mona 20.x documentation](https://laravel-lang.com/20.x/start) for installation and usage, the [upgrade guide](https://laravel-lang.com/20.x/upgrade) for existing applications, and the [legacy documentation](https://laravel-lang.com/legacy) for earlier package versions.
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://laravel-lang.com/contributions.html) for details.
+Please see [CONTRIBUTING](https://laravel-lang.com/20.x/contributing) for details.
 
 ## License
 
-This package is licensed under the [MIT License](https://laravel-lang.com/license.html).
+This package is licensed under the [MIT License](https://laravel-lang.com/20.x/license).
 
 [badge_build]: https://img.shields.io/github/actions/workflow/status/laravel-lang/mona/tests.yml?style=flat-square
 [badge_downloads]: https://img.shields.io/packagist/dt/laravel-lang/lang.svg?style=flat-square
