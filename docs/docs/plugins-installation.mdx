@@ -1,0 +1,50 @@
+---
+title: "Install Plugins"
+slug: /plugins-installation.html
+description: "Information on installing localization plugins using Publisher"
+---
+
+:::note
+
+You can also see the list of available [official](<./plugins-official.mdx>) and [community](<./plugins-community.mdx>) created plugins.
+
+:::
+
+To be a manager, you have to do two things:
+
+1. Install the package into your application. For example, `composer require --dev laravel-lang/lang:^15.39.1` or another package.
+1. It's all 😊
+
+Now, when you run the `php artisan lang:update` command is executed, the manager will check the specified packages and automatically update the files in your application.
+
+If files with the same name exist in different packages, e.g. `custom.php`, then during their processing all keys from all files will be during processing.
+
+:::tip
+
+For ease of development, use a ready-made [Translations Template](<https://github.com/Laravel-Lang/translations-template>).
+
+:::
+
+Enjoy! 😊
+
+## Plugins
+
+<div className="legacy-card-grid">
+
+<div className="card legacy-card">
+
+[Official Plugins](<./plugins-official.mdx>)
+
+List of plugins developed and maintained by the Laravel-Lang Team.
+
+</div>
+
+<div className="card legacy-card">
+
+[Community Plugins](<./plugins-community.mdx>)
+
+List of plugins developed and maintained by the community.
+
+</div>
+
+</div>

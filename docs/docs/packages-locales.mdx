@@ -1,0 +1,318 @@
+---
+title: "Locales"
+slug: /packages-locales.html
+description: "Basic functionality for working with localizations"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"A stable version of the project has been released"}>Stable</span> <span className="badge badge--secondary" title={"Latest version is unknown"}>unknown</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [View on GitHub](<https://github.com/laravel-lang/locales>)
+
+## Installation {/* #installation */}
+
+:::note
+
+The compatibility table can be viewed [here](<#compatibility> "Compatibility table for the Locales package").
+
+:::
+
+To install, run the console command:
+
+```bash
+composer require laravel-lang/locales:^2.11.0
+```
+
+## Usage {/* #usage */}
+
+To work with locales, you can use the facade `LaravelLang\Locales\Facades\Locales`. It allows you to receive information in two ways: a list of locale codes or an array of DTO objects.
+
+### Data objects {/* #data_objects */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// List of available localizations.
+Locales::available(): array // array<LocaleData>
+
+// List of installed localizations.
+Locales::installed(bool $withProtects = true): array // array<LocaleData>
+
+// List of uninstalled localizations.
+Locales::notInstalled(): array // array<LocaleData>
+
+// Retrieving a list of protected locales.
+Locales::protects(): array // array<LocaleData>
+
+// Check if language packs are available in requested locale.
+Locales::isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// Check if a language pack is installed.
+Locales::isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// The checked locale protecting.
+Locales::isProtected(LocaleData|Locale|string|null $locale): bool
+
+// Validate and returns the correct localization.
+// If an uninstalled localization is requested, then it will return the currently active one in the application.
+Locales::get(mixed $locale): LocaleData
+
+// Getting the default localization name.
+Locales::getDefault(): LocaleData
+
+// Getting the fallback localization name.
+Locales::getFallback(): LocaleData
+
+// Receives information about any available localization, otherwise it will return the currently active one in the application.
+Locales::info(mixed $locale): LocaleData
+```
+
+### Raw data {/* #raw_data */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// List of available localizations.
+Locales::raw()->available(): array // array<string>
+
+// List of installed localizations.
+Locales::raw()->installed(bool $withProtects = true): array // array<string>
+
+// List of uninstalled localizations.
+Locales::raw()->notInstalled(): array // array<string>
+
+// Retrieving a list of protected locales.
+Locales::raw()->protects(): array // array<string>
+
+// Check if language packs are available in requested locale.
+Locales::raw()->isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// Check if a language pack is installed.
+Locales::raw()->isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// The checked locale protecting.
+Locales::raw()->isProtected(LocaleData|Locale|string|null $locale): bool
+
+// Validate and returns the correct localization.
+// If an uninstalled localization is requested, then it will return the currently active one in the application.
+Locales::raw()->get(mixed $locale): string
+
+// Getting the default localization name.
+Locales::raw()->getDefault(): string
+
+// Getting the fallback localization name.
+Locales::raw()->getFallback(): string
+
+// Receives locale code for any available localization, otherwise it will return the currently active one in the application.
+Locales::raw()->info(mixed $locale): string
+```
+
+### Examples {/* #examples */}
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::getDefault(withCountry: true, withCurrency: true);
+
+// Non aliased
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+// Aliased
+LocaleData {
+  +code: "de-DE"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // vi
+
+return Locales::get('de', withCountry: true, withCurrency: true);
+
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+LocaleData {
+  +code: "ar"
+  +regional: "ar_AE"
+  +type: "Arab"
+  +native: "العربية"
+  +localized: "Arabe"
+  +country: CountryData {
+    +code: "EG"
+    +native: "مصر"
+    +localized: "Égypte"
+  }
+  +currency: CurrencyData {
+    +code: "EGP"
+    +numeric: 818
+    +native: "جنيه مصري"
+    +localized: "livre égyptienne"
+  }
+  +direction: Direction {
+    +name: "RightToLeft"
+    +value: "rtl"
+  }
+  +locale: Locale {
+    +name: "Arabic"
+    +value: "ar"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::get('foo', withCountry: true, withCurrency: true);
+
+// Will return the default locale
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+return Locales::raw()->getDefault();
+// Non aliased
+// de
+
+// Aliased
+// de-DE
+```
+
+```php
+return Locales::raw()->get('de');
+// de
+
+return Locales::raw()->get('foo');
+// Will return the default locale
+// de
+```
+
+## Compatibility {/* #compatibility */}
+
+| Laravel | PHP | Package | Status |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">supported</span> |
+| 10 | 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">not supported</span> |

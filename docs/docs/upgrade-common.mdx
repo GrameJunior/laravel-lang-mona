@@ -1,0 +1,27 @@
+---
+title: "Common"
+slug: /upgrade-common.html
+description: "Information on upgrading Common to version 6 from 5"
+---
+
+## Updating dependencies {/* #updating_dependencies */}
+
+You should update the following dependency in your application's `composer.json` file:
+
+- `laravel-lang/common` to `^6.0`
+
+And, if it is listed in the `require-dev` section, move it to the `require` section.
+
+Next, run the update dependency console command:
+
+```bash
+composer update
+```
+
+## Upgrade publisher {/* #upgrade_publisher */}
+
+Complete all upgrade steps except updating dependencies from the publisher's upgrade guide.
+
+## Upgrade JSON Fallback {/* #upgrade_json_fallback */}
+
+If you are using the `laravel-lang/json-fallback-hotfix` package, then you will need to make corrections to and for the project.

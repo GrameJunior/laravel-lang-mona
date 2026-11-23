@@ -1,0 +1,71 @@
+---
+title: "JSON Fallback"
+slug: /packages-json-fallback.html
+description: "Adds support for fallback JSON string translation"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"A stable version of the project has been released"}>Stable</span> <span className="badge badge--secondary" title={"Latest version is unknown"}>unknown</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [View on GitHub](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+If you use English as a fallback localization, then you do not need to use this package.
+
+:::
+
+## Installation {/* #installation */}
+
+:::note
+
+The compatibility table can be viewed [here](<#compatibility> "Compatibility table for the JSON Fallback package").
+
+:::
+
+Out of the box, Laravel <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">doesn't allow</a> fallback translations for JSON keys. For example, when you call `__('Remember Me')`, you get `Remember Me` instead of `Se souvenir de moi` for French fallback language.
+
+To install, run the console command:
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## Usage {/* #usage */}
+
+:::note
+
+In Laravel 11, the `providers` section is missing from the `config/app.php` configuration file. You can add it manually.
+
+:::
+
+After installing, you need to add a link to the service provider in the `providers` section of the `config/app.php` settings file:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // other service providers
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+Now JSON keys will correctly output the value based on the selected localization.
+
+## Compatibility {/* #compatibility */}
+
+| Laravel | PHP | Package | Status |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">supported</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">not supported</span> |

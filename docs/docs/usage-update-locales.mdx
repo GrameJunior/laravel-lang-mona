@@ -1,0 +1,23 @@
+---
+title: "Update Locales"
+slug: /usage-update-locales.html
+description: "Updating locales to a Laravel application"
+---
+
+To update files, run the console command:
+
+```bash
+php artisan lang:update
+```
+
+Yes, that's all you have to do 🙂
+
+This console command detects the localizations installed in the application and updates the files.
+
+:::tip
+
+Some minor versions of Laravel may remove keys from their repositories, causing them to disappear from the application. This is very rare, but it does happen.
+
+The Localization Update command only adds new or updates existing translation phrases. To remove unused phrases, use the [`php artisan lang:reset`](<./usage-reset-locales.mdx> "Resetting locales to a Laravel application") console command .
+
+:::

@@ -1,0 +1,47 @@
+---
+title: "Publisher"
+slug: /upgrade-publisher.html
+description: "Information on upgrading Publisher to version 16 from 15"
+---
+
+## Updating Dependencies {/* #updating_dependencies */}
+
+:::note
+
+If you are using the `laravel-lang/common` package, skip this step.
+
+:::
+
+You should update the following dependency in your application's `composer.json` file:
+
+- `laravel-lang/publisher` to `^16.0`
+
+Next, run the update dependency console command:
+
+```bash
+composer update
+```
+
+## Change locale namespace {/* #change_namespace */}
+
+Replace the locales namespace:
+
+```php
+LaravelLang\Locales\Enums\Locale
+```
+
+with
+
+```php
+LaravelLang\LocaleList\Locale
+```
+
+For example:
+
+```php
+// Before
+LaravelLang\Locales\Enums\Locale::Afrikaans; // af
+
+// After
+LaravelLang\LocaleList\Locale::Afrikaans; // af
+```
