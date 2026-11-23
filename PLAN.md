@@ -134,6 +134,28 @@
     - [x] TranslationsTemplate
 - [x] Добавить пропущенный модуль Punctuation
 - [x] Исправить параллельные тесты
+- [ ] Проверить файлы в папках проектов (`.gitattributes`, `.editorconfig`, и т.д.):
+    - [ ] Mona
+    - [ ] Actions
+    - [ ] Attributes
+    - [ ] Common
+    - [ ] Config
+    - [ ] HttpStatuses
+    - [ ] JsonFallback
+    - [ ] Lang
+    - [ ] Library
+    - [ ] LocaleList
+    - [ ] Locales
+    - [ ] Models
+    - [ ] MoonShine
+    - [ ] CountryNames
+    - [ ] CurrencyNames
+    - [ ] LocaleNames
+    - [ ] Publisher
+    - [ ] Routes
+    - [ ] StarterKits
+    - [ ] Toolkit
+    - [ ] TranslationsTemplate
 - [ ] Рефакторинг документации
     - [ ] Заменить доку старыми файлами с заменой
     - [ ] Удалить из документации статусы переводов.
@@ -157,28 +179,6 @@
     - [ ] Найти auto-labeler
 - [x] Сгенерировать и установить новое превью репозиториев. Моя идея для превью - логотип Laravel акварелью в
   перспективе, но сделать это как-нибудь нестандартно, под углом.
-- [ ] Проверить файлы в папках проектов (`.gitattributes`, `.editorconfig`, и т.д.):
-    - [ ] Mona
-    - [ ] Actions
-    - [ ] Attributes
-    - [ ] Common
-    - [ ] Config
-    - [ ] HttpStatuses
-    - [ ] JsonFallback
-    - [ ] Lang
-    - [ ] Library
-    - [ ] LocaleList
-    - [ ] Locales
-    - [ ] Models
-    - [ ] MoonShine
-    - [ ] CountryNames
-    - [ ] CurrencyNames
-    - [ ] LocaleNames
-    - [ ] Publisher
-    - [ ] Routes
-    - [ ] StarterKits
-    - [ ] Toolkit
-    - [ ] TranslationsTemplate
 - [ ] Перевести Mona в публичную область видимости.
 - [ ] Обновить Social Preview в настройках репозитория.
 - [ ] Включить "Require actions to be pinned to a full-length commit SHA" в настройках
