@@ -329,6 +329,63 @@ test('publishes translations when a versioned dependency is replaced by Laravel'
     expect(File::getRequire(lang_path('fr/messages.php')))->toBe(['greeting' => 'Bonjour']);
 });
 
+test('publishes smart punctuation for each locale when enabled', function (bool $enabled): void {
+    config()->set('localization_punctuation.enabled', $enabled);
+
+    $source      = '"It\'s ready, :name" -- \'now\'...';
+    $translation = '"C\'est prêt, :name" -- \'maintenant\'...';
+
+    writePublisherPackage('tests/translations', [], [
+        'messages.php'  => '{locale}/messages.php',
+        'messages.json' => '{locale}.json',
+    ], [
+        'source/messages.php'     => ['nested' => ['message' => $source]],
+        'source/messages.json'    => [$source => $source],
+        'locales/fr/default.json' => [$source => $translation],
+    ]);
+    writePublisherFiles([
+        lang_path('fr.json') => [$source => 'Previous message', 'Custom' => '"Custom" -- ...'],
+    ]);
+
+    artisan('lang:update')->assertSuccessful()->run();
+
+    $french = $enabled ? "«\u{a0}C’est prêt, :name\u{a0}» – ‘maintenant’…" : $translation;
+    $german = $enabled ? '“It’s ready, :name” – ‘now’…' : $source;
+
+    expect(File::getRequire(lang_path('fr/messages.php')))->toBe(['nested' => ['message' => $french]])
+        ->and(File::getRequire(lang_path('de/messages.php')))->toBe(['nested' => ['message' => $german]])
+        ->and(File::json(lang_path('fr.json')))->toBe([$source => $french, 'Custom' => '"Custom" -- ...'])
+        ->and(File::json(lang_path('de.json')))->toBe([$source => $german]);
+})->with(['enabled' => true, 'disabled' => false]);
+
+test('preserves formatting and markup when publishing smart punctuation', function (): void {
+    config()->set([
+        'localization_punctuation.enabled'                        => true,
+        'localization_punctuation.locales.fr.single_quote_opener' => '‹',
+        'localization_punctuation.locales.fr.single_quote_closer' => '›',
+    ]);
+
+    writePublisherPackage('tests/translations', [], ['messages.php' => '{locale}/messages.php'], [
+        'source/messages.php' => [
+            'empty'      => '',
+            'markup'     => "Visit <a href=\"/docs--guide\" title=\"Docs...\">'link'</a>...",
+            'multiline'  => "  \"First\"...\r\n\r\n  \"Second\"...  \r\n",
+            'reference'  => '[source]: https://example.org',
+            'whitespace' => " \t",
+        ],
+    ]);
+
+    artisan('lang:update')->assertSuccessful()->run();
+
+    expect(File::getRequire(lang_path('fr/messages.php')))->toBe([
+        'empty'      => '',
+        'markup'     => 'Visit <a href="/docs--guide" title="Docs...">‹link›</a>…',
+        'multiline'  => "  «\u{a0}First\u{a0}»…\r\n\r\n  «\u{a0}Second\u{a0}»…  \r\n",
+        'reference'  => '[source]: https://example.org',
+        'whitespace' => " \t",
+    ]);
+});
+
 test('resolves scalar PHP source values against the translation dictionary', function (): void {
     writePublisherPackage('tests/translations', [], ['values.php' => '{locale}/values.php'], [
         'source/values.php'       => ['boolean' => false, 'float' => 1.5, 'null' => null],
@@ -343,6 +400,35 @@ test('resolves scalar PHP source values against the translation dictionary', fun
         'null'    => 'Empty',
     ]);
 });
+
+test('preserves non-string translation values with or without smart punctuation', function (bool $enabled): void {
+    config()->set('localization_punctuation.enabled', $enabled);
+
+    writePublisherPackage('tests/translations', [], ['values.php' => '{locale}/values.php'], [
+        'source/values.php' => [
+            'boolean'             => false,
+            'count'               => 12,
+            'fraction'            => 1.5,
+            'group'               => 'Group',
+            'missing'             => null,
+            'translated_boolean'  => 'Boolean',
+            'translated_fraction' => 'Fraction',
+        ],
+        'locales/fr/default.json' => ['Group' => ['item' => 'Item'], 'Boolean' => false, 'Fraction' => 1.5],
+    ]);
+
+    artisan('lang:update')->assertSuccessful()->run();
+
+    expect(File::getRequire(lang_path('fr/values.php')))->toBe([
+        'boolean'             => false,
+        'count'               => 12,
+        'fraction'            => 1.5,
+        'group'               => ['item' => 'Item'],
+        'missing'             => null,
+        'translated_boolean'  => false,
+        'translated_fraction' => 1.5,
+    ]);
+})->with(['enabled' => true, 'disabled' => false]);
 
 test('rejects non-scalar PHP source values before writing the corresponding translation', function (): void {
     $target = lang_path('fr/messages.php');

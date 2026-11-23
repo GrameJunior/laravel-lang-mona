@@ -10,6 +10,7 @@ use LaravelLang\JsonFallback\OverridedTranslator;
 use LaravelLang\LocaleList\Direction;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Models\HasTranslations;
+use LaravelLang\Publisher\Contracts\Decorator;
 use Tests\Fixtures\ProjectNamespace;
 
 arch('private methods')
@@ -28,9 +29,10 @@ arch('class')
         'LaravelLang\Routes\localizedRoute',
         'LaravelLang\Models\Concerns',
         'LaravelLang\LocaleList\Concerns',
+        Decorator::class,
         Direction::class,
-        Locale::class,
         HasTranslations::class,
+        Locale::class,
     ]);
 
 arch('final')
