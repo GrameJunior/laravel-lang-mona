@@ -1,35 +1,38 @@
 import Link from "@docusaurus/Link";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import CodeBlock from "@theme/CodeBlock";
 import Layout from "@theme/Layout";
 
 import styles from "./index.module.css";
 
-const description = "Install translations and localize routes and Eloquent models in your Laravel application.";
+const description = "Install translations and localize routes and Eloquent models with Laravel-Lang.";
 
 const guides = [
     {
         title: "Manage locales",
-        description: "Add, update, reset, and remove translations with Artisan.",
-        to: "/manage-locales.html",
+        description: "Add, update, and remove translations with Artisan.",
+        to: "/translations",
     },
     {
         title: "Configure localization",
         description: "Set up locale aliases, localized routes, and model translations.",
-        to: "/configuration.html",
+        to: "/configure",
     },
     {
-        title: "Explore packages",
-        description: "Use Common to install the packages that support application localization.",
-        to: "/packages-common.html",
+        title: "Translation plugins",
+        description: "Install translation packs or create your own.",
+        to: "/plugins",
     },
     {
-        title: "Install plugins",
-        description: "Add translation packs maintained by Laravel-Lang and the community.",
-        to: "/plugins-installation.html",
+        title: "Upgrade to Mona",
+        description: "Migrate your dependencies, configuration, and translations.",
+        to: "/upgrade",
     },
 ];
 
 export default function Home() {
+    const llmsUrl = useBaseUrl("/llms.txt");
+
     return (
         <Layout title="Documentation" description={description}>
             <main>
@@ -39,15 +42,15 @@ export default function Home() {
                             <h1 id="home-title">Localize your Laravel application</h1>
                             <p className={styles.summary}>{description}</p>
                             <div className={styles.actions}>
-                                <Link className="button button--primary button--lg" to="/basic-usage.html">
-                                    Get started
+                                <Link className="button button--primary button--lg" to="/start">
+                                    Start in 1 minute
                                 </Link>
-                                <Link className="button button--secondary button--lg" to="/available-locales-list.html">
-                                    Browse locales
+                                <Link className="button button--secondary button--lg" to="/legacy">
+                                    Legacy documentation
                                 </Link>
                             </div>
                             <CodeBlock className={styles.installCommand} language="bash">
-                                {"composer require laravel-lang/common:^6.9"}
+                                {"composer require laravel-lang/common\nphp artisan lang:update"}
                             </CodeBlock>
                         </div>
                         <div className={styles.codePreview}>
@@ -55,7 +58,7 @@ export default function Home() {
                                 {"php artisan lang:add fr"}
                             </CodeBlock>
                             <CodeBlock language="php" title="Use a translation">
-                                {"__('Remember me', locale: 'fr');\n// Se souvenir de moi"}
+                                {"__('auth.failed', locale: 'fr');"}
                             </CodeBlock>
                         </div>
                     </div>
@@ -71,9 +74,7 @@ export default function Home() {
                             </Link>
                         ))}
                     </div>
-                    <Link className={styles.compatibility} to="/packages-common.html#compatibility">
-                        Laravel and PHP compatibility
-                    </Link>
+                    <a className={styles.compatibility} href={llmsUrl}>Documentation for AI agents (llms.txt)</a>
                 </section>
             </main>
         </Layout>

@@ -1,0 +1,83 @@
+{
+    "documentation": [
+        "legacy",
+        {
+            "type": "category",
+            "label": "Prologue",
+            "items": [
+                "release-notes",
+                {
+                    "type": "category",
+                    "label": "Upgrade Guide",
+                    "items": [
+                        "upgrade-common",
+                        "upgrade-publisher",
+                        "upgrade-json-fallback"
+                    ]
+                },
+                "security-policy",
+                "contributions",
+                {
+                    "type": "doc",
+                    "id": "license",
+                    "label": "License"
+                }
+            ]
+        },
+        {
+            "type": "category",
+            "label": "Getting Started",
+            "items": [
+                "basic-usage",
+                "configuration",
+                "available-locales-list"
+            ]
+        },
+        {
+            "type": "category",
+            "label": "Managing Locales",
+            "items": [
+                "usage-add-locales",
+                "usage-update-locales",
+                "usage-reset-locales",
+                "usage-remove-locales"
+            ],
+            "link": {
+                "type": "doc",
+                "id": "manage-locales"
+            }
+        },
+        {
+            "type": "category",
+            "label": "Packages",
+            "items": [
+                "packages-starter-kits",
+                "packages-common",
+                "packages-routes",
+                "packages-models",
+                "packages-locales",
+                "packages-lang",
+                "packages-actions",
+                "packages-attributes",
+                "packages-http-statuses",
+                "packages-native-locale-names",
+                "packages-native-country-names",
+                "packages-native-currency-names",
+                "packages-moonshine",
+                "packages-publisher",
+                "packages-translator",
+                "packages-locale-list",
+                "packages-json-fallback"
+            ]
+        },
+        {
+            "type": "category",
+            "label": "Plugins",
+            "items": [
+                "plugins-installation",
+                "plugins-official",
+                "plugins-community"
+            ]
+        }
+    ]
+}

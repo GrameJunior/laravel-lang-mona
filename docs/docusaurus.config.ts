@@ -1,6 +1,7 @@
 import type {Options, ThemeConfig} from "@docusaurus/preset-classic";
 import type {Config} from "@docusaurus/types";
 import {themes as prismThemes} from "prism-react-renderer";
+import documentationArtifacts from "./plugins/documentation-artifacts";
 
 const config: Config = {
     title: "Laravel Lang",
@@ -12,6 +13,7 @@ const config: Config = {
     onBrokenAnchors: "throw",
     onDuplicateRoutes: "throw",
     markdown: {
+        format: "detect",
         hooks: {
             onBrokenMarkdownLinks: "throw",
         },
@@ -31,12 +33,18 @@ const config: Config = {
                 docs: {
                     routeBasePath: "/",
                     sidebarPath: "./sidebars.ts",
+                    lastVersion: "current",
+                    versions: {
+                        current: {label: "20.x", badge: false},
+                        legacy: {label: "Legacy", path: "legacy", banner: "none"},
+                    },
                 },
                 blog: false,
                 theme: {customCss: "./src/css/custom.css"},
             } satisfies Options,
         ],
     ],
+    plugins: [documentationArtifacts],
     themeConfig: {
         colorMode: {respectPrefersColorScheme: true},
         navbar: {
@@ -46,13 +54,14 @@ const config: Config = {
                 srcDark: "images/logo_dark.svg",
             },
             items: [
-                {type: "doc", docId: "basic-usage", label: "Documentation", position: "left"},
+                {type: "docSidebar", sidebarId: "documentation", label: "Documentation", position: "left"},
+                {type: "docsVersionDropdown", position: "right"},
                 {type: "localeDropdown", position: "right"},
             ],
         },
         footer: {
             links: [
-                {label: "GitHub", href: "https://github.com/Laravel-Lang/common"},
+                {label: "GitHub", href: "https://github.com/Laravel-Lang/mona"},
             ],
             copyright: `Copyright © 2013-${new Date().getFullYear()} Laravel-Lang Team`,
         },
