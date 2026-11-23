@@ -12,7 +12,6 @@ class WorkbenchServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->setBootstrapPath();
         $this->setDatabasePath();
         $this->setLangPath();
     }
@@ -22,13 +21,6 @@ class WorkbenchServiceProvider extends ServiceProvider
         $this->app['config']->set('auth.guards.foo', $this->app['config']->get('auth.guards.web'));
 
         Model::preventLazyLoading();
-    }
-
-    protected function setBootstrapPath(): void
-    {
-        $this->app->useBootstrapPath(
-            $this->app->basePath('bootstrap/' . $this->parallelToken())
-        );
     }
 
     protected function setDatabasePath(): void
