@@ -33,24 +33,6 @@
     letter-spacing: -0.035em;
 }
 
-.legacy-hero {
-    padding: clamp(1.5rem, 5vw, 3.5rem);
-    margin-bottom: 1.5rem;
-    background: color-mix(in srgb, var(--ifm-color-primary) 7%, var(--ifm-background-color));
-    border: 1px solid var(--ifm-toc-border-color);
-    border-radius: var(--ifm-global-radius);
-}
-
-.legacy-hero h1 {
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.045em;
-}
-
-.legacy-hero p {
-    margin-bottom: 0;
-    font-size: 1.125rem;
-}
-
 .legacy-card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
@@ -107,13 +89,6 @@
     border-top: 1px solid var(--ifm-toc-border-color);
 }
 
-.footer__items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
-    margin: 0;
-}
-
 .footer__links {
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
 }

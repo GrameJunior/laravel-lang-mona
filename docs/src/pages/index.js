@@ -1,19 +1,79 @@
-import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
-import useBaseUrl from "@docusaurus/useBaseUrl";
+import CodeBlock from "@theme/CodeBlock";
+import Layout from "@theme/Layout";
+
+import styles from "./index.module.css";
+
+const description = "Install translations and localize routes and Eloquent models in your Laravel application.";
+
+const guides = [
+    {
+        title: "Manage locales",
+        description: "Add, update, reset, and remove translations with Artisan.",
+        to: "/manage-locales.html",
+    },
+    {
+        title: "Configure localization",
+        description: "Set up locale aliases, localized routes, and model translations.",
+        to: "/configuration.html",
+    },
+    {
+        title: "Explore packages",
+        description: "Use Common to install the packages that support application localization.",
+        to: "/packages-common.html",
+    },
+    {
+        title: "Install plugins",
+        description: "Add translation packs maintained by Laravel-Lang and the community.",
+        to: "/plugins-installation.html",
+    },
+];
 
 export default function Home() {
-    const introduction = useBaseUrl("/introduction.html");
-
     return (
-        <>
-            <Head>
-                <title>Redirecting…</title>
-                <meta httpEquiv="refresh" content={`0;url=${introduction}`} />
-            </Head>
-            <main className="container margin-vert--lg">
-                <Link to={introduction}>Getting Started</Link>
+        <Layout title="Documentation" description={description}>
+            <main className={`container ${styles.home}`}>
+                <section className={styles.hero} aria-labelledby="home-title">
+                    <div className={styles.heroCopy}>
+                        <h1 id="home-title">Localize your Laravel application</h1>
+                        <p>{description}</p>
+                        <div className={styles.actions}>
+                            <Link className="button button--primary" to="/basic-usage.html">
+                                Get started
+                            </Link>
+                            <Link className="button button--outline button--primary" to="/available-locales-list.html">
+                                Browse locales
+                            </Link>
+                        </div>
+                        <CodeBlock className={styles.command} language="bash">
+                            {"composer require laravel-lang/common:^6.9"}
+                        </CodeBlock>
+                    </div>
+                    <div className={styles.example}>
+                        <CodeBlock className={styles.command} language="bash" title="Install French translations">
+                            {"php artisan lang:add fr"}
+                        </CodeBlock>
+                        <CodeBlock className={styles.command} language="php" title="Use a translation">
+                            {"__('Remember me', locale: 'fr');\n// Se souvenir de moi"}
+                        </CodeBlock>
+                    </div>
+                </section>
+
+                <section className={styles.guides} aria-labelledby="guides-title">
+                    <h2 id="guides-title">Localization guides</h2>
+                    <div className={styles.guideGrid}>
+                        {guides.map((guide) => (
+                            <Link key={guide.to} className={styles.guide} to={guide.to}>
+                                <h3>{guide.title} <span aria-hidden="true">→</span></h3>
+                                <p>{guide.description}</p>
+                            </Link>
+                        ))}
+                    </div>
+                    <Link className={styles.compatibility} to="/packages-common.html#compatibility">
+                        Laravel and PHP compatibility
+                    </Link>
+                </section>
             </main>
-        </>
+        </Layout>
     );
 }

@@ -1,7 +1,5 @@
 import {themes as prismThemes} from "prism-react-renderer";
 
-const github = "https://github.com/Laravel-Lang/common";
-
 /** @type {import('@docusaurus/types').Config} */
 export default {
     title: "Laravel Lang",
@@ -47,20 +45,15 @@ export default {
                 srcDark: "images/logo_dark.svg",
             },
             items: [
+                {type: "doc", docId: "basic-usage", label: "Documentation", position: "left"},
                 {type: "localeDropdown", position: "right"},
             ],
         },
         footer: {
             links: [
-                {
-                    items: [
-                        {label: "Boosty", href: "https://boosty.to/laravel-lang"},
-                        {label: "GitHub", href: github},
-                        {label: "Issues", href: `${github}/issues`},
-                        {label: "Discussions", href: `${github}/discussions`},
-                    ],
-                },
+                {label: "GitHub", href: "https://github.com/Laravel-Lang/common"},
             ],
+            copyright: `Copyright © 2013-${new Date().getFullYear()} Laravel-Lang Team`,
         },
         prism: {
             theme: prismThemes.github,
