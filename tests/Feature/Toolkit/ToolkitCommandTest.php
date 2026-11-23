@@ -58,7 +58,7 @@ it('registers the locale and synchronization commands in the Toolkit executable'
 
     preg_match_all('/^\S+/m', $process->getOutput(), $commands);
 
-    expect($commands[0])->toContain('create-locale', 'delete-locale', 'status', 'sync:library', 'sync:package');
+    expect($commands[0])->toContain('create-locale', 'delete-locale', 'migrate-locales', 'status', 'sync:library', 'sync:package');
 });
 
 it('prunes obsolete translations and preserves active translations and metadata', function (string $command): void {
