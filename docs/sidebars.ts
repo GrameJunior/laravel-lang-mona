@@ -1,4 +1,7 @@
-function section(label, items, id) {
+import type {SidebarsConfig} from "@docusaurus/plugin-content-docs";
+import type {SidebarItemCategoryConfig, SidebarItemConfig} from "@docusaurus/plugin-content-docs/lib/sidebars/types.js";
+
+function section(label: string, items: SidebarItemConfig[], id?: string): SidebarItemCategoryConfig {
     return {
         type: "category",
         label,
@@ -7,8 +10,7 @@ function section(label, items, id) {
     };
 }
 
-/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
-export default {
+const sidebars: SidebarsConfig = {
     documentation: [
         section("Prologue", [
             "release-notes",
@@ -58,3 +60,5 @@ export default {
         ]),
     ],
 };
+
+export default sidebars;

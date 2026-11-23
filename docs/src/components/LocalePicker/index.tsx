@@ -6,21 +6,34 @@ import Heading from "@theme/Heading";
 import locales from "./locales.json";
 import styles from "./styles.module.css";
 
+type LocaleCode = keyof typeof locales;
+
+type Locale = {
+    name: string;
+    nativeDescription?: string;
+    description: string;
+};
+
 const anchorPrefix = "lists-available-locales-";
+
+function isLocaleCode(code: string): code is LocaleCode {
+    return Object.hasOwn(locales, code);
+}
 
 export default function LocalePicker() {
     const {i18n: {currentLocale}} = useDocusaurusContext();
     const {hash} = useLocation();
-    const [localeCode, setLocaleCode] = useState(currentLocale);
-    const {name, nativeDescription, description} = locales[localeCode];
+    const defaultLocaleCode = isLocaleCode(currentLocale) ? currentLocale : "en";
+    const [localeCode, setLocaleCode] = useState(defaultLocaleCode);
+    const {name, nativeDescription, description}: Locale = locales[localeCode];
     const languageTag = localeCode.replaceAll("_", "-");
 
     useEffect(() => {
         const prefix = `#${anchorPrefix}`;
         const linkedCode = hash.startsWith(prefix) ? hash.slice(prefix.length) : "";
 
-        setLocaleCode(Object.hasOwn(locales, linkedCode) ? linkedCode : currentLocale);
-    }, [currentLocale, hash]);
+        setLocaleCode(isLocaleCode(linkedCode) ? linkedCode : defaultLocaleCode);
+    }, [defaultLocaleCode, hash]);
 
     return (
         <>
@@ -29,7 +42,13 @@ export default function LocalePicker() {
                 <select
                     className={styles.select}
                     value={localeCode}
-                    onChange={(event) => setLocaleCode(event.target.value)}
+                    onChange={(event) => {
+                        const code = event.currentTarget.value;
+
+                        if (isLocaleCode(code)) {
+                            setLocaleCode(code);
+                        }
+                    }}
                     aria-controls="locale-installation"
                 >
                     {Object.entries(locales).map(([code, locale]) => (

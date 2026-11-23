@@ -1,7 +1,8 @@
+import type {Options, ThemeConfig} from "@docusaurus/preset-classic";
+import type {Config} from "@docusaurus/types";
 import {themes as prismThemes} from "prism-react-renderer";
 
-/** @type {import('@docusaurus/types').Config} */
-export default {
+const config: Config = {
     title: "Laravel Lang",
     url: "https://laravel-lang.com",
     baseUrl: "/",
@@ -29,11 +30,11 @@ export default {
             {
                 docs: {
                     routeBasePath: "/",
-                    sidebarPath: "./sidebars.js",
+                    sidebarPath: "./sidebars.ts",
                 },
                 blog: false,
                 theme: {customCss: "./src/css/custom.css"},
-            },
+            } satisfies Options,
         ],
     ],
     themeConfig: {
@@ -60,5 +61,7 @@ export default {
             darkTheme: prismThemes.dracula,
             additionalLanguages: ["php"],
         },
-    },
+    } satisfies ThemeConfig,
 };
+
+export default config;
