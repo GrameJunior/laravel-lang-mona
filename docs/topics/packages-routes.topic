@@ -648,7 +648,7 @@
         <code-block lang="php">
             use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
 
-            LocaleHasBeenSetEvent::dispatch($code);
+            LocaleHasBeenSetEvent::dispatch($locale);
         </code-block>
 
         <p>

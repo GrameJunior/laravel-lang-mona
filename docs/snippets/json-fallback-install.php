@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
-use LaravelLang\JsonFallback\LangJsonFallbackServiceProvider as JsonTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
 
 return [
     'providers' => ServiceProvider::defaultProviders()->merge([

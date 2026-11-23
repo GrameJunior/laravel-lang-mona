@@ -31,6 +31,8 @@
 
             <a href="usage-add-locales.topic" />
             <a href="usage-update-locales.topic" />
+            <a href="usage-reset-locales.topic" />
+            <a href="usage-remove-locales.topic" />
         </secondary>
 
         <misc>
@@ -41,9 +43,9 @@
                 <a href="packages-actions.topic" />
                 <a href="packages-attributes.topic" />
                 <a href="packages-http-statuses.topic" />
-                <a href="packages-locale-names.topic" />
-                <a href="packages-country-names.topic" />
-                <a href="packages-currency-names.topic" />
+                <a href="packages-native-locale-names.topic" />
+                <a href="packages-native-country-names.topic" />
+                <a href="packages-native-currency-names.topic" />
             </cards>
 
             <cards>
