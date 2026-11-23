@@ -25,6 +25,7 @@ return RectorConfig::configure()
         __DIR__ . '/workbench',
         __DIR__ . '/rector.php',
     ])
+    ->withSkipPath('tests/Helpers/parallel_fix.php')
     ->withFileExtensions(['php'])
     ->withParallel()
     ->withPreparedSets(
