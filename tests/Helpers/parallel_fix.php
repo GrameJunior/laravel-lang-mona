@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Request;
 
 use function Orchestra\Testbench\default_skeleton_path;
 
@@ -13,7 +12,7 @@ function parallelTestingFix(): void
         return;
     }
 
-    $cachePath = 'bootstrap/cache/mona-' . Request::server('UNIQUE_TEST_TOKEN');
+    $cachePath = 'bootstrap/cache/mona-' . $_SERVER['UNIQUE_TEST_TOKEN'];
     $directory = default_skeleton_path() . '/' . $cachePath;
     $files     = new Filesystem;
 
