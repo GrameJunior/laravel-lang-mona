@@ -31,8 +31,7 @@
         "ext-json": "*",
         "ext-zip": "*",
         "laravel/prompts": "^0.3.26",
-        "league/commonmark": "^2.4.1",
-        "league/config": "^1.2",
+        "league/commonmark": "^2.10.7",
         "symfony/console": "^7.4 || ^8.1",
         "symfony/polyfill-php86": "^1.43",
         "symfony/var-exporter": "^7.4 || ^8.1"
