@@ -329,4 +329,4 @@ See the [Toolkit commands](./toolkit.md) for full examples.
 
 ## Verify the upgrade
 
-Run your application tests. Check a published message in each important locale, a fallback translation, a localized URL with your configured alias, and a model translation stored under the canonical code. Review generated files and saved locale values alongside the source changes. [Source comparison](https://github.com/Laravel-Lang/mona/blob/main/UPGRADE-MAP.md)
+Run your application tests. Check a published message in each important locale, a fallback translation, a localized URL with your configured alias, and a model translation stored under the canonical code. Review generated files and saved locale values alongside the source changes.
