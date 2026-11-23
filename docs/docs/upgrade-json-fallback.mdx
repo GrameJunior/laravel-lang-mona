@@ -1,0 +1,31 @@
+---
+title: "JSON Fallback"
+slug: /upgrade-json-fallback.html
+description: "Information on upgrading JSON Fallback to version 2 from 1"
+---
+
+## Updating Dependencies {/* #updating_dependencies */}
+
+You should update the following dependency in your application's `composer.json` file:
+
+- `"laravel-lang/json-fallback-hotfix": "^1.0"` with `"laravel-lang/json-fallback": "^2.0"`
+
+Next, run the update dependency console command:
+
+```bash
+composer update
+```
+
+## Change namespace {/* #change_namespace */}
+
+You need to change the namespace in the `config/app.php` file:
+
+```php
+LaravelLang\JsonFallbackHotfix\TranslationServiceProvider
+```
+
+with
+
+```php
+LaravelLang\JsonFallback\TranslationServiceProvider
+```

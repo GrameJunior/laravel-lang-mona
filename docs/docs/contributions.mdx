@@ -1,0 +1,124 @@
+---
+title: "Contribution Guide"
+slug: /contributions.html
+description: "Guide to helping developers develop Laravel Lang projects"
+---
+
+Contributions are <strong>welcome</strong> and will be fully <strong>credited</strong>.
+
+We accept contributions through Pull Requests on [all projects](<https://github.com/orgs/Laravel-Lang/repositories>) of our organization.
+
+## What do the files mean? {/* #what_do_the_files_mean */}
+
+- <strong>php.json</strong> - contains translations of values for PHP localization files.
+- <strong>php-inline.json</strong> - contains inline translations of values for PHP localization files.
+- <strong>json.json</strong> - contains translations of values for JSON localization files.
+- <strong>json-inline.json</strong> - contains inline translations of values for JSON localization files.
+- <strong>\_excludes.json</strong> - contains those values whose translation is the same as in English. Please note that this file contains a list of values, not keys.
+
+## How to change files? {/* #how_to_edit_files */}
+
+All files available for translation have a json extension and are located in the `locales` folder. Open the desired file and make changes.
+
+:::tip
+
+Even if you see an error in the key, do not change it, otherwise Laravel will not be able to read it.
+
+All you can do is send a [Pull Request](<https://github.com/orgs/laravel/repositories>) to the appropriate product from the Laravel team to correct the spelling.
+
+After this, our products will automatically update the keys. This happens automatically once a day.
+
+:::
+
+1. Open the localization file
+1. Change key values.
+1. Create a commit and push it
+1. Create a Pull Request specifying the locale code for which you are making changes. For example:
+
+   :::tip
+
+   \[fr\]: Added new localization
+
+   :::
+
+:::tip
+
+Pay attention to files with the `inline` suffix - they should not contain references to the current attribute (`:attribute`).
+
+The difference between inline translations is different in the form of address:
+
+```text
+// It's a normal
+The :attribute must contain at least one letter.
+
+// It's a inline
+This field must contain at least one letter.
+```
+
+:::
+
+## How to add a new locale? {/* #how_to_add_a_new_locale */}
+
+### For Laravel Lang projects {/* #for_laravel_lang_projects */}
+
+As a rule, all our projects already contain available localizations, but if you want to suggest a new one, [write to us](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>) about it.
+
+### For third-party projects {/* #for_third_party_projects */}
+
+:::tip
+
+To add a locale that is not in `laravel-lang/locale-list`, [write to us](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+:::
+
+Make sure you have the `laravel-lang/status-generator` package installed and run the console command:
+
+```bash
+vendor/bin/lang create <locale>
+# vendor/bin/lang create fr
+```
+
+If you want to install all the missing locales, then run the command without specifying the localization code:
+
+```bash
+vendor/bin/lang create
+```
+
+## Code Style {/* #code_style */}
+
+Laravel-Lang Team follows the [PER](<https://www.php-fig.org/per/coding-style/>) coding standard and the [PSR-4](<https://www.php-fig.org/psr/psr-4/>) autoloading standard.
+
+To apply the formatting of the code style, follow the console command:
+
+```bash
+composer style
+```
+
+## PR Title {/* #pr_title */}
+
+The PR title must correspond to the following format:
+
+```bash
+[locale]: Description
+```
+
+For example:
+
+```bash
+[fr]: Added new localization
+```
+
+The compliance of the title with the established format is checked by a regular expression:
+
+```bash
+/^(Draft:\s)?\[[a-zA-Z,_\s]+\]:\s.+$/
+```
+
+## Code of Conduct {/* #code_of_conduct */}
+
+The Laravel code of conduct is derived from the [Contributor Covenant](<https://www.contributor-covenant.org/version/2/1/code_of_conduct/>) code of conduct. Any violations of the code of conduct may be reported to [Andrey Helldar, Fred Delrieu](<mailto:helldar@dragon-code.pro;caouecs@caouecs.net>):
+
+- Participants will be tolerant of opposing views.
+- Participants must ensure that their language and actions are free of personal attacks and disparaging personal remarks.
+- When interpreting the words and actions of others, participants should always assume good intentions.
+- Behavior that can be reasonably considered harassment will not be tolerated.

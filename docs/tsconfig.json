@@ -1,0 +1,11 @@
+{
+    "extends": "@docusaurus/tsconfig",
+    "compilerOptions": {
+        "allowJs": false,
+        "baseUrl": ".",
+        "jsx": "react-jsx",
+        "strict": true,
+        "types": ["node", "react", "@docusaurus/module-type-aliases", "@docusaurus/theme-classic"]
+    },
+    "include": ["docusaurus.config.ts", "sidebars.ts", "src"]
+}

@@ -1,0 +1,24 @@
+---
+title: "Add Locales"
+slug: /usage-add-locales.html
+description: "Adding locales to a Laravel application"
+---
+
+:::note
+
+A list of available locale codes can be found [here](<./available-locales-list.mdx>).
+
+The list contains 128 locale codes.
+
+:::
+
+You can install the required locales by calling the console command `php artisan lang:add <locale>` and passing it one or more locale codes, separated by a space:
+
+```bash
+php artisan lang:add fr de de_AT de_CH vi zh_CN
+php artisan lang:add fr
+```
+
+If the target files exist, you will be asked what to do - skip the installation or replace the files.
+
+If these files contain keys that you have added, it is recommended that you skip them, as since the `php artisan lang:update` command will be able to update the files without deleting your code.
