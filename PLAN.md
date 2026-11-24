@@ -175,6 +175,7 @@
     - [ ] license
     - [ ] preview
     - [ ] release-drafter
+        - Изменить шаблон по аналогии с https://github.com/nvm-windows/nvm/releases/tag/v2.0.1
     - [ ] statuses
     - [ ] test-dependencies
     - [ ] tests
