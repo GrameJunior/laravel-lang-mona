@@ -176,7 +176,7 @@
     - [ ] preview
     - [ ] release-drafter
         - Изменить шаблон по аналогии с https://github.com/nvm-windows/nvm/releases/tag/v2.0.1
-    - [ ] statuses
+    - [x] statuses
     - [ ] test-dependencies
     - [ ] tests
     - [ ] Найти auto-labeler
