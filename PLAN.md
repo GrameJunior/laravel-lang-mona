@@ -171,9 +171,9 @@
   перспективе, но сделать это как-нибудь нестандартно, под углом.
 - [ ] Актуализировать GitHub Actions
     - [x] dependabot
-    - [ ] close-stale-issues
+    - [x] close-stale-issues
     - [x] license
-    - [ ] preview
+    - [x] preview
     - [ ] release-drafter
         - Изменить шаблон по аналогии с https://github.com/nvm-windows/nvm/releases/tag/v2.0.1
     - [ ] statuses
