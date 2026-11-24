@@ -1,0 +1,66 @@
+---
+title: "HTTP Statuses"
+slug: /packages-http-statuses.html
+description: "Übersetzungen für HTTP-Statuscodes"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Eine stabile Version des Projekts wurde veröffentlicht"}>Stabil</span> <span className="badge badge--secondary" title={"Die neueste Version ist nicht bekannt"}>unbekannt</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Auf GitHub ansehen](<https://github.com/laravel-lang/http-statuses>)
+
+:::tip
+
+Dieses Paket enthält Übersetzungen für alle gängigen HTTP-Statustexte und ordnet sie ihrem numerischen Code zu.
+
+Damit kannst du auch ihre Texte lokalisieren.
+
+:::
+
+## Installation {/* #installation */}
+
+:::note
+
+Die Kompatibilitätstabelle findest du [hier](<#compatibility> "Kompatibilitätstabelle für das Paket HTTP Statuses").
+
+:::
+
+Führe zur Installation den folgenden Konsolenbefehl aus.
+
+```bash
+composer require --dev laravel-lang/http-statuses:^3.13.2
+```
+
+## Verwendung {/* #usage */}
+
+Mit dem Konsolenbefehl `lang:update` kannst du vorhandene Locales [aktualisieren](<./usage-update-locales.mdx> "Locales einer Laravel-Anwendung aktualisieren").
+
+```bash
+php artisan lang:update
+```
+
+Wir empfehlen außerdem, den Aufruf in der Datei `composer.json` im Abschnitt `post-update-cmd` des Blocks `scripts` einzutragen.
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+So werden die Sprachdateien nach jeder Aktualisierung der Abhängigkeiten automatisch aktualisiert. Du musst den Konsolenbefehl `php artisan lang:update` nicht manuell ausführen.
+
+## Kompatibilität {/* #compatibility */}
+
+| Laravel | PHP | Publisher | Paket | Status |
+| --- | --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | 15, 16 | `^3.5` | <span className="compatibility-status compatibility-status--supported">unterstützt</span> |
+| 8, 9, 10 | 8.1, 8.2 | 14 | `^3.0` | <span className="compatibility-status compatibility-status--not-supported">nicht unterstützt</span> |
+| 7, 8, 9 | 8.0, 8.1 | 13 | `^2.0` | <span className="compatibility-status compatibility-status--not-supported">nicht unterstützt</span> |
+| 7, 8 | 7.3, 7.4, 8.0, 8.1 | 10 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">nicht unterstützt</span> |

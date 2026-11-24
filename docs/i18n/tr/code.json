@@ -1,0 +1,102 @@
+{
+  "home.description": {
+    "message": "Laravel-Lang ile çevirileri kurun, rotaları ve Eloquent modellerini yerelleştirin."
+  },
+  "home.guide.translations.title": {
+    "message": "Yerel ayarları yönetin"
+  },
+  "home.guide.translations.description": {
+    "message": "Artisan ile çevirileri ekleyin, güncelleyin ve kaldırın."
+  },
+  "home.guide.configure.title": {
+    "message": "Yerelleştirmeyi yapılandırın"
+  },
+  "home.guide.configure.description": {
+    "message": "Yerel ayar takma adlarını, yerelleştirilmiş rotaları ve model çevirilerini ayarlayın."
+  },
+  "home.guide.plugins.title": {
+    "message": "Çeviri eklentileri"
+  },
+  "home.guide.plugins.description": {
+    "message": "Çeviri paketlerini kurun veya kendi paketinizi oluşturun."
+  },
+  "home.guide.upgrade.title": {
+    "message": "Mona’ya yükseltin"
+  },
+  "home.guide.upgrade.description": {
+    "message": "Bağımlılıklarınızı, yapılandırmanızı ve çevirilerinizi taşıyın."
+  },
+  "home.title": {
+    "message": "Belgeler"
+  },
+  "home.hero.title": {
+    "message": "Laravel uygulamanızı yerelleştirin"
+  },
+  "home.start": {
+    "message": "1 dakikada başlayın"
+  },
+  "home.legacy": {
+    "message": "Eski sürüm belgeleri"
+  },
+  "home.example.install": {
+    "message": "Fransızca çevirileri kurun"
+  },
+  "home.example.use": {
+    "message": "Çeviriyi kullanın"
+  },
+  "home.guides": {
+    "message": "Yerelleştirme kılavuzları"
+  },
+  "home.llms": {
+    "message": "Yapay zekâ aracıları için belgeler (llms.txt)"
+  },
+  "localePicker.label": {
+    "message": "Yerel ayar"
+  },
+  "localePicker.install": {
+    "message": "{language} çevirilerini kurmak için aşağıdaki komutu çalıştırın."
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "sistem modu",
+    "description": "The name for the system color mode"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Sürüm: {versionLabel}"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Sürümler",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.admonition.danger": {
+    "message": "tehlike",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "bilgi",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Ana gezinme",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(yeni sekmede açılır)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Belge kenar çubuğu",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Açılır menüyü genişlet",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Açılır menüyü daralt",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "“{heading}” başlığına doğrudan bağlantı",
+    "description": "Title for link to heading"
+  }
+}

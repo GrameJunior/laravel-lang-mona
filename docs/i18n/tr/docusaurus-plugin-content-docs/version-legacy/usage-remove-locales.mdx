@@ -1,0 +1,33 @@
+---
+title: "Yerel ayar kaldırma"
+slug: /usage-remove-locales.html
+description: "Laravel uygulamasından yerel ayar kaldırma"
+---
+
+:::warning
+
+Bu komut çalıştırıldığında varsayılan ve yedek yerel ayarlar hariç, ilgili yerel ayar dizini içindeki tüm dosyalarla birlikte silinir.
+
+:::
+
+Yerel ayarları silmek için `php artisan lang:rm <locale>` komutuna ilgili yerel ayar kodlarını vermelisiniz.
+
+```bash
+php artisan lang:rm fr de de_AT de_CH vi zh_CN
+```
+
+Argüman vermezseniz konsol, kullanılabilir yerel ayarlar arasından seçim yapabileceğiniz etkileşimli bir soru gösterir.
+
+```bash
+php artisan lang:rm
+```
+
+Komut, korunan bir yerel ayarı kaldırmaya çalıştığında varsayılan olarak hata mesajı döndürür.
+
+Korunan yerel ayarlar `config/app.php` dosyasındaki `locale` ve `fallback_locale` parametrelerinde belirlenen kodlardır.
+
+Korunan bir yerel ayarı zorla silmek için `force` seçeneğini kullanın.
+
+```bash
+php artisan lang:rm en --force
+```

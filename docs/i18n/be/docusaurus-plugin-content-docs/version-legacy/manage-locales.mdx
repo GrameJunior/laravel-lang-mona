@@ -1,0 +1,35 @@
+---
+title: "Кіраванне лакалямі"
+slug: /manage-locales.html
+description: "Агульныя звесткі пра кіраванне лакалізацыяй"
+---
+
+:::warning
+
+Па змаўчанні Laravel <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">не падтрымлівае</a> рэзервовых перакладаў для ключоў JSON. Напрыклад, пры выкліку `__('Remember Me')` для рэзервовай французскай мовы вы атрымаеце `Remember Me` замест `Se souvenir de moi`.
+
+:::
+
+Амаль усе кансольныя каманды прымаюць масіў лакаляў як параметры.
+
+Напрыклад:
+
+```bash
+php artisan lang:<command> fr de de_AT de_CH vi zh_CN
+php artisan lang:<command> fr
+php artisan lang:<command>
+```
+
+Тут:
+
+- `fr de de_AT de_CH vi zh_CN` — спіс лакаляў праз прабел;
+- `fr` — таксама можна пазначыць адну лакаль;
+- калі параметр не перададзены пры выкліку, скрыпт задасць два пытанні:
+- `Do you want to %s all localizations?`, калі `%s` мае значэнне `install`, `remove` або `reset`;
+- калі `no`, наступнае пытанне — `Select localizations to add (specify the necessary localizations separated by commas)`.
+
+:::note
+
+Пры любых аперацыях з файламі (`install`, `uninstall`, `reset` і `update`) разам з файламі PHP аўтаматычна апрацоўваюцца файлы JSON, у тым ліку пераклады для [Laravel Framework](<https://laravel.com>), [Jetstream](<https://jetstream.laravel.com/>), [Fortify](<https://github.com/laravel/fortify>), [Cashier](<https://laravel.com/docs/billing>), [Breeze](<https://github.com/laravel/breeze>), [Nova (а таксама Dusk Suite і Log Viewer)](<https://nova.laravel.com/>), [Nova](<https://nova.laravel.com/>) (а таксама [Dusk Suite](<https://github.com/laravel/nova-dusk-suite>) і [Log Viewer](<https://github.com/laravel/nova-log-viewer>)) і [UI](<https://github.com/laravel/ui>).
+
+:::

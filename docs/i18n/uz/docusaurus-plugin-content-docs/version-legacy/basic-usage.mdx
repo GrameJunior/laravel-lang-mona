@@ -1,0 +1,459 @@
+---
+title: "Asosiy foydalanish"
+slug: /basic-usage.html
+description: "Paketlarni tez o‘rnatish va ishlatish haqida ma’lumot"
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+## O‘rnatish {/* #installation */}
+
+Paketni quyidagi konsol buyrug‘i bilan o‘rnating:
+
+```bash
+composer require laravel-lang/common:^6.9
+```
+
+## Lokallarni boshqarish {/* #managing_locales */}
+
+### Lokallar qo‘shish {/* #add_locales */}
+
+:::note
+
+Mavjud lokallar ro‘yxati [<strong>bu yerda</strong>](<./available-locales-list.mdx>).
+
+:::
+
+Endi `lang:add` konsol buyrug‘i orqali yangi lokallarni [qo‘shishingiz](<./usage-add-locales.mdx> "Laravel ilovasiga lokallar qo‘shish") mumkin:
+
+```bash
+php artisan lang:add <locale>
+```
+
+### Lokallarni yangilash {/* #update_locales */}
+
+Endi `lang:update` konsol buyrug‘i orqali mavjud lokallarni [yangilashingiz](<./usage-update-locales.mdx> "Laravel ilovasida lokallarni yangilash") mumkin:
+
+```bash
+php artisan lang:update
+```
+
+Buyruq chaqiruvini `composer.json` faylidagi `scripts` blokining `post-update-cmd` bo‘limiga qo‘shishni ham tavsiya qilamiz:
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+Bu bog‘liqliklar yangilangach, `php artisan lang:update` konsol buyrug‘ini qo‘lda bajarishga hojat qoldirmay, lokal fayllarini avtomatik yangilash imkonini beradi.
+
+## Marshrutlar {/* #routes */}
+
+### Mahalliylashtirilgan guruh orqali {/* #via_localization_group */}
+
+:::note
+
+`localizedRoute` yordamchi funksiyasi marshrutlarni <abbr title={"Mavjud metodlar: \"app('router')->localizedGroup()\", \"Route::localizedGroup()\" va \"LocalizationRoute::group\"."}>guruhlamasdan</abbr> chaqirilsa, lokal so‘rov parametri sifatida ko‘rsatiladi. Masalan:
+
+```bash
+https://example.com/foo?locale=fr
+```
+
+:::
+
+:::tip
+
+Parametr nomi, nom prefiksi va yo‘naltirish parametrini `config/localization.php` faylining `routes` bo‘limida o‘zgartirish mumkin.
+
+:::
+
+```php
+use Illuminate\Support\Facades\Route;
+
+app('router')->localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+
+Route::localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+```
+
+Bu metod mahalliylashtirilgan marshrutlar yordamida guruh prefikslarini boshqarishni osonlashtiradi.
+
+Ushbu guruhning asosiy `LocalizationByParameterPrefix` vositachi dasturidan tashqari, `LocalizationByCookie`, `LocalizationByHeader` va `LocalizationBySession` ham qatnashadi.
+
+Uchta usuldan birini ishlatishingiz mumkin:
+
+```php
+use Illuminate\Support\Facades\Route;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+
+app('router')->localizedGroup(fn () => ...)
+
+Route::localizedGroup(fn () => ...)
+
+LocalizationRoute::group(fn () => ...)
+```
+
+Natijadagi ilova ikki turdagi marshrutni ro‘yxatdan o‘tkazadi: `{locale}` prefiksli va prefikssiz. Masalan:
+
+| URL | Andoza | Nom |
+| --- | --- | --- |
+| https://example.com/fr/foo/show | `{locale}/foo/{bar}` | `localized.show` |
+| https://example.com/foo/show | `foo/{bar}` | `show` |
+
+Nom prefiksini `config/localization.php` faylining `routes` bo‘limida o‘zgartirish mumkin.
+
+:::note
+
+```php
+localizedRoute('show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+route('localized.show', ['bar' => 'show', 'locale' => app()->getLocale()]);
+// https://example.com/fr/foo/show
+```
+
+Bu funksiyani [Laravel Idea](<https://laravel-idea.com/>) qo‘llab-quvvatlaydi. U [PhpStorm](<https://www.jetbrains.com/phpstorm/>) plaginidir:
+
+<img src={require("@site/static/images/packages-route-idea-friendly.png").default} alt={"Laravel Idea’da marshrutlarni qo‘llash"} />
+
+:::
+
+#### Misollar {/* #via_localization_group_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Standart lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/fr/foo/show
+```
+
+Javob:
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Yo‘naltirish yoqilgan"}>
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Yo‘naltirish o‘chirilgan"}>
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Standart bo‘lmagan lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/de/foo/show
+```
+
+Javob:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"O‘rnatilmagan lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/as/foo/show
+```
+
+Javob:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"Noma’lum lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/qwerty/foo/show
+```
+
+Javob:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+</Tabs>
+
+## Modellar {/* #models */}
+
+### Tarjimani olish {/* #get_translation */}
+
+:::tip
+
+Barcha repozitoriylar [oldindan yuklash](<https://laravel.com/docs/eloquent-relationships#eager-loading>) bayrog‘ini asosiy modelga avtomatik uzatadi. Buni qo‘lda bajarish shart emas.
+
+Standart holatda munosabat faqat asosiy lokallar, ya’ni joriy va zaxira lokal yozuvlaridan iborat. Ayrim hollarda [filtrlash sozlamalarini](<./configuration.mdx#models>) o‘zgartirib, ularning barchasini yuklashingiz mumkin:
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+Bu holda elementlar uchun barcha mavjud lokallar yuklanadi.
+
+:::
+
+Joriy lokaldagi xususiyat qiymatini olish uchun model xususiyatiga murojaat qiling. Masalan:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+<abbr title={"\"config/app.php\" faylining \"app.locale\" parametrida belgilangan qiymat."}>Asosiy lokal</abbr> qiymati bo‘lmasa, metod <abbr title={"\"config/app.php\" faylining \"app.fallback_locale\" parametrida belgilangan qiymat."}>zaxira lokal</abbr> qiymatini qaytaradi.
+
+`getTranslation` metodidan ham foydalanishingiz mumkin:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+Muayyan lokal qiymatini olish uchun ikkinchi argument sifatida lokal kodini uzating. Masalan:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// yoki
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+Modelda ma’lumotlar bazasiga yozilmagan o‘zgarishlar bo‘lsa ham, bu metodlar o‘sha qiymatni qaytaradi.
+
+:::
+
+### Tarjimalarni belgilash {/* #set_translations */}
+
+#### Bitta qiymat {/* #single_value */}
+
+Ilovangizning joriy lokalida tarjima qo‘shish yoki yangilash uchun model xususiyatiga qiymat bering. Masalan:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+Yangi qiymatni `setTranslation` metodi bilan ham belgilashingiz mumkin:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+Bu metodlar yangi qiymatni hozirgi faol lokalga belgilaydi. Qiymatni muayyan lokalga belgilash uchun uning kodini shu metodning uchinchi parametri sifatida uzating. Masalan:
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// yoki
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+Ommaviy to‘ldirishdan ham foydalanish mumkin:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+Ushbu metodlar chaqirilganda yangi qiymatlar model obyektlarida saqlanadi. O‘zgarishlarni ma’lumotlar bazasiga yozish uchun asosiy modelda `save` metodini chaqiring. Masalan:
+
+```php
+$page->save();
+```
+
+:::
+
+Model yaratilayotganda ham qiymatlarni to‘ldirish mumkin. Masalan:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### Bir nechta qiymat {/* #plural_value */}
+
+Xususiyatni bir nechta lokal tarjimalari bilan tez to‘ldirish kerak bo‘lsa, quyidagi usullardan birini ishlatishingiz mumkin:
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// 1-usul
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// 2-usul
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+Ommaviy to‘ldirishda `iterable` obyektlarini ham berishingiz mumkin. Masalan:
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+Har bir maydon uchun aynan bir xil lokallarni belgilash shart emas. Masalan, yuqoridagi misol `title` maydonini fransuz, ingliz va nemis tillarida to‘ldiradi. `description` maydoniga esa faqat fransuz va nemis tillari uchun qiymat beradi.
+
+## Zaxira JSON tarjimalari {/* #json_fallback */}
+
+:::note
+
+Laravel 11 da `config/app.php` faylida `providers` bo‘limi yo‘q. Uni qo‘lda qo‘shishingiz mumkin.
+
+:::
+
+O‘rnatgach, `config/app.php` sozlama faylining `providers` bo‘limiga xizmat provayderini qo‘shing:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // boshqa xizmat provayderlari
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+Endi JSON kalitlari tanlangan lokalga qarab to‘g‘ri qiymatni chiqaradi.

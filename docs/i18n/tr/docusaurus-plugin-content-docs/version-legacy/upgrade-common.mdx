@@ -1,0 +1,27 @@
+---
+title: "Common"
+slug: /upgrade-common.html
+description: "Common paketini 5’ten 6. sürüme yükseltme hakkında bilgiler"
+---
+
+## Bağımlılıkları güncelleme {/* #updating_dependencies */}
+
+Uygulamanızın `composer.json` dosyasında aşağıdaki bağımlılığı güncellemeniz gerekir.
+
+- `laravel-lang/common` sürümünü `^6.0` olarak ayarlayın.
+
+Bağımlılık `require-dev` bölümündeyse `require` bölümüne taşıyın.
+
+Ardından bağımlılık güncelleme komutunu çalıştırın.
+
+```bash
+composer update
+```
+
+## Publisher’ı yükseltme {/* #upgrade_publisher */}
+
+Publisher yükseltme kılavuzunda bağımlılıkları güncelleme dışındaki tüm adımları tamamlayın.
+
+## JSON Fallback paketini yükseltme {/* #upgrade_json_fallback */}
+
+`laravel-lang/json-fallback-hotfix` paketini kullanıyorsanız proje için gerekli düzeltmeleri de yapmanız gerekir.

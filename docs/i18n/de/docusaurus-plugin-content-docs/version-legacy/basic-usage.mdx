@@ -1,0 +1,459 @@
+---
+title: "Grundlegende Verwendung"
+slug: /basic-usage.html
+description: "Pakete schnell installieren und verwenden"
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+## Installation {/* #installation */}
+
+Installiere das Paket mit dem folgenden Konsolenbefehl.
+
+```bash
+composer require laravel-lang/common:^6.9
+```
+
+## Locales verwalten {/* #managing_locales */}
+
+### Locales hinzufügen {/* #add_locales */}
+
+:::note
+
+Die Liste der verfügbaren Locales findest du [<strong>hier</strong>](<./available-locales-list.mdx>).
+
+:::
+
+Mit dem Konsolenbefehl `lang:add` kannst du neue Locales [hinzufügen](<./usage-add-locales.mdx> "Locales zu einer Laravel-Anwendung hinzufügen").
+
+```bash
+php artisan lang:add <locale>
+```
+
+### Locales aktualisieren {/* #update_locales */}
+
+Mit dem Konsolenbefehl `lang:update` kannst du vorhandene Locales [aktualisieren](<./usage-update-locales.mdx> "Locales einer Laravel-Anwendung aktualisieren").
+
+```bash
+php artisan lang:update
+```
+
+Wir empfehlen außerdem, den Aufruf in der Datei `composer.json` im Abschnitt `post-update-cmd` des Blocks `scripts` einzutragen.
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+So werden die Sprachdateien nach jeder Aktualisierung der Abhängigkeiten automatisch aktualisiert. Du musst den Konsolenbefehl `php artisan lang:update` nicht manuell ausführen.
+
+## Routes {/* #routes */}
+
+### Über eine lokalisierte Routengruppe {/* #via_localization_group */}
+
+:::note
+
+Wenn du den Helper `localizedRoute` ohne <abbr title={"Verfügbare Methoden: \"app('router')->localizedGroup()\", \"Route::localizedGroup()\" und \"LocalizationRoute::group\"."}>Routengruppierung</abbr> aufrufst, wird die Locale als Abfrageparameter angegeben. Das folgende Beispiel zeigt dieses Verhalten.
+
+```bash
+https://example.com/foo?locale=fr
+```
+
+:::
+
+:::tip
+
+Den Parameternamen, das Namenspräfix und die Weiterleitungsoption kannst du im Abschnitt `routes` der Datei `config/localization.php` ändern.
+
+:::
+
+```php
+use Illuminate\Support\Facades\Route;
+
+app('router')->localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+
+Route::localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+```
+
+Mit dieser Methode kannst du Gruppenpräfixe für lokalisierte Routen verwalten.
+
+Neben der Haupt-Middleware `LocalizationByParameterPrefix` sind für diese Gruppe auch `LocalizationByCookie`, `LocalizationByHeader` und `LocalizationBySession` aktiv.
+
+Du kannst eine der folgenden drei Varianten verwenden.
+
+```php
+use Illuminate\Support\Facades\Route;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+
+app('router')->localizedGroup(fn () => ...)
+
+Route::localizedGroup(fn () => ...)
+
+LocalizationRoute::group(fn () => ...)
+```
+
+Die Anwendung registriert Routen mit und ohne Präfix `{locale}`. Hier ist ein Beispiel.
+
+| URL | Muster | Name |
+| --- | --- | --- |
+| https://example.com/fr/foo/show | `{locale}/foo/{bar}` | `localized.show` |
+| https://example.com/foo/show | `foo/{bar}` | `show` |
+
+Das Namenspräfix kannst du im Abschnitt `routes` der Datei `config/localization.php` ändern.
+
+:::note
+
+```php
+localizedRoute('show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+route('localized.show', ['bar' => 'show', 'locale' => app()->getLocale()]);
+// https://example.com/fr/foo/show
+```
+
+[Laravel Idea](<https://laravel-idea.com/>), ein Plugin für [PhpStorm](<https://www.jetbrains.com/phpstorm/>), unterstützt diese Funktion.
+
+<img src={require("@site/static/images/packages-route-idea-friendly.png").default} alt={"Lokalisierte Routen in Laravel Idea"} />
+
+:::
+
+#### Beispiele {/* #via_localization_group_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Standard-Locale"}>
+
+Anfrage
+
+```bash
+curl -XGET https://example.com/fr/foo/show
+```
+
+Antwort
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Mit Weiterleitung"}>
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Ohne Weiterleitung"}>
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Andere Locale"}>
+
+Anfrage
+
+```bash
+curl -XGET https://example.com/de/foo/show
+```
+
+Antwort
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Nicht installierte Locale"}>
+
+Anfrage
+
+```bash
+curl -XGET https://example.com/as/foo/show
+```
+
+Antwort
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"Unbekannte Locale"}>
+
+Anfrage
+
+```bash
+curl -XGET https://example.com/qwerty/foo/show
+```
+
+Antwort
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+</Tabs>
+
+## Models {/* #models */}
+
+### Übersetzung abrufen {/* #get_translation */}
+
+:::tip
+
+Alle Repository-Speicher geben das Flag für [Eager Loading](<https://laravel.com/docs/eloquent-relationships#eager-loading>) automatisch an das übergeordnete Modell weiter.
+
+Standardmäßig enthält die Relation nur Datensätze der aktuellen Locale und der Fallback-Locale. In manchen Fällen kannst du über die [Filtereinstellungen](<./configuration.mdx#models>) alle Datensätze laden.
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+In diesem Fall werden alle für die Einträge verfügbaren Locales geladen.
+
+:::
+
+Um den Wert einer Eigenschaft für die aktuelle Locale abzurufen, greife auf die Modelleigenschaft zu. Das folgende Beispiel zeigt den Aufruf.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+Fehlt der Wert in der <abbr title={"Der Wert des Parameters \"app.locale\" in der Datei \"config/app.php\"."}>Haupt-Locale</abbr>, gibt die Methode den Wert in der <abbr title={"Der Wert des Parameters \"app.fallback_locale\" in der Datei \"config/app.php\"."}>Fallback-Locale</abbr> zurück.
+
+Du kannst auch die Methode `getTranslation` verwenden.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+Übergib den Locale-Code als zweites Argument, um den Wert für eine bestimmte Locale abzurufen. Hier ist ein Beispiel.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// oder
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+Die Methoden liefern auch Werte zurück, deren Änderungen noch nicht in die Datenbank geschrieben wurden.
+
+:::
+
+### Übersetzungen setzen {/* #set_translations */}
+
+#### Einzelner Wert {/* #single_value */}
+
+Um eine Übersetzung für die aktuelle Locale deiner Anwendung hinzuzufügen oder zu aktualisieren, weise der Modelleigenschaft einen Wert zu. Hier ist ein Beispiel.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+Du kannst einen neuen Wert auch mit der Methode `setTranslation` setzen.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+Diese Methoden setzen einen neuen Wert für die aktive Locale. Um den Wert für eine bestimmte Locale zu setzen, übergib ihren Code als drittes Argument. Hier ist ein Beispiel.
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// oder
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+Du kannst auch mehrere Attribute auf einmal setzen.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+Diese Methoden speichern die neuen Werte zunächst in den Modellobjekten. Um die Änderungen in die Datenbank zu schreiben, rufe `save` auf dem übergeordneten Modell auf. Hier ist ein Beispiel.
+
+```php
+$page->save();
+```
+
+:::
+
+Du kannst die Attribute auch beim Erstellen des Modells setzen. Hier ist ein Beispiel.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### Mehrere Werte {/* #plural_value */}
+
+Du kannst eine Eigenschaft auf mehrere Arten mit Übersetzungen für verschiedene Locales befüllen.
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// Variante 1
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// Variante 2
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+Wenn du mehrere Attribute auf einmal setzt, kannst du auch Objekte vom Typ `iterable` zuweisen. Hier ist ein Beispiel.
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+Für die Felder können unterschiedliche Locales angegeben werden. Im obigen Beispiel enthält `title` Werte für Französisch, Englisch und Deutsch. Für `description` werden Werte für Französisch und Deutsch gesetzt.
+
+## JSON-Fallback {/* #json_fallback */}
+
+:::note
+
+In Laravel 11 fehlt der Abschnitt `providers` in der Konfigurationsdatei `config/app.php`. Du kannst ihn manuell hinzufügen.
+
+:::
+
+Ergänze nach der Installation den Verweis auf den Service Provider im Abschnitt `providers` der Konfigurationsdatei `config/app.php`.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // weitere Service Provider
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+JSON-Schlüssel liefern jetzt den Wert für die ausgewählte Locale.

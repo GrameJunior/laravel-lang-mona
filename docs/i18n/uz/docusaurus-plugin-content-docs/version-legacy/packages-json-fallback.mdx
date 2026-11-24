@@ -1,0 +1,71 @@
+---
+title: "Zaxira JSON tarjimalari"
+slug: /packages-json-fallback.html
+description: "JSON satrlarining zaxira tarjimalarini qo‘llash imkonini qo‘shadi"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Loyihaning barqaror versiyasi chiqarilgan"}>Barqaror</span> <span className="badge badge--secondary" title={"Eng so‘nggi versiya noma’lum"}>noma’lum</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub’da ko‘rish](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+Zaxira lokal sifatida ingliz tilidan foydalansangiz, bu paket kerak emas.
+
+:::
+
+## O‘rnatish {/* #installation */}
+
+:::note
+
+Moslik jadvalini [shu yerda](<#compatibility> "JSON Fallback paketi uchun moslik jadvali") ko‘rishingiz mumkin.
+
+:::
+
+Laravel standart holatda JSON kalitlari uchun zaxira tarjimalarga <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">ruxsat bermaydi</a>. Masalan, `__('Remember Me')` ni chaqirsangiz, fransuzcha zaxira til uchun `Se souvenir de moi` o‘rniga `Remember Me` ni olasiz.
+
+O‘rnatish uchun quyidagi konsol buyrug‘ini bajaring:
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## Foydalanish {/* #usage */}
+
+:::note
+
+Laravel 11 da `config/app.php` faylida `providers` bo‘limi yo‘q. Uni qo‘lda qo‘shishingiz mumkin.
+
+:::
+
+O‘rnatgach, `config/app.php` sozlama faylining `providers` bo‘limiga xizmat provayderini qo‘shing:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // boshqa xizmat provayderlari
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+Endi JSON kalitlari tanlangan lokalga qarab to‘g‘ri qiymatni chiqaradi.
+
+## Moslik {/* #compatibility */}
+
+| Laravel | PHP | Paket | Holati |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">qo‘llab-quvvatlanadi</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">qo‘llab-quvvatlanmaydi</span> |

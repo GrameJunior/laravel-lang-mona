@@ -1,0 +1,23 @@
+---
+title: "Yerel ayarları güncelleme"
+slug: /usage-update-locales.html
+description: "Laravel uygulamasındaki yerel ayarları güncelleme"
+---
+
+Dosyaları güncellemek için aşağıdaki konsol komutunu çalıştırın.
+
+```bash
+php artisan lang:update
+```
+
+Yapmanız gereken bu kadar 🙂
+
+Bu konsol komutu uygulamada kurulu yerel ayarları belirler ve dosyaları günceller.
+
+:::tip
+
+Laravel’in bazı alt sürümleri kendi depolarından anahtar kaldırabilir. Bu anahtarlar uygulamadan da kaybolur. Bu durum çok nadir görülür.
+
+Yerel ayar güncelleme komutu yalnızca yeni çeviri ifadeleri ekler veya mevcut ifadeleri günceller. Kullanılmayan ifadeleri kaldırmak için [`php artisan lang:reset`](<./usage-reset-locales.mdx> "Laravel uygulamasındaki yerel ayarları sıfırlama") konsol komutunu kullanın.
+
+:::

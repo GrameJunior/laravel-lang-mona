@@ -1,0 +1,24 @@
+---
+title: "Yerel ayar ekleme"
+slug: /usage-add-locales.html
+description: "Laravel uygulamasına yerel ayar ekleme"
+---
+
+:::note
+
+Desteklenen yerel ayar kodlarının listesini [burada](<./available-locales-list.mdx>) bulabilirsiniz.
+
+Liste 128 yerel ayar kodu içerir.
+
+:::
+
+Gereken yerel ayarları kurmak için `php artisan lang:add <locale>` konsol komutuna boşlukla ayrılmış bir veya daha çok yerel ayar kodu verin.
+
+```bash
+php artisan lang:add fr de de_AT de_CH vi zh_CN
+php artisan lang:add fr
+```
+
+Hedef dosyalar varsa kurulumun atlanması veya dosyaların değiştirilmesi seçeneklerinden birini seçmeniz istenir.
+
+Bu dosyalarda sizin eklediğiniz anahtarlar varsa dosyaları atlamanız önerilir. `php artisan lang:update` komutu, kodunuzu silmeden dosyaları güncelleyebilir.

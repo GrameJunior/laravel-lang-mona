@@ -1,0 +1,959 @@
+---
+title: "Routes"
+slug: /packages-routes.html
+description: "Rotaları kolayca ve hızlıca yerelleştirme"
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Projenin kararlı bir sürümü yayımlandı"}>Kararlı</span> <span className="badge badge--secondary" title={"Son sürüm bilinmiyor"}>bilinmiyor</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub’da görüntüle](<https://github.com/laravel-lang/routes>)
+
+## Kurulum {/* #installation */}
+
+:::note
+
+Uyumluluk tablosunu [burada](<#compatibility> "Routes paketi için uyumluluk tablosu") görebilirsiniz.
+
+:::
+
+Kurmak için aşağıdaki konsol komutunu çalıştırın.
+
+```bash
+composer require laravel-lang/routes:^1.11.0
+```
+
+`config/localization.php` dosyasını düzenleyerek varsayılan ayarları [değiştirebilirsiniz](<./configuration.mdx#routes>).
+
+:::note
+
+[Rota önbellekleme](<https://laravel.com/docs/routing#route-caching>) tam olarak desteklenir
+
+```bash
+php artisan route:cache
+```
+
+:::
+
+## Kullanım {/* #usage */}
+
+[Routes](<./packages-routes.mdx#usage> "Routes paketinin kullanımı") ve [Models](<./packages-models.mdx#usage> "Models paketinin kullanımı") projelerini aynı uygulamada kurmayı ve kullanmayı anlatan kısa videoyu [YouTube’da izleyebilirsiniz](<https://youtu.be/mH76pGbpVu0>).
+
+<iframe className="legacy-video" src="https://www.youtube-nocookie.com/embed/mH76pGbpVu0" title={"Routes ve Models"} loading="lazy" allowFullScreen />
+
+Bir uygulamada Fransızca ve Almanca olmak üzere iki yerel ayarın kurulu olduğunu varsayalım.
+
+Uygulama ayarları aşağıdaki gibi olur.
+
+```php
+// config/app.php
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'locale' => Locale::French->value,
+
+    'fallback_locale' => Locale::German->value,
+];
+```
+
+Fransızca ve Almanca için de değerler belirledik.
+
+```json
+{
+    "Foo": "Toutes les données ont été chargées."
+}
+```
+
+```json
+{
+    "Foo": "Alle Ressourcen geladen."
+}
+```
+
+### Doğrudan kullanım {/* #direct */}
+
+Takma ad eklemeden doğrudan ara katmana başvurabilirsiniz.
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+app('router')
+    ->middleware(LocalizationByParameter::class)
+    ->get('some/{locale}', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->get('some/{locale?}', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByHeader::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByCookie::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationBySession::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByModel::class)
+    ->get('some', fn () => view('welcome'));
+```
+
+### Takma adlar {/* #aliases */}
+
+Ara katmanları takma adlarıyla kullanmak için bu adları uygulamada kaydedin.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Laravel 11"}>
+
+```php
+// bootstrap/app.php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Middleware;
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+return Application::configure(basePath: dirname(__DIR__))
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            'localization.parameter' => LocalizationByParameter::class,
+            'localization.redirect'  => LocalizationByParameterWithRedirect::class,
+            'localization.header'    => LocalizationByHeader::class,
+            'localization.cookie'    => LocalizationByCookie::class,
+            'localization.session'   => LocalizationBySession::class,
+            'localization.model'     => LocalizationByModel::class,
+        ]);
+    });
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Laravel 10"}>
+
+```php
+// app/Http/Kernel.php
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+class Kernel extends HttpKernel
+{
+    protected $middlewareAliases = [
+        // ...
+
+        'localization.parameter' => LocalizationByParameter::class,
+        'localization.redirect'  => LocalizationByParameterWithRedirect::class,
+        'localization.header'    => LocalizationByHeader::class,
+        'localization.cookie'    => LocalizationByCookie::class,
+        'localization.session'   => LocalizationBySession::class,
+        'localization.model'     => LocalizationByModel::class,
+    ];
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+Ardından rota tanımındaki `middleware` metodunda takma adları belirtebilirsiniz.
+
+```php
+app('router')
+    ->middleware('localization.parameter')
+    ->get('some/{locale}', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.redirect')
+    ->get('some/{locale?}', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.header')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.cookie')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.session')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.model')
+    ->get('some', fn () => view('welcome'));
+```
+
+### URL parametresiyle {/* #via_url_parameter */}
+
+:::tip
+
+Başlamak için rotalarınızın URL’sinde herhangi bir konuma `{locale}` parametresini eklemeniz gerekir.
+
+Parametre adı `config/localization.php` dosyasının `routes` bölümünde değiştirilebilir.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+
+app('router')
+    ->middleware(LocalizationByParameter::class)
+    ->get('foo/{locale}/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Geçersiz veya ayarlanmamış bir yerel ayar iletilirse sayfa, uygulamada kurulu ana yerel ayara göre oluşturulur.
+
+#### Örnekler {/* #via_url_parameter_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Kurulu yerel ayarla"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/foo/de/show
+```
+
+Yanıt
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Kurulu olmayan yerel ayarla"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/foo/as/show
+```
+
+Yanıt
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Bilinmeyen yerel ayarla"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/foo/qwerty/show
+```
+
+Yanıt
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Yönlendirmeli URL parametresiyle {/* #via_url_parameter_with_redirect */}
+
+:::tip
+
+Başlamak için rotalarınızın URL’sinde herhangi bir konuma `{locale}` parametresini eklemeniz gerekir.
+
+Parametre adı `config/localization.php` dosyasının `routes` bölümünde değiştirilebilir.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+
+app('router')
+    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->get('some/{foo}/bar/{locale?}', function (string $foo) {
+        return response()->json([
+            $foo => __('Foo'),
+        ]);
+    });
+```
+
+Geçersiz bir yerel ayar iletilirse veya yerel ayar belirtilmezse sayfa ana yerel ayara yönlendirilir.
+
+#### Örnekler {/* #via_url_parameter_redirect_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Kurulu yerel ayarla"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/some/show/bar/de
+```
+
+Yanıt
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Kurulu olmayan yerel ayarla"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/some/show/bar/as
+```
+
+Yanıt
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Bilinmeyen yerel ayarla"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/some/show/bar/qwerty
+```
+
+Yanıt
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"Parametre olmadan"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/some/show/bar/
+```
+
+Yanıt
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+</Tabs>
+
+### İstek başlığıyla {/* #via_header */}
+
+:::tip
+
+Yerel ayarı <abbr title={"Bu ad, \"config/localization.php\" dosyasının \"routes\" bölümünde değiştirilebilir."}>Accept-Language</abbr> başlığına göre belirler.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+
+app('router')
+    ->middleware(LocalizationByHeader::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Geçersiz veya ayarlanmamış bir yerel ayar gönderilirse sayfa, uygulamada kurulu ana yerel ayara göre oluşturulur.
+
+#### Örnekler {/* #via_header_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Kurulu yerel ayarla"}>
+
+İstek
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: de'
+```
+
+Yanıt
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Kurulu olmayan yerel ayarla"}>
+
+İstek
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: as'
+```
+
+Yanıt
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Bilinmeyen yerel ayarla"}>
+
+İstek
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: qwerty'
+```
+
+Yanıt
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Çerezle {/* #via_cookie */}
+
+:::tip
+
+Yerel ayarı <abbr title={"Bu ad, \"config/localization.php\" dosyasının \"routes\" bölümünde değiştirilebilir."}>Accept-Language</abbr> çerezine göre belirler.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+
+app('router')
+    ->middleware(LocalizationByCookie::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Geçersiz veya ayarlanmamış bir yerel ayar iletilirse sayfa, uygulamada kurulu ana yerel ayara göre oluşturulur.
+
+#### Örnekler {/* #via_cookies_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Kurulu yerel ayarla"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=de"
+```
+
+Yanıt
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Kurulu olmayan yerel ayarla"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=as"
+```
+
+Yanıt
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Bilinmeyen yerel ayarla"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=qwerty"
+```
+
+Yanıt
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Oturumla {/* #via_session */}
+
+:::tip
+
+Yerel ayarı <abbr title={"Bu ad, \"config/localization.php\" dosyasının \"routes\" bölümünde değiştirilebilir."}>Accept-Language</abbr> oturum anahtarına göre belirler.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+app('router')
+    ->middleware(LocalizationBySession::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Geçersiz veya ayarlanmamış bir yerel ayar iletilirse sayfa, uygulamada kurulu ana yerel ayara göre oluşturulur.
+
+Oturumlarla ve çerezlerle aynı şekilde çalışırsınız. Aralarındaki fark nerede saklandıklarıdır.
+
+Oturumlarla çalışma hakkında [daha fazla bilgiyi](<https://laravel.com/docs/session>) [Laravel belgelerinde](<https://laravel.com/docs/session>) bulabilirsiniz.
+
+#### Örnekler {/* #via_session_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Kurulu yerel ayarla"}>
+
+İstek
+
+```bash
+echo "Accept-Language=de" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+Yanıt
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Kurulu olmayan yerel ayarla"}>
+
+İstek
+
+```bash
+echo "Accept-Language=as" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+Yanıt
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Bilinmeyen yerel ayarla"}>
+
+İstek
+
+```bash
+echo "Accept-Language=qwerty" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+Yanıt
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Modelle {/* #via_model */}
+
+:::tip
+
+Yerel ayarı <abbr title={"Bu ad, \"config/localization.php\" dosyasının \"routes\" bölümünde değiştirilebilir."}>locale</abbr> sütununa göre belirler.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+
+app('router')
+    ->middleware(LocalizationByModel::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Bu yöntemle kimliği doğrulanmış her kullanıcı için yerel ayar belirleyebilirsiniz. Bunun için modelde <abbr title={"Bu ad, \"config/localization.php\" dosyasının \"routes\" bölümünde değiştirilebilir."}>"locale"</abbr> özniteliğinin bulunduğundan emin olun.
+
+Kullanıcı tablosunda bu sütun yoksa gerektiğinde sütunu ekleyin veya model sınıfında dinamik bir metot oluşturun.
+
+Aşağıdaki örneğe bakın.
+
+```php
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use LaravelLang\LocaleList\Locale;
+
+class User extends Authenticatable
+{
+    protected function locale(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Locale::French
+        );
+    }
+}
+```
+
+Artık kullanıcının kimliği bir ara katmanla veya örneğin `Auth::login($user)` metoduyla elle doğrulandığında uygulama bilgileri kullanıcının seçtiği dilde döndürür.
+
+Kullanıcının kimliği belirli bir guard ile doğrulandıysa ara katmanı çağırırken guard’ı iki nokta işaretiyle belirtebilirsiniz.
+
+Aşağıdaki örneğe bakın.
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+
+app('router')
+    ->middleware(LocalizationByModel::class . ':guard_name')
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Ara katman, kullanıcı örneğini aşağıdaki kodla alır.
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+
+class LocalizationByModel extends Middleware
+{
+    public function __construct(
+        protected ?string $guard = null,
+    ) {}
+
+    protected function user(Request $request): ?Model
+    {
+        return $request->user($this->guard);
+    }
+}
+```
+
+### Yerelleştirilmiş rota grubuyla {/* #via_localization_group */}
+
+:::note
+
+`localizedRoute` yardımcı işlevi, rotalar <abbr title={"Kullanılabilir metotlar \"app('router')->localizedGroup()\", \"Route::localizedGroup()\" ve \"LocalizationRoute::group\"."}>gruplanmadan</abbr> çağrılırsa yerel ayar bir sorgu parametresi olarak belirtilir. Aşağıdaki örneğe bakın.
+
+```bash
+https://example.com/foo?locale=fr
+```
+
+:::
+
+:::tip
+
+Parametre adını, ad önekini ve yönlendirme seçeneğini `config/localization.php` dosyasının `routes` bölümünde değiştirebilirsiniz.
+
+:::
+
+```php
+use Illuminate\Support\Facades\Route;
+
+app('router')->localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+
+Route::localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+```
+
+Bu metot, yerelleştirilmiş rotaların grup öneklerini kolayca yönetmenizi sağlar.
+
+Bu grubun ana ara katmanı `LocalizationByParameterPrefix` ile birlikte `LocalizationByCookie`, `LocalizationByHeader` ve `LocalizationBySession` da devreye girer.
+
+Aşağıdaki üç yöntemden birini kullanabilirsiniz.
+
+```php
+use Illuminate\Support\Facades\Route;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+
+app('router')->localizedGroup(fn () => ...)
+
+Route::localizedGroup(fn () => ...)
+
+LocalizationRoute::group(fn () => ...)
+```
+
+Uygulama `{locale}` önekiyle ve öneksiz olmak üzere iki tür rota kaydeder. Aşağıdaki örneğe bakın.
+
+| URL | Desen | Ad |
+| --- | --- | --- |
+| https://example.com/fr/foo/show | `{locale}/foo/{bar}` | `localized.show` |
+| https://example.com/foo/show | `foo/{bar}` | `show` |
+
+Ad öneki `config/localization.php` dosyasının `routes` bölümünde değiştirilebilir.
+
+:::note
+
+```php
+localizedRoute('show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+route('localized.show', ['bar' => 'show', 'locale' => app()->getLocale()]);
+// https://example.com/fr/foo/show
+```
+
+Bu özelliği, [Laravel Idea](<https://laravel-idea.com/>) adlı [PhpStorm](<https://www.jetbrains.com/phpstorm/>) eklentisi destekler.
+
+<img src={require("@site/static/images/packages-route-idea-friendly.png").default} alt={"Laravel Idea’da yerelleştirilmiş rota desteği"} />
+
+:::
+
+#### Örnekler {/* #via_localization_group_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Varsayılan yerel ayar"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/fr/foo/show
+```
+
+Yanıt
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Yönlendirme etkinken"}>
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Yönlendirme kapalıyken"}>
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Varsayılan dışındaki yerel ayar"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/de/foo/show
+```
+
+Yanıt
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Kurulu olmayan yerel ayar"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/as/foo/show
+```
+
+Yanıt
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"Bilinmeyen yerel ayar"}>
+
+İstek
+
+```bash
+curl -XGET https://example.com/qwerty/foo/show
+```
+
+Yanıt
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+</Tabs>
+
+## Olaylar {/* #events */}
+
+:::note
+
+Olay `laravel-lang/routes` paketinin `1.1` ve sonraki sürümlerinde kullanılabilir.
+
+:::
+
+Uygulamanın yerel ayarını belirlemek için bir yerel ayar parametresi verildiğinde olay tetiklenir.
+
+```php
+use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
+
+LocaleHasBeenSetEvent::dispatch($locale);
+```
+
+Olayın `$locale` özelliği `LaravelLang\Locales\Data\LocaleData` türündedir.
+
+Gerektiğinde bu olayı dinleyebilirsiniz. Aşağıdaki örneğe bakın.
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(static function (LocaleHasBeenSetEvent $event) {
+            Log::info('Locale set to: ' . $event->locale->code);
+        });
+    }
+}
+```
+
+## Uyumluluk {/* #compatibility */}
+
+| Laravel | PHP | Paket | Durum |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">destekleniyor</span> |

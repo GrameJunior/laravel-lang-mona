@@ -1,0 +1,47 @@
+---
+title: "Publisher"
+slug: /upgrade-publisher.html
+description: "Publisher’ni 15-versiyadan 16-versiyaga yangilash haqida ma’lumot"
+---
+
+## Bog‘liqliklarni yangilash {/* #updating_dependencies */}
+
+:::note
+
+`laravel-lang/common` paketidan foydalansangiz, bu qadamni o‘tkazib yuboring.
+
+:::
+
+Ilovangizning `composer.json` faylida quyidagi bog‘liqlikni yangilang:
+
+- `laravel-lang/publisher` ni `^16.0` ga
+
+So‘ng bog‘liqliklarni yangilash uchun konsolda quyidagi buyruqni bajaring:
+
+```bash
+composer update
+```
+
+## Lokallar nomlar fazosini o‘zgartirish {/* #change_namespace */}
+
+Lokallarning nomlar fazosini almashtiring:
+
+```php
+LaravelLang\Locales\Enums\Locale
+```
+
+quyidagiga almashtiring
+
+```php
+LaravelLang\LocaleList\Locale
+```
+
+Masalan:
+
+```php
+// Oldin
+LaravelLang\Locales\Enums\Locale::Afrikaans; // af
+
+// Keyin
+LaravelLang\LocaleList\Locale::Afrikaans; // af
+```

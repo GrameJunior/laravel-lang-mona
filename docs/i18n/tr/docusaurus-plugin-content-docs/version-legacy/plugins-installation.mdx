@@ -1,0 +1,50 @@
+---
+title: "Eklenti kurma"
+slug: /plugins-installation.html
+description: "Publisher ile yerelleştirme eklentileri kurma hakkında bilgiler"
+---
+
+:::note
+
+Mevcut [resmî](<./plugins-official.mdx>) ve [topluluk](<./plugins-community.mdx>) eklentilerinin listelerine de göz atabilirsiniz.
+
+:::
+
+Yöneticiyle bir eklenti kurmak için aşağıdaki adımları izleyin.
+
+1. Paketi uygulamanıza kurun. Örneğin `composer require --dev laravel-lang/lang:^15.39.1` komutunu çalıştırın veya başka bir paket kurun.
+1. Hepsi bu kadar 😊
+
+Artık `php artisan lang:update` komutunu çalıştırdığınızda yönetici, belirtilen paketleri kontrol eder ve uygulamanızdaki dosyaları otomatik olarak günceller.
+
+Farklı paketlerde `custom.php` gibi aynı adlı dosyalar varsa işleme sırasında bu dosyaların tümündeki anahtarlar bir araya getirilir.
+
+:::tip
+
+Geliştirmeyi kolaylaştırmak için hazır [çeviri şablonunu](<https://github.com/Laravel-Lang/translations-template>) kullanın.
+
+:::
+
+İyi çalışmalar! 😊
+
+## Eklentiler {/* #plugins */}
+
+<div className="legacy-card-grid">
+
+<div className="card legacy-card">
+
+[Resmî eklentiler](<./plugins-official.mdx>)
+
+Laravel-Lang ekibinin geliştirdiği ve bakımını yaptığı eklentilerin listesi.
+
+</div>
+
+<div className="card legacy-card">
+
+[Topluluk eklentileri](<./plugins-community.mdx>)
+
+Topluluğun geliştirdiği ve bakımını yaptığı eklentilerin listesi.
+
+</div>
+
+</div>

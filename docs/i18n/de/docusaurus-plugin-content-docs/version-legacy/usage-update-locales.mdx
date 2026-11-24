@@ -1,0 +1,23 @@
+---
+title: "Locales aktualisieren"
+slug: /usage-update-locales.html
+description: "Locales in einer Laravel-Anwendung aktualisieren"
+---
+
+Führe zum Aktualisieren der Dateien den folgenden Konsolenbefehl aus.
+
+```bash
+php artisan lang:update
+```
+
+Weitere Schritte sind nicht erforderlich 🙂
+
+Der Befehl erkennt die in der Anwendung installierten Locales und aktualisiert die Dateien.
+
+:::tip
+
+Einige Minor-Versionen von Laravel können Schlüssel aus ihren Repositorys entfernen, sodass diese aus der Anwendung verschwinden. Das kommt selten vor.
+
+Der Aktualisierungsbefehl fügt neue Übersetzungstexte hinzu und aktualisiert vorhandene. Verwende zum Entfernen ungenutzter Texte den Konsolenbefehl [`php artisan lang:reset`](<./usage-reset-locales.mdx> "Locales einer Laravel-Anwendung zurücksetzen").
+
+:::

@@ -1,0 +1,318 @@
+---
+title: "Locales"
+slug: /packages-locales.html
+description: "Lokallar bilan ishlashning asosiy imkoniyatlari"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Loyihaning barqaror versiyasi chiqarilgan"}>Barqaror</span> <span className="badge badge--secondary" title={"Eng so‘nggi versiya noma’lum"}>noma’lum</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub’da ko‘rish](<https://github.com/laravel-lang/locales>)
+
+## O‘rnatish {/* #installation */}
+
+:::note
+
+Moslik jadvalini [shu yerda](<#compatibility> "Locales paketi uchun moslik jadvali") ko‘rishingiz mumkin.
+
+:::
+
+O‘rnatish uchun quyidagi konsol buyrug‘ini bajaring:
+
+```bash
+composer require laravel-lang/locales:^2.11.0
+```
+
+## Foydalanish {/* #usage */}
+
+Lokallar bilan ishlash uchun `LaravelLang\Locales\Facades\Locales` fasadidan foydalanishingiz mumkin. U ma’lumotni ikki shaklda olish imkonini beradi: lokal kodlari ro‘yxati yoki DTO obyektlari massivi.
+
+### Ma’lumot obyektlari {/* #data_objects */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// Mavjud lokallar ro‘yxati.
+Locales::available(): array // array<LocaleData>
+
+// O‘rnatilgan lokallar ro‘yxati.
+Locales::installed(bool $withProtects = true): array // array<LocaleData>
+
+// O‘rnatilmagan lokallar ro‘yxati.
+Locales::notInstalled(): array // array<LocaleData>
+
+// Himoyalangan lokallar ro‘yxatini olish.
+Locales::protects(): array // array<LocaleData>
+
+// So‘ralgan lokal uchun til paketlari mavjudligini tekshirish.
+Locales::isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// Til paketi o‘rnatilganini tekshirish.
+Locales::isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// Tekshirilayotgan lokal himoyalanganini aniqlash.
+Locales::isProtected(LocaleData|Locale|string|null $locale): bool
+
+// Tekshiradi va to‘g‘ri lokalni qaytaradi.
+// O‘rnatilmagan lokal so‘ralsa, ilovadagi hozirgi faol lokalni qaytaradi.
+Locales::get(mixed $locale): LocaleData
+
+// Standart lokal nomini olish.
+Locales::getDefault(): LocaleData
+
+// Zaxira lokal nomini olish.
+Locales::getFallback(): LocaleData
+
+// Mavjud lokal haqida ma’lumot oladi. U topilmasa, ilovadagi hozirgi faol lokalni qaytaradi.
+Locales::info(mixed $locale): LocaleData
+```
+
+### Xom ma’lumotlar {/* #raw_data */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// Mavjud lokallar ro‘yxati.
+Locales::raw()->available(): array // array<string>
+
+// O‘rnatilgan lokallar ro‘yxati.
+Locales::raw()->installed(bool $withProtects = true): array // array<string>
+
+// O‘rnatilmagan lokallar ro‘yxati.
+Locales::raw()->notInstalled(): array // array<string>
+
+// Himoyalangan lokallar ro‘yxatini olish.
+Locales::raw()->protects(): array // array<string>
+
+// So‘ralgan lokal uchun til paketlari mavjudligini tekshirish.
+Locales::raw()->isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// Til paketi o‘rnatilganini tekshirish.
+Locales::raw()->isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// Tekshirilayotgan lokal himoyalanganini aniqlash.
+Locales::raw()->isProtected(LocaleData|Locale|string|null $locale): bool
+
+// Tekshiradi va to‘g‘ri lokalni qaytaradi.
+// O‘rnatilmagan lokal so‘ralsa, ilovadagi hozirgi faol lokalni qaytaradi.
+Locales::raw()->get(mixed $locale): string
+
+// Standart lokal nomini olish.
+Locales::raw()->getDefault(): string
+
+// Zaxira lokal nomini olish.
+Locales::raw()->getFallback(): string
+
+// Mavjud lokal kodini oladi. U topilmasa, ilovadagi hozirgi faol lokalni qaytaradi.
+Locales::raw()->info(mixed $locale): string
+```
+
+### Misollar {/* #examples */}
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::getDefault(withCountry: true, withCurrency: true);
+
+// Muqobil nomsiz
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+// Muqobil nom bilan
+LocaleData {
+  +code: "de-DE"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // vi
+
+return Locales::get('de', withCountry: true, withCurrency: true);
+
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+LocaleData {
+  +code: "ar"
+  +regional: "ar_AE"
+  +type: "Arab"
+  +native: "العربية"
+  +localized: "Arabe"
+  +country: CountryData {
+    +code: "EG"
+    +native: "مصر"
+    +localized: "Égypte"
+  }
+  +currency: CurrencyData {
+    +code: "EGP"
+    +numeric: 818
+    +native: "جنيه مصري"
+    +localized: "livre égyptienne"
+  }
+  +direction: Direction {
+    +name: "RightToLeft"
+    +value: "rtl"
+  }
+  +locale: Locale {
+    +name: "Arabic"
+    +value: "ar"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::get('foo', withCountry: true, withCurrency: true);
+
+// Standart lokalni qaytaradi
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+return Locales::raw()->getDefault();
+// Muqobil nomsiz
+// de
+
+// Muqobil nom bilan
+// de-DE
+```
+
+```php
+return Locales::raw()->get('de');
+// de
+
+return Locales::raw()->get('foo');
+// Standart lokalni qaytaradi
+// de
+```
+
+## Moslik {/* #compatibility */}
+
+| Laravel | PHP | Paket | Holati |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">qo‘llab-quvvatlanadi</span> |
+| 10 | 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">qo‘llab-quvvatlanmaydi</span> |

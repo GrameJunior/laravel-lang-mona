@@ -1,0 +1,71 @@
+---
+title: "JSON-Fallback"
+slug: /packages-json-fallback.html
+description: "Ergänzt Fallback-Übersetzungen für JSON-Zeichenketten."
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Eine stabile Version des Projekts wurde veröffentlicht"}>Stabil</span> <span className="badge badge--secondary" title={"Die neueste Version ist nicht bekannt"}>unbekannt</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Auf GitHub ansehen](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+Wenn du Englisch als Fallback-Locale verwendest, benötigst du dieses Paket nicht.
+
+:::
+
+## Installation {/* #installation */}
+
+:::note
+
+Die Kompatibilitätstabelle findest du [hier](<#compatibility> "Kompatibilitätstabelle für das Paket JSON Fallback").
+
+:::
+
+Laravel <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">unterstützt standardmäßig keine</a> Fallback-Übersetzungen für JSON-Schlüssel. Wenn du zum Beispiel `__('Remember Me')` aufrufst, erhältst du für Französisch als Fallback-Locale `Remember Me` anstelle von `Se souvenir de moi`.
+
+Führe zur Installation den folgenden Konsolenbefehl aus.
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## Verwendung {/* #usage */}
+
+:::note
+
+In Laravel 11 fehlt der Abschnitt `providers` in der Konfigurationsdatei `config/app.php`. Du kannst ihn manuell hinzufügen.
+
+:::
+
+Ergänze nach der Installation den Verweis auf den Service Provider im Abschnitt `providers` der Konfigurationsdatei `config/app.php`.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // weitere Service Provider
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+JSON-Schlüssel liefern jetzt den Wert für die ausgewählte Locale.
+
+## Kompatibilität {/* #compatibility */}
+
+| Laravel | PHP | Paket | Status |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">unterstützt</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">nicht unterstützt</span> |

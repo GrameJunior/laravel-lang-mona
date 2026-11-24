@@ -1,0 +1,24 @@
+---
+title: "Lokallar qo‘shish"
+slug: /usage-add-locales.html
+description: "Laravel ilovasiga lokallar qo‘shish"
+---
+
+:::note
+
+Mavjud lokal kodlari ro‘yxati [bu yerda](<./available-locales-list.mdx>).
+
+Ro‘yxatda 128 ta lokal kodi bor.
+
+:::
+
+Kerakli lokallarni `php artisan lang:add <locale>` konsol buyrug‘i orqali o‘rnating. Buyruqqa bo‘sh joy bilan ajratilgan bitta yoki bir nechta lokal kodini uzating:
+
+```bash
+php artisan lang:add fr de de_AT de_CH vi zh_CN
+php artisan lang:add fr
+```
+
+Maqsad fayllari mavjud bo‘lsa, o‘rnatishni o‘tkazib yuborish yoki fayllarni almashtirish so‘raladi.
+
+Bu fayllarda o‘zingiz qo‘shgan kalitlar bo‘lsa, ularni o‘tkazib yuborish tavsiya etiladi. `php artisan lang:update` buyrug‘i o‘zgartirishlaringizni o‘chirmasdan fayllarni yangilay oladi.

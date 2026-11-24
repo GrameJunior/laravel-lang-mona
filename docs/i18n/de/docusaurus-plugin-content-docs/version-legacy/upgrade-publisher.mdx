@@ -1,0 +1,47 @@
+---
+title: "Publisher"
+slug: /upgrade-publisher.html
+description: "Informationen zum Upgrade von Publisher 15 auf Version 16"
+---
+
+## Abhängigkeiten aktualisieren {/* #updating_dependencies */}
+
+:::note
+
+Wenn du das Paket `laravel-lang/common` verwendest, überspringe diesen Schritt.
+
+:::
+
+Aktualisiere die folgende Abhängigkeit in der Datei `composer.json` deiner Anwendung.
+
+- `laravel-lang/publisher` bis `^16.0`
+
+Führe anschließend den Konsolenbefehl aus, der die Abhängigkeiten aktualisiert.
+
+```bash
+composer update
+```
+
+## Locale-Namespace ändern {/* #change_namespace */}
+
+Ersetze den Namespace für Locales.
+
+```php
+LaravelLang\Locales\Enums\Locale
+```
+
+mit
+
+```php
+LaravelLang\LocaleList\Locale
+```
+
+Beispiel
+
+```php
+// Vorher
+LaravelLang\Locales\Enums\Locale::Afrikaans; // af
+
+// Nachher
+LaravelLang\LocaleList\Locale::Afrikaans; // af
+```

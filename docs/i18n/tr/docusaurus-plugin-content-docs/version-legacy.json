@@ -1,0 +1,34 @@
+{
+  "version.label": {
+    "message": "Eski sürümler",
+    "description": "The label for version legacy"
+  },
+  "sidebar.documentation.category.Prologue": {
+    "message": "Giriş",
+    "description": "The label for category 'Prologue' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Upgrade Guide": {
+    "message": "Yükseltme kılavuzu",
+    "description": "The label for category 'Upgrade Guide' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Getting Started": {
+    "message": "Başlangıç",
+    "description": "The label for category 'Getting Started' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Managing Locales": {
+    "message": "Yerel ayarları yönetme",
+    "description": "The label for category 'Managing Locales' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Packages": {
+    "message": "Paketler",
+    "description": "The label for category 'Packages' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Plugins": {
+    "message": "Eklentiler",
+    "description": "The label for category 'Plugins' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.doc.License": {
+    "message": "Lisans",
+    "description": "The label for the doc item 'License' in sidebar 'documentation', linking to the doc license"
+  }
+}

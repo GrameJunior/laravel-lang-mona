@@ -1,0 +1,33 @@
+---
+title: "Locales entfernen"
+slug: /usage-remove-locales.html
+description: "Locales aus einer Laravel-Anwendung entfernen"
+---
+
+:::warning
+
+Der Befehl löscht das gesamte Verzeichnis der Locale mit allen Dateien. Die Standard-Locale und die Fallback-Locale sind ausgenommen.
+
+:::
+
+Verwende den Befehl `php artisan lang:rm <locale>`, um Locales zu entfernen, und übergib ihre Codes.
+
+```bash
+php artisan lang:rm fr de de_AT de_CH vi zh_CN
+```
+
+Ohne Argumente erscheint in der Konsole eine interaktive Abfrage zur Auswahl der verfügbaren Locales.
+
+```bash
+php artisan lang:rm
+```
+
+Wenn du versuchst, eine geschützte Locale zu entfernen, gibt der Befehl standardmäßig eine Fehlermeldung aus.
+
+Geschützt sind die Codes aus den Parametern `locale` und `fallback_locale` der Datei `config/app.php`.
+
+Verwende die Option `force`, um das Löschen einer geschützten Locale zu erzwingen.
+
+```bash
+php artisan lang:rm en --force
+```

@@ -1,0 +1,27 @@
+---
+title: "Common"
+slug: /upgrade-common.html
+description: "Common’ni 5-versiyadan 6-versiyaga yangilash haqida ma’lumot"
+---
+
+## Bog‘liqliklarni yangilash {/* #updating_dependencies */}
+
+Ilovangizning `composer.json` faylida quyidagi bog‘liqlikni yangilang:
+
+- `laravel-lang/common` ni `^6.0` ga
+
+U `require-dev` bo‘limida ko‘rsatilgan bo‘lsa, `require` bo‘limiga ko‘chiring.
+
+So‘ng bog‘liqliklarni yangilash uchun konsolda quyidagi buyruqni bajaring:
+
+```bash
+composer update
+```
+
+## Publisher’ni yangilash {/* #upgrade_publisher */}
+
+Publisher’ni yangilash qo‘llanmasidagi bog‘liqliklarni yangilashdan tashqari barcha qadamlarni bajaring.
+
+## JSON Fallback’ni yangilash {/* #upgrade_json_fallback */}
+
+`laravel-lang/json-fallback-hotfix` paketidan foydalansangiz, loyiha bo‘yicha tegishli o‘zgarishlarni kiritishingiz kerak.

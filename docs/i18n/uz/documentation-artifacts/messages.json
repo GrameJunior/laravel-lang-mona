@@ -1,0 +1,23 @@
+{
+  "releaseLine": {
+    "message": "Rasmiy paketlar bir xil chiqarilish versiyasidan foydalanadi."
+  },
+  "documentation": {
+    "message": "Hujjatlar"
+  },
+  "optional": {
+    "message": "Ixtiyoriy"
+  },
+  "legacy": {
+    "message": "Oldingi versiyalar hujjatlari"
+  },
+  "legacyDescription": {
+    "message": "Mona’dan oldingi o‘rnatmalar uchun qo‘llanmalar."
+  },
+  "moved": {
+    "message": "Hujjatlar ko‘chirildi"
+  },
+  "redirect": {
+    "message": "Hujjatlarga o‘tish"
+  }
+}

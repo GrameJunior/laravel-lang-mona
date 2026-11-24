@@ -1,0 +1,71 @@
+---
+title: "JSON Fallback"
+slug: /packages-json-fallback.html
+description: "Дадае падтрымку рэзервовых перакладаў радкоў JSON"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Выпушчана стабільная версія праекта"}>Стабільная</span> <span className="badge badge--secondary" title={"Апошняя версія невядомая"}>невядома</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Паглядзець на GitHub](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+Калі рэзервовая лакаль — англійская, гэты пакет не патрэбны.
+
+:::
+
+## Усталяванне {/* #installation */}
+
+:::note
+
+Табліцу сумяшчальнасці можна паглядзець [тут](<#compatibility> "Табліца сумяшчальнасці пакета JSON Fallback").
+
+:::
+
+Па змаўчанні Laravel <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">не падтрымлівае</a> рэзервовых перакладаў для ключоў JSON. Напрыклад, пры выкліку `__('Remember Me')` для рэзервовай французскай мовы вы атрымаеце `Remember Me` замест `Se souvenir de moi`.
+
+Каб усталяваць пакет, выканайце каманду:
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## Выкарыстанне {/* #usage */}
+
+:::note
+
+У канфігурацыі Laravel 11 у файле `config/app.php` няма раздзела `providers`. Яго можна дадаць уручную.
+
+:::
+
+Пасля ўсталявання дадайце спасылку на пастаўшчыка сэрвісаў у раздзел `providers` файла налад `config/app.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // Іншыя пастаўшчыкі сэрвісаў
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+Цяпер для ключоў JSON будуць вяртацца значэнні, якія адпавядаюць выбранай лакалі.
+
+## Сумяшчальнасць {/* #compatibility */}
+
+| Laravel | PHP | Пакет | Стан |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">падтрымліваецца</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">не падтрымліваецца</span> |

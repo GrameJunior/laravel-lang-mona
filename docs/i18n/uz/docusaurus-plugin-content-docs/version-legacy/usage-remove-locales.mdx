@@ -1,0 +1,33 @@
+---
+title: "Lokallarni olib tashlash"
+slug: /usage-remove-locales.html
+description: "Laravel ilovasidan lokallarni olib tashlash"
+---
+
+:::warning
+
+Bu buyruq bajarilganda standart va zaxira lokallardan tashqari tegishli lokal katalogi barcha fayllari bilan o‘chiriladi.
+
+:::
+
+Lokallarni o‘chirish uchun `php artisan lang:rm <locale>` buyrug‘idan foydalanib, lokal qisqa kodlarini uzating:
+
+```bash
+php artisan lang:rm fr de de_AT de_CH vi zh_CN
+```
+
+Argumentlar berilmasa, konsolda mavjud lokallar orasidan tanlash uchun interaktiv savol beriladi.
+
+```bash
+php artisan lang:rm
+```
+
+Standart holatda himoyalangan lokalni olib tashlashga urinishda buyruq xato xabari qaytaradi.
+
+Himoyalangan lokallar — `config/app.php` faylining `locale` va `fallback_locale` parametrlarida belgilangan kodlar.
+
+Himoyalangan lokalni majburan o‘chirish uchun `force` parametridan foydalaning:
+
+```bash
+php artisan lang:rm en --force
+```

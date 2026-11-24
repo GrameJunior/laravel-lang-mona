@@ -1,0 +1,34 @@
+{
+  "version.label": {
+    "message": "Ältere Versionen",
+    "description": "The label for version legacy"
+  },
+  "sidebar.documentation.category.Prologue": {
+    "message": "Einführung",
+    "description": "The label for category 'Prologue' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Upgrade Guide": {
+    "message": "Upgrade-Leitfaden",
+    "description": "The label for category 'Upgrade Guide' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Getting Started": {
+    "message": "Erste Schritte",
+    "description": "The label for category 'Getting Started' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Managing Locales": {
+    "message": "Locales verwalten",
+    "description": "The label for category 'Managing Locales' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Packages": {
+    "message": "Pakete",
+    "description": "The label for category 'Packages' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Plugins": {
+    "message": "Plugins",
+    "description": "The label for category 'Plugins' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.doc.License": {
+    "message": "Lizenz",
+    "description": "The label for the doc item 'License' in sidebar 'documentation', linking to the doc license"
+  }
+}

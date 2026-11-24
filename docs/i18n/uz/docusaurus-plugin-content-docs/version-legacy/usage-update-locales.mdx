@@ -1,0 +1,23 @@
+---
+title: "Lokallarni yangilash"
+slug: /usage-update-locales.html
+description: "Laravel ilovasida lokallarni yangilash"
+---
+
+Fayllarni yangilash uchun konsolda quyidagi buyruqni bajaring:
+
+```bash
+php artisan lang:update
+```
+
+Ha, shu kifoya 🙂
+
+Bu konsol buyrug‘i ilovada o‘rnatilgan lokallarni aniqlaydi va fayllarni yangilaydi.
+
+:::tip
+
+Laravel’ning ayrim kichik versiyalarida repozitoriylardan kalitlar olib tashlanishi mumkin. Bunda ular ilovadan ham yo‘qoladi. Bu juda kam uchraydi, ammo sodir bo‘lishi mumkin.
+
+Lokallarni yangilash buyrug‘i faqat yangi tarjima iboralarini qo‘shadi yoki mavjudlarini yangilaydi. Ishlatilmayotgan iboralarni olib tashlash uchun [`php artisan lang:reset`](<./usage-reset-locales.mdx> "Laravel ilovasida lokallarni dastlabki holatga qaytarish") konsol buyrug‘idan foydalaning.
+
+:::

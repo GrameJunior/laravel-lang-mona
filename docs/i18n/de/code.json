@@ -1,0 +1,102 @@
+{
+  "home.description": {
+    "message": "Installiere Übersetzungen und lokalisiere Routen und Eloquent-Modelle mit Laravel-Lang."
+  },
+  "home.guide.translations.title": {
+    "message": "Locales verwalten"
+  },
+  "home.guide.translations.description": {
+    "message": "Füge Übersetzungen mit Artisan hinzu, aktualisiere oder entferne sie."
+  },
+  "home.guide.configure.title": {
+    "message": "Lokalisierung konfigurieren"
+  },
+  "home.guide.configure.description": {
+    "message": "Richte Locale-Aliasse, lokalisierte Routen und Modellübersetzungen ein."
+  },
+  "home.guide.plugins.title": {
+    "message": "Übersetzungs-Plugins"
+  },
+  "home.guide.plugins.description": {
+    "message": "Installiere Übersetzungspakete oder erstelle eigene."
+  },
+  "home.guide.upgrade.title": {
+    "message": "Upgrade auf Mona"
+  },
+  "home.guide.upgrade.description": {
+    "message": "Migriere Abhängigkeiten, Konfiguration und Übersetzungen."
+  },
+  "home.title": {
+    "message": "Dokumentation"
+  },
+  "home.hero.title": {
+    "message": "Lokalisiere deine Laravel-Anwendung"
+  },
+  "home.start": {
+    "message": "In einer Minute loslegen"
+  },
+  "home.legacy": {
+    "message": "Dokumentation für ältere Versionen"
+  },
+  "home.example.install": {
+    "message": "Französische Übersetzungen installieren"
+  },
+  "home.example.use": {
+    "message": "Eine Übersetzung verwenden"
+  },
+  "home.guides": {
+    "message": "Leitfäden zur Lokalisierung"
+  },
+  "home.llms": {
+    "message": "Dokumentation für KI-Agenten (llms.txt)"
+  },
+  "localePicker.label": {
+    "message": "Locale"
+  },
+  "localePicker.install": {
+    "message": "Führe den folgenden Befehl aus, um Übersetzungen für {language} zu installieren."
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "Systemeinstellung",
+    "description": "The name for the system color mode"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Version: {versionLabel}"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Direktlink zu „{heading}“",
+    "description": "Title for link to heading"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Versionen",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.admonition.danger": {
+    "message": "Gefahr",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "Info",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Hauptnavigation",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(wird in einem neuen Tab geöffnet)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Seitennavigation der Dokumentation",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Menü aufklappen",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Menü zuklappen",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  }
+}

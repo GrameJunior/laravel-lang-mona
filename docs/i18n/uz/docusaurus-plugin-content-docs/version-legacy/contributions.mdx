@@ -1,0 +1,124 @@
+---
+title: "Hissa qo‘shish qo‘llanmasi"
+slug: /contributions.html
+description: "Laravel Lang loyihalarini ishlab chiqishga yordam berish qo‘llanmasi"
+---
+
+Hissalaringizni <strong>mamnuniyat bilan qabul qilamiz</strong> va muallifligini to‘liq <strong>e’tirof etamiz</strong>.
+
+Tashkilotimizning [barcha loyihalariga](<https://github.com/orgs/Laravel-Lang/repositories>) hissalarni pull request orqali qabul qilamiz.
+
+## Fayllar nimani anglatadi? {/* #what_do_the_files_mean */}
+
+- <strong>php.json</strong> — PHP lokal fayllari uchun qiymatlar tarjimasi.
+- <strong>php-inline.json</strong> — PHP lokal fayllari uchun qiymatlarning maydon yonida ishlatiladigan tarjimalari.
+- <strong>json.json</strong> — JSON lokal fayllari uchun qiymatlar tarjimasi.
+- <strong>json-inline.json</strong> — JSON lokal fayllari uchun qiymatlarning maydon yonida ishlatiladigan tarjimalari.
+- <strong>\_excludes.json</strong> — tarjimasi inglizcha shakli bilan bir xil qiymatlar. Bu faylda qiymatlar ro‘yxati beriladi, kalitlar ro‘yxati emas.
+
+## Fayllarni qanday tahrirlash mumkin? {/* #how_to_edit_files */}
+
+Tarjima qilinadigan barcha fayllar json kengaytmasiga ega va `locales` katalogida joylashgan. Kerakli faylni ochib, o‘zgartirishlar kiriting.
+
+:::tip
+
+Kalitda xato ko‘rsangiz ham, uni o‘zgartirmang. Aks holda Laravel uni o‘qiy olmaydi.
+
+Imloni tuzatish uchun Laravel jamoasining tegishli mahsulotiga [pull request](<https://github.com/orgs/laravel/repositories>) yuboring.
+
+Tuzatishdan so‘ng loyihalarimiz kalitlarni avtomatik yangilaydi. Yangilash har kuni bir marta bajariladi.
+
+:::
+
+1. Lokal faylini oching.
+1. Kalitlarning qiymatlarini o‘zgartiring.
+1. Kommit yarating va uni yuboring.
+1. O‘zgartirayotgan lokalingiz kodini ko‘rsatib, pull request yarating. Masalan:
+
+   :::tip
+
+   \[fr\]: Added new localization
+
+   :::
+
+:::tip
+
+`inline` suffiksli fayllarga e’tibor bering. Ularda joriy atributga (`:attribute`) murojaat bo‘lmasligi kerak.
+
+Inline tarjimalar murojaat shakli bilan farqlanadi:
+
+```text
+// Oddiy tarjima
+The :attribute must contain at least one letter.
+
+// Inline tarjima
+This field must contain at least one letter.
+```
+
+:::
+
+## Yangi lokalni qanday qo‘shish mumkin? {/* #how_to_add_a_new_locale */}
+
+### Laravel Lang loyihalari uchun {/* #for_laravel_lang_projects */}
+
+Odatda barcha loyihalarimizda mavjud lokallar bor. Yangi lokalni taklif qilmoqchi bo‘lsangiz, [bizga yozing](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+### Uchinchi tomon loyihalari uchun {/* #for_third_party_projects */}
+
+:::tip
+
+`laravel-lang/locale-list` ro‘yxatida yo‘q lokalni qo‘shish uchun [bizga yozing](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+:::
+
+`laravel-lang/status-generator` paketi o‘rnatilganiga ishonch hosil qiling va konsol buyrug‘ini bajaring:
+
+```bash
+vendor/bin/lang create <locale>
+# vendor/bin/lang create fr
+```
+
+Barcha yetishmayotgan lokallarni o‘rnatmoqchi bo‘lsangiz, buyruqni lokal kodini ko‘rsatmasdan bajaring:
+
+```bash
+vendor/bin/lang create
+```
+
+## Kod uslubi {/* #code_style */}
+
+Laravel-Lang jamoasi [PER](<https://www.php-fig.org/per/coding-style/>) kodlash standarti va [PSR-4](<https://www.php-fig.org/psr/psr-4/>) avtomatik yuklash standartiga amal qiladi.
+
+Kod formatini ushbu uslubga keltirish uchun konsolda quyidagi buyruqni bajaring:
+
+```bash
+composer style
+```
+
+## PR sarlavhasi {/* #pr_title */}
+
+PR sarlavhasi quyidagi formatga mos bo‘lishi kerak:
+
+```bash
+[locale]: Description
+```
+
+Masalan:
+
+```bash
+[fr]: Added new localization
+```
+
+Sarlavhaning belgilangan formatga mosligi muntazam ifoda bo‘yicha tekshiriladi:
+
+```bash
+/^(Draft:\s)?\[[a-zA-Z,_\s]+\]:\s.+$/
+```
+
+## Xulq-atvor qoidalari {/* #code_of_conduct */}
+
+Laravel xulq-atvor qoidalari [Contributor Covenant](<https://www.contributor-covenant.org/version/2/1/code_of_conduct/>) qoidalariga asoslangan. Qoidabuzarliklar haqida [Andrey Helldar, Fred Delrieu](<mailto:helldar@dragon-code.pro;caouecs@caouecs.net>) ga xabar berish mumkin:
+
+- Ishtirokchilar qarama-qarshi qarashlarga bag‘rikeng munosabatda bo‘ladilar.
+- Ishtirokchilar so‘zlari va xatti-harakatlarida shaxsga hujum qilish yoki kamsituvchi gaplarga yo‘l qo‘ymasliklari shart.
+- Ishtirokchilar boshqalarning so‘zlari va harakatlarini talqin qilishda har doim ularning niyatini yaxshi deb bilishlari kerak.
+- Asosli ravishda tazyiq deb hisoblanishi mumkin bo‘lgan xatti-harakatlarga toqat qilinmaydi.

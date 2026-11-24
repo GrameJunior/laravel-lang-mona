@@ -1,0 +1,35 @@
+---
+title: "Locales verwalten"
+slug: /manage-locales.html
+description: "Allgemeine Informationen zur Verwaltung von Locales"
+---
+
+:::warning
+
+Laravel <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">unterstützt standardmäßig keine</a> Fallback-Übersetzungen für JSON-Schlüssel. Wenn du zum Beispiel `__('Remember Me')` aufrufst, erhältst du für Französisch als Fallback-Locale `Remember Me` anstelle von `Se souvenir de moi`.
+
+:::
+
+Fast alle Konsolenbefehle akzeptieren eine Liste von Locales als Parameter.
+
+Beispiel
+
+```bash
+php artisan lang:<command> fr de de_AT de_CH vi zh_CN
+php artisan lang:<command> fr
+php artisan lang:<command>
+```
+
+Die Argumente funktionieren wie folgt.
+
+- `fr de de_AT de_CH vi zh_CN` ist eine durch Leerzeichen getrennte Liste von Locales.
+- `fr` zeigt, dass auch ein einzelner Locale-Code möglich ist.
+- Ohne Parameter stellt das Skript zwei Fragen.
+- Zuerst erscheint `Do you want to %s all localizations?`, wobei `%s` für `install`, `remove` oder `reset` steht.
+- Lautet die Antwort `no`, folgt `Select localizations to add (specify the necessary localizations separated by commas)`.
+
+:::note
+
+Bei allen Dateioperationen (`install`, `uninstall`, `reset` und `update`) werden neben PHP-Dateien automatisch auch JSON-Dateien verarbeitet. Dazu gehören Übersetzungen für [Laravel Framework](<https://laravel.com>), [Jetstream](<https://jetstream.laravel.com/>), [Fortify](<https://github.com/laravel/fortify>), [Cashier](<https://laravel.com/docs/billing>), [Breeze](<https://github.com/laravel/breeze>), [Nova (einschließlich Dusk Suite und Log Viewer)](<https://nova.laravel.com/>), [Nova](<https://nova.laravel.com/>) (einschließlich [Dusk Suite](<https://github.com/laravel/nova-dusk-suite>) und [Log Viewer](<https://github.com/laravel/nova-log-viewer>)) und [UI](<https://github.com/laravel/ui>).
+
+:::

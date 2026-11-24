@@ -1,0 +1,34 @@
+{
+  "version.label": {
+    "message": "Oldingi versiyalar",
+    "description": "The label for version legacy"
+  },
+  "sidebar.documentation.category.Prologue": {
+    "message": "Kirish",
+    "description": "The label for category 'Prologue' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Upgrade Guide": {
+    "message": "Yangilash qo‘llanmasi",
+    "description": "The label for category 'Upgrade Guide' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Getting Started": {
+    "message": "Ishni boshlash",
+    "description": "The label for category 'Getting Started' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Managing Locales": {
+    "message": "Lokallarni boshqarish",
+    "description": "The label for category 'Managing Locales' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Packages": {
+    "message": "Paketlar",
+    "description": "The label for category 'Packages' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Plugins": {
+    "message": "Plaginlar",
+    "description": "The label for category 'Plugins' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.doc.License": {
+    "message": "Litsenziya",
+    "description": "The label for the doc item 'License' in sidebar 'documentation', linking to the doc license"
+  }
+}
