@@ -5,6 +5,45 @@ description: "Mettez à niveau les dépendances et la configuration de Laravel-L
 
 Mona est le dépôt qui publie les paquets Laravel-Lang ensemble. Continuez d’utiliser les paquets Composer dont votre application a besoin.
 
+:::info[Pourquoi la version 20 ?]
+
+Laravel-Lang s’est développé à partir de `laravel-lang/lang`. Les paquets sont apparus à des moments différents, chacun avec sa propre numérotation et son propre rythme de publication. Les mises à niveau majeures demandaient de plus en plus de coordination à l’équipe. De votre côté, il fallait déterminer quelles versions pouvaient être installées ensemble.
+
+Nous avons créé `laravel-lang/common` pour faciliter l’installation en déclarant des dépendances compatibles entre elles. Une mise à niveau pouvait tout de même concerner plusieurs paquets dont les versions évoluaient indépendamment.
+
+Par exemple, quelles versions auriez-vous installées à l’époque dans une application qui utilisait Laravel 11 et PHP 8.2 ?
+
+<details>
+<summary>Versions des paquets avant Mona</summary>
+
+| Paquet | Version |
+| --- | --- |
+| Common | `6.9.0` |
+| Actions | `1.13.2` |
+| Attributes | `2.16.6` |
+| Lang | `15.39.2` |
+| MoonShine | `1.9.3` |
+| HTTP Statuses | `3.13.2` |
+| Currency Names | `1.11.0` |
+| Locale Names | `2.10.0` |
+| Country Names | `1.8.0` |
+| Starter Kits | `1.17.4` |
+| Locales | `2.11.0` |
+| Models | `1.8.0` |
+| Routes | `1.11.0` |
+| JSON Fallback | `2.3.0` |
+| Locale List | `1.7.0` |
+| Config | `1.17.1` (utilisée) et `2.3.2` (inutilisée) |
+| Publisher | `16.9.0` |
+
+</details>
+
+Avec le monorepo Mona, nous publions les paquets ensemble sous un même numéro de version.
+
+Publisher avait le numéro de version le plus élevé. Sa prochaine version majeure aurait été la `17.0`. Nous avons consacré beaucoup de travail et de soin à réunir l’écosystème et choisi la version 20 pour marquer cette étape. On peut aussi y lire **Laravel-Lang 2.0**. 🙂
+
+:::
+
 :::info[Codes de langue et alias]
 
 Laravel-Lang utilise désormais les codes de langue canoniques pour les valeurs stockées, notamment les chemins des traductions publiées et les lignes de traduction des modèles. Laravel utilise aussi des codes canoniques pour la langue active et la langue de repli. À l’exécution, utilisez les alias pour les segments d’URL et les sélecteurs de langue. Les méthodes de façade qui renvoient des codes utilisent par défaut l’alias configuré, ou le code canonique en l’absence d’alias. Par exemple, ajoutez `'pt_BR' => 'pt-br'` dans `localization_main.aliases` pour garder l’URL `/pt-br/account` tout en publiant dans `lang/pt_BR.json` et en stockant `pt_BR` dans la base de données.

@@ -5,6 +5,45 @@ description: Atualize as dependências do Laravel-Lang, a configuração, as tra
 
 O Mona é o repositório que publica os pacotes Laravel-Lang em conjunto. Continue usando os pacotes Composer individuais de que sua aplicação precisa.
 
+:::info[Por que a versão 20?]
+
+O Laravel-Lang cresceu a partir do `laravel-lang/lang`. Os pacotes surgiram em momentos diferentes, cada um com sua própria numeração e seu próprio ritmo de lançamento. As atualizações para novas versões principais exigiam cada vez mais coordenação da equipe. Quem usava os pacotes precisava descobrir quais versões podiam ser instaladas juntas.
+
+Criamos o `laravel-lang/common` para facilitar a instalação ao declarar dependências compatíveis entre si. Ainda assim, uma atualização podia envolver vários pacotes com versões independentes.
+
+Por exemplo, quais versões dos pacotes você teria instalado na época em uma aplicação com Laravel 11 e PHP 8.2?
+
+<details>
+<summary>Versões dos pacotes antes do Mona</summary>
+
+| Pacote | Versão |
+| --- | --- |
+| Common | `6.9.0` |
+| Actions | `1.13.2` |
+| Attributes | `2.16.6` |
+| Lang | `15.39.2` |
+| MoonShine | `1.9.3` |
+| HTTP Statuses | `3.13.2` |
+| Currency Names | `1.11.0` |
+| Locale Names | `2.10.0` |
+| Country Names | `1.8.0` |
+| Starter Kits | `1.17.4` |
+| Locales | `2.11.0` |
+| Models | `1.8.0` |
+| Routes | `1.11.0` |
+| JSON Fallback | `2.3.0` |
+| Locale List | `1.7.0` |
+| Config | `1.17.1` (em uso) e `2.3.2` (sem uso) |
+| Publisher | `16.9.0` |
+
+</details>
+
+Com o monorepositório Mona, lançamos os pacotes juntos e com o mesmo número de versão.
+
+O Publisher tinha o número de versão mais alto, então `17.0` seria sua próxima versão principal. Dedicamos muito trabalho e cuidado para reunir o ecossistema e escolhemos a versão 20 para marcar esse momento. Você também pode ler esse número como **Laravel-Lang 2.0**. 🙂
+
+:::
+
 :::info[Códigos de localidades e aliases]
 
 O Laravel-Lang agora usa códigos canônicos para os valores que armazena, incluindo caminhos de idiomas publicados e linhas de tradução de modelos. As localidades ativa e de fallback do Laravel também usam códigos canônicos. Em tempo de execução, use aliases em segmentos de URL e seletores de idioma. Os métodos das fachadas que retornam códigos de localidades usam o alias configurado por padrão ou o código canônico quando não há alias. Por exemplo, configure `'pt_BR' => 'pt-br'` em `localization_main.aliases` para manter `/pt-br/account` enquanto publica em `lang/pt_BR.json` e armazena `pt_BR` no banco.

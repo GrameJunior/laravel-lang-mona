@@ -5,6 +5,43 @@ description: "Laravel-Lang bog‘liqliklari, sozlamalar, nashr qilingan tarjimal
 
 Mona — Laravel-Lang paketlari birga chiqariladigan repozitoriy. Ilovangizga kerak bo‘lgan alohida Composer paketlaridan foydalanishda davom eting.
 
+:::info[Nega aynan 20-versiya?]
+
+Laravel-Lang ekotizimi `laravel-lang/lang` paketidan boshlangan. Paketlar turli vaqtda yaratilgan va har biri o‘z versiya raqamlari bilan alohida chiqarilgan. Yirik yangilanishlarda bir nechta paketdagi o‘zgarishlarni muvofiqlashtirishimizga to‘g‘ri kelardi. Foydalanuvchilar esa qaysi versiyalarni birga o‘rnatish mumkinligini aniqlashlari kerak edi.
+
+Tanlashni osonlashtirish uchun `laravel-lang/common` paketini yaratdik. U bog‘liqliklarning mos versiyalarini belgilardi. Shunga qaramay, bitta yangilanishda versiyalari alohida raqamlangan bir nechta paketni yangilashga to‘g‘ri kelishi mumkin edi.
+
+Mona’ga o‘tishdan oldin paketlarning versiyalari quyidagicha edi. Laravel 11 va PHP 8.2 uchun ulardan qaysilarini o‘rnatgan bo‘lardingiz?
+
+<details>
+<summary>Mona’ga o‘tishdan oldingi paket versiyalari</summary>
+
+| Paket | Versiya |
+| --- | --- |
+| Common | `6.9.0` |
+| Actions | `1.13.2` |
+| Attributes | `2.16.6` |
+| Lang | `15.39.2` |
+| MoonShine | `1.9.3` |
+| HTTP Statuses | `3.13.2` |
+| Currency Names | `1.11.0` |
+| Locale Names | `2.10.0` |
+| Country Names | `1.8.0` |
+| Starter Kits | `1.17.4` |
+| Locales | `2.11.0` |
+| Models | `1.8.0` |
+| Routes | `1.11.0` |
+| JSON Fallback | `2.3.0` |
+| Locale List | `1.7.0` |
+| Config | `1.17.1` (ishlatilgan) va `2.3.2` (ishlatilmagan) |
+| Publisher | `16.9.0` |
+
+</details>
+
+Endi paketlarni Mona monorepozitoriysidan bitta umumiy versiya raqami bilan birga chiqaramiz. Eng katta versiya raqami Publisher’da edi, shuning uchun keyingi versiya `17.0` bo‘lishi mumkin edi. Ekotizimni birlashtirish uchun qunt bilan ko‘p mehnat qildik va bu bosqichni nishonlash uchun 20-versiyani tanladik. Uni **Laravel-Lang 2.0** deb ham o‘qish mumkin. 🙂
+
+:::
+
 :::info[Lokal kodlari va ularning muqobil nomlari]
 
 Laravel-Lang endi saqlanadigan qiymatlar uchun, jumladan nashr qilingan til fayllari yo‘llari va model tarjimasi satrlarida kanonik lokal kodlarini ishlatadi. Laravel’ning faol va zaxira lokallari ham kanonik kodlarni qo‘llaydi. Ilova ishlayotganda URL segmentlari va til tanlash vositalari uchun muqobil nomlardan foydalaning. Lokal kodlarini qaytaradigan fasad metodlari standart holatda sozlangan muqobil nomni, u sozlanmagan bo‘lsa, kanonik kodni ishlatadi. Masalan, `lang/pt_BR.json` ga nashr qilish va bazada `pt_BR` ni saqlash bilan birga `/pt-br/account` yo‘lini saqlab qolish uchun `localization_main.aliases` da `'pt_BR' => 'pt-br'` ni belgilang.

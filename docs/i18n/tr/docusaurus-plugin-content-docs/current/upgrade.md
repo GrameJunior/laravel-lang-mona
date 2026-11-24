@@ -5,6 +5,45 @@ description: "Laravel-Lang bağımlılıklarını, yapılandırmayı, yayımlanm
 
 Mona, Laravel-Lang paketlerinin birlikte yayımlandığı depodur. Uygulamanızın gerektirdiği Composer paketlerini ayrı ayrı kullanmaya devam edin.
 
+:::info[Neden 20. sürüm?]
+
+Laravel-Lang, `laravel-lang/lang` projesinden doğan bir ekosistem. Paketler farklı zamanlarda ortaya çıktı ve her biri kendi sürüm numaralarıyla, kendi takvimine göre yayımlandı. Yeni ana sürümlere geçişte paketleri uyumlu tutmak giderek daha çok emek gerektiriyordu. Kullanıcıların da hangi sürümleri bir arada kurabileceklerini belirlemesi gerekiyordu.
+
+Birbiriyle uyumlu bağımlılıkları tanımlayarak kurulumu kolaylaştırmak için `laravel-lang/common` paketini oluşturduk. Yine de bir yükseltme, sürüm numaraları birbirinden bağımsız birden fazla paketi kapsayabiliyordu.
+
+Örneğin o dönemde Laravel 11 ve PHP 8.2 kullanan bir uygulamaya bu paketlerin hangi sürümlerini kurardınız?
+
+<details>
+<summary>Mona öncesindeki paket sürümleri</summary>
+
+| Paket | Sürüm |
+| --- | --- |
+| Common | `6.9.0` |
+| Actions | `1.13.2` |
+| Attributes | `2.16.6` |
+| Lang | `15.39.2` |
+| MoonShine | `1.9.3` |
+| HTTP Statuses | `3.13.2` |
+| Currency Names | `1.11.0` |
+| Locale Names | `2.10.0` |
+| Country Names | `1.8.0` |
+| Starter Kits | `1.17.4` |
+| Locales | `2.11.0` |
+| Models | `1.8.0` |
+| Routes | `1.11.0` |
+| JSON Fallback | `2.3.0` |
+| Locale List | `1.7.0` |
+| Config | `1.17.1` (kullanılan) ve `2.3.2` (kullanılmayan) |
+| Publisher | `16.9.0` |
+
+</details>
+
+Mona monoreposunda paketleri aynı sürüm numarasıyla birlikte yayımlıyoruz.
+
+En yüksek sürüm numarası Publisher’a aitti, dolayısıyla bir sonraki ana sürümü `17.0` olacaktı. Ekosistemi bir araya getirmek için çok emek verdik ve bu dönüm noktasını işaretlemek için 20. sürümü seçtik. Bunu **Laravel-Lang 2.0** olarak da okuyabilirsiniz. 🙂
+
+:::
+
 :::info[Yerel ayar kodları ve takma adlar]
 
 Laravel-Lang artık yayımlanan dil dosyalarının yolları ve model çeviri satırları dahil olmak üzere sakladığı değerlerde standart yerel ayar kodları kullanır. Laravel’in etkin ve yedek yerel ayarları da standart kodları kullanır. Çalışma zamanında URL bölümlerinde ve dil seçicilerde takma adları kullanın. Yerel ayar kodu döndüren facade metotları, varsayılan olarak yapılandırılmış takma adı, takma ad yoksa standart kodu kullanır. Örneğin çevirileri `lang/pt_BR.json` dosyasına yazıp veritabanında `pt_BR` saklarken `/pt-br/account` adresini korumak için `localization_main.aliases` ayarına `'pt_BR' => 'pt-br'` ekleyin.

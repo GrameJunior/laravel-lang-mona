@@ -5,6 +5,45 @@ description: Actualiza las dependencias de Laravel-Lang, la configuración, las 
 
 Mona es el repositorio que publica conjuntamente los paquetes de Laravel-Lang. Sigue usando los paquetes individuales de Composer que necesite tu aplicación.
 
+:::info[¿Por qué la versión 20?]
+
+Laravel-Lang creció a partir de `laravel-lang/lang`. Los paquetes nacieron en distintos momentos y cada uno tenía su propia numeración y su propio ritmo de publicación. Coordinar las actualizaciones a nuevas versiones mayores nos llevaba cada vez más trabajo. Quienes usaban los paquetes tenían que averiguar qué versiones podían instalar juntas.
+
+Creamos `laravel-lang/common` para facilitar la instalación mediante un conjunto de dependencias compatibles. Aun así, una actualización podía afectar a varios paquetes con versiones independientes.
+
+Por ejemplo, ¿qué versiones de los paquetes habrías instalado entonces en una aplicación con Laravel 11 y PHP 8.2?
+
+<details>
+<summary>Versiones de los paquetes antes de Mona</summary>
+
+| Paquete | Versión |
+| --- | --- |
+| Common | `6.9.0` |
+| Actions | `1.13.2` |
+| Attributes | `2.16.6` |
+| Lang | `15.39.2` |
+| MoonShine | `1.9.3` |
+| HTTP Statuses | `3.13.2` |
+| Currency Names | `1.11.0` |
+| Locale Names | `2.10.0` |
+| Country Names | `1.8.0` |
+| Starter Kits | `1.17.4` |
+| Locales | `2.11.0` |
+| Models | `1.8.0` |
+| Routes | `1.11.0` |
+| JSON Fallback | `2.3.0` |
+| Locale List | `1.7.0` |
+| Config | `1.17.1` (en uso) y `2.3.2` (sin usar) |
+| Publisher | `16.9.0` |
+
+</details>
+
+Con el monorepositorio Mona publicamos los paquetes juntos y con un número de versión común.
+
+Publisher tenía el número de versión más alto, así que `17.0` habría sido su siguiente versión mayor. Dedicamos mucho trabajo y cuidado a reunir el ecosistema y elegimos la versión 20 para marcar ese hito. También se puede leer como **Laravel-Lang 2.0**. 🙂
+
+:::
+
 :::info[Códigos y alias de configuración regional]
 
 Laravel-Lang usa ahora códigos canónicos de configuración regional para los valores que almacena, entre ellos las rutas de idiomas publicadas y las filas de traducción de modelos. Las configuraciones regionales activa y de reserva de Laravel también usan códigos canónicos. En tiempo de ejecución, usa alias en los segmentos de URL y los selectores de idioma. Los métodos de fachada que devuelven códigos de configuración regional usan de forma predeterminada el alias configurado o, si no existe, el código canónico. Por ejemplo, configura `'pt_BR' => 'pt-br'` en `localization_main.aliases` para conservar `/pt-br/account` mientras publicas en `lang/pt_BR.json` y almacenas `pt_BR` en la base de datos.

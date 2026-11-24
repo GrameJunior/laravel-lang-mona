@@ -5,6 +5,43 @@ description: 升级 Laravel-Lang 依赖、配置、已发布的译文和应用�
 
 Mona 是统一发布 Laravel-Lang 各包的仓库。应用仍可继续使用各自需要的 Composer 包。
 
+:::info[为什么是 20 版？]
+
+Laravel-Lang 最初只有 `laravel-lang/lang`，后来逐渐发展成由多个包组成的生态。各个包创建于不同时间，有各自的版本号和发布节奏。每次大版本升级，维护者都要协调多个包的发布，用户也要弄清哪些版本可以一起安装。
+
+为了简化这个过程，我们创建了 `laravel-lang/common`，在其中声明一组兼容的依赖。一次升级仍可能涉及多个独立编号的包。
+
+比如在 Mona 推出之前，如果你的应用用的是 Laravel 11 和 PHP 8.2，这些包分别该装哪个版本？
+
+<details>
+<summary>Mona 推出前的包版本</summary>
+
+| 包 | 版本 |
+| --- | --- |
+| Common | `6.9.0` |
+| Actions | `1.13.2` |
+| Attributes | `2.16.6` |
+| Lang | `15.39.2` |
+| MoonShine | `1.9.3` |
+| HTTP Statuses | `3.13.2` |
+| Currency Names | `1.11.0` |
+| Locale Names | `2.10.0` |
+| Country Names | `1.8.0` |
+| Starter Kits | `1.17.4` |
+| Locales | `2.11.0` |
+| Models | `1.8.0` |
+| Routes | `1.11.0` |
+| JSON Fallback | `2.3.0` |
+| Locale List | `1.7.0` |
+| Config | `1.17.1`（使用中）和 `2.3.2`（未使用） |
+| Publisher | `16.9.0` |
+
+</details>
+
+在 Mona 中，各个包使用同一个版本号，并一起发布。此前 Publisher 的版本号最高，沿用它的编号，下一次大版本就会是 `17.0`。我们花了很多心思把整个生态整合到同一个仓库，选择用 20 纪念这个里程碑。你也可以把它读作 **Laravel-Lang 2.0**。🙂
+
+:::
+
 :::info[语言区域代码和别名]
 
 Laravel-Lang 现在使用规范语言区域代码存储数据，包括已发布的翻译文件路径和模型翻译记录。Laravel 当前和回退语言区域同样使用规范代码。运行时可在 URL 路径段和语言选择器中使用别名。返回语言区域代码的门面方法默认使用已配置的别名。未配置时返回规范代码。例如，在 `localization_main.aliases` 中配置 `'pt_BR' => 'pt-br'` 后，仍可使用 `/pt-br/account`，而文件发布到 `lang/pt_BR.json`，数据库中保存 `pt_BR`。
