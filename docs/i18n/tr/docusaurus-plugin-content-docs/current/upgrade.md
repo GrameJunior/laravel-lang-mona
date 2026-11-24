@@ -32,7 +32,7 @@ php artisan lang:update
 
 Uygulamanızda sağlayıcı kaydettiyseniz, özel ayarlar yayımladıysanız, takma ad veya üçüncü taraf çeviri paketleri kullanıyorsanız ya da paket API’lerini çağırıyorsanız çevirileri yeniden yayımlamadan önce aşağıdaki ilgili bölümleri izleyin.
 
-## Adı değişen veya kullanımdan kaldırılan bağımlılıkları değiştirme {#replace-renamed-or-retired-dependencies}
+## Adı değişen veya artık kullanılmayan bağımlılıkları değiştirme {#replace-renamed-or-retired-dependencies}
 
 `composer update` çalıştırmadan önce `composer.json` dosyasında eski ad paketlerine olan doğrudan bağımlılıkları güncelleyin.
 

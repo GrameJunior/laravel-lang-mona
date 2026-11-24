@@ -36,13 +36,13 @@
     "message": "1 dakikada başlayın"
   },
   "home.legacy": {
-    "message": "Eski sürüm belgeleri"
+    "message": "Legacy belgeleri"
   },
   "home.example.install": {
-    "message": "Fransızca çevirileri kurun"
+    "message": "Yerel ayar ekleme"
   },
   "home.example.use": {
-    "message": "Çeviriyi kullanın"
+    "message": "Kullanım"
   },
   "home.guides": {
     "message": "Yerelleştirme kılavuzları"

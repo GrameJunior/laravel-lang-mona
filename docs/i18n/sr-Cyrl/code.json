@@ -12,7 +12,7 @@
     "message": "Подешавање локализације"
   },
   "home.guide.configure.description": {
-    "message": "Подесите псеудониме локала, локализоване руте и преводе модела."
+    "message": "Подесите алијасе локала, локализоване руте и преводе модела."
   },
   "home.guide.plugins.title": {
     "message": "Додаци за преводе"
@@ -33,16 +33,16 @@
     "message": "Локализујте своју Laravel апликацију"
   },
   "home.start": {
-    "message": "Започните за један минут"
+    "message": "Почетак за минут"
   },
   "home.legacy": {
-    "message": "Архивска документација"
+    "message": "Документација за Legacy"
   },
   "home.example.install": {
-    "message": "Инсталирајте француске преводе"
+    "message": "Додавање локала"
   },
   "home.example.use": {
-    "message": "Употребите превод"
+    "message": "Употреба"
   },
   "home.guides": {
     "message": "Водичи за локализацију"

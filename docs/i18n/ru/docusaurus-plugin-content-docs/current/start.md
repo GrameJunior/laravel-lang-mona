@@ -17,4 +17,4 @@ __('auth.failed', locale: 'fr');
 
 - [Управляйте переводами](./translations.md) и [смотрите список доступных локалей](./available-locales.md)
 - [Настройте локализацию](./configure.md)
-- [Проверьте совместимость](./release-notes.md#versioning-and-compatibility) или [обновите существующую установку](./upgrade.md)
+- [Проверьте совместимость](./release-notes.md#versioning-and-compatibility) или откройте руководство [Апгрейд до Mona](./upgrade.md)

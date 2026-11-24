@@ -1,5 +1,5 @@
 ---
-title: "Eski sürüm belgeleri"
+title: "Legacy belgeleri"
 slug: /
 description: "Mona’dan önce yayımlanan Laravel-Lang paketlerinin belgeleri."
 ---

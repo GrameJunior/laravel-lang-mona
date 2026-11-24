@@ -36,13 +36,13 @@
     "message": "Comece em 1 minuto"
   },
   "home.legacy": {
-    "message": "Documentação legada"
+    "message": "Documentação Legacy"
   },
   "home.example.install": {
-    "message": "Instale as traduções em francês"
+    "message": "Adicionar localidades"
   },
   "home.example.use": {
-    "message": "Use uma tradução"
+    "message": "Uso"
   },
   "home.guides": {
     "message": "Guias de localização"

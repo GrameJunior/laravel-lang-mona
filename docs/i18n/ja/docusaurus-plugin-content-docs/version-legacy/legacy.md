@@ -1,5 +1,5 @@
 ---
-title: 旧版ドキュメント
+title: Legacy ドキュメント
 slug: /
 description: Mona より前にリリースされた Laravel-Lang パッケージのドキュメントです。
 ---

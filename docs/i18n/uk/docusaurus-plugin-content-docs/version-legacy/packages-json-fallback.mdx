@@ -41,7 +41,7 @@ composer require laravel-lang/json-fallback:^2.3.0
 
 :::
 
-Після встановлення додайте посилання на постачальник сервісів до розділу `providers` у файлі налаштувань `config/app.php`:
+Після встановлення додайте посилання на сервіс-провайдер до розділу `providers` у файлі налаштувань `config/app.php`:
 
 ```php
 <?php
@@ -54,7 +54,7 @@ use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
 
 return [
     'providers' => ServiceProvider::defaultProviders()->merge([
-        // інші постачальники сервісів
+        // інші сервіс-провайдери
     ])->replace([
         BaseTranslation::class => JsonTranslation::class,
     ])->toArray(),

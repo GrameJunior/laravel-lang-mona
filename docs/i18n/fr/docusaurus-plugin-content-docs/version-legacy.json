@@ -1,6 +1,6 @@
 {
   "version.label": {
-    "message": "Anciennes versions",
+    "message": "Legacy",
     "description": "The label for version legacy"
   },
   "sidebar.documentation.category.Prologue": {

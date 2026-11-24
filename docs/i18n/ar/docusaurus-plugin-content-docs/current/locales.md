@@ -7,7 +7,7 @@ description: "اعثر على الإعدادات المحلية المدعومة
 
 ## العثور على الإعدادات المحلية المدعومة والمثبّتة {#find-supported-and-installed-locales}
 
-توفر حزمة `laravel-lang/locale-list` تعدادًا ذا قيم مُسنَدة هو `LaravelLang\LocaleList\Locale`. وتطابق حالاته [الرموز المعتمدة المدعومة](./available-locales.md).
+توفر حزمة `laravel-lang/locale-list` نوع تعداد (`enum`) ذا قيم مُسنَدة هو `LaravelLang\LocaleList\Locale`. وتطابق حالاته [الرموز المعتمدة المدعومة](./available-locales.md).
 
 ```php
 use LaravelLang\LocaleList\Locale;

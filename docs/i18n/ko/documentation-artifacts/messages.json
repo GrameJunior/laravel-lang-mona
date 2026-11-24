@@ -1,19 +1,4 @@
 {
-  "releaseLine": {
-    "message": "공식 패키지는 동일한 릴리스 버전을 사용합니다."
-  },
-  "documentation": {
-    "message": "문서"
-  },
-  "optional": {
-    "message": "선택 사항"
-  },
-  "legacy": {
-    "message": "이전 버전 문서"
-  },
-  "legacyDescription": {
-    "message": "Mona 이전 버전 설치를 위한 가이드입니다."
-  },
   "moved": {
     "message": "문서가 이동했습니다"
   },

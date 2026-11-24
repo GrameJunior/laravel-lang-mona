@@ -32,7 +32,7 @@ php artisan lang:update
 
 如果注册过服务提供者、发布过自定义配置、使用别名或第三方翻译包，或在应用中调用包的 API，请在重新发布前按下文迁移相关部分。
 
-## 替换已改名或停用的依赖 {#replace-renamed-or-retired-dependencies}
+## 替换已改名或已废弃的依赖 {#replace-renamed-or-retired-dependencies}
 
 运行 `composer update` 前，请在 `composer.json` 中更新对旧版名称包的直接依赖。
 

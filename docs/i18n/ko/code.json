@@ -36,13 +36,13 @@
     "message": "1분 만에 시작하기"
   },
   "home.legacy": {
-    "message": "이전 버전 문서"
+    "message": "Legacy 문서"
   },
   "home.example.install": {
-    "message": "프랑스어 번역 설치하기"
+    "message": "로캘 추가"
   },
   "home.example.use": {
-    "message": "번역 사용하기"
+    "message": "사용법"
   },
   "home.guides": {
     "message": "현지화 가이드"

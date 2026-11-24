@@ -13,7 +13,7 @@ Mona는 Laravel-Lang 패키지를 함께 릴리스하는 저장소입니다. 애
 
 ## 의존성 업데이트 {#updating-dependencies}
 
-현재 릴리스는 Laravel 12와 13을 지원하며 PHP `^8.3`이 필요합니다. 애플리케이션의 `composer.json`에서 아래 패키지 중 `require` 또는 `require-dev`에 있는 항목의 버전 제약을 `^20.0`으로 설정하세요. `laravel-lang/common`만 설치했다면 이 항목만 바꾸면 됩니다.
+현재 버전은 Laravel 12와 13을 지원하며 PHP `^8.3`이 필요합니다. 애플리케이션의 `composer.json`에서 아래 패키지 중 `require` 또는 `require-dev`에 있는 항목의 버전 제약을 `^20.0`으로 설정하세요. `laravel-lang/common`만 설치했다면 이 항목만 바꾸면 됩니다.
 
 | 용도 | Composer 패키지 |
 | --- | --- |
@@ -32,7 +32,7 @@ php artisan lang:update
 
 프로바이더를 등록했거나 사용자 지정 설정을 게시했거나 별칭, 서드 파티 번역 팩 또는 패키지 API를 사용한다면 다시 게시하기 전에 아래에서 해당하는 절을 따르세요.
 
-## 이름이 바뀌거나 사용이 중단된 의존성 교체 {#replace-renamed-or-retired-dependencies}
+## 이름이 바뀌었거나 더 이상 쓰이지 않는 의존성 교체 {#replace-renamed-or-retired-dependencies}
 
 `composer update`를 실행하기 전에 이전 이름 조회 패키지를 직접 사용하는 `composer.json`의 의존성을 업데이트하세요.
 

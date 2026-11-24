@@ -7,7 +7,7 @@ Publisher входит в официальные пакеты переводов
 
 ## Добавление локалей {#add-locales}
 
-Передайте один или несколько [кодов локалей](./available-locales.md) через пробел. Команда принимает настроенные псевдонимы, а в созданных файлах использует канонические коды.
+Передайте один или несколько [кодов локалей](./available-locales.md) через пробел. Команда принимает настроенные алиасы, а в созданных файлах использует канонические коды.
 
 ```bash
 php artisan lang:add fr de_CH
@@ -41,6 +41,6 @@ php artisan lang:rm de_CH
 
 Если ключа нет в JSON-переводе, `laravel-lang/json-fallback` добавляет поиск в JSON-файле резервной локали перед переходом к PHP-переводам. Пакет входит в Common. Для отдельной установки выполните `composer require laravel-lang/json-fallback`.
 
-Добавьте `LaravelLang\JsonFallback\LangJsonFallbackServiceProvider::class` в список поставщиков служб приложения в `bootstrap/providers.php`. Если в этом списке явно указан `Illuminate\Translation\TranslationServiceProvider`, замените его поставщиком служб Mona. [Регистрация поставщиков служб в Laravel](https://laravel.com/docs/13.x/providers#registering-providers)
+Добавьте `LaravelLang\JsonFallback\LangJsonFallbackServiceProvider::class` в список сервис-провайдеров приложения в `bootstrap/providers.php`. Если в этом списке явно указан `Illuminate\Translation\TranslationServiceProvider`, замените его сервис-провайдером Mona. [Регистрация сервис-провайдеров в Laravel](https://laravel.com/docs/13.x/providers#registering-providers)
 
 Если текущая локаль — французская, а резервная — английская, ключ, отсутствующий в `lang/fr.json`, теперь может получить значение из `lang/en.json`.

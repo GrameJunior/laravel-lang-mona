@@ -36,13 +36,13 @@
     "message": "一分钟快速入门"
   },
   "home.legacy": {
-    "message": "旧版文档"
+    "message": "Legacy 文档"
   },
   "home.example.install": {
-    "message": "安装法语译文"
+    "message": "添加语言区域"
   },
   "home.example.use": {
-    "message": "使用译文"
+    "message": "用法"
   },
   "home.guides": {
     "message": "本地化指南"

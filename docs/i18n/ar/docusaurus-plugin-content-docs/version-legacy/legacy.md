@@ -1,5 +1,5 @@
 ---
-title: "توثيق الإصدارات السابقة"
+title: "توثيق Legacy"
 slug: /
 description: "توثيق حزم Laravel-Lang التي صدرت قبل Mona."
 ---

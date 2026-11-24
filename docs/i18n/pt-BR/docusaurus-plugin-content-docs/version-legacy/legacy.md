@@ -1,5 +1,5 @@
 ---
-title: Documentação legada
+title: Documentação Legacy
 slug: /
 description: Documentação dos pacotes Laravel-Lang lançados antes do Mona.
 ---

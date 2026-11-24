@@ -1,19 +1,4 @@
 {
-  "releaseLine": {
-    "message": "官方包使用统一的发布版本。"
-  },
-  "documentation": {
-    "message": "文档"
-  },
-  "optional": {
-    "message": "可选参考"
-  },
-  "legacy": {
-    "message": "旧版文档"
-  },
-  "legacyDescription": {
-    "message": "适用于 Mona 之前版本的指南。"
-  },
   "moved": {
     "message": "文档已迁移"
   },

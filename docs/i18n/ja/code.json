@@ -36,13 +36,13 @@
     "message": "1 分で始める"
   },
   "home.legacy": {
-    "message": "旧版ドキュメント"
+    "message": "Legacy ドキュメント"
   },
   "home.example.install": {
-    "message": "フランス語の翻訳をインストールする"
+    "message": "ロケールを追加する"
   },
   "home.example.use": {
-    "message": "翻訳を使用する"
+    "message": "使い方"
   },
   "home.guides": {
     "message": "ローカライズガイド"

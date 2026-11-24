@@ -7,7 +7,7 @@ Publisher уваходзіць у афіцыйныя пакеты перакла
 
 ## Даданне лакаляў {#add-locales}
 
-Перадайце адзін ці некалькі [кодаў лакаляў](./available-locales.md), раздзяляючы іх прабеламі. Уваходныя даныя могуць змяшчаць наладжаныя псеўданімы, а выніковыя файлы выкарыстоўваюць кананічныя коды.
+Перадайце адзін ці некалькі [кодаў лакаляў](./available-locales.md), раздзяляючы іх прабеламі. Уваходныя даныя могуць змяшчаць наладжаныя аліясы, а выніковыя файлы выкарыстоўваюць кананічныя коды.
 
 ```bash
 php artisan lang:add fr de_CH
@@ -41,6 +41,6 @@ php artisan lang:rm de_CH
 
 Калі ключ JSON адсутнічае, `laravel-lang/json-fallback` дадае пошук у JSON рэзервовай лакалі перад пераходам да перакладаў PHP. Common уключае гэты пакет. Для асобнага ўсталявання выканайце `composer require laravel-lang/json-fallback`.
 
-Дадайце `LaravelLang\JsonFallback\LangJsonFallbackServiceProvider::class` да пастаўшчыкоў сэрвісаў прыкладання ў `bootstrap/providers.php`. Калі ў прыкладанні яўна пазначаны `Illuminate\Translation\TranslationServiceProvider`, замяніце гэты запіс пастаўшчыком Mona. [Рэгістрацыя пастаўшчыка ў Laravel](https://laravel.com/docs/13.x/providers#registering-providers)
+Дадайце `LaravelLang\JsonFallback\LangJsonFallbackServiceProvider::class` да сэрвіс-правайдараў прыкладання ў `bootstrap/providers.php`. Калі ў прыкладанні яўна пазначаны `Illuminate\Translation\TranslationServiceProvider`, замяніце гэты запіс правайдарам Mona. [Рэгістрацыя сэрвіс-правайдара ў Laravel](https://laravel.com/docs/13.x/providers#registering-providers)
 
 Калі бягучая лакаль — французская, а рэзервовая — англійская, то пры пошуку ключа, якога няма ў `lang/fr.json`, цяпер можа вяртацца яго значэнне з `lang/en.json`.

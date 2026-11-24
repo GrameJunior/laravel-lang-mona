@@ -1,19 +1,4 @@
 {
-  "releaseLine": {
-    "message": "Los paquetes oficiales comparten el mismo número de versión."
-  },
-  "documentation": {
-    "message": "Documentación"
-  },
-  "optional": {
-    "message": "Opcional"
-  },
-  "legacy": {
-    "message": "Documentación de versiones anteriores"
-  },
-  "legacyDescription": {
-    "message": "Guías para instalaciones anteriores a Mona."
-  },
   "moved": {
     "message": "La documentación se ha trasladado"
   },

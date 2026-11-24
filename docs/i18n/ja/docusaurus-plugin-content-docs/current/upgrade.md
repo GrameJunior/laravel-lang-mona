@@ -13,7 +13,7 @@ Laravel-Lang では、公開する言語ファイルのパスやモデルの翻�
 
 ## 依存関係を更新する {#updating-dependencies}
 
-現行リリースは Laravel 12 と 13 に対応し、PHP `^8.3` が必要です。アプリケーションの `composer.json` で、`require` または `require-dev` にある以下の各パッケージのバージョン制約を `^20.0` に設定します。`laravel-lang/common` だけをインストールしている場合は、その依存関係だけを変更してください。
+現行バージョンは Laravel 12 と 13 に対応し、PHP `^8.3` が必要です。アプリケーションの `composer.json` で、`require` または `require-dev` にある以下の各パッケージのバージョン制約を `^20.0` に設定します。`laravel-lang/common` だけをインストールしている場合は、その依存関係だけを変更してください。
 
 | 用途 | Composer パッケージ |
 | --- | --- |
@@ -32,7 +32,7 @@ php artisan lang:update
 
 プロバイダーを登録した場合、カスタム設定を公開した場合、エイリアスやサードパーティーの翻訳パックを使う場合、またはアプリケーションからパッケージの API を呼び出す場合は、再公開の前に、以下の該当する節の手順を実行してください。
 
-## 名前が変更された依存関係と廃止された依存関係を置き換える {#replace-renamed-or-retired-dependencies}
+## 名前が変わった依存関係や廃止された依存関係を置き換える {#replace-renamed-or-retired-dependencies}
 
 `composer update` を実行する前に、`composer.json` で旧版の名称パッケージへの直接依存を更新します。
 

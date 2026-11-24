@@ -97,7 +97,7 @@ Route::localizedGroup(function () {
 
 Овај метод омогућава једноставно управљање префиксима групе помоћу локализованих рута.
 
-Поред главне компоненте посредничког софтвера за ову групу, `LocalizationByParameterPrefix`, учествују и `LocalizationByCookie`, `LocalizationByHeader` и `LocalizationBySession`.
+Поред главног мидлвера за ову групу, `LocalizationByParameterPrefix`, учествују и `LocalizationByCookie`, `LocalizationByHeader` и `LocalizationBySession`.
 
 Можете користити један од следећа три начина.
 
@@ -436,7 +436,7 @@ Article::create([
 
 :::
 
-После инсталације додајте упућивање на добављача услуга у одељак `providers` датотеке подешавања `config/app.php`.
+После инсталације додајте упућивање на сервисног провајдера у одељак `providers` датотеке подешавања `config/app.php`.
 
 ```php
 <?php

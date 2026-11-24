@@ -12,7 +12,7 @@
     "message": "Налаштуйте локалізацію"
   },
   "home.guide.configure.description": {
-    "message": "Налаштуйте псевдоніми локалей, локалізовані маршрути та переклади моделей."
+    "message": "Налаштуйте аліаси локалей, локалізовані маршрути та переклади моделей."
   },
   "home.guide.plugins.title": {
     "message": "Плагіни перекладу"
@@ -21,7 +21,7 @@
     "message": "Установлюйте пакети перекладів або створюйте власні."
   },
   "home.guide.upgrade.title": {
-    "message": "Оновлення до Mona"
+    "message": "Апгрейд до Mona"
   },
   "home.guide.upgrade.description": {
     "message": "Перенесіть залежності, налаштування й переклади."
@@ -33,16 +33,16 @@
     "message": "Локалізуйте застосунок Laravel"
   },
   "home.start": {
-    "message": "Почніть за хвилину"
+    "message": "Старт за хвилину"
   },
   "home.legacy": {
-    "message": "Документація попередніх версій"
+    "message": "Документація Legacy"
   },
   "home.example.install": {
-    "message": "Установіть французькі переклади"
+    "message": "Додавання локалей"
   },
   "home.example.use": {
-    "message": "Скористайтеся перекладом"
+    "message": "Використання"
   },
   "home.guides": {
     "message": "Посібники з локалізації"

@@ -32,7 +32,7 @@ php artisan lang:update
 
 Si vous avez enregistré des fournisseurs de services, publié des paramètres personnalisés, utilisé des alias ou des packs de traduction tiers, ou encore appelé les API des paquets dans votre application, suivez les sections pertinentes ci-dessous avant de republier.
 
-## Remplacer les dépendances renommées ou abandonnées {#replace-renamed-or-retired-dependencies}
+## Remplacer les dépendances renommées ou obsolètes {#replace-renamed-or-retired-dependencies}
 
 Mettez à jour dans `composer.json` toute dépendance directe aux anciens paquets de libellés avant d’exécuter `composer update`.
 
