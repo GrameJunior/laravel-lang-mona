@@ -171,7 +171,7 @@
   перспективе, но сделать это как-нибудь нестандартно, под углом.
 - [ ] Актуализировать GitHub Actions
     - [x] dependabot
-    - [ ] close-stale-issues
+    - [x] close-stale-issues
     - [ ] license
     - [ ] preview
     - [ ] release-drafter
