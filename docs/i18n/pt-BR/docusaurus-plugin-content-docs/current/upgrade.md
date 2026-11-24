@@ -33,7 +33,7 @@ Por exemplo, quais versões dos pacotes você teria instalado na época em uma a
 | Routes | `1.11.0` |
 | JSON Fallback | `2.3.0` |
 | Locale List | `1.7.0` |
-| Config | `1.17.1` (em uso) e `2.3.2` (sem uso) |
+| Config | `1.17.1` (versão da série 1.x que os outros pacotes do Laravel-Lang continuavam usando) e `2.3.2` (última versão estável antes do Mona, pouco usada por esses pacotes) |
 | Publisher | `16.9.0` |
 
 </details>

@@ -33,7 +33,7 @@ Birbiriyle uyumlu bağımlılıkları tanımlayarak kurulumu kolaylaştırmak i�
 | Routes | `1.11.0` |
 | JSON Fallback | `2.3.0` |
 | Locale List | `1.7.0` |
-| Config | `1.17.1` (kullanılan) ve `2.3.2` (kullanılmayan) |
+| Config | `1.17.1` (diğer Laravel-Lang paketlerinin kullanmaya devam ettiği 1.x sürümü) ve `2.3.2` (Mona öncesindeki son kararlı sürüm, bu paketlerde nadiren kullanılıyordu) |
 | Publisher | `16.9.0` |
 
 </details>

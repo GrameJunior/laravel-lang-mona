@@ -33,7 +33,7 @@ Welche Paketversionen hättest du damals zum Beispiel in einer Anwendung mit Lar
 | Routes | `1.11.0` |
 | JSON Fallback | `2.3.0` |
 | Locale List | `1.7.0` |
-| Config | `1.17.1` (verwendet) und `2.3.2` (nicht verwendet) |
+| Config | `1.17.1` (Version aus der 1.x-Reihe, die andere Laravel-Lang-Pakete weiterhin nutzten) und `2.3.2` (letzte stabile Version vor Mona, die diese Pakete selten nutzten) |
 | Publisher | `16.9.0` |
 
 </details>

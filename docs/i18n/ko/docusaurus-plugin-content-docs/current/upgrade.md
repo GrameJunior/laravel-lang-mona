@@ -33,7 +33,7 @@ Laravel-Lang은 `laravel-lang/lang`에서 시작해 여러 패키지를 아우�
 | Routes | `1.11.0` |
 | JSON Fallback | `2.3.0` |
 | Locale List | `1.7.0` |
-| Config | `1.17.1`(사용) 및 `2.3.2`(미사용) |
+| Config | `1.17.1`(다른 Laravel-Lang 패키지가 계속 사용하던 1.x 계열 버전) 및 `2.3.2`(Mona 이전의 최신 안정 버전으로, 다른 패키지에서는 거의 사용하지 않음) |
 | Publisher | `16.9.0` |
 
 </details>

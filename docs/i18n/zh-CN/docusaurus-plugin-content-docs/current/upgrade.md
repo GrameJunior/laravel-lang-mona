@@ -33,7 +33,7 @@ Laravel-Lang 最初只有 `laravel-lang/lang`，后来逐渐发展成由多个�
 | Routes | `1.11.0` |
 | JSON Fallback | `2.3.0` |
 | Locale List | `1.7.0` |
-| Config | `1.17.1`（使用中）和 `2.3.2`（未使用） |
+| Config | `1.17.1`（其他 Laravel-Lang 包继续使用的 1.x 版本）和 `2.3.2`（Mona 推出前的最新稳定版，其他包很少使用） |
 | Publisher | `16.9.0` |
 
 </details>

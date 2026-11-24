@@ -33,7 +33,7 @@ Mona’ga o‘tishdan oldin paketlarning versiyalari quyidagicha edi. Laravel 11
 | Routes | `1.11.0` |
 | JSON Fallback | `2.3.0` |
 | Locale List | `1.7.0` |
-| Config | `1.17.1` (ishlatilgan) va `2.3.2` (ishlatilmagan) |
+| Config | `1.17.1` (Laravel-Lang’ning boshqa paketlari ishlatishda davom etgan 1.x turkumidagi versiya) va `2.3.2` (Mona’gacha chiqqan eng so‘nggi barqaror versiya, bu paketlarda kam qo‘llangan) |
 | Publisher | `16.9.0` |
 
 </details>
