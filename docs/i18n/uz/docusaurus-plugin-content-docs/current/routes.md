@@ -9,7 +9,7 @@ description: "Mahalliylashtirilgan URL manzillarini ro‘yxatdan o‘tkazing va 
 composer require laravel-lang/routes
 ```
 
-[URL manzillarida ishlatilgan lokallar o‘rnatilganiga](./translations.md) ishonch hosil qiling. Parametr nomlari, vositachi dasturlar va standart lokalning ishlashini [`config/localization_routes.php`](./configure.md) faylida sozlang.
+[URL manzillarida ishlatilgan lokallar o‘rnatilganiga](./translations.md) ishonch hosil qiling. Parametr nomlari, middlewarelar va standart lokalning ishlashini [`config/localization_routes.php`](./configure.md) faylida sozlang.
 
 ## Mahalliylashtirilgan marshrut guruhini ro‘yxatdan o‘tkazish {#register-a-localized-route-group}
 
@@ -32,7 +32,7 @@ Standart sozlamada qayta chaqiriladigan funksiya ikkala URL andozasini ham ro‘
 | `/products/{product}` | `products.show` |
 | `/{locale}/products/{product}` | `localized.products.show` |
 
-Lokal vositachi dasturi marshrut ishlovchisi chaqirilishidan oldin `locale` parametrini o‘qiydi va marshrut parametrlaridan olib tashlaydi. Marshrut nomlangan bo‘lsa, noma’lum yoki o‘rnatilmagan URL lokali bilan kelgan so‘rov prefikssiz marshrutga yo‘naltiriladi.
+Lokalni aniqlovchi middleware marshrut ishlovchisi chaqirilishidan oldin `locale` parametrini o‘qiydi va marshrut parametrlaridan olib tashlaydi. Marshrut nomlangan bo‘lsa, noma’lum yoki o‘rnatilmagan URL lokali bilan kelgan so‘rov prefikssiz marshrutga yo‘naltiriladi.
 
 ## Mahalliylashtirilgan URL yaratish {#generate-a-localized-url}
 
@@ -50,19 +50,19 @@ Yordamchi funksiya sozlangan lokal parametri nomidan foydalanadi va prefiksli ma
 
 `localization_routes.hide` yordamchi funksiya yaratgan URL’larda zaxira lokalni tushirib qoldiradi. `localization_routes.redirect` joriy lokalga yuborilgan so‘rovlarni prefiksli guruhdan prefikssiz marshrutga yo‘naltiradi. Ikkala sozlamaning standart qiymati `false`.
 
-## Vositachi dastur orqali lokal tanlash {#select-a-locale-with-middleware}
+## Middleware orqali lokal tanlash {#select-a-locale-with-middleware}
 
-Har bir vositachi dasturni `LaravelLang\Routes\Middlewares` nomlar fazosidagi sinfi orqali bevosita qo‘llash mumkin.
+Har bir middlewareni `LaravelLang\Routes\Middlewares` nomlar fazosidagi sinfi orqali bevosita qo‘llash mumkin.
 
-| Vositachi dastur | Manba |
+| Middleware | Manba |
 | --- | --- |
 | `LocalizationByParameterMiddleware` | Marshrut parametri, standart nomi `locale` |
 | `LocalizationByParameterWithRedirectMiddleware` | Marshrut parametri. Marshrut nomlangan va parametr e’lon qilingan bo‘lsa, so‘ralgan lokal berilmaganda yoki o‘rnatilmaganda joriy lokal qo‘yiladi |
 | `LocalizationByCookieMiddleware` | Standart holatda `Accept-Language` cookie fayli |
 | `LocalizationByHeaderMiddleware` | PHP Intl `Accept-Language` sarlavhasidan ajratib olgan til |
 | `LocalizationBySessionMiddleware` | Standart holatda `Accept-Language` sessiya kaliti |
-| `LocalizationByModelMiddleware` | Standart holatda autentifikatsiyadan o‘tgan Eloquent foydalanuvchisining `locale` atributi. Autentifikatsiya mexanizmini tanlash uchun vositachi dastur sinfiga `:guard_name` qo‘shing |
+| `LocalizationByModelMiddleware` | Standart holatda autentifikatsiyadan o‘tgan Eloquent foydalanuvchisining `locale` atributi. Autentifikatsiya mexanizmini tanlash uchun middleware sinfiga `:guard_name` qo‘shing |
 
-Prefiksli guruhdagi standart tartib: URL parametri, cookie, sarlavha, sessiya, so‘ng model. Prefikssiz guruhda ham tartib bir xil, faqat URL bosqichi yo‘q. Keyingi yaroqli manba oldingisini almashtirishi mumkin. Lokal o‘zgarishi Laravel sozlamasini yangilaydi va kanonik kodni sozlangan sessiya kalitida saqlaydi. Sessiya va cookie kerak bo‘lganda `web` vositachi dasturlar guruhidan foydalaning. Sarlavha vositachi dasturi PHP Intl’ni talab qiladi.
+Prefiksli guruhdagi standart tartib: URL parametri, cookie, sarlavha, sessiya, so‘ng model. Prefikssiz guruhda ham tartib bir xil, faqat URL bosqichi yo‘q. Keyingi yaroqli manba oldingisini almashtirishi mumkin. Lokal o‘zgarishi Laravel sozlamasini yangilaydi va kanonik kodni sozlangan sessiya kalitida saqlaydi. Sessiya va cookie kerak bo‘lganda `web` middlewarelar guruhidan foydalaning. Sarlavha orqali lokalni aniqlovchi middleware PHP Intl’ni talab qiladi.
 
-Vositachi dastur lokalni o‘zgartirganda `LaravelLang\Routes\Events\LocaleHasBeenSetEvent` hodisasini yuboradi. Uning `locale` xususiyati `LaravelLang\LocaleNames\LocaleData` obyektidir. Kanonik kod uchun `$event->locale->code` dan foydalaning.
+Middleware lokalni o‘zgartirganda `LaravelLang\Routes\Events\LocaleHasBeenSetEvent` hodisasini yuboradi. Uning `locale` xususiyati `LaravelLang\LocaleNames\LocaleData` obyektidir. Kanonik kod uchun `$event->locale->code` dan foydalaning.

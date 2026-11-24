@@ -36,13 +36,13 @@
     "message": "In einer Minute loslegen"
   },
   "home.legacy": {
-    "message": "Dokumentation für ältere Versionen"
+    "message": "Legacy-Dokumentation"
   },
   "home.example.install": {
-    "message": "Französische Übersetzungen installieren"
+    "message": "Locales hinzufügen"
   },
   "home.example.use": {
-    "message": "Eine Übersetzung verwenden"
+    "message": "Verwendung"
   },
   "home.guides": {
     "message": "Leitfäden zur Lokalisierung"

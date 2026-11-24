@@ -1,5 +1,5 @@
 ---
-title: مستندات نسخه‌های قدیمی
+title: مستندات Legacy
 slug: /
 description: مستندات بسته‌های Laravel-Lang منتشرشده پیش از Mona.
 ---

@@ -36,13 +36,13 @@
     "message": "شروع در یک دقیقه"
   },
   "home.legacy": {
-    "message": "مستندات نسخه‌های قدیمی"
+    "message": "مستندات Legacy"
   },
   "home.example.install": {
-    "message": "نصب ترجمه‌های فرانسوی"
+    "message": "افزودن زبان‌های منطقه‌ای"
   },
   "home.example.use": {
-    "message": "استفاده از ترجمه"
+    "message": "نحوهٔ استفاده"
   },
   "home.guides": {
     "message": "راهنماهای بومی‌سازی"

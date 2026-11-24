@@ -97,7 +97,7 @@ Route::localizedGroup(function () {
 
 Этот метод упрощает настройку префиксов групп локализованных маршрутов.
 
-Помимо основного промежуточного ПО этой группы, `LocalizationByParameterPrefix`, используются `LocalizationByCookie`, `LocalizationByHeader` и `LocalizationBySession`.
+Помимо основной мидлвари этой группы, `LocalizationByParameterPrefix`, используются `LocalizationByCookie`, `LocalizationByHeader` и `LocalizationBySession`.
 
 Можно использовать любой из трёх способов:
 
@@ -436,7 +436,7 @@ Article::create([
 
 :::
 
-После установки добавьте ссылку на поставщика служб в секцию `providers` файла `config/app.php`:
+После установки добавьте ссылку на сервис-провайдера в секцию `providers` файла `config/app.php`:
 
 ```php
 <?php
@@ -449,7 +449,7 @@ use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
 
 return [
     'providers' => ServiceProvider::defaultProviders()->merge([
-        // Другие поставщики служб
+        // Другие сервис-провайдеры
     ])->replace([
         BaseTranslation::class => JsonTranslation::class,
     ])->toArray(),

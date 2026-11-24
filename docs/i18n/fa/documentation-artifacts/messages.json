@@ -1,19 +1,4 @@
 {
-  "releaseLine": {
-    "message": "همهٔ بسته‌های رسمی شمارهٔ انتشار یکسانی دارند."
-  },
-  "documentation": {
-    "message": "مستندات"
-  },
-  "optional": {
-    "message": "اختیاری"
-  },
-  "legacy": {
-    "message": "مستندات نسخه‌های قدیمی"
-  },
-  "legacyDescription": {
-    "message": "راهنماهای نصب‌های پیش از Mona."
-  },
   "moved": {
     "message": "مستندات منتقل شده‌اند"
   },

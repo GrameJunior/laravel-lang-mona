@@ -127,7 +127,7 @@ use LaravelLang\Locales\Facades\Locales;
 
 return Locales::getDefault(withCountry: true, withCurrency: true);
 
-// Без псевдоніма
+// Без аліаса
 LocaleData {
   +code: "de"
   +regional: "de_DE"
@@ -155,7 +155,7 @@ LocaleData {
   }
 }
 
-// З псевдонімом
+// З аліасом
 LocaleData {
   +code: "de-DE"
   +regional: "de_DE"
@@ -294,10 +294,10 @@ LocaleData {
 
 ```php
 return Locales::raw()->getDefault();
-// Без псевдоніма
+// Без аліаса
 // de
 
-// З псевдонімом
+// З аліасом
 // de-DE
 ```
 

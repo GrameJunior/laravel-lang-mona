@@ -5,7 +5,7 @@ description: "Laravel-Lang bog‘liqliklari, sozlamalar, nashr qilingan tarjimal
 
 Mona — Laravel-Lang paketlari birga chiqariladigan repozitoriy. Ilovangizga kerak bo‘lgan alohida Composer paketlaridan foydalanishda davom eting.
 
-:::info[Lokal kodlari va muqobil nomlar]
+:::info[Lokal kodlari va ularning muqobil nomlari]
 
 Laravel-Lang endi saqlanadigan qiymatlar uchun, jumladan nashr qilingan til fayllari yo‘llari va model tarjimasi satrlarida kanonik lokal kodlarini ishlatadi. Laravel’ning faol va zaxira lokallari ham kanonik kodlarni qo‘llaydi. Ilova ishlayotganda URL segmentlari va til tanlash vositalari uchun muqobil nomlardan foydalaning. Lokal kodlarini qaytaradigan fasad metodlari standart holatda sozlangan muqobil nomni, u sozlanmagan bo‘lsa, kanonik kodni ishlatadi. Masalan, `lang/pt_BR.json` ga nashr qilish va bazada `pt_BR` ni saqlash bilan birga `/pt-br/account` yo‘lini saqlab qolish uchun `localization_main.aliases` da `'pt_BR' => 'pt-br'` ni belgilang.
 
@@ -13,7 +13,7 @@ Laravel-Lang endi saqlanadigan qiymatlar uchun, jumladan nashr qilingan til fayl
 
 ## Bog‘liqliklarni yangilash {#updating-dependencies}
 
-Joriy chiqarilish Laravel 12 va 13 ni qo‘llab-quvvatlaydi hamda PHP `^8.3` ni talab qiladi. Ilovangizning `composer.json` faylida `require` yoki `require-dev` ichida bor quyidagi har bir paket uchun `^20.0` cheklovini belgilang. Faqat `laravel-lang/common` ni o‘rnatgan bo‘lsangiz, shu talabning o‘zini o‘zgartirish kifoya.
+Joriy versiya Laravel 12 va 13 ni qo‘llab-quvvatlaydi hamda PHP `^8.3` ni talab qiladi. Ilovangizning `composer.json` faylida `require` yoki `require-dev` ichida bor quyidagi har bir paket uchun `^20.0` cheklovini belgilang. Faqat `laravel-lang/common` ni o‘rnatgan bo‘lsangiz, shu talabning o‘zini o‘zgartirish kifoya.
 
 | Vazifasi | Composer paketlari |
 | --- | --- |
@@ -32,7 +32,7 @@ php artisan lang:update
 
 Provayderlarni ro‘yxatdan o‘tkazgan, maxsus sozlamalarni nashr qilgan bo‘lsangiz yoki ilovangizda muqobil nomlar, uchinchi tomon tarjima paketlari yoki paket API’laridan foydalansangiz, qayta nashr qilishdan oldin quyidagi tegishli bo‘limlarga amal qiling.
 
-## Nomi o‘zgargan yoki to‘xtatilgan bog‘liqliklarni almashtirish {#replace-renamed-or-retired-dependencies}
+## Nomi o‘zgargan yoki eskirgan bog‘liqliklarni almashtirish {#replace-renamed-or-retired-dependencies}
 
 `composer update` buyrug‘ini bajarishdan oldin `composer.json` faylidagi eski nom paketlariga bevosita bog‘liqliklarni yangilang.
 
@@ -44,7 +44,7 @@ Provayderlarni ro‘yxatdan o‘tkazgan, maxsus sozlamalarni nashr qilgan bo‘l
 
 Common allaqachon uchala nom paketiga ham bog‘liq. PHP kodingizni ham yangilang. [Nom qidirish API’larini almashtirish](#replace-the-name-lookup-apis) bo‘limiga qarang.
 
-Har bir uchinchi tomon plagini uchun yangi Publisher’ga mos chiqarilish mavjudligini tekshiring. `laravel-lang/translator` yoki `laravel-lang/status-generator` bog‘liqliklarini olib tashlashdan oldin ulardan foydalanayotgan kodni ko‘chiring. [Tarjima vositalari](#update-json-fallback-and-translation-tooling) bo‘limiga qarang.
+Har bir uchinchi tomon plagini uchun yangi Publisher’ga mos reliz mavjudligini tekshiring. `laravel-lang/translator` yoki `laravel-lang/status-generator` bog‘liqliklarini olib tashlashdan oldin ulardan foydalanayotgan kodni ko‘chiring. [Tarjima vositalari](#update-json-fallback-and-translation-tooling) bo‘limiga qarang.
 
 ## Xizmat provayderlarini yangilash {#update-service-providers}
 
@@ -91,7 +91,7 @@ Eski sozlamadagi `routes` ga kiritgan o‘zgarishlaringizni `config/localization
 | Mahalliylashtirilgan marshrut nomlariga qo‘shiladigan prefiks | `name_prefix` ni `prefix` ga ko‘chiring. Bo‘sh prefiks uchun `''` dan foydalaning. | `LOCALIZATION_NAME_PREFIX` → `LOCALIZATION_PREFIX` |
 | Prefiksli marshrutdan yo‘naltirishlar | `redirect_default` ni `redirect` ga ko‘chiring. | `LOCALIZATION_REDIRECT_DEFAULT` → `LOCALIZATION_REDIRECT` |
 | URL yordamchi funksiyasi zaxira lokalni yashirishi yoki yashirmasligi | `hide_default` ni `hide` ga ko‘chiring. | `LOCALIZATION_HIDE_DEFAULT` → `LOCALIZATION_HIDE` |
-| Mahalliylashtirilgan marshrut guruhlariga qo‘llanadigan vositachi dasturlar | Prefikssiz marshrutlar uchun `group.middlewares.default` ni `middlewares.default` ga, prefikslilar uchun `group.middlewares.prefix` ni `middlewares.prefix` ga ko‘chiring. Vositachi dastur sinf nomlarini [marshrutlarni ko‘chirish](#update-localized-routes-and-middleware) bo‘limida ko‘rsatilganidek yangilang. | |
+| Mahalliylashtirilgan marshrut guruhlariga qo‘llanadigan middlewarelar | Prefikssiz marshrutlar uchun `group.middlewares.default` ni `middlewares.default` ga, prefikslilar uchun `group.middlewares.prefix` ni `middlewares.prefix` ga ko‘chiring. Middleware sinf nomlarini [marshrutlarni ko‘chirish](#update-localized-routes-and-middleware) bo‘limida ko‘rsatilganidek yangilang. | |
 
 ### Model tarjimalari {#model-translations}
 
@@ -208,7 +208,7 @@ $options = app(LocaleNames::class)
 
 `one()` ni chaqirishdan oldin foydalanuvchi tanlagan lokallarni tegishli katalog bo‘yicha tekshiring. Noma’lum ko‘rsatish lokali sababli `all()` bo‘sh ro‘yxat qaytarishi mumkin. Ilovaga asl tildagi nomlar kerak bo‘lsa, `null` uzating. Kodingiz maxsus asosiy qiymatli enumdan foydalangan bo‘lsa, uning satr qiymatini uzating. [Lokallar va nomlar](./locales.md)
 
-### Mahalliylashtirilgan marshrutlar va vositachi dasturlarni yangilash {#update-localized-routes-and-middleware}
+### Mahalliylashtirilgan marshrutlar va middlewarelarni yangilash {#update-localized-routes-and-middleware}
 
 Mahalliylashtirilgan URL yaratuvchi PHP fayllari va Blade andozalariga yordamchi funksiyani nomlar fazosi bilan import qiling. `\LaravelLang\Routes\localizedRoute()` ni bevosita ham chaqirishingiz mumkin.
 
@@ -225,9 +225,9 @@ $url = localizedRoute('products.show', [
 
 `Route::localizedGroup()` va `LocalizationRoute::group()` prefikssiz hamda lokal prefiksli marshrutlarni ro‘yxatdan o‘tkazadi. Mavjud guruhni saqlang va URL yordamchi funksiyasiga chaqiruvlarni tekshiring. Lokal parametri uzatilmasa, u zaxira lokalning muqobil nomidan foydalanadi. Til tanlash vositasida kerakli muqobil nomni `Locales::toAlias($locale)` yoki `$localeData->alias` orqali aniq uzating. Uzatilgan lokal satri o‘zgarishsiz ishlatiladi. Lokal parametrining nomini o‘zgartirgan bo‘lsangiz, massiv kalitiga `localization_routes.names.parameter` da sozlangan nomni qo‘ying.
 
-Marshrutlaringiz, `bootstrap/app.php` va maxsus vositachi dastur ro‘yxatlaridagi import hamda ro‘yxatdan o‘tkazish yozuvlarini almashtiring. Jadvaldagi barcha sinflar `LaravelLang\Routes\Middlewares` nomlar fazosida.
+Marshrutlaringiz, `bootstrap/app.php` va maxsus middleware ro‘yxatlaridagi import hamda ro‘yxatdan o‘tkazish yozuvlarini almashtiring. Jadvaldagi barcha sinflar `LaravelLang\Routes\Middlewares` nomlar fazosida.
 
-| Oldingi vositachi dastur | Almashtirish |
+| Oldingi middleware | Almashtirish |
 | --- | --- |
 | `LocalizationByCookie` | `LocalizationByCookieMiddleware` |
 | `LocalizationByHeader` | `LocalizationByHeaderMiddleware` |
@@ -237,13 +237,13 @@ Marshrutlaringiz, `bootstrap/app.php` va maxsus vositachi dastur ro‘yxatlarida
 | `LocalizationByParameterWithRedirect` | `LocalizationByParameterWithRedirectMiddleware` |
 | `LocalizationByParameterPrefix` | `LocalizationByParameterPrefixMiddlewareMiddleware` |
 
-Model vositachi dasturini autentifikatsiya mexanizmi bilan yaratgan bo‘lsangiz, uni Laravel vositachi dastur parametri sifatida uzating, masalan, `LocalizationByModelMiddleware::class . ':admin'`. Uning foydalanuvchini aniqlash vositasi Eloquent modelini kutadi. Maxsus hosila sinflarda `LaravelLang\Config\Services\RouteLangConfig` ni bog‘liqlik sifatida uzating, manba nomlarini `$this->routeConfig->name` dan o‘qing va `detect()` dan `int|string|null` qaytaring. `LaravelLang\Routes\Services\Route` ga bevosita murojaatlarni `LaravelLang\Routes\Services\RouteService` ga almashtiring.
+Model middlewareni autentifikatsiya mexanizmi bilan yaratgan bo‘lsangiz, uni Laravel middleware parametri sifatida uzating, masalan, `LocalizationByModelMiddleware::class . ':admin'`. Uning foydalanuvchini aniqlash vositasi Eloquent modelini kutadi. Maxsus hosila sinflarda `LaravelLang\Config\Services\RouteLangConfig` ni bog‘liqlik sifatida uzating, manba nomlarini `$this->routeConfig->name` dan o‘qing va `detect()` dan `int|string|null` qaytaring. `LaravelLang\Routes\Services\Route` ga bevosita murojaatlarni `LaravelLang\Routes\Services\RouteService` ga almashtiring.
 
-Ilovangiz foydalanadigan har bir manbani sinang. HTTP sarlavhasi orqali aniqlash endi PHP Intl yordamida `Accept-Language` dan ajratilgan til maydonini oladi. Brauzer afzalliklari tartibi yoki hududga xos moslikka tayangan bo‘lsangiz, tanlovni maxsus vositachi dasturda amalga oshiring. Keyingi vositachi dastur oldingi manba qiymatini, jumladan URL’dan olingan lokalni almashtirishi mumkin. Agar URL ustun turishi kerak bo‘lsa, sozlangan ro‘yxatlaringiz tartibini o‘zgartiring.
+Ilovangiz foydalanadigan har bir manbani sinang. HTTP sarlavhasi orqali aniqlash endi PHP Intl yordamida `Accept-Language` dan ajratilgan til maydonini oladi. Brauzer afzalliklari tartibi yoki hududga xos moslikka tayangan bo‘lsangiz, tanlovni maxsus middlewareda amalga oshiring. Keyingi middleware oldingi manba qiymatini, jumladan URL’dan olingan lokalni almashtirishi mumkin. Agar URL ustun turishi kerak bo‘lsa, sozlangan ro‘yxatlaringiz tartibini o‘zgartiring.
 
 URL yaratish va so‘rovlarni alohida sinang. `localization_routes.hide` URL yaratilganda zaxira lokal segmentini yashiradi. `localization_routes.redirect` joriy lokal uchun prefiksli so‘rovlarni prefikssiz marshrutga yo‘naltiradi. Nomlangan prefiksli marshrut yaroqsiz yoki o‘rnatilmagan lokalni ham prefikssiz marshrutga yo‘naltiradi.
 
-`LocaleHasBeenSetEvent` tinglovchilarida kanonik kod uchun `$event->locale->code`, ko‘rsatish uchun `$event->locale->alias` dan foydalaning. Hodisa ma’lumoti endi `LaravelLang\LocaleNames\LocaleData` obyektidir. Vositachi dastur tanlangan lokal o‘zgarganda hodisani yuboradi va kanonik kodni sessiyada saqlaydi. Qo‘lda chaqirilgan `LocaleHasBeenSetEvent::dispatch($data)` ni `event(new LocaleHasBeenSetEvent($data))` ga almashtiring. [Mahalliylashtirilgan marshrutlar](./routes.md)
+`LocaleHasBeenSetEvent` tinglovchilarida kanonik kod uchun `$event->locale->code`, ko‘rsatish uchun `$event->locale->alias` dan foydalaning. Hodisa ma’lumoti endi `LaravelLang\LocaleNames\LocaleData` obyektidir. Middleware tanlangan lokal o‘zgarganda hodisani yuboradi va kanonik kodni sessiyada saqlaydi. Qo‘lda chaqirilgan `LocaleHasBeenSetEvent::dispatch($data)` ni `event(new LocaleHasBeenSetEvent($data))` ga almashtiring. [Mahalliylashtirilgan marshrutlar](./routes.md)
 
 ### Model tarjimasi kodi va ma’lumotlarini ko‘chirish {#migrate-model-translation-code-and-data}
 
@@ -292,7 +292,7 @@ Ilova `__('http-statuses.404')` kabi PHP HTTP holat tarjimalaridan foydalansa, y
 
 ### Eski plagin ro‘yxatdan o‘tkazish usulini almashtirish {#replace-legacy-plugin-registration}
 
-Uchinchi tomon tarjima paketidan foydalansangiz, uning manifestga asoslangan chiqarilishiga yangilang. Paketga xizmat ko‘rsatsangiz, eski `LaravelLang\Publisher\Plugins\Provider` ni ro‘yxatdan o‘tkazadigan provayderni va Composer aniqlash yozuvini olib tashlang. Provayder boshqa Laravel xizmatlarini ham sozlagan bo‘lsa, bu ro‘yxatdan o‘tkazishlarni odatdagi Laravel xizmat provayderida saqlang.
+Uchinchi tomon tarjima paketidan foydalansangiz, uning manifestga asoslangan reliziga yangilang. Paketga xizmat ko‘rsatsangiz, eski `LaravelLang\Publisher\Plugins\Provider` ni ro‘yxatdan o‘tkazadigan provayderni va Composer aniqlash yozuvini olib tashlang. Provayder boshqa Laravel xizmatlarini ham sozlagan bo‘lsa, bu ro‘yxatdan o‘tkazishlarni odatdagi Laravel xizmat provayderida saqlang.
 
 1. `vendor/` ostiga o‘rnatiladigan paket ildiziga `laravel_lang.json` qo‘shing. Har bir `Plugin::files()` yozuvini paketning `source/` katalogiga nisbatan `source` yo‘liga va ilovaning til katalogiga nisbatan `target` yo‘liga aylantiring. Maqsad yo‘lida `{locale}` dan foydalaning.
 2. Composer moslash qoidalarini manifestga ko‘chiring. O‘rnatilgan bog‘liqlik uchun `vendor` va `version` dan foydalaning, ildiz Composer loyihasi uchun esa `project: true` li alohida yozuv yarating. Eski plagin `$with_project_name = true` dan foydalangan va ikkala rejimni ham qo‘llab-quvvatlagan bo‘lsa, ikkala yozuvni yarating.

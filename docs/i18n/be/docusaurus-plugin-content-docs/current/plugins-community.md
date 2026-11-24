@@ -7,4 +7,4 @@ description: "Даследуйце пакеты перакладаў, якія �
 | --- | --- | --- |
 | [forxer/generic-term-translations-for-laravel](https://github.com/forxer/generic-term-translations-for-laravel) | Пераклады агульных тэрмінаў | [Publisher папярэдніх версій](https://github.com/forxer/generic-term-translations-for-laravel/blob/main/composer.json) |
 
-Перад усталяваннем плагіна праверце яго патрабаванні Composer. Аўтары плагінаў могуць скарыстацца [дапаможнікам па міграцыі плагінаў](./upgrade.md#replace-legacy-plugin-registration), каб перайсці з рэгістрацыі праз пастаўшчык сэрвісаў на пошук маніфестаў.
+Перад усталяваннем плагіна праверце яго патрабаванні Composer. Аўтары плагінаў могуць скарыстацца [дапаможнікам па міграцыі плагінаў](./upgrade.md#replace-legacy-plugin-registration), каб перайсці з рэгістрацыі праз сэрвіс-правайдар на пошук маніфестаў.

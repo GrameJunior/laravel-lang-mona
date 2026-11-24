@@ -1,19 +1,4 @@
 {
-  "releaseLine": {
-    "message": "公式パッケージは同じリリースバージョンを使用します。"
-  },
-  "documentation": {
-    "message": "ドキュメント"
-  },
-  "optional": {
-    "message": "任意"
-  },
-  "legacy": {
-    "message": "旧版ドキュメント"
-  },
-  "legacyDescription": {
-    "message": "Mona 以前の環境向けのガイドです。"
-  },
   "moved": {
     "message": "ドキュメントは移動しました"
   },

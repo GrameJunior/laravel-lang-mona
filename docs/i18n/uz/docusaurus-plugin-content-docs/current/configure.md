@@ -15,7 +15,7 @@ php artisan vendor:publish --tag=localization_main
 | --- | --- |
 | `localization_main.php` | Tarjima uslublari, muqobil nomlar va nashr filtrlari |
 | `localization_punctuation.php` | Aqlli punktuatsiya va lokalga xos qo‘shtirnoqlar |
-| `localization_routes.php` | [Marshrut nomlari, lokal manbalari va vositachi dastur](./routes.md) |
+| `localization_routes.php` | [Marshrut nomlari, lokal manbalari va middleware](./routes.md) |
 | `localization_models.php` | [Tarjima modeli suffiksi, filtrlash va generator yo‘llari](./models.md) |
 | `localization_map.php` | Yozuv, hudud va yozuv yo‘nalishi kabi lokal metama’lumotlari |
 

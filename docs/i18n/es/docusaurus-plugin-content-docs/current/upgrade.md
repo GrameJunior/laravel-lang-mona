@@ -32,7 +32,7 @@ php artisan lang:update
 
 Si registraste proveedores, publicaste ajustes personalizados, usas alias o paquetes de traducción de terceros, o llamas a las API de los paquetes en tu aplicación, sigue las secciones que correspondan antes de volver a publicar.
 
-## Sustituir dependencias renombradas o retiradas {#replace-renamed-or-retired-dependencies}
+## Sustituir dependencias renombradas u obsoletas {#replace-renamed-or-retired-dependencies}
 
 Actualiza las dependencias directas de los paquetes de nombres anteriores en `composer.json` antes de ejecutar `composer update`.
 

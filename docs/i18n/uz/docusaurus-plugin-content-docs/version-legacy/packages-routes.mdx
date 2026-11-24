@@ -76,7 +76,7 @@ Fransuz va nemis tillari uchun quyidagi qiymatlarni ham belgiladik:
 
 ### Bevosita ulash {/* #direct */}
 
-Muqobil nom qo‘shmasdan, vositachi dasturga bevosita murojaat qilishingiz mumkin:
+Muqobil nom qo‘shmasdan, middlewarega bevosita murojaat qilishingiz mumkin:
 
 ```php
 use LaravelLang\Routes\Middlewares\LocalizationByCookie;
@@ -113,7 +113,7 @@ app('router')
 
 ### Muqobil nomlar {/* #aliases */}
 
-Vositachi dastur muqobil nomlaridan foydalanish uchun ularni ilovada ro‘yxatdan o‘tkazing:
+Middleware muqobil nomlaridan foydalanish uchun ularni ilovada ro‘yxatdan o‘tkazing:
 
 <Tabs>
 
@@ -696,9 +696,9 @@ class User extends Authenticatable
 }
 ```
 
-Endi foydalanuvchi vositachi dastur orqali yoki qo‘lda, masalan, `Auth::login($user)` metodi bilan autentifikatsiyadan o‘tganda, ilova ma’lumotni foydalanuvchi tanlagan tilda qaytaradi.
+Endi foydalanuvchi middleware orqali yoki qo‘lda, masalan, `Auth::login($user)` metodi bilan autentifikatsiyadan o‘tganda, ilova ma’lumotni foydalanuvchi tanlagan tilda qaytaradi.
 
-Bundan tashqari, foydalanuvchi muayyan autentifikatsiya mexanizmi bilan kirgan bo‘lsa, vositachi dasturni chaqirganda uni ikki nuqta bilan ajratib ko‘rsatishingiz mumkin.
+Bundan tashqari, foydalanuvchi muayyan autentifikatsiya mexanizmi bilan kirgan bo‘lsa, middlewareni chaqirganda uni ikki nuqta bilan ajratib ko‘rsatishingiz mumkin.
 
 Masalan:
 
@@ -714,7 +714,7 @@ app('router')
     });
 ```
 
-Vositachi dastur foydalanuvchi obyektini olish uchun quyidagi koddan foydalanadi:
+Middleware foydalanuvchi obyektini olish uchun quyidagi koddan foydalanadi:
 
 ```php
 use Illuminate\Database\Eloquent\Model;
@@ -773,7 +773,7 @@ Route::localizedGroup(function () {
 
 Bu metod mahalliylashtirilgan marshrutlar yordamida guruh prefikslarini boshqarishni osonlashtiradi.
 
-Ushbu guruhning asosiy `LocalizationByParameterPrefix` vositachi dasturidan tashqari, `LocalizationByCookie`, `LocalizationByHeader` va `LocalizationBySession` ham qatnashadi.
+Bu guruhda asosiy `LocalizationByParameterPrefix` middleware bilan birga `LocalizationByCookie`, `LocalizationByHeader` va `LocalizationBySession` ham ishlaydi.
 
 Uchta usuldan birini ishlatishingiz mumkin:
 

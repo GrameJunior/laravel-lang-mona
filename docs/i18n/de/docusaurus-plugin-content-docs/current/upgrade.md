@@ -32,7 +32,7 @@ php artisan lang:update
 
 Wenn du Provider registriert oder eigene Einstellungen veröffentlicht hast, Aliasse oder Übersetzungspakete von Drittanbietern nutzt oder Paket-APIs aufrufst, befolge vor der erneuten Veröffentlichung die Abschnitte, die auf deine Anwendung zutreffen.
 
-## Umbenannte oder eingestellte Abhängigkeiten ersetzen {#replace-renamed-or-retired-dependencies}
+## Umbenannte oder veraltete Abhängigkeiten ersetzen {#replace-renamed-or-retired-dependencies}
 
 Aktualisiere direkte Abhängigkeiten von den alten Namenspaketen in `composer.json`, bevor du `composer update` ausführst.
 

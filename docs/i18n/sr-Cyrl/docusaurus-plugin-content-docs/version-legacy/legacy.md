@@ -1,5 +1,5 @@
 ---
-title: Архивска документација
+title: Документација за Legacy
 slug: /
 description: Документација за Laravel-Lang пакете објављене пре Mona.
 ---

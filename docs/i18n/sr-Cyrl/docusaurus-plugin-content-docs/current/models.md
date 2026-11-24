@@ -24,7 +24,7 @@ php artisan migrate
 
 ## Упис и читање преведених атрибута {#write-and-read-translated-attributes}
 
-Када је [француски инсталиран](./translations.md), можете да сачувате превод тако што ћете проследити канонски код, псеудоним, члан енума `Locale` или `LocaleData`. За упис измена користите `save()` основног модела.
+Када је [француски инсталиран](./translations.md), можете да сачувате превод тако што ћете проследити канонски код, алијас, члан енума `Locale` или `LocaleData`. За упис измена користите `save()` основног модела.
 
 ```php
 use App\Models\Article;
@@ -37,7 +37,7 @@ $article->title;                         // current locale, then fallback for a 
 $article->getTranslation('title', 'fr');  // 'Premier article'
 ```
 
-Ако изричито наведете локал, чита се његова вредност. Без аргумента за локал, упис користи текући локал. При читању се користи резервни локал подешен у Laravel-у ако је текућа вредност `null`. Псеудоними се разрешавају у канонске кодове и за претрагу и за чување. Изричито наведен непознат или неинсталирани локал изазива `LaravelLang\Exceptions\UnknownLocaleException`.
+Ако изричито наведете локал, чита се његова вредност. Без аргумента за локал, упис користи текући локал. При читању се користи резервни локал подешен у Laravel-у ако је текућа вредност `null`. Алијаси се разрешавају у канонске кодове и за претрагу и за чување. Изричито наведен непознат или неинсталирани локал изазива `LaravelLang\Exceptions\UnknownLocaleException`.
 
 Користите `setTranslations()` за више вредности једног поља. Методу `create()` или `fill()` можете да проследите и мапу са локалима као кључевима за свако преведено поље. У примеру се подразумева да су инсталирани енглески и француски.
 
@@ -67,6 +67,6 @@ $articles = Article::query()
 
 ## Праћење измена и освежавање IDE помоћних датотека {#observe-changes-and-refresh-ide-helpers}
 
-Именски простор `LaravelLang\Models\Events` садржи `TranslationHasBeenSetEvent`, `TranslationHasBeenForgetEvent` и `AllTranslationsHasBeenForgetEvent`. Догађај постављања садржи модел, колону, опциони псеудоним локала, стару и нову вредност. Окида се при додели вредности атрибуту, пре каснијег чувања.
+Именски простор `LaravelLang\Models\Events` садржи `TranslationHasBeenSetEvent`, `TranslationHasBeenForgetEvent` и `AllTranslationsHasBeenForgetEvent`. Догађај постављања садржи модел, колону, опциони алијас локала, стару и нову вредност. Окида се при додели вредности атрибуту, пре каснијег чувања.
 
 Покрените `php artisan lang:models-helper` да поново генеришете помоћне датотеке за све пронађене моделе. Њихов подразумевани директоријум је `vendor/_laravel_lang` и подешава се преко `localization_models.helpers`.

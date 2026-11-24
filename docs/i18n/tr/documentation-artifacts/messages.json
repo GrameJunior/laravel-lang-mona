@@ -1,19 +1,4 @@
 {
-  "releaseLine": {
-    "message": "Resmî paketler aynı sürüm numarasını kullanır."
-  },
-  "documentation": {
-    "message": "Belgeler"
-  },
-  "optional": {
-    "message": "İsteğe bağlı"
-  },
-  "legacy": {
-    "message": "Eski sürüm belgeleri"
-  },
-  "legacyDescription": {
-    "message": "Mona öncesi kurulumlar için kılavuzlar."
-  },
   "moved": {
     "message": "Belgeler taşındı"
   },

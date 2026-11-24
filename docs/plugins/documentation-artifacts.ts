@@ -5,11 +5,6 @@ import type {LoadedContent} from "@docusaurus/plugin-content-docs";
 import type {LoadContext, Plugin} from "@docusaurus/types";
 
 const defaultMessages = {
-    releaseLine: "The first-party packages share the same release version.",
-    documentation: "Documentation",
-    optional: "Optional",
-    legacy: "Legacy documentation",
-    legacyDescription: "Guides for pre-Mona installations.",
     moved: "Documentation has moved",
     redirect: "Go to the documentation",
 };
@@ -35,8 +30,31 @@ function redirectPage(target: string, language: string, direction: string, messa
 `;
 }
 
+function formatDocumentBody(body: string, canonicalUrl: URL): string {
+    // Preserve fenced examples while nesting headings and rebasing links.
+    const chunks = body.split(/(^ {0,3}```[^\r\n]*\r?\n[\s\S]*?^ {0,3}```[ \t]*$)/gm);
+
+    return chunks.map((chunk, index) => {
+        if (index % 2 === 1) {
+            return chunk;
+        }
+
+        return chunk
+            .replace(/^(#{1,5})(?=[ \t])/gm, "$1#")
+            .replace(/\]\(((?:\.{1,2}\/|#)[^)\s]+)\)/g, (_, link: string) => {
+                const url = new URL(link, canonicalUrl);
+                if (link.startsWith(".")) {
+                    url.pathname = url.pathname.replace(/\.md$/, "");
+                }
+                return `](${url})`;
+            });
+    }).join("");
+}
+
 export default function documentationArtifacts({baseUrl, siteDir, siteConfig, i18n}: LoadContext): Plugin {
     const {htmlLang, direction} = i18n.localeConfigs[i18n.currentLocale];
+    const isDefaultLocale = i18n.currentLocale === i18n.defaultLocale;
+    const defaultBaseUrl = i18n.localeConfigs[i18n.defaultLocale].baseUrl;
 
     return {
         name: "documentation-artifacts",
@@ -48,7 +66,7 @@ export default function documentationArtifacts({baseUrl, siteDir, siteConfig, i1
             Object.entries(translationFiles[0].content).map(([key, {message}]) => [key, message]),
         ),
         injectHtmlTags: () => ({
-            headTags: [{tagName: "link", attributes: {rel: "describedby", href: `${baseUrl}llms.txt`}}],
+            headTags: [{tagName: "link", attributes: {rel: "describedby", href: `${defaultBaseUrl}llms.txt`}}],
         }),
         async postBuild({outDir, plugins, content}) {
             const messages = {...defaultMessages, ...(content as Partial<Messages> | undefined)};
@@ -60,30 +78,35 @@ export default function documentationArtifacts({baseUrl, siteDir, siteConfig, i1
             assert(current && legacy && start, "Expected the current and legacy documentation and the start page.");
 
             const pages = [start, ...current.docs.filter((doc) => doc !== start && !doc.unlisted)];
-            const links = await Promise.all(pages.map(async ({title, description, source, permalink}) => {
-                const markdown = source.endsWith(".md");
-                const pageUrl = markdown ? `${permalink}.md` : permalink;
-
-                if (markdown) {
-                    const original = await readFile(join(siteDir, source.replace(/^@site\//, "")), "utf8");
-                    const body = original.replace(/^\uFEFF?---\r?\n[\s\S]*?\r?\n---\r?\n/, "").trim();
-                    const filename = join(outDir, pageUrl.slice(baseUrl.length));
-                    await mkdir(dirname(filename), {recursive: true});
-                    await writeFile(filename, `# ${title}\n\n${body}\n`);
+            const sections = await Promise.all(pages.map(async ({title, source, permalink}) => {
+                if (!source.endsWith(".md")) {
+                    return `## ${title}\n\n[Read the documentation](${new URL(permalink, siteConfig.url)})`;
                 }
 
-                return `- [${title}](${new URL(pageUrl, siteConfig.url)})${description ? `: ${description}` : ""}`;
+                const pageUrl = `${permalink}.md`;
+                const original = await readFile(join(siteDir, source.replace(/^@site\//, "")), "utf8");
+                const body = original.replace(/^\uFEFF?---\r?\n[\s\S]*?\r?\n---\r?\n/, "").trim();
+                const filename = join(outDir, pageUrl.slice(baseUrl.length));
+                await mkdir(dirname(filename), {recursive: true});
+                await writeFile(filename, `# ${title}\n\n${body}\n`);
+
+                if (!isDefaultLocale) {
+                    return "";
+                }
+
+                return `## ${title}\n\n${formatDocumentBody(body, new URL(permalink, siteConfig.url))}`;
             }));
 
-            await writeFile(join(outDir, "llms.txt"), [
-                "# Laravel-Lang",
-                `> ${messages.releaseLine}`,
-                `## ${messages.documentation}`,
-                links.join("\n"),
-                `## ${messages.optional}`,
-                `- [${messages.legacy}](${new URL(legacy.path, siteConfig.url)}): ${messages.legacyDescription}`,
-                "",
-            ].join("\n\n"));
+            if (isDefaultLocale) {
+                await writeFile(join(outDir, "llms.txt"), [
+                    "# Laravel-Lang",
+                    "> Laravel-Lang publishes translations and localizes routes and Eloquent models in Laravel applications. Its first-party packages share the same release version.",
+                    ...sections,
+                    "## Optional",
+                    `- [Legacy documentation](${new URL(legacy.path, siteConfig.url)}): Guides for pre-Mona installations.`,
+                    "",
+                ].join("\n\n"));
+            }
 
             await Promise.all(legacy.docs.filter(({slug}) => slug.endsWith(".html")).map(async ({slug, permalink}) => {
                 try {

@@ -36,13 +36,13 @@
     "message": "ابدأ في دقيقة واحدة"
   },
   "home.legacy": {
-    "message": "توثيق الإصدارات السابقة"
+    "message": "توثيق Legacy"
   },
   "home.example.install": {
-    "message": "تثبيت الترجمات الفرنسية"
+    "message": "إضافة إعدادات محلية"
   },
   "home.example.use": {
-    "message": "استخدام ترجمة"
+    "message": "الاستخدام"
   },
   "home.guides": {
     "message": "أدلة التوطين"

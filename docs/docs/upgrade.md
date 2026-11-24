@@ -13,7 +13,7 @@ Laravel-Lang now uses canonical locale codes for values it stores, including pub
 
 ## Updating dependencies
 
-The current release supports Laravel 12 and 13 and requires PHP `^8.3`. In your application's `composer.json`, set the constraint to `^20.0` for each package below that appears in `require` or `require-dev`. If you installed only `laravel-lang/common`, it is the only requirement you need to change.
+The current version supports Laravel 12 and 13 and requires PHP `^8.3`. In your application's `composer.json`, set the constraint to `^20.0` for each package below that appears in `require` or `require-dev`. If you installed only `laravel-lang/common`, it is the only requirement you need to change.
 
 | Use | Composer packages |
 | --- | --- |
@@ -32,7 +32,7 @@ php artisan lang:update
 
 If you registered providers, published custom settings, use aliases or third-party translation packs, or call package APIs in your application, follow the sections below that apply to you before republishing.
 
-## Replace renamed or retired dependencies
+## Replace renamed or obsolete dependencies {#replace-renamed-or-retired-dependencies}
 
 Update any direct dependencies on the old names packages in `composer.json` before running `composer update`.
 

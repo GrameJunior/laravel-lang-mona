@@ -1,10 +1,10 @@
 ---
-title: "Oldingi versiyalar hujjatlari"
+title: "Legacy hujjatlari"
 slug: /
-description: "Laravel-Lang paketlarining Mona’dan oldingi chiqarilishlari uchun hujjatlar."
+description: "Mona’dan oldingi Laravel-Lang paketlari uchun hujjatlar."
 ---
 
-Hali Laravel-Lang paketlarining alohida versiyalangan oldingi chiqarilishlaridan foydalanuvchi o‘rnatmalar uchun shu hujjatlardan foydalaning. Ilovani umumiy chiqarilish qatoriga o‘tkazish uchun [Mona’ga yangilash](/upgrade) bo‘limiga qarang.
+Alohida versiyalangan eski Laravel-Lang paketlaridan foydalanayotgan bo‘lsangiz, shu hujjatlarga murojaat qiling. Ilovani umumiy relizlar qatoriga o‘tkazish uchun [Mona’ga yangilash](/upgrade) bo‘limiga qarang.
 
 ## Tez boshlash {#quick-start}
 

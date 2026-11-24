@@ -36,13 +36,13 @@
     "message": "Démarrer en 1 minute"
   },
   "home.legacy": {
-    "message": "Documentation des anciennes versions"
+    "message": "Documentation Legacy"
   },
   "home.example.install": {
-    "message": "Installer les traductions françaises"
+    "message": "Ajouter des langues"
   },
   "home.example.use": {
-    "message": "Utiliser une traduction"
+    "message": "Utilisation"
   },
   "home.guides": {
     "message": "Guides de localisation"

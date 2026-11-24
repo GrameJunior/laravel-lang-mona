@@ -1,19 +1,4 @@
 {
-  "releaseLine": {
-    "message": "Офіційні пакети мають спільну версію випуску."
-  },
-  "documentation": {
-    "message": "Документація"
-  },
-  "optional": {
-    "message": "Додатково"
-  },
-  "legacy": {
-    "message": "Документація попередніх версій"
-  },
-  "legacyDescription": {
-    "message": "Посібники для інсталяцій, що передують Mona."
-  },
   "moved": {
     "message": "Документацію перенесено"
   },

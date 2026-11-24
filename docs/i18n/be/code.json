@@ -12,7 +12,7 @@
     "message": "Налада лакалізацыі"
   },
   "home.guide.configure.description": {
-    "message": "Наладзьце псеўданімы лакаляў, лакалізаваныя маршруты і пераклады мадэляў."
+    "message": "Наладзьце аліясы лакаляў, лакалізаваныя маршруты і пераклады мадэляў."
   },
   "home.guide.plugins.title": {
     "message": "Плагіны перакладаў"
@@ -21,7 +21,7 @@
     "message": "Усталюйце пакеты перакладаў або стварыце ўласныя."
   },
   "home.guide.upgrade.title": {
-    "message": "Пераход на Mona"
+    "message": "Апгрэйд да Mona"
   },
   "home.guide.upgrade.description": {
     "message": "Перанясіце залежнасці, налады і пераклады."
@@ -33,16 +33,16 @@
     "message": "Лакалізуйце сваё прыкладанне Laravel"
   },
   "home.start": {
-    "message": "Пачніце за 1 хвіліну"
+    "message": "Старт за хвіліну"
   },
   "home.legacy": {
-    "message": "Дакументацыя папярэдніх версій"
+    "message": "Дакументацыя Legacy"
   },
   "home.example.install": {
-    "message": "Усталяванне французскіх перакладаў"
+    "message": "Даданне лакаляў"
   },
   "home.example.use": {
-    "message": "Выкарыстанне перакладу"
+    "message": "Выкарыстанне"
   },
   "home.guides": {
     "message": "Дапаможнікі па лакалізацыі"

@@ -1,6 +1,5 @@
 import Link from "@docusaurus/Link";
 import Translate, {translate} from "@docusaurus/Translate";
-import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import CodeBlock from "@theme/CodeBlock";
 import Layout from "@theme/Layout";
@@ -8,8 +7,8 @@ import Layout from "@theme/Layout";
 import styles from "./index.module.css";
 
 export default function Home() {
-    const llmsUrl = useBaseUrl("/llms.txt");
-    const {i18n: {localeConfigs, currentLocale}} = useDocusaurusContext();
+    const {i18n: {localeConfigs, currentLocale, defaultLocale}} = useDocusaurusContext();
+    const llmsUrl = `${localeConfigs[defaultLocale].baseUrl}llms.txt`;
     const arrow = localeConfigs[currentLocale].direction === "rtl" ? "←" : "→";
     const description = translate({
         id: "home.description",
@@ -59,10 +58,10 @@ export default function Home() {
                             </CodeBlock>
                         </div>
                         <div className={styles.codePreview}>
-                            <CodeBlock language="bash" title={translate({id: "home.example.install", message: "Install French translations"})}>
+                            <CodeBlock language="bash" title={translate({id: "home.example.install", message: "Add locales"})}>
                                 {"php artisan lang:add fr"}
                             </CodeBlock>
-                            <CodeBlock language="php" title={translate({id: "home.example.use", message: "Use a translation"})}>
+                            <CodeBlock language="php" title={translate({id: "home.example.use", message: "Usage"})}>
                                 {"__('auth.failed', locale: 'fr');"}
                             </CodeBlock>
                         </div>

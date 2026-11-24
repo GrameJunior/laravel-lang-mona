@@ -1,5 +1,5 @@
 ---
-title: 旧版文档
+title: Legacy 文档
 slug: /
 description: 适用于 Mona 发布前的 Laravel-Lang 软件包。
 ---
