@@ -10,6 +10,10 @@ on:
 
 permissions: read-all
 
+env:
+    # Packages in the checkout share a version for self.version dependencies.
+    COMPOSER_ROOT_VERSION: '20.0.0'
+
 jobs:
     packages:
         runs-on: ubuntu-latest
@@ -43,16 +47,11 @@ jobs:
                 with:
                     php-version: ${{ matrix.php }}
 
-            -   name: Use Locale Names from the monorepo
-                if: matrix.directory == 'src/Locales'
-                working-directory: src/Locales
-                run: >-
-                    composer config repositories.locale-names --json
-                    '{"type":"path","url":"../LocaleNames","options":{"versions":{"laravel-lang/locale-names":"3.0.0"}}}'
-
             -   name: Install dependencies
                 working-directory: ${{ matrix.directory }}
-                run: composer require --dev --update-with-all-dependencies 'laravel/framework:^${{ matrix.laravel }}' --no-interaction --no-progress
+                run: |
+                    composer config repositories.monorepo path '../*'
+                    composer require --dev --update-with-all-dependencies 'laravel/framework:^${{ matrix.laravel }}' --no-interaction --no-progress
 
     install-master:
         runs-on: ubuntu-latest
@@ -72,5 +71,6 @@ jobs:
             -   name: Install dependencies
                 working-directory: src/JsonFallback
                 run: |
+                    composer config repositories.monorepo path '../*'
                     composer require --dev --no-update laravel/framework:dev-master --no-interaction
                     composer update --no-interaction --no-progress

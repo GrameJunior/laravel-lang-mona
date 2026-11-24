@@ -177,8 +177,8 @@
     - [ ] release-drafter
         - Изменить шаблон по аналогии с https://github.com/nvm-windows/nvm/releases/tag/v2.0.1
     - [x] statuses
-    - [ ] test-dependencies
-    - [ ] tests
+    - [x] test-dependencies
+    - [x] tests
     - [x] Найти auto-labeler
 - [ ] Очистить проект от технических файлов.
 - [ ] Обновить файлы переводов через утилиту миграции.
