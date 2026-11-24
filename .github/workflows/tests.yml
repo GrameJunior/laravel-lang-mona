@@ -48,7 +48,8 @@ jobs:
                 run: composer require --dev laravel/framework:^${{ matrix.laravel }}
 
             -   name: Execute tests
-                run: php vendor/bin/pest --exclude-group=arch --parallel
+                # Tests that generate models share the Testbench application directory.
+                run: php vendor/bin/pest --exclude-group=arch
 
     feature-master:
         runs-on: ubuntu-latest
@@ -76,7 +77,7 @@ jobs:
                     composer update --no-interaction --no-progress
 
             -   name: Execute tests
-                run: php vendor/bin/pest --exclude-group=arch --parallel
+                run: php vendor/bin/pest --exclude-group=arch
 
     coverage:
         runs-on: ubuntu-latest
@@ -88,14 +89,14 @@ jobs:
 
             -   uses: shivammathur/setup-php@v2
                 with:
-                    php-version: ${{ matrix.php }}
+                    php-version: '8.5'
                     coverage: xdebug
 
             -   name: Install dependencies
                 run: composer update
 
             -   name: Execute tests
-                run: composer test:coverage
+                run: composer run-script --timeout=0 test:coverage
 
     architecture:
         runs-on: ubuntu-latest
