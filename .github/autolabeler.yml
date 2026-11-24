@@ -1,0 +1,9 @@
+autolabeler:
+    -   label: locales
+        files:
+            - 'src/*/locales/**'
+
+    -   label: fix
+        title:
+            - '/^fix(?:\([^)]*\))?:\s+\S/i'
+            - '/^(?:\[(?:app|tests)\]:\s+)?fix(?:ed)?\s+\S/i'
