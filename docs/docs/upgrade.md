@@ -5,6 +5,45 @@ description: Upgrade Laravel-Lang dependencies, configuration, published transla
 
 Mona is the repository that releases the Laravel-Lang packages together. Keep using the individual Composer packages your application needs.
 
+:::info[Why version 20?]
+
+Laravel-Lang grew out of `laravel-lang/lang`. New packages appeared over time, each with its own releases and version numbers. As the ecosystem grew, major upgrades took more coordination for us, and users had to figure out which versions would work together.
+
+We created `laravel-lang/common` to make that choice easier by bringing in a compatible set of dependencies. Upgrading could still involve several packages, each with its own version.
+
+For example, which versions would you have installed in a project running Laravel 11 on PHP 8.2 before Mona?
+
+<details>
+<summary>Package versions before Mona</summary>
+
+| Package | Version |
+| --- | --- |
+| Common | `6.9.0` |
+| Actions | `1.13.2` |
+| Attributes | `2.16.6` |
+| Lang | `15.39.2` |
+| MoonShine | `1.9.3` |
+| HTTP Statuses | `3.13.2` |
+| Currency Names | `1.11.0` |
+| Locale Names | `2.10.0` |
+| Country Names | `1.8.0` |
+| Starter Kits | `1.17.4` |
+| Locales | `2.11.0` |
+| Models | `1.8.0` |
+| Routes | `1.11.0` |
+| JSON Fallback | `2.3.0` |
+| Locale List | `1.7.0` |
+| Config | `1.17.1` (the 1.x release that other Laravel-Lang packages continued to use) and `2.3.2` (the latest stable release before Mona, rarely used by those packages) |
+| Publisher | `16.9.0` |
+
+</details>
+
+The Mona monorepo lets us release the packages together under a shared version.
+
+Publisher had the highest version number, and `17.0` would have been its next major version. We put a lot of work and care into bringing the ecosystem together, and we chose 20 to mark that milestone. You can also read it as **Laravel-Lang 2.0**. 🙂
+
+:::
+
 :::info[Locale codes and aliases]
 
 Laravel-Lang now uses canonical locale codes for values it stores, including published language paths and model translation rows. Laravel's active and fallback locales also use canonical codes. At runtime, use aliases for URL segments and language selectors. Facade methods that return locale codes use the configured alias by default, or the canonical code when no alias is configured. For example, configure `'pt_BR' => 'pt-br'` in `localization_main.aliases` to keep `/pt-br/account` while publishing to `lang/pt_BR.json` and storing `pt_BR` in the database.

@@ -5,6 +5,45 @@ description: "Aktualisiere deine Laravel-Lang-Abhängigkeiten, Konfiguration, ve
 
 Mona ist das Repository, aus dem die Laravel-Lang-Pakete gemeinsam veröffentlicht werden. Verwende weiterhin die einzelnen Composer-Pakete, die deine Anwendung benötigt.
 
+:::info[Warum Version 20?]
+
+Laravel-Lang ist aus `laravel-lang/lang` hervorgegangen. Die Pakete kamen zu unterschiedlichen Zeiten hinzu und hatten jeweils ihre eigene Versionsnummer und ihren eigenen Veröffentlichungsrhythmus. Bei einem Wechsel auf eine neue Hauptversion mussten wir mehrere Pakete aufeinander abstimmen. Wer die Pakete nutzte, musste herausfinden, welche Versionen zusammenpassten.
+
+Dafür haben wir `laravel-lang/common` entwickelt. Das Paket gibt kompatible Abhängigkeiten vor und erleichtert so die Installation. Bei einem Upgrade konnten trotzdem mehrere Pakete mit eigenen Versionsnummern betroffen sein.
+
+Welche Paketversionen hättest du damals zum Beispiel in einer Anwendung mit Laravel 11 und PHP 8.2 installiert?
+
+<details>
+<summary>Paketversionen vor Mona</summary>
+
+| Paket | Version |
+| --- | --- |
+| Common | `6.9.0` |
+| Actions | `1.13.2` |
+| Attributes | `2.16.6` |
+| Lang | `15.39.2` |
+| MoonShine | `1.9.3` |
+| HTTP Statuses | `3.13.2` |
+| Currency Names | `1.11.0` |
+| Locale Names | `2.10.0` |
+| Country Names | `1.8.0` |
+| Starter Kits | `1.17.4` |
+| Locales | `2.11.0` |
+| Models | `1.8.0` |
+| Routes | `1.11.0` |
+| JSON Fallback | `2.3.0` |
+| Locale List | `1.7.0` |
+| Config | `1.17.1` (Version aus der 1.x-Reihe, die andere Laravel-Lang-Pakete weiterhin nutzten) und `2.3.2` (letzte stabile Version vor Mona, die diese Pakete selten nutzten) |
+| Publisher | `16.9.0` |
+
+</details>
+
+Mit dem Monorepository Mona veröffentlichen wir die Pakete gemeinsam unter einer einheitlichen Versionsnummer.
+
+Publisher hatte die höchste Versionsnummer. In seiner bisherigen Reihe wäre `17.0` die nächste Hauptversion gewesen. Wir haben viel Arbeit und Herzblut in die Zusammenführung der Pakete gesteckt und die 20 gewählt, um diesen Meilenstein zu markieren. Man kann die Zahl auch als **Laravel-Lang 2.0** lesen. 🙂
+
+:::
+
 :::info[Locale-Codes und Aliasse]
 
 Laravel-Lang verwendet jetzt kanonische Locale-Codes für gespeicherte Werte, etwa veröffentlichte Sprachpfade und Übersetzungsdatensätze für Modelle. Auch die aktive Locale und Fallback-Locale von Laravel verwenden kanonische Codes. Verwende zur Laufzeit Aliasse für URL-Segmente und die Sprachauswahl. Fassadenmethoden, die Locale-Codes zurückgeben, verwenden standardmäßig den konfigurierten Alias oder, falls keiner vorhanden ist, den kanonischen Code. Konfiguriere zum Beispiel `'pt_BR' => 'pt-br'` in `localization_main.aliases`, um `/pt-br/account` beizubehalten, während du nach `lang/pt_BR.json` veröffentlichst und `pt_BR` in der Datenbank speicherst.
