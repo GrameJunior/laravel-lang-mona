@@ -1,0 +1,50 @@
+---
+title: "安装插件"
+slug: /plugins-installation.html
+description: "通过 Publisher 安装本地化插件"
+---
+
+:::note
+
+你也可以查看可用的[官方插件](<./plugins-official.mdx>)和[社区插件](<./plugins-community.mdx>)。
+
+:::
+
+要使用发布管理器，请按以下步骤操作：
+
+1. 将翻译包装到应用中。例如，运行 `composer require --dev laravel-lang/lang:^15.39.1` 安装该包，或安装其他包。
+1. 安装完成。
+
+运行 `php artisan lang:update` 时，发布管理器会检查指定的包并自动更新应用中的文件。
+
+不同包中如果含有同名文件，例如 `custom.php`，处理时会合并各文件的所有键。
+
+:::tip
+
+可以使用现成的[翻译模板](<https://github.com/Laravel-Lang/translations-template>)简化开发。
+
+:::
+
+祝使用愉快！
+
+## 插件 {/* #plugins */}
+
+<div className="legacy-card-grid">
+
+<div className="card legacy-card">
+
+[官方插件](<./plugins-official.mdx>)
+
+以下插件由 Laravel-Lang 团队开发和维护。
+
+</div>
+
+<div className="card legacy-card">
+
+[社区插件](<./plugins-community.mdx>)
+
+以下插件由社区开发和维护。
+
+</div>
+
+</div>

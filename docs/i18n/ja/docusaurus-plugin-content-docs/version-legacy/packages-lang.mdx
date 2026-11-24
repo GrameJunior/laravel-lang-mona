@@ -1,0 +1,69 @@
+---
+title: "Lang"
+slug: /packages-lang.html
+description: "Laravel Framework、Laravel Jetstream、Laravel Fortify、Laravel Breeze、Laravel Cashier、Laravel Nova、Laravel UI の翻訳を提供します。"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"このプロジェクトの安定版がリリースされています"}>安定版</span> <span className="badge badge--secondary" title={"最新バージョンは不明です"}>不明</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub で見る](<https://github.com/laravel-lang/lang>)
+
+:::tip
+
+このパッケージは、以下の Laravel プロジェクトのすべての公式キーに対する翻訳を含みます。
+
+[Laravel Framework](<https://laravel.com>)、[Jetstream](<https://jetstream.laravel.com/>)、[Fortify](<https://github.com/laravel/fortify>)、[Cashier](<https://laravel.com/docs/billing>)、[Breeze](<https://github.com/laravel/breeze>)、[Nova（Dusk Suite と Log Viewer を含む）](<https://nova.laravel.com/>)、[Nova](<https://nova.laravel.com/>)（[Dusk Suite](<https://github.com/laravel/nova-dusk-suite>)、[Log Viewer](<https://github.com/laravel/nova-log-viewer>) を含む）、[UI](<https://github.com/laravel/ui>)
+
+:::
+
+## インストール {/* #installation */}
+
+:::note
+
+[Lang パッケージの互換性表](<#compatibility> "Lang パッケージの互換性表")を参照してください。
+
+:::
+
+インストールするには、次のコンソールコマンドを実行します。
+
+```bash
+composer require --dev laravel-lang/lang:^15.39.1
+```
+
+## 使用方法 {/* #usage */}
+
+既存のロケールは、コンソールコマンド `lang:update` で[更新](<./usage-update-locales.mdx> "Laravel アプリケーションのロケールを更新する")できます。
+
+```bash
+php artisan lang:update
+```
+
+`composer.json` の `scripts` ブロックにある `post-update-cmd` セクションに、コマンドの呼び出しを追加することも推奨します。
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+これにより、依存関係を更新するとローカライズファイルも自動で更新されます。`php artisan lang:update` を手動で実行する手間が省けます。
+
+## 互換性 {/* #compatibility */}
+
+| Laravel | PHP | Publisher | パッケージ | 依存関係 | サポート状況 |
+| --- | --- | --- | --- | --- | --- |
+| `^11.0.7, 12, 13` | 8.2, 8.3, 8.4, 8.5 | 16 | `^15.10` | Breeze 2, Cashier Stripe 15, Fortify 1, Jetstream 5, Nova 4/5, Spark Paddle \*, Spark Stripe \*, UI 4 | <span className="compatibility-status compatibility-status--supported">対応</span> \* Spark projects have been removed from the [Laravel](<https://github.com/laravel>) organization on GitHub |
+| `^11.0.7` | 8.2, 8.3, 8.4, 8.5 | 16 | `^15.0` | Breeze 2, Cashier Stripe 15, Fortify 1, Jetstream 5, Nova 4, Spark Paddle, Spark Stripe, UI 4 | <span className="compatibility-status compatibility-status--supported">対応</span> |
+| 10, `<=11.0.6*` | 8.1, 8.2, 8.3 | 14, 15, 16 | `^14.0` | Breeze 1, 2, Cashier Stripe 13, 14, 15, Fortify 1, Jetstream 2, 3, 4, 5, Nova 4, Spark Paddle, Spark Stripe, UI 4 | <span className="compatibility-status compatibility-status--not-supported">非対応</span> |
+| 10 | 8.1, 8.2, 8.3 | 14, 15, 16 | `^13.0` | Breeze 1, Cashier Stripe 13, 14, Fortify 1, Jetstream 2, 3, 4, Nova 4, Spark Aurelius 11, 12, Spark Aurelius Mollie 2, Spark Paddle, Spark Stripe, UI 4 | <span className="compatibility-status compatibility-status--not-supported">非対応</span> |
+| 9, 10 | 8.1, 8.2 | 14 | `^12.0` | Breeze 1, Cashier Stripe 12, 13, 14, Fortify 1, Jetstream 1, 2, 3, Nova 3, 4, Spark Aurelius 11, 12, Spark Aurelius Mollie 2, Spark Paddle, Spark Stripe, UI 3, 4 | <span className="compatibility-status compatibility-status--not-supported">非対応</span> |
+| 6, 7, 8, 9, 10 | 8.1, 8.2 | --- | `^11.0` | Breeze 1, Cashier Stripe 12, 13, Fortify 1, Jetstream 1, 2, Nova 3, 4, Spark Paddle, Spark Stripe, UI 1, 2, 3, 4 | <span className="compatibility-status compatibility-status--not-supported">非対応</span> |
+| 7, 8, 9 | 8.1, 8.2 | --- | `^10.0` | Breeze 1, Cashier Stripe 12, 13, Fortify 1, Jetstream 1, Nova 3, Spark Paddle, Spark Stripe, UI 1, 2, 3 | <span className="compatibility-status compatibility-status--not-supported">非対応</span> |

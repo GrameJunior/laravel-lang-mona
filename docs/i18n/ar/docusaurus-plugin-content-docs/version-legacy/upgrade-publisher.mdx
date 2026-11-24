@@ -1,0 +1,47 @@
+---
+title: "Publisher"
+slug: /upgrade-publisher.html
+description: "معلومات عن ترقية Publisher من الإصدار 15 إلى الإصدار 16."
+---
+
+## تحديث التبعيات {/* #updating_dependencies */}
+
+:::note
+
+إذا كنت تستخدم حزمة `laravel-lang/common`، فتخطَّ هذه الخطوة.
+
+:::
+
+حدّث التبعية التالية في ملف `composer.json` لتطبيقك:
+
+- `laravel-lang/publisher` إلى `^16.0`
+
+بعد ذلك، شغّل أمر تحديث التبعيات:
+
+```bash
+composer update
+```
+
+## تغيير مساحة أسماء الإعدادات المحلية {/* #change_namespace */}
+
+استبدل مساحة أسماء الإعدادات المحلية التالية:
+
+```php
+LaravelLang\Locales\Enums\Locale
+```
+
+إلى:
+
+```php
+LaravelLang\LocaleList\Locale
+```
+
+مثلًا:
+
+```php
+// قبل
+LaravelLang\Locales\Enums\Locale::Afrikaans; // af
+
+// بعد
+LaravelLang\LocaleList\Locale::Afrikaans; // af
+```

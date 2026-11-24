@@ -1,0 +1,693 @@
+---
+title: "配置"
+slug: /configuration.html
+description: "软件包配置详解"
+---
+
+## 发布配置 {/* #publish */}
+
+可选择运行以下命令发布配置文件。
+
+```bash
+php artisan vendor:publish --tag="localization"
+```
+
+发布后的 `config/localization.php` 文件内容如下。
+
+<details>
+<summary>显示配置</summary>
+
+```php
+return [
+    /*
+     * 决定更新翻译文件时使用哪种类型的文件。
+     *
+     * @see https://laravel-lang.com/configuration.html#inline
+     *
+     * 默认值为 `false`.
+     */
+
+    'inline' => (bool) env('LOCALIZATION_INLINE', env('LANG_PUBLISHER_INLINE')),
+
+    /*
+     * 是否在处理数组前按键对齐？
+     *
+     * @see https://laravel-lang.com/configuration.html#alignment
+     *
+     * 默认值为 true
+     */
+
+    'align' => (bool) env('LOCALIZATION_ALIGN', env('LANG_PUBLISHER_ALIGN', true)),
+
+    /*
+     * 本仓库文件使用的语言区域代码
+     * 可能与项目偏好不符。
+     *
+     * 请在此处指定本仓库代码到项目代码的映射。
+     *
+     * @see https://laravel-lang.com/configuration.html#aliases
+     */
+
+    'aliases' => [
+        // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
+        // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+
+    /*
+     * 此选项用于指定如何将翻译键
+     * 转换成排版形式。
+     *
+     * @see https://laravel-lang.com/configuration.html#smart_punctuation
+     *
+     * 默认值为 false
+     */
+
+    'smart_punctuation' => [
+        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+
+        'common' => [
+            'double_quote_opener' => '“',
+            'double_quote_closer' => '”',
+            'single_quote_opener' => '‘',
+            'single_quote_closer' => '’',
+        ],
+
+        'locales' => [
+            Locale::French->value => [
+                'double_quote_opener' => '«&nbsp;',
+                'double_quote_closer' => '&nbsp;»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Russian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Ukrainian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Belarusian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+        ],
+    ],
+
+    /*
+     * 此选项定义应用的路由设置。
+     *
+     * @see https://laravel-lang.com/configuration.html#routes
+     */
+
+    'routes' => [
+        /*
+         * 此选项指定应用路由使用的键名。
+         *
+         * 默认值：
+         *
+         *   parameter - locale
+         *   header    - Accept-Language
+         *   cookie    - Accept-Language
+         *   session   - Accept-Language
+         *   column    - column
+         */
+
+        'names' => [
+            'parameter' => RouteName::Parameter,
+            'header'    => RouteName::Header,
+            'cookie'    => RouteName::Cookie,
+            'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
+        ],
+
+        /*
+         * 此选项指定路由组名称的前缀。
+         *
+         * 默认值为 `localized.`
+         */
+
+        'name_prefix' => env('LOCALIZATION_NAME_PREFIX', 'localized.'),
+
+        /*
+         * 此选项指定访问默认语言区域时是否重定向请求。
+         *
+         * 使用 `LaravelLang\Routes\Facades\LocalizationRoute` 门面时生效。
+         */
+
+        'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
+
+        /*
+         * 使用默认语言区域时，此选项会从 URL 中移除语言区域参数。
+         *
+         * 使用 `localizedRoute` 辅助函数时生效。
+         */
+
+        'hide_default' => (bool) env('LOCALIZATION_HIDE_DEFAULT', false),
+
+        // 此选项包含路由设置。
+
+        'group' => [
+            'middlewares' => [
+                // 此选项包含无语言区域前缀的路由设置。
+
+                'default' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+
+                // 此选项包含有语言区域前缀的路由设置。
+
+                'prefix' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+            ],
+        ],
+    ],
+
+    /*
+     * 此选项定义模型翻译设置。
+     *
+     * @see https://laravel-lang.com/configuration.html#models
+     */
+
+    'models' => [
+        /*
+         * 此选项指定翻译模型的后缀。
+         *
+         * 例如：
+         *   主模型为 `App\Models\Page`
+         *   翻译模型为 `App\Models\PageTranslation`
+         *
+         * 默认值为 `Translation`
+         */
+
+        'suffix' => 'Translation',
+
+        /*
+         * 此选项决定使用预加载时
+         * 是否筛选通过关联加载的语言区域。
+         *
+         * 默认值为 true.
+         */
+
+        'filter' => [
+            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+        ],
+
+        /*
+         * 此选项指定保存 IDE 辅助文件的目录。
+         *
+         * 默认值为 `vendor/_laravel_lang`
+         */
+
+        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
+    ],
+
+    /*
+     * 此选项列出 Laravel Lang Translator 项目支持的翻译服务。
+     *
+     * 默认启用 Google Translate。
+     *
+     * @see https://laravel-lang.com/configuration.html#translators
+     */
+
+    'translators' => [
+        /*
+         * 可用于翻译的服务列表。
+         *
+         * 默认设置：
+         *
+         *     启用 Google
+         *     禁用 DeepL
+         *     禁用 Yandex
+         */
+
+        'channels' => [
+            'google' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Google',
+
+                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
+            ],
+
+            'deepl' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+
+                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
+
+                'credentials' => [
+                    'key' => (string) env('TRANSLATION_DEEPL_KEY'),
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
+
+                'credentials' => [
+                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
+                ],
+            ],
+        ],
+
+        'options' => [
+            /*
+             * 设置用于从字符串提取可替换关键字的自定义模式，
+             * 默认提取以冒号开头的词。
+             *
+             *  可用选项：
+             *
+             *     `true` 使用 `/:(\w+)/`
+             *     `false` 禁用正则表达式处理
+             *      `/any regex/` 使用自行指定的正则表达式
+             *
+             *   默认值为 `true`
+             *
+             * @example 例如从 "Hello :name" 中提取 "name"
+             */
+
+            'preserve_parameters' => true,
+        ],
+    ],
+];
+```
+
+</details>
+
+## 行内译文 {/* #inline */}
+
+`inline` 选项决定更新翻译文件时使用哪种文件。
+
+- `true` 表示使用行内译文文件。
+- `false` 表示使用默认译文文件。
+
+例如，可以通过下面的内容比较二者的区别。
+
+```text
+The :attribute must be accepted. // default
+This field must be accepted. // inline
+```
+
+此选项位于 `config/localization.php` 文件中。
+
+```php
+return [
+    'inline' => (bool) env('LOCALIZATION_INLINE', env('LANG_PUBLISHER_INLINE')),
+];
+```
+
+## 对齐 {/* #alignment */}
+
+`align` 选项决定处理翻译文件时各个值的对齐方式。
+
+更新时，输出文件中的所有注释都会自动删除，因为 [var\_export](<https://www.php.net/manual/en/function.var-export.php>) 无法保留注释。
+
+文件示例：
+
+```php
+declare(strict_types=1);
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | 身份验证消息
+    |--------------------------------------------------------------------------
+    |
+    | 以下译文用于身份验证过程中的
+    | 各类用户提示。你可以根据应用需求
+    | 修改这些译文。
+    |
+    */
+    'failed'   => 'These credentials do not match our records 123456.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'foo'      => 'bar',
+];
+```
+
+更新后的文件如下。
+
+```php
+declare(strict_types=1);
+
+return [
+    'failed'   => 'These credentials do not match our records 123456.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'foo'      => 'bar',
+];
+```
+
+以下是 `validation.php` 文件的示例。
+
+<details>
+<summary>显示内容</summary>
+
+```php
+declare(strict_types=1);
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | 验证消息
+    |--------------------------------------------------------------------------
+    |
+    | 下列译文包含验证器类使用的
+    | 默认错误消息。有些规则有多个版本，
+    | 例如大小规则。你可以在此修改各项消息。
+    |
+    */
+    'accepted'   => 'The :attribute must be accepted.',
+    'active_url' => 'The :attribute is not a valid URL.',
+
+    // 其他规则
+
+    'uuid' => 'The :attribute must be a valid UUID.',
+    /*
+    |--------------------------------------------------------------------------
+    | 自定义验证消息
+    |--------------------------------------------------------------------------
+    |
+    | 在此可按
+    | "attribute.rule" 命名约定为各属性指定自定义验证消息，
+    | 从而为指定属性的规则快速设置专用消息。
+    |
+    */
+    'custom' => [
+        'name' => [
+            'required' => 'Custom message 1',
+            'string'   => 'Custom message 2',
+        ],
+    ],
+    /*
+    |--------------------------------------------------------------------------
+    | 自定义验证属性名称
+    |--------------------------------------------------------------------------
+    |
+    | 下列译文用于将属性占位符替换为
+    | 更便于读者理解的内容。例如用 "E-Mail Address"
+    | 替换 "email"，使消息更清晰。
+    |
+    */
+    'attributes' => [
+        'name' => 'Foo',
+        'bar'  => 'Bar',
+        'baz'  => 'Baz',
+    ],
+];
+```
+
+</details>
+
+更新后如下。
+
+```php
+declare(strict_types=1);
+
+return [
+    'accepted'   => 'The :attribute must be accepted.',
+    'active_url' => 'The :attribute is not a valid URL.',
+    'uuid'       => 'The :attribute must be a valid UUID.',
+    'custom'     => [
+        'name' => [
+            'required' => 'Custom message 1',
+            'string'   => 'Custom message 2',
+        ],
+    ],
+    'attributes' => [
+        'name' => 'Foo',
+        'bar'  => 'Bar',
+        'baz'  => 'Baz',
+    ],
+];
+```
+
+此选项位于 `config/localization.php` 文件中。
+
+```php
+return [
+    'align' => (bool) env('LOCALIZATION_ALIGN', env('LANG_PUBLISHER_ALIGN', true)),
+];
+```
+
+## 别名 {/* #aliases */}
+
+要使用不同的代码名称，例如以 `de-DE` 代替 `de`、以 `de-CH` 代替 `de_CH`，可在[配置文件](<./configuration.mdx#aliases>)中设置 `aliases`。
+
+设置后，添加、更新和删除操作都会自动使用 `config/localization.php` 配置文件中指定的别名。
+
+```php
+declare(strict_types=1);
+
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'aliases' => [
+        Locale::German->value            => 'de-DE',
+        Locale::GermanAustria->value     => 'de-AT',
+        Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+];
+```
+
+如果 `config/localization.php` 文件已存在，可添加 `aliases` 键，并用数组指定所需的别名。
+
+此后，例如可以使用原代码或其别名添加新的语言区域。
+
+```bash
+php artisan lang:add de de_CH
+```
+
+安装语言区域后，PHP 翻译目录和 JSON 翻译文件会以指定的别名命名。
+
+```text
+lang
+de-CH
+de-DE
+```
+
+此选项位于 `config/localization.php` 文件中。
+
+```php
+return [
+    'aliases' => [
+        // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
+        // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+];
+```
+
+## 智能标点 {/* #smart_punctuation */}
+
+更新翻译键时，也可以启用智能转换，将 ASCII 引号、连字符和省略号转换为对应的 Unicode 字符。
+
+例如：
+
+```json
+{
+    "Some": "\"It's super-configurable... you can even use additional extensions to expand its capabilities -- just like this one!\""
+}
+```
+
+生成的文件如下。
+
+```json
+{
+    "Some": "“It’s super-configurable… you can even use additional extensions to expand its capabilities – just like this one!”"
+}
+```
+
+此选项位于 `config/localization.php` 文件中。
+
+<details>
+<summary>显示设置</summary>
+
+```php
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'smart_punctuation' => [
+        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+
+        'common' => [
+            'double_quote_opener' => '“',
+            'double_quote_closer' => '”',
+            'single_quote_opener' => '‘',
+            'single_quote_closer' => '’',
+        ],
+
+        'locales' => [
+            Locale::French->value => [
+                'double_quote_opener' => '«&nbsp;',
+                'double_quote_closer' => '&nbsp;»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Russian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Ukrainian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Belarusian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+        ],
+    ],
+];
+```
+
+</details>
+
+也可以为任意语言区域设置不同的规则。
+
+转换功能默认关闭。
+
+## 路由 {/* #routes */}
+
+使用[路由包](<./packages-routes.mdx> "快速本地化路由")时，可以覆盖键名的默认值。
+
+在 `config/localization.php` 文件中启用此选项。
+
+```php
+use LaravelLang\Config\Constants\RouteName;
+
+return [
+    'routes' => [
+        'names' => [
+            'parameter' => RouteName::Parameter,
+            'header'    => RouteName::Header,
+            'cookie'    => RouteName::Cookie,
+            'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
+        ],
+
+        'name_prefix' => env('LOCALIZATION_NAME_PREFIX', 'localized.'),
+        'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
+        'hide_default' => (bool) env('LOCALIZATION_HIDE_DEFAULT', false),
+
+        'group' => [
+            'middlewares' => [
+                'default' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+                'prefix' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+            ],
+        ],
+    ],
+];
+```
+
+## 模型 {/* #models */}
+
+使用 [Models](<./packages-models.mdx> "快速本地化模型") 包时，可以定义参数默认值。
+
+此设置位于 `config/localization.php` 文件中。
+
+```php
+return [
+    'models' => [
+        'suffix' => 'Translation',
+        'filter' => [
+            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+        ],
+        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
+    ],
+];
+```
+
+`suffix` 参数指定翻译存储所关联的模型的后缀。
+
+例如：
+
+```text
+App\Models\Post::class
+App\Models\PostTranslation::class
+```
+
+## 翻译器 {/* #translator */}
+
+可启用默认翻译器，也可创建自己的翻译器。详见 [Translator](<./packages-translator.mdx> "通过多个翻译 API 翻译文本") 包的说明。
+
+此设置位于 `config/localization.php` 文件中。
+
+```php
+return [
+    'translators' => [
+        'channels' => [
+            'google' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Google',
+
+                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
+            ],
+
+            'deepl' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+
+                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
+
+                'credentials' => [
+                    'key' => (string) env('TRANSLATION_DEEPL_KEY'),
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
+
+                'credentials' => [
+                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
+                ],
+            ],
+        ],
+
+        'options' => [
+            'preserve_parameters' => true,
+        ],
+    ],
+];
+```

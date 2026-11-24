@@ -1,0 +1,124 @@
+---
+title: "Руководство для участников"
+slug: /contributions.html
+description: "Как помочь разработчикам проектов Laravel Lang"
+---
+
+Мы <strong>приветствуем</strong> ваш вклад и обязательно <strong>укажем авторство</strong>.
+
+Мы принимаем изменения через пул-реквесты во [всех проектах](<https://github.com/orgs/Laravel-Lang/repositories>) организации.
+
+## Для чего нужны эти файлы? {/* #what_do_the_files_mean */}
+
+- <strong>php.json</strong> содержит переводы значений языковых файлов PHP.
+- <strong>php-inline.json</strong> содержит переводы без имени поля для языковых файлов PHP.
+- <strong>json.json</strong> содержит переводы значений языковых файлов JSON.
+- <strong>json-inline.json</strong> содержит переводы без имени поля для языковых файлов JSON.
+- <strong>\_excludes.json</strong> содержит значения, перевод которых совпадает с английским. Это список значений, а не ключей.
+
+## Как изменить файлы? {/* #how_to_edit_files */}
+
+Все файлы, доступные для перевода, имеют расширение JSON и находятся в каталоге `locales`. Откройте нужный файл и внесите изменения.
+
+:::tip
+
+Даже если в ключе есть ошибка, не исправляйте её в файле перевода. Иначе Laravel не сможет прочитать перевод.
+
+Чтобы исправить написание, отправьте [пул-реквест](<https://github.com/orgs/laravel/repositories>) в соответствующий проект команды Laravel.
+
+После этого наши пакеты автоматически обновят ключи. Обновление выполняется раз в сутки.
+
+:::
+
+1. Откройте файл локализации.
+1. Измените значения ключей.
+1. Создайте коммит и отправьте его.
+1. Откройте пул-реквест и укажите код локали, которую меняете. Пример:
+
+   :::tip
+
+   \[fr\]: Added new localization
+
+   :::
+
+:::tip
+
+Обратите внимание на файлы с суффиксом `inline`. Они не должны содержать ссылки на текущий атрибут (`:attribute`).
+
+Переводы без имени поля отличаются формой обращения:
+
+```text
+// Обычный вариант
+The :attribute must contain at least one letter.
+
+// Вариант без имени поля
+This field must contain at least one letter.
+```
+
+:::
+
+## Как добавить новую локаль? {/* #how_to_add_a_new_locale */}
+
+### Для проектов Laravel Lang {/* #for_laravel_lang_projects */}
+
+Как правило, все наши проекты уже содержат доступные локали. Если хотите предложить новую, [сообщите нам](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+### Для сторонних проектов {/* #for_third_party_projects */}
+
+:::tip
+
+Чтобы добавить локаль, которой нет в `laravel-lang/locale-list`, [сообщите нам](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+:::
+
+Убедитесь, что пакет `laravel-lang/status-generator` установлен, и выполните команду:
+
+```bash
+vendor/bin/lang create <locale>
+# vendor/bin/lang create fr
+```
+
+Чтобы установить все отсутствующие локали, выполните команду без кода локали:
+
+```bash
+vendor/bin/lang create
+```
+
+## Стиль кода {/* #code_style */}
+
+Команда Laravel-Lang следует стандарту оформления кода [PER](<https://www.php-fig.org/per/coding-style/>) и стандарту автозагрузки [PSR-4](<https://www.php-fig.org/psr/psr-4/>).
+
+Чтобы отформатировать код, выполните команду:
+
+```bash
+composer style
+```
+
+## Заголовок пул-реквеста {/* #pr_title */}
+
+Заголовок пул-реквеста должен соответствовать формату:
+
+```bash
+[locale]: Description
+```
+
+Пример:
+
+```bash
+[fr]: Added new localization
+```
+
+Соответствие заголовка формату проверяется регулярным выражением:
+
+```bash
+/^(Draft:\s)?\[[a-zA-Z,_\s]+\]:\s.+$/
+```
+
+## Кодекс поведения {/* #code_of_conduct */}
+
+Кодекс поведения Laravel основан на [Contributor Covenant](<https://www.contributor-covenant.org/version/2/1/code_of_conduct/>). О нарушениях можно сообщить [Andrey Helldar и Fred Delrieu](<mailto:helldar@dragon-code.pro;caouecs@caouecs.net>):
+
+- Участники терпимо относятся к противоположным взглядам.
+- Участники обязаны избегать личных нападок и унизительных замечаний в словах и поступках.
+- Толкуя слова и поступки других, участники всегда исходят из добрых намерений.
+- Поведение, которое обоснованно можно считать преследованием, недопустимо.

@@ -1,0 +1,23 @@
+---
+title: "Atualizar localidades"
+slug: /usage-update-locales.html
+description: "Como atualizar localidades em uma aplicação Laravel"
+---
+
+Para atualizar os arquivos, execute o comando abaixo.
+
+```bash
+php artisan lang:update
+```
+
+Pronto, isso é tudo 🙂
+
+O comando detecta as localidades instaladas na aplicação e atualiza os arquivos.
+
+:::tip
+
+Algumas versões secundárias do Laravel podem remover chaves dos seus repositórios, fazendo com que desapareçam da aplicação. Isso é raro, mas pode acontecer.
+
+O comando de atualização apenas adiciona novas frases de tradução ou atualiza as existentes. Para remover frases sem uso, execute [`php artisan lang:reset`](<./usage-reset-locales.mdx> "Restaurar localidades em uma aplicação Laravel").
+
+:::

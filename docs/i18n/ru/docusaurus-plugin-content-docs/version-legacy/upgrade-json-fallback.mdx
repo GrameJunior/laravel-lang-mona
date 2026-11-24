@@ -1,0 +1,31 @@
+---
+title: "JSON Fallback"
+slug: /upgrade-json-fallback.html
+description: "Обновление JSON Fallback с версии 1 до версии 2"
+---
+
+## Обновление зависимостей {/* #updating_dependencies */}
+
+В файле `composer.json` приложения замените следующую зависимость:
+
+- `"laravel-lang/json-fallback-hotfix": "^1.0"` на `"laravel-lang/json-fallback": "^2.0"`
+
+Затем выполните команду обновления зависимостей:
+
+```bash
+composer update
+```
+
+## Изменение пространства имён {/* #change_namespace */}
+
+В файле `config/app.php` замените пространство имён:
+
+```php
+LaravelLang\JsonFallbackHotfix\TranslationServiceProvider
+```
+
+на
+
+```php
+LaravelLang\JsonFallback\TranslationServiceProvider
+```

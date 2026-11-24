@@ -1,0 +1,459 @@
+---
+title: "Uso básico"
+slug: /basic-usage.html
+description: "Instalación rápida y uso de los paquetes"
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+## Instalación {/* #installation */}
+
+Instala el paquete con el siguiente comando de consola.
+
+```bash
+composer require laravel-lang/common:^6.9
+```
+
+## Gestionar configuraciones regionales {/* #managing_locales */}
+
+### Agregar configuraciones regionales {/* #add_locales */}
+
+:::note
+
+Consulta la lista de configuraciones regionales disponibles [<strong>aquí</strong>](<./available-locales-list.mdx>).
+
+:::
+
+Ya puedes [agregar](<./usage-add-locales.mdx> "Agregar configuraciones regionales a una aplicación de Laravel") configuraciones regionales nuevas con el comando de consola `lang:add`.
+
+```bash
+php artisan lang:add <locale>
+```
+
+### Actualizar configuraciones regionales {/* #update_locales */}
+
+Ya puedes [actualizar](<./usage-update-locales.mdx> "Actualizar configuraciones regionales en una aplicación de Laravel") las traducciones existentes con el comando de consola `lang:update`.
+
+```bash
+php artisan lang:update
+```
+
+También se recomienda agregar la llamada a la sección `post-update-cmd` del bloque `scripts` del archivo `composer.json`.
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+Así, los archivos de traducción se actualizarán automáticamente cuando se actualicen las dependencias, sin tener que ejecutar manualmente `php artisan lang:update`.
+
+## Rutas {/* #routes */}
+
+### Mediante un grupo de localización {/* #via_localization_group */}
+
+:::note
+
+Si llamas a `localizedRoute` sin <abbr title={"Los métodos disponibles son \"app('router')->localizedGroup()\", \"Route::localizedGroup()\" y \"LocalizationRoute::group\"."}>agrupar</abbr> las rutas, la configuración regional se especifica como parámetro de consulta. Considera este ejemplo.
+
+```bash
+https://example.com/foo?locale=fr
+```
+
+:::
+
+:::tip
+
+Puedes cambiar el nombre del parámetro, el prefijo de nombres y la opción de redirección en la sección `routes` del archivo `config/localization.php`.
+
+:::
+
+```php
+use Illuminate\Support\Facades\Route;
+
+app('router')->localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+
+Route::localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+```
+
+Este método permite gestionar los prefijos de grupo con rutas localizadas.
+
+Además del middleware principal del grupo, `LocalizationByParameterPrefix`, intervienen `LocalizationByCookie`, `LocalizationByHeader` y `LocalizationBySession`.
+
+Puedes usar cualquiera de estos tres métodos.
+
+```php
+use Illuminate\Support\Facades\Route;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+
+app('router')->localizedGroup(fn () => ...)
+
+Route::localizedGroup(fn () => ...)
+
+LocalizationRoute::group(fn () => ...)
+```
+
+La aplicación registrará dos tipos de rutas, con el prefijo `{locale}` y sin él. Considera este ejemplo.
+
+| URL | Patrón | Nombre |
+| --- | --- | --- |
+| https://example.com/fr/foo/show | `{locale}/foo/{bar}` | `localized.show` |
+| https://example.com/foo/show | `foo/{bar}` | `show` |
+
+Puedes cambiar el prefijo de nombres en la sección `routes` de `config/localization.php`.
+
+:::note
+
+```php
+localizedRoute('show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+route('localized.show', ['bar' => 'show', 'locale' => app()->getLocale()]);
+// https://example.com/fr/foo/show
+```
+
+Esta función es compatible con [Laravel Idea](<https://laravel-idea.com/>), un complemento para [PhpStorm](<https://www.jetbrains.com/phpstorm/>).
+
+<img src={require("@site/static/images/packages-route-idea-friendly.png").default} alt={"Rutas compatibles con Laravel Idea"} />
+
+:::
+
+#### Ejemplos {/* #via_localization_group_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Configuración regional predeterminada"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/fr/foo/show
+```
+
+Respuesta
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Con redirección habilitada"}>
+
+```bash
+### Redirección 302
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Con redirección deshabilitada"}>
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Configuración regional no predeterminada"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/de/foo/show
+```
+
+Respuesta
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Configuración regional sin instalar"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/as/foo/show
+```
+
+Respuesta
+
+```bash
+### Redirección 302
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"Configuración regional desconocida"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/qwerty/foo/show
+```
+
+Respuesta
+
+```bash
+### Redirección 302
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+</Tabs>
+
+## Modelos {/* #models */}
+
+### Obtener una traducción {/* #get_translation */}
+
+:::tip
+
+Todos los repositorios propagan automáticamente el indicador de [carga anticipada](<https://laravel.com/docs/eloquent-relationships#eager-loading>) al modelo padre, de modo que no hay que hacerlo manualmente.
+
+De forma predeterminada, la relación solo contiene los registros de las configuraciones regionales actual y de reserva. En algunos casos, puedes cargar todos los registros cambiando la [configuración de filtrado](<./configuration.mdx#models>).
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+Esto carga todas las configuraciones regionales disponibles para los elementos.
+
+:::
+
+Para obtener el valor de una propiedad en la configuración regional actual, accede a la propiedad del modelo.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+Si falta el valor en la <abbr title={"El valor del parámetro \"app.locale\" en \"config/app.php\"."}>configuración regional principal</abbr>, el método devuelve el valor en la <abbr title={"El valor del parámetro \"app.fallback_locale\" en \"config/app.php\"."}>configuración regional de reserva</abbr>.
+
+También puedes usar el método `getTranslation`.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+Para obtener el valor en una configuración regional específica, pasa su código como segundo argumento.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// o
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+Estos métodos devuelven los cambios del modelo aunque todavía no se hayan guardado en la base de datos.
+
+:::
+
+### Establecer traducciones {/* #set_translations */}
+
+#### Un solo valor {/* #single_value */}
+
+Para agregar o actualizar una traducción en la configuración regional actual de la aplicación, asigna un valor a la propiedad del modelo.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+También puedes establecer un nuevo valor con el método `setTranslation`.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+Estos métodos establecen un valor nuevo para la configuración regional activa. Si quieres establecerlo para una configuración regional específica, pasa su código como tercer parámetro del método.
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// o
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+También puedes usar la asignación masiva.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+Cuando llamas a estos métodos, los valores nuevos se guardan en los objetos del modelo. Para escribir los cambios en la base de datos, llama al método `save` en el modelo padre.
+
+```php
+$page->save();
+```
+
+:::
+
+También puedes asignar los valores al crear el modelo.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### Varios valores {/* #plural_value */}
+
+Para rellenar rápidamente una propiedad con traducciones de varias configuraciones regionales, usa cualquiera de los siguientes métodos.
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// Opción 1
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// Opción 2
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+Al asignar valores en bloque también puedes pasar objetos `iterable`.
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+No es necesario especificar las mismas configuraciones regionales para cada campo. Por ejemplo, el código anterior rellena `title` para francés, inglés y alemán y `description` solo para francés y alemán.
+
+## JSON de reserva {/* #json_fallback */}
+
+:::note
+
+En Laravel 11, el archivo de configuración `config/app.php` no incluye la sección `providers`. Puedes agregarla manualmente.
+
+:::
+
+Después de instalar el paquete, agrega una referencia al proveedor de servicios en la sección `providers` de `config/app.php`.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // otros proveedores de servicios
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+Ahora las claves JSON devolverán el valor correspondiente a la configuración regional seleccionada.

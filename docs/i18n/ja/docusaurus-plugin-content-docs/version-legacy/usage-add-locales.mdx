@@ -1,0 +1,24 @@
+---
+title: "ロケールを追加する"
+slug: /usage-add-locales.html
+description: "Laravel アプリケーションにロケールを追加します。"
+---
+
+:::note
+
+利用可能なコードは[ロケールの一覧](<./available-locales-list.mdx>)で確認できます。
+
+一覧には 128 個のロケールコードがあります。
+
+:::
+
+必要なロケールをインストールするには、`php artisan lang:add <locale>` コマンドに 1 つ以上のロケールコードをスペースで区切って指定します。
+
+```bash
+php artisan lang:add fr de de_AT de_CH vi zh_CN
+php artisan lang:add fr
+```
+
+出力先ファイルが存在する場合は、インストールをスキップするか、ファイルを置き換えるかを確認されます。
+
+自分で追加したキーがファイルに含まれている場合は、スキップすることを推奨します。`php artisan lang:update` なら、自分で加えた内容を削除せずにファイルを更新できます。

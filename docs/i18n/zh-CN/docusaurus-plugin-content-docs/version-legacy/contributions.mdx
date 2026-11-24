@@ -1,0 +1,124 @@
+---
+title: "贡献指南"
+slug: /contributions.html
+description: "帮助开发者为 Laravel Lang 项目贡献代码和译文"
+---
+
+<strong>欢迎贡献</strong>，所有贡献者都将<strong>得到署名</strong>。
+
+我们通过组织下[各项目](<https://github.com/orgs/Laravel-Lang/repositories>)的拉取请求接受贡献。
+
+## 各文件的用途 {/* #what_do_the_files_mean */}
+
+- <strong>php.json</strong>：保存 PHP 翻译文件中值的译文。
+- <strong>php-inline.json</strong>：保存 PHP 翻译文件中值的行内译文。
+- <strong>json.json</strong>：保存 JSON 翻译文件中值的译文。
+- <strong>json-inline.json</strong>：保存 JSON 翻译文件中值的行内译文。
+- <strong>\_excludes.json</strong>：列出译文与英文相同的值。注意，其中列出的是值，而不是键。
+
+## 如何修改文件 {/* #how_to_edit_files */}
+
+所有可翻译文件的扩展名都是 JSON，位于 `locales` 目录下。打开需要的文件并修改。
+
+:::tip
+
+即使发现键有误也不要修改，否则 Laravel 将无法读取译文。
+
+请向 Laravel 团队的[相应项目](<https://github.com/orgs/laravel/repositories>)提交拉取请求，以修正拼写。
+
+修正后，我们的产品会自动更新这些键。更新每天自动执行一次。
+
+:::
+
+1. 打开翻译文件。
+1. 修改对应键的值。
+1. 创建提交并推送。
+1. 创建拉取请求，注明本次修改对应的语言区域代码。例如：
+
+   :::tip
+
+   \[fr\]: Added new localization
+
+   :::
+
+:::tip
+
+请留意带 `inline` 后缀的文件，其中不应引用当前属性（`:attribute`）。
+
+行内译文的区别在于措辞中不提及具体属性。
+
+```text
+// 默认译文
+The :attribute must contain at least one letter.
+
+// 行内译文
+This field must contain at least one letter.
+```
+
+:::
+
+## 如何添加新的语言区域 {/* #how_to_add_a_new_locale */}
+
+### 适用于 Laravel Lang 项目 {/* #for_laravel_lang_projects */}
+
+一般来说，我们的项目已包含可用语言区域。如果要提议添加新语言区域，请[联系我们](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>)。
+
+### 适用于第三方项目 {/* #for_third_party_projects */}
+
+:::tip
+
+要添加 `laravel-lang/locale-list` 未收录的语言区域，请[联系我们](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>)。
+
+:::
+
+确认已安装 `laravel-lang/status-generator` 包，然后运行以下控制台命令。
+
+```bash
+vendor/bin/lang create <locale>
+# vendor/bin/lang create fr
+```
+
+如果想安装所有缺少的语言区域，运行命令时请省略语言区域代码。
+
+```bash
+vendor/bin/lang create
+```
+
+## 代码风格 {/* #code_style */}
+
+Laravel-Lang 团队遵循 [PER](<https://www.php-fig.org/per/coding-style/>) 代码风格和 [PSR-4](<https://www.php-fig.org/psr/psr-4/>) 自动加载规范。
+
+要按规范格式化代码，请运行以下命令。
+
+```bash
+composer style
+```
+
+## 拉取请求标题 {/* #pr_title */}
+
+拉取请求标题必须遵循以下格式。
+
+```bash
+[locale]: Description
+```
+
+例如：
+
+```bash
+[fr]: Added new localization
+```
+
+我们使用正则表达式检查标题是否符合格式。
+
+```bash
+/^(Draft:\s)?\[[a-zA-Z,_\s]+\]:\s.+$/
+```
+
+## 行为准则 {/* #code_of_conduct */}
+
+Laravel 行为准则源自[贡献者公约](<https://www.contributor-covenant.org/version/2/1/code_of_conduct/>)。如发现违反行为准则的情况，可以向 [Andrey Helldar 和 Fred Delrieu](<mailto:helldar@dragon-code.pro;caouecs@caouecs.net>)报告。
+
+- 参与者应包容不同观点。
+- 参与者须确保言行中没有人身攻击或针对个人的贬损言论。
+- 理解他人的言行时，参与者应始终推定对方出于善意。
+- 任何可被合理认定为骚扰的行为都不被容许。

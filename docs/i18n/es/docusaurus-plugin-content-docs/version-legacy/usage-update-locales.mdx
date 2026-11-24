@@ -1,0 +1,23 @@
+---
+title: "Actualizar configuraciones regionales"
+slug: /usage-update-locales.html
+description: "Actualizar configuraciones regionales en una aplicación de Laravel"
+---
+
+Para actualizar los archivos, ejecuta el siguiente comando de consola.
+
+```bash
+php artisan lang:update
+```
+
+Eso es todo 🙂
+
+El comando detecta las configuraciones regionales instaladas en la aplicación y actualiza los archivos.
+
+:::tip
+
+Algunas versiones menores de Laravel pueden retirar claves de sus repositorios, lo que hace que desaparezcan de la aplicación. Es poco frecuente, pero ocurre.
+
+El comando de actualización solo agrega frases nuevas o actualiza las existentes. Para eliminar las que ya no se usan, ejecuta [`php artisan lang:reset`](<./usage-reset-locales.mdx> "Restablecer configuraciones regionales en una aplicación de Laravel").
+
+:::

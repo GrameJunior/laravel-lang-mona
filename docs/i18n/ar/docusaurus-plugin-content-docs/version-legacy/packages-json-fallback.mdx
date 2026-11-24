@@ -1,0 +1,71 @@
+---
+title: "JSON Fallback"
+slug: /packages-json-fallback.html
+description: "تضيف دعم الرجوع إلى ترجمات احتياطية لسلاسل JSON."
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"صدر إصدار مستقر من المشروع"}>مستقر</span> <span className="badge badge--secondary" title={"أحدث إصدار غير معروف"}>غير معروف</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [العرض على GitHub](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+إذا كنت تستخدم الإنجليزية إعدادًا محليًا احتياطيًا، فلا حاجة إلى هذه الحزمة.
+
+:::
+
+## التثبيت {/* #installation */}
+
+:::note
+
+اطّلع على [جدول التوافق](<#compatibility> "جدول توافق حزمة JSON Fallback").
+
+:::
+
+<a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">لا يتيح</a> Laravel افتراضيًا ترجمات احتياطية لمفاتيح JSON. مثلًا، عند استدعاء `__('Remember Me')`، يحصل المستخدم على `Remember Me` بدلًا من `Se souvenir de moi` إذا كانت الفرنسية لغة احتياطية.
+
+للتثبيت، شغّل أمر الطرفية:
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## الاستخدام {/* #usage */}
+
+:::note
+
+لا يتضمن ملف الإعداد `config/app.php` قسم `providers` في Laravel 11. يمكنك إضافته يدويًا.
+
+:::
+
+بعد التثبيت، أضف مرجعًا إلى مزوّد الخدمة في قسم `providers` بملف الإعداد `config/app.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // مزوّدو الخدمات الآخرون
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+تُعيد مفاتيح JSON الآن القيمة الصحيحة بحسب الإعداد المحلي المحدّد.
+
+## التوافق {/* #compatibility */}
+
+| Laravel | PHP | الحزمة | الحالة |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">مدعوم</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">غير مدعوم</span> |

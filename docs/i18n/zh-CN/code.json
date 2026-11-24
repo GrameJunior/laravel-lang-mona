@@ -1,0 +1,75 @@
+{
+  "home.description": {
+    "message": "使用 Laravel-Lang 安装译文，并对路由和 Eloquent 模型进行本地化。"
+  },
+  "home.guide.translations.title": {
+    "message": "管理语言区域"
+  },
+  "home.guide.translations.description": {
+    "message": "使用 Artisan 添加、更新和删除译文。"
+  },
+  "home.guide.configure.title": {
+    "message": "配置本地化"
+  },
+  "home.guide.configure.description": {
+    "message": "设置语言区域别名，配置本地化路由和模型翻译。"
+  },
+  "home.guide.plugins.title": {
+    "message": "翻译插件"
+  },
+  "home.guide.plugins.description": {
+    "message": "安装翻译包或创建自己的翻译包。"
+  },
+  "home.guide.upgrade.title": {
+    "message": "升级到 Mona"
+  },
+  "home.guide.upgrade.description": {
+    "message": "迁移依赖、配置和译文。"
+  },
+  "home.title": {
+    "message": "文档"
+  },
+  "home.hero.title": {
+    "message": "为你的 Laravel 应用添加本地化支持"
+  },
+  "home.start": {
+    "message": "一分钟快速入门"
+  },
+  "home.legacy": {
+    "message": "旧版文档"
+  },
+  "home.example.install": {
+    "message": "安装法语译文"
+  },
+  "home.example.use": {
+    "message": "使用译文"
+  },
+  "home.guides": {
+    "message": "本地化指南"
+  },
+  "home.llms": {
+    "message": "AI 智能体文档（llms.txt）"
+  },
+  "localePicker.label": {
+    "message": "语言区域"
+  },
+  "localePicker.install": {
+    "message": "运行以下命令安装 {language} 的译文。"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "跟随系统",
+    "description": "The name for the system color mode"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "（在新标签页中打开）",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "展开下拉菜单",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "收起下拉菜单",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  }
+}

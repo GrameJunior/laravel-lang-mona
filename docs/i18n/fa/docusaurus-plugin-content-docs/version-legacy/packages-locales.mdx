@@ -1,0 +1,318 @@
+---
+title: "Locales"
+slug: /packages-locales.html
+description: "امکانات پایهٔ کار با زبان‌های منطقه‌ای"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"نسخه‌ای پایدار از پروژه منتشر شده است"}>پایدار</span> <span className="badge badge--secondary" title={"آخرین نسخه مشخص نیست"}>نامشخص</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [مشاهده در GitHub](<https://github.com/laravel-lang/locales>)
+
+## نصب {/* #installation */}
+
+:::note
+
+جدول سازگاری را [اینجا](<#compatibility> "جدول سازگاری بستهٔ Locales") ببینید.
+
+:::
+
+برای نصب، فرمان زیر را اجرا کنید.
+
+```bash
+composer require laravel-lang/locales:^2.11.0
+```
+
+## کاربرد {/* #usage */}
+
+برای کار با زبان‌های منطقه‌ای می‌توانید از نمای `LaravelLang\Locales\Facades\Locales` استفاده کنید. این نما اطلاعات را به دو شکل می‌دهد، یکی فهرست کدها و دیگری آرایه‌ای از اشیای انتقال داده (DTO).
+
+### اشیای داده {/* #data_objects */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// فهرست زبان‌های منطقه‌ای موجود.
+Locales::available(): array // array<LocaleData>
+
+// فهرست زبان‌های منطقه‌ای نصب‌شده.
+Locales::installed(bool $withProtects = true): array // array<LocaleData>
+
+// فهرست زبان‌های منطقه‌ای نصب‌نشده.
+Locales::notInstalled(): array // array<LocaleData>
+
+// دریافت فهرست زبان‌های منطقه‌ای محافظت‌شده.
+Locales::protects(): array // array<LocaleData>
+
+// بررسی وجود بستهٔ زبان برای زبان منطقه‌ای درخواستی.
+Locales::isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// بررسی نصب بستهٔ زبان.
+Locales::isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// بررسی محافظت‌شدن زبان منطقه‌ای.
+Locales::isProtected(LocaleData|Locale|string|null $locale): bool
+
+// اعتبارسنجی و بازگرداندن زبان منطقه‌ای درست.
+// اگر زبان منطقه‌ای درخواست‌شده نصب نباشد، زبان فعلی برنامه برمی‌گردد.
+Locales::get(mixed $locale): LocaleData
+
+// دریافت نام زبان منطقه‌ای پیش‌فرض.
+Locales::getDefault(): LocaleData
+
+// دریافت نام زبان منطقه‌ای جایگزین.
+Locales::getFallback(): LocaleData
+
+// اطلاعات زبان منطقه‌ای موجود یا در غیر این صورت زبان فعلی برنامه را برمی‌گرداند.
+Locales::info(mixed $locale): LocaleData
+```
+
+### دادهٔ خام {/* #raw_data */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// فهرست زبان‌های منطقه‌ای موجود.
+Locales::raw()->available(): array // array<string>
+
+// فهرست زبان‌های منطقه‌ای نصب‌شده.
+Locales::raw()->installed(bool $withProtects = true): array // array<string>
+
+// فهرست زبان‌های منطقه‌ای نصب‌نشده.
+Locales::raw()->notInstalled(): array // array<string>
+
+// دریافت فهرست زبان‌های منطقه‌ای محافظت‌شده.
+Locales::raw()->protects(): array // array<string>
+
+// بررسی وجود بستهٔ زبان برای زبان منطقه‌ای درخواستی.
+Locales::raw()->isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// بررسی نصب بستهٔ زبان.
+Locales::raw()->isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// بررسی محافظت‌شدن زبان منطقه‌ای.
+Locales::raw()->isProtected(LocaleData|Locale|string|null $locale): bool
+
+// اعتبارسنجی و بازگرداندن زبان منطقه‌ای درست.
+// اگر زبان منطقه‌ای درخواست‌شده نصب نباشد، زبان فعلی برنامه برمی‌گردد.
+Locales::raw()->get(mixed $locale): string
+
+// دریافت نام زبان منطقه‌ای پیش‌فرض.
+Locales::raw()->getDefault(): string
+
+// دریافت نام زبان منطقه‌ای جایگزین.
+Locales::raw()->getFallback(): string
+
+// کد زبان منطقه‌ای موجود یا در غیر این صورت کد زبان فعلی برنامه را برمی‌گرداند.
+Locales::raw()->info(mixed $locale): string
+```
+
+### نمونه‌ها {/* #examples */}
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::getDefault(withCountry: true, withCurrency: true);
+
+// بدون نام مستعار
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+// با نام مستعار
+LocaleData {
+  +code: "de-DE"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // vi
+
+return Locales::get('de', withCountry: true, withCurrency: true);
+
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+LocaleData {
+  +code: "ar"
+  +regional: "ar_AE"
+  +type: "Arab"
+  +native: "العربية"
+  +localized: "Arabe"
+  +country: CountryData {
+    +code: "EG"
+    +native: "مصر"
+    +localized: "Égypte"
+  }
+  +currency: CurrencyData {
+    +code: "EGP"
+    +numeric: 818
+    +native: "جنيه مصري"
+    +localized: "livre égyptienne"
+  }
+  +direction: Direction {
+    +name: "RightToLeft"
+    +value: "rtl"
+  }
+  +locale: Locale {
+    +name: "Arabic"
+    +value: "ar"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::get('foo', withCountry: true, withCurrency: true);
+
+// زبان منطقه‌ای پیش‌فرض را برمی‌گرداند
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+return Locales::raw()->getDefault();
+// بدون نام مستعار
+// de
+
+// با نام مستعار
+// de-DE
+```
+
+```php
+return Locales::raw()->get('de');
+// de
+
+return Locales::raw()->get('foo');
+// زبان منطقه‌ای پیش‌فرض را برمی‌گرداند
+// de
+```
+
+## سازگاری {/* #compatibility */}
+
+| Laravel | PHP | بسته | وضعیت |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">پشتیبانی می‌شود</span> |
+| 10 | 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">پشتیبانی نمی‌شود</span> |

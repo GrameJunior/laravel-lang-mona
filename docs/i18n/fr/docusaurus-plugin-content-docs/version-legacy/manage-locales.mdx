@@ -1,0 +1,35 @@
+---
+title: "Gestion des langues"
+slug: /manage-locales.html
+description: "Informations générales sur la gestion des langues."
+---
+
+:::warning
+
+Par défaut, Laravel <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">ne prend pas en charge</a> les traductions de repli pour les clés JSON. Par exemple, `__('Remember Me')` renvoie `Remember Me` plutôt que `Se souvenir de moi` si le français est la langue de repli.
+
+:::
+
+Presque toutes les commandes de la console acceptent plusieurs langues comme paramètres.
+
+Voici quelques exemples.
+
+```bash
+php artisan lang:<command> fr de de_AT de_CH vi zh_CN
+php artisan lang:<command> fr
+php artisan lang:<command>
+```
+
+Dans ces exemples :
+
+- `fr de de_AT de_CH vi zh_CN` est une liste de codes de langue séparés par des espaces.
+- `fr` montre que vous pouvez aussi indiquer une seule langue.
+- Si aucun argument n’est fourni, le script pose deux questions.
+- Il affiche d’abord `Do you want to %s all localizations?`, où `%s` vaut `install`, `remove` ou `reset`.
+- Si vous répondez `no`, il demande ensuite `Select localizations to add (specify the necessary localizations separated by commas)`.
+
+:::note
+
+Les commandes d’installation (`install`), de désinstallation (`uninstall`), de réinitialisation (`reset`) et de mise à jour (`update`) traitent automatiquement les fichiers PHP et JSON. Cela inclut les traductions de [Laravel Framework](<https://laravel.com>), [Jetstream](<https://jetstream.laravel.com/>), [Fortify](<https://github.com/laravel/fortify>), [Cashier](<https://laravel.com/docs/billing>), [Breeze](<https://github.com/laravel/breeze>), [Nova, avec Dusk Suite et Log Viewer](<https://nova.laravel.com/>), [Nova](<https://nova.laravel.com/>) (avec [Dusk Suite](<https://github.com/laravel/nova-dusk-suite>) et [Log Viewer](<https://github.com/laravel/nova-log-viewer>)) et [UI](<https://github.com/laravel/ui>).
+
+:::

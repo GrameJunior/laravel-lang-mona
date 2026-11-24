@@ -1,0 +1,547 @@
+---
+title: "Models"
+slug: /packages-models.html
+description: "Проста й швидка локалізація моделей"
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Випущено стабільну версію проєкту"}>Стабільна</span> <span className="badge badge--secondary" title={"Остання версія невідома"}>невідома</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Переглянути на GitHub](<https://github.com/laravel-lang/models>)
+
+## Установлення {/* #installation */}
+
+:::note
+
+Перегляньте [таблицю сумісності](<#compatibility> "Сумісність пакета Models").
+
+:::
+
+Щоб установити пакет, виконайте команду:
+
+```bash
+composer require laravel-lang/models:^1.8.0
+```
+
+Типові налаштування можна [змінити](<./configuration.mdx#models>), відредагувавши файл `config/localization.php`.
+
+## Команди консолі {/* #console_commands */}
+
+### Створення моделі перекладів {/* #create_translation_model */}
+
+Сховище оптимізоване для зберігання великих обсягів даних окремо одне від одного. Для кожної моделі, що потребує перекладів, створюється окрема модель перекладів.
+
+Найпростіший спосіб створити сховище — виконати команду `make:model-translation`:
+
+```bash
+php artisan make:model-translation
+```
+
+Команда запитає вихідну модель й створить її, якщо вона відсутня. Далі вона запитає, які стовпці потрібно створити, наприклад «title», «description» тощо.
+
+Якщо ви додали зайві стовпці або не вказали жодного, це можна виправити. Команда згенерує файл моделі та її міграцію, у яких можна внести потрібні зміни.
+
+Створена модель сховища має завжди бути поруч із батьківською моделлю. Наприклад:
+
+```text
+App\Models\Content\News
+App\Models\Content\NewsTranslation
+App\Models\Products\Category
+App\Models\Products\CategoryTranslation
+```
+
+:::tip
+
+Типовий суфікс — `Translation`. Його можна замінити власним у розділі `models` файла [config/localization.php](<./configuration.mdx#models>).
+
+:::
+
+Після цього запустіть міграцію такою командою:
+
+```bash
+php artisan migrate
+```
+
+#### Параметри {/* #options */}
+
+<dl>
+<dt>
+
+model
+
+</dt>
+<dd>
+
+Назва батьківської моделі, для якої потрібно створити сховище.
+
+Наприклад:
+
+```bash
+php artisan make:model-translation Page
+# or
+php artisan make:model-translation App\Models\Page
+```
+
+</dd>
+<dt>
+
+--columns
+
+</dt>
+<dd>
+
+Параметр приймає одне або кілька значень і задає список стовпців для додавання.
+
+Наприклад:
+
+```bash
+--columns=title --columns=description
+```
+
+```php
+Artisan::call('make:model-translation', [
+    '--columns' => ['title', 'description'],
+]);
+```
+
+</dd>
+</dl>
+
+### Налаштування моделі {/* #model_setup */}
+
+Після створення сховища перекладів додайте трейт `LaravelLang\Models\HasTranslations` до базової моделі.
+
+Наприклад:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+```
+
+Також переконайтеся, що базова модель не містить фізичних або віртуальних полів, призначених для перекладу.
+
+Наприклад:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+
+    protected $fillable = [
+        'category_id',
+
+        // Потрібно видалити:
+        'title',
+        'description',
+    ];
+}
+```
+
+### Допоміжні файли IDE {/* #ide_helpers */}
+
+:::tip
+
+Під час створення сховища командою `php artisan make:model-translation` не потрібно окремо генерувати допоміжні файли. Команда робить це автоматично.
+
+Наведену нижче команду варто виконати після зміни моделі сховища перекладів.
+
+:::
+
+Щоб IDE розпізнавала перекладені поля, рекомендуємо виконати таку команду:
+
+```bash
+php artisan lang:models-helper
+```
+
+Команда створить допоміжні файли, за якими IDE зможе розпізнати поля. Наприклад:
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Після"}>
+
+<img src={require("@site/static/images/models-helper-after.png").default} alt={"З допоміжним файлом"} />
+
+</TabItem>
+
+<TabItem value="tab-2" label={"До"}>
+
+<img src={require("@site/static/images/models-helper-before.png").default} alt={"Без допоміжного файла"} />
+
+</TabItem>
+
+</Tabs>
+
+Шлях до каталогу, де зберігаються ці файли, можна змінити в параметрі `helpers` розділу `models` файла [config/localization.php](<./configuration.mdx#models>). Переконайтеся, що IDE індексує новий шлях.
+
+## Використання {/* #usage */}
+
+У цьому короткому відео показано, як установити й використовувати [Routes](<./packages-routes.mdx#usage> "Використання пакета Routes") і [Models](<./packages-models.mdx#usage> "Використання пакета Models") в одному застосунку ([переглянути на YouTube](<https://youtu.be/mH76pGbpVu0>)):
+
+<iframe className="legacy-video" src="https://www.youtube-nocookie.com/embed/mH76pGbpVu0" title={"Пакети Routes і Models"} loading="lazy" allowFullScreen />
+
+### Отримання перекладу {/* #get_translation */}
+
+:::tip
+
+Усі сховища репозиторію автоматично передають прапорець [завчасного завантаження](<https://laravel.com/docs/eloquent-relationships#eager-loading>) батьківській моделі. Робити це вручну не потрібно.
+
+За замовчуванням зв'язок містить лише записи основних локалей: поточної та резервної. Якщо потрібно завантажити всі записи, змініть [налаштування фільтра](<./configuration.mdx#models>):
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+У цьому разі будуть завантажені всі доступні локалі для елементів.
+
+:::
+
+Щоб отримати значення властивості для поточної локалі, зверніться до властивості моделі. Наприклад:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+Якщо значення для <abbr title={"Значення параметра \"app.locale\" у файлі \"config/app.php\"."}>основної локалі</abbr> відсутнє, метод поверне значення для <abbr title={"Значення параметра \"app.fallback_locale\" у файлі \"config/app.php\"."}>резервної локалі</abbr>.
+
+Також можна використати метод `getTranslation`:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+Щоб отримати значення для певної локалі, передайте її код другим аргументом. Наприклад:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// або
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+Ці методи повернуть актуальне значення навіть тоді, коли зміни моделі ще не записано до бази даних.
+
+:::
+
+### Запис перекладів {/* #set_translations */}
+
+#### Одне значення {/* #single_value */}
+
+Щоб додати або оновити переклад для поточної локалі застосунку, присвойте значення властивості моделі. Наприклад:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+Також можна задати нове значення методом `setTranslation`:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+Ці методи призначають нове значення для поточної локалі. Щоб задати значення для певної локалі, передайте її код третім аргументом методу. Наприклад:
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// або
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+Також можна скористатися масовим заповненням:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+Зверніть увагу, що ці методи зберігають нові значення в об'єктах моделей. Щоб записати зміни до бази даних, викличте метод `save` на батьківській моделі. Наприклад:
+
+```php
+$page->save();
+```
+
+:::
+
+Заповнювати поля можна й під час створення моделі. Наприклад:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### Кілька значень {/* #plural_value */}
+
+Щоб швидко заповнити властивість перекладами для кількох локалей, скористайтеся будь-яким із наведених способів:
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// Варіант 1
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// Варіант 2
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+Під час масового заповнення також можна передавати об'єкти `iterable`. Наприклад:
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+Для різних полів можна вказувати різні набори локалей. Наприклад, вище заповнюється поле `title` для французької, англійської й німецької, а поле `description` — лише для французької та німецької.
+
+### Видалення перекладу {/* #forget_translation */}
+
+:::warning
+
+На відміну від методів [додавання й оновлення](<#set_translations>), методи `forgetTranslation` і `forgetAllTranslations` негайно змінюють базу даних, викликаючи `delete` на моделі перекладу.
+
+Типово модель перекладу не містить трейта [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>), тому дані видаляються негайно. За потреби налаштуйте м'яке видалення в класі моделі та файлі міграції.
+
+:::
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetTranslation('fr');
+// або
+$page->forgetTranslation(Locale::French);
+```
+
+Щоб видалити переклади всіх локалей разом, викличте метод `forgetAllTranslations`.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetAllTranslations();
+```
+
+### Перевірка наявності перекладу {/* #has_translated */}
+
+Є кілька способів перевірити, чи має стовпець переклад. Перший — викликати `hasTranslated` і передати назву стовпця як параметр.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->hasTranslated('title');
+```
+
+Метод перевіряє <abbr title={"Значення параметра \"app.locale\" у файлі \"config/app.php\"."}>основну</abbr> і <abbr title={"Значення параметра \"app.fallback_locale\" у файлі \"config/app.php\"."}>резервну</abbr> локалі. Він повертає `true`, якщо хоча б одне значення заповнене, або `false`, якщо обидва порожні.
+
+:::note
+
+Збережені булеві (`true / false`) і числові значення (`0, 0.0`) також вважаються заповненими, тому метод повертає `true`.
+
+:::
+
+Щоб перевірити наявність значення для певної локалі, передайте її код другим аргументом. Наприклад:
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->hasTranslated('title', 'fr');
+// або
+$page->hasTranslated('title', Locale::French);
+```
+
+### Перевірка можливості перекладу {/* #is_translatable */}
+
+Метод `isTranslatable` перевіряє, чи є поле у властивості `$fillable` моделі перекладу.
+
+Наприклад:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\Eloquent\Translation;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+
+class ArticleTranslation extends Translation
+{
+    protected $fillable = [
+        'title',
+    ];
+}
+
+$page = Article::first();
+
+$page->isTranslatable('title'); // true
+$page->isTranslatable('description'); // false
+```
+
+### Видалення базової моделі {/* #delete_base_model */}
+
+Типово модель перекладу має зовнішній ключ до батьківської моделі. Тому після її м'якого видалення за допомогою [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>) усі переклади залишаться, а після виклику `forceDelete` вони автоматично видаляться з бази даних.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->delete();
+// або
+$page->forceDelete();
+```
+
+## Події {/* #events */}
+
+Під час виконання певних дій спрацьовують такі події:
+
+```php
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+AllTranslationsHasBeenForgetEvent::dispatch($model);
+TranslationHasBeenForgetEvent::dispatch($model, $locale);
+TranslationHasBeenSetEvent::dispatch($model, $column, $locale, $oldValue, $newValue);
+```
+
+За потреби можна підписатися на подію. Наприклад:
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(static function (AllTranslationsHasBeenForgetEvent $event) {
+            Log::info('Forget all locales', [
+                'model' => $event->model->getKey(),
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenForgetEvent $event) {
+            Log::info('Forget locale', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenSetEvent $event) {
+            Log::info('Set new translation', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+                'column' => $event->column,
+
+                'old' => $event->oldValue,
+                'new' => $event->newValue,
+            ]);
+        });
+    }
+}
+```
+
+## Сумісність {/* #compatibility */}
+
+| Laravel | PHP | Пакет | Стан |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">підтримується</span> |

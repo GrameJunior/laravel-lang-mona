@@ -1,0 +1,71 @@
+---
+title: "JSON Fallback"
+slug: /packages-json-fallback.html
+description: "Prise en charge du repli pour les traductions de chaînes JSON."
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Une version stable du projet a été publiée"}>Stable</span> <span className="badge badge--secondary" title={"La dernière version est inconnue"}>inconnue</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Voir sur GitHub](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+Si vous utilisez l’anglais comme langue de repli, vous n’avez pas besoin de ce paquet.
+
+:::
+
+## Installation {/* #installation */}
+
+:::note
+
+Consultez le [tableau de compatibilité](<#compatibility> "Compatibilité du paquet JSON Fallback").
+
+:::
+
+Par défaut, Laravel <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">ne prend pas en charge</a> les traductions de repli pour les clés JSON. Par exemple, `__('Remember Me')` renvoie `Remember Me` plutôt que `Se souvenir de moi` si le français est la langue de repli.
+
+Pour installer le paquet, exécutez la commande suivante.
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## Utilisation {/* #usage */}
+
+:::note
+
+Laravel 11 ne définit pas de section `providers` dans le fichier de configuration `config/app.php`. Vous pouvez l’ajouter à la main.
+
+:::
+
+Après l’installation, ajoutez le fournisseur de services à la section `providers` du fichier de configuration `config/app.php`.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // other service providers
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+Les clés JSON renvoient désormais leur valeur dans la langue sélectionnée.
+
+## Compatibilité {/* #compatibility */}
+
+| Laravel | PHP | Paquet | État |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">pris en charge</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">non pris en charge</span> |

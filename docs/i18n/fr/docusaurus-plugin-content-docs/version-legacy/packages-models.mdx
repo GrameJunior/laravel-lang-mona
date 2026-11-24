@@ -1,0 +1,547 @@
+---
+title: "Models"
+slug: /packages-models.html
+description: "Localisez facilement les modèles Eloquent."
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Une version stable du projet a été publiée"}>Stable</span> <span className="badge badge--secondary" title={"La dernière version est inconnue"}>inconnue</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Voir sur GitHub](<https://github.com/laravel-lang/models>)
+
+## Installation {/* #installation */}
+
+:::note
+
+Consultez le [tableau de compatibilité](<#compatibility> "Compatibilité du paquet Models").
+
+:::
+
+Pour installer le paquet, exécutez la commande suivante.
+
+```bash
+composer require laravel-lang/models:^1.8.0
+```
+
+Vous pouvez aussi [modifier](<./configuration.mdx#models>) les paramètres par défaut dans le fichier `config/localization.php`.
+
+## Commandes de la console {/* #console_commands */}
+
+### Créer un modèle de traduction {/* #create_translation_model */}
+
+Le stockage est conçu pour gérer de grands volumes de données séparément. Chaque modèle qui nécessite des traductions dispose de son propre modèle de traduction.
+
+La façon la plus simple de créer un dépôt de traductions est d’utiliser la commande `make:model-translation`.
+
+```bash
+php artisan make:model-translation
+```
+
+La commande vous demande le modèle source et le crée s’il n’existe pas. Elle vous demande ensuite les colonnes à créer, par exemple « title » ou « description ».
+
+Si vous ajoutez des colonnes en trop ou si vous n’en ajoutez aucune, vous pouvez modifier le modèle et la migration que la commande génère.
+
+Le modèle de traduction doit toujours se trouver à côté du modèle parent, comme dans l’exemple suivant.
+
+```text
+App\Models\Content\News
+App\Models\Content\NewsTranslation
+App\Models\Products\Category
+App\Models\Products\CategoryTranslation
+```
+
+:::tip
+
+Le suffixe par défaut est `Translation`. Vous pouvez le remplacer dans la section `models` du fichier [config/localization.php](<./configuration.mdx#models>).
+
+:::
+
+Il ne reste plus qu’à exécuter la migration avec la commande suivante.
+
+```bash
+php artisan migrate
+```
+
+#### Options {/* #options */}
+
+<dl>
+<dt>
+
+model
+
+</dt>
+<dd>
+
+Nom du modèle parent pour lequel le dépôt de traductions doit être créé.
+
+Voici un exemple.
+
+```bash
+php artisan make:model-translation Page
+# or
+php artisan make:model-translation App\Models\Page
+```
+
+</dd>
+<dt>
+
+--columns
+
+</dt>
+<dd>
+
+Ce paramètre accepte une ou plusieurs valeurs et contient la liste des colonnes à ajouter.
+
+Voici un exemple.
+
+```bash
+--columns=title --columns=description
+```
+
+```php
+Artisan::call('make:model-translation', [
+    '--columns' => ['title', 'description'],
+]);
+```
+
+</dd>
+</dl>
+
+### Configurer le modèle {/* #model_setup */}
+
+Une fois le dépôt de traductions créé, ajoutez le trait `LaravelLang\Models\HasTranslations` au modèle principal.
+
+Voici un exemple.
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+```
+
+Assurez-vous également que le modèle principal ne contient pas de champs physiques ou virtuels utilisés pour les traductions.
+
+Voici un exemple.
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+
+    protected $fillable = [
+        'category_id',
+
+        // À supprimer :
+        'title',
+        'description',
+    ];
+}
+```
+
+### Fichiers d’aide pour l’IDE {/* #ide_helpers */}
+
+:::tip
+
+La commande `php artisan make:model-translation` génère automatiquement les fichiers d’aide lors de la création du dépôt.
+
+Il est recommandé de relancer la commande de génération après avoir modifié le modèle de traduction.
+
+:::
+
+Pour aider votre IDE à reconnaître les champs traduisibles, nous vous recommandons d’exécuter la commande suivante.
+
+```bash
+php artisan lang:models-helper
+```
+
+Cette commande crée des fichiers d’aide qui permettent à l’IDE de reconnaître les champs, comme dans l’exemple suivant.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Après"}>
+
+<img src={require("@site/static/images/models-helper-after.png").default} alt={"Avec le fichier d’aide"} />
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Avant"}>
+
+<img src={require("@site/static/images/models-helper-before.png").default} alt={"Sans le fichier d’aide"} />
+
+</TabItem>
+
+</Tabs>
+
+Vous pouvez aussi modifier le répertoire de stockage de ces fichiers avec le paramètre `helpers` de la section `models` dans [config/localization.php](<./configuration.mdx#models>). Assurez-vous que votre IDE indexe le nouveau chemin.
+
+## Utilisation {/* #usage */}
+
+Cette vidéo montre comment installer et utiliser les paquets [Routes](<./packages-routes.mdx#usage> "Utilisation du paquet Routes") et [Models](<./packages-models.mdx#usage> "Utilisation du paquet Models") dans une même application ([voir sur YouTube](<https://youtu.be/mH76pGbpVu0>)).
+
+<iframe className="legacy-video" src="https://www.youtube-nocookie.com/embed/mH76pGbpVu0" title={"Paquets Routes et Models"} loading="lazy" allowFullScreen />
+
+### Lire une traduction {/* #get_translation */}
+
+:::tip
+
+Tous les dépôts propagent automatiquement au modèle parent l’indicateur de [chargement anticipé](<https://laravel.com/docs/eloquent-relationships#eager-loading>). Vous n’avez donc pas besoin de le faire manuellement.
+
+Par défaut, la relation ne contient que les lignes de la langue active et de la langue de repli. Vous pouvez charger toutes les lignes si nécessaire en modifiant les [paramètres de filtrage](<./configuration.mdx#models>).
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+Toutes les langues disponibles pour ces éléments seront alors chargées.
+
+:::
+
+Pour lire la valeur d’une propriété dans la langue active, accédez directement à cette propriété sur le modèle, comme dans l’exemple suivant.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+Si aucune valeur n’est disponible dans la <abbr title={"La valeur du paramètre \"app.locale\" dans le fichier \"config/app.php\"."}>langue principale</abbr>, la méthode renvoie la valeur de la <abbr title={"La valeur du paramètre \"app.fallback_locale\" dans le fichier \"config/app.php\"."}>langue de repli</abbr>.
+
+Vous pouvez aussi utiliser la méthode `getTranslation`.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+Pour obtenir une valeur dans une langue précise, passez son code comme deuxième argument, comme dans l’exemple suivant.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// or
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+Ces méthodes renvoient la valeur même si les modifications du modèle n’ont pas encore été écrites dans la base de données.
+
+:::
+
+### Définir les traductions {/* #set_translations */}
+
+#### Une seule valeur {/* #single_value */}
+
+Pour ajouter ou modifier une traduction dans la langue active de l’application, affectez la valeur à la propriété du modèle, comme dans l’exemple suivant.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+Vous pouvez aussi définir une nouvelle valeur avec la méthode `setTranslation`.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+Ces méthodes définissent une nouvelle valeur dans la langue active. Pour définir une valeur dans une langue précise, passez son code comme troisième argument de la méthode, comme dans l’exemple suivant.
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// or
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+Vous pouvez également utiliser l’affectation de masse.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+Ces méthodes ne font que renseigner les valeurs sur les objets du modèle. Pour écrire les changements dans la base de données, appelez `save` sur le modèle parent, comme dans l’exemple suivant.
+
+```php
+$page->save();
+```
+
+:::
+
+Vous pouvez aussi définir ces valeurs à la création du modèle.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### Plusieurs valeurs {/* #plural_value */}
+
+Pour renseigner rapidement une propriété dans plusieurs langues, utilisez l’une des méthodes suivantes.
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// Option 1
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// Option 2
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+Vous pouvez aussi passer des objets `iterable` lors de l’affectation de masse, comme dans l’exemple suivant.
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+Les champs peuvent être renseignés dans des langues différentes. Dans l’exemple ci-dessus, `title` est renseigné en français, en anglais et en allemand, tandis que `description` n’a de valeur qu’en français et en allemand.
+
+### Supprimer une traduction {/* #forget_translation */}
+
+:::warning
+
+Contrairement aux méthodes d’[ajout et de mise à jour](<#set_translations>), `forgetTranslation` et `forgetAllTranslations` modifient immédiatement la base de données en appelant `delete` sur le modèle de traduction.
+
+Par défaut, le modèle de traduction n’inclut pas le trait [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>). Les données sont donc supprimées immédiatement. Si nécessaire, ajoutez vous-même la prise en charge de la suppression logique dans la classe du modèle et dans la migration.
+
+:::
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetTranslation('fr');
+// or
+$page->forgetTranslation(Locale::French);
+```
+
+Vous pouvez aussi supprimer toutes les traductions à la fois en appelant `forgetAllTranslations`.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetAllTranslations();
+```
+
+### Vérifier qu’un champ est traduit {/* #has_translated */}
+
+Vous pouvez vérifier de plusieurs manières si une colonne possède une traduction. La première consiste à appeler `hasTranslated` avec le nom de la colonne en paramètre.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->hasTranslated('title');
+```
+
+Cette méthode vérifie à la fois la langue <abbr title={"La valeur du paramètre \"app.locale\" dans le fichier \"config/app.php\"."}>principale</abbr> et la langue <abbr title={"La valeur du paramètre \"app.fallback_locale\" dans le fichier \"config/app.php\"."}>de repli</abbr>. Elle renvoie `true` si l’une des valeurs est renseignée ou `false` si les deux sont vides.
+
+:::note
+
+Les valeurs booléennes stockées (`true / false`) et les valeurs numériques (`0, 0.0`) comptent comme des valeurs renseignées et donnent le résultat `true`.
+
+:::
+
+Pour vérifier la présence d’une valeur dans une langue précise, passez le code de langue comme deuxième argument, comme dans l’exemple suivant.
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->hasTranslated('title', 'fr');
+// or
+$page->hasTranslated('title', Locale::French);
+```
+
+### Vérifier qu’un champ est traduisible {/* #is_translatable */}
+
+La méthode `isTranslatable` vérifie si le champ figure dans la propriété `$fillable` du modèle de traduction.
+
+Voici un exemple.
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\Eloquent\Translation;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+
+class ArticleTranslation extends Translation
+{
+    protected $fillable = [
+        'title',
+    ];
+}
+
+$page = Article::first();
+
+$page->isTranslatable('title'); // true
+$page->isTranslatable('description'); // false
+```
+
+### Supprimer le modèle principal {/* #delete_base_model */}
+
+Par défaut, le modèle de traduction contient une clé étrangère qui pointe vers le modèle parent. Si ce dernier est supprimé logiquement avec le trait [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>), toutes les traductions restent en place. Lorsque `forceDelete` est appelé, les traductions sont automatiquement supprimées de la base de données.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->delete();
+// or
+$page->forceDelete();
+```
+
+## Événements {/* #events */}
+
+Les actions correspondantes déclenchent les événements suivants.
+
+```php
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+AllTranslationsHasBeenForgetEvent::dispatch($model);
+TranslationHasBeenForgetEvent::dispatch($model, $locale);
+TranslationHasBeenSetEvent::dispatch($model, $column, $locale, $oldValue, $newValue);
+```
+
+Si nécessaire, vous pouvez écouter l’événement, comme dans l’exemple suivant.
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(static function (AllTranslationsHasBeenForgetEvent $event) {
+            Log::info('Forget all locales', [
+                'model' => $event->model->getKey(),
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenForgetEvent $event) {
+            Log::info('Forget locale', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenSetEvent $event) {
+            Log::info('Set new translation', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+                'column' => $event->column,
+
+                'old' => $event->oldValue,
+                'new' => $event->newValue,
+            ]);
+        });
+    }
+}
+```
+
+## Compatibilité {/* #compatibility */}
+
+| Laravel | PHP | Paquet | État |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">pris en charge</span> |

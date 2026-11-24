@@ -1,0 +1,47 @@
+---
+title: "Publisher"
+slug: /upgrade-publisher.html
+description: "Информације о надоградњи пакета Publisher са верзије 15 на верзију 16"
+---
+
+## Ажурирање зависности {/* #updating_dependencies */}
+
+:::note
+
+Ако користите пакет `laravel-lang/common`, прескочите овај корак.
+
+:::
+
+У датотеци `composer.json` своје апликације ажурирајте следећу зависност.
+
+- `laravel-lang/publisher` на `^16.0`
+
+Затим покрените команду за ажурирање зависности.
+
+```bash
+composer update
+```
+
+## Промена именског простора локала {/* #change_namespace */}
+
+Замените следећи именски простор локала.
+
+```php
+LaravelLang\Locales\Enums\Locale
+```
+
+Замените га овим.
+
+```php
+LaravelLang\LocaleList\Locale
+```
+
+Погледајте пример.
+
+```php
+// Пре
+LaravelLang\Locales\Enums\Locale::Afrikaans; // af
+
+// После
+LaravelLang\LocaleList\Locale::Afrikaans; // af
+```

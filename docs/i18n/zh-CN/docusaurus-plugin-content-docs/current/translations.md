@@ -1,0 +1,46 @@
+---
+title: 管理译文
+description: 使用 Mona Publisher 添加、更新和删除应用及第三方包的译文。
+---
+
+官方翻译包包含 Publisher。其 Artisan 命令会将 PHP 和 JSON 译文写入应用的翻译目录，通常为 `lang/`。包专用文件也可能写入 `lang/vendor/`。
+
+## 添加语言区域 {#add-locales}
+
+传入一个或多个[语言区域代码](./available-locales.md)，以空格分隔。命令接受已配置的别名，但生成的文件使用规范代码。
+
+```bash
+php artisan lang:add fr de_CH
+```
+
+此命令会创建语言区域目录，然后更新**所有已安装的语言区域**，包括应用当前使用的语言区域和回退语言区域。如果没有传入参数，命令会询问是否安装所有受支持的语言区域。自动化脚本中请显式传入代码。
+
+## 更新译文 {#update-translations}
+
+```bash
+php artisan lang:update
+```
+
+Publisher 从应用当前及回退语言区域、翻译目录根下的文件或目录，以及 `lang/vendor/<package>/` 下的 JSON 文件中发现语言区域。仅有第三方包的 PHP 翻译目录时，该语言区域不会被识别为已安装。对它运行 `lang:add`，可创建对应的应用目录。
+
+翻译包在[插件清单](./plugins.md)中声明支持的包、版本和目标文件。Publisher 将共享词典和翻译包词典合并后，把译文合并到各个目标文件。它保留无关的键，并替换匹配的字符串键。如果词典中缺少某个短语，Publisher 会写入源短语。请将自定义覆盖项保存在单独的翻译文件中，或[跳过](./configure.md#skip-files-and-force-integrations)自行维护的生成目标。
+
+修改 Composer 依赖或[发布设置](./configure.md)后，请运行 `lang:update` 并检查生成的变更。合并可能会重建数字键的索引。如果应用使用生成的 `http-statuses.php`，请核对文件中的状态码。
+
+## 删除语言区域 {#remove-locales}
+
+```bash
+php artisan lang:rm de_CH
+```
+
+此命令会从翻译目录根及各直接的 `lang/vendor/<package>/` 目录中删除对应规范代码的目录和 JSON 文件，包括其中的自定义文件。当前和回退语言区域受保护。不传参数时，命令会询问是否删除所有未受保护的语言区域，默认选择否。
+
+命令针对每个语言区域报告 `DONE`、`PROTECTED`、`INVALID` 或 `SKIP`。这些状态都可能伴随表示成功的退出码，因此自动化脚本若需确认是否删除，应逐个检查请求的语言区域的结果。
+
+## JSON 回退 {#json-fallback}
+
+当 JSON 键缺失时，`laravel-lang/json-fallback` 会先在回退语言区域的 JSON 中查找，再查找 PHP 译文。Common 已包含此包。单独安装时，请运行 `composer require laravel-lang/json-fallback`。
+
+将 `LaravelLang\JsonFallback\LangJsonFallbackServiceProvider::class` 添加到 `bootstrap/providers.php` 的应用服务提供者列表。如果应用显式列出了 `Illuminate\Translation\TranslationServiceProvider`，请将该条目替换为 Mona 的服务提供者。[Laravel 服务提供者注册说明](https://laravel.com/docs/13.x/providers#registering-providers)
+
+如果当前语言区域为法语、回退语言区域为英语，那么 `lang/fr.json` 中缺少的键就可以使用 `lang/en.json` 中的值。

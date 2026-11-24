@@ -1,0 +1,18 @@
+{
+  "version.label": {
+    "message": "20.x",
+    "description": "The label for version current"
+  },
+  "sidebar.documentation.category.Localize an application": {
+    "message": "Локализация приложения",
+    "description": "The label for category 'Localize an application' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Packages and plugins": {
+    "message": "Пакеты и плагины",
+    "description": "The label for category 'Packages and plugins' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Project": {
+    "message": "Проект",
+    "description": "The label for category 'Project' in sidebar 'documentation'"
+  }
+}

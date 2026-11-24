@@ -1,0 +1,33 @@
+---
+title: "删除语言区域"
+slug: /usage-remove-locales.html
+description: "从 Laravel 应用删除语言区域"
+---
+
+:::warning
+
+执行此命令将删除相应语言区域的整个目录及其文件，默认和回退语言区域除外。
+
+:::
+
+要删除语言区域，请运行 `php artisan lang:rm <locale>` 并传入简写代码。
+
+```bash
+php artisan lang:rm fr de de_AT de_CH vi zh_CN
+```
+
+不传参数时，控制台会提示从可用语言区域中选择。
+
+```bash
+php artisan lang:rm
+```
+
+默认情况下，尝试删除受保护的语言区域时，命令会返回错误信息。
+
+受保护的语言区域是 `config/app.php` 中的 `locale` 和 `fallback_locale` 参数所指定的代码。
+
+使用 `force` 选项可强制删除受保护的语言区域。
+
+```bash
+php artisan lang:rm en --force
+```

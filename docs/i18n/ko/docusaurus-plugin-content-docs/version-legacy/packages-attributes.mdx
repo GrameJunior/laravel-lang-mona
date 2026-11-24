@@ -1,0 +1,57 @@
+---
+title: "Attributes"
+slug: /packages-attributes.html
+description: "폼 요소의 이름을 번역합니다."
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"프로젝트의 안정 버전이 릴리스되었습니다"}>안정</span> <span className="badge badge--secondary" title={"최신 버전을 알 수 없습니다"}>알 수 없음</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub에서 보기](<https://github.com/laravel-lang/attributes>)
+
+## 설치 {/* #installation */}
+
+:::note
+
+[Attributes 패키지의 호환성 표](<#compatibility> "Attributes 패키지 호환성 표")를 참조하세요.
+
+:::
+
+설치하려면 다음 콘솔 명령을 실행하세요.
+
+```bash
+composer require --dev laravel-lang/attributes:^2.16.5
+```
+
+## 사용법 {/* #usage */}
+
+이제 `lang:update` 콘솔 명령으로 기존 로캘을 [업데이트](<./usage-update-locales.mdx> "Laravel 애플리케이션의 로캘 업데이트")할 수 있습니다.
+
+```bash
+php artisan lang:update
+```
+
+`composer.json`의 `scripts` 블록에서 `post-update-cmd` 항목에 호출을 추가하는 것도 좋습니다.
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+이렇게 하면 의존성을 업데이트한 뒤 `php artisan lang:update` 콘솔 명령을 수동으로 실행할 필요 없이 로캘 파일을 자동으로 갱신합니다.
+
+## 호환성 {/* #compatibility */}
+
+| Laravel | PHP | Publisher | 패키지 | 상태 |
+| --- | --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | 15, 16 | `^2.5` | <span className="compatibility-status compatibility-status--supported">supported</span> |
+| 8, 9, 10, 11 | 8.1, 8.2 | 14 | `^2.0` | <span className="compatibility-status compatibility-status--not-supported">not supported</span> |
+| 7, 8, 9 | 7.3, 7.4, 8.0, 8.1 | 12, 13 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">not supported</span> |

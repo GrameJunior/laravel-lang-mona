@@ -1,0 +1,614 @@
+---
+title: "Translator"
+slug: /packages-translator.html
+description: "Превођење текста помоћу више API-ја за превођење"
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--warning" title={"Пројекат је у фази алфа тестирања"}>Алфа</span> <span className="badge badge--secondary" title={"Најновија верзија није позната"}>непозната</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Погледајте на GitHub-у](<https://github.com/laravel-lang/translator>)
+
+:::warning
+
+Пројекат `Translator` је у фази <strong>алфа</strong> тестирања.
+
+Употреба у продукцији не препоручује се пре објављивања стабилне верзије.
+
+:::
+
+## Инсталација {/* #installation */}
+
+:::note
+
+Погледајте [табелу компатибилности](<#compatibility> "Табела компатибилности за пакет Translator").
+
+:::
+
+За инсталацију покрените следећу команду.
+
+```bash
+composer require laravel-lang/translator:^1.0-alpha6
+```
+
+Подразумевана подешавања можете и [изменити](<./configuration.mdx#translator>) у датотеци `config/localization.php`.
+
+## Употреба {/* #usage */}
+
+:::tip
+
+Ако је потребно, у датотеци подешавања `config/localization.php` наведите податке за ауторизацију код добављача услуга. Без њих плаћене услуге неће радити исправно.
+
+:::
+
+### Циклично превођење {/* #cyclical_translation */}
+
+Појединачне API услуге не покривају увек све потребне локале. Циклично превођење омогућава да се пронађе услуга која може да преведе текст једним позивом.
+
+Узмимо следећа подешавања.
+
+```php
+use LaravelLang\Translator\Integrations\Deepl;
+use LaravelLang\Translator\Integrations\Google;
+use LaravelLang\Translator\Integrations\Yandex;
+
+return [
+    'translators' => [
+        'channels' => [
+            'google' => [
+                'translator' => Google::class,
+                'enabled'    => true,
+            ],
+
+            'deepl' => [
+                'translator' => Deepl::class,
+                'enabled'    => true,
+
+                'credentials' => [
+                    'key' => 'deepl-secret-key',
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => Yandex::class,
+                'enabled'    => false,
+
+                'credentials' => [
+                    'key'    => 'yandex-secret-key',
+                    'folder' => 'yandex-folder-id',
+                ],
+            ],
+        ],
+    ],
+];
+```
+
+У подешавањима су Google Translate и DeepL Translate активни, а Yandex.Translate је искључен. Параметар `enabled` важи само за циклично превођење.
+
+Претпоставимо да Google Translate може да преведе само на француски, а DeepL Translate само на немачки. Тада постоје три случаја.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"На француски"}>
+
+<span id={"procedure-tif"} />
+
+1. Проверавамо да ли Google Translate подржава овај језик. Подржава га.
+
+Враћамо превод из Google Translate-а.
+
+</TabItem>
+
+<TabItem value="tab-2" label={"На немачки"}>
+
+<span id={"procedure-tig"} />
+
+1. Проверавамо да ли Google Translate подржава овај језик. Не подржава га, па прелазимо на следећег преводиоца.
+1. Проверавамо да ли DeepL Translate подржава овај језик. Подржава га.
+
+Враћамо превод из DeepL Translate-а.
+
+</TabItem>
+
+<TabItem value="tab-3" label={"На неподржани језик"}>
+
+<span id={"procedure-tiu"} />
+
+1. Проверавамо да ли Google Translate подржава овај језик. Не подржава га, па прелазимо на следећег преводиоца.
+1. Проверавамо да ли DeepL Translate подржава овај језик. Не подржава га, па прелазимо на следећег преводиоца.
+
+Враћамо изворни текст без превода.
+
+</TabItem>
+
+</Tabs>
+
+#### Преко фасаде {/* #via_facade */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Facades\Translate;
+
+$translated1 = Translate::text(
+    text: 'some text',
+    to  : Locale::French
+);
+
+$translated2 = Translate::text([
+    'some text 1',
+    'some text 2',
+], Locale::French);
+
+$translated3 = Translate::text([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+], Locale::French);
+```
+
+#### Преко убризгавања зависности {/* #via_dependency_injection */}
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Services\Translate as TranslateService;
+
+class Example
+{
+    public function __construct(
+        protected TranslateService $translate
+    ) {}
+
+    public function get1(): string
+    {
+        return $this->translate->text('some text', Locale::French);
+    }
+
+    public function get2(): array
+    {
+        return $this->translate->text([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function get3(): array
+    {
+        return $this->translate->text([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function get4(): array
+    {
+        return $this->translate->text(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+### Директно превођење {/* #direct_translate */}
+
+#### Преко Google Translate-а {/* #via_google */}
+
+:::note
+
+При директном превођењу помоћу [Google Translate-а](<https://translate.google.com>), параметар `enabled` из подешавања се занемарује.
+
+:::
+
+За директан превод можете користити фасаду `LaravelLang\Translator\Facades\Translate` или класу услуге `LaravelLang\Translator\Services\Translate` преко убризгавања зависности.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Преко фасаде"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Facades\Translate;
+
+$translate1 = Translate::viaGoogle('some text', Locale::French);
+// returns string
+
+$translate2 = Translate::viaGoogle([
+    'some text 1',
+    'some text 2',
+], Locale::French);
+// returns array
+
+$translate3 = Translate::viaGoogle([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+], Locale::French);
+// returns array
+
+$translate3 = Translate::viaGoogle(new Collection([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+]), Locale::French);
+// returns array
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Убризгавање услуге Translator"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Services\Translate;
+
+class Example
+{
+    public function __construct(
+        protected Translate $translator
+    ) {}
+
+    public function fromString(): string
+    {
+        return $this->translator->viaGoogle('some text', Locale::French);
+    }
+
+    public function fromArray1(): array
+    {
+        return $this->translator->viaGoogle([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromArray2(): array
+    {
+        return $this->translator->viaGoogle([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromCollection(): array
+    {
+        return $this->translator->viaGoogle(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Убризгавање услуге Google"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Integrations\Google;
+
+class Example
+{
+    public function __construct(
+        protected Google $google
+    ) {}
+
+    public function fromString(): string
+    {
+        return $this->google->translate('some text', Locale::French);
+    }
+
+    public function fromArray1(): array
+    {
+        return $this->google->translate([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromArray2(): array
+    {
+        return $this->google->translate([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromCollection(): array
+    {
+        return $this->google->translate(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+#### Преко DeepL Translate-а {/* #via_deepl */}
+
+:::note
+
+При директном превођењу помоћу [DeepL Translate-а](<https://www.deepl.com/ru/translator>), параметар `enabled` из подешавања се занемарује.
+
+:::
+
+За директан превод можете користити фасаду `LaravelLang\Translator\Facades\Translate` или класу услуге `LaravelLang\Translator\Services\Translate` преко убризгавања зависности.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Преко фасаде"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Facades\Translate;
+
+$translate1 = Translate::viaDeepl('some text', Locale::French);
+// returns string
+
+$translate2 = Translate::viaDeepl([
+    'some text 1',
+    'some text 2',
+], Locale::French);
+// returns array
+
+$translate3 = Translate::viaDeepl([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+], Locale::French);
+// returns array
+
+$translate3 = Translate::viaDeepl(new Collection([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+]), Locale::French);
+// returns array
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Убризгавање услуге Translator"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Services\Translate;
+
+class Example
+{
+    public function __construct(
+        protected Translate $translator
+    ) {}
+
+    public function fromString(): string
+    {
+        return $this->translator->viaDeepl('some text', Locale::French);
+    }
+
+    public function fromArray1(): array
+    {
+        return $this->translator->viaDeepl([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromArray2(): array
+    {
+        return $this->translator->viaDeepl([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromCollection(): array
+    {
+        return $this->translator->viaDeepl(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Убризгавање услуге DeepL"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Integrations\Deepl;
+
+class Example
+{
+    public function __construct(
+        protected Deepl $deepl
+    ) {}
+
+    public function fromString(): string
+    {
+        return $this->deepl->translate('some text', Locale::French);
+    }
+
+    public function fromArray1(): array
+    {
+        return $this->deepl->translate([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromArray2(): array
+    {
+        return $this->deepl->translate([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromCollection(): array
+    {
+        return $this->deepl->translate(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+#### Преко Yandex Translate-а {/* #via_yandex */}
+
+:::note
+
+При директном превођењу помоћу [Yandex.Translate-а](<https://translate.yandex.ru>), параметар `enabled` из подешавања се занемарује.
+
+:::
+
+За директан превод можете користити фасаду `LaravelLang\Translator\Facades\Translate` или класу услуге `LaravelLang\Translator\Services\Translate` преко убризгавања зависности.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Преко фасаде"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Facades\Translate;
+
+$translate1 = Translate::viaYandex('some text', Locale::French);
+// returns string
+
+$translate2 = Translate::viaYandex([
+    'some text 1',
+    'some text 2',
+], Locale::French);
+// returns array
+
+$translate3 = Translate::viaYandex([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+], Locale::French);
+// returns array
+
+$translate3 = Translate::viaYandex(new Collection([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+]), Locale::French);
+// returns array
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Убризгавање услуге Translator"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Services\Translate;
+
+class Example
+{
+    public function __construct(
+        protected Translate $translator
+    ) {}
+
+    public function fromString(): string
+    {
+        return $this->translator->viaYandex('some text', Locale::French);
+    }
+
+    public function fromArray1(): array
+    {
+        return $this->translator->viaYandex([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromArray2(): array
+    {
+        return $this->translator->viaYandex([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromCollection(): array
+    {
+        return $this->translator->viaYandex(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Убризгавање услуге Yandex"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Integrations\Yandex;
+
+class Example
+{
+    public function __construct(
+        protected Yandex $yandex
+    ) {}
+
+    public function fromString(): string
+    {
+        return $this->yandex->translate('some text', Locale::French);
+    }
+
+    public function fromArray1(): array
+    {
+        return $this->yandex->translate([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromArray2(): array
+    {
+        return $this->yandex->translate([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromCollection(): array
+    {
+        return $this->yandex->translate(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+## Компатибилност {/* #compatibility */}
+
+| Laravel | PHP | API преводилаца | Пакет | Статус |
+| --- | --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.2, 8.3, 8.4, 8.5 | Google Translate, DeepL Translate, Yandex.Translate | `^1.0` | <span className="compatibility-status compatibility-status--supported">подржано</span> |

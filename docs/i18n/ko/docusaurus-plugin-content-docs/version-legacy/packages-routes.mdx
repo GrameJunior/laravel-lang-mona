@@ -1,0 +1,959 @@
+---
+title: "Routes"
+slug: /packages-routes.html
+description: "라우트를 쉽고 빠르게 현지화합니다."
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"프로젝트의 안정 버전이 릴리스되었습니다"}>안정</span> <span className="badge badge--secondary" title={"최신 버전을 알 수 없습니다"}>알 수 없음</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub에서 보기](<https://github.com/laravel-lang/routes>)
+
+## 설치 {/* #installation */}
+
+:::note
+
+[Routes 패키지의 호환성 표](<#compatibility> "Routes 패키지 호환성 표")를 참조하세요.
+
+:::
+
+설치하려면 다음 콘솔 명령을 실행하세요.
+
+```bash
+composer require laravel-lang/routes:^1.11.0
+```
+
+`config/localization.php` 파일을 편집해 기본 설정을 [변경](<./configuration.mdx#routes>)할 수도 있습니다.
+
+:::note
+
+[라우트 캐싱](<https://laravel.com/docs/routing#route-caching>)을 완전히 지원합니다.
+
+```bash
+php artisan route:cache
+```
+
+:::
+
+## 사용법 {/* #usage */}
+
+한 애플리케이션에 [Routes](<./packages-routes.mdx#usage> "Routes 패키지 사용법")와 [Models](<./packages-models.mdx#usage> "Models 패키지 사용법")를 함께 설치하고 사용하는 짧은 영상입니다. [YouTube에서 보기](<https://youtu.be/mH76pGbpVu0>)
+
+<iframe className="legacy-video" src="https://www.youtube-nocookie.com/embed/mH76pGbpVu0" title={"Routes와 Models"} loading="lazy" allowFullScreen />
+
+애플리케이션에 프랑스어와 독일어 두 로캘을 설치했다고 가정합니다.
+
+애플리케이션 설정은 다음과 같습니다.
+
+```php
+// config/app.php
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'locale' => Locale::French->value,
+
+    'fallback_locale' => Locale::German->value,
+];
+```
+
+프랑스어와 독일어에도 다음 값을 설정했습니다.
+
+```json
+{
+    "Foo": "Toutes les données ont été chargées."
+}
+```
+
+```json
+{
+    "Foo": "Alle Ressourcen geladen."
+}
+```
+
+### 직접 지정하기 {/* #direct */}
+
+별칭을 추가하지 않고 미들웨어를 직접 지정할 수 있습니다.
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+app('router')
+    ->middleware(LocalizationByParameter::class)
+    ->get('some/{locale}', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->get('some/{locale?}', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByHeader::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByCookie::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationBySession::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByModel::class)
+    ->get('some', fn () => view('welcome'));
+```
+
+### 별칭 사용하기 {/* #aliases */}
+
+미들웨어 별칭을 사용하려면 애플리케이션에 등록하세요.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Laravel 11"}>
+
+```php
+// bootstrap/app.php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Middleware;
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+return Application::configure(basePath: dirname(__DIR__))
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            'localization.parameter' => LocalizationByParameter::class,
+            'localization.redirect'  => LocalizationByParameterWithRedirect::class,
+            'localization.header'    => LocalizationByHeader::class,
+            'localization.cookie'    => LocalizationByCookie::class,
+            'localization.session'   => LocalizationBySession::class,
+            'localization.model'     => LocalizationByModel::class,
+        ]);
+    });
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Laravel 10"}>
+
+```php
+// app/Http/Kernel.php
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+class Kernel extends HttpKernel
+{
+    protected $middlewareAliases = [
+        // ...
+
+        'localization.parameter' => LocalizationByParameter::class,
+        'localization.redirect'  => LocalizationByParameterWithRedirect::class,
+        'localization.header'    => LocalizationByHeader::class,
+        'localization.cookie'    => LocalizationByCookie::class,
+        'localization.session'   => LocalizationBySession::class,
+        'localization.model'     => LocalizationByModel::class,
+    ];
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+그런 다음 라우트의 `middleware` 메서드에 별칭을 지정할 수 있습니다.
+
+```php
+app('router')
+    ->middleware('localization.parameter')
+    ->get('some/{locale}', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.redirect')
+    ->get('some/{locale?}', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.header')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.cookie')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.session')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.model')
+    ->get('some', fn () => view('welcome'));
+```
+
+### URL 매개변수로 설정하기 {/* #via_url_parameter */}
+
+:::tip
+
+먼저 라우트 URL의 원하는 위치에 `{locale}` 매개변수를 지정하세요.
+
+매개변수 이름은 `config/localization.php` 파일의 `routes` 설정에서 변경할 수 있습니다.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+
+app('router')
+    ->middleware(LocalizationByParameter::class)
+    ->get('foo/{locale}/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+잘못됐거나 설치되지 않은 로캘을 전달하면 애플리케이션의 기본 로캘로 페이지를 렌더링합니다.
+
+#### 예제 {/* #via_url_parameter_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"설치된 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/foo/de/show
+```
+
+응답
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"설치하지 않은 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/foo/as/show
+```
+
+응답
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"알 수 없는 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/foo/qwerty/show
+```
+
+응답
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### URL 매개변수와 리디렉션 {/* #via_url_parameter_with_redirect */}
+
+:::tip
+
+먼저 라우트 URL의 원하는 위치에 `{locale}` 매개변수를 지정하세요.
+
+매개변수 이름은 `config/localization.php` 파일의 `routes` 설정에서 변경할 수 있습니다.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+
+app('router')
+    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->get('some/{foo}/bar/{locale?}', function (string $foo) {
+        return response()->json([
+            $foo => __('Foo'),
+        ]);
+    });
+```
+
+잘못된 로캘을 전달하거나 생략하면 기본 로캘로 리디렉션합니다.
+
+#### 예제 {/* #via_url_parameter_redirect_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"설치된 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/some/show/bar/de
+```
+
+응답
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"설치하지 않은 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/some/show/bar/as
+```
+
+응답
+
+```bash
+### 302 리디렉션
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"알 수 없는 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/some/show/bar/qwerty
+```
+
+응답
+
+```bash
+### 302 리디렉션
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"매개변수 없음"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/some/show/bar/
+```
+
+응답
+
+```bash
+### 302 리디렉션
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+</Tabs>
+
+### 헤더로 설정하기 {/* #via_header */}
+
+:::tip
+
+<abbr title={"config/localization.php 파일의 routes 설정에서 이름을 변경할 수 있습니다."}>Accept-Language</abbr> 헤더에 따라 로캘을 설정합니다.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+
+app('router')
+    ->middleware(LocalizationByHeader::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+잘못됐거나 설치되지 않은 로캘을 전달하면 애플리케이션의 기본 로캘로 페이지를 렌더링합니다.
+
+#### 예제 {/* #via_header_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"설치된 로캘"}>
+
+요청
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: de'
+```
+
+응답
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"설치하지 않은 로캘"}>
+
+요청
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: as'
+```
+
+응답
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"알 수 없는 로캘"}>
+
+요청
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: qwerty'
+```
+
+응답
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### 쿠키로 설정하기 {/* #via_cookie */}
+
+:::tip
+
+<abbr title={"config/localization.php 파일의 routes 설정에서 이름을 변경할 수 있습니다."}>Accept-Language</abbr> 쿠키에 따라 로캘을 설정합니다.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+
+app('router')
+    ->middleware(LocalizationByCookie::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+잘못됐거나 설치되지 않은 로캘을 전달하면 애플리케이션의 기본 로캘로 페이지를 렌더링합니다.
+
+#### 예제 {/* #via_cookies_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"설치된 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=de"
+```
+
+응답
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"설치하지 않은 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=as"
+```
+
+응답
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"알 수 없는 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=qwerty"
+```
+
+응답
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### 세션으로 설정하기 {/* #via_session */}
+
+:::tip
+
+<abbr title={"config/localization.php 파일의 routes 설정에서 이름을 변경할 수 있습니다."}>Accept-Language</abbr> 세션 키에 따라 로캘을 설정합니다.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+app('router')
+    ->middleware(LocalizationBySession::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+잘못됐거나 설치되지 않은 로캘을 전달하면 애플리케이션의 기본 로캘로 페이지를 렌더링합니다.
+
+세션과 쿠키를 사용하는 방법은 기술적으로 같습니다. 값이 저장되는 위치만 다릅니다.
+
+세션 사용 방법은 [Laravel 문서](<https://laravel.com/docs/session>)의 [세션 가이드](<https://laravel.com/docs/session>)를 참조하세요.
+
+#### 예제 {/* #via_session_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"설치된 로캘"}>
+
+요청
+
+```bash
+echo "Accept-Language=de" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+응답
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"설치하지 않은 로캘"}>
+
+요청
+
+```bash
+echo "Accept-Language=as" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+응답
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"알 수 없는 로캘"}>
+
+요청
+
+```bash
+echo "Accept-Language=qwerty" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+응답
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### 모델로 설정하기 {/* #via_model */}
+
+:::tip
+
+<abbr title={"config/localization.php 파일의 routes 설정에서 이름을 변경할 수 있습니다."}>locale</abbr> 열에 따라 로캘을 설정합니다.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+
+app('router')
+    ->middleware(LocalizationByModel::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+이 방법으로 인증된 모든 사용자의 로캘을 설정할 수 있습니다. 모델에 <abbr title={"config/localization.php 파일의 routes 설정에서 이름을 변경할 수 있습니다."}>"locale"</abbr> 속성이 있는지 확인하세요.
+
+사용자 테이블에 이 열이 없다면 필요에 따라 열을 추가하거나 모델 클래스에 동적 메서드를 만드세요.
+
+다음은 예제입니다.
+
+```php
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use LaravelLang\LocaleList\Locale;
+
+class User extends Authenticatable
+{
+    protected function locale(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Locale::French
+        );
+    }
+}
+```
+
+이제 미들웨어로 인증하거나 `Auth::login($user)` 같은 메서드로 직접 인증하면 애플리케이션은 사용자가 선택한 언어의 정보를 반환합니다.
+
+특정 가드로 인증한 사용자라면 미들웨어를 호출할 때 콜론 뒤에 가드를 지정할 수 있습니다.
+
+다음은 예제입니다.
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+
+app('router')
+    ->middleware(LocalizationByModel::class . ':guard_name')
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+미들웨어는 사용자 인스턴스를 가져올 때 다음 코드를 사용합니다.
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+
+class LocalizationByModel extends Middleware
+{
+    public function __construct(
+        protected ?string $guard = null,
+    ) {}
+
+    protected function user(Request $request): ?Model
+    {
+        return $request->user($this->guard);
+    }
+}
+```
+
+### 현지화 그룹 사용 {/* #via_localization_group */}
+
+:::note
+
+라우트 <abbr title={"app('router')->localizedGroup(), Route::localizedGroup(), LocalizationRoute::group 메서드를 사용할 수 있습니다."}>그룹화</abbr> 없이 `localizedRoute` 헬퍼를 호출하면 로캘은 쿼리 매개변수로 지정됩니다. 예를 들면 아래와 같습니다.
+
+```bash
+https://example.com/foo?locale=fr
+```
+
+:::
+
+:::tip
+
+매개변수 이름, 이름 접두사 및 리디렉션 옵션은 `config/localization.php` 파일의 `routes` 설정에서 변경할 수 있습니다.
+
+:::
+
+```php
+use Illuminate\Support\Facades\Route;
+
+app('router')->localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+
+Route::localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+```
+
+이 메서드로 현지화 라우트 그룹의 접두사를 쉽게 관리할 수 있습니다.
+
+그룹의 주 미들웨어인 `LocalizationByParameterPrefix` 외에도 `LocalizationByCookie`, `LocalizationByHeader`, `LocalizationBySession`이 실행됩니다.
+
+다음 세 가지 방법 중 하나를 사용할 수 있습니다.
+
+```php
+use Illuminate\Support\Facades\Route;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+
+app('router')->localizedGroup(fn () => ...)
+
+Route::localizedGroup(fn () => ...)
+
+LocalizationRoute::group(fn () => ...)
+```
+
+애플리케이션은 `{locale}` 접두사가 있는 라우트와 없는 라우트를 모두 등록합니다. 다음은 예제입니다.
+
+| URL | 패턴 | 이름 |
+| --- | --- | --- |
+| https://example.com/fr/foo/show | `{locale}/foo/{bar}` | `localized.show` |
+| https://example.com/foo/show | `foo/{bar}` | `show` |
+
+이름 접두사는 `config/localization.php` 파일의 `routes` 설정에서 변경할 수 있습니다.
+
+:::note
+
+```php
+localizedRoute('show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+route('localized.show', ['bar' => 'show', 'locale' => app()->getLocale()]);
+// https://example.com/fr/foo/show
+```
+
+[PhpStorm](<https://www.jetbrains.com/phpstorm/>)용 플러그인 [Laravel Idea](<https://laravel-idea.com/>)가 이 기능을 지원합니다.
+
+<img src={require("@site/static/images/packages-route-idea-friendly.png").default} alt={"Laravel Idea에서 현지화 라우트를 사용하는 예"} />
+
+:::
+
+#### 예제 {/* #via_localization_group_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"기본 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/fr/foo/show
+```
+
+응답
+
+<Tabs>
+
+<TabItem value="tab-1" label={"리디렉션 사용"}>
+
+```bash
+### 302 리디렉션
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"리디렉션 사용 안 함"}>
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="tab-2" label={"기본값이 아닌 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/de/foo/show
+```
+
+응답
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"설치하지 않은 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/as/foo/show
+```
+
+응답
+
+```bash
+### 302 리디렉션
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"알 수 없는 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/qwerty/foo/show
+```
+
+응답
+
+```bash
+### 302 리디렉션
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+</Tabs>
+
+## 이벤트 {/* #events */}
+
+:::note
+
+이 이벤트는 `laravel-lang/routes` 패키지 `1.1` 이상에서 사용할 수 있습니다.
+
+:::
+
+애플리케이션에 설정할 로캘을 매개변수로 전달하면 이벤트가 발생합니다.
+
+```php
+use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
+
+LocaleHasBeenSetEvent::dispatch($locale);
+```
+
+이벤트의 `$locale` 속성은 `LaravelLang\Locales\Data\LocaleData` 타입입니다.
+
+필요하면 이 이벤트를 수신할 수 있습니다. 다음은 예제입니다.
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(static function (LocaleHasBeenSetEvent $event) {
+            Log::info('Locale set to: ' . $event->locale->code);
+        });
+    }
+}
+```
+
+## 호환성 {/* #compatibility */}
+
+| Laravel | PHP | 패키지 | 상태 |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">supported</span> |

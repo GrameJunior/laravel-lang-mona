@@ -1,0 +1,35 @@
+---
+title: "ロケールの管理"
+slug: /manage-locales.html
+description: "ローカライズを管理する方法の概要です。"
+---
+
+:::warning
+
+Laravel の標準機能では、JSON キーのフォールバック翻訳は<a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">使用できません</a>。たとえば、フランス語をフォールバック言語にして `__('Remember Me')` を呼び出しても、`Se souvenir de moi` ではなく `Remember Me` が返ります。
+
+:::
+
+ほとんどのコンソールコマンドは、ロケールの配列を引数として受け取ります。
+
+以下は指定例です。
+
+```bash
+php artisan lang:<command> fr de de_AT de_CH vi zh_CN
+php artisan lang:<command> fr
+php artisan lang:<command>
+```
+
+各指定の意味は次のとおりです。
+
+- `fr de de_AT de_CH vi zh_CN` はスペースで区切ったロケールの一覧です。
+- `fr` のように 1 つのロケール名を指定することもできます。
+- 引数を渡さなかった場合、スクリプトは次の順に確認します。
+- `Do you want to %s all localizations?` が表示されます。`%s` には `install`、`remove`、`reset` のいずれかが入ります。
+- `no` と答えると、`Select localizations to add (specify the necessary localizations separated by commas)` が表示されます。必要なロケールをカンマで区切って指定してください。
+
+:::note
+
+ファイルの操作（`install`、`uninstall`、`reset`、`update`）では、PHP ファイルに加えて、[Laravel Framework](<https://laravel.com>)、[Jetstream](<https://jetstream.laravel.com/>)、[Fortify](<https://github.com/laravel/fortify>)、[Cashier](<https://laravel.com/docs/billing>)、[Breeze](<https://github.com/laravel/breeze>)、[Nova（Dusk Suite と Log Viewer を含む）](<https://nova.laravel.com/>)、[Nova](<https://nova.laravel.com/>)（[Dusk Suite](<https://github.com/laravel/nova-dusk-suite>)、[Log Viewer](<https://github.com/laravel/nova-log-viewer>) を含む）、[UI](<https://github.com/laravel/ui>) などの翻訳を含む JSON ファイルも自動的に処理します。
+
+:::

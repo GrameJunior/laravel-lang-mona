@@ -1,0 +1,23 @@
+---
+title: "更新语言区域"
+slug: /usage-update-locales.html
+description: "更新 Laravel 应用中的语言区域"
+---
+
+要更新文件，请运行以下控制台命令。
+
+```bash
+php artisan lang:update
+```
+
+执行这条命令即可 🙂
+
+该命令会检测应用中已安装的语言区域并更新文件。
+
+:::tip
+
+某些 Laravel 次版本可能从仓库中移除键，应用里也就没有这些键了。这种情况很少见，但确实可能发生。
+
+更新语言区域的命令只会添加新短语或更新已有译文。要清理不再使用的短语，请运行 [`php artisan lang:reset`](<./usage-reset-locales.mdx> "重置 Laravel 应用中的语言区域")。
+
+:::

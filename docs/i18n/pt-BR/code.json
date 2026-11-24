@@ -1,0 +1,63 @@
+{
+  "home.description": {
+    "message": "Instale traduções e localize rotas e modelos Eloquent com o Laravel-Lang."
+  },
+  "home.guide.translations.title": {
+    "message": "Gerenciar localidades"
+  },
+  "home.guide.translations.description": {
+    "message": "Adicione, atualize e remova traduções com o Artisan."
+  },
+  "home.guide.configure.title": {
+    "message": "Configurar a localização"
+  },
+  "home.guide.configure.description": {
+    "message": "Configure aliases de localidades, rotas localizadas e traduções de modelos."
+  },
+  "home.guide.plugins.title": {
+    "message": "Plugins de tradução"
+  },
+  "home.guide.plugins.description": {
+    "message": "Instale pacotes de tradução ou crie o seu."
+  },
+  "home.guide.upgrade.title": {
+    "message": "Atualizar para o Mona"
+  },
+  "home.guide.upgrade.description": {
+    "message": "Migre suas dependências, configurações e traduções."
+  },
+  "home.title": {
+    "message": "Documentação"
+  },
+  "home.hero.title": {
+    "message": "Localize sua aplicação Laravel"
+  },
+  "home.start": {
+    "message": "Comece em 1 minuto"
+  },
+  "home.legacy": {
+    "message": "Documentação legada"
+  },
+  "home.example.install": {
+    "message": "Instale as traduções em francês"
+  },
+  "home.example.use": {
+    "message": "Use uma tradução"
+  },
+  "home.guides": {
+    "message": "Guias de localização"
+  },
+  "home.llms": {
+    "message": "Documentação para agentes de IA (llms.txt)"
+  },
+  "localePicker.label": {
+    "message": "Localidade"
+  },
+  "localePicker.install": {
+    "message": "Execute o comando a seguir para instalar as traduções de {language}."
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(abre em uma nova aba)",
+    "description": "The ARIA label for the external link icon"
+  }
+}

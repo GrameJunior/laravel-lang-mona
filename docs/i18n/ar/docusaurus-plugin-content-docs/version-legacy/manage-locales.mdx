@@ -1,0 +1,35 @@
+---
+title: "إدارة الإعدادات المحلية"
+slug: /manage-locales.html
+description: "معلومات عامة عن إدارة التوطين."
+---
+
+:::warning
+
+<a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">لا يتيح</a> Laravel افتراضيًا ترجمات احتياطية لمفاتيح JSON. مثلًا، عند استدعاء `__('Remember Me')`، يحصل المستخدم على `Remember Me` بدلًا من `Se souvenir de moi` إذا كانت الفرنسية لغة احتياطية.
+
+:::
+
+تقبل معظم أوامر الطرفية مصفوفة من الإعدادات المحلية كوسيطات.
+
+مثلًا:
+
+```bash
+php artisan lang:<command> fr de de_AT de_CH vi zh_CN
+php artisan lang:<command> fr
+php artisan lang:<command>
+```
+
+حيث:
+
+- `fr de de_AT de_CH vi zh_CN` قائمة بإعدادات محلية تفصل بينها مسافات.
+- `fr` يوضّح إمكانية تحديد اسم إعداد محلي واحد.
+- إذا لم تمرّر الوسيطة عند الاستدعاء، يطرح البرنامج النصي سؤالين:
+- `Do you want to %s all localizations?`، حيث يكون `%s` هو `install` أو `remove` أو `reset`.
+- إذا اخترت `no`، يظهر السؤال التالي: `Select localizations to add (specify the necessary localizations separated by commas)`.
+
+:::note
+
+عند إجراء أي عملية على الملفات (`install` و`uninstall` و`reset` و`update`)، تُعالج ملفات JSON تلقائيًا إلى جانب ملفات PHP، بما فيها ترجمات [إطار Laravel](<https://laravel.com>) و[Jetstream](<https://jetstream.laravel.com/>) و[Fortify](<https://github.com/laravel/fortify>) و[Cashier](<https://laravel.com/docs/billing>) و[Breeze](<https://github.com/laravel/breeze>) و[Nova (مع Dusk Suite وLog Viewer أيضًا)](<https://nova.laravel.com/>) و[Nova](<https://nova.laravel.com/>) (مع [Dusk Suite](<https://github.com/laravel/nova-dusk-suite>) و[Log Viewer](<https://github.com/laravel/nova-log-viewer>) أيضًا) و[UI](<https://github.com/laravel/ui>).
+
+:::

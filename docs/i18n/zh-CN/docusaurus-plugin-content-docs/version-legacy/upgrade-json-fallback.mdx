@@ -1,0 +1,31 @@
+---
+title: "JSON Fallback"
+slug: /upgrade-json-fallback.html
+description: "将 JSON Fallback 从版本 1 升级到版本 2"
+---
+
+## 更新依赖 {/* #updating_dependencies */}
+
+请在应用的 `composer.json` 中更新以下依赖。
+
+- 将 `"laravel-lang/json-fallback-hotfix": "^1.0"` 替换为 `"laravel-lang/json-fallback": "^2.0"`。
+
+然后运行以下命令更新依赖。
+
+```bash
+composer update
+```
+
+## 更改命名空间 {/* #change_namespace */}
+
+需要在 `config/app.php` 文件中更改命名空间。
+
+```php
+LaravelLang\JsonFallbackHotfix\TranslationServiceProvider
+```
+
+替换为
+
+```php
+LaravelLang\JsonFallback\TranslationServiceProvider
+```

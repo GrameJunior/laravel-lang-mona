@@ -9,6 +9,7 @@ const config: Config = {
     baseUrl: "/",
     trailingSlash: false,
     favicon: "images/favicon.svg",
+    customFields: {copyrightYear: new Date().getFullYear()},
     onBrokenLinks: "throw",
     onBrokenAnchors: "throw",
     onDuplicateRoutes: "throw",
@@ -20,10 +21,20 @@ const config: Config = {
     },
     i18n: {
         defaultLocale: "en",
-        locales: ["en", "ru"],
+        locales: ["ar", "zh-CN", "en", "fr", "ja", "ko", "fa", "pt-BR", "ru", "sr-Cyrl", "es", "uk"],
         localeConfigs: {
+            ar: {label: "العربية", direction: "rtl"},
+            "zh-CN": {label: "简体中文"},
             en: {label: "English"},
-            ru: {label: "Русский", translate: true},
+            fr: {label: "Français"},
+            ja: {label: "日本語"},
+            ko: {label: "한국어"},
+            fa: {label: "فارسی", direction: "rtl"},
+            "pt-BR": {label: "Português (Brasil)"},
+            ru: {label: "Русский"},
+            "sr-Cyrl": {label: "Српски"},
+            es: {label: "Español"},
+            uk: {label: "Українська"},
         },
     },
     presets: [
@@ -63,7 +74,7 @@ const config: Config = {
             links: [
                 {label: "GitHub", href: "https://github.com/Laravel-Lang/mona"},
             ],
-            copyright: `Copyright © 2013-${new Date().getFullYear()} Laravel-Lang Team`,
+            copyright: "Copyright © 2013-{year} Laravel-Lang Team",
         },
         prism: {
             theme: prismThemes.vsLight,

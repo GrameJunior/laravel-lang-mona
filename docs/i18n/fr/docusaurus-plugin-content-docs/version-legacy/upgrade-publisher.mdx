@@ -1,0 +1,47 @@
+---
+title: "Publisher"
+slug: /upgrade-publisher.html
+description: "Comment passer de la version 15 à la version 16 du Publisher."
+---
+
+## Mettre à jour les dépendances {/* #updating_dependencies */}
+
+:::note
+
+Si vous utilisez le paquet `laravel-lang/common`, sautez cette étape.
+
+:::
+
+Mettez à jour la dépendance suivante dans le fichier `composer.json` de votre application.
+
+- `laravel-lang/publisher` en version `^16.0`
+
+Exécutez ensuite cette commande pour mettre à jour les dépendances.
+
+```bash
+composer update
+```
+
+## Modifier l’espace de noms des langues {/* #change_namespace */}
+
+Remplacez l’espace de noms suivant.
+
+```php
+LaravelLang\Locales\Enums\Locale
+```
+
+Utilisez celui-ci à la place.
+
+```php
+LaravelLang\LocaleList\Locale
+```
+
+Voici un exemple.
+
+```php
+// Avant
+LaravelLang\Locales\Enums\Locale::Afrikaans; // af
+
+// Après
+LaravelLang\LocaleList\Locale::Afrikaans; // af
+```

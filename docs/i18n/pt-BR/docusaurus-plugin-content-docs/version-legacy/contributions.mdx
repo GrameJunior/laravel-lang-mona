@@ -1,0 +1,124 @@
+---
+title: "Guia de contribuição"
+slug: /contributions.html
+description: "Guia para contribuir com o desenvolvimento dos projetos Laravel-Lang"
+---
+
+Contribuições são <strong>bem-vindas</strong> e recebem os devidos <strong>créditos</strong>.
+
+Aceitamos contribuições por pull requests em [todos os projetos](<https://github.com/orgs/Laravel-Lang/repositories>) da nossa organização.
+
+## O que significam os arquivos? {/* #what_do_the_files_mean */}
+
+- <strong>php.json</strong> contém traduções de valores para arquivos de localização PHP.
+- <strong>php-inline.json</strong> contém traduções inline de valores para arquivos de localização PHP.
+- <strong>json.json</strong> contém traduções de valores para arquivos de localização JSON.
+- <strong>json-inline.json</strong> contém traduções inline de valores para arquivos de localização JSON.
+- <strong>\_excludes.json</strong> contém os valores cuja tradução é igual ao texto em inglês. O arquivo lista os valores, sem as chaves.
+
+## Como editar os arquivos? {/* #how_to_edit_files */}
+
+Todos os arquivos disponíveis para tradução têm extensão JSON e ficam na pasta `locales`. Abra o arquivo desejado e faça as mudanças.
+
+:::tip
+
+Mesmo que encontre um erro na chave, preserve-a para que o Laravel consiga lê-la.
+
+Envie um [pull request](<https://github.com/orgs/laravel/repositories>) ao produto correspondente da equipe Laravel para corrigir a grafia.
+
+Nossos produtos atualizam as chaves automaticamente uma vez por dia.
+
+:::
+
+1. Abra o arquivo de localização.
+1. Altere os valores das chaves.
+1. Crie um commit e envie-o ao repositório remoto.
+1. Abra um pull request informando o código da localidade para a qual está fazendo as alterações. Veja o exemplo abaixo.
+
+   :::tip
+
+   \[fr\]: Added new localization
+
+   :::
+
+:::tip
+
+Os arquivos com sufixo `inline` devem omitir referências ao atributo atual (`:attribute`).
+
+As traduções inline usam uma forma de se referir ao campo que dispensa seu nome.
+
+```text
+// Mensagem padrão
+The :attribute must contain at least one letter.
+
+// Mensagem inline
+This field must contain at least one letter.
+```
+
+:::
+
+## Como adicionar uma localidade? {/* #how_to_add_a_new_locale */}
+
+### Para projetos Laravel-Lang {/* #for_laravel_lang_projects */}
+
+Em geral, nossos projetos já incluem as localidades disponíveis. Para sugerir uma nova, [entre em contato conosco](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+### Para projetos de terceiros {/* #for_third_party_projects */}
+
+:::tip
+
+Para adicionar uma localidade que não consta em `laravel-lang/locale-list`, [entre em contato conosco](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+:::
+
+Verifique se o pacote `laravel-lang/status-generator` está instalado e execute o comando abaixo.
+
+```bash
+vendor/bin/lang create <locale>
+# vendor/bin/lang create fr
+```
+
+Para instalar todas as localidades que faltam, execute o comando sem informar o código de localidade.
+
+```bash
+vendor/bin/lang create
+```
+
+## Estilo de código {/* #code_style */}
+
+A equipe Laravel-Lang segue o padrão de estilo [PER](<https://www.php-fig.org/per/coding-style/>) e o padrão de carregamento automático [PSR-4](<https://www.php-fig.org/psr/psr-4/>).
+
+Para aplicar a formatação do estilo de código, execute o comando abaixo.
+
+```bash
+composer style
+```
+
+## Título do pull request {/* #pr_title */}
+
+O título do pull request deve seguir o formato abaixo.
+
+```bash
+[locale]: Description
+```
+
+Veja um exemplo.
+
+```bash
+[fr]: Added new localization
+```
+
+Uma expressão regular verifica se o título segue o formato estabelecido.
+
+```bash
+/^(Draft:\s)?\[[a-zA-Z,_\s]+\]:\s.+$/
+```
+
+## Código de conduta {/* #code_of_conduct */}
+
+O código de conduta do Laravel deriva do [Contributor Covenant](<https://www.contributor-covenant.org/version/2/1/code_of_conduct/>). Você pode comunicar violações a [Andrey Helldar e Fred Delrieu](<mailto:helldar@dragon-code.pro;caouecs@caouecs.net>).
+
+- As pessoas participantes devem respeitar pontos de vista divergentes.
+- As pessoas participantes devem evitar ataques pessoais e comentários depreciativos em suas palavras e ações.
+- Ao interpretar palavras e ações de outras pessoas, as pessoas participantes devem sempre presumir boa-fé.
+- Nenhum comportamento que possa ser razoavelmente considerado assédio será tolerado.

@@ -1,0 +1,959 @@
+---
+title: "Routes"
+slug: /packages-routes.html
+description: "Una forma rápida y sencilla de localizar rutas"
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Se ha publicado una versión estable del proyecto"}>Estable</span> <span className="badge badge--secondary" title={"Se desconoce la última versión"}>desconocida</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Ver en GitHub](<https://github.com/laravel-lang/routes>)
+
+## Instalación {/* #installation */}
+
+:::note
+
+Consulta la [tabla de compatibilidad](<#compatibility> "Tabla de compatibilidad del paquete Routes").
+
+:::
+
+Para instalarlo, ejecuta el siguiente comando de consola.
+
+```bash
+composer require laravel-lang/routes:^1.11.0
+```
+
+Puedes [cambiar](<./configuration.mdx#routes>) la configuración predeterminada editando `config/localization.php`.
+
+:::note
+
+Compatibilidad completa con la [caché de rutas](<https://laravel.com/docs/routing#route-caching>)
+
+```bash
+php artisan route:cache
+```
+
+:::
+
+## Uso {/* #usage */}
+
+Este video breve muestra cómo instalar y usar [Routes](<./packages-routes.mdx#usage> "Información de uso del paquete Routes") y [Models](<./packages-models.mdx#usage> "Información de uso del paquete Models") en la misma aplicación ([ver en YouTube](<https://youtu.be/mH76pGbpVu0>)).
+
+<iframe className="legacy-video" src="https://www.youtube-nocookie.com/embed/mH76pGbpVu0" title={"Routes y Models"} loading="lazy" allowFullScreen />
+
+Supongamos que una aplicación tiene instalados el francés y el alemán.
+
+La configuración de la aplicación se vería así.
+
+```php
+// config/app.php
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'locale' => Locale::French->value,
+
+    'fallback_locale' => Locale::German->value,
+];
+```
+
+También se han definido valores para el francés y el alemán.
+
+```json
+{
+    "Foo": "Toutes les données ont été chargées."
+}
+```
+
+```json
+{
+    "Foo": "Alle Ressourcen geladen."
+}
+```
+
+### Uso directo {/* #direct */}
+
+Puedes hacer referencia al middleware sin agregar alias.
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+app('router')
+    ->middleware(LocalizationByParameter::class)
+    ->get('some/{locale}', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->get('some/{locale?}', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByHeader::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByCookie::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationBySession::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByModel::class)
+    ->get('some', fn () => view('welcome'));
+```
+
+### Alias {/* #aliases */}
+
+Para usar alias de middleware, regístralos en la aplicación.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Laravel 11"}>
+
+```php
+// bootstrap/app.php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Middleware;
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+return Application::configure(basePath: dirname(__DIR__))
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            'localization.parameter' => LocalizationByParameter::class,
+            'localization.redirect'  => LocalizationByParameterWithRedirect::class,
+            'localization.header'    => LocalizationByHeader::class,
+            'localization.cookie'    => LocalizationByCookie::class,
+            'localization.session'   => LocalizationBySession::class,
+            'localization.model'     => LocalizationByModel::class,
+        ]);
+    });
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Laravel 10"}>
+
+```php
+// app/Http/Kernel.php
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+class Kernel extends HttpKernel
+{
+    protected $middlewareAliases = [
+        // ...
+
+        'localization.parameter' => LocalizationByParameter::class,
+        'localization.redirect'  => LocalizationByParameterWithRedirect::class,
+        'localization.header'    => LocalizationByHeader::class,
+        'localization.cookie'    => LocalizationByCookie::class,
+        'localization.session'   => LocalizationBySession::class,
+        'localization.model'     => LocalizationByModel::class,
+    ];
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+Luego puedes indicar los alias en el método `middleware` de la ruta.
+
+```php
+app('router')
+    ->middleware('localization.parameter')
+    ->get('some/{locale}', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.redirect')
+    ->get('some/{locale?}', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.header')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.cookie')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.session')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.model')
+    ->get('some', fn () => view('welcome'));
+```
+
+### Mediante un parámetro de URL {/* #via_url_parameter */}
+
+:::tip
+
+Primero indica el parámetro `{locale}` en cualquier parte de la URL de tus rutas.
+
+Puedes cambiar el nombre del parámetro en la sección `routes` de `config/localization.php`.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+
+app('router')
+    ->middleware(LocalizationByParameter::class)
+    ->get('foo/{locale}/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Si pasas una configuración regional no válida o no instalada, la página se renderiza en la configuración regional principal de la aplicación.
+
+#### Ejemplos {/* #via_url_parameter_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Configuración regional instalada"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/foo/de/show
+```
+
+Respuesta
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Configuración regional sin instalar"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/foo/as/show
+```
+
+Respuesta
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Configuración regional desconocida"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/foo/qwerty/show
+```
+
+Respuesta
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Mediante un parámetro de URL con redirección {/* #via_url_parameter_with_redirect */}
+
+:::tip
+
+Primero indica el parámetro `{locale}` en cualquier parte de la URL de tus rutas.
+
+Puedes cambiar el nombre del parámetro en la sección `routes` de `config/localization.php`.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+
+app('router')
+    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->get('some/{foo}/bar/{locale?}', function (string $foo) {
+        return response()->json([
+            $foo => __('Foo'),
+        ]);
+    });
+```
+
+Si pasas una configuración regional no válida o no la indicas, la página se redirige a la configuración regional principal.
+
+#### Ejemplos {/* #via_url_parameter_redirect_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Configuración regional instalada"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/some/show/bar/de
+```
+
+Respuesta
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Configuración regional sin instalar"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/some/show/bar/as
+```
+
+Respuesta
+
+```bash
+### Redirección 302
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Configuración regional desconocida"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/some/show/bar/qwerty
+```
+
+Respuesta
+
+```bash
+### Redirección 302
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"Sin parámetro"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/some/show/bar/
+```
+
+Respuesta
+
+```bash
+### Redirección 302
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+</Tabs>
+
+### Mediante un encabezado {/* #via_header */}
+
+:::tip
+
+Establece la configuración regional según el encabezado <abbr title={"Puedes cambiar este nombre en la sección \"routes\" del archivo \"config/localization.php\"."}>Accept-Language</abbr>.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+
+app('router')
+    ->middleware(LocalizationByHeader::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Si envías una configuración regional no válida o no instalada, la página se renderiza en la configuración regional principal de la aplicación.
+
+#### Ejemplos {/* #via_header_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Configuración regional instalada"}>
+
+Solicitud
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: de'
+```
+
+Respuesta
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Configuración regional sin instalar"}>
+
+Solicitud
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: as'
+```
+
+Respuesta
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Configuración regional desconocida"}>
+
+Solicitud
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: qwerty'
+```
+
+Respuesta
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Mediante una cookie {/* #via_cookie */}
+
+:::tip
+
+Establece la configuración regional según la cookie <abbr title={"Puedes cambiar este nombre en la sección \"routes\" del archivo \"config/localization.php\"."}>Accept-Language</abbr>.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+
+app('router')
+    ->middleware(LocalizationByCookie::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Si pasas una configuración regional no válida o no instalada, la página se renderiza en la configuración regional principal de la aplicación.
+
+#### Ejemplos {/* #via_cookies_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Configuración regional instalada"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=de"
+```
+
+Respuesta
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Configuración regional sin instalar"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=as"
+```
+
+Respuesta
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Configuración regional desconocida"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=qwerty"
+```
+
+Respuesta
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Mediante una sesión {/* #via_session */}
+
+:::tip
+
+Establece la configuración regional según la clave de sesión <abbr title={"Puedes cambiar este nombre en la sección \"routes\" del archivo \"config/localization.php\"."}>Accept-Language</abbr>.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+app('router')
+    ->middleware(LocalizationBySession::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Si pasas una configuración regional no válida o no instalada, la página se renderiza en la configuración regional principal de la aplicación.
+
+Desde el punto de vista técnico, las sesiones se usan igual que las cookies. La diferencia está en dónde se almacenan.
+
+Puedes [consultar](<https://laravel.com/docs/session>) más información sobre el uso de sesiones en la [documentación de Laravel](<https://laravel.com/docs/session>).
+
+#### Ejemplos {/* #via_session_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Configuración regional instalada"}>
+
+Solicitud
+
+```bash
+echo "Accept-Language=de" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+Respuesta
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Configuración regional sin instalar"}>
+
+Solicitud
+
+```bash
+echo "Accept-Language=as" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+Respuesta
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Configuración regional desconocida"}>
+
+Solicitud
+
+```bash
+echo "Accept-Language=qwerty" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+Respuesta
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Mediante un modelo {/* #via_model */}
+
+:::tip
+
+Establece la configuración regional según el valor de la columna <abbr title={"Puedes cambiar este nombre en la sección \"routes\" del archivo \"config/localization.php\"."}>locale</abbr>.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+
+app('router')
+    ->middleware(LocalizationByModel::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Este método permite establecer la configuración regional de cualquier cliente autenticado. Asegúrate de que el modelo contenga el atributo <abbr title={"Puedes cambiar este nombre en la sección \"routes\" del archivo \"config/localization.php\"."}>"locale"</abbr>.
+
+Si la tabla de usuarios no tiene esta columna, agrégala si hace falta o crea un método dinámico en la clase del modelo.
+
+Considera este ejemplo.
+
+```php
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use LaravelLang\LocaleList\Locale;
+
+class User extends Authenticatable
+{
+    protected function locale(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Locale::French
+        );
+    }
+}
+```
+
+Cuando el usuario se autentique mediante el middleware o manualmente, por ejemplo con `Auth::login($user)`, la aplicación devolverá la información en el idioma que eligió.
+
+Si un guard específico autentica al usuario, añade dos puntos y el nombre del guard al llamar al middleware.
+
+Considera este ejemplo.
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+
+app('router')
+    ->middleware(LocalizationByModel::class . ':guard_name')
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+El middleware usa este código para obtener la instancia de usuario.
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+
+class LocalizationByModel extends Middleware
+{
+    public function __construct(
+        protected ?string $guard = null,
+    ) {}
+
+    protected function user(Request $request): ?Model
+    {
+        return $request->user($this->guard);
+    }
+}
+```
+
+### Mediante un grupo de localización {/* #via_localization_group */}
+
+:::note
+
+Si llamas a `localizedRoute` sin <abbr title={"Los métodos disponibles son \"app('router')->localizedGroup()\", \"Route::localizedGroup()\" y \"LocalizationRoute::group\"."}>agrupar</abbr> las rutas, la configuración regional se especifica como parámetro de consulta. Considera este ejemplo.
+
+```bash
+https://example.com/foo?locale=fr
+```
+
+:::
+
+:::tip
+
+Puedes cambiar el nombre del parámetro, el prefijo de nombres y la opción de redirección en la sección `routes` del archivo `config/localization.php`.
+
+:::
+
+```php
+use Illuminate\Support\Facades\Route;
+
+app('router')->localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+
+Route::localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+```
+
+Este método permite gestionar los prefijos de grupo con rutas localizadas.
+
+Además del middleware principal del grupo, `LocalizationByParameterPrefix`, intervienen `LocalizationByCookie`, `LocalizationByHeader` y `LocalizationBySession`.
+
+Puedes usar cualquiera de estos tres métodos.
+
+```php
+use Illuminate\Support\Facades\Route;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+
+app('router')->localizedGroup(fn () => ...)
+
+Route::localizedGroup(fn () => ...)
+
+LocalizationRoute::group(fn () => ...)
+```
+
+La aplicación registrará dos tipos de rutas, con el prefijo `{locale}` y sin él. Considera este ejemplo.
+
+| URL | Patrón | Nombre |
+| --- | --- | --- |
+| https://example.com/fr/foo/show | `{locale}/foo/{bar}` | `localized.show` |
+| https://example.com/foo/show | `foo/{bar}` | `show` |
+
+Puedes cambiar el prefijo de nombres en la sección `routes` de `config/localization.php`.
+
+:::note
+
+```php
+localizedRoute('show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+route('localized.show', ['bar' => 'show', 'locale' => app()->getLocale()]);
+// https://example.com/fr/foo/show
+```
+
+Esta función es compatible con [Laravel Idea](<https://laravel-idea.com/>), un complemento para [PhpStorm](<https://www.jetbrains.com/phpstorm/>).
+
+<img src={require("@site/static/images/packages-route-idea-friendly.png").default} alt={"Rutas compatibles con Laravel Idea"} />
+
+:::
+
+#### Ejemplos {/* #via_localization_group_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Configuración regional predeterminada"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/fr/foo/show
+```
+
+Respuesta
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Con redirección habilitada"}>
+
+```bash
+### Redirección 302
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Con redirección deshabilitada"}>
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Configuración regional no predeterminada"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/de/foo/show
+```
+
+Respuesta
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Configuración regional sin instalar"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/as/foo/show
+```
+
+Respuesta
+
+```bash
+### Redirección 302
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"Configuración regional desconocida"}>
+
+Solicitud
+
+```bash
+curl -XGET https://example.com/qwerty/foo/show
+```
+
+Respuesta
+
+```bash
+### Redirección 302
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+</Tabs>
+
+## Eventos {/* #events */}
+
+:::note
+
+El evento está disponible en `laravel-lang/routes` a partir de la versión `1.1`.
+
+:::
+
+El evento se emite cuando se pasa una configuración regional para establecerla en la aplicación.
+
+```php
+use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
+
+LocaleHasBeenSetEvent::dispatch($locale);
+```
+
+La propiedad `$locale` del evento es de tipo `LaravelLang\Locales\Data\LocaleData`.
+
+Si lo necesitas, puedes escuchar este evento.
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(static function (LocaleHasBeenSetEvent $event) {
+            Log::info('Locale set to: ' . $event->locale->code);
+        });
+    }
+}
+```
+
+## Compatibilidad {/* #compatibility */}
+
+| Laravel | PHP | Paquete | Estado |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">compatible</span> |

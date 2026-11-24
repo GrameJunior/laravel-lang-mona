@@ -1,0 +1,46 @@
+---
+title: "Gérer les traductions"
+description: "Ajoutez, mettez à jour et supprimez les traductions de l’application et de ses dépendances avec le Publisher de Mona."
+---
+
+Le Publisher est inclus dans les packs de traduction officiels. Ses commandes Artisan écrivent les traductions PHP et JSON dans le répertoire de langues de l’application, généralement `lang/`. Les fichiers propres à un paquet peuvent aussi être écrits dans `lang/vendor/`.
+
+## Ajouter des langues {#add-locales}
+
+Indiquez un ou plusieurs [codes de langue](./available-locales.md), séparés par des espaces. La commande accepte les alias configurés et utilise les codes canoniques pour les fichiers générés.
+
+```bash
+php artisan lang:add fr de_CH
+```
+
+La commande crée les répertoires de langues, puis met à jour **toutes les langues installées**, y compris la langue active et la langue de repli de l’application. Sans argument, elle propose d’installer toutes les langues prises en charge. Indiquez les codes explicitement dans les scripts d’automatisation.
+
+## Mettre à jour les traductions {#update-translations}
+
+```bash
+php artisan lang:update
+```
+
+Le Publisher détecte les langues à partir de la langue active et de la langue de repli de l’application, des fichiers ou répertoires à la racine du répertoire de langues et des fichiers JSON dans `lang/vendor/<package>/`. Un répertoire contenant uniquement des traductions PHP d’un paquet ne suffit pas pour considérer une langue comme installée. Utilisez `lang:add` pour créer le répertoire de cette langue dans l’application.
+
+Les packs de traduction déclarent les paquets pris en charge, leurs versions et les fichiers de destination dans les [manifestes des plugins](./plugins.md). Le Publisher combine les dictionnaires partagés avec ceux des paquets, puis fusionne les traductions dans chaque fichier de destination. Il conserve les clés sans correspondance et remplace celles qui correspondent à une chaîne. Si une expression est absente des dictionnaires, le Publisher écrit le texte source. Conservez vos traductions personnalisées dans des fichiers distincts ou [excluez](./configure.md#skip-files-and-force-integrations) les fichiers générés que vous gérez vous-même.
+
+Exécutez `lang:update` après avoir modifié les dépendances Composer ou les [paramètres de publication](./configure.md). Examinez les différences générées. La fusion peut réindexer les clés numériques. Si votre application utilise les fichiers `http-statuses.php` générés, vérifiez leurs codes de statut.
+
+## Supprimer des langues {#remove-locales}
+
+```bash
+php artisan lang:rm de_CH
+```
+
+La commande supprime le répertoire et le fichier JSON du code de langue canonique à la racine du répertoire de langues et dans chaque sous-répertoire direct `lang/vendor/<package>/`, y compris les fichiers personnalisés qu’ils contiennent. La langue active et la langue de repli sont protégées. Sans argument, la commande propose de supprimer toutes les langues non protégées et sélectionne « non » par défaut.
+
+La commande indique `DONE`, `PROTECTED`, `INVALID` ou `SKIP` pour chaque langue. Dans un script qui doit confirmer la suppression, vérifiez le résultat de chaque langue demandée, car tous ces statuts peuvent être renvoyés avec un code de sortie indiquant un succès.
+
+## Repli des traductions JSON {#json-fallback}
+
+Lorsqu’une clé JSON est introuvable, `laravel-lang/json-fallback` la recherche dans le JSON de la langue de repli avant de passer aux traductions PHP. Common inclut ce paquet. Pour l’installer séparément, exécutez `composer require laravel-lang/json-fallback`.
+
+Ajoutez `LaravelLang\JsonFallback\LangJsonFallbackServiceProvider::class` aux fournisseurs de services de l’application dans `bootstrap/providers.php`. Si l’application déclare explicitement `Illuminate\Translation\TranslationServiceProvider`, remplacez cette entrée par le fournisseur de services de Mona. [Enregistrement des fournisseurs de services Laravel](https://laravel.com/docs/13.x/providers#registering-providers)
+
+Si le français est la langue active et l’anglais la langue de repli, une clé absente de `lang/fr.json` peut désormais correspondre à sa valeur dans `lang/en.json`.

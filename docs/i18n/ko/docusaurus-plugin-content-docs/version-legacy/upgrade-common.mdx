@@ -1,0 +1,27 @@
+---
+title: "Common"
+slug: /upgrade-common.html
+description: "Common 5에서 6으로 업그레이드하는 방법입니다."
+---
+
+## 의존성 업데이트 {/* #updating_dependencies */}
+
+애플리케이션의 `composer.json`에서 다음 의존성을 업데이트하세요.
+
+- `laravel-lang/common`을 `^6.0`으로 변경
+
+`require-dev`에 있다면 `require`로 옮기세요.
+
+이어서 다음 콘솔 명령으로 의존성을 업데이트하세요.
+
+```bash
+composer update
+```
+
+## Publisher 업그레이드 {/* #upgrade_publisher */}
+
+Publisher 업그레이드 가이드에서 의존성 업데이트를 제외한 모든 단계를 완료하세요.
+
+## JSON Fallback 업그레이드 {/* #upgrade_json_fallback */}
+
+`laravel-lang/json-fallback-hotfix` 패키지를 사용한다면 프로젝트에 필요한 변경을 적용하세요.

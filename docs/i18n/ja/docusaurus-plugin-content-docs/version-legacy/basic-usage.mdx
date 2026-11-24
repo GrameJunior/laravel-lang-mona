@@ -1,0 +1,459 @@
+---
+title: "基本的な使い方"
+slug: /basic-usage.html
+description: "パッケージをすばやくインストールして使用する方法を説明します。"
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+## インストール {/* #installation */}
+
+次のコンソールコマンドでパッケージをインストールします。
+
+```bash
+composer require laravel-lang/common:^6.9
+```
+
+## ロケールの管理 {/* #managing_locales */}
+
+### ロケールを追加する {/* #add_locales */}
+
+:::note
+
+利用できるロケールは[<strong>ロケールの一覧</strong>](<./available-locales-list.mdx>)で確認できます。
+
+:::
+
+コンソールコマンド `lang:add` でロケールを[追加](<./usage-add-locales.mdx> "Laravel アプリケーションにロケールを追加する")できます。
+
+```bash
+php artisan lang:add <locale>
+```
+
+### ロケールを更新する {/* #update_locales */}
+
+既存のロケールは、コンソールコマンド `lang:update` で[更新](<./usage-update-locales.mdx> "Laravel アプリケーションのロケールを更新する")できます。
+
+```bash
+php artisan lang:update
+```
+
+`composer.json` の `scripts` ブロックにある `post-update-cmd` セクションに、コマンドの呼び出しを追加することも推奨します。
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+これにより、依存関係を更新するとローカライズファイルも自動で更新されます。`php artisan lang:update` を手動で実行する手間が省けます。
+
+## ルート {/* #routes */}
+
+### ローカライズルートグループを使う {/* #via_localization_group */}
+
+:::note
+
+ルートの<abbr title={"利用できるメソッドは app('router')->localizedGroup()、Route::localizedGroup()、LocalizationRoute::group です。"}>グループ化</abbr>を使わずに `localizedRoute` ヘルパーを呼び出すと、ロケールはクエリパラメーターになります。次の URL はその例です。
+
+```bash
+https://example.com/foo?locale=fr
+```
+
+:::
+
+:::tip
+
+パラメーター名、ルート名のプレフィックス、リダイレクトの設定は、`config/localization.php` ファイルの `routes` セクションで変更できます。
+
+:::
+
+```php
+use Illuminate\Support\Facades\Route;
+
+app('router')->localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+
+Route::localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+```
+
+このメソッドを使うと、ローカライズされたルートグループのプレフィックスを簡単に管理できます。
+
+このグループの主ミドルウェア `LocalizationByParameterPrefix` に加えて、`LocalizationByCookie`、`LocalizationByHeader`、`LocalizationBySession` が使われます。
+
+以下の 3 つの方法のいずれかを使用できます。
+
+```php
+use Illuminate\Support\Facades\Route;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+
+app('router')->localizedGroup(fn () => ...)
+
+Route::localizedGroup(fn () => ...)
+
+LocalizationRoute::group(fn () => ...)
+```
+
+アプリケーションには `{locale}` のプレフィックス付きルートと、プレフィックスなしのルートの 2 種類が登録されます。次の表に例を示します。
+
+| URL | パターン | 名前 |
+| --- | --- | --- |
+| https://example.com/fr/foo/show | `{locale}/foo/{bar}` | `localized.show` |
+| https://example.com/foo/show | `foo/{bar}` | `show` |
+
+ルート名のプレフィックスは `config/localization.php` ファイルの `routes` セクションで変更できます。
+
+:::note
+
+```php
+localizedRoute('show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+route('localized.show', ['bar' => 'show', 'locale' => app()->getLocale()]);
+// https://example.com/fr/foo/show
+```
+
+この機能は [Laravel Idea](<https://laravel-idea.com/>) に対応しています。Laravel Idea は [PhpStorm](<https://www.jetbrains.com/phpstorm/>) 用のプラグインです。
+
+<img src={require("@site/static/images/packages-route-idea-friendly.png").default} alt={"IDE によるルートの補完"} />
+
+:::
+
+#### 例 {/* #via_localization_group_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"既定のロケール"}>
+
+リクエスト
+
+```bash
+curl -XGET https://example.com/fr/foo/show
+```
+
+レスポンス
+
+<Tabs>
+
+<TabItem value="tab-1" label={"リダイレクト有効"}>
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"リダイレクト無効"}>
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="tab-2" label={"既定以外のロケール"}>
+
+リクエスト
+
+```bash
+curl -XGET https://example.com/de/foo/show
+```
+
+レスポンス
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"未インストール"}>
+
+リクエスト
+
+```bash
+curl -XGET https://example.com/as/foo/show
+```
+
+レスポンス
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"未知のロケール"}>
+
+リクエスト
+
+```bash
+curl -XGET https://example.com/qwerty/foo/show
+```
+
+レスポンス
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+</Tabs>
+
+## モデル {/* #models */}
+
+### 翻訳を取得する {/* #get_translation */}
+
+:::tip
+
+すべての翻訳リポジトリは[事前ロード](<https://laravel.com/docs/eloquent-relationships#eager-loading>)の設定を親モデルへ自動で伝えるため、手動での設定は不要です。
+
+既定では、リレーションに現在とフォールバックのロケールのレコードだけが含まれます。[フィルター設定](<./configuration.mdx#models>)を変更すると、すべてのロケールを読み込むこともできます。
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+この場合、項目で利用可能なすべてのロケールが読み込まれます。
+
+:::
+
+現在のロケールの値を取得するには、モデルのプロパティを参照します。以下は例です。
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+<abbr title={"config/app.php ファイルの app.locale パラメーターで設定された値です。"}>現在のロケール</abbr>の値が見つからない場合、<abbr title={"config/app.php ファイルの app.fallback_locale パラメーターで設定された値です。"}>フォールバックロケール</abbr>の値を返します。
+
+`getTranslation` メソッドも使用できます。
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+特定のロケールの値を取得するには、ロケールコードを第 2 引数に指定します。以下は例です。
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// または
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+モデルの変更をデータベースに書き込んでいない場合でも、これらのメソッドは変更後の値を返します。
+
+:::
+
+### 翻訳を設定する {/* #set_translations */}
+
+#### 1 つの値 {/* #single_value */}
+
+アプリケーションの現在のロケールに翻訳を追加または更新するには、モデルのプロパティへ値を代入します。以下は例です。
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+新しい値を `setTranslation` メソッドで設定することもできます。
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+これらの方法は現在のロケールに新しい値を設定します。特定のロケールに値を設定するには、そのコードをメソッドの第 3 引数に渡します。以下は例です。
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// または
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+一括代入も可能です。
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+これらのメソッドを呼び出すと、新しい値はモデルオブジェクトに設定されます。変更をデータベースに書き込むには、親モデルの `save` メソッドを呼び出します。
+
+```php
+$page->save();
+```
+
+:::
+
+モデルの作成時にも値を設定できます。以下は例です。
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### 複数の値 {/* #plural_value */}
+
+1 つのプロパティに複数のロケールの翻訳をすばやく設定するには、以下のいずれかの方法を使用します。
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// 方法 1
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// 方法 2
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+一括代入では `iterable` なオブジェクトも渡せます。以下は例です。
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+すべてのフィールドに同じロケールを指定する必要はありません。上記の例では、`title` にフランス語、英語、ドイツ語の値を、`description` にはフランス語とドイツ語の値のみを設定します。
+
+## JSON フォールバック {/* #json_fallback */}
+
+:::note
+
+Laravel 11 の `config/app.php` 設定ファイルには `providers` セクションがありません。手動で追加できます。
+
+:::
+
+インストール後、`config/app.php` 設定ファイルの `providers` セクションにサービスプロバイダーへの参照を追加します。
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // その他のサービスプロバイダー
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+これで JSON キーは選択したロケールに応じた値を返すようになります。

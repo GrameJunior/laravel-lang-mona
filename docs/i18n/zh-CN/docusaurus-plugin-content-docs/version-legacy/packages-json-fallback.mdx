@@ -1,0 +1,71 @@
+---
+title: "JSON Fallback"
+slug: /packages-json-fallback.html
+description: "为 JSON 字符串译文提供回退支持"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"该项目已发布稳定版本"}>稳定版</span> <span className="badge badge--secondary" title={"最新版本未知"}>未知</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [在 GitHub 上查看](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+如果将英语用作回退语言区域，无需使用此包。
+
+:::
+
+## 安装 {/* #installation */}
+
+:::note
+
+请参阅[兼容性表](<#compatibility> "JSON Fallback 软件包的兼容性表")。
+
+:::
+
+Laravel 的默认行为<a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">不支持</a> JSON 键的回退译文。例如，回退语言为法语时，调用 `__('Remember Me')` 得到的仍是 `Remember Me`，而不是 `Se souvenir de moi`。
+
+要安装软件包，请运行以下控制台命令。
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## 用法 {/* #usage */}
+
+:::note
+
+Laravel 11 的 `config/app.php` 配置文件没有 `providers` 部分，可以手动添加。
+
+:::
+
+安装后，需要在 `config/app.php` 配置文件的 `providers` 部分注册服务提供者。
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // 其他服务提供者
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+此时，JSON 键会根据所选的语言区域正确返回对应的值。
+
+## 兼容性 {/* #compatibility */}
+
+| Laravel | PHP | 软件包 | 状态 |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">支持</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">不支持</span> |

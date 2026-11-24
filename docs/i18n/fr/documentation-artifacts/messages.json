@@ -1,0 +1,23 @@
+{
+  "releaseLine": {
+    "message": "Les paquets officiels partagent le même numéro de version."
+  },
+  "documentation": {
+    "message": "Documentation"
+  },
+  "optional": {
+    "message": "Facultatif"
+  },
+  "legacy": {
+    "message": "Documentation des anciennes versions"
+  },
+  "legacyDescription": {
+    "message": "Guides pour les installations antérieures à Mona."
+  },
+  "moved": {
+    "message": "La documentation a déménagé"
+  },
+  "redirect": {
+    "message": "Accéder à la documentation"
+  }
+}

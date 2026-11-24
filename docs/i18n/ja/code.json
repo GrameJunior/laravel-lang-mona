@@ -1,0 +1,71 @@
+{
+  "home.description": {
+    "message": "Laravel-Lang で翻訳をインストールし、ルートと Eloquent モデルをローカライズできます。"
+  },
+  "home.guide.translations.title": {
+    "message": "ロケールの管理"
+  },
+  "home.guide.translations.description": {
+    "message": "Artisan で翻訳を追加、更新、削除します。"
+  },
+  "home.guide.configure.title": {
+    "message": "ローカライズの設定"
+  },
+  "home.guide.configure.description": {
+    "message": "ロケールのエイリアス、ローカライズされたルート、モデルの翻訳を設定します。"
+  },
+  "home.guide.plugins.title": {
+    "message": "翻訳プラグイン"
+  },
+  "home.guide.plugins.description": {
+    "message": "翻訳パックをインストールすることも、自分で作ることもできます。"
+  },
+  "home.guide.upgrade.title": {
+    "message": "Mona へのアップグレード"
+  },
+  "home.guide.upgrade.description": {
+    "message": "依存関係、設定、翻訳を移行します。"
+  },
+  "home.title": {
+    "message": "ドキュメント"
+  },
+  "home.hero.title": {
+    "message": "Laravel アプリケーションをローカライズ"
+  },
+  "home.start": {
+    "message": "1 分で始める"
+  },
+  "home.legacy": {
+    "message": "旧版ドキュメント"
+  },
+  "home.example.install": {
+    "message": "フランス語の翻訳をインストールする"
+  },
+  "home.example.use": {
+    "message": "翻訳を使用する"
+  },
+  "home.guides": {
+    "message": "ローカライズガイド"
+  },
+  "home.llms": {
+    "message": "AI エージェント向けドキュメント（llms.txt）"
+  },
+  "localePicker.label": {
+    "message": "ロケール"
+  },
+  "localePicker.install": {
+    "message": "{language} の翻訳をインストールするには、以下のコマンドを実行してください。"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "（新しいタブで開きます）",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "ドロップダウンを展開する",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "ドロップダウンを折りたたむ",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  }
+}

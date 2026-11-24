@@ -1,0 +1,124 @@
+---
+title: "Посібник для учасників"
+slug: /contributions.html
+description: "Як допомогти з розробкою проєктів Laravel Lang"
+---
+
+Ми <strong>вітаємо</strong> ваш внесок і обов'язково <strong>зазначимо авторство</strong>.
+
+Ми приймаємо внески через запити на злиття в [усіх проєктах](<https://github.com/orgs/Laravel-Lang/repositories>) нашої організації.
+
+## Для чого потрібні файли? {/* #what_do_the_files_mean */}
+
+- <strong>php.json</strong> — переклади значень для мовних файлів PHP.
+- <strong>php-inline.json</strong> — переклади значень без назви атрибута для мовних файлів PHP.
+- <strong>json.json</strong> — переклади значень для мовних файлів JSON.
+- <strong>json-inline.json</strong> — переклади значень без назви атрибута для мовних файлів JSON.
+- <strong>\_excludes.json</strong> — значення, переклад яких збігається з англійським. Зверніть увагу, що файл містить список значень, а не ключів.
+
+## Як редагувати файли? {/* #how_to_edit_files */}
+
+Усі доступні для перекладу файли мають розширення JSON і містяться в каталозі `locales`. Відкрийте потрібний файл і внесіть зміни.
+
+:::tip
+
+Навіть якщо ви бачите помилку в ключі, не змінюйте його, інакше Laravel не зможе його прочитати.
+
+Щоб виправити написання, надішліть [запит на злиття](<https://github.com/orgs/laravel/repositories>) до відповідного проєкту команди Laravel.
+
+Після цього наші пакети автоматично оновлять ключі. Це відбувається раз на день.
+
+:::
+
+1. Відкрийте файл локалізації.
+1. Змініть значення ключів.
+1. Створіть коміт і надішліть його до віддаленого репозиторію.
+1. Створіть запит на злиття та зазначте код локалі, для якої внесли зміни. Наприклад:
+
+   :::tip
+
+   \[fr\]: Added new localization
+
+   :::
+
+:::tip
+
+Зверніть увагу на файли із суфіксом `inline`. Вони не мають містити посилань на поточний атрибут (`:attribute`).
+
+У перекладах без назви атрибута використовується інше формулювання:
+
+```text
+// It's a normal
+The :attribute must contain at least one letter.
+
+// It's a inline
+This field must contain at least one letter.
+```
+
+:::
+
+## Як додати нову локаль? {/* #how_to_add_a_new_locale */}
+
+### Для проєктів Laravel Lang {/* #for_laravel_lang_projects */}
+
+Зазвичай усі наші проєкти вже містять доступні локалі. Якщо хочете запропонувати нову, [напишіть нам](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+### Для сторонніх проєктів {/* #for_third_party_projects */}
+
+:::tip
+
+Щоб додати локаль, якої немає в `laravel-lang/locale-list`, [напишіть нам](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+:::
+
+Переконайтеся, що пакет `laravel-lang/status-generator` установлено, і виконайте команду:
+
+```bash
+vendor/bin/lang create <locale>
+# vendor/bin/lang create fr
+```
+
+Щоб установити всі відсутні локалі, виконайте команду без коду локалі:
+
+```bash
+vendor/bin/lang create
+```
+
+## Стиль коду {/* #code_style */}
+
+Команда Laravel-Lang дотримується стандарту стилю коду [PER](<https://www.php-fig.org/per/coding-style/>) і стандарту автоматичного завантаження [PSR-4](<https://www.php-fig.org/psr/psr-4/>).
+
+Щоб відформатувати код, виконайте команду:
+
+```bash
+composer style
+```
+
+## Заголовок запиту на злиття {/* #pr_title */}
+
+Заголовок запиту на злиття має відповідати такому формату:
+
+```bash
+[locale]: Description
+```
+
+Наприклад:
+
+```bash
+[fr]: Added new localization
+```
+
+Відповідність заголовка формату перевіряється регулярним виразом:
+
+```bash
+/^(Draft:\s)?\[[a-zA-Z,_\s]+\]:\s.+$/
+```
+
+## Кодекс поведінки {/* #code_of_conduct */}
+
+Кодекс поведінки Laravel ґрунтується на [Угоді учасників](<https://www.contributor-covenant.org/version/2/1/code_of_conduct/>). Про порушення кодексу можна повідомляти [Андрію Хеллдару або Фреду Дельріє](<mailto:helldar@dragon-code.pro;caouecs@caouecs.net>):
+
+- Учасники толерантно ставляться до протилежних поглядів.
+- Учасники мають уникати особистих нападів і принизливих зауважень у своїх словах і діях.
+- Тлумачачи слова та дії інших, учасники мають виходити з добрих намірів.
+- Поведінка, яку обґрунтовано можна вважати переслідуванням, не допускається.

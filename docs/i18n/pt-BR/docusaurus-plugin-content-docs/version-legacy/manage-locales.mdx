@@ -1,0 +1,35 @@
+---
+title: "Gerenciar localidades"
+slug: /manage-locales.html
+description: "Informações gerais sobre o gerenciamento de localidades"
+---
+
+:::warning
+
+Por padrão, o Laravel <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">não permite</a> traduções de fallback para chaves JSON. Por exemplo, ao chamar `__('Remember Me')`, você obtém `Remember Me` em vez de `Se souvenir de moi` com francês como idioma de fallback.
+
+:::
+
+Quase todos os comandos de console aceitam um array de localidades como parâmetro.
+
+Veja alguns exemplos.
+
+```bash
+php artisan lang:<command> fr de de_AT de_CH vi zh_CN
+php artisan lang:<command> fr
+php artisan lang:<command>
+```
+
+O comando aceita as opções abaixo.
+
+- `fr de de_AT de_CH vi zh_CN` é uma lista de localidades separadas por espaços.
+- `fr` indica que também é possível informar uma só localidade.
+- Se o parâmetro for omitido na chamada, o script fará duas perguntas.
+- `Do you want to %s all localizations?`, em que `%s` é `install`, `remove` ou `reset`.
+- Se a resposta for `no`, a próxima pergunta será `Select localizations to add (specify the necessary localizations separated by commas)`.
+
+:::note
+
+Qualquer operação com arquivos (`install`, `uninstall`, `reset` e `update`) processa automaticamente os arquivos PHP e JSON, incluindo traduções para [Laravel Framework](<https://laravel.com>), [Jetstream](<https://jetstream.laravel.com/>), [Fortify](<https://github.com/laravel/fortify>), [Cashier](<https://laravel.com/docs/billing>), [Breeze](<https://github.com/laravel/breeze>), [Nova (também Dusk Suite e Log Viewer)](<https://nova.laravel.com/>), [Nova](<https://nova.laravel.com/>) (também [Dusk Suite](<https://github.com/laravel/nova-dusk-suite>) e [Log Viewer](<https://github.com/laravel/nova-log-viewer>)) e [UI](<https://github.com/laravel/ui>).
+
+:::

@@ -1,0 +1,71 @@
+---
+title: "JSON Fallback"
+slug: /packages-json-fallback.html
+description: "افزودن قابلیت ترجمهٔ جایگزین برای رشته‌های JSON"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"نسخه‌ای پایدار از پروژه منتشر شده است"}>پایدار</span> <span className="badge badge--secondary" title={"آخرین نسخه مشخص نیست"}>نامشخص</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [مشاهده در GitHub](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+اگر از انگلیسی به‌عنوان زبان منطقه‌ای جایگزین استفاده می‌کنید، به این بسته نیازی ندارید.
+
+:::
+
+## نصب {/* #installation */}
+
+:::note
+
+جدول سازگاری را [اینجا](<#compatibility> "جدول سازگاری بستهٔ JSON Fallback") ببینید.
+
+:::
+
+Laravel در حالت پیش‌فرض ترجمهٔ جایگزین برای کلیدهای JSON را <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">پشتیبانی نمی‌کند</a>. برای نمونه، هنگام فراخوانی `__('Remember Me')`، به‌جای `Se souvenir de moi` برای زبان جایگزین فرانسوی، `Remember Me` برمی‌گردد.
+
+برای نصب، فرمان زیر را اجرا کنید.
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## کاربرد {/* #usage */}
+
+:::note
+
+در Laravel 11 بخش `providers` در فایل پیکربندی `config/app.php` وجود ندارد. می‌توانید آن را دستی اضافه کنید.
+
+:::
+
+پس از نصب، باید ارجاع ارائه‌دهندهٔ سرویس را در بخش `providers` فایل تنظیمات `config/app.php` اضافه کنید.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // سایر ارائه‌دهندگان سرویس
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+اکنون کلیدهای JSON مقدار درستِ مربوط به زبان منطقه‌ای انتخاب‌شده را برمی‌گردانند.
+
+## سازگاری {/* #compatibility */}
+
+| Laravel | PHP | بسته | وضعیت |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">پشتیبانی می‌شود</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">پشتیبانی نمی‌شود</span> |

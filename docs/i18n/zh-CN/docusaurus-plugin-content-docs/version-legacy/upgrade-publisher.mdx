@@ -1,0 +1,47 @@
+---
+title: "Publisher"
+slug: /upgrade-publisher.html
+description: "将 Publisher 从版本 15 升级到版本 16"
+---
+
+## 更新依赖 {/* #updating_dependencies */}
+
+:::note
+
+如果使用 `laravel-lang/common` 包，请跳过此步骤。
+
+:::
+
+请在应用的 `composer.json` 中更新以下依赖。
+
+- 将 `laravel-lang/publisher` 更新到 `^16.0`。
+
+然后运行以下命令更新依赖。
+
+```bash
+composer update
+```
+
+## 更改 Locales 命名空间 {/* #change_namespace */}
+
+将语言区域命名空间从
+
+```php
+LaravelLang\Locales\Enums\Locale
+```
+
+替换为
+
+```php
+LaravelLang\LocaleList\Locale
+```
+
+例如：
+
+```php
+// 修改前
+LaravelLang\Locales\Enums\Locale::Afrikaans; // af
+
+// 修改后
+LaravelLang\LocaleList\Locale::Afrikaans; // af
+```

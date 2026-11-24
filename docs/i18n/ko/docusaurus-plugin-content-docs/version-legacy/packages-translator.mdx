@@ -1,0 +1,614 @@
+---
+title: "Translator"
+slug: /packages-translator.html
+description: "여러 번역 API를 사용해 텍스트를 번역합니다."
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--warning" title={"프로젝트는 알파 테스트 단계입니다"}>알파</span> <span className="badge badge--secondary" title={"최신 버전을 알 수 없습니다"}>알 수 없음</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub에서 보기](<https://github.com/laravel-lang/translator>)
+
+:::warning
+
+`Translator` 프로젝트는 현재 <strong>알파</strong> 테스트 단계입니다.
+
+안정 버전이 릴리스되기 전에는 운영 환경에서 사용하지 않는 것이 좋습니다.
+
+:::
+
+## 설치 {/* #installation */}
+
+:::note
+
+[Models 패키지의 호환성 표](<#compatibility> "Models 패키지 호환성 표")를 참조하세요.
+
+:::
+
+설치하려면 다음 콘솔 명령을 실행하세요.
+
+```bash
+composer require laravel-lang/translator:^1.0-alpha6
+```
+
+`config/localization.php` 파일을 편집하여 기본 설정을 [변경](<./configuration.mdx#translator>)할 수도 있습니다.
+
+## 사용법 {/* #usage */}
+
+:::tip
+
+필요한 경우 `config/localization.php` 설정 파일에 제공업체의 인증 정보를 지정하세요. 인증 정보가 없으면 유료 서비스가 정상적으로 작동하지 않습니다.
+
+:::
+
+### 순차 번역 {/* #cyclical_translation */}
+
+모든 API 서비스가 필요한 언어를 지원하는 것은 아닙니다. 여러 서비스를 순서대로 시도해 한 번의 호출로 텍스트를 번역할 수 있는 서비스를 찾습니다.
+
+다음은 설정 예제입니다.
+
+```php
+use LaravelLang\Translator\Integrations\Deepl;
+use LaravelLang\Translator\Integrations\Google;
+use LaravelLang\Translator\Integrations\Yandex;
+
+return [
+    'translators' => [
+        'channels' => [
+            'google' => [
+                'translator' => Google::class,
+                'enabled'    => true,
+            ],
+
+            'deepl' => [
+                'translator' => Deepl::class,
+                'enabled'    => true,
+
+                'credentials' => [
+                    'key' => 'deepl-secret-key',
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => Yandex::class,
+                'enabled'    => false,
+
+                'credentials' => [
+                    'key'    => 'yandex-secret-key',
+                    'folder' => 'yandex-folder-id',
+                ],
+            ],
+        ],
+    ],
+];
+```
+
+설정에서 Google 번역과 DeepL 번역을 활성화하고 Yandex.Translate는 비활성화했습니다. `enabled` 매개변수는 순차 번역에만 적용됩니다.
+
+Google 번역은 프랑스어로만, DeepL 번역은 독일어로만 번역할 수 있다고 가정하면 세 가지 경우가 있습니다.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"프랑스어로 번역"}>
+
+<span id={"procedure-tif"} />
+
+1. Google 번역이 이 언어를 지원하는지 확인합니다. 지원하므로 이 서비스로 번역합니다.
+
+Google 번역이 번역한 텍스트를 반환합니다.
+
+</TabItem>
+
+<TabItem value="tab-2" label={"독일어로 번역"}>
+
+<span id={"procedure-tig"} />
+
+1. Google 번역이 이 언어를 지원하는지 확인합니다. 지원하지 않으므로 다음 번역기로 넘어갑니다.
+1. DeepL 번역이 이 언어를 지원하는지 확인합니다. 지원하므로 이 서비스로 번역합니다.
+
+DeepL 번역이 번역한 텍스트를 반환합니다.
+
+</TabItem>
+
+<TabItem value="tab-3" label={"지원하지 않는 언어로 번역"}>
+
+<span id={"procedure-tiu"} />
+
+1. Google 번역이 이 언어를 지원하는지 확인합니다. 지원하지 않으므로 다음 번역기로 넘어갑니다.
+1. DeepL 번역이 이 언어를 지원하는지 확인합니다. 지원하지 않으므로 다음 번역기로 넘어갑니다.
+
+번역하지 않고 원문을 반환합니다.
+
+</TabItem>
+
+</Tabs>
+
+#### 파사드 사용 {/* #via_facade */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Facades\Translate;
+
+$translated1 = Translate::text(
+    text: 'some text',
+    to  : Locale::French
+);
+
+$translated2 = Translate::text([
+    'some text 1',
+    'some text 2',
+], Locale::French);
+
+$translated3 = Translate::text([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+], Locale::French);
+```
+
+#### 의존성 주입 사용 {/* #via_dependency_injection */}
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Services\Translate as TranslateService;
+
+class Example
+{
+    public function __construct(
+        protected TranslateService $translate
+    ) {}
+
+    public function get1(): string
+    {
+        return $this->translate->text('some text', Locale::French);
+    }
+
+    public function get2(): array
+    {
+        return $this->translate->text([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function get3(): array
+    {
+        return $this->translate->text([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function get4(): array
+    {
+        return $this->translate->text(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+### 직접 번역 {/* #direct_translate */}
+
+#### Google 번역 사용 {/* #via_google */}
+
+:::note
+
+[Google 번역](<https://translate.google.com>)으로 텍스트를 직접 번역하면 `enabled` 설정을 무시합니다.
+
+:::
+
+직접 번역하려면 `LaravelLang\Translator\Facades\Translate` 파사드를 사용하거나 `LaravelLang\Translator\Services\Translate` 서비스 클래스를 의존성 주입으로 연결합니다.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"파사드 사용"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Facades\Translate;
+
+$translate1 = Translate::viaGoogle('some text', Locale::French);
+// 문자열을 반환합니다.
+
+$translate2 = Translate::viaGoogle([
+    'some text 1',
+    'some text 2',
+], Locale::French);
+// 배열을 반환합니다.
+
+$translate3 = Translate::viaGoogle([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+], Locale::French);
+// 배열을 반환합니다.
+
+$translate3 = Translate::viaGoogle(new Collection([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+]), Locale::French);
+// 배열을 반환합니다.
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Translator 의존성 주입"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Services\Translate;
+
+class Example
+{
+    public function __construct(
+        protected Translate $translator
+    ) {}
+
+    public function fromString(): string
+    {
+        return $this->translator->viaGoogle('some text', Locale::French);
+    }
+
+    public function fromArray1(): array
+    {
+        return $this->translator->viaGoogle([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromArray2(): array
+    {
+        return $this->translator->viaGoogle([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromCollection(): array
+    {
+        return $this->translator->viaGoogle(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Google 의존성 주입"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Integrations\Google;
+
+class Example
+{
+    public function __construct(
+        protected Google $google
+    ) {}
+
+    public function fromString(): string
+    {
+        return $this->google->translate('some text', Locale::French);
+    }
+
+    public function fromArray1(): array
+    {
+        return $this->google->translate([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromArray2(): array
+    {
+        return $this->google->translate([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromCollection(): array
+    {
+        return $this->google->translate(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+#### DeepL 번역 사용 {/* #via_deepl */}
+
+:::note
+
+[DeepL 번역](<https://www.deepl.com/ru/translator>)으로 텍스트를 직접 번역하면 `enabled` 설정을 무시합니다.
+
+:::
+
+직접 번역하려면 `LaravelLang\Translator\Facades\Translate` 파사드를 사용하거나 `LaravelLang\Translator\Services\Translate` 서비스 클래스를 의존성 주입으로 연결합니다.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"파사드 사용"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Facades\Translate;
+
+$translate1 = Translate::viaDeepl('some text', Locale::French);
+// 문자열을 반환합니다.
+
+$translate2 = Translate::viaDeepl([
+    'some text 1',
+    'some text 2',
+], Locale::French);
+// 배열을 반환합니다.
+
+$translate3 = Translate::viaDeepl([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+], Locale::French);
+// 배열을 반환합니다.
+
+$translate3 = Translate::viaDeepl(new Collection([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+]), Locale::French);
+// 배열을 반환합니다.
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Translator 의존성 주입"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Services\Translate;
+
+class Example
+{
+    public function __construct(
+        protected Translate $translator
+    ) {}
+
+    public function fromString(): string
+    {
+        return $this->translator->viaDeepl('some text', Locale::French);
+    }
+
+    public function fromArray1(): array
+    {
+        return $this->translator->viaDeepl([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromArray2(): array
+    {
+        return $this->translator->viaDeepl([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromCollection(): array
+    {
+        return $this->translator->viaDeepl(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"DeepL 의존성 주입"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Integrations\Deepl;
+
+class Example
+{
+    public function __construct(
+        protected Deepl $deepl
+    ) {}
+
+    public function fromString(): string
+    {
+        return $this->deepl->translate('some text', Locale::French);
+    }
+
+    public function fromArray1(): array
+    {
+        return $this->deepl->translate([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromArray2(): array
+    {
+        return $this->deepl->translate([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromCollection(): array
+    {
+        return $this->deepl->translate(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+#### Yandex 번역 사용 {/* #via_yandex */}
+
+:::note
+
+[Yandex.Translate](<https://translate.yandex.ru>)로 텍스트를 직접 번역하면 `enabled` 설정을 무시합니다.
+
+:::
+
+직접 번역하려면 `LaravelLang\Translator\Facades\Translate` 파사드를 사용하거나 `LaravelLang\Translator\Services\Translate` 서비스 클래스를 의존성 주입으로 연결합니다.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"파사드 사용"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Facades\Translate;
+
+$translate1 = Translate::viaYandex('some text', Locale::French);
+// 문자열을 반환합니다.
+
+$translate2 = Translate::viaYandex([
+    'some text 1',
+    'some text 2',
+], Locale::French);
+// 배열을 반환합니다.
+
+$translate3 = Translate::viaYandex([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+], Locale::French);
+// 배열을 반환합니다.
+
+$translate3 = Translate::viaYandex(new Collection([
+    'foo1' => 'some text 1',
+    'foo2' => 'some text 2',
+]), Locale::French);
+// 배열을 반환합니다.
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Translator 의존성 주입"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Services\Translate;
+
+class Example
+{
+    public function __construct(
+        protected Translate $translator
+    ) {}
+
+    public function fromString(): string
+    {
+        return $this->translator->viaYandex('some text', Locale::French);
+    }
+
+    public function fromArray1(): array
+    {
+        return $this->translator->viaYandex([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromArray2(): array
+    {
+        return $this->translator->viaYandex([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromCollection(): array
+    {
+        return $this->translator->viaYandex(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Yandex 의존성 주입"}>
+
+```php
+use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Translator\Integrations\Yandex;
+
+class Example
+{
+    public function __construct(
+        protected Yandex $yandex
+    ) {}
+
+    public function fromString(): string
+    {
+        return $this->yandex->translate('some text', Locale::French);
+    }
+
+    public function fromArray1(): array
+    {
+        return $this->yandex->translate([
+            'some text 1',
+            'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromArray2(): array
+    {
+        return $this->yandex->translate([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ], Locale::French);
+    }
+
+    public function fromCollection(): array
+    {
+        return $this->yandex->translate(new Collection([
+            'foo1' => 'some text 1',
+            'foo2' => 'some text 2',
+        ]), Locale::French);
+    }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+## 호환성 {/* #compatibility */}
+
+| Laravel | PHP | Translators API | 패키지 | 상태 |
+| --- | --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.2, 8.3, 8.4, 8.5 | Google Translate, DeepL Translate, Yandex.Translate | `^1.0` | <span className="compatibility-status compatibility-status--supported">supported</span> |

@@ -1,0 +1,318 @@
+---
+title: "Locales"
+slug: /packages-locales.html
+description: "Funciones básicas para trabajar con configuraciones regionales"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Se ha publicado una versión estable del proyecto"}>Estable</span> <span className="badge badge--secondary" title={"Se desconoce la última versión"}>desconocida</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Ver en GitHub](<https://github.com/laravel-lang/locales>)
+
+## Instalación {/* #installation */}
+
+:::note
+
+Consulta la [tabla de compatibilidad](<#compatibility> "Tabla de compatibilidad del paquete Locales").
+
+:::
+
+Para instalarlo, ejecuta el siguiente comando de consola.
+
+```bash
+composer require laravel-lang/locales:^2.11.0
+```
+
+## Uso {/* #usage */}
+
+Puedes utilizar la fachada `LaravelLang\Locales\Facades\Locales` para trabajar con configuraciones regionales. Permite obtener información como una lista de códigos o como un arreglo de objetos DTO.
+
+### Objetos de datos {/* #data_objects */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// Lista de configuraciones regionales disponibles.
+Locales::available(): array // array<LocaleData>
+
+// Lista de configuraciones regionales instaladas.
+Locales::installed(bool $withProtects = true): array // array<LocaleData>
+
+// Lista de configuraciones regionales sin instalar.
+Locales::notInstalled(): array // array<LocaleData>
+
+// Obtiene una lista de configuraciones regionales protegidas.
+Locales::protects(): array // array<LocaleData>
+
+// Comprueba si hay paquetes de idioma disponibles para la configuración regional solicitada.
+Locales::isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// Comprueba si hay un paquete de idioma instalado.
+Locales::isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// Comprueba si la configuración regional está protegida.
+Locales::isProtected(LocaleData|Locale|string|null $locale): bool
+
+// Valida y devuelve la configuración regional correcta.
+// Si la configuración regional solicitada no está instalada, devuelve la activa en la aplicación.
+Locales::get(mixed $locale): LocaleData
+
+// Obtiene el nombre de la configuración regional predeterminada.
+Locales::getDefault(): LocaleData
+
+// Obtiene el nombre de la configuración regional de reserva.
+Locales::getFallback(): LocaleData
+
+// Obtiene información de una configuración regional disponible o, si no lo está, de la activa en la aplicación.
+Locales::info(mixed $locale): LocaleData
+```
+
+### Datos sin procesar {/* #raw_data */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// Lista de configuraciones regionales disponibles.
+Locales::raw()->available(): array // array<string>
+
+// Lista de configuraciones regionales instaladas.
+Locales::raw()->installed(bool $withProtects = true): array // array<string>
+
+// Lista de configuraciones regionales sin instalar.
+Locales::raw()->notInstalled(): array // array<string>
+
+// Obtiene una lista de configuraciones regionales protegidas.
+Locales::raw()->protects(): array // array<string>
+
+// Comprueba si hay paquetes de idioma disponibles para la configuración regional solicitada.
+Locales::raw()->isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// Comprueba si hay un paquete de idioma instalado.
+Locales::raw()->isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// Comprueba si la configuración regional está protegida.
+Locales::raw()->isProtected(LocaleData|Locale|string|null $locale): bool
+
+// Valida y devuelve la configuración regional correcta.
+// Si la configuración regional solicitada no está instalada, devuelve la activa en la aplicación.
+Locales::raw()->get(mixed $locale): string
+
+// Obtiene el nombre de la configuración regional predeterminada.
+Locales::raw()->getDefault(): string
+
+// Obtiene el nombre de la configuración regional de reserva.
+Locales::raw()->getFallback(): string
+
+// Obtiene el código de una configuración regional disponible o, si no lo está, de la activa en la aplicación.
+Locales::raw()->info(mixed $locale): string
+```
+
+### Ejemplos {/* #examples */}
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::getDefault(withCountry: true, withCurrency: true);
+
+// Sin alias
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+// Con alias
+LocaleData {
+  +code: "de-DE"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // vi
+
+return Locales::get('de', withCountry: true, withCurrency: true);
+
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+LocaleData {
+  +code: "ar"
+  +regional: "ar_AE"
+  +type: "Arab"
+  +native: "العربية"
+  +localized: "Arabe"
+  +country: CountryData {
+    +code: "EG"
+    +native: "مصر"
+    +localized: "Égypte"
+  }
+  +currency: CurrencyData {
+    +code: "EGP"
+    +numeric: 818
+    +native: "جنيه مصري"
+    +localized: "livre égyptienne"
+  }
+  +direction: Direction {
+    +name: "RightToLeft"
+    +value: "rtl"
+  }
+  +locale: Locale {
+    +name: "Arabic"
+    +value: "ar"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::get('foo', withCountry: true, withCurrency: true);
+
+// Devuelve la configuración regional predeterminada
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+return Locales::raw()->getDefault();
+// Sin alias
+// de
+
+// Con alias
+// de-DE
+```
+
+```php
+return Locales::raw()->get('de');
+// de
+
+return Locales::raw()->get('foo');
+// Devuelve la configuración regional predeterminada
+// de
+```
+
+## Compatibilidad {/* #compatibility */}
+
+| Laravel | PHP | Paquete | Estado |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">compatible</span> |
+| 10 | 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">sin compatibilidad</span> |

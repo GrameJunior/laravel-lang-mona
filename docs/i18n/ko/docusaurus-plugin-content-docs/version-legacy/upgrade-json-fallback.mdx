@@ -1,0 +1,31 @@
+---
+title: "JSON Fallback"
+slug: /upgrade-json-fallback.html
+description: "JSON Fallback 1에서 2로 업그레이드하는 방법입니다."
+---
+
+## 의존성 업데이트 {/* #updating_dependencies */}
+
+애플리케이션의 `composer.json`에서 다음 의존성을 교체하세요.
+
+- `"laravel-lang/json-fallback-hotfix": "^1.0"`을 `"laravel-lang/json-fallback": "^2.0"`으로 교체
+
+이어서 다음 콘솔 명령으로 의존성을 업데이트하세요.
+
+```bash
+composer update
+```
+
+## 네임스페이스 변경하기 {/* #change_namespace */}
+
+`config/app.php`에서 아래 네임스페이스를 바꾸세요.
+
+```php
+LaravelLang\JsonFallbackHotfix\TranslationServiceProvider
+```
+
+대체할 값은 다음과 같습니다.
+
+```php
+LaravelLang\JsonFallback\TranslationServiceProvider
+```

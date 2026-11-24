@@ -1,0 +1,10 @@
+{
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/Laravel-Lang/mona"
+  },
+  "copyright": {
+    "message": "Droits d’auteur © 2013-{year}, équipe Laravel-Lang",
+    "description": "The footer copyright"
+  }
+}

@@ -1,0 +1,47 @@
+---
+title: "Publisher"
+slug: /upgrade-publisher.html
+description: "اطلاعات ارتقای Publisher از نسخهٔ 15 به 16"
+---
+
+## به‌روزرسانی وابستگی‌ها {/* #updating_dependencies */}
+
+:::note
+
+اگر از بستهٔ `laravel-lang/common` استفاده می‌کنید، از این مرحله بگذرید.
+
+:::
+
+وابستگی زیر را در فایل `composer.json` برنامه به‌روز کنید.
+
+- نسخهٔ `laravel-lang/publisher` را به `^16.0` تغییر دهید.
+
+سپس فرمان به‌روزرسانی وابستگی‌ها را اجرا کنید.
+
+```bash
+composer update
+```
+
+## تغییر فضای نام زبان‌های منطقه‌ای {/* #change_namespace */}
+
+فضای نام زبان‌های منطقه‌ای را جایگزین کنید.
+
+```php
+LaravelLang\Locales\Enums\Locale
+```
+
+فضای نام جایگزین
+
+```php
+LaravelLang\LocaleList\Locale
+```
+
+نمونه‌ای در ادامه آمده است.
+
+```php
+// قبل
+LaravelLang\Locales\Enums\Locale::Afrikaans; // af
+
+// بعد
+LaravelLang\LocaleList\Locale::Afrikaans; // af
+```

@@ -1,0 +1,959 @@
+---
+title: "Routes"
+slug: /packages-routes.html
+description: "Проста й швидка локалізація маршрутів"
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Випущено стабільну версію проєкту"}>Стабільна</span> <span className="badge badge--secondary" title={"Остання версія невідома"}>невідома</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Переглянути на GitHub](<https://github.com/laravel-lang/routes>)
+
+## Установлення {/* #installation */}
+
+:::note
+
+Перегляньте [таблицю сумісності](<#compatibility> "Сумісність пакета Routes").
+
+:::
+
+Щоб установити пакет, виконайте команду:
+
+```bash
+composer require laravel-lang/routes:^1.11.0
+```
+
+Типові налаштування можна [змінити](<./configuration.mdx#routes>), відредагувавши файл `config/localization.php`.
+
+:::note
+
+Повна підтримка [кешування маршрутів](<https://laravel.com/docs/routing#route-caching>).
+
+```bash
+php artisan route:cache
+```
+
+:::
+
+## Використання {/* #usage */}
+
+У цьому короткому відео показано, як установити й використовувати [Routes](<./packages-routes.mdx#usage> "Використання пакета Routes") і [Models](<./packages-models.mdx#usage> "Використання пакета Models") в одному застосунку ([переглянути на YouTube](<https://youtu.be/mH76pGbpVu0>)):
+
+<iframe className="legacy-video" src="https://www.youtube-nocookie.com/embed/mH76pGbpVu0" title={"Пакети Routes і Models"} loading="lazy" allowFullScreen />
+
+Припустімо, у застосунку встановлено дві локалі: французьку й німецьку.
+
+Налаштування застосунку матимуть такий вигляд:
+
+```php
+// config/app.php
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'locale' => Locale::French->value,
+
+    'fallback_locale' => Locale::German->value,
+];
+```
+
+Також ми задали значення для французької й німецької:
+
+```json
+{
+    "Foo": "Toutes les données ont été chargées."
+}
+```
+
+```json
+{
+    "Foo": "Alle Ressourcen geladen."
+}
+```
+
+### Прямий виклик {/* #direct */}
+
+Можна використовувати клас проміжного ПЗ без реєстрації псевдоніма:
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+app('router')
+    ->middleware(LocalizationByParameter::class)
+    ->get('some/{locale}', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->get('some/{locale?}', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByHeader::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByCookie::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationBySession::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByModel::class)
+    ->get('some', fn () => view('welcome'));
+```
+
+### Псевдоніми {/* #aliases */}
+
+Щоб використовувати псевдоніми проміжного ПЗ, зареєструйте їх у застосунку:
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Laravel 11"}>
+
+```php
+// bootstrap/app.php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Middleware;
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+return Application::configure(basePath: dirname(__DIR__))
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            'localization.parameter' => LocalizationByParameter::class,
+            'localization.redirect'  => LocalizationByParameterWithRedirect::class,
+            'localization.header'    => LocalizationByHeader::class,
+            'localization.cookie'    => LocalizationByCookie::class,
+            'localization.session'   => LocalizationBySession::class,
+            'localization.model'     => LocalizationByModel::class,
+        ]);
+    });
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Laravel 10"}>
+
+```php
+// app/Http/Kernel.php
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+class Kernel extends HttpKernel
+{
+    protected $middlewareAliases = [
+        // ...
+
+        'localization.parameter' => LocalizationByParameter::class,
+        'localization.redirect'  => LocalizationByParameterWithRedirect::class,
+        'localization.header'    => LocalizationByHeader::class,
+        'localization.cookie'    => LocalizationByCookie::class,
+        'localization.session'   => LocalizationBySession::class,
+        'localization.model'     => LocalizationByModel::class,
+    ];
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+Потім зазначайте псевдоніми в методі `middleware` маршруту:
+
+```php
+app('router')
+    ->middleware('localization.parameter')
+    ->get('some/{locale}', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.redirect')
+    ->get('some/{locale?}', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.header')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.cookie')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.session')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.model')
+    ->get('some', fn () => view('welcome'));
+```
+
+### Через параметр URL {/* #via_url_parameter */}
+
+:::tip
+
+Спочатку додайте параметр `{locale}` у будь-яке місце URL маршрутів.
+
+Назву параметра можна змінити в розділі `routes` файла `config/localization.php`.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+
+app('router')
+    ->middleware(LocalizationByParameter::class)
+    ->get('foo/{locale}/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Якщо передано некоректну або не задано локаль, сторінка відобразиться основною локаллю застосунку.
+
+#### Приклади {/* #via_url_parameter_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Установлена локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/foo/de/show
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Невстановлена локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/foo/as/show
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Невідома локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/foo/qwerty/show
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Через параметр URL із перенаправленням {/* #via_url_parameter_with_redirect */}
+
+:::tip
+
+Спочатку додайте параметр `{locale}` у будь-яке місце URL маршрутів.
+
+Назву параметра можна змінити в розділі `routes` файла `config/localization.php`.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+
+app('router')
+    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->get('some/{foo}/bar/{locale?}', function (string $foo) {
+        return response()->json([
+            $foo => __('Foo'),
+        ]);
+    });
+```
+
+Якщо передано некоректну локаль або її не вказано, відбудеться перенаправлення до основної локалі.
+
+#### Приклади {/* #via_url_parameter_redirect_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Установлена локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/some/show/bar/de
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Невстановлена локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/some/show/bar/as
+```
+
+Відповідь:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Невідома локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/some/show/bar/qwerty
+```
+
+Відповідь:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"Без параметра"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/some/show/bar/
+```
+
+Відповідь:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+</Tabs>
+
+### Через заголовок {/* #via_header */}
+
+:::tip
+
+Задає локаль за заголовком <abbr title={"Цю назву можна змінити в розділі \"routes\" файла \"config/localization.php\"."}>Accept-Language</abbr>.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+
+app('router')
+    ->middleware(LocalizationByHeader::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Якщо передано некоректну або не задано локаль, сторінка відобразиться основною локаллю застосунку.
+
+#### Приклади {/* #via_header_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Установлена локаль"}>
+
+Запит:
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: de'
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Невстановлена локаль"}>
+
+Запит:
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: as'
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Невідома локаль"}>
+
+Запит:
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: qwerty'
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Через cookie {/* #via_cookie */}
+
+:::tip
+
+Задає локаль за файлом cookie <abbr title={"Цю назву можна змінити в розділі \"routes\" файла \"config/localization.php\"."}>Accept-Language</abbr>.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+
+app('router')
+    ->middleware(LocalizationByCookie::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Якщо передано некоректну або не задано локаль, сторінка відобразиться основною локаллю застосунку.
+
+#### Приклади {/* #via_cookies_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Установлена локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=de"
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Невстановлена локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=as"
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Невідома локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=qwerty"
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Через сеанс {/* #via_session */}
+
+:::tip
+
+Задає локаль за ключем сеансу <abbr title={"Цю назву можна змінити в розділі \"routes\" файла \"config/localization.php\"."}>Accept-Language</abbr>.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+app('router')
+    ->middleware(LocalizationBySession::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Якщо передано некоректну або не задано локаль, сторінка відобразиться основною локаллю застосунку.
+
+Робота із сеансами технічно така сама, як робота з cookie. Відрізняється місце зберігання.
+
+Докладніше про роботу із сеансами можна [прочитати](<https://laravel.com/docs/session>) у [документації Laravel](<https://laravel.com/docs/session>).
+
+#### Приклади {/* #via_session_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Установлена локаль"}>
+
+Запит:
+
+```bash
+echo "Accept-Language=de" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Невстановлена локаль"}>
+
+Запит:
+
+```bash
+echo "Accept-Language=as" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Невідома локаль"}>
+
+Запит:
+
+```bash
+echo "Accept-Language=qwerty" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Через модель {/* #via_model */}
+
+:::tip
+
+Задає локаль за назвою стовпця <abbr title={"Цю назву можна змінити в розділі \"routes\" файла \"config/localization.php\"."}>locale</abbr>.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+
+app('router')
+    ->middleware(LocalizationByModel::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Метод дає змогу задати локаль для будь-якого автентифікованого клієнта. Переконайтеся, що модель містить атрибут <abbr title={"Цю назву можна змінити в розділі \"routes\" файла \"config/localization.php\"."}>"locale"</abbr>.
+
+Якщо таблиця користувачів не має такого стовпця, додайте його за потреби або створіть динамічний метод у класі моделі.
+
+Наприклад:
+
+```php
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use LaravelLang\LocaleList\Locale;
+
+class User extends Authenticatable
+{
+    protected function locale(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Locale::French
+        );
+    }
+}
+```
+
+Коли користувач автентифікується через проміжне ПЗ або вручну, наприклад методом `Auth::login($user)`, застосунок повертатиме дані вибраною ним мовою.
+
+Якщо користувач автентифікується через певний механізм автентифікації, його можна вказати після двокрапки у виклику проміжного ПЗ.
+
+Наприклад:
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+
+app('router')
+    ->middleware(LocalizationByModel::class . ':guard_name')
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Щоб отримати екземпляр користувача, проміжне ПЗ виконує такий код:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+
+class LocalizationByModel extends Middleware
+{
+    public function __construct(
+        protected ?string $guard = null,
+    ) {}
+
+    protected function user(Request $request): ?Model
+    {
+        return $request->user($this->guard);
+    }
+}
+```
+
+### Через групу локалізованих маршрутів {/* #via_localization_group */}
+
+:::note
+
+Якщо допоміжну функцію `localizedRoute` викликано без <abbr title={"Доступні методи: \"app('router')->localizedGroup()\", \"Route::localizedGroup()\" і \"LocalizationRoute::group\"."}>групування</abbr> маршрутів, локаль передається як параметр запиту. Наприклад:
+
+```bash
+https://example.com/foo?locale=fr
+```
+
+:::
+
+:::tip
+
+Назву параметра, префікс назви та можливість перенаправлення можна змінити в розділі `routes` файла `config/localization.php`.
+
+:::
+
+```php
+use Illuminate\Support\Facades\Route;
+
+app('router')->localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+
+Route::localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+```
+
+Цей метод спрощує керування префіксами груп локалізованих маршрутів.
+
+Окрім основного проміжного ПЗ групи, `LocalizationByParameterPrefix`, також використовуються `LocalizationByCookie`, `LocalizationByHeader` і `LocalizationBySession`.
+
+Можна використати один із трьох способів:
+
+```php
+use Illuminate\Support\Facades\Route;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+
+app('router')->localizedGroup(fn () => ...)
+
+Route::localizedGroup(fn () => ...)
+
+LocalizationRoute::group(fn () => ...)
+```
+
+Застосунок зареєструє два типи маршрутів: із префіксом `{locale}` і без нього. Наприклад:
+
+| URL | Шаблон | Назва |
+| --- | --- | --- |
+| https://example.com/fr/foo/show | `{locale}/foo/{bar}` | `localized.show` |
+| https://example.com/foo/show | `foo/{bar}` | `show` |
+
+Префікс назви можна змінити в розділі `routes` файла `config/localization.php`.
+
+:::note
+
+```php
+localizedRoute('show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+route('localized.show', ['bar' => 'show', 'locale' => app()->getLocale()]);
+// https://example.com/fr/foo/show
+```
+
+Цю можливість підтримує [Laravel Idea](<https://laravel-idea.com/>), плагін для [PhpStorm](<https://www.jetbrains.com/phpstorm/>):
+
+<img src={require("@site/static/images/packages-route-idea-friendly.png").default} alt={"Підказки Laravel Idea для маршрутів"} />
+
+:::
+
+#### Приклади {/* #via_localization_group_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Типова локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/fr/foo/show
+```
+
+Відповідь:
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Перенаправлення ввімкнено"}>
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Перенаправлення вимкнено"}>
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Нетипова локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/de/foo/show
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Невстановлена локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/as/foo/show
+```
+
+Відповідь:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"Невідома локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/qwerty/foo/show
+```
+
+Відповідь:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+</Tabs>
+
+## Події {/* #events */}
+
+:::note
+
+Подія доступна в пакеті `laravel-lang/routes` версії `1.1` і новіших.
+
+:::
+
+Коли передається параметр локалі для застосування в застосунку, спрацьовує подія:
+
+```php
+use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
+
+LocaleHasBeenSetEvent::dispatch($locale);
+```
+
+Властивість події `$locale` має тип `LaravelLang\Locales\Data\LocaleData`.
+
+За потреби можна підписатися на подію. Наприклад:
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(static function (LocaleHasBeenSetEvent $event) {
+            Log::info('Locale set to: ' . $event->locale->code);
+        });
+    }
+}
+```
+
+## Сумісність {/* #compatibility */}
+
+| Laravel | PHP | Пакет | Стан |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">підтримується</span> |

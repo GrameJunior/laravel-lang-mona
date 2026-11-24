@@ -1,0 +1,24 @@
+---
+title: "Licence MIT"
+description: "Conditions de licence des paquets Laravel-Lang Mona."
+---
+
+Copyright (c) Andrey Helldar, Laravel-Lang Team
+
+L’autorisation est accordée, sans frais, à toute personne obtenant une copie
+de ce logiciel et de sa documentation associée (le « Logiciel »), de disposer
+le Logiciel sans restriction, ce qui inclut, sans s’y limiter, le droit
+d’utiliser, de copier, de modifier, de fusionner, de publier, de distribuer, d’accorder des sous-licences et/ou de vendre
+des copies du Logiciel, ainsi que d’autoriser les personnes auxquelles
+le Logiciel est fourni à faire de même, sous réserve des conditions suivantes.
+
+La mention de droit d’auteur ci-dessus et la présente mention d’autorisation doivent figurer
+dans toutes les copies ou parties substantielles du Logiciel.
+
+LE LOGICIEL EST FOURNI « EN L’ÉTAT », SANS GARANTIE D’AUCUNE SORTE, EXPRESSE OU
+IMPLICITE, Y COMPRIS LES GARANTIES DE QUALITÉ MARCHANDE,
+D’ADÉQUATION À UN USAGE PARTICULIER ET D’ABSENCE DE CONTREFAÇON, SANS QUE CETTE LISTE SOIT LIMITATIVE. EN AUCUN CAS LES
+AUTEURS OU TITULAIRES DES DROITS D’AUTEUR NE POURRONT ÊTRE TENUS RESPONSABLES DE TOUTE RÉCLAMATION, DE TOUT DOMMAGE OU DE TOUTE AUTRE
+RESPONSABILITÉ, DANS LE CADRE D’UNE ACTION CONTRACTUELLE, DÉLICTUELLE OU AUTRE, DÉCOULANT
+DU LOGICIEL, DE SON UTILISATION OU DE TOUTE AUTRE OPÉRATION LE CONCERNANT,
+OU EN LIEN AVEC CES ÉLÉMENTS.

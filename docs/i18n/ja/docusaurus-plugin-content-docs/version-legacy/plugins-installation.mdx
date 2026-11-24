@@ -1,0 +1,50 @@
+---
+title: "プラグインをインストールする"
+slug: /plugins-installation.html
+description: "Publisher を使用してローカライズプラグインをインストールします。"
+---
+
+:::note
+
+利用できる[公式プラグイン](<./plugins-official.mdx>)と[コミュニティプラグイン](<./plugins-community.mdx>)の一覧も参照してください。
+
+:::
+
+プラグインを使用する手順は次のとおりです。
+
+1. パッケージをアプリケーションにインストールします。たとえば `composer require --dev laravel-lang/lang:^15.39.1` を実行します。ほかのパッケージも同様にインストールできます。
+1. これで完了です 😊
+
+`php artisan lang:update` を実行すると、Publisher は指定されたパッケージを確認し、アプリケーションのファイルを自動で更新します。
+
+複数のパッケージに `custom.php` などの同名ファイルがある場合、処理時にすべてのファイルのキーが統合されます。
+
+:::tip
+
+開発時は、用意されている[翻訳テンプレート](<https://github.com/Laravel-Lang/translations-template>)が使えます。
+
+:::
+
+ぜひご活用ください 😊
+
+## プラグイン {/* #plugins */}
+
+<div className="legacy-card-grid">
+
+<div className="card legacy-card">
+
+[公式プラグイン](<./plugins-official.mdx>)
+
+Laravel-Lang チームが開発し、保守しているプラグインの一覧です。
+
+</div>
+
+<div className="card legacy-card">
+
+[コミュニティプラグイン](<./plugins-community.mdx>)
+
+コミュニティが開発し、保守しているプラグインの一覧です。
+
+</div>
+
+</div>

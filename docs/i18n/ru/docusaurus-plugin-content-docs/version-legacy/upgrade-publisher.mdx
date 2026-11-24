@@ -1,0 +1,47 @@
+---
+title: "Publisher"
+slug: /upgrade-publisher.html
+description: "Обновление Publisher с версии 15 до версии 16"
+---
+
+## Обновление зависимостей {/* #updating_dependencies */}
+
+:::note
+
+Если вы используете пакет `laravel-lang/common`, пропустите этот шаг.
+
+:::
+
+Обновите следующую зависимость в файле `composer.json` приложения:
+
+- `laravel-lang/publisher` до `^16.0`
+
+Затем выполните команду обновления зависимостей:
+
+```bash
+composer update
+```
+
+## Изменение пространства имён локалей {/* #change_namespace */}
+
+Замените пространство имён локалей:
+
+```php
+LaravelLang\Locales\Enums\Locale
+```
+
+на
+
+```php
+LaravelLang\LocaleList\Locale
+```
+
+Пример:
+
+```php
+// До
+LaravelLang\Locales\Enums\Locale::Afrikaans; // af
+
+// После
+LaravelLang\LocaleList\Locale::Afrikaans; // af
+```

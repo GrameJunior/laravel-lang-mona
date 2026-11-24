@@ -1,0 +1,33 @@
+---
+title: "로캘 제거하기"
+slug: /usage-remove-locales.html
+description: "Laravel 애플리케이션에서 로캘을 제거하는 방법입니다."
+---
+
+:::warning
+
+이 명령은 기본 및 대체 로캘을 제외한 대상 로캘의 디렉터리 전체를 안에 있는 모든 파일과 함께 삭제합니다.
+
+:::
+
+로캘을 삭제하려면 `php artisan lang:rm <locale>` 명령에 로캘 코드를 전달하세요.
+
+```bash
+php artisan lang:rm fr de de_AT de_CH vi zh_CN
+```
+
+인수를 생략하면 콘솔에 지원 로캘 중 제거할 항목을 고르는 대화형 질문이 표시됩니다.
+
+```bash
+php artisan lang:rm
+```
+
+기본적으로 보호된 로캘을 제거하려 하면 명령이 오류 메시지를 반환합니다.
+
+보호되는 로캘의 코드는 `config/app.php` 파일의 `locale` 및 `fallback_locale` 매개변수에 설정되어 있습니다.
+
+보호된 로캘을 강제로 제거하려면 `force` 옵션을 사용하세요.
+
+```bash
+php artisan lang:rm en --force
+```

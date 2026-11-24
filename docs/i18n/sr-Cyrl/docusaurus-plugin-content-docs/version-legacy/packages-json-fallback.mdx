@@ -1,0 +1,71 @@
+---
+title: "JSON Fallback"
+slug: /packages-json-fallback.html
+description: "Додаје подршку за резервне преводе JSON ниски"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Објављена је стабилна верзија пројекта"}>Стабилна</span> <span className="badge badge--secondary" title={"Најновија верзија није позната"}>непозната</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Погледајте на GitHub-у](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+Ако као резервни локал користите енглески, овај пакет вам није потребан.
+
+:::
+
+## Инсталација {/* #installation */}
+
+:::note
+
+Погледајте [табелу компатибилности](<#compatibility> "Табела компатибилности за пакет JSON Fallback").
+
+:::
+
+Laravel подразумевано <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">не дозвољава</a> резервне преводе за JSON кључеве. На пример, позив `__('Remember Me')` враћа `Remember Me` уместо `Se souvenir de moi` када је француски резервни језик.
+
+За инсталацију покрените следећу команду.
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## Употреба {/* #usage */}
+
+:::note
+
+У Laravel-у 11 у датотеци подешавања `config/app.php` нема одељка `providers`. Можете га додати ручно.
+
+:::
+
+После инсталације додајте упућивање на добављача услуга у одељак `providers` датотеке подешавања `config/app.php`.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // other service providers
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+JSON кључеви ће сада враћати исправне вредности на основу изабраног локала.
+
+## Компатибилност {/* #compatibility */}
+
+| Laravel | PHP | Пакет | Статус |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">подржано</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">није подржано</span> |

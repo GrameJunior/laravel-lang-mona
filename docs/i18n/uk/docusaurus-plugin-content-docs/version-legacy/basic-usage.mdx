@@ -1,0 +1,459 @@
+---
+title: "Основи використання"
+slug: /basic-usage.html
+description: "Швидке встановлення й використання пакетів"
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+## Установлення {/* #installation */}
+
+Установіть пакет такою командою:
+
+```bash
+composer require laravel-lang/common:^6.9
+```
+
+## Керування локалями {/* #managing_locales */}
+
+### Додавання локалей {/* #add_locales */}
+
+:::note
+
+Список доступних локалей [<strong>наведено тут</strong>](<./available-locales-list.mdx>).
+
+:::
+
+Тепер можна [додати](<./usage-add-locales.mdx> "Додавання локалей до застосунку Laravel") нові локалі командою `lang:add`:
+
+```bash
+php artisan lang:add <locale>
+```
+
+### Оновлення локалей {/* #update_locales */}
+
+Тепер можна [оновити](<./usage-update-locales.mdx> "Оновлення локалей у застосунку Laravel") наявні локалі командою `lang:update`:
+
+```bash
+php artisan lang:update
+```
+
+Також рекомендуємо додати виклик до розділу `post-update-cmd` блоку `scripts` у файлі `composer.json`:
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+Так файли локалізації оновлюватимуться автоматично після оновлення залежностей. Виконувати `php artisan lang:update` вручну не потрібно.
+
+## Маршрути {/* #routes */}
+
+### Через групу локалізованих маршрутів {/* #via_localization_group */}
+
+:::note
+
+Якщо допоміжну функцію `localizedRoute` викликано без <abbr title={"Доступні методи: \"app('router')->localizedGroup()\", \"Route::localizedGroup()\" і \"LocalizationRoute::group\"."}>групування</abbr> маршрутів, локаль передається як параметр запиту. Наприклад:
+
+```bash
+https://example.com/foo?locale=fr
+```
+
+:::
+
+:::tip
+
+Назву параметра, префікс назви та можливість перенаправлення можна змінити в розділі `routes` файла `config/localization.php`.
+
+:::
+
+```php
+use Illuminate\Support\Facades\Route;
+
+app('router')->localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+
+Route::localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+```
+
+Цей метод спрощує керування префіксами груп локалізованих маршрутів.
+
+Окрім основного проміжного ПЗ групи, `LocalizationByParameterPrefix`, також використовуються `LocalizationByCookie`, `LocalizationByHeader` і `LocalizationBySession`.
+
+Можна використати один із трьох способів:
+
+```php
+use Illuminate\Support\Facades\Route;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+
+app('router')->localizedGroup(fn () => ...)
+
+Route::localizedGroup(fn () => ...)
+
+LocalizationRoute::group(fn () => ...)
+```
+
+Застосунок зареєструє два типи маршрутів: із префіксом `{locale}` і без нього. Наприклад:
+
+| URL | Шаблон | Назва |
+| --- | --- | --- |
+| https://example.com/fr/foo/show | `{locale}/foo/{bar}` | `localized.show` |
+| https://example.com/foo/show | `foo/{bar}` | `show` |
+
+Префікс назви можна змінити в розділі `routes` файла `config/localization.php`.
+
+:::note
+
+```php
+localizedRoute('show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+route('localized.show', ['bar' => 'show', 'locale' => app()->getLocale()]);
+// https://example.com/fr/foo/show
+```
+
+Цю можливість підтримує [Laravel Idea](<https://laravel-idea.com/>), плагін для [PhpStorm](<https://www.jetbrains.com/phpstorm/>):
+
+<img src={require("@site/static/images/packages-route-idea-friendly.png").default} alt={"Підказки Laravel Idea для маршрутів"} />
+
+:::
+
+#### Приклади {/* #via_localization_group_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Типова локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/fr/foo/show
+```
+
+Відповідь:
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Перенаправлення ввімкнено"}>
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Перенаправлення вимкнено"}>
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Нетипова локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/de/foo/show
+```
+
+Відповідь:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Невстановлена локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/as/foo/show
+```
+
+Відповідь:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"Невідома локаль"}>
+
+Запит:
+
+```bash
+curl -XGET https://example.com/qwerty/foo/show
+```
+
+Відповідь:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+</Tabs>
+
+## Моделі {/* #models */}
+
+### Отримання перекладу {/* #get_translation */}
+
+:::tip
+
+Усі сховища репозиторію автоматично передають прапорець [завчасного завантаження](<https://laravel.com/docs/eloquent-relationships#eager-loading>) батьківській моделі. Робити це вручну не потрібно.
+
+За замовчуванням зв'язок містить лише записи основних локалей: поточної та резервної. Якщо потрібно завантажити всі записи, змініть [налаштування фільтра](<./configuration.mdx#models>):
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+У цьому разі будуть завантажені всі доступні локалі для елементів.
+
+:::
+
+Щоб отримати значення властивості для поточної локалі, зверніться до властивості моделі. Наприклад:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+Якщо значення для <abbr title={"Значення параметра \"app.locale\" у файлі \"config/app.php\"."}>основної локалі</abbr> відсутнє, метод поверне значення для <abbr title={"Значення параметра \"app.fallback_locale\" у файлі \"config/app.php\"."}>резервної локалі</abbr>.
+
+Також можна використати метод `getTranslation`:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+Щоб отримати значення для певної локалі, передайте її код другим аргументом. Наприклад:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// або
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+Ці методи повернуть актуальне значення навіть тоді, коли зміни моделі ще не записано до бази даних.
+
+:::
+
+### Запис перекладів {/* #set_translations */}
+
+#### Одне значення {/* #single_value */}
+
+Щоб додати або оновити переклад для поточної локалі застосунку, присвойте значення властивості моделі. Наприклад:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+Також можна задати нове значення методом `setTranslation`:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+Ці методи призначають нове значення для поточної локалі. Щоб задати значення для певної локалі, передайте її код третім аргументом методу. Наприклад:
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// або
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+Також можна скористатися масовим заповненням:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+Зверніть увагу, що ці методи зберігають нові значення в об'єктах моделей. Щоб записати зміни до бази даних, викличте метод `save` на батьківській моделі. Наприклад:
+
+```php
+$page->save();
+```
+
+:::
+
+Заповнювати поля можна й під час створення моделі. Наприклад:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### Кілька значень {/* #plural_value */}
+
+Щоб швидко заповнити властивість перекладами для кількох локалей, скористайтеся будь-яким із наведених способів:
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// Варіант 1
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// Варіант 2
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+Під час масового заповнення також можна передавати об'єкти `iterable`. Наприклад:
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+Для різних полів можна вказувати різні набори локалей. Наприклад, вище заповнюється поле `title` для французької, англійської й німецької, а поле `description` — лише для французької та німецької.
+
+## Резервні переклади JSON {/* #json_fallback */}
+
+:::note
+
+У Laravel 11 у файлі конфігурації `config/app.php` немає розділу `providers`. Його можна додати вручну.
+
+:::
+
+Після встановлення додайте посилання на постачальник сервісів до розділу `providers` у файлі налаштувань `config/app.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // інші постачальники сервісів
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+Тепер для ключів JSON повертається правильне значення з огляду на вибрану локаль.

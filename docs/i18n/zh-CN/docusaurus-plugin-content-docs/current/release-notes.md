@@ -1,0 +1,12 @@
+---
+title: 发布说明
+description: Laravel-Lang 的版本管理和平台兼容性。
+---
+
+## 版本管理和兼容性 {#versioning-and-compatibility}
+
+Laravel-Lang 遵循语义化版本规范。破坏性变更及停止支持某个平台均在主版本中引入。官方包使用统一的发布版本。[语义化版本](https://semver.org/)
+
+当前版本要求 PHP `^8.3`，支持 Laravel 12 和 13。你所用的 Laravel 版本可能要求更新的 PHP 版本。Common 还通过依赖项要求安装 `intl` 和 `json` 扩展。
+
+发布标签和补丁说明见 [Mona 发布记录](https://github.com/Laravel-Lang/mona/releases)。Laravel 的维护日期请参阅 [Laravel 支持政策](https://laravel.com/docs/releases#support-policy)。

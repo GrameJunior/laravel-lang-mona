@@ -1,0 +1,68 @@
+---
+title: Локализованные маршруты
+description: Регистрируйте локализованные URL и выбирайте локаль Laravel из запроса.
+---
+
+`laravel-lang/routes` выбирает локаль при обработке запроса и генерирует URL для групп локализованных маршрутов. Пакет входит в Common.
+
+```bash
+composer require laravel-lang/routes
+```
+
+Убедитесь, что [локали из URL установлены](./translations.md). Настройте имена параметров, промежуточное ПО и поведение локали по умолчанию в [`config/localization_routes.php`](./configure.md).
+
+## Регистрация группы локализованных маршрутов {#register-a-localized-route-group}
+
+Используйте макрос `Route::localizedGroup()` в `routes/web.php`. Фасад `LaravelLang\Routes\Facades\LocalizationRoute::group()` предоставляет такой же метод группировки.
+
+```php
+use Illuminate\Support\Facades\Route;
+
+Route::localizedGroup(function (): void {
+    Route::get('/products/{product}', fn (string $product) => view('products.show', [
+        'product' => $product,
+    ]))->name('products.show');
+});
+```
+
+При настройках по умолчанию переданная функция регистрирует оба шаблона URL.
+
+| Шаблон | Имя маршрута |
+| --- | --- |
+| `/products/{product}` | `products.show` |
+| `/{locale}/products/{product}` | `localized.products.show` |
+
+Промежуточное ПО локализации извлекает параметр `locale` перед вызовом обработчика маршрута. Когда запрос содержит неизвестную или неустановленную локаль, именованный маршрут перенаправляет его на маршрут без префикса.
+
+## Генерация локализованного URL {#generate-a-localized-url}
+
+```php
+use function LaravelLang\Routes\localizedRoute;
+
+$url = localizedRoute('products.show', [
+    'product' => 42,
+    'locale' => 'fr',
+], absolute: false);
+// /fr/products/42
+```
+
+Вспомогательная функция использует настроенное имя параметра локали и предпочитает маршрут с префиксом, если он существует. Она передаёт указанную строку локали генератору URL. Чтобы сгенерировать URL с псевдонимом, передайте псевдоним или сначала получите его через [`Locales::toAlias()`](./locales.md). Если локаль не указана, функция использует `Locales::fallback()`. Чтобы использовать текущую локаль, явно передайте `Locales::current()`.
+
+`localization_routes.hide` исключает резервную локаль из URL, которые генерирует вспомогательная функция. `localization_routes.redirect` перенаправляет запросы с текущей локалью из группы с префиксом на маршрут без префикса. По умолчанию обе настройки имеют значение `false`.
+
+## Выбор локали через промежуточное ПО {#select-a-locale-with-middleware}
+
+Каждый обработчик можно подключить напрямую по имени класса из `LaravelLang\Routes\Middlewares`.
+
+| Промежуточное ПО | Источник |
+| --- | --- |
+| `LocalizationByParameterMiddleware` | Параметр маршрута, по умолчанию `locale` |
+| `LocalizationByParameterWithRedirectMiddleware` | Параметр маршрута. При наличии имени маршрута и объявленного параметра подставляет текущую локаль, если запрошенная отсутствует или не установлена |
+| `LocalizationByCookieMiddleware` | По умолчанию cookie `Accept-Language` |
+| `LocalizationByHeaderMiddleware` | Язык, который расширение PHP Intl извлекает из заголовка `Accept-Language` |
+| `LocalizationBySessionMiddleware` | По умолчанию ключ сеанса `Accept-Language` |
+| `LocalizationByModelMiddleware` | По умолчанию атрибут `locale` аутентифицированного пользователя Eloquent. Чтобы выбрать guard, добавьте `:guard_name` к имени класса |
+
+Для группы с префиксом порядок по умолчанию следующий: параметр URL, cookie, заголовок, сеанс, модель. Для группы без префикса порядок тот же, пропускается только параметр URL. Поздний подходящий источник может переопределить более ранний. При смене локали обновляется локаль Laravel, а канонический код сохраняется в настроенном ключе сеанса. Чтобы использовать сеансы и cookie, подключите группу промежуточного ПО `web`. Обработчику заголовка требуется PHP Intl.
+
+При смене локали промежуточное ПО отправляет событие `LaravelLang\Routes\Events\LocaleHasBeenSetEvent`. Его свойство `locale` содержит объект `LaravelLang\LocaleNames\LocaleData`. Канонический код доступен в `$event->locale->code`.

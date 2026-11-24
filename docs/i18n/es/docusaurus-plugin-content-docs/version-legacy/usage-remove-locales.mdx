@@ -1,0 +1,33 @@
+---
+title: "Eliminar configuraciones regionales"
+slug: /usage-remove-locales.html
+description: "Eliminar configuraciones regionales de una aplicación de Laravel"
+---
+
+:::warning
+
+Este comando elimina todo el directorio de la configuración regional con sus archivos, salvo para las configuraciones regionales predeterminada y de reserva.
+
+:::
+
+Para eliminar traducciones, ejecuta `php artisan lang:rm <locale>` y pásale los códigos correspondientes.
+
+```bash
+php artisan lang:rm fr de de_AT de_CH vi zh_CN
+```
+
+Si no pasas argumentos, la consola muestra una pregunta interactiva para elegir entre las configuraciones regionales disponibles.
+
+```bash
+php artisan lang:rm
+```
+
+De forma predeterminada, el comando devuelve un error al intentar eliminar una configuración regional protegida.
+
+Las configuraciones regionales protegidas son las que tienen los códigos de los parámetros `locale` y `fallback_locale` de `config/app.php`.
+
+Para forzar la eliminación de una configuración regional protegida, usa la opción `force`.
+
+```bash
+php artisan lang:rm en --force
+```

@@ -1,0 +1,64 @@
+---
+title: "MoonShine"
+slug: /packages-moonshine.html
+description: "Traducciones del panel de administración de MoonShine"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Se ha publicado una versión estable del proyecto"}>Estable</span> <span className="badge badge--secondary" title={"Se desconoce la última versión"}>desconocida</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Ver en GitHub](<https://github.com/laravel-lang/moonshine>)
+
+:::tip
+
+Este paquete contiene las traducciones de la interfaz del [<strong>panel de administración de MoonShine</strong>](<https://getmoonshine.app>).
+
+Así puedes localizar también esa interfaz.
+
+:::
+
+## Instalación {/* #installation */}
+
+:::note
+
+Consulta la [tabla de compatibilidad](<#compatibility> "Tabla de compatibilidad del paquete MoonShine").
+
+:::
+
+Para instalarlo, ejecuta el siguiente comando de consola.
+
+```bash
+composer require --dev laravel-lang/moonshine:^1.9.2
+```
+
+## Uso {/* #usage */}
+
+Ya puedes [actualizar](<./usage-update-locales.mdx> "Actualizar configuraciones regionales en una aplicación de Laravel") las traducciones existentes con el comando de consola `lang:update`.
+
+```bash
+php artisan lang:update
+```
+
+También se recomienda agregar la llamada a la sección `post-update-cmd` del bloque `scripts` del archivo `composer.json`.
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+Así, los archivos de traducción se actualizarán automáticamente cuando se actualicen las dependencias, sin tener que ejecutar manualmente `php artisan lang:update`.
+
+## Compatibilidad {/* #compatibility */}
+
+| Laravel | PHP | Publisher | Paquete | MoonShine | Estado |
+| --- | --- | --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.2, 8.3, 8.4, 8.5 | 15, 16 | `^1.5` | `^3.0, ^4.0` | <span className="compatibility-status compatibility-status--supported">compatible</span> |
+| 10, 11, 12 | 8.2, 8.3, 8.4 | 15, 16 | `^1.0` | `^3.0` | <span className="compatibility-status compatibility-status--not-supported">sin compatibilidad</span> |

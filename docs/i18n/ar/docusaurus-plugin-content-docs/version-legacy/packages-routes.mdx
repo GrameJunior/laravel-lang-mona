@@ -1,0 +1,959 @@
+---
+title: "Routes"
+slug: /packages-routes.html
+description: "طريقة سهلة وسريعة لتوطين المسارات."
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"صدر إصدار مستقر من المشروع"}>مستقر</span> <span className="badge badge--secondary" title={"أحدث إصدار غير معروف"}>غير معروف</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [العرض على GitHub](<https://github.com/laravel-lang/routes>)
+
+## التثبيت {/* #installation */}
+
+:::note
+
+اطّلع على [جدول التوافق](<#compatibility> "جدول توافق حزمة Routes").
+
+:::
+
+للتثبيت، شغّل أمر الطرفية:
+
+```bash
+composer require laravel-lang/routes:^1.11.0
+```
+
+يمكنك أيضًا [تغيير](<./configuration.mdx#routes>) الإعدادات الافتراضية بتعديل ملف `config/localization.php`.
+
+:::note
+
+دعم كامل لـ [التخزين المؤقت للمسارات](<https://laravel.com/docs/routing#route-caching>)
+
+```bash
+php artisan route:cache
+```
+
+:::
+
+## الاستخدام {/* #usage */}
+
+شاهد مقطعًا قصيرًا عن تثبيت حزمتي [Routes](<./packages-routes.mdx#usage> "طريقة استخدام حزمة Routes") و[Models](<./packages-models.mdx#usage> "طريقة استخدام حزمة Models") واستخدامهما في تطبيق واحد ([المشاهدة على YouTube](<https://youtu.be/mH76pGbpVu0>)):
+
+<iframe className="legacy-video" src="https://www.youtube-nocookie.com/embed/mH76pGbpVu0" title={"المسارات والنماذج"} loading="lazy" allowFullScreen />
+
+لنفترض أن لدينا إعدادين محليين مثبّتين في التطبيق، الفرنسية والألمانية.
+
+ستكون إعدادات التطبيق كما يلي:
+
+```php
+// config/app.php
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'locale' => Locale::French->value,
+
+    'fallback_locale' => Locale::German->value,
+];
+```
+
+حدّدنا أيضًا القيم للفرنسية والألمانية:
+
+```json
+{
+    "Foo": "Toutes les données ont été chargées."
+}
+```
+
+```json
+{
+    "Foo": "Alle Ressourcen geladen."
+}
+```
+
+### الاستخدام المباشر {/* #direct */}
+
+يمكنك الإشارة إلى البرمجية الوسيطة مباشرةً دون إضافة أسماء بديلة:
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+app('router')
+    ->middleware(LocalizationByParameter::class)
+    ->get('some/{locale}', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->get('some/{locale?}', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByHeader::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByCookie::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationBySession::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByModel::class)
+    ->get('some', fn () => view('welcome'));
+```
+
+### الأسماء البديلة {/* #aliases */}
+
+لاستخدام الأسماء البديلة للبرمجيات الوسيطة، سجّلها في التطبيق:
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Laravel 11"}>
+
+```php
+// bootstrap/app.php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Middleware;
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+return Application::configure(basePath: dirname(__DIR__))
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            'localization.parameter' => LocalizationByParameter::class,
+            'localization.redirect'  => LocalizationByParameterWithRedirect::class,
+            'localization.header'    => LocalizationByHeader::class,
+            'localization.cookie'    => LocalizationByCookie::class,
+            'localization.session'   => LocalizationBySession::class,
+            'localization.model'     => LocalizationByModel::class,
+        ]);
+    });
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Laravel 10"}>
+
+```php
+// app/Http/Kernel.php
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+class Kernel extends HttpKernel
+{
+    protected $middlewareAliases = [
+        // ...
+
+        'localization.parameter' => LocalizationByParameter::class,
+        'localization.redirect'  => LocalizationByParameterWithRedirect::class,
+        'localization.header'    => LocalizationByHeader::class,
+        'localization.cookie'    => LocalizationByCookie::class,
+        'localization.session'   => LocalizationBySession::class,
+        'localization.model'     => LocalizationByModel::class,
+    ];
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+بعد ذلك، يمكنك تحديد الأسماء البديلة في دالة المسار `middleware`:
+
+```php
+app('router')
+    ->middleware('localization.parameter')
+    ->get('some/{locale}', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.redirect')
+    ->get('some/{locale?}', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.header')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.cookie')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.session')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.model')
+    ->get('some', fn () => view('welcome'));
+```
+
+### عبر معامل عنوان URL {/* #via_url_parameter */}
+
+:::tip
+
+حدّد أولًا المعامل `{locale}` في أي موضع ضمن عنوان URL لمساراتك.
+
+يمكنك تغيير اسم المعامل في قسم `routes` من ملف `config/localization.php`.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+
+app('router')
+    ->middleware(LocalizationByParameter::class)
+    ->get('foo/{locale}/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+إذا مُرّر إعداد محلي غير صالح أو لم يُحدّد، تُعرض الصفحة بالإعداد المحلي الرئيسي في التطبيق.
+
+#### أمثلة {/* #via_url_parameter_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"بإعداد محلي مثبّت"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/foo/de/show
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"بإعداد محلي غير مثبّت"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/foo/as/show
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"بإعداد محلي مجهول"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/foo/qwerty/show
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### عبر معامل عنوان URL مع إعادة التوجيه {/* #via_url_parameter_with_redirect */}
+
+:::tip
+
+حدّد أولًا المعامل `{locale}` في أي موضع ضمن عنوان URL لمساراتك.
+
+يمكنك تغيير اسم المعامل في قسم `routes` من ملف `config/localization.php`.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+
+app('router')
+    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->get('some/{foo}/bar/{locale?}', function (string $foo) {
+        return response()->json([
+            $foo => __('Foo'),
+        ]);
+    });
+```
+
+إذا مُرّر إعداد محلي غير صالح أو لم يُحدّد، يُعاد توجيه الصفحة إلى الإعداد المحلي الرئيسي.
+
+#### أمثلة {/* #via_url_parameter_redirect_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"بإعداد محلي مثبّت"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/some/show/bar/de
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"بإعداد محلي غير مثبّت"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/some/show/bar/as
+```
+
+الاستجابة:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"بإعداد محلي مجهول"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/some/show/bar/qwerty
+```
+
+الاستجابة:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"دون معامل"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/some/show/bar/
+```
+
+الاستجابة:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+</Tabs>
+
+### عبر الترويسة {/* #via_header */}
+
+:::tip
+
+يضبط الإعداد المحلي بحسب ترويسة <abbr title={"يمكن تغيير هذا الاسم في قسم \"routes\" من ملف \"config/localization.php\"."}>Accept-Language</abbr>.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+
+app('router')
+    ->middleware(LocalizationByHeader::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+إذا مُرّر إعداد محلي غير صالح أو لم يُحدّد، تُعرض الصفحة بالإعداد المحلي الرئيسي في التطبيق.
+
+#### أمثلة {/* #via_header_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"بإعداد محلي مثبّت"}>
+
+الطلب:
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: de'
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"بإعداد محلي غير مثبّت"}>
+
+الطلب:
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: as'
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"بإعداد محلي مجهول"}>
+
+الطلب:
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: qwerty'
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### عبر ملف تعريف الارتباط {/* #via_cookie */}
+
+:::tip
+
+يضبط الإعداد المحلي بحسب ملف تعريف الارتباط <abbr title={"يمكن تغيير هذا الاسم في قسم \"routes\" من ملف \"config/localization.php\"."}>Accept-Language</abbr>.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+
+app('router')
+    ->middleware(LocalizationByCookie::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+إذا مُرّر إعداد محلي غير صالح أو لم يُحدّد، تُعرض الصفحة بالإعداد المحلي الرئيسي في التطبيق.
+
+#### أمثلة {/* #via_cookies_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"بإعداد محلي مثبّت"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=de"
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"بإعداد محلي غير مثبّت"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=as"
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"بإعداد محلي مجهول"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=qwerty"
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### عبر الجلسة {/* #via_session */}
+
+:::tip
+
+يضبط الإعداد المحلي بحسب مفتاح الجلسة <abbr title={"يمكن تغيير هذا الاسم في قسم \"routes\" من ملف \"config/localization.php\"."}>Accept-Language</abbr>.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+app('router')
+    ->middleware(LocalizationBySession::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+إذا مُرّر إعداد محلي غير صالح أو لم يُحدّد، تُعرض الصفحة بالإعداد المحلي الرئيسي في التطبيق.
+
+تعمل الجلسات من الناحية التقنية مثل ملفات تعريف الارتباط. يكمن الفرق في مكان التخزين.
+
+يمكنك [قراءة](<https://laravel.com/docs/session>) المزيد عن العمل مع الجلسات في [توثيق Laravel](<https://laravel.com/docs/session>).
+
+#### أمثلة {/* #via_session_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"بإعداد محلي مثبّت"}>
+
+الطلب:
+
+```bash
+echo "Accept-Language=de" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"بإعداد محلي غير مثبّت"}>
+
+الطلب:
+
+```bash
+echo "Accept-Language=as" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"بإعداد محلي مجهول"}>
+
+الطلب:
+
+```bash
+echo "Accept-Language=qwerty" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### عبر النموذج {/* #via_model */}
+
+:::tip
+
+يضبط الإعداد المحلي بحسب العمود المسمّى <abbr title={"يمكن تغيير هذا الاسم في قسم \"routes\" من ملف \"config/localization.php\"."}>locale</abbr>.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+
+app('router')
+    ->middleware(LocalizationByModel::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+تتيح هذه الطريقة ضبط الإعداد المحلي لأي مستخدم مصادَق عليه. تأكّد أولًا من أن النموذج يحتوي على السمة <abbr title={"يمكن تغيير هذا الاسم في قسم \"routes\" من ملف \"config/localization.php\"."}>"locale"</abbr>.
+
+إذا كان جدول المستخدمين يفتقر إلى هذا العمود، فأضفه عند الحاجة أو أنشئ دالة ديناميكية في فئة النموذج.
+
+مثلًا:
+
+```php
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use LaravelLang\LocaleList\Locale;
+
+class User extends Authenticatable
+{
+    protected function locale(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Locale::French
+        );
+    }
+}
+```
+
+بعد مصادقة المستخدم عبر البرمجية الوسيطة أو يدويًا، مثلًا بدالة `Auth::login($user)`، يعرض التطبيق المعلومات باللغة التي اختارها المستخدم.
+
+إذا صودق على المستخدم بحارس مصادقة معيّن، يمكنك تحديده بعد نقطتين رأسيتين عند استدعاء البرمجية الوسيطة.
+
+مثلًا:
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+
+app('router')
+    ->middleware(LocalizationByModel::class . ':guard_name')
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+تستخدم البرمجية الوسيطة الشيفرة التالية للحصول على كائن المستخدم:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+
+class LocalizationByModel extends Middleware
+{
+    public function __construct(
+        protected ?string $guard = null,
+    ) {}
+
+    protected function user(Request $request): ?Model
+    {
+        return $request->user($this->guard);
+    }
+}
+```
+
+### استخدام مجموعة التوطين {/* #via_localization_group */}
+
+:::note
+
+عند استدعاء الدالة المساعدة `localizedRoute` دون <abbr title={"الدوال المتاحة هي \"app('router')->localizedGroup()\" و\"Route::localizedGroup()\" و\"LocalizationRoute::group\"."}>تجميع المسارات</abbr>، يُمرّر الإعداد المحلي كمعامل استعلام. مثلًا:
+
+```bash
+https://example.com/foo?locale=fr
+```
+
+:::
+
+:::tip
+
+يمكنك تغيير اسم المعامل وبادئة الاسم وخيار إعادة التوجيه في قسم `routes` من ملف `config/localization.php`.
+
+:::
+
+```php
+use Illuminate\Support\Facades\Route;
+
+app('router')->localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+
+Route::localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+```
+
+تتيح هذه الدالة إدارة بادئات المجموعات بسهولة عند استخدام المسارات الموطّنة.
+
+بالإضافة إلى البرمجية الوسيطة الرئيسية لهذه المجموعة `LocalizationByParameterPrefix`، تشارك أيضًا `LocalizationByCookie` و`LocalizationByHeader` و`LocalizationBySession`.
+
+يمكنك استخدام إحدى الطرق الثلاث الآتية:
+
+```php
+use Illuminate\Support\Facades\Route;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+
+app('router')->localizedGroup(fn () => ...)
+
+Route::localizedGroup(fn () => ...)
+
+LocalizationRoute::group(fn () => ...)
+```
+
+يسجّل التطبيق النهائي نوعين من المسارات: مسارات ببادئة `{locale}` وأخرى دونها. مثلًا:
+
+| عنوان URL | النمط | الاسم |
+| --- | --- | --- |
+| https://example.com/fr/foo/show | `{locale}/foo/{bar}` | `localized.show` |
+| https://example.com/foo/show | `foo/{bar}` | `show` |
+
+يمكنك تغيير بادئة الاسم في قسم `routes` من ملف `config/localization.php`.
+
+:::note
+
+```php
+localizedRoute('show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+route('localized.show', ['bar' => 'show', 'locale' => app()->getLocale()]);
+// https://example.com/fr/foo/show
+```
+
+تدعم هذه الميزة [Laravel Idea](<https://laravel-idea.com/>)، وهي إضافة لـ [PhpStorm](<https://www.jetbrains.com/phpstorm/>):
+
+<img src={require("@site/static/images/packages-route-idea-friendly.png").default} alt={"دعم Laravel Idea للمسارات"} />
+
+:::
+
+#### أمثلة {/* #via_localization_group_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"الإعداد المحلي الافتراضي"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/fr/foo/show
+```
+
+الاستجابة:
+
+<Tabs>
+
+<TabItem value="tab-1" label={"مع تفعيل إعادة التوجيه"}>
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"مع تعطيل إعادة التوجيه"}>
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="tab-2" label={"إعداد محلي غير افتراضي"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/de/foo/show
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"بإعداد محلي غير مثبّت"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/as/foo/show
+```
+
+الاستجابة:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"بإعداد محلي مجهول"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/qwerty/foo/show
+```
+
+الاستجابة:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+</Tabs>
+
+## الأحداث {/* #events */}
+
+:::note
+
+يتوفّر الحدث في حزمة `laravel-lang/routes` بدءًا من الإصدار `1.1`.
+
+:::
+
+يُرسل الحدث عند تمرير معامل إعداد محلي لتعيينه في التطبيق:
+
+```php
+use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
+
+LocaleHasBeenSetEvent::dispatch($locale);
+```
+
+خاصية الحدث `$locale` من النوع `LaravelLang\Locales\Data\LocaleData`.
+
+يمكنك الاستماع إلى الحدث عند الحاجة. مثلًا:
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(static function (LocaleHasBeenSetEvent $event) {
+            Log::info('Locale set to: ' . $event->locale->code);
+        });
+    }
+}
+```
+
+## التوافق {/* #compatibility */}
+
+| Laravel | PHP | الحزمة | الحالة |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">مدعوم</span> |

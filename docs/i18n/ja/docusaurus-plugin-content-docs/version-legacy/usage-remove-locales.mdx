@@ -1,0 +1,33 @@
+---
+title: "ロケールを削除する"
+slug: /usage-remove-locales.html
+description: "Laravel アプリケーションからロケールを削除します。"
+---
+
+:::warning
+
+実行すると、既定とフォールバックのロケールを除き、ロケールのフォルダー全体が中のファイルとともに削除されます。
+
+:::
+
+ロケールを削除するには、`php artisan lang:rm <locale>` にロケールコードを渡します。
+
+```bash
+php artisan lang:rm fr de de_AT de_CH vi zh_CN
+```
+
+引数を指定しない場合は、コンソールに対話形式の確認が表示され、候補からロケールを選べます。
+
+```bash
+php artisan lang:rm
+```
+
+保護されているロケールを削除しようとすると、コマンドは既定でエラーを返します。
+
+保護されるロケールは、`config/app.php` ファイルの `locale` と `fallback_locale` パラメーターに設定されたコードです。
+
+保護されているロケールを強制的に削除するには、`force` オプションを使用します。
+
+```bash
+php artisan lang:rm en --force
+```

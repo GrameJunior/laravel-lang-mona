@@ -1,0 +1,459 @@
+---
+title: "الاستخدام الأساسي"
+slug: /basic-usage.html
+description: "معلومات عن تثبيت الحزم بسرعة واستخدامها."
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+## التثبيت {/* #installation */}
+
+ثبّت الحزمة باستخدام أمر الطرفية:
+
+```bash
+composer require laravel-lang/common:^6.9
+```
+
+## إدارة الإعدادات المحلية {/* #managing_locales */}
+
+### إضافة إعدادات محلية {/* #add_locales */}
+
+:::note
+
+تجد قائمة الإعدادات المحلية المتاحة [<strong>هنا</strong>](<./available-locales-list.mdx>).
+
+:::
+
+يمكنك الآن [إضافة](<./usage-add-locales.mdx> "إضافة الإعدادات المحلية إلى تطبيق Laravel") إعدادات محلية جديدة باستخدام أمر الطرفية `lang:add`:
+
+```bash
+php artisan lang:add <locale>
+```
+
+### تحديث الإعدادات المحلية {/* #update_locales */}
+
+يمكنك الآن [تحديث](<./usage-update-locales.mdx> "تحديث الإعدادات المحلية في تطبيق Laravel") الإعدادات المحلية القائمة باستخدام أمر الطرفية `lang:update`:
+
+```bash
+php artisan lang:update
+```
+
+يُستحسن أيضًا إضافة الاستدعاء إلى قسم `post-update-cmd` ضمن كتلة `scripts` في ملف `composer.json`:
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+يتيح ذلك تحديث ملفات التوطين تلقائيًا بعد تحديث التبعيات، دون الحاجة إلى تشغيل أمر `php artisan lang:update` يدويًا.
+
+## المسارات {/* #routes */}
+
+### استخدام مجموعة التوطين {/* #via_localization_group */}
+
+:::note
+
+عند استدعاء الدالة المساعدة `localizedRoute` دون <abbr title={"الدوال المتاحة هي \"app('router')->localizedGroup()\" و\"Route::localizedGroup()\" و\"LocalizationRoute::group\"."}>تجميع المسارات</abbr>، يُمرّر الإعداد المحلي كمعامل استعلام. مثلًا:
+
+```bash
+https://example.com/foo?locale=fr
+```
+
+:::
+
+:::tip
+
+يمكنك تغيير اسم المعامل وبادئة الاسم وخيار إعادة التوجيه في قسم `routes` من ملف `config/localization.php`.
+
+:::
+
+```php
+use Illuminate\Support\Facades\Route;
+
+app('router')->localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+
+Route::localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+```
+
+تتيح هذه الدالة إدارة بادئات المجموعات بسهولة عند استخدام المسارات الموطّنة.
+
+بالإضافة إلى البرمجية الوسيطة الرئيسية لهذه المجموعة `LocalizationByParameterPrefix`، تشارك أيضًا `LocalizationByCookie` و`LocalizationByHeader` و`LocalizationBySession`.
+
+يمكنك استخدام إحدى الطرق الثلاث الآتية:
+
+```php
+use Illuminate\Support\Facades\Route;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+
+app('router')->localizedGroup(fn () => ...)
+
+Route::localizedGroup(fn () => ...)
+
+LocalizationRoute::group(fn () => ...)
+```
+
+يسجّل التطبيق النهائي نوعين من المسارات: مسارات ببادئة `{locale}` وأخرى دونها. مثلًا:
+
+| عنوان URL | النمط | الاسم |
+| --- | --- | --- |
+| https://example.com/fr/foo/show | `{locale}/foo/{bar}` | `localized.show` |
+| https://example.com/foo/show | `foo/{bar}` | `show` |
+
+يمكنك تغيير بادئة الاسم في قسم `routes` من ملف `config/localization.php`.
+
+:::note
+
+```php
+localizedRoute('show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+route('localized.show', ['bar' => 'show', 'locale' => app()->getLocale()]);
+// https://example.com/fr/foo/show
+```
+
+تدعم هذه الميزة [Laravel Idea](<https://laravel-idea.com/>)، وهي إضافة لـ [PhpStorm](<https://www.jetbrains.com/phpstorm/>):
+
+<img src={require("@site/static/images/packages-route-idea-friendly.png").default} alt={"دعم Laravel Idea للمسارات"} />
+
+:::
+
+#### أمثلة {/* #via_localization_group_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"الإعداد المحلي الافتراضي"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/fr/foo/show
+```
+
+الاستجابة:
+
+<Tabs>
+
+<TabItem value="tab-1" label={"مع تفعيل إعادة التوجيه"}>
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"مع تعطيل إعادة التوجيه"}>
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="tab-2" label={"إعداد محلي غير افتراضي"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/de/foo/show
+```
+
+الاستجابة:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"بإعداد محلي غير مثبّت"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/as/foo/show
+```
+
+الاستجابة:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"بإعداد محلي مجهول"}>
+
+الطلب:
+
+```bash
+curl -XGET https://example.com/qwerty/foo/show
+```
+
+الاستجابة:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+</Tabs>
+
+## النماذج {/* #models */}
+
+### الحصول على ترجمة {/* #get_translation */}
+
+:::tip
+
+تنقل جميع مخازن المستودع علامة [التحميل المسبق](<https://laravel.com/docs/eloquent-relationships#eager-loading>) إلى النموذج الأب تلقائيًا، فلا حاجة إلى فعل ذلك يدويًا.
+
+افتراضيًا، تتضمن العلاقة سجلات الإعدادين المحليين الأساسيين، الحالي والاحتياطي، فقط. ويمكنك تحميل جميع السجلات بتغيير [إعدادات التصفية](<./configuration.mdx#models>):
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+في هذه الحالة تُحمّل جميع الإعدادات المحلية المتاحة للعناصر.
+
+:::
+
+للحصول على قيمة خاصية للإعداد المحلي الحالي، اقرأ خاصية النموذج مباشرةً. مثلًا:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+إذا غابت قيمة <abbr title={"القيمة المحدّدة في المعامل \"app.locale\" في ملف \"config/app.php\"."}>الإعداد المحلي الرئيسي</abbr>، تعيد الدالة قيمة <abbr title={"القيمة المحدّدة في المعامل \"app.fallback_locale\" في ملف \"config/app.php\"."}>الإعداد المحلي الاحتياطي</abbr>.
+
+يمكنك أيضًا استخدام الدالة `getTranslation`:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+للحصول على قيمة لإعداد محلي معيّن، مرّر رمز الإعداد وسيطةً ثانية. مثلًا:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// أو
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+تعيد هذه الدوال القيمة حتى إذا كان النموذج يحتوي على تغييرات لم تُكتب في قاعدة البيانات.
+
+:::
+
+### تعيين الترجمات {/* #set_translations */}
+
+#### قيمة واحدة {/* #single_value */}
+
+لإضافة ترجمة أو تحديثها للإعداد المحلي الحالي للتطبيق، عيّن قيمة لخاصية النموذج مباشرةً. مثلًا:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+يمكنك أيضًا تعيين قيمة جديدة باستخدام الدالة `setTranslation`:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+تعيّن هذه الدوال قيمة جديدة للإعداد المحلي النشط حاليًا. ولتعيين القيمة لإعداد محلي معيّن، مرّر رمزه وسيطةً ثالثة لهذه الدالة. مثلًا:
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// أو
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+يمكنك أيضًا تعبئة الحقول دفعة واحدة:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+تخزّن هذه الدوال القيم الجديدة في كائنات النموذج. ولكتابة التغييرات في قاعدة البيانات، استدعِ الدالة `save` على النموذج الأب. مثلًا:
+
+```php
+$page->save();
+```
+
+:::
+
+يمكنك أيضًا تعبئة الحقول عند إنشاء النموذج. مثلًا:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### عدة قيم {/* #plural_value */}
+
+لتعبئة خاصية سريعًا بترجمات لعدة إعدادات محلية، استخدم إحدى الطرق الآتية:
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// الخيار 1
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// الخيار 2
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+يمكنك أيضًا تعيين كائنات `iterable` عند التعبئة دفعة واحدة. مثلًا:
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+ليس من الضروري تحديد الإعدادات المحلية نفسها لكل حقل. يعبّئ المثال أعلاه حقل `title` بالفرنسية والإنجليزية والألمانية، بينما يعيّن قيم حقل `description` بالفرنسية والألمانية فقط.
+
+## الرجوع إلى ترجمات JSON الاحتياطية {/* #json_fallback */}
+
+:::note
+
+لا يتضمن ملف الإعداد `config/app.php` قسم `providers` في Laravel 11. يمكنك إضافته يدويًا.
+
+:::
+
+بعد التثبيت، أضف مرجعًا إلى مزوّد الخدمة في قسم `providers` بملف الإعداد `config/app.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // مزوّدو الخدمات الآخرون
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+تُعيد مفاتيح JSON الآن القيمة الصحيحة بحسب الإعداد المحلي المحدّد.

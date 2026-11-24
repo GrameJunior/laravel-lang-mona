@@ -1,0 +1,50 @@
+---
+title: "Instalar complementos"
+slug: /plugins-installation.html
+description: "Información para instalar complementos de localización con Publisher"
+---
+
+:::note
+
+También puedes consultar las listas de complementos [oficiales](<./plugins-official.mdx>) y [de la comunidad](<./plugins-community.mdx>).
+
+:::
+
+Para activar el complemento, sigue estos pasos.
+
+1. Instala el paquete en tu aplicación. Por ejemplo, ejecuta `composer require --dev laravel-lang/lang:^15.39.1` o instala otro paquete.
+1. Eso es todo 😊
+
+Al ejecutar `php artisan lang:update`, Publisher comprueba los paquetes indicados y actualiza automáticamente los archivos de la aplicación.
+
+Si varios paquetes tienen archivos con el mismo nombre, como `custom.php`, se procesan las claves de todos ellos.
+
+:::tip
+
+Para facilitar el desarrollo, usa la [plantilla de traducciones](<https://github.com/Laravel-Lang/translations-template>).
+
+:::
+
+¡Listo! 😊
+
+## Complementos {/* #plugins */}
+
+<div className="legacy-card-grid">
+
+<div className="card legacy-card">
+
+[Complementos oficiales](<./plugins-official.mdx>)
+
+Lista de complementos que desarrolla y mantiene el equipo de Laravel-Lang.
+
+</div>
+
+<div className="card legacy-card">
+
+[Complementos de la comunidad](<./plugins-community.mdx>)
+
+Lista de complementos que desarrolla y mantiene la comunidad.
+
+</div>
+
+</div>
