@@ -1,0 +1,124 @@
+---
+title: "Katkı kılavuzu"
+slug: /contributions.html
+description: "Geliştiricilere Laravel Lang projelerine katkıda bulunmayı anlatan kılavuz"
+---
+
+Katkılarınızı <strong>memnuniyetle karşılıyor</strong> ve katkıda bulunan herkesi <strong>belirtiyoruz</strong>.
+
+Kuruluşumuzun [tüm projelerinde](<https://github.com/orgs/Laravel-Lang/repositories>) pull request üzerinden katkı kabul ediyoruz.
+
+## Dosyalar ne işe yarar? {/* #what_do_the_files_mean */}
+
+- <strong>php.json</strong>, PHP yerelleştirme dosyalarındaki değerlerin çevirilerini içerir.
+- <strong>php-inline.json</strong>, PHP yerelleştirme dosyalarındaki değerlerin satır içi çevirilerini içerir.
+- <strong>json.json</strong>, JSON yerelleştirme dosyalarındaki değerlerin çevirilerini içerir.
+- <strong>json-inline.json</strong>, JSON yerelleştirme dosyalarındaki değerlerin satır içi çevirilerini içerir.
+- <strong>\_excludes.json</strong>, çevirisi İngilizcesiyle aynı olan değerleri listeler. Dosyada anahtarların değil değerlerin listelendiğine dikkat edin.
+
+## Dosyaları düzenleme {/* #how_to_edit_files */}
+
+Çeviriye açık tüm dosyalar JSON uzantılıdır ve `locales` dizininde bulunur. İlgili dosyayı açın ve değişikliklerinizi yapın.
+
+:::tip
+
+Anahtarda hata görseniz bile anahtarı değiştirmeyin. Aksi takdirde Laravel anahtarı okuyamaz.
+
+Yazım hatasını düzeltmek için Laravel ekibinin ilgili projesine [pull request](<https://github.com/orgs/laravel/repositories>) gönderebilirsiniz.
+
+Bunun ardından ürünlerimiz anahtarları otomatik olarak günceller. Bu işlem günde bir kez gerçekleşir.
+
+:::
+
+1. Yerelleştirme dosyasını açın.
+1. Anahtarların değerlerini değiştirin.
+1. Bir commit oluşturun ve uzak depoya gönderin.
+1. Değişiklik yaptığınız yerel ayarın kodunu belirterek bir pull request oluşturun. Aşağıdaki örnek başlığa bakın.
+
+   :::tip
+
+   \[fr\]: Added new localization
+
+   :::
+
+:::tip
+
+`inline` son ekli dosyalara dikkat edin. Bu dosyalar geçerli özniteliğe (`:attribute`) başvurmamalıdır.
+
+Satır içi çeviriler, hitap biçimi bakımından farklıdır.
+
+```text
+// Standart çeviri
+The :attribute must contain at least one letter.
+
+// Satır içi çeviri
+This field must contain at least one letter.
+```
+
+:::
+
+## Yeni yerel ayar ekleme {/* #how_to_add_a_new_locale */}
+
+### Laravel Lang projeleri için {/* #for_laravel_lang_projects */}
+
+Projelerimiz genellikle kullanılabilir yerel ayarları zaten içerir. Yeni bir yerel ayar önermek istiyorsanız [bize yazın](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+### Üçüncü taraf projeleri için {/* #for_third_party_projects */}
+
+:::tip
+
+`laravel-lang/locale-list` listesinde olmayan bir yerel ayar eklemek için [bize yazın](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+:::
+
+`laravel-lang/status-generator` paketinin kurulu olduğundan emin olun ve aşağıdaki konsol komutunu çalıştırın.
+
+```bash
+vendor/bin/lang create <locale>
+# vendor/bin/lang create fr
+```
+
+Eksik yerel ayarların tümünü kurmak istiyorsanız komutu yerel ayar kodu belirtmeden çalıştırın.
+
+```bash
+vendor/bin/lang create
+```
+
+## Kod stili {/* #code_style */}
+
+Laravel-Lang ekibi [PER](<https://www.php-fig.org/per/coding-style/>) kodlama standardını ve [PSR-4](<https://www.php-fig.org/psr/psr-4/>) otomatik yükleme standardını izler.
+
+Kodu stile uygun biçimlendirmek için aşağıdaki konsol komutunu çalıştırın.
+
+```bash
+composer style
+```
+
+## Pull request başlığı {/* #pr_title */}
+
+Pull request başlığı aşağıdaki biçime uymalıdır.
+
+```bash
+[locale]: Description
+```
+
+Aşağıdaki örneğe bakın.
+
+```bash
+[fr]: Added new localization
+```
+
+Başlığın belirlenen biçime uygunluğu aşağıdaki düzenli ifadeyle kontrol edilir.
+
+```bash
+/^(Draft:\s)?\[[a-zA-Z,_\s]+\]:\s.+$/
+```
+
+## Davranış kuralları {/* #code_of_conduct */}
+
+Laravel’in davranış kuralları [Contributor Covenant](<https://www.contributor-covenant.org/version/2/1/code_of_conduct/>) davranış kurallarına dayanır. İhlalleri [Andrey Helldar ve Fred Delrieu’ya](<mailto:helldar@dragon-code.pro;caouecs@caouecs.net>) bildirebilirsiniz.
+
+- Katılımcılar karşıt görüşlere hoşgörülü davranır.
+- Katılımcıların kullandığı dil ve davranışları kişisel saldırı ve aşağılayıcı kişisel yorumlar içermemelidir.
+- Katılımcılar başkalarının sözlerini ve davranışlarını yorumlarken her zaman iyi niyet varsaymalıdır.
+- Makul olarak taciz sayılabilecek davranışlara müsamaha gösterilmez.

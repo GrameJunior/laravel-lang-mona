@@ -1,0 +1,47 @@
+---
+title: "Publisher"
+slug: /upgrade-publisher.html
+description: "Publisher paketini 15’ten 16. sürüme yükseltme hakkında bilgiler"
+---
+
+## Bağımlılıkları güncelleme {/* #updating_dependencies */}
+
+:::note
+
+`laravel-lang/common` paketini kullanıyorsanız bu adımı atlayın.
+
+:::
+
+Uygulamanızın `composer.json` dosyasında aşağıdaki bağımlılığı güncellemeniz gerekir.
+
+- `laravel-lang/publisher` sürümünü `^16.0` olarak ayarlayın.
+
+Ardından bağımlılık güncelleme komutunu çalıştırın.
+
+```bash
+composer update
+```
+
+## Yerel ayar ad alanını değiştirme {/* #change_namespace */}
+
+Aşağıdaki yerel ayar ad alanını değiştirin.
+
+```php
+LaravelLang\Locales\Enums\Locale
+```
+
+Yerine aşağıdaki ad alanını kullanın.
+
+```php
+LaravelLang\LocaleList\Locale
+```
+
+Aşağıdaki örnek değişikliği gösterir.
+
+```php
+// Önce
+LaravelLang\Locales\Enums\Locale::Afrikaans; // af
+
+// Sonra
+LaravelLang\LocaleList\Locale::Afrikaans; // af
+```

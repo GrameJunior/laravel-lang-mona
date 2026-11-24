@@ -1,0 +1,959 @@
+---
+title: "Routes"
+slug: /packages-routes.html
+description: "Marshrutlarni oson va tez mahalliylashtirish"
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Loyihaning barqaror versiyasi chiqarilgan"}>Barqaror</span> <span className="badge badge--secondary" title={"Eng so‘nggi versiya noma’lum"}>noma’lum</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub’da ko‘rish](<https://github.com/laravel-lang/routes>)
+
+## O‘rnatish {/* #installation */}
+
+:::note
+
+Moslik jadvalini [shu yerda](<#compatibility> "Routes paketi uchun moslik jadvali") ko‘rishingiz mumkin.
+
+:::
+
+O‘rnatish uchun quyidagi konsol buyrug‘ini bajaring:
+
+```bash
+composer require laravel-lang/routes:^1.11.0
+```
+
+Standart sozlamalarni `config/localization.php` faylini tahrirlab [o‘zgartirishingiz](<./configuration.mdx#routes>) ham mumkin.
+
+:::note
+
+[Marshrut keshi](<https://laravel.com/docs/routing#route-caching>) to‘liq qo‘llab-quvvatlanadi.
+
+```bash
+php artisan route:cache
+```
+
+:::
+
+## Foydalanish {/* #usage */}
+
+Bu yerda bitta ilovada [Routes](<./packages-routes.mdx#usage> "Routes paketidan foydalanish") va [Models](<./packages-models.mdx#usage> "Models paketidan foydalanish") loyihalarini o‘rnatish va ishlatish haqida qisqa videoni ko‘rishingiz mumkin ([YouTube’da ko‘rish](<https://youtu.be/mH76pGbpVu0>)):
+
+<iframe className="legacy-video" src="https://www.youtube-nocookie.com/embed/mH76pGbpVu0" title={"Routes va Models"} loading="lazy" allowFullScreen />
+
+Ilovada ikki lokal, fransuz va nemis tillari o‘rnatilgan deb olaylik.
+
+Ilova sozlamalari quyidagicha bo‘ladi:
+
+```php
+// config/app.php
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'locale' => Locale::French->value,
+
+    'fallback_locale' => Locale::German->value,
+];
+```
+
+Fransuz va nemis tillari uchun quyidagi qiymatlarni ham belgiladik:
+
+```json
+{
+    "Foo": "Toutes les données ont été chargées."
+}
+```
+
+```json
+{
+    "Foo": "Alle Ressourcen geladen."
+}
+```
+
+### Bevosita ulash {/* #direct */}
+
+Muqobil nom qo‘shmasdan, vositachi dasturga bevosita murojaat qilishingiz mumkin:
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+app('router')
+    ->middleware(LocalizationByParameter::class)
+    ->get('some/{locale}', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->get('some/{locale?}', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByHeader::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByCookie::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationBySession::class)
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware(LocalizationByModel::class)
+    ->get('some', fn () => view('welcome'));
+```
+
+### Muqobil nomlar {/* #aliases */}
+
+Vositachi dastur muqobil nomlaridan foydalanish uchun ularni ilovada ro‘yxatdan o‘tkazing:
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Laravel 11"}>
+
+```php
+// bootstrap/app.php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Middleware;
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+return Application::configure(basePath: dirname(__DIR__))
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            'localization.parameter' => LocalizationByParameter::class,
+            'localization.redirect'  => LocalizationByParameterWithRedirect::class,
+            'localization.header'    => LocalizationByHeader::class,
+            'localization.cookie'    => LocalizationByCookie::class,
+            'localization.session'   => LocalizationBySession::class,
+            'localization.model'     => LocalizationByModel::class,
+        ]);
+    });
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Laravel 10"}>
+
+```php
+// app/Http/Kernel.php
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+class Kernel extends HttpKernel
+{
+    protected $middlewareAliases = [
+        // ...
+
+        'localization.parameter' => LocalizationByParameter::class,
+        'localization.redirect'  => LocalizationByParameterWithRedirect::class,
+        'localization.header'    => LocalizationByHeader::class,
+        'localization.cookie'    => LocalizationByCookie::class,
+        'localization.session'   => LocalizationBySession::class,
+        'localization.model'     => LocalizationByModel::class,
+    ];
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+Keyin marshrutning `middleware` metodida muqobil nomlarni ko‘rsatishingiz mumkin:
+
+```php
+app('router')
+    ->middleware('localization.parameter')
+    ->get('some/{locale}', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.redirect')
+    ->get('some/{locale?}', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.header')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.cookie')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.session')
+    ->get('some', fn () => view('welcome'));
+
+app('router')
+    ->middleware('localization.model')
+    ->get('some', fn () => view('welcome'));
+```
+
+### URL parametri orqali {/* #via_url_parameter */}
+
+:::tip
+
+Ishni boshlash uchun marshrut URL manzilining istalgan joyida `{locale}` parametrini ko‘rsating.
+
+Parametr nomini `config/localization.php` faylining `routes` bo‘limida o‘zgartirish mumkin.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByParameter;
+
+app('router')
+    ->middleware(LocalizationByParameter::class)
+    ->get('foo/{locale}/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Yaroqsiz lokal uzatilsa yoki lokal ko‘rsatilmasa, sahifa ilovada o‘rnatilgan asosiy lokalda ko‘rsatiladi.
+
+#### Misollar {/* #via_url_parameter_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"O‘rnatilgan lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/foo/de/show
+```
+
+Javob:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"O‘rnatilmagan lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/foo/as/show
+```
+
+Javob:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Noma’lum lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/foo/qwerty/show
+```
+
+Javob:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Yo‘naltirish bilan URL parametri orqali {/* #via_url_parameter_with_redirect */}
+
+:::tip
+
+Ishni boshlash uchun marshrut URL manzilining istalgan joyida `{locale}` parametrini ko‘rsating.
+
+Parametr nomini `config/localization.php` faylining `routes` bo‘limida o‘zgartirish mumkin.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByParameterWithRedirect;
+
+app('router')
+    ->middleware(LocalizationByParameterWithRedirect::class)
+    ->get('some/{foo}/bar/{locale?}', function (string $foo) {
+        return response()->json([
+            $foo => __('Foo'),
+        ]);
+    });
+```
+
+Yaroqsiz lokal uzatilsa yoki lokal ko‘rsatilmasa, sahifa asosiy lokalga yo‘naltiriladi.
+
+#### Misollar {/* #via_url_parameter_redirect_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"O‘rnatilgan lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/some/show/bar/de
+```
+
+Javob:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"O‘rnatilmagan lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/some/show/bar/as
+```
+
+Javob:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Noma’lum lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/some/show/bar/qwerty
+```
+
+Javob:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"Parametrsiz"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/some/show/bar/
+```
+
+Javob:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/fr/show
+```
+
+</TabItem>
+
+</Tabs>
+
+### Sarlavha orqali {/* #via_header */}
+
+:::tip
+
+Lokalni <abbr title={"Bu nomni \"config/localization.php\" faylining \"routes\" bo‘limida o‘zgartirish mumkin."}>Accept-Language</abbr> sarlavhasiga qarab belgilaydi.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByHeader;
+
+app('router')
+    ->middleware(LocalizationByHeader::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Yaroqsiz lokal yuborilsa yoki lokal belgilanmagan bo‘lsa, sahifa ilovada o‘rnatilgan asosiy lokalda ko‘rsatiladi.
+
+#### Misollar {/* #via_header_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"O‘rnatilgan lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: de'
+```
+
+Javob:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"O‘rnatilmagan lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: as'
+```
+
+Javob:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Noma’lum lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET 'https://example.com/foo/show' \
+--header 'Accept-Language: qwerty'
+```
+
+Javob:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Cookie orqali {/* #via_cookie */}
+
+:::tip
+
+Lokalni <abbr title={"Bu nomni \"config/localization.php\" faylining \"routes\" bo‘limida o‘zgartirish mumkin."}>Accept-Language</abbr> cookie fayliga qarab belgilaydi.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByCookie;
+
+app('router')
+    ->middleware(LocalizationByCookie::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Yaroqsiz lokal uzatilsa yoki lokal ko‘rsatilmasa, sahifa ilovada o‘rnatilgan asosiy lokalda ko‘rsatiladi.
+
+#### Misollar {/* #via_cookies_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"O‘rnatilgan lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=de"
+```
+
+Javob:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"O‘rnatilmagan lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=as"
+```
+
+Javob:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Noma’lum lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/foo/show \
+-b "Accept-Language=qwerty"
+```
+
+Javob:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Sessiya orqali {/* #via_session */}
+
+:::tip
+
+Lokalni <abbr title={"Bu nomni \"config/localization.php\" faylining \"routes\" bo‘limida o‘zgartirish mumkin."}>Accept-Language</abbr> sessiya kalitiga qarab belgilaydi.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationBySession;
+
+app('router')
+    ->middleware(LocalizationBySession::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Yaroqsiz lokal uzatilsa yoki lokal ko‘rsatilmasa, sahifa ilovada o‘rnatilgan asosiy lokalda ko‘rsatiladi.
+
+Texnik jihatdan sessiya bilan ishlash cookie fayllari bilan ishlashdan farq qilmaydi. Farq ularning qayerda saqlanishida.
+
+Sessiyalar bilan ishlash haqida [batafsil o‘qish](<https://laravel.com/docs/session>) uchun [Laravel hujjatlariga](<https://laravel.com/docs/session>) qarang.
+
+#### Misollar {/* #via_session_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"O‘rnatilgan lokal"}>
+
+So‘rov:
+
+```bash
+echo "Accept-Language=de" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+Javob:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"O‘rnatilmagan lokal"}>
+
+So‘rov:
+
+```bash
+echo "Accept-Language=as" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+Javob:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"Noma’lum lokal"}>
+
+So‘rov:
+
+```bash
+echo "Accept-Language=qwerty" >> cookies.txt
+
+curl -XGET https://example.com/foo/show \
+-b cookies.txt -c cookies.txt
+```
+
+Javob:
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Model orqali {/* #via_model */}
+
+:::tip
+
+Lokalni <abbr title={"Bu nomni \"config/localization.php\" faylining \"routes\" bo‘limida o‘zgartirish mumkin."}>locale</abbr> nomli ustunga qarab belgilaydi.
+
+:::
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+
+app('router')
+    ->middleware(LocalizationByModel::class)
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Bu metod autentifikatsiyadan o‘tgan har qanday mijoz uchun lokalni belgilash imkonini beradi. Buning uchun modelda <abbr title={"Bu nomni \"config/localization.php\" faylining \"routes\" bo‘limida o‘zgartirish mumkin."}>"locale"</abbr> atributi borligini tekshiring.
+
+Foydalanuvchilar jadvalida bu ustun bo‘lmasa, kerak bo‘lganda uni qo‘shing yoki model sinfida dinamik metod yarating.
+
+Masalan:
+
+```php
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use LaravelLang\LocaleList\Locale;
+
+class User extends Authenticatable
+{
+    protected function locale(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Locale::French
+        );
+    }
+}
+```
+
+Endi foydalanuvchi vositachi dastur orqali yoki qo‘lda, masalan, `Auth::login($user)` metodi bilan autentifikatsiyadan o‘tganda, ilova ma’lumotni foydalanuvchi tanlagan tilda qaytaradi.
+
+Bundan tashqari, foydalanuvchi muayyan autentifikatsiya mexanizmi bilan kirgan bo‘lsa, vositachi dasturni chaqirganda uni ikki nuqta bilan ajratib ko‘rsatishingiz mumkin.
+
+Masalan:
+
+```php
+use LaravelLang\Routes\Middlewares\LocalizationByModel;
+
+app('router')
+    ->middleware(LocalizationByModel::class . ':guard_name')
+    ->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+```
+
+Vositachi dastur foydalanuvchi obyektini olish uchun quyidagi koddan foydalanadi:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+
+class LocalizationByModel extends Middleware
+{
+    public function __construct(
+        protected ?string $guard = null,
+    ) {}
+
+    protected function user(Request $request): ?Model
+    {
+        return $request->user($this->guard);
+    }
+}
+```
+
+### Mahalliylashtirilgan guruh orqali {/* #via_localization_group */}
+
+:::note
+
+`localizedRoute` yordamchi funksiyasi marshrutlarni <abbr title={"Mavjud metodlar: \"app('router')->localizedGroup()\", \"Route::localizedGroup()\" va \"LocalizationRoute::group\"."}>guruhlamasdan</abbr> chaqirilsa, lokal so‘rov parametri sifatida ko‘rsatiladi. Masalan:
+
+```bash
+https://example.com/foo?locale=fr
+```
+
+:::
+
+:::tip
+
+Parametr nomi, nom prefiksi va yo‘naltirish parametrini `config/localization.php` faylining `routes` bo‘limida o‘zgartirish mumkin.
+
+:::
+
+```php
+use Illuminate\Support\Facades\Route;
+
+app('router')->localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+
+Route::localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+```
+
+Bu metod mahalliylashtirilgan marshrutlar yordamida guruh prefikslarini boshqarishni osonlashtiradi.
+
+Ushbu guruhning asosiy `LocalizationByParameterPrefix` vositachi dasturidan tashqari, `LocalizationByCookie`, `LocalizationByHeader` va `LocalizationBySession` ham qatnashadi.
+
+Uchta usuldan birini ishlatishingiz mumkin:
+
+```php
+use Illuminate\Support\Facades\Route;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+
+app('router')->localizedGroup(fn () => ...)
+
+Route::localizedGroup(fn () => ...)
+
+LocalizationRoute::group(fn () => ...)
+```
+
+Natijadagi ilova ikki turdagi marshrutni ro‘yxatdan o‘tkazadi: `{locale}` prefiksli va prefikssiz. Masalan:
+
+| URL | Andoza | Nom |
+| --- | --- | --- |
+| https://example.com/fr/foo/show | `{locale}/foo/{bar}` | `localized.show` |
+| https://example.com/foo/show | `foo/{bar}` | `show` |
+
+Nom prefiksini `config/localization.php` faylining `routes` bo‘limida o‘zgartirish mumkin.
+
+:::note
+
+```php
+localizedRoute('show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+route('localized.show', ['bar' => 'show', 'locale' => app()->getLocale()]);
+// https://example.com/fr/foo/show
+```
+
+Bu funksiyani [PhpStorm](<https://www.jetbrains.com/phpstorm/>) plagini [Laravel Idea](<https://laravel-idea.com/>) qo‘llab-quvvatlaydi:
+
+<img src={require("@site/static/images/packages-route-idea-friendly.png").default} alt={"Laravel Idea’da marshrutlarni qo‘llash"} />
+
+:::
+
+#### Misollar {/* #via_localization_group_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Standart lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/fr/foo/show
+```
+
+Javob:
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Yo‘naltirish yoqilgan"}>
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Yo‘naltirish o‘chirilgan"}>
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Standart bo‘lmagan lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/de/foo/show
+```
+
+Javob:
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"O‘rnatilmagan lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/as/foo/show
+```
+
+Javob:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"Noma’lum lokal"}>
+
+So‘rov:
+
+```bash
+curl -XGET https://example.com/qwerty/foo/show
+```
+
+Javob:
+
+```bash
+### 302 Redirect
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+</Tabs>
+
+## Hodisalar {/* #events */}
+
+:::note
+
+Hodisa `laravel-lang/routes` paketining `1.1` va undan keyingi versiyalarida mavjud.
+
+:::
+
+Ilovada lokalni belgilash uchun parametr uzatilganda, hodisa chaqiriladi:
+
+```php
+use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
+
+LocaleHasBeenSetEvent::dispatch($locale);
+```
+
+Hodisaning `$locale` xususiyati `LaravelLang\Locales\Data\LocaleData` tipiga ega.
+
+Kerak bo‘lsa, ushbu hodisani tinglashingiz mumkin. Masalan:
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use LaravelLang\Routes\Events\LocaleHasBeenSetEvent;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(static function (LocaleHasBeenSetEvent $event) {
+            Log::info('Locale set to: ' . $event->locale->code);
+        });
+    }
+}
+```
+
+## Moslik {/* #compatibility */}
+
+| Laravel | PHP | Paket | Holati |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">qo‘llab-quvvatlanadi</span> |

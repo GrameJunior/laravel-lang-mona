@@ -1,0 +1,50 @@
+---
+title: "Plugins installieren"
+slug: /plugins-installation.html
+description: "So installierst du Lokalisierungs-Plugins mit dem Publisher."
+---
+
+:::note
+
+Sieh dir auch die verfügbaren [offiziellen Plugins](<./plugins-official.mdx>) und die [Community-Plugins](<./plugins-community.mdx>) an.
+
+:::
+
+Die Einrichtung ist unkompliziert.
+
+1. Installiere ein Paket in deiner Anwendung, zum Beispiel `composer require --dev laravel-lang/lang:^15.39.1`.
+1. Damit ist die Einrichtung abgeschlossen 😊
+
+Wenn du jetzt `php artisan lang:update` ausführst, prüft der Publisher die angegebenen Pakete und aktualisiert die Dateien in deiner Anwendung automatisch.
+
+Haben Dateien in verschiedenen Paketen denselben Namen, etwa `custom.php`, werden beim Verarbeiten die Schlüssel aus allen diesen Dateien berücksichtigt.
+
+:::tip
+
+Verwende für die Entwicklung die fertige [Übersetzungsvorlage](<https://github.com/Laravel-Lang/translations-template>).
+
+:::
+
+Viel Spaß! 😊
+
+## Plugins {/* #plugins */}
+
+<div className="legacy-card-grid">
+
+<div className="card legacy-card">
+
+[Offizielle Plugins](<./plugins-official.mdx>)
+
+Liste der Plugins, die vom Laravel-Lang-Team entwickelt und gepflegt werden.
+
+</div>
+
+<div className="card legacy-card">
+
+[Community-Plugins](<./plugins-community.mdx>)
+
+Liste der Plugins, die von der Community entwickelt und gepflegt werden.
+
+</div>
+
+</div>

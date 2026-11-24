@@ -1,0 +1,124 @@
+---
+title: "Mitwirken"
+slug: /contributions.html
+description: "So kannst du zur Entwicklung der Laravel-Lang-Projekte beitragen."
+---
+
+Beiträge sind <strong>willkommen</strong> und werden in vollem Umfang <strong>gewürdigt</strong>.
+
+Wir nehmen Beiträge über Pull Requests in [allen Projekten](<https://github.com/orgs/Laravel-Lang/repositories>) unserer Organisation an.
+
+## Welche Übersetzungen enthalten die Dateien? {/* #what_do_the_files_mean */}
+
+- <strong>php.json</strong> enthält Übersetzungen der Werte aus PHP-Sprachdateien.
+- <strong>php-inline.json</strong> enthält Inline-Übersetzungen der Werte aus PHP-Sprachdateien.
+- <strong>json.json</strong> enthält Übersetzungen der Werte aus JSON-Sprachdateien.
+- <strong>json-inline.json</strong> enthält Inline-Übersetzungen der Werte aus JSON-Sprachdateien.
+- <strong>\_excludes.json</strong> enthält diejenigen Werte, deren Übersetzung mit dem englischen Text übereinstimmt. In dieser Datei stehen die Werte selbst.
+
+## Dateien ändern {/* #how_to_edit_files */}
+
+Alle übersetzbaren Dateien haben die Endung JSON und liegen im Ordner `locales`. Öffne die gewünschte Datei und bearbeite sie.
+
+:::tip
+
+Behalte einen Schlüssel auch dann unverändert bei, wenn er einen Fehler enthält. Laravel kann ihn sonst nicht mehr finden.
+
+Um einen Rechtschreibfehler zu korrigieren, kannst du einen [Pull Request](<https://github.com/orgs/laravel/repositories>) beim zuständigen Laravel-Projekt einreichen.
+
+Danach übernehmen unsere Projekte die geänderten Schlüssel automatisch. Die Aktualisierung läuft einmal täglich.
+
+:::
+
+1. Öffne die Sprachdatei.
+1. Ändere die Werte der Schlüssel.
+1. Erstelle einen Commit und pushe ihn.
+1. Erstelle einen Pull Request und gib den Locale-Code an, für den du Änderungen vornimmst. Hier ist ein Beispiel.
+
+   :::tip
+
+   \[fr\]: Added new localization
+
+   :::
+
+:::tip
+
+Achte auf Dateien mit dem Suffix `inline`. Diese dürfen keine Verweise auf das aktuelle Attribut `:attribute` enthalten.
+
+Inline-Übersetzungen unterscheiden sich in der Ansprache.
+
+```text
+// Standardübersetzung
+The :attribute must contain at least one letter.
+
+// Inline-Übersetzung
+This field must contain at least one letter.
+```
+
+:::
+
+## Eine neue Locale hinzufügen {/* #how_to_add_a_new_locale */}
+
+### Für Laravel-Lang-Projekte {/* #for_laravel_lang_projects */}
+
+In der Regel enthalten unsere Projekte bereits alle verfügbaren Locales. Wenn du eine neue Locale vorschlagen möchtest, [schreib uns](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+### Für Drittanbieterprojekte {/* #for_third_party_projects */}
+
+:::tip
+
+Um eine nicht in `laravel-lang/locale-list` enthaltene Locale hinzuzufügen, [schreib uns](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+:::
+
+Stelle sicher, dass `laravel-lang/status-generator` installiert ist, und führe den Konsolenbefehl aus.
+
+```bash
+vendor/bin/lang create <locale>
+# vendor/bin/lang create fr
+```
+
+Um alle fehlenden Locales zu installieren, führe den Befehl ohne Locale-Code aus.
+
+```bash
+vendor/bin/lang create
+```
+
+## Codestil {/* #code_style */}
+
+Das Laravel-Lang-Team folgt dem Codestandard [PER](<https://www.php-fig.org/per/coding-style/>) und dem Autoloading-Standard [PSR-4](<https://www.php-fig.org/psr/psr-4/>).
+
+Führe den folgenden Konsolenbefehl aus, um den Codestil anzuwenden.
+
+```bash
+composer style
+```
+
+## Titel des Pull Requests {/* #pr_title */}
+
+Der Titel des Pull Requests muss dem folgenden Format entsprechen.
+
+```bash
+[locale]: Description
+```
+
+Beispiel
+
+```bash
+[fr]: Added new localization
+```
+
+Ein regulärer Ausdruck prüft, ob der Titel dem vorgeschriebenen Format entspricht.
+
+```bash
+/^(Draft:\s)?\[[a-zA-Z,_\s]+\]:\s.+$/
+```
+
+## Verhaltenskodex {/* #code_of_conduct */}
+
+Laravels Verhaltenskodex leitet sich vom [Contributor Covenant](<https://www.contributor-covenant.org/version/2/1/code_of_conduct/>) ab. Verstöße kannst du [Andrey Helldar oder Fred Delrieu](<mailto:helldar@dragon-code.pro;caouecs@caouecs.net>) melden.
+
+- Teilnehmende tolerieren abweichende Ansichten.
+- Teilnehmende müssen darauf achten, dass ihre Sprache und ihr Verhalten frei von persönlichen Angriffen und herabwürdigenden persönlichen Bemerkungen sind.
+- Teilnehmende sollten bei der Auslegung der Worte und Handlungen anderer stets gute Absichten unterstellen.
+- Verhalten, das vernünftigerweise als Belästigung gelten kann, wird nicht geduldet.

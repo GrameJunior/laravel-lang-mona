@@ -1,0 +1,35 @@
+---
+title: "Lokallarni boshqarish"
+slug: /manage-locales.html
+description: "Mahalliylashtirishni boshqarish haqida umumiy ma’lumot"
+---
+
+:::warning
+
+Laravel standart holatda JSON kalitlari uchun zaxira tarjimalarga <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">ruxsat bermaydi</a>. Masalan, `__('Remember Me')` ni chaqirsangiz, fransuzcha zaxira til uchun `Se souvenir de moi` o‘rniga `Remember Me` ni olasiz.
+
+:::
+
+Deyarli barcha konsol buyruqlari parametr sifatida lokallar massivini qabul qiladi.
+
+Masalan:
+
+```bash
+php artisan lang:<command> fr de de_AT de_CH vi zh_CN
+php artisan lang:<command> fr
+php artisan lang:<command>
+```
+
+Bu yerda:
+
+- `fr de de_AT de_CH vi zh_CN` — bo‘sh joy bilan ajratilgan lokallar ro‘yxati.
+- `fr` — bitta lokal nomini ko‘rsatish ham mumkin.
+- buyruq chaqirilganda parametr berilmasa, skript ikkita savol beradi:
+- `Do you want to %s all localizations?`, bunda `%s` — `install`, `remove` yoki `reset`.
+- Javob `no` bo‘lsa, keyingi savol `Select localizations to add (specify the necessary localizations separated by commas)` bo‘ladi.
+
+:::note
+
+Fayllar bilan bajariladigan har qanday amalda (`install`, `uninstall`, `reset` va `update`) PHP fayllaridan tashqari JSON fayllari ham avtomatik qayta ishlanadi. Bunga [Laravel Framework](<https://laravel.com>), [Jetstream](<https://jetstream.laravel.com/>), [Fortify](<https://github.com/laravel/fortify>), [Cashier](<https://laravel.com/docs/billing>), [Breeze](<https://github.com/laravel/breeze>), [Nova (Dusk Suite va Log Viewer ham)](<https://nova.laravel.com/>), [Nova](<https://nova.laravel.com/>) (shuningdek [Dusk Suite](<https://github.com/laravel/nova-dusk-suite>), [Log Viewer](<https://github.com/laravel/nova-log-viewer>)) va [UI](<https://github.com/laravel/ui>) tarjimalari kiradi.
+
+:::

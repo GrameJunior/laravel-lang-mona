@@ -1,0 +1,693 @@
+---
+title: "Канфігурацыя"
+slug: /configuration.html
+description: "Падрабязныя звесткі пра наладжванне пакетаў"
+---
+
+## Публікацыя {/* #publish */}
+
+Пры патрэбе апублікуйце файл канфігурацыі гэтай камандай:
+
+```bash
+php artisan vendor:publish --tag="localization"
+```
+
+Змесціва апублікаванага файла `config/localization.php`:
+
+<details>
+<summary>Паказаць канфігурацыю</summary>
+
+```php
+return [
+    /*
+     * Вызначае, якія тыпы файлаў выкарыстоўваюцца пры абнаўленні моўных файлаў.
+     *
+     * @see https://laravel-lang.com/configuration.html#inline
+     *
+     * Па змаўчанні — `false`.
+     */
+
+    'inline' => (bool) env('LOCALIZATION_INLINE', env('LANG_PUBLISHER_INLINE')),
+
+    /*
+     * Ці трэба выраўноўваць масівы паводле ключоў перад апрацоўкай?
+     *
+     * @see https://laravel-lang.com/configuration.html#alignment
+     *
+     * Па змаўчанні — true
+     */
+
+    'align' => (bool) env('LOCALIZATION_ALIGN', env('LANG_PUBLISHER_ALIGN', true)),
+
+    /*
+     * Коды моў у файлах гэтага рэпазіторыя могуць не адпавядаць
+     * наладам вашага праекта.
+     *
+     * Тут задайце адпаведнасць кодаў лакаляў вашаму праекту.
+     *
+     * @see https://laravel-lang.com/configuration.html#aliases
+     */
+
+    'aliases' => [
+        // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
+        // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+
+    /*
+     * Гэты параметр вызначае, як пераўтвараць у ключах перакладу
+     * звычайныя знакі ў друкарскія.
+     *
+     * @see https://laravel-lang.com/configuration.html#smart_punctuation
+     *
+     * Па змаўчанні — false
+     */
+
+    'smart_punctuation' => [
+        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+
+        'common' => [
+            'double_quote_opener' => '“',
+            'double_quote_closer' => '”',
+            'single_quote_opener' => '‘',
+            'single_quote_closer' => '’',
+        ],
+
+        'locales' => [
+            Locale::French->value => [
+                'double_quote_opener' => '«&nbsp;',
+                'double_quote_closer' => '&nbsp;»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Russian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Ukrainian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Belarusian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+        ],
+    ],
+
+    /*
+     * Вызначае налады маршрутаў прыкладання.
+     *
+     * @see https://laravel-lang.com/configuration.html#routes
+     */
+
+    'routes' => [
+        /*
+         * Вызначае, якія назвы ключоў выкарыстоўваюцца ў маршрутызацыі прыкладання.
+         *
+         * Значэнні па змаўчанні:
+         *
+         *   parameter - locale
+         *   header    - Accept-Language
+         *   cookie    - Accept-Language
+         *   session   - Accept-Language
+         *   column    - column
+         */
+
+        'names' => [
+            'parameter' => RouteName::Parameter,
+            'header'    => RouteName::Header,
+            'cookie'    => RouteName::Cookie,
+            'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
+        ],
+
+        /*
+         * Задае прэфікс імёнаў груп маршрутаў.
+         *
+         * Па змаўчанні — `localized.`
+         */
+
+        'name_prefix' => env('LOCALIZATION_NAME_PREFIX', 'localized.'),
+
+        /*
+         * Кіруе перанакіраваннем запыту пры спробе адкрыць лакаль па змаўчанні.
+         *
+         * Дзейнічае пры выкарыстанні фасада `LaravelLang\Routes\Facades\LocalizationRoute`.
+         */
+
+        'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
+
+        /*
+         * Задае лакаль па змаўчанні, для якой параметр лакалі прыбіраецца з URL.
+         *
+         * Дзейнічае пры выкарыстанні дапаможнай функцыі `localizedRoute`.
+         */
+
+        'hide_default' => (bool) env('LOCALIZATION_HIDE_DEFAULT', false),
+
+        // Змяшчае налады маршрутаў.
+
+        'group' => [
+            'middlewares' => [
+                // Змяшчае налады маршрутаў без прэфікса кода лакалі.
+
+                'default' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+
+                // Змяшчае налады маршрутаў з прэфіксам кода лакалі.
+
+                'prefix' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+            ],
+        ],
+    ],
+
+    /*
+     * Налады працы з перакладамі мадэляў.
+     *
+     * @see https://laravel-lang.com/configuration.html#models
+     */
+
+    'models' => [
+        /*
+         * Задае суфікс для мадэляў, якія змяшчаюць пераклады.
+         *
+         * Напрыклад:
+         *   асноўная мадэль — `App\Models\Page`
+         *   мадэль перакладу — `App\Models\PageTranslation`
+         *
+         * Па змаўчанні — `Translation`
+         */
+
+        'suffix' => 'Translation',
+
+        /*
+         * Вызначае, ці трэба фільтраваць лакалі, загружаныя
+         * праз сувязь пры папярэдняй загрузцы.
+         *
+         * Па змаўчанні — true.
+         */
+
+        'filter' => [
+            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+        ],
+
+        /*
+         * Задае каталог для дапаможных файлаў IDE.
+         *
+         * Па змаўчанні — `vendor/_laravel_lang`
+         */
+
+        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
+    ],
+
+    /*
+     * Спіс сэрвісаў перакладу, з якімі працуе Laravel Lang Translator.
+     *
+     * Па змаўчанні Google Translate уключаны.
+     *
+     * @see https://laravel-lang.com/configuration.html#translators
+     */
+
+    'translators' => [
+        /*
+         * Спіс каналаў для перакладу.
+         *
+         * Па змаўчанні:
+         *
+         *     Google уключаны
+         *     DeepL выключаны
+         *     Yandex выключаны
+         */
+
+        'channels' => [
+            'google' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Google',
+
+                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
+            ],
+
+            'deepl' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+
+                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
+
+                'credentials' => [
+                    'key' => (string) env('TRANSLATION_DEEPL_KEY'),
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
+
+                'credentials' => [
+                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
+                ],
+            ],
+        ],
+
+        'options' => [
+            /*
+             * Задае ўласны шаблон для вылучэння з радка ключавых слоў з падстаноўкамі.
+             * Па змаўчанні вылучаюцца словы, якія пачынаюцца з двукроп’я.
+             *
+             *  Даступныя варыянты:
+             *
+             *     `true` адпавядае `/:(\w+)/`
+             *     `false` выключае апрацоўку рэгулярных выразаў
+             *      `/any regex/` — любы рэгулярны выраз, які вы задасце
+             *
+             *   Па змаўчанні — `true`
+             *
+             * @example (напрыклад, з "Hello :name" будзе вылучана "name")
+             */
+
+            'preserve_parameters' => true,
+        ],
+    ],
+];
+```
+
+</details>
+
+## Убудаваныя паведамленні {/* #inline */}
+
+Параметр `inline` вызначае тып файлаў, якія выкарыстоўваюцца пры абнаўленні моўных файлаў.
+
+- `true` азначае, што выкарыстоўваюцца файлы ўбудаваных паведамленняў.
+- `false` азначае, што выкарыстоўваюцца стандартныя файлы.
+
+Розніцу паміж імі паказвае гэты прыклад:
+
+```text
+The :attribute must be accepted. // default
+This field must be accepted. // inline
+```
+
+Гэтая налада знаходзіцца ў файле `config/localization.php`:
+
+```php
+return [
+    'inline' => (bool) env('LOCALIZATION_INLINE', env('LANG_PUBLISHER_INLINE')),
+];
+```
+
+## Выраўноўванне {/* #alignment */}
+
+Параметр `align` вызначае выраўноўванне значэнняў адно адносна аднаго пры апрацоўцы файлаў лакалізацыі.
+
+Пры абнаўленні ўсе каментары аўтаматычна выдаляюцца з выніковых файлаў, бо [var\_export](<https://www.php.net/manual/en/function.var-export.php>) не падтрымлівае каментары.
+
+Прыклад зыходнага файла:
+
+```php
+declare(strict_types=1);
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used during authentication for various
+    | messages that we need to display to the user. You are free to modify
+    | these language lines according to your application's requirements.
+    |
+    */
+    'failed'   => 'These credentials do not match our records 123456.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'foo'      => 'bar',
+];
+```
+
+Абноўлены файл:
+
+```php
+declare(strict_types=1);
+
+return [
+    'failed'   => 'These credentials do not match our records 123456.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'foo'      => 'bar',
+];
+```
+
+Прыклад файла `validation.php`:
+
+<details>
+<summary>Паказаць змесціва</summary>
+
+```php
+declare(strict_types=1);
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Validation Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines contain the default error messages used by
+    | the validator class. Some of these rules have multiple versions such
+    | as the size rules. Feel free to tweak each of these messages here.
+    |
+    */
+    'accepted'   => 'The :attribute must be accepted.',
+    'active_url' => 'The :attribute is not a valid URL.',
+
+    // Іншыя правілы
+
+    'uuid' => 'The :attribute must be a valid UUID.',
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Validation Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify custom validation messages for attributes using the
+    | convention "attribute.rule" to name the lines. This makes it quick to
+    | specify a specific custom language line for a given attribute rule.
+    |
+    */
+    'custom' => [
+        'name' => [
+            'required' => 'Custom message 1',
+            'string'   => 'Custom message 2',
+        ],
+    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Validation Attributes
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used to swap our attribute placeholder
+    | with something more reader friendly such as "E-Mail Address" instead
+    | of "email". This simply helps us make our message more expressive.
+    |
+    */
+    'attributes' => [
+        'name' => 'Foo',
+        'bar'  => 'Bar',
+        'baz'  => 'Baz',
+    ],
+];
+```
+
+</details>
+
+Вынік пасля абнаўлення:
+
+```php
+declare(strict_types=1);
+
+return [
+    'accepted'   => 'The :attribute must be accepted.',
+    'active_url' => 'The :attribute is not a valid URL.',
+    'uuid'       => 'The :attribute must be a valid UUID.',
+    'custom'     => [
+        'name' => [
+            'required' => 'Custom message 1',
+            'string'   => 'Custom message 2',
+        ],
+    ],
+    'attributes' => [
+        'name' => 'Foo',
+        'bar'  => 'Bar',
+        'baz'  => 'Baz',
+    ],
+];
+```
+
+Гэтая налада знаходзіцца ў файле `config/localization.php`:
+
+```php
+return [
+    'align' => (bool) env('LOCALIZATION_ALIGN', env('LANG_PUBLISHER_ALIGN', true)),
+];
+```
+
+## Псеўданімы {/* #aliases */}
+
+Каб выкарыстоўваць іншыя назвы кодаў, напрыклад `de-DE` замест `de` або `de-CH` замест `de_CH`, задайце `aliases` у [файле канфігурацыі](<./configuration.mdx#aliases>).
+
+Пасля гэтага ўсе аперацыі дадання, абнаўлення і выдалення аўтаматычна выкарыстоўваюць псеўданімы з файла канфігурацыі `config/localization.php`:
+
+```php
+declare(strict_types=1);
+
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'aliases' => [
+        Locale::German->value            => 'de-DE',
+        Locale::GermanAustria->value     => 'de-AT',
+        Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+];
+```
+
+Калі файл `config/localization.php` ужо існуе, дадайце ў яго ключ aliases і задайце патрэбнае значэнне `aliases` у выглядзе масіву.
+
+Пасля гэтага можна, напрыклад, дадаць новыя лакалі, указаўшы асноўны код або яго псеўданім:
+
+```bash
+php artisan lang:add de de_CH
+```
+
+Для ўсталяваных лакаляў псеўданімы выкарыстоўваюцца як імёны каталогаў для PHP-перакладаў і імёны файлаў для JSON-перакладаў:
+
+```text
+lang
+de-CH
+de-DE
+```
+
+Гэтая налада знаходзіцца ў файле `config/localization.php`:
+
+```php
+return [
+    'aliases' => [
+        // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
+        // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+];
+```
+
+## Разумная пунктуацыя {/* #smart_punctuation */}
+
+Пры абнаўленні ключоў перакладу таксама можна ўключыць разумнае пераўтварэнне ASCII-двукоссяў, працяжнікаў і шматкроп’яў у іх адпаведнікі Unicode.
+
+Напрыклад:
+
+```json
+{
+    "Some": "\"It's super-configurable... you can even use additional extensions to expand its capabilities -- just like this one!\""
+}
+```
+
+У выніку атрымаюцца файлы:
+
+```json
+{
+    "Some": "“It’s super-configurable… you can even use additional extensions to expand its capabilities – just like this one!”"
+}
+```
+
+Гэтая налада знаходзіцца ў файле `config/localization.php`:
+
+<details>
+<summary>Паказаць налады</summary>
+
+```php
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'smart_punctuation' => [
+        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+
+        'common' => [
+            'double_quote_opener' => '“',
+            'double_quote_closer' => '”',
+            'single_quote_opener' => '‘',
+            'single_quote_closer' => '’',
+        ],
+
+        'locales' => [
+            Locale::French->value => [
+                'double_quote_opener' => '«&nbsp;',
+                'double_quote_closer' => '&nbsp;»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Russian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Ukrainian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Belarusian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+        ],
+    ],
+];
+```
+
+</details>
+
+Для кожнай лакалі таксама можна задаць асобныя правілы.
+
+Па змаўчанні пераўтварэнне выключанае.
+
+## Маршруты {/* #routes */}
+
+Для пакета працы з [маршрутамі](<./packages-routes.mdx> "Лёгкая і хуткая лакалізацыя маршрутаў") можна перавызначыць стандартныя назвы ключоў.
+
+Гэтая налада ўключаецца ў файле `config/localization.php`:
+
+```php
+use LaravelLang\Config\Constants\RouteName;
+
+return [
+    'routes' => [
+        'names' => [
+            'parameter' => RouteName::Parameter,
+            'header'    => RouteName::Header,
+            'cookie'    => RouteName::Cookie,
+            'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
+        ],
+
+        'name_prefix' => env('LOCALIZATION_NAME_PREFIX', 'localized.'),
+        'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
+        'hide_default' => (bool) env('LOCALIZATION_HIDE_DEFAULT', false),
+
+        'group' => [
+            'middlewares' => [
+                'default' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+                'prefix' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+            ],
+        ],
+    ],
+];
+```
+
+## Мадэлі {/* #models */}
+
+Для пакета [Models](<./packages-models.mdx> "Лёгкая і хуткая лакалізацыя мадэляў") можна задаваць стандартныя значэнні параметраў.
+
+Гэтая налада знаходзіцца ў файле `config/localization.php`:
+
+```php
+return [
+    'models' => [
+        'suffix' => 'Translation',
+        'filter' => [
+            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+        ],
+        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
+    ],
+];
+```
+
+Параметр `suffix` задае суфікс мадэляў, да якіх належыць сховішча перакладаў.
+
+Напрыклад:
+
+```text
+App\Models\Post::class
+App\Models\PostTranslation::class
+```
+
+## Перакладчык {/* #translator */}
+
+Тут можна ўключаць стандартныя сэрвісы перакладу і ствараць уласныя. Падрабязнасці ёсць на старонцы пакета [Translator](<./packages-translator.mdx> "Пераклад тэксту праз API некалькіх сэрвісаў").
+
+Гэтая налада знаходзіцца ў файле `config/localization.php`:
+
+```php
+return [
+    'translators' => [
+        'channels' => [
+            'google' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Google',
+
+                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
+            ],
+
+            'deepl' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+
+                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
+
+                'credentials' => [
+                    'key' => (string) env('TRANSLATION_DEEPL_KEY'),
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
+
+                'credentials' => [
+                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
+                ],
+            ],
+        ],
+
+        'options' => [
+            'preserve_parameters' => true,
+        ],
+    ],
+];
+```

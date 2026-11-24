@@ -1,0 +1,31 @@
+---
+title: "JSON Fallback"
+slug: /upgrade-json-fallback.html
+description: "JSON Fallback paketini 1’den 2. sürüme yükseltme hakkında bilgiler"
+---
+
+## Bağımlılıkları güncelleme {/* #updating_dependencies */}
+
+Uygulamanızın `composer.json` dosyasında aşağıdaki bağımlılığı güncellemeniz gerekir.
+
+- `"laravel-lang/json-fallback-hotfix": "^1.0"` yerine `"laravel-lang/json-fallback": "^2.0"` kullanın.
+
+Ardından bağımlılık güncelleme komutunu çalıştırın.
+
+```bash
+composer update
+```
+
+## Ad alanını değiştirme {/* #change_namespace */}
+
+`config/app.php` dosyasındaki aşağıdaki ad alanını değiştirmeniz gerekir.
+
+```php
+LaravelLang\JsonFallbackHotfix\TranslationServiceProvider
+```
+
+Yerine aşağıdaki ad alanını kullanın.
+
+```php
+LaravelLang\JsonFallback\TranslationServiceProvider
+```

@@ -24,7 +24,7 @@ function isLocaleCode(code: string): code is LocaleCode {
 export default function LocalePicker() {
     const {i18n: {currentLocale, defaultLocale}} = useDocusaurusContext();
     const {hash} = useLocation();
-    const currentLocaleCode = currentLocale.replaceAll("-", "_");
+    const currentLocaleCode = currentLocale === "uz" ? "uz_Latn" : currentLocale.replaceAll("-", "_");
     const defaultLocaleCode = isLocaleCode(currentLocaleCode) ? currentLocaleCode : "en";
     const [localeCode, setLocaleCode] = useState(defaultLocaleCode);
     const {name, nativeDescription, description}: Locale = locales[localeCode];

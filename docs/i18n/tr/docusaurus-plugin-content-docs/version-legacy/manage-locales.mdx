@@ -1,0 +1,35 @@
+---
+title: "Yerel ayarları yönetme"
+slug: /manage-locales.html
+description: "Yerel ayar yönetimi hakkında genel bilgiler"
+---
+
+:::warning
+
+Laravel, varsayılan olarak JSON anahtarlarında yedek dil çevirilerine <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">izin vermez</a>. Örneğin yedek dil Fransızca olduğunda `__('Remember Me')` çağrısı `Se souvenir de moi` yerine `Remember Me` döndürür.
+
+:::
+
+Konsol komutlarının neredeyse tümü parametre olarak bir yerel ayar dizisi kabul eder.
+
+Aşağıdaki komutlar farklı girdi seçeneklerini gösterir.
+
+```bash
+php artisan lang:<command> fr de de_AT de_CH vi zh_CN
+php artisan lang:<command> fr
+php artisan lang:<command>
+```
+
+Parametreler şu şekilde yorumlanır.
+
+- `fr de de_AT de_CH vi zh_CN`, boşlukla ayrılan bir yerel ayar listesidir.
+- `fr` gibi tek bir yerel ayar adı da belirtilebilir.
+- Çağrıda parametre verilmezse betik iki soru sorar.
+- İlk soru `Do you want to %s all localizations?` olur. `%s` yerinde `install`, `remove` veya `reset` yer alır.
+- Yanıt `no` ise sonraki soru `Select localizations to add (specify the necessary localizations separated by commas)` olur.
+
+:::note
+
+Dosyalarla ilgili işlemlerde (`install`, `uninstall`, `reset` ve `update`) PHP dosyalarının yanı sıra JSON dosyaları da otomatik olarak işlenir. Bunlara [Laravel Framework](<https://laravel.com>), [Jetstream](<https://jetstream.laravel.com/>), [Fortify](<https://github.com/laravel/fortify>), [Cashier](<https://laravel.com/docs/billing>), [Breeze](<https://github.com/laravel/breeze>), [Nova (Dusk Suite ve Log Viewer dahil)](<https://nova.laravel.com/>), [Nova](<https://nova.laravel.com/>) (ayrıca [Dusk Suite](<https://github.com/laravel/nova-dusk-suite>) ve [Log Viewer](<https://github.com/laravel/nova-log-viewer>)) ve [UI](<https://github.com/laravel/ui>) çevirileri dahildir.
+
+:::

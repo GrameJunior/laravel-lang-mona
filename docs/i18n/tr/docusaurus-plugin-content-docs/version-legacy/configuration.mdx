@@ -1,0 +1,693 @@
+---
+title: "Yapılandırma"
+slug: /configuration.html
+description: "Paketleri yapılandırma hakkında ayrıntılı bilgiler"
+---
+
+## Yapılandırmayı yayımlama {/* #publish */}
+
+İsteğe bağlı olarak aşağıdaki komutla yapılandırma dosyasını yayımlayabilirsiniz.
+
+```bash
+php artisan vendor:publish --tag="localization"
+```
+
+Yayımlanan `config/localization.php` dosyasının içeriği aşağıdadır.
+
+<details>
+<summary>Yapılandırmayı göster</summary>
+
+```php
+return [
+    /*
+     * Dil dosyaları güncellenirken hangi dosya türünün kullanılacağını belirler.
+     *
+     * @see https://laravel-lang.com/configuration.html#inline
+     *
+     * Varsayılan değer `false`.
+     */
+
+    'inline' => (bool) env('LOCALIZATION_INLINE', env('LANG_PUBLISHER_INLINE')),
+
+    /*
+     * Diziler işlenmeden önce anahtarlarına göre hizalansın mı?
+     *
+     * @see https://laravel-lang.com/configuration.html#alignment
+     *
+     * Varsayılan değer true.
+     */
+
+    'align' => (bool) env('LOCALIZATION_ALIGN', env('LANG_PUBLISHER_ALIGN', true)),
+
+    /*
+     * Bu depodaki dosyaların dil kodları projenizin tercihleriyle
+     * uyuşmayabilir.
+     *
+     * Projenizin yerel ayar eşlemelerini burada belirtin.
+     *
+     * @see https://laravel-lang.com/configuration.html#aliases
+     */
+
+    'aliases' => [
+        // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
+        // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+
+    /*
+     * Bu seçenek, çeviri anahtarlarını tipografik biçime dönüştürme
+     * yöntemini belirler.
+     *
+     * @see https://laravel-lang.com/configuration.html#smart_punctuation
+     *
+     * Varsayılan değer false.
+     */
+
+    'smart_punctuation' => [
+        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+
+        'common' => [
+            'double_quote_opener' => '“',
+            'double_quote_closer' => '”',
+            'single_quote_opener' => '‘',
+            'single_quote_closer' => '’',
+        ],
+
+        'locales' => [
+            Locale::French->value => [
+                'double_quote_opener' => '«&nbsp;',
+                'double_quote_closer' => '&nbsp;»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Russian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Ukrainian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Belarusian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+        ],
+    ],
+
+    /*
+     * Bu seçenek uygulamanın rota ayarlarını tanımlar.
+     *
+     * @see https://laravel-lang.com/configuration.html#routes
+     */
+
+    'routes' => [
+        /*
+         * Bu seçenek, uygulama rotalarında kullanılan anahtar adlarının ayarlarını tanımlar.
+         *
+         * Varsayılan değerler aşağıdadır.
+         *
+         *   parameter - locale
+         *   header    - Accept-Language
+         *   cookie    - Accept-Language
+         *   session   - Accept-Language
+         *   column    - column
+         */
+
+        'names' => [
+            'parameter' => RouteName::Parameter,
+            'header'    => RouteName::Header,
+            'cookie'    => RouteName::Cookie,
+            'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
+        ],
+
+        /*
+         * Bu seçenek rota grubu adlarının önekini belirtir.
+         *
+         * Varsayılan değer `localized.`.
+         */
+
+        'name_prefix' => env('LOCALIZATION_NAME_PREFIX', 'localized.'),
+
+        /*
+         * Bu seçenek, varsayılan yerel ayara erişildiğinde isteğin yönlendirilip yönlendirilmeyeceğini belirtir.
+         *
+         * `LaravelLang\Routes\Facades\LocalizationRoute` facade’ı kullanıldığında uygulanır.
+         */
+
+        'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
+
+        /*
+         * Bu seçenek, kullanıldığında yerel ayar parametresinin URL’den kaldırılacağı varsayılan yerel ayarı belirler.
+         *
+         * `localizedRoute` yardımcı işlevi kullanıldığında uygulanır.
+         */
+
+        'hide_default' => (bool) env('LOCALIZATION_HIDE_DEFAULT', false),
+
+        // Bu seçenek rota ayarlarını içerir.
+
+        'group' => [
+            'middlewares' => [
+                // Bu seçenek yerel ayar kodu öneki olmayan rotaların ayarlarını içerir.
+
+                'default' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+
+                // Bu seçenek yerel ayar kodu öneki olan rotaların ayarlarını içerir.
+
+                'prefix' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+            ],
+        ],
+    ],
+
+    /*
+     * Bu seçenek model çevirileriyle çalışma ayarlarını tanımlar.
+     *
+     * @see https://laravel-lang.com/configuration.html#models
+     */
+
+    'models' => [
+        /*
+         * Bu seçenek çevirileri içeren modeller için bir son ek belirtir.
+         *
+         * Aşağıdaki örneğe bakın.
+         *   Ana model `App\Models\Page`
+         *   Çeviri modeli `App\Models\PageTranslation`
+         *
+         * Varsayılan değer `Translation`.
+         */
+
+        'suffix' => 'Translation',
+
+        /*
+         * Bu seçenek, önceden yükleme sırasında ilişkiye yüklenen
+         * yerel ayarların filtrelenip filtrelenmeyeceğini belirler.
+         *
+         * Varsayılan değer true.
+         */
+
+        'filter' => [
+            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+        ],
+
+        /*
+         * Bu seçenek IDE yardımcı dosyalarının saklanacağı dizini belirtir.
+         *
+         * Varsayılan değer `vendor/_laravel_lang`.
+         */
+
+        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
+    ],
+
+    /*
+     * Bu seçenek, Laravel Lang Translator projesinin çalıştığı çeviri hizmetlerini listeler.
+     *
+     * Google Translate varsayılan olarak etkindir.
+     *
+     * @see https://laravel-lang.com/configuration.html#translators
+     */
+
+    'translators' => [
+        /*
+         * Çeviri için kullanılan kanalların listesi.
+         *
+         * Varsayılan değer aşağıdadır.
+         *
+         *     Google is enabled
+         *     Deepl  is disabled
+         *     Yandex is disabled
+         */
+
+        'channels' => [
+            'google' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Google',
+
+                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
+            ],
+
+            'deepl' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+
+                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
+
+                'credentials' => [
+                    'key' => (string) env('TRANSLATION_DEEPL_KEY'),
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
+
+                'credentials' => [
+                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
+                ],
+            ],
+        ],
+
+        'options' => [
+            /*
+             * Bir metindeki değiştirilebilir anahtar sözcükleri çıkarmak için özel bir desen belirleyin.
+             * Varsayılan olarak önünde iki nokta bulunan sözcükler çıkarılır.
+             *
+             *  Kullanılabilir seçenekler
+             *
+             *     `true`, `/:(\w+)/` desenini kullanır
+             *     `false`, düzenli ifadeyle işlemeyi kapatır
+             *      `/any regex/` yerine istediğiniz düzenli ifadeyi yazabilirsiniz
+             *
+             *   Varsayılan değer `true`
+             *
+             * @example ("Hello :name" ifadesinden "name" çıkarılır)
+             */
+
+            'preserve_parameters' => true,
+        ],
+    ],
+];
+```
+
+</details>
+
+## Satır içi çeviriler {/* #inline */}
+
+`inline` seçeneği, dil dosyaları güncellenirken hangi dosya türünün kullanılacağını belirler.
+
+- `true`, satır içi dosyaları kullanır.
+- `false`, varsayılan dosyaları kullanır.
+
+Aralarındaki farkı aşağıdaki örnekte görebilirsiniz.
+
+```text
+The :attribute must be accepted. // default
+This field must be accepted. // inline
+```
+
+Bu seçenek `config/localization.php` dosyasında bulunur.
+
+```php
+return [
+    'inline' => (bool) env('LOCALIZATION_INLINE', env('LANG_PUBLISHER_INLINE')),
+];
+```
+
+## Hizalama {/* #alignment */}
+
+`align` seçeneği, yerelleştirme dosyaları işlenirken değerlerin birbirine göre hizalanmasını belirler.
+
+Dosyalar güncellenirken çıktı dosyalarındaki tüm yorumlar otomatik olarak silinir. [var\_export](<https://www.php.net/manual/en/function.var-export.php>) yorumları işleyemez.
+
+Dosyanızın örnek içeriği aşağıdadır.
+
+```php
+declare(strict_types=1);
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Kimlik doğrulama dil satırları
+    |--------------------------------------------------------------------------
+    |
+    | Aşağıdaki dil satırları, kimlik doğrulama sırasında kullanıcıya
+    | gösterilen çeşitli mesajlarda kullanılır. Bu satırları uygulamanızın
+    | gereksinimlerine göre değiştirebilirsiniz.
+    |
+    */
+    'failed'   => 'These credentials do not match our records 123456.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'foo'      => 'bar',
+];
+```
+
+Güncellenen dosyanın içeriği aşağıdadır.
+
+```php
+declare(strict_types=1);
+
+return [
+    'failed'   => 'These credentials do not match our records 123456.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'foo'      => 'bar',
+];
+```
+
+`validation.php` dosyasının örnek içeriği aşağıdadır.
+
+<details>
+<summary>İçeriği göster</summary>
+
+```php
+declare(strict_types=1);
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Doğrulama dil satırları
+    |--------------------------------------------------------------------------
+    |
+    | Aşağıdaki dil satırları, doğrulayıcı sınıfının kullandığı varsayılan
+    | hata mesajlarını içerir. Boyut kuralları gibi bazı kuralların birden
+    | çok sürümü vardır. Bu mesajları burada değiştirebilirsiniz.
+    |
+    */
+    'accepted'   => 'The :attribute must be accepted.',
+    'active_url' => 'The :attribute is not a valid URL.',
+
+    // Çok sayıda kural
+
+    'uuid' => 'The :attribute must be a valid UUID.',
+    /*
+    |--------------------------------------------------------------------------
+    | Özel doğrulama dil satırları
+    |--------------------------------------------------------------------------
+    |
+    | Burada, satır adlarında "attribute.rule" biçimini kullanarak
+    | özniteliklere özel doğrulama mesajları belirleyebilirsiniz. Bu biçim,
+    | belirli bir öznitelik kuralı için özel bir dil satırı tanımlamayı kolaylaştırır.
+    |
+    */
+    'custom' => [
+        'name' => [
+            'required' => 'Custom message 1',
+            'string'   => 'Custom message 2',
+        ],
+    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Özel doğrulama öznitelikleri
+    |--------------------------------------------------------------------------
+    |
+    | Aşağıdaki dil satırları, öznitelik yer tutucusunu okuyucuya daha
+    | anlaşılır bir adla değiştirir. Örneğin "email" yerine "E-Mail Address"
+    | kullanılabilir. Bu, mesajı daha anlaşılır kılar.
+    |
+    */
+    'attributes' => [
+        'name' => 'Foo',
+        'bar'  => 'Bar',
+        'baz'  => 'Baz',
+    ],
+];
+```
+
+</details>
+
+Güncellemeden sonraki görünüm aşağıdadır.
+
+```php
+declare(strict_types=1);
+
+return [
+    'accepted'   => 'The :attribute must be accepted.',
+    'active_url' => 'The :attribute is not a valid URL.',
+    'uuid'       => 'The :attribute must be a valid UUID.',
+    'custom'     => [
+        'name' => [
+            'required' => 'Custom message 1',
+            'string'   => 'Custom message 2',
+        ],
+    ],
+    'attributes' => [
+        'name' => 'Foo',
+        'bar'  => 'Bar',
+        'baz'  => 'Baz',
+    ],
+];
+```
+
+Bu seçenek `config/localization.php` dosyasında bulunur.
+
+```php
+return [
+    'align' => (bool) env('LOCALIZATION_ALIGN', env('LANG_PUBLISHER_ALIGN', true)),
+];
+```
+
+## Takma adlar {/* #aliases */}
+
+Kodları `de` yerine `de-DE` veya `de_CH` yerine `de-CH` gibi farklı biçimde adlandırmak istiyorsanız [yapılandırma dosyasında](<./configuration.mdx#aliases>) `aliases` tanımlayabilirsiniz.
+
+Bundan sonra ekleme, güncelleme ve silme işlemlerinin tümü, `config/localization.php` yapılandırma dosyasında belirtilen takma adları otomatik olarak kullanır.
+
+```php
+declare(strict_types=1);
+
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'aliases' => [
+        Locale::German->value            => 'de-DE',
+        Locale::GermanAustria->value     => 'de-AT',
+        Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+];
+```
+
+`config/localization.php` dosyası zaten varsa dosyaya `aliases` anahtarını ekleyebilir ve istediğiniz takma adları bir veri dizisiyle belirtebilirsiniz.
+
+Bundan sonra yeni yerel ayar eklerken standart kodu veya takma adını kullanabilirsiniz. Aşağıdaki örneğe bakın.
+
+```bash
+php artisan lang:add de de_CH
+```
+
+Kurulu yerel ayarlar, PHP çevirilerinde dizin adı ve JSON çevirilerinde dosya adı olarak belirtilen takma adları kullanır.
+
+```text
+lang
+de-CH
+de-DE
+```
+
+Bu seçenek `config/localization.php` dosyasında bulunur.
+
+```php
+return [
+    'aliases' => [
+        // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
+        // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+];
+```
+
+## Akıllı noktalama {/* #smart_punctuation */}
+
+Çeviri anahtarlarını güncellerken ASCII tırnak işaretlerini, tireleri ve üç noktaları Unicode karşılıklarına dönüştüren akıllı noktalama özelliğini de etkinleştirebilirsiniz.
+
+Aşağıdaki örneğe bakın.
+
+```json
+{
+    "Some": "\"It's super-configurable... you can even use additional extensions to expand its capabilities -- just like this one!\""
+}
+```
+
+Oluşan dosyalar aşağıdadır.
+
+```json
+{
+    "Some": "“It’s super-configurable… you can even use additional extensions to expand its capabilities – just like this one!”"
+}
+```
+
+Bu seçenek `config/localization.php` dosyasında bulunur.
+
+<details>
+<summary>Ayarları göster</summary>
+
+```php
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'smart_punctuation' => [
+        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+
+        'common' => [
+            'double_quote_opener' => '“',
+            'double_quote_closer' => '”',
+            'single_quote_opener' => '‘',
+            'single_quote_closer' => '’',
+        ],
+
+        'locales' => [
+            Locale::French->value => [
+                'double_quote_opener' => '«&nbsp;',
+                'double_quote_closer' => '&nbsp;»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Russian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Ukrainian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Belarusian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+        ],
+    ],
+];
+```
+
+</details>
+
+Herhangi bir yerel ayar için farklı kurallar da belirleyebilirsiniz.
+
+Dönüştürme varsayılan olarak kapalıdır.
+
+## Rotalar {/* #routes */}
+
+Paketi [yönlendirme](<./packages-routes.mdx> "Rotaları kolayca ve hızlıca yerelleştirme") için kullanırken anahtar adlarının varsayılan değerlerini değiştirebilirsiniz.
+
+Bu seçenek `config/localization.php` dosyasında etkinleştirilir.
+
+```php
+use LaravelLang\Config\Constants\RouteName;
+
+return [
+    'routes' => [
+        'names' => [
+            'parameter' => RouteName::Parameter,
+            'header'    => RouteName::Header,
+            'cookie'    => RouteName::Cookie,
+            'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
+        ],
+
+        'name_prefix' => env('LOCALIZATION_NAME_PREFIX', 'localized.'),
+        'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
+        'hide_default' => (bool) env('LOCALIZATION_HIDE_DEFAULT', false),
+
+        'group' => [
+            'middlewares' => [
+                'default' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+                'prefix' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+            ],
+        ],
+    ],
+];
+```
+
+## Modeller {/* #models */}
+
+[Models](<./packages-models.mdx> "Modelleri kolayca ve hızlıca yerelleştirme") paketini kullanırken varsayılan parametre değerlerini tanımlayabilirsiniz.
+
+Bu ayar `config/localization.php` dosyasında bulunur.
+
+```php
+return [
+    'models' => [
+        'suffix' => 'Translation',
+        'filter' => [
+            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+        ],
+        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
+    ],
+];
+```
+
+`suffix` parametresi, çeviri deposunun ait olduğu modellerin adındaki son eki belirtir.
+
+Aşağıdaki örneğe bakın.
+
+```text
+App\Models\Post::class
+App\Models\PostTranslation::class
+```
+
+## Çeviri hizmetleri {/* #translator */}
+
+Varsayılan çeviri hizmetlerini etkinleştirebilir veya kendi hizmetinizi oluşturabilirsiniz. Ayrıntılar için [Translator](<./packages-translator.mdx> "Birden çok API ile metin çevirisi") paketinin bilgi sayfasına bakın.
+
+Bu ayar `config/localization.php` dosyasında bulunur.
+
+```php
+return [
+    'translators' => [
+        'channels' => [
+            'google' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Google',
+
+                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
+            ],
+
+            'deepl' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+
+                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
+
+                'credentials' => [
+                    'key' => (string) env('TRANSLATION_DEEPL_KEY'),
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
+
+                'credentials' => [
+                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
+                ],
+            ],
+        ],
+
+        'options' => [
+            'preserve_parameters' => true,
+        ],
+    ],
+];
+```

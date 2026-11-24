@@ -1,0 +1,23 @@
+{
+  "releaseLine": {
+    "message": "Die offiziellen Pakete verwenden dieselbe Versionsnummer."
+  },
+  "documentation": {
+    "message": "Dokumentation"
+  },
+  "optional": {
+    "message": "Optional"
+  },
+  "legacy": {
+    "message": "Dokumentation für ältere Versionen"
+  },
+  "legacyDescription": {
+    "message": "Leitfäden für Installationen vor Mona."
+  },
+  "moved": {
+    "message": "Die Dokumentation ist umgezogen"
+  },
+  "redirect": {
+    "message": "Zur Dokumentation"
+  }
+}

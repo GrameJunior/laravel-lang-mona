@@ -1,0 +1,318 @@
+---
+title: "Locales"
+slug: /packages-locales.html
+description: "Yerel ayarlarla çalışmak için temel işlevler"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Projenin kararlı bir sürümü yayımlandı"}>Kararlı</span> <span className="badge badge--secondary" title={"Son sürüm bilinmiyor"}>bilinmiyor</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub’da görüntüle](<https://github.com/laravel-lang/locales>)
+
+## Kurulum {/* #installation */}
+
+:::note
+
+Uyumluluk tablosunu [burada](<#compatibility> "Locales paketi için uyumluluk tablosu") görebilirsiniz.
+
+:::
+
+Kurmak için aşağıdaki konsol komutunu çalıştırın.
+
+```bash
+composer require laravel-lang/locales:^2.11.0
+```
+
+## Kullanım {/* #usage */}
+
+Yerel ayarlarla çalışmak için `LaravelLang\Locales\Facades\Locales` facade’ını kullanabilirsiniz. Bilgileri yerel ayar kodlarının listesi veya DTO nesnelerinin dizisi olarak alabilirsiniz.
+
+### Veri nesneleri {/* #data_objects */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// Desteklenen yerel ayarlar.
+Locales::available(): array // array<LocaleData>
+
+// Kurulu yerel ayarlar.
+Locales::installed(bool $withProtects = true): array // array<LocaleData>
+
+// Kurulu olmayan yerel ayarlar.
+Locales::notInstalled(): array // array<LocaleData>
+
+// Korunan yerel ayarların listesi.
+Locales::protects(): array // array<LocaleData>
+
+// İstenen yerel ayar için dil paketi bulunup bulunmadığını kontrol eder.
+Locales::isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// Dil paketinin kurulu olup olmadığını kontrol eder.
+Locales::isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// Yerel ayarın korunup korunmadığını kontrol eder.
+Locales::isProtected(LocaleData|Locale|string|null $locale): bool
+
+// Yerel ayarı doğrular ve uygun yerel ayarı döndürür.
+// İstenen yerel ayar kurulu değilse uygulamada etkin olanı döndürür.
+Locales::get(mixed $locale): LocaleData
+
+// Varsayılan yerel ayarın adını alır.
+Locales::getDefault(): LocaleData
+
+// Yedek yerel ayarın adını alır.
+Locales::getFallback(): LocaleData
+
+// Desteklenen bir yerel ayarın bilgilerini, yoksa uygulamada etkin olanı döndürür.
+Locales::info(mixed $locale): LocaleData
+```
+
+### Ham veriler {/* #raw_data */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// Desteklenen yerel ayarlar.
+Locales::raw()->available(): array // array<string>
+
+// Kurulu yerel ayarlar.
+Locales::raw()->installed(bool $withProtects = true): array // array<string>
+
+// Kurulu olmayan yerel ayarlar.
+Locales::raw()->notInstalled(): array // array<string>
+
+// Korunan yerel ayarların listesi.
+Locales::raw()->protects(): array // array<string>
+
+// İstenen yerel ayar için dil paketi bulunup bulunmadığını kontrol eder.
+Locales::raw()->isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// Dil paketinin kurulu olup olmadığını kontrol eder.
+Locales::raw()->isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// Yerel ayarın korunup korunmadığını kontrol eder.
+Locales::raw()->isProtected(LocaleData|Locale|string|null $locale): bool
+
+// Yerel ayarı doğrular ve uygun yerel ayarı döndürür.
+// İstenen yerel ayar kurulu değilse uygulamada etkin olanı döndürür.
+Locales::raw()->get(mixed $locale): string
+
+// Varsayılan yerel ayarın adını alır.
+Locales::raw()->getDefault(): string
+
+// Yedek yerel ayarın adını alır.
+Locales::raw()->getFallback(): string
+
+// Desteklenen bir yerel ayarın kodunu, yoksa uygulamada etkin olanın kodunu döndürür.
+Locales::raw()->info(mixed $locale): string
+```
+
+### Örnekler {/* #examples */}
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::getDefault(withCountry: true, withCurrency: true);
+
+    // Takma ad kullanılmadan
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+    // Takma adla
+LocaleData {
+  +code: "de-DE"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // vi
+
+return Locales::get('de', withCountry: true, withCurrency: true);
+
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+LocaleData {
+  +code: "ar"
+  +regional: "ar_AE"
+  +type: "Arab"
+  +native: "العربية"
+  +localized: "Arabe"
+  +country: CountryData {
+    +code: "EG"
+    +native: "مصر"
+    +localized: "Égypte"
+  }
+  +currency: CurrencyData {
+    +code: "EGP"
+    +numeric: 818
+    +native: "جنيه مصري"
+    +localized: "livre égyptienne"
+  }
+  +direction: Direction {
+    +name: "RightToLeft"
+    +value: "rtl"
+  }
+  +locale: Locale {
+    +name: "Arabic"
+    +value: "ar"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::get('foo', withCountry: true, withCurrency: true);
+
+// Varsayılan yerel ayarı döndürür
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+return Locales::raw()->getDefault();
+// Takma ad kullanılmadan
+// de
+
+// Takma adla
+// de-DE
+```
+
+```php
+return Locales::raw()->get('de');
+// de
+
+return Locales::raw()->get('foo');
+// Varsayılan yerel ayarı döndürür
+// de
+```
+
+## Uyumluluk {/* #compatibility */}
+
+| Laravel | PHP | Paket | Durum |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">destekleniyor</span> |
+| 10 | 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">desteklenmiyor</span> |

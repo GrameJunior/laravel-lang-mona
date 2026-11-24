@@ -21,12 +21,14 @@ const config: Config = {
     },
     i18n: {
         defaultLocale: "en",
-        locales: ["ar", "zh-CN", "en", "fr", "ja", "ko", "fa", "pt-BR", "ru", "sr-Cyrl", "es", "uk"],
+        locales: ["ar", "be", "zh-CN", "en", "fr", "de", "ja", "ko", "fa", "pt-BR", "ru", "sr-Cyrl", "es", "tr", "uk", "uz"],
         localeConfigs: {
             ar: {label: "العربية", direction: "rtl"},
+            be: {label: "Беларуская"},
             "zh-CN": {label: "简体中文"},
             en: {label: "English"},
             fr: {label: "Français"},
+            de: {label: "Deutsch"},
             ja: {label: "日本語"},
             ko: {label: "한국어"},
             fa: {label: "فارسی", direction: "rtl"},
@@ -34,7 +36,9 @@ const config: Config = {
             ru: {label: "Русский"},
             "sr-Cyrl": {label: "Српски"},
             es: {label: "Español"},
+            tr: {label: "Türkçe"},
             uk: {label: "Українська"},
+            uz: {label: "O‘zbekcha"},
         },
     },
     presets: [

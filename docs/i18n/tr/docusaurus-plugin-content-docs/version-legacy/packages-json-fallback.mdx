@@ -1,0 +1,71 @@
+---
+title: "JSON Fallback"
+slug: /packages-json-fallback.html
+description: "JSON metin çevirileri için yedek dil desteği ekler"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Projenin kararlı bir sürümü yayımlandı"}>Kararlı</span> <span className="badge badge--secondary" title={"Son sürüm bilinmiyor"}>bilinmiyor</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub’da görüntüle](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+Yedek yerel ayar olarak İngilizce kullanıyorsanız bu pakete gerek yoktur.
+
+:::
+
+## Kurulum {/* #installation */}
+
+:::note
+
+Uyumluluk tablosunu [burada](<#compatibility> "JSON Fallback paketi için uyumluluk tablosu") görebilirsiniz.
+
+:::
+
+Laravel, varsayılan olarak JSON anahtarlarında yedek dil çevirilerine <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">izin vermez</a>. Örneğin yedek dil Fransızca olduğunda `__('Remember Me')` çağrısı `Se souvenir de moi` yerine `Remember Me` döndürür.
+
+Kurmak için aşağıdaki konsol komutunu çalıştırın.
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## Kullanım {/* #usage */}
+
+:::note
+
+Laravel 11’de `config/app.php` yapılandırma dosyasında `providers` bölümü bulunmaz. Bu bölümü elle ekleyebilirsiniz.
+
+:::
+
+Kurulumdan sonra `config/app.php` ayar dosyasındaki `providers` bölümüne servis sağlayıcısına bir başvuru eklemeniz gerekir.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // Diğer servis sağlayıcılar
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+JSON anahtarları artık seçilen yerel ayara göre doğru değeri döndürür.
+
+## Uyumluluk {/* #compatibility */}
+
+| Laravel | PHP | Paket | Durum |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">destekleniyor</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">desteklenmiyor</span> |

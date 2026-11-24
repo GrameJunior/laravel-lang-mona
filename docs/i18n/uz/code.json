@@ -1,0 +1,294 @@
+{
+  "home.description": {
+    "message": "Laravel-Lang yordamida tarjimalarni o‘rnating, marshrutlar va Eloquent modellarini mahalliylashtiring."
+  },
+  "home.guide.translations.title": {
+    "message": "Lokallarni boshqarish"
+  },
+  "home.guide.translations.description": {
+    "message": "Artisan bilan tarjimalarni qo‘shing, yangilang va olib tashlang."
+  },
+  "home.guide.configure.title": {
+    "message": "Mahalliylashtirishni sozlash"
+  },
+  "home.guide.configure.description": {
+    "message": "Lokallar uchun muqobil nomlar, mahalliylashtirilgan marshrutlar va model tarjimalarini sozlang."
+  },
+  "home.guide.plugins.title": {
+    "message": "Tarjima plaginlari"
+  },
+  "home.guide.plugins.description": {
+    "message": "Tarjima paketlarini o‘rnating yoki o‘zingiznikini yarating."
+  },
+  "home.guide.upgrade.title": {
+    "message": "Mona’ga yangilash"
+  },
+  "home.guide.upgrade.description": {
+    "message": "Bog‘liqliklar, sozlamalar va tarjimalaringizni ko‘chiring."
+  },
+  "home.title": {
+    "message": "Hujjatlar"
+  },
+  "home.hero.title": {
+    "message": "Laravel ilovangizni mahalliylashtiring"
+  },
+  "home.start": {
+    "message": "1 daqiqada boshlash"
+  },
+  "home.legacy": {
+    "message": "Oldingi versiyalar hujjatlari"
+  },
+  "home.example.install": {
+    "message": "Fransuzcha tarjimalarni o‘rnatish"
+  },
+  "home.example.use": {
+    "message": "Tarjimadan foydalanish"
+  },
+  "home.guides": {
+    "message": "Mahalliylashtirish qo‘llanmalari"
+  },
+  "home.llms": {
+    "message": "SI agentlari uchun hujjatlar (llms.txt)"
+  },
+  "localePicker.label": {
+    "message": "Lokal"
+  },
+  "localePicker.install": {
+    "message": "{language} uchun tarjimalarni o‘rnatish uchun quyidagi buyruqni bajaring."
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "Sahifada xatolik yuz berdi.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Sahifa boshiga qaytish",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "tizim rejimi",
+    "description": "The name for the system color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "yorug‘ rejim",
+    "description": "The name for the light color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "qorong‘i rejim",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Qorong‘i va yorug‘ rejimlar orasida almashish (joriy rejim: {mode})",
+    "description": "The ARIA label for the color mode toggle"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Navigatsiya yo‘li",
+    "description": "The ARIA label for the breadcrumbs"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Hujjat sahifalari",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Oldingi",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Keyingi",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Versiya: {versionLabel}"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "Bu {siteTitle} loyihasining hali chiqarilmagan {versionLabel} versiyasi hujjatlaridir.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "Bu {siteTitle} loyihasining faol qo‘llab-quvvatlanmayotgan {versionLabel} versiyasi hujjatlaridir.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "Yangilangan hujjatlar uchun {latestVersionLink} ({versionLabel}) ga qarang.",
+    "description": "The label used to tell the user to check the latest version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "eng so‘nggi versiya",
+    "description": "The label used for the latest version suggestion link label"
+  },
+  "theme.common.editThisPage": {
+    "message": "Sahifani tahrirlash",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "{heading} bo‘limiga bevosita havola",
+    "description": "Title for link to heading"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " — {date}",
+    "description": "The words used to describe on which date a page has been last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": ", {user} tomonidan",
+    "description": "The words used to describe by who the page has been last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Oxirgi yangilanish{atDate}{byUser}",
+    "description": "The sentence used to display when a page has been last updated, and by who"
+  },
+  "theme.NotFound.title": {
+    "message": "Sahifa topilmadi",
+    "description": "The title of the 404 page"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Versiyalar",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.admonition.caution": {
+    "message": "diqqat",
+    "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "xavf",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "ma’lumot",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "izoh",
+    "description": "The default label used for the Note admonition (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "maslahat",
+    "description": "The default label used for the Tip admonition (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "ogohlantirish",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Yopish",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Yon paneldagi «{label}» turkumini ochish",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Yon paneldagi «{label}» turkumini yig‘ish",
+    "description": "The ARIA label to collapse the sidebar category"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Asosiy navigatsiya",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(yangi varaqda ochiladi)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.NotFound.p1": {
+    "message": "Siz izlagan sahifani topa olmadik.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Sizni shu manzilga yo‘naltirgan sayt egasiga havola ishlamayotganini xabar qiling.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Tillar",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "Ushbu sahifada",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Uzun satrlarni o‘rashni yoqish yoki o‘chirish",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Nusxalash",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Nusxalandi",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Kodni vaqtinchalik xotiraga nusxalash",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Yon panelni yig‘ish",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Yon panelni yig‘ish",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Hujjatlar yon paneli",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Bosh sahifa",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Navigatsiya panelini yopish",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Asosiy menyuga qaytish",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Navigatsiya panelini ochish yoki yopish",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Ochiladigan menyuni ochish",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Ochiladigan menyuni yig‘ish",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Yon panelni ochish",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Yon panelni ochish",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "Ro‘yxatga kiritilmagan sahifa",
+    "description": "The unlisted content banner title"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "Bu sahifa ro‘yxatga kiritilmagan. Qidiruv tizimlari uni indekslamaydi va faqat bevosita havolasi bor foydalanuvchilar uni ochishi mumkin.",
+    "description": "The unlisted content banner message"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "Qoralama sahifa",
+    "description": "The draft content banner title"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "Bu sahifa qoralama. U faqat dasturlash rejimida ko‘rinadi va ishlab chiqarish yig‘ilmasiga kiritilmaydi.",
+    "description": "The draft content banner message"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "1 ta band|{count} ta band",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Qayta urinib ko‘rish",
+    "description": "The label of the button to try again rendering when the React error boundary captures an error"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Asosiy mazmunga o‘tish",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  }
+}

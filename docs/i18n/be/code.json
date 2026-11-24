@@ -1,0 +1,294 @@
+{
+  "home.description": {
+    "message": "Усталюйце пераклады і лакалізуйце маршруты і мадэлі Eloquent з дапамогай Laravel-Lang."
+  },
+  "home.guide.translations.title": {
+    "message": "Кіраванне лакалямі"
+  },
+  "home.guide.translations.description": {
+    "message": "Дадавайце, абнаўляйце і выдаляйце пераклады з дапамогай Artisan."
+  },
+  "home.guide.configure.title": {
+    "message": "Налада лакалізацыі"
+  },
+  "home.guide.configure.description": {
+    "message": "Наладзьце псеўданімы лакаляў, лакалізаваныя маршруты і пераклады мадэляў."
+  },
+  "home.guide.plugins.title": {
+    "message": "Плагіны перакладаў"
+  },
+  "home.guide.plugins.description": {
+    "message": "Усталюйце пакеты перакладаў або стварыце ўласныя."
+  },
+  "home.guide.upgrade.title": {
+    "message": "Пераход на Mona"
+  },
+  "home.guide.upgrade.description": {
+    "message": "Перанясіце залежнасці, налады і пераклады."
+  },
+  "home.title": {
+    "message": "Дакументацыя"
+  },
+  "home.hero.title": {
+    "message": "Лакалізуйце сваё прыкладанне Laravel"
+  },
+  "home.start": {
+    "message": "Пачніце за 1 хвіліну"
+  },
+  "home.legacy": {
+    "message": "Дакументацыя папярэдніх версій"
+  },
+  "home.example.install": {
+    "message": "Усталяванне французскіх перакладаў"
+  },
+  "home.example.use": {
+    "message": "Выкарыстанне перакладу"
+  },
+  "home.guides": {
+    "message": "Дапаможнікі па лакалізацыі"
+  },
+  "home.llms": {
+    "message": "Дакументацыя для ШІ-агентаў (llms.txt)"
+  },
+  "localePicker.label": {
+    "message": "Лакаль"
+  },
+  "localePicker.install": {
+    "message": "Выканайце наступную каманду, каб усталяваць пераклады для лакалі «{language}»."
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "На гэтай старонцы ўзнікла памылка.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Пракруціць уверх",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "сістэмны рэжым",
+    "description": "The name for the system color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "светлы рэжым",
+    "description": "The name for the light color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "цёмны рэжым",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Пераключыць светлы і цёмны рэжым (цяпер: {mode})",
+    "description": "The ARIA label for the color mode toggle"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Шлях да старонкі",
+    "description": "The ARIA label for the breadcrumbs"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Старонкі дакументацыі",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Папярэдняя",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Наступная",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Версія: {versionLabel}"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "Гэта дакументацыя да яшчэ не выпушчанай версіі {siteTitle} {versionLabel}.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "Гэта дакументацыя да версіі {siteTitle} {versionLabel}, якая больш не падтрымліваецца актыўна.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "Актуальную дакументацыю глядзіце ў раздзеле «{latestVersionLink}» ({versionLabel}).",
+    "description": "The label used to tell the user to check the latest version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "Апошняя версія",
+    "description": "The label used for the latest version suggestion link label"
+  },
+  "theme.common.editThisPage": {
+    "message": "Рэдагаваць старонку",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Прамая спасылка на «{heading}»",
+    "description": "Title for link to heading"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " {date}",
+    "description": "The words used to describe on which date a page has been last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " карыстальнікам {user}",
+    "description": "The words used to describe by who the page has been last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Апошняе абнаўленне{atDate}{byUser}",
+    "description": "The sentence used to display when a page has been last updated, and by who"
+  },
+  "theme.NotFound.title": {
+    "message": "Старонка не знойдзена",
+    "description": "The title of the 404 page"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Версіі",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.admonition.caution": {
+    "message": "увага",
+    "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "небяспека",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "інфармацыя",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "заўвага",
+    "description": "The default label used for the Note admonition (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "парада",
+    "description": "The default label used for the Tip admonition (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "папярэджанне",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Закрыць",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Разгарнуць раздзел «{label}» на бакавой панэлі",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Згарнуць раздзел «{label}» на бакавой панэлі",
+    "description": "The ARIA label to collapse the sidebar category"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Асноўная навігацыя",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(адкрываецца ў новай укладцы)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.NotFound.p1": {
+    "message": "Не ўдалося знайсці тое, што вы шукалі.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Паведаміце ўладальніку сайта, на якім размешчана спасылка на зыходны адрас, што яна не працуе.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Мовы",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "На гэтай старонцы",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Пераключыць перанос радкоў",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Капіяваць",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Скапіявана",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Скапіраваць код у буфер абмену",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Згарнуць бакавую панэль",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Згарнуць бакавую панэль",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Бакавое меню дакументацыі",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Галоўная старонка",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Закрыць меню навігацыі",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Вярнуцца ў галоўнае меню",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Адкрыць або закрыць меню навігацыі",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Разгарнуць выпадальнае меню",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Згарнуць выпадальнае меню",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Разгарнуць бакавую панэль",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Разгарнуць бакавую панэль",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "Старонка па прамой спасылцы",
+    "description": "The unlisted content banner title"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "Гэта старонка не паказваецца ў спісах. Пошукавыя сістэмы не будуць яе індэксаваць, і адкрыць яе змогуць толькі карыстальнікі з прамой спасылкай.",
+    "description": "The unlisted content banner message"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "Чарнавік старонкі",
+    "description": "The draft content banner title"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "Гэта старонка з’яўляецца чарнавіком. Яна бачная толькі ў рэжыме распрацоўкі і выключаецца з вытворчай зборкі.",
+    "description": "The draft content banner message"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "{count} элемент|{count} элементы|{count} элементаў|{count} элемента",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Паўтарыць спробу",
+    "description": "The label of the button to try again rendering when the React error boundary captures an error"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Перайсці да асноўнага змесціва",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  }
+}

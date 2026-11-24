@@ -1,0 +1,31 @@
+---
+title: "Zaxira JSON tarjimalari"
+slug: /upgrade-json-fallback.html
+description: "JSON Fallback’ni 1-versiyadan 2-versiyaga yangilash haqida ma’lumot"
+---
+
+## Bog‘liqliklarni yangilash {/* #updating_dependencies */}
+
+Ilovangizning `composer.json` faylida quyidagi bog‘liqlikni yangilang:
+
+- `"laravel-lang/json-fallback-hotfix": "^1.0"` ni `"laravel-lang/json-fallback": "^2.0"` ga almashtiring
+
+So‘ng bog‘liqliklarni yangilash uchun konsolda quyidagi buyruqni bajaring:
+
+```bash
+composer update
+```
+
+## Nomlar fazosini o‘zgartirish {/* #change_namespace */}
+
+`config/app.php` faylida nomlar fazosini o‘zgartiring:
+
+```php
+LaravelLang\JsonFallbackHotfix\TranslationServiceProvider
+```
+
+quyidagiga almashtiring
+
+```php
+LaravelLang\JsonFallback\TranslationServiceProvider
+```

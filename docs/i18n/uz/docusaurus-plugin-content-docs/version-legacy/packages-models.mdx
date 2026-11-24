@@ -1,0 +1,547 @@
+---
+title: "Models"
+slug: /packages-models.html
+description: "Modellarni oson va tez mahalliylashtirish"
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Loyihaning barqaror versiyasi chiqarilgan"}>Barqaror</span> <span className="badge badge--secondary" title={"Eng so‘nggi versiya noma’lum"}>noma’lum</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub’da ko‘rish](<https://github.com/laravel-lang/models>)
+
+## O‘rnatish {/* #installation */}
+
+:::note
+
+Moslik jadvalini [shu yerda](<#compatibility> "Models paketi uchun moslik jadvali") ko‘rishingiz mumkin.
+
+:::
+
+O‘rnatish uchun quyidagi konsol buyrug‘ini bajaring:
+
+```bash
+composer require laravel-lang/models:^1.8.0
+```
+
+Standart sozlamalarni `config/localization.php` faylini tahrirlab [o‘zgartirishingiz](<./configuration.mdx#models>) ham mumkin.
+
+## Konsol buyruqlari {/* #console_commands */}
+
+### Tarjima modelini yaratish {/* #create_translation_model */}
+
+Saqlash tuzilmasi katta hajmdagi ma’lumotlarni aralashtirmasdan saqlash uchun optimallashtirilgan. Shu sabab tarjimaga muhtoj har bir model uchun alohida tarjima modeli yaratiladi.
+
+Repozitoriy yaratishning eng oson usuli — `make:model-translation` konsol buyrug‘idan foydalanish:
+
+```bash
+php artisan make:model-translation
+```
+
+Buyruq bajarilganda manba model so‘raladi. U mavjud bo‘lmasa, yaratiladi. Keyin yaratiladigan ustunlar, masalan, "title", "description" va boshqalar so‘raladi.
+
+Ortiqcha ustun qo‘shgan yoki umuman ustun qo‘shmagan bo‘lsangiz ham muammo yo‘q. Konsol buyrug‘i model fayli va uning migratsiyasini yaratadi. Kerakli o‘zgarishlarni ularga kiritishingiz mumkin.
+
+Yaratilgan saqlash modeli har doim asosiy model yonida turadi va shu yerda saqlanishi kerak. Masalan:
+
+```text
+App\Models\Content\News
+App\Models\Content\NewsTranslation
+App\Models\Products\Category
+App\Models\Products\CategoryTranslation
+```
+
+:::tip
+
+Standart suffiks `Translation`, lekin uni [config/localization.php](<./configuration.mdx#models>) sozlama faylining `models` bo‘limida o‘zingiznikiga almashtirishingiz mumkin.
+
+:::
+
+Shundan so‘ng konsol buyrug‘i bilan migratsiyani ishga tushirish qoladi:
+
+```bash
+php artisan migrate
+```
+
+#### Parametrlar {/* #options */}
+
+<dl>
+<dt>
+
+model
+
+</dt>
+<dd>
+
+Repozitoriy yaratiladigan asosiy model nomini bildiradi.
+
+Masalan:
+
+```bash
+php artisan make:model-translation Page
+# or
+php artisan make:model-translation App\Models\Page
+```
+
+</dd>
+<dt>
+
+--columns
+
+</dt>
+<dd>
+
+Parametr bir yoki bir nechta qiymatni qabul qiladi va qo‘shiladigan ustunlar ro‘yxatini o‘z ichiga oladi.
+
+Masalan:
+
+```bash
+--columns=title --columns=description
+```
+
+```php
+Artisan::call('make:model-translation', [
+    '--columns' => ['title', 'description'],
+]);
+```
+
+</dd>
+</dl>
+
+### Modelni sozlash {/* #model_setup */}
+
+Tarjima repozitoriysini yaratgach, asosiy modelga `LaravelLang\Models\HasTranslations` treytini ulang.
+
+Masalan:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+```
+
+Asosiy modelda tarjimalar uchun ishlatiladigan haqiqiy yoki virtual maydonlar bo‘lmasligiga ham ishonch hosil qiling.
+
+Masalan:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+
+    protected $fillable = [
+        'category_id',
+
+        // Olib tashlash kerak:
+        'title',
+        'description',
+    ];
+}
+```
+
+### IDE yordamchi fayllari {/* #ide_helpers */}
+
+:::tip
+
+`php artisan make:model-translation` konsol buyrug‘i bilan repozitoriy yaratganda, yordamchi fayllarni alohida yaratish shart emas. Buyruq buni avtomatik bajaradi.
+
+Tarjimalarni saqlash modeliga o‘zgartirish kiritganingizda, buyruqni bajarish tavsiya etiladi.
+
+:::
+
+IDE’ga tarjima qilinadigan maydonlar bilan ishlashda yordam berish uchun konsolda quyidagi buyruqni bajarishni tavsiya qilamiz:
+
+```bash
+php artisan lang:models-helper
+```
+
+Bu IDE maydonlarni taniy olishi uchun yordamchi fayllarni yaratadi. Masalan:
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Keyin"}>
+
+<img src={require("@site/static/images/models-helper-after.png").default} alt={"Yordamchi fayl bilan"} />
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Oldin"}>
+
+<img src={require("@site/static/images/models-helper-before.png").default} alt={"Yordamchi faylsiz"} />
+
+</TabItem>
+
+</Tabs>
+
+Bu fayllar saqlanadigan katalog yo‘lini [config/localization.php](<./configuration.mdx#models>) sozlama faylining `models` bo‘limidagi `helpers` parametrida o‘zgartirishingiz mumkin. IDE yangi yo‘lni indekslashiga ishonch hosil qiling.
+
+## Foydalanish {/* #usage */}
+
+Bu yerda bitta ilovada [Routes](<./packages-routes.mdx#usage> "Routes paketidan foydalanish") va [Models](<./packages-models.mdx#usage> "Models paketidan foydalanish") loyihalarini o‘rnatish va ishlatish haqida qisqa videoni ko‘rishingiz mumkin ([YouTube’da ko‘rish](<https://youtu.be/mH76pGbpVu0>)):
+
+<iframe className="legacy-video" src="https://www.youtube-nocookie.com/embed/mH76pGbpVu0" title={"Routes va Models"} loading="lazy" allowFullScreen />
+
+### Tarjimani olish {/* #get_translation */}
+
+:::tip
+
+Barcha repozitoriylar [oldindan yuklash](<https://laravel.com/docs/eloquent-relationships#eager-loading>) bayrog‘ini asosiy modelga avtomatik uzatadi. Buni qo‘lda bajarish shart emas.
+
+Standart holatda munosabat faqat asosiy lokallar, ya’ni joriy va zaxira lokal yozuvlaridan iborat. Ayrim hollarda [filtrlash sozlamalarini](<./configuration.mdx#models>) o‘zgartirib, ularning barchasini yuklashingiz mumkin:
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+Bu holda elementlar uchun barcha mavjud lokallar yuklanadi.
+
+:::
+
+Joriy lokaldagi xususiyat qiymatini olish uchun model xususiyatiga murojaat qiling. Masalan:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+<abbr title={"\"config/app.php\" faylining \"app.locale\" parametrida belgilangan qiymat."}>Asosiy lokal</abbr> qiymati bo‘lmasa, metod <abbr title={"\"config/app.php\" faylining \"app.fallback_locale\" parametrida belgilangan qiymat."}>zaxira lokal</abbr> qiymatini qaytaradi.
+
+`getTranslation` metodidan ham foydalanishingiz mumkin:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+Muayyan lokal qiymatini olish uchun ikkinchi argument sifatida lokal kodini uzating. Masalan:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// yoki
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+Modelda ma’lumotlar bazasiga yozilmagan o‘zgarishlar bo‘lsa ham, bu metodlar o‘sha qiymatni qaytaradi.
+
+:::
+
+### Tarjimalarni belgilash {/* #set_translations */}
+
+#### Bitta qiymat {/* #single_value */}
+
+Ilovangizning joriy lokalida tarjima qo‘shish yoki yangilash uchun model xususiyatiga qiymat bering. Masalan:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+Yangi qiymatni `setTranslation` metodi bilan ham belgilashingiz mumkin:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+Bu metodlar yangi qiymatni hozirgi faol lokalga belgilaydi. Qiymatni muayyan lokalga belgilash uchun uning kodini shu metodning uchinchi parametri sifatida uzating. Masalan:
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// yoki
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+Ommaviy to‘ldirishdan ham foydalanish mumkin:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+Ushbu metodlar chaqirilganda yangi qiymatlar model obyektlarida saqlanadi. O‘zgarishlarni ma’lumotlar bazasiga yozish uchun asosiy modelda `save` metodini chaqiring. Masalan:
+
+```php
+$page->save();
+```
+
+:::
+
+Model yaratilayotganda ham qiymatlarni to‘ldirish mumkin. Masalan:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### Bir nechta qiymat {/* #plural_value */}
+
+Xususiyatni bir nechta lokal tarjimalari bilan tez to‘ldirish kerak bo‘lsa, quyidagi usullardan birini ishlatishingiz mumkin:
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// 1-usul
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// 2-usul
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+Ommaviy to‘ldirishda `iterable` obyektlarini ham berishingiz mumkin. Masalan:
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+Har bir maydon uchun aynan bir xil lokallarni belgilash shart emas. Masalan, yuqoridagi misol `title` maydonini fransuz, ingliz va nemis tillarida to‘ldiradi. `description` maydoniga esa faqat fransuz va nemis tillari uchun qiymat beradi.
+
+### Tarjimani o‘chirish {/* #forget_translation */}
+
+:::warning
+
+[Qo‘shish va yangilash](<#set_translations>) metodlaridan farqli ravishda, `forgetTranslation` va `forgetAllTranslations` metodlari tarjima modelining `delete` metodini chaqirib, o‘zgarishlarni ma’lumotlar bazasiga darhol kiritadi.
+
+Standart holatda tarjima modelida [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>) treyti yo‘q, shu sabab ma’lumotlar darhol o‘chiriladi. Xohlasangiz, treytni model sinfiga va tegishli o‘zgarishlarni migratsiya fayliga o‘zingiz qo‘shishingiz mumkin.
+
+:::
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetTranslation('fr');
+// yoki
+$page->forgetTranslation(Locale::French);
+```
+
+`forgetAllTranslations` metodini chaqirib barcha lokallarni bir yo‘la olib tashlashingiz ham mumkin.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetAllTranslations();
+```
+
+### Tarjima mavjudligini tekshirish {/* #has_translated */}
+
+Ustunning tarjimasi borligini bir necha usulda tekshirish mumkin. Birinchi usulda `hasTranslated` metodiga ustun nomi parametr sifatida uzatiladi.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->hasTranslated('title');
+```
+
+Bu metod <abbr title={"\"config/app.php\" faylining \"app.locale\" parametrida belgilangan qiymat."}>asosiy</abbr> va <abbr title={"\"config/app.php\" faylining \"app.fallback_locale\" parametrida belgilangan qiymat."}>zaxira</abbr> lokallarni tekshiradi. Qiymatlardan biri to‘ldirilgan bo‘lsa `true`, ikkisi ham bo‘sh bo‘lsa `false` qaytaradi.
+
+:::note
+
+Saqlangan mantiqiy (`true / false`) va sonli (`0, 0.0`) qiymatlar ham to‘ldirilgan hisoblanadi. Ular uchun metod `true` qaytaradi.
+
+:::
+
+Muayyan lokal uchun qiymat mavjudligini tekshirish kerak bo‘lsa, ikkinchi argument sifatida uning kodini uzating. Masalan:
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->hasTranslated('title', 'fr');
+// yoki
+$page->hasTranslated('title', Locale::French);
+```
+
+### Tarjima qilinadigan maydonni tekshirish {/* #is_translatable */}
+
+`isTranslatable` metodi modelning Translate `$fillable` xususiyatida maydon borligini tekshiradi.
+
+Masalan:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\Eloquent\Translation;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+
+class ArticleTranslation extends Translation
+{
+    protected $fillable = [
+        'title',
+    ];
+}
+
+$page = Article::first();
+
+$page->isTranslatable('title'); // true
+$page->isTranslatable('description'); // false
+```
+
+### Asosiy modelni o‘chirish {/* #delete_base_model */}
+
+Standart holatda tarjima modeli asosiy modelga tashqi kalit orqali bog‘langan. Shuning uchun asosiy model [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>) treyti bilan yumshoq o‘chirilsa, barcha tarjimalar saqlanib qoladi. `forceDelete` metodi chaqirilsa, tarjimalar ma’lumotlar bazasidan avtomatik o‘chiriladi.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->delete();
+// yoki
+$page->forceDelete();
+```
+
+## Hodisalar {/* #events */}
+
+Muayyan amallar bajarilganda quyidagi hodisalar yuz beradi:
+
+```php
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+AllTranslationsHasBeenForgetEvent::dispatch($model);
+TranslationHasBeenForgetEvent::dispatch($model, $locale);
+TranslationHasBeenSetEvent::dispatch($model, $column, $locale, $oldValue, $newValue);
+```
+
+Kerak bo‘lsa, ushbu hodisani tinglashingiz mumkin. Masalan:
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(static function (AllTranslationsHasBeenForgetEvent $event) {
+            Log::info('Forget all locales', [
+                'model' => $event->model->getKey(),
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenForgetEvent $event) {
+            Log::info('Forget locale', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenSetEvent $event) {
+            Log::info('Set new translation', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+                'column' => $event->column,
+
+                'old' => $event->oldValue,
+                'new' => $event->newValue,
+            ]);
+        });
+    }
+}
+```
+
+## Moslik {/* #compatibility */}
+
+| Laravel | PHP | Paket | Holati |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">qo‘llab-quvvatlanadi</span> |

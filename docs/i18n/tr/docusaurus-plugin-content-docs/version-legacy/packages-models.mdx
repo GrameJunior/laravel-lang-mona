@@ -1,0 +1,547 @@
+---
+title: "Models"
+slug: /packages-models.html
+description: "Modelleri kolayca ve hızlıca yerelleştirme"
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Projenin kararlı bir sürümü yayımlandı"}>Kararlı</span> <span className="badge badge--secondary" title={"Son sürüm bilinmiyor"}>bilinmiyor</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub’da görüntüle](<https://github.com/laravel-lang/models>)
+
+## Kurulum {/* #installation */}
+
+:::note
+
+Uyumluluk tablosunu [burada](<#compatibility> "Models paketi için uyumluluk tablosu") görebilirsiniz.
+
+:::
+
+Kurmak için aşağıdaki konsol komutunu çalıştırın.
+
+```bash
+composer require laravel-lang/models:^1.8.0
+```
+
+`config/localization.php` dosyasını düzenleyerek varsayılan ayarları [değiştirebilirsiniz](<./configuration.mdx#models>).
+
+## Konsol komutları {/* #console_commands */}
+
+### Çeviri modeli oluşturma {/* #create_translation_model */}
+
+Depolama yapısı, büyük miktarda veriyi birbirine karıştırmadan saklamak için optimize edilmiştir. Bu nedenle çeviri gereken her model için ayrı bir çeviri modeli oluşturulur.
+
+Bir çeviri deposu oluşturmanın en kolay yolu `make:model-translation` konsol komutunu kullanmaktır.
+
+```bash
+php artisan make:model-translation
+```
+
+Komutu çalıştırdığınızda kaynak model sorulur ve mevcut değilse oluşturulur. Ardından title ve description gibi oluşturulacak sütunlar sorulur.
+
+Ek sütunlar eklediyseniz veya hiç sütun eklemediyseniz gerekli düzenlemeleri daha sonra yapabilirsiniz. Konsol komutu bir model dosyası ve migration dosyası oluşturur.
+
+Oluşturulan depolama modeli her zaman üst modelle aynı konumda olmalıdır. Aşağıdaki örneğe bakın.
+
+```text
+App\Models\Content\News
+App\Models\Content\NewsTranslation
+App\Models\Products\Category
+App\Models\Products\CategoryTranslation
+```
+
+:::tip
+
+Varsayılan son ek `Translation` değeridir. Bu değeri [config/localization.php](<./configuration.mdx#models>) ayar dosyasının `models` bölümünde değiştirebilirsiniz.
+
+:::
+
+Ardından aşağıdaki konsol komutuyla migration’ı çalıştırın.
+
+```bash
+php artisan migrate
+```
+
+#### Seçenekler {/* #options */}
+
+<dl>
+<dt>
+
+model
+
+</dt>
+<dd>
+
+Çeviri deposu oluşturulacak üst modelin adını belirtir.
+
+Aşağıdaki örneğe bakın.
+
+```bash
+php artisan make:model-translation Page
+# or
+php artisan make:model-translation App\Models\Page
+```
+
+</dd>
+<dt>
+
+--columns
+
+</dt>
+<dd>
+
+Parametre bir veya daha çok değer alabilir ve eklenecek sütunları listeler.
+
+Aşağıdaki örneğe bakın.
+
+```bash
+--columns=title --columns=description
+```
+
+```php
+Artisan::call('make:model-translation', [
+    '--columns' => ['title', 'description'],
+]);
+```
+
+</dd>
+</dl>
+
+### Modeli yapılandırma {/* #model_setup */}
+
+Çeviri deposunu oluşturduktan sonra ana modele `LaravelLang\Models\HasTranslations` trait’ini eklemeniz gerekir.
+
+Aşağıdaki örneğe bakın.
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+```
+
+Temel modelin çeviriler için kullanılan fiziksel veya sanal alanları içermediğinden de emin olun.
+
+Aşağıdaki örneğe bakın.
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+
+    protected $fillable = [
+        'category_id',
+
+        // Kaldırılacak alanlar
+        'title',
+        'description',
+    ];
+}
+```
+
+### IDE yardımcı dosyaları {/* #ide_helpers */}
+
+:::tip
+
+Depoyu `php artisan make:model-translation` konsol komutuyla oluştururken yardımcı dosyaları ayrı bir komutla oluşturmanız gerekmez. Komut bu dosyaları kendisi oluşturur.
+
+Çeviri depolama modelinde değişiklik yaptıktan sonra komutu çalıştırmanız önerilir.
+
+:::
+
+IDE’nin çevrilebilir alanlarla çalışabilmesi için aşağıdaki konsol komutunu çalıştırmanızı öneririz.
+
+```bash
+php artisan lang:models-helper
+```
+
+Komut, IDE’nin alanları tanımasını sağlayan yardımcı dosyalar oluşturur. Aşağıdaki örneğe bakın.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"Sonra"}>
+
+<img src={require("@site/static/images/models-helper-after.png").default} alt={"IDE yardımcı dosyası varken"} />
+
+</TabItem>
+
+<TabItem value="tab-2" label={"Önce"}>
+
+<img src={require("@site/static/images/models-helper-before.png").default} alt={"IDE yardımcı dosyası yokken"} />
+
+</TabItem>
+
+</Tabs>
+
+Bu dosyaların kaydedildiği dizini [config/localization.php](<./configuration.mdx#models>) ayar dosyasının `models` bölümündeki `helpers` parametresiyle değiştirebilirsiniz. IDE’nizin yeni yolu dizine eklediğinden emin olun.
+
+## Kullanım {/* #usage */}
+
+[Routes](<./packages-routes.mdx#usage> "Routes paketinin kullanımı") ve [Models](<./packages-models.mdx#usage> "Models paketinin kullanımı") projelerini aynı uygulamada kurmayı ve kullanmayı anlatan kısa videoyu [YouTube’da izleyebilirsiniz](<https://youtu.be/mH76pGbpVu0>).
+
+<iframe className="legacy-video" src="https://www.youtube-nocookie.com/embed/mH76pGbpVu0" title={"Routes ve Models"} loading="lazy" allowFullScreen />
+
+### Çeviri alma {/* #get_translation */}
+
+:::tip
+
+Tüm depolar, [önceden yükleme](<https://laravel.com/docs/eloquent-relationships#eager-loading>) bayrağını üst modele otomatik olarak aktarır. Bu işlemi elle yapmanız gerekmez.
+
+İlişki varsayılan olarak yalnızca temel yerel ayarların (geçerli ve yedek) kayıtlarını içerir. Bazı durumlarda [filtre ayarlarını](<./configuration.mdx#models>) değiştirerek tüm kayıtları yükleyebilirsiniz.
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+Bu durumda öğeler için mevcut tüm yerel ayarlar yüklenir.
+
+:::
+
+Geçerli yerel ayardaki bir özelliğin değerini almak için model özelliğine erişin. Aşağıdaki örneğe bakın.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+<abbr title={"\"config/app.php\" dosyasının \"app.locale\" parametresinde belirlenen değer."}>Ana yerel ayarın</abbr> değeri yoksa metot, <abbr title={"\"config/app.php\" dosyasının \"app.fallback_locale\" parametresinde belirlenen değer."}>yedek yerel ayarın</abbr> değerini döndürür.
+
+`getTranslation` metodunu da kullanabilirsiniz.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+Belirli bir yerel ayardaki değeri almak için yerel ayar kodunu ikinci argüman olarak verin. Aşağıdaki örneğe bakın.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// or
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+Model veritabanına yazılmamış değişiklikler içerse bile bu metotlar güncel değeri döndürür.
+
+:::
+
+### Çeviri atama {/* #set_translations */}
+
+#### Tek değer {/* #single_value */}
+
+Uygulamanın geçerli yerel ayarına bir çeviri eklemek veya çeviriyi güncellemek için model özelliğine değer atayın. Aşağıdaki örneğe bakın.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+`setTranslation` metoduyla da yeni değer atayabilirsiniz.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+Bu yöntemler yeni değeri etkin yerel ayara atar. Değeri belirli bir yerel ayara atamak için kodunu metodun üçüncü parametresi olarak verin. Aşağıdaki örneğe bakın.
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// or
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+Toplu atama da yapabilirsiniz.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+Bu metotları çağırdığınızda yeni değerler model nesnelerinde saklanır. Değişiklikleri veritabanına yazmak için üst modelde `save` metodunu çağırın. Aşağıdaki örneğe bakın.
+
+```php
+$page->save();
+```
+
+:::
+
+Modeli oluştururken de değer atayabilirsiniz. Aşağıdaki örneğe bakın.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### Birden çok değer {/* #plural_value */}
+
+Bir özelliğe birkaç yerel ayarın çevirilerini hızlıca atamak için aşağıdaki yöntemlerden birini kullanabilirsiniz.
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// 1. seçenek
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// 2. seçenek
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+Toplu atamada `iterable` nesneler de kullanabilirsiniz. Aşağıdaki örneğe bakın.
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+Her alan için aynı yerel ayarları belirtmeniz gerekmez. Örneğin yukarıdaki kod `title` alanına Fransızca, İngilizce ve Almanca değerler, `description` alanına ise yalnızca Fransızca ve Almanca değerler atar.
+
+### Çeviriyi silme {/* #forget_translation */}
+
+:::warning
+
+[Ekleme ve güncelleme](<#set_translations>) metotlarından farklı olarak `forgetTranslation` ve `forgetAllTranslations`, çeviri modelinin `delete` metodunu çağırarak veritabanındaki değişikliği hemen yapar.
+
+Çeviri modeli varsayılan olarak [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>) trait’ini içermez, dolayısıyla veriler hemen silinir. İsterseniz gerekli eklemeleri model sınıfında ve migration dosyasında yapabilirsiniz.
+
+:::
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetTranslation('fr');
+// or
+$page->forgetTranslation(Locale::French);
+```
+
+`forgetAllTranslations` metodunu çağırarak tüm yerel ayarları tek seferde kaldırabilirsiniz.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetAllTranslations();
+```
+
+### Çeviri olup olmadığını kontrol etme {/* #has_translated */}
+
+Bir sütunun çevirisinin olup olmadığını kontrol etmenin birkaç yolu vardır. İlk yöntem, sütun adını parametre olarak vererek `hasTranslated` metodunu çağırmaktır.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->hasTranslated('title');
+```
+
+Bu metot hem <abbr title={"\"config/app.php\" dosyasının \"app.locale\" parametresinde belirlenen değer."}>ana</abbr> hem de <abbr title={"\"config/app.php\" dosyasının \"app.fallback_locale\" parametresinde belirlenen değer."}>yedek</abbr> yerel ayarı kontrol eder. Değerlerden biri doluysa `true`, her ikisi de boşsa `false` döndürür.
+
+:::note
+
+Saklanan boolean (`true / false`) ve sayısal (`0, 0.0`) değerler dolu kabul edilir ve metot `true` döndürür.
+
+:::
+
+Belirli bir yerel ayarda değer olup olmadığını kontrol etmek için ilgili kodu ikinci argüman olarak verin. Aşağıdaki örneğe bakın.
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->hasTranslated('title', 'fr');
+// or
+$page->hasTranslated('title', Locale::French);
+```
+
+### Özniteliğin çevrilebilirliğini kontrol etme {/* #is_translatable */}
+
+`isTranslatable` metodu, alanın modelin çeviri için kullanılan `$fillable` özelliğinde bulunup bulunmadığını kontrol eder.
+
+Aşağıdaki örneğe bakın.
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\Eloquent\Translation;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+
+class ArticleTranslation extends Translation
+{
+    protected $fillable = [
+        'title',
+    ];
+}
+
+$page = Article::first();
+
+$page->isTranslatable('title'); // true
+$page->isTranslatable('description'); // false
+```
+
+### Temel modeli silme {/* #delete_base_model */}
+
+Çeviri modelinde varsayılan olarak üst modele bir yabancı anahtar bulunur. Üst model [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>) trait’iyle mantıksal olarak silinirse çevirilerin tümü kalır. `forceDelete` metodu çağrıldığında çeviriler veritabanından otomatik olarak silinir.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->delete();
+// or
+$page->forceDelete();
+```
+
+## Olaylar {/* #events */}
+
+Belirli işlemler gerçekleştirildiğinde aşağıdaki olaylar tetiklenir.
+
+```php
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+AllTranslationsHasBeenForgetEvent::dispatch($model);
+TranslationHasBeenForgetEvent::dispatch($model, $locale);
+TranslationHasBeenSetEvent::dispatch($model, $column, $locale, $oldValue, $newValue);
+```
+
+Gerektiğinde bu olayı dinleyebilirsiniz. Aşağıdaki örneğe bakın.
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(static function (AllTranslationsHasBeenForgetEvent $event) {
+            Log::info('Forget all locales', [
+                'model' => $event->model->getKey(),
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenForgetEvent $event) {
+            Log::info('Forget locale', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenSetEvent $event) {
+            Log::info('Set new translation', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+                'column' => $event->column,
+
+                'old' => $event->oldValue,
+                'new' => $event->newValue,
+            ]);
+        });
+    }
+}
+```
+
+## Uyumluluk {/* #compatibility */}
+
+| Laravel | PHP | Paket | Durum |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">destekleniyor</span> |
