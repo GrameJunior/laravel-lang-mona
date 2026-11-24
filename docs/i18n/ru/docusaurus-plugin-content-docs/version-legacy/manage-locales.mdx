@@ -1,0 +1,35 @@
+---
+title: "Управление локалями"
+slug: /manage-locales.html
+description: "Общие сведения об управлении локалями"
+---
+
+:::warning
+
+По умолчанию Laravel <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">не поддерживает</a> поиск JSON-переводов в резервной локали. Например, при вызове `__('Remember Me')` вы получите `Remember Me` вместо `Se souvenir de moi` для резервной французской локали.
+
+:::
+
+Почти все консольные команды принимают список локалей в качестве аргументов.
+
+Примеры:
+
+```bash
+php artisan lang:<command> fr de de_AT de_CH vi zh_CN
+php artisan lang:<command> fr
+php artisan lang:<command>
+```
+
+В примерах:
+
+- `fr de de_AT de_CH vi zh_CN` — список локалей через пробел.
+- `fr` — можно указать только одну локаль.
+- Если аргументы не переданы, скрипт задаёт два вопроса:
+- `Do you want to %s all localizations?`, где `%s` — `install`, `remove` или `reset`.
+- После ответа `no` появится вопрос `Select localizations to add (specify the necessary localizations separated by commas)`.
+
+:::note
+
+При работе с файлами (`install`, `uninstall`, `reset` и `update`) команда автоматически обрабатывает и PHP-, и JSON-файлы, включая переводы [Laravel Framework](<https://laravel.com>), [Jetstream](<https://jetstream.laravel.com/>), [Fortify](<https://github.com/laravel/fortify>), [Cashier](<https://laravel.com/docs/billing>), [Breeze](<https://github.com/laravel/breeze>), [Nova (а также Dusk Suite и Log Viewer)](<https://nova.laravel.com/>), [Nova](<https://nova.laravel.com/>) (включая [Dusk Suite](<https://github.com/laravel/nova-dusk-suite>) и [Log Viewer](<https://github.com/laravel/nova-log-viewer>)) и [UI](<https://github.com/laravel/ui>).
+
+:::

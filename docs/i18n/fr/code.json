@@ -1,0 +1,98 @@
+{
+  "home.description": {
+    "message": "Installez des traductions et localisez les routes et les modèles Eloquent avec Laravel-Lang."
+  },
+  "home.guide.translations.title": {
+    "message": "Gérer les langues"
+  },
+  "home.guide.translations.description": {
+    "message": "Ajoutez, mettez à jour et supprimez des traductions avec Artisan."
+  },
+  "home.guide.configure.title": {
+    "message": "Configurer la localisation"
+  },
+  "home.guide.configure.description": {
+    "message": "Configurez les alias de langue, les routes localisées et les traductions des modèles."
+  },
+  "home.guide.plugins.title": {
+    "message": "Plugins de traduction"
+  },
+  "home.guide.plugins.description": {
+    "message": "Installez des packs de traduction ou créez vos propres packs."
+  },
+  "home.guide.upgrade.title": {
+    "message": "Mettre à niveau vers Mona"
+  },
+  "home.guide.upgrade.description": {
+    "message": "Migrez vos dépendances, votre configuration et vos traductions."
+  },
+  "home.title": {
+    "message": "Documentation"
+  },
+  "home.hero.title": {
+    "message": "Localisez votre application Laravel"
+  },
+  "home.start": {
+    "message": "Démarrer en 1 minute"
+  },
+  "home.legacy": {
+    "message": "Documentation des anciennes versions"
+  },
+  "home.example.install": {
+    "message": "Installer les traductions françaises"
+  },
+  "home.example.use": {
+    "message": "Utiliser une traduction"
+  },
+  "home.guides": {
+    "message": "Guides de localisation"
+  },
+  "home.llms": {
+    "message": "Documentation pour les agents d’IA (llms.txt)"
+  },
+  "localePicker.label": {
+    "message": "Langue"
+  },
+  "localePicker.install": {
+    "message": "Exécutez la commande suivante pour installer les traductions de {language}."
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "mode système",
+    "description": "The name for the system color mode"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Version : {versionLabel}"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Versions",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.admonition.danger": {
+    "message": "danger",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "info",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(ouvre un nouvel onglet)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Navigation principale",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Sommaire de la documentation",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Développer le menu déroulant",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Réduire le menu déroulant",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  }
+}

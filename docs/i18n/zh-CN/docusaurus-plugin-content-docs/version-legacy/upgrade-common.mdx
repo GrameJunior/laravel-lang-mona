@@ -1,0 +1,27 @@
+---
+title: "Common"
+slug: /upgrade-common.html
+description: "将 Common 从版本 5 升级到版本 6"
+---
+
+## 更新依赖 {/* #updating_dependencies */}
+
+请在应用的 `composer.json` 中更新以下依赖。
+
+- 将 `laravel-lang/common` 更新到 `^6.0`。
+
+如果依赖列在 `require-dev` 下，请将其移到 `require` 下。
+
+然后运行以下命令更新依赖。
+
+```bash
+composer update
+```
+
+## 升级 Publisher {/* #upgrade_publisher */}
+
+完成 Publisher 升级指南中除更新依赖以外的所有步骤。
+
+## 升级 JSON Fallback {/* #upgrade_json_fallback */}
+
+如果使用 `laravel-lang/json-fallback-hotfix` 包，也需要调整项目中的对应设置。

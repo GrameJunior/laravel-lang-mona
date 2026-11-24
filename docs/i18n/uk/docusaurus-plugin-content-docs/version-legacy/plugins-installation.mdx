@@ -1,0 +1,50 @@
+---
+title: "Установлення плагінів"
+slug: /plugins-installation.html
+description: "Як установлювати плагіни локалізації через Publisher"
+---
+
+:::note
+
+Також можна переглянути списки доступних [офіційних плагінів](<./plugins-official.mdx>) і [плагінів спільноти](<./plugins-community.mdx>).
+
+:::
+
+Щоб підключити пакет до Publisher, виконайте такі дії:
+
+1. Установіть пакет у застосунок. Наприклад, виконайте `composer require --dev laravel-lang/lang:^15.39.1` або встановіть інший пакет.
+1. Це все 😊
+
+Тепер під час виконання `php artisan lang:update` Publisher перевірить зазначені пакети й автоматично оновить файли застосунку.
+
+Якщо різні пакети містять однойменні файли, наприклад `custom.php`, під час обробки об'єднаються ключі з усіх цих файлів.
+
+:::tip
+
+Для зручності розробки скористайтеся готовим [шаблоном перекладів](<https://github.com/Laravel-Lang/translations-template>).
+
+:::
+
+Вдалого користування! 😊
+
+## Плагіни {/* #plugins */}
+
+<div className="legacy-card-grid">
+
+<div className="card legacy-card">
+
+[Офіційні плагіни](<./plugins-official.mdx>)
+
+Список плагінів, які розробляє й підтримує команда Laravel-Lang.
+
+</div>
+
+<div className="card legacy-card">
+
+[Плагіни спільноти](<./plugins-community.mdx>)
+
+Список плагінів, які розробляє й підтримує спільнота.
+
+</div>
+
+</div>

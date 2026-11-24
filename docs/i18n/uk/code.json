@@ -1,0 +1,63 @@
+{
+  "home.description": {
+    "message": "Установлюйте переклади та локалізуйте маршрути й моделі Eloquent за допомогою Laravel-Lang."
+  },
+  "home.guide.translations.title": {
+    "message": "Керуйте локалями"
+  },
+  "home.guide.translations.description": {
+    "message": "Додавайте, оновлюйте й видаляйте переклади через Artisan."
+  },
+  "home.guide.configure.title": {
+    "message": "Налаштуйте локалізацію"
+  },
+  "home.guide.configure.description": {
+    "message": "Налаштуйте псевдоніми локалей, локалізовані маршрути та переклади моделей."
+  },
+  "home.guide.plugins.title": {
+    "message": "Плагіни перекладу"
+  },
+  "home.guide.plugins.description": {
+    "message": "Установлюйте пакети перекладів або створюйте власні."
+  },
+  "home.guide.upgrade.title": {
+    "message": "Оновлення до Mona"
+  },
+  "home.guide.upgrade.description": {
+    "message": "Перенесіть залежності, налаштування й переклади."
+  },
+  "home.title": {
+    "message": "Документація"
+  },
+  "home.hero.title": {
+    "message": "Локалізуйте застосунок Laravel"
+  },
+  "home.start": {
+    "message": "Почніть за хвилину"
+  },
+  "home.legacy": {
+    "message": "Документація попередніх версій"
+  },
+  "home.example.install": {
+    "message": "Установіть французькі переклади"
+  },
+  "home.example.use": {
+    "message": "Скористайтеся перекладом"
+  },
+  "home.guides": {
+    "message": "Посібники з локалізації"
+  },
+  "home.llms": {
+    "message": "Документація для ШІ-агентів (llms.txt)"
+  },
+  "localePicker.label": {
+    "message": "Локаль"
+  },
+  "localePicker.install": {
+    "message": "Щоб установити переклади для локалі {language}, виконайте цю команду."
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(відкривається в новій вкладці)",
+    "description": "The ARIA label for the external link icon"
+  }
+}

@@ -1,0 +1,318 @@
+---
+title: "Locales"
+slug: /packages-locales.html
+description: "الوظائف الأساسية للتعامل مع الإعدادات المحلية."
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"صدر إصدار مستقر من المشروع"}>مستقر</span> <span className="badge badge--secondary" title={"أحدث إصدار غير معروف"}>غير معروف</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [العرض على GitHub](<https://github.com/laravel-lang/locales>)
+
+## التثبيت {/* #installation */}
+
+:::note
+
+اطّلع على [جدول التوافق](<#compatibility> "جدول توافق حزمة Locales").
+
+:::
+
+للتثبيت، شغّل أمر الطرفية:
+
+```bash
+composer require laravel-lang/locales:^2.11.0
+```
+
+## الاستخدام {/* #usage */}
+
+للتعامل مع الإعدادات المحلية، استخدم الواجهة `LaravelLang\Locales\Facades\Locales`. تتيح الحصول على المعلومات في صورة قائمة برموز الإعدادات المحلية أو مصفوفة من كائنات نقل البيانات (DTO).
+
+### كائنات البيانات {/* #data_objects */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// يسرد الإعدادات المحلية المتاحة.
+Locales::available(): array // array<LocaleData>
+
+// يسرد الإعدادات المحلية المثبّتة.
+Locales::installed(bool $withProtects = true): array // array<LocaleData>
+
+// يسرد الإعدادات المحلية غير المثبّتة.
+Locales::notInstalled(): array // array<LocaleData>
+
+// يجلب قائمة الإعدادات المحلية المحمية.
+Locales::protects(): array // array<LocaleData>
+
+// يتحقّق من توفر حزم اللغة للإعداد المحلي المطلوب.
+Locales::isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// يتحقّق من تثبيت حزمة لغة.
+Locales::isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// يتحقّق من حماية الإعداد المحلي.
+Locales::isProtected(LocaleData|Locale|string|null $locale): bool
+
+// يتحقّق من الإعداد المحلي ويعيد الإعداد الصحيح.
+// إذا طُلب إعداد محلي غير مثبّت، يعيد الإعداد النشط حاليًا في التطبيق.
+Locales::get(mixed $locale): LocaleData
+
+// يجلب اسم الإعداد المحلي الافتراضي.
+Locales::getDefault(): LocaleData
+
+// يجلب اسم الإعداد المحلي الاحتياطي.
+Locales::getFallback(): LocaleData
+
+// يجلب معلومات عن أي إعداد محلي متاح. وإلا فيعيد الإعداد النشط حاليًا في التطبيق.
+Locales::info(mixed $locale): LocaleData
+```
+
+### البيانات الخام {/* #raw_data */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// يسرد الإعدادات المحلية المتاحة.
+Locales::raw()->available(): array // array<string>
+
+// يسرد الإعدادات المحلية المثبّتة.
+Locales::raw()->installed(bool $withProtects = true): array // array<string>
+
+// يسرد الإعدادات المحلية غير المثبّتة.
+Locales::raw()->notInstalled(): array // array<string>
+
+// يجلب قائمة الإعدادات المحلية المحمية.
+Locales::raw()->protects(): array // array<string>
+
+// يتحقّق من توفر حزم اللغة للإعداد المحلي المطلوب.
+Locales::raw()->isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// يتحقّق من تثبيت حزمة لغة.
+Locales::raw()->isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// يتحقّق من حماية الإعداد المحلي.
+Locales::raw()->isProtected(LocaleData|Locale|string|null $locale): bool
+
+// يتحقّق من الإعداد المحلي ويعيد الإعداد الصحيح.
+// إذا طُلب إعداد محلي غير مثبّت، يعيد الإعداد النشط حاليًا في التطبيق.
+Locales::raw()->get(mixed $locale): string
+
+// يجلب اسم الإعداد المحلي الافتراضي.
+Locales::raw()->getDefault(): string
+
+// يجلب اسم الإعداد المحلي الاحتياطي.
+Locales::raw()->getFallback(): string
+
+// يجلب رمز أي إعداد محلي متاح. وإلا فيعيد رمز الإعداد النشط حاليًا في التطبيق.
+Locales::raw()->info(mixed $locale): string
+```
+
+### أمثلة {/* #examples */}
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::getDefault(withCountry: true, withCurrency: true);
+
+// من دون اسم بديل
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+// باسم بديل
+LocaleData {
+  +code: "de-DE"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // vi
+
+return Locales::get('de', withCountry: true, withCurrency: true);
+
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+LocaleData {
+  +code: "ar"
+  +regional: "ar_AE"
+  +type: "Arab"
+  +native: "العربية"
+  +localized: "Arabe"
+  +country: CountryData {
+    +code: "EG"
+    +native: "مصر"
+    +localized: "Égypte"
+  }
+  +currency: CurrencyData {
+    +code: "EGP"
+    +numeric: 818
+    +native: "جنيه مصري"
+    +localized: "livre égyptienne"
+  }
+  +direction: Direction {
+    +name: "RightToLeft"
+    +value: "rtl"
+  }
+  +locale: Locale {
+    +name: "Arabic"
+    +value: "ar"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::get('foo', withCountry: true, withCurrency: true);
+
+// يعيد الإعداد المحلي الافتراضي
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+return Locales::raw()->getDefault();
+// من دون اسم بديل
+// de
+
+// باسم بديل
+// de-DE
+```
+
+```php
+return Locales::raw()->get('de');
+// de
+
+return Locales::raw()->get('foo');
+// يعيد الإعداد المحلي الافتراضي
+// de
+```
+
+## التوافق {/* #compatibility */}
+
+| Laravel | PHP | الحزمة | الحالة |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">مدعوم</span> |
+| 10 | 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">غير مدعوم</span> |

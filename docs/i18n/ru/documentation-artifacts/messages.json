@@ -1,0 +1,23 @@
+{
+  "releaseLine": {
+    "message": "Официальные пакеты выпускаются под общей версией."
+  },
+  "documentation": {
+    "message": "Документация"
+  },
+  "optional": {
+    "message": "Дополнительно"
+  },
+  "legacy": {
+    "message": "Документация прежних версий"
+  },
+  "legacyDescription": {
+    "message": "Руководства для установок до Mona."
+  },
+  "moved": {
+    "message": "Документация переехала"
+  },
+  "redirect": {
+    "message": "Перейти к документации"
+  }
+}

@@ -1,0 +1,71 @@
+---
+title: "JSON Fallback"
+slug: /packages-json-fallback.html
+description: "Adiciona suporte a traduções de fallback para strings JSON"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Uma versão estável do projeto foi lançada"}>Estável</span> <span className="badge badge--secondary" title={"A versão mais recente é desconhecida"}>Desconhecida</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Ver no GitHub](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+Se você usa inglês como localidade de fallback, não precisa deste pacote.
+
+:::
+
+## Instalação {/* #installation */}
+
+:::note
+
+Consulte a [tabela de compatibilidade](<#compatibility> "Compatibilidade do pacote JSON Fallback").
+
+:::
+
+Por padrão, o Laravel <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">não permite</a> traduções de fallback para chaves JSON. Por exemplo, quando você chama `__('Remember Me')`, obtém `Remember Me` em vez de `Se souvenir de moi` com francês como idioma de fallback.
+
+Para instalar, execute o comando abaixo.
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## Uso {/* #usage */}
+
+:::note
+
+No Laravel 11, a seção `providers` não está presente no arquivo de configuração `config/app.php`. Você pode adicioná-la manualmente.
+
+:::
+
+Depois de instalar, adicione uma referência ao provedor de serviços na seção `providers` do arquivo `config/app.php`.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // outros provedores de serviços
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+Agora as chaves JSON retornam o valor correto conforme a localidade selecionada.
+
+## Compatibilidade {/* #compatibility */}
+
+| Laravel | PHP | Pacote | Situação |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">Compatível</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">Sem suporte</span> |

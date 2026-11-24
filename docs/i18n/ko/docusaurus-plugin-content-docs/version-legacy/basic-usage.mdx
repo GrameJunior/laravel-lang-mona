@@ -1,0 +1,459 @@
+---
+title: "기본 사용법"
+slug: /basic-usage.html
+description: "패키지를 빠르게 설치하고 사용하는 방법입니다."
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+## 설치 {/* #installation */}
+
+콘솔에서 다음 명령으로 패키지를 설치하세요.
+
+```bash
+composer require laravel-lang/common:^6.9
+```
+
+## 로캘 관리 {/* #managing_locales */}
+
+### 로캘 추가하기 {/* #add_locales */}
+
+:::note
+
+지원 로캘 목록은 [<strong>여기</strong>](<./available-locales-list.mdx>)에서 확인할 수 있습니다.
+
+:::
+
+이제 `lang:add` 콘솔 명령으로 새 로캘을 [추가](<./usage-add-locales.mdx> "Laravel 애플리케이션에 로캘 추가")할 수 있습니다.
+
+```bash
+php artisan lang:add <locale>
+```
+
+### 로캘 업데이트하기 {/* #update_locales */}
+
+이제 `lang:update` 콘솔 명령으로 기존 로캘을 [업데이트](<./usage-update-locales.mdx> "Laravel 애플리케이션의 로캘 업데이트")할 수 있습니다.
+
+```bash
+php artisan lang:update
+```
+
+`composer.json`의 `scripts` 블록에서 `post-update-cmd` 항목에 호출을 추가하는 것도 좋습니다.
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+이렇게 하면 의존성을 업데이트한 뒤 `php artisan lang:update` 콘솔 명령을 수동으로 실행할 필요 없이 로캘 파일을 자동으로 갱신합니다.
+
+## 라우트 {/* #routes */}
+
+### 현지화 그룹 사용 {/* #via_localization_group */}
+
+:::note
+
+라우트 <abbr title={"app('router')->localizedGroup(), Route::localizedGroup(), LocalizationRoute::group 메서드를 사용할 수 있습니다."}>그룹화</abbr> 없이 `localizedRoute` 헬퍼를 호출하면 로캘은 쿼리 매개변수로 지정됩니다. 예를 들면 아래와 같습니다.
+
+```bash
+https://example.com/foo?locale=fr
+```
+
+:::
+
+:::tip
+
+매개변수 이름, 이름 접두사 및 리디렉션 옵션은 `config/localization.php` 파일의 `routes` 설정에서 변경할 수 있습니다.
+
+:::
+
+```php
+use Illuminate\Support\Facades\Route;
+
+app('router')->localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+
+Route::localizedGroup(function () {
+    app('router')->get('foo/{bar}', function (string $bar) {
+        return response()->json([
+            $bar => __('Foo'),
+        ]);
+    });
+});
+```
+
+이 메서드로 현지화 라우트 그룹의 접두사를 쉽게 관리할 수 있습니다.
+
+그룹의 주 미들웨어인 `LocalizationByParameterPrefix` 외에도 `LocalizationByCookie`, `LocalizationByHeader`, `LocalizationBySession`이 실행됩니다.
+
+다음 세 가지 방법 중 하나를 사용할 수 있습니다.
+
+```php
+use Illuminate\Support\Facades\Route;
+use LaravelLang\Routes\Facades\LocalizationRoute;
+
+app('router')->localizedGroup(fn () => ...)
+
+Route::localizedGroup(fn () => ...)
+
+LocalizationRoute::group(fn () => ...)
+```
+
+애플리케이션은 `{locale}` 접두사가 있는 라우트와 없는 라우트를 모두 등록합니다. 다음은 예제입니다.
+
+| URL | 패턴 | 이름 |
+| --- | --- | --- |
+| https://example.com/fr/foo/show | `{locale}/foo/{bar}` | `localized.show` |
+| https://example.com/foo/show | `foo/{bar}` | `show` |
+
+이름 접두사는 `config/localization.php` 파일의 `routes` 설정에서 변경할 수 있습니다.
+
+:::note
+
+```php
+localizedRoute('show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show']);
+// https://example.com/fr/foo/show
+
+localizedRoute('localized.show', ['bar' => 'show', 'locale' => 'de']);
+// https://example.com/de/foo/show
+
+route('localized.show', ['bar' => 'show', 'locale' => app()->getLocale()]);
+// https://example.com/fr/foo/show
+```
+
+[PhpStorm](<https://www.jetbrains.com/phpstorm/>)용 플러그인 [Laravel Idea](<https://laravel-idea.com/>)가 이 기능을 지원합니다.
+
+<img src={require("@site/static/images/packages-route-idea-friendly.png").default} alt={"Laravel Idea에서 현지화 라우트를 사용하는 예"} />
+
+:::
+
+#### 예제 {/* #via_localization_group_examples */}
+
+<Tabs>
+
+<TabItem value="tab-1" label={"기본 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/fr/foo/show
+```
+
+응답
+
+<Tabs>
+
+<TabItem value="tab-1" label={"리디렉션 사용"}>
+
+```bash
+### 302 리디렉션
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-2" label={"리디렉션 사용 안 함"}>
+
+```json
+{
+    "show": "Toutes les données ont été chargées."
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="tab-2" label={"기본값이 아닌 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/de/foo/show
+```
+
+응답
+
+```json
+{
+    "show": "Alle Ressourcen geladen."
+}
+```
+
+</TabItem>
+
+<TabItem value="tab-3" label={"설치하지 않은 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/as/foo/show
+```
+
+응답
+
+```bash
+### 302 리디렉션
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+<TabItem value="tab-4" label={"알 수 없는 로캘"}>
+
+요청
+
+```bash
+curl -XGET https://example.com/qwerty/foo/show
+```
+
+응답
+
+```bash
+### 302 리디렉션
+Location: https://example.com/foo/show
+```
+
+</TabItem>
+
+</Tabs>
+
+## 모델 {/* #models */}
+
+### 번역 가져오기 {/* #get_translation */}
+
+:::tip
+
+모든 저장소는 [즉시 로딩](<https://laravel.com/docs/eloquent-relationships#eager-loading>) 플래그를 상위 모델에 자동으로 전달하므로 수동으로 설정할 필요가 없습니다.
+
+이 관계에는 기본적으로 현재 로캘과 대체 로캘의 레코드만 포함됩니다. 필요한 경우 [필터 설정](<./configuration.mdx#models>)을 변경해 모두 불러올 수 있습니다.
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+이 경우 항목에서 사용할 수 있는 로캘을 모두 불러옵니다.
+
+:::
+
+현재 로캘의 속성값을 가져오려면 모델의 속성을 읽으세요. 다음은 예제입니다.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+<abbr title={"config/app.php 파일의 app.locale에 설정된 값입니다."}>기본 로캘</abbr>의 값이 없으면 이 메서드는 <abbr title={"config/app.php 파일의 app.fallback_locale에 설정된 값입니다."}>대체 로캘</abbr>의 값을 반환합니다.
+
+`getTranslation` 메서드를 사용할 수도 있습니다.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+특정 로캘의 값은 두 번째 인수로 로캘 코드를 전달해 가져옵니다. 다음은 예제입니다.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// 또는
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+모델의 변경 사항을 데이터베이스에 저장하지 않았어도 이 메서드는 변경한 값을 반환합니다.
+
+:::
+
+### 번역 설정하기 {/* #set_translations */}
+
+#### 단일 값 {/* #single_value */}
+
+애플리케이션의 현재 로캘에 번역을 추가하거나 갱신하려면 모델 속성에 값을 할당하세요. 다음은 예제입니다.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+`setTranslation`으로 새 값을 설정할 수도 있습니다.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+이 메서드는 현재 로캘에 새 값을 설정합니다. 특정 로캘의 값은 세 번째 매개변수에 해당 코드를 전달해 설정하세요. 다음은 예제입니다.
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// 또는
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+대량 할당도 사용할 수 있습니다.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+이 메서드를 호출하면 새 값은 모델 객체에만 저장됩니다. 데이터베이스에 반영하려면 상위 모델에서 `save`를 호출하세요. 다음은 예제입니다.
+
+```php
+$page->save();
+```
+
+:::
+
+모델을 생성할 때 값을 채울 수도 있습니다. 다음은 예제입니다.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### 여러 값 {/* #plural_value */}
+
+여러 로캘의 번역으로 속성을 빠르게 채우려면 다음 방법 중 하나를 사용하세요.
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// 방법 1
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// 방법 2
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+대량 할당에 `iterable` 객체를 사용할 수도 있습니다. 다음은 예제입니다.
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+필드마다 같은 로캘을 지정할 필요는 없습니다. 위 예에서는 `title`에 프랑스어, 영어, 독일어 값을 설정하고, `description`에는 프랑스어와 독일어 값만 설정합니다.
+
+## JSON 대체 번역 {/* #json_fallback */}
+
+:::note
+
+Laravel 11에서는 `config/app.php` 설정 파일에 `providers` 항목이 없습니다. 수동으로 추가할 수 있습니다.
+
+:::
+
+설치한 뒤 `config/app.php` 설정 파일의 `providers` 항목에서 서비스 프로바이더를 등록하세요.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // 다른 서비스 프로바이더
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+이제 JSON 키는 선택한 로캘의 값을 반환합니다.

@@ -1,0 +1,318 @@
+---
+title: "Locales"
+slug: /packages-locales.html
+description: "使用语言区域的基本功能"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"该项目已发布稳定版本"}>稳定版</span> <span className="badge badge--secondary" title={"最新版本未知"}>未知</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [在 GitHub 上查看](<https://github.com/laravel-lang/locales>)
+
+## 安装 {/* #installation */}
+
+:::note
+
+请参阅[兼容性表](<#compatibility> "Locales 软件包的兼容性表")。
+
+:::
+
+要安装软件包，请运行以下控制台命令。
+
+```bash
+composer require laravel-lang/locales:^2.11.0
+```
+
+## 用法 {/* #usage */}
+
+要使用语言区域，可调用 `LaravelLang\Locales\Facades\Locales` 门面。它支持以语言区域代码列表或 DTO 对象数组的形式返回信息。
+
+### 数据对象 {/* #data_objects */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// 列出可用的语言区域。
+Locales::available(): array // array<LocaleData>
+
+// 列出已安装的语言区域。
+Locales::installed(bool $withProtects = true): array // array<LocaleData>
+
+// 列出未安装的语言区域。
+Locales::notInstalled(): array // array<LocaleData>
+
+// 获取受保护的语言区域列表。
+Locales::protects(): array // array<LocaleData>
+
+// 检查是否有对应语言区域的语言包。
+Locales::isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// 检查语言包是否已安装。
+Locales::isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// 检查语言区域是否受保护。
+Locales::isProtected(LocaleData|Locale|string|null $locale): bool
+
+// 验证语言区域并返回正确值。
+// 如果请求的语言区域尚未安装，则返回应用当前使用的语言区域。
+Locales::get(mixed $locale): LocaleData
+
+// 获取默认语言区域的名称。
+Locales::getDefault(): LocaleData
+
+// 获取回退语言区域的名称。
+Locales::getFallback(): LocaleData
+
+// 获取指定语言区域的信息。不可用时，返回应用当前使用的语言区域的信息。
+Locales::info(mixed $locale): LocaleData
+```
+
+### 原始数据 {/* #raw_data */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// 列出可用的语言区域。
+Locales::raw()->available(): array // array<string>
+
+// 列出已安装的语言区域。
+Locales::raw()->installed(bool $withProtects = true): array // array<string>
+
+// 列出未安装的语言区域。
+Locales::raw()->notInstalled(): array // array<string>
+
+// 获取受保护的语言区域列表。
+Locales::raw()->protects(): array // array<string>
+
+// 检查是否有对应语言区域的语言包。
+Locales::raw()->isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// 检查语言包是否已安装。
+Locales::raw()->isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// 检查语言区域是否受保护。
+Locales::raw()->isProtected(LocaleData|Locale|string|null $locale): bool
+
+// 验证语言区域并返回正确值。
+// 如果请求的语言区域尚未安装，则返回应用当前使用的语言区域。
+Locales::raw()->get(mixed $locale): string
+
+// 获取默认语言区域的名称。
+Locales::raw()->getDefault(): string
+
+// 获取回退语言区域的名称。
+Locales::raw()->getFallback(): string
+
+// 获取指定语言区域的代码。不可用时，返回应用当前使用的语言区域的代码。
+Locales::raw()->info(mixed $locale): string
+```
+
+### 示例 {/* #examples */}
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::getDefault(withCountry: true, withCurrency: true);
+
+// 不使用别名
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+// 使用别名
+LocaleData {
+  +code: "de-DE"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // vi
+
+return Locales::get('de', withCountry: true, withCurrency: true);
+
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+LocaleData {
+  +code: "ar"
+  +regional: "ar_AE"
+  +type: "Arab"
+  +native: "العربية"
+  +localized: "Arabe"
+  +country: CountryData {
+    +code: "EG"
+    +native: "مصر"
+    +localized: "Égypte"
+  }
+  +currency: CurrencyData {
+    +code: "EGP"
+    +numeric: 818
+    +native: "جنيه مصري"
+    +localized: "livre égyptienne"
+  }
+  +direction: Direction {
+    +name: "RightToLeft"
+    +value: "rtl"
+  }
+  +locale: Locale {
+    +name: "Arabic"
+    +value: "ar"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::get('foo', withCountry: true, withCurrency: true);
+
+// 返回默认语言区域
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+return Locales::raw()->getDefault();
+// 不使用别名
+// de
+
+// 使用别名
+// de-DE
+```
+
+```php
+return Locales::raw()->get('de');
+// de
+
+return Locales::raw()->get('foo');
+// 返回默认语言区域
+// de
+```
+
+## 兼容性 {/* #compatibility */}
+
+| Laravel | PHP | 软件包 | 状态 |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">支持</span> |
+| 10 | 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">不支持</span> |

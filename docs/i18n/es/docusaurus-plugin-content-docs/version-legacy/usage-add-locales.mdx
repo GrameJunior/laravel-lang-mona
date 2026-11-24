@@ -1,0 +1,24 @@
+---
+title: "Agregar configuraciones regionales"
+slug: /usage-add-locales.html
+description: "Agregar configuraciones regionales a una aplicación de Laravel"
+---
+
+:::note
+
+Consulta la [lista de códigos de configuración regional disponibles](<./available-locales-list.mdx>).
+
+La lista contiene 128 códigos de configuración regional.
+
+:::
+
+Puedes instalar las configuraciones regionales necesarias con el comando de consola `php artisan lang:add <locale>`. Pasa uno o más códigos separados por espacios.
+
+```bash
+php artisan lang:add fr de de_AT de_CH vi zh_CN
+php artisan lang:add fr
+```
+
+Si existen los archivos de destino, el comando te preguntará si quieres omitir la instalación o sustituirlos.
+
+Si esos archivos contienen claves que agregaste, conviene omitirlos. Así, `php artisan lang:update` podrá actualizarlos sin eliminar tu código.

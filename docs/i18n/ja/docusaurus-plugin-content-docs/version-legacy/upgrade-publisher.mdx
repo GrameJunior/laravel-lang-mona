@@ -1,0 +1,47 @@
+---
+title: "Publisher"
+slug: /upgrade-publisher.html
+description: "Publisher をバージョン 15 から 16 にアップグレードします。"
+---
+
+## 依存関係を更新する {/* #updating_dependencies */}
+
+:::note
+
+`laravel-lang/common` パッケージを使っている場合は、この手順を省略してください。
+
+:::
+
+アプリケーションの `composer.json` で、次の依存関係を更新します。
+
+- `laravel-lang/publisher` を `^16.0` に変更します。
+
+次に、以下のコマンドで依存関係を更新します。
+
+```bash
+composer update
+```
+
+## ロケールの名前空間を変更する {/* #change_namespace */}
+
+次のロケールの名前空間を
+
+```php
+LaravelLang\Locales\Enums\Locale
+```
+
+以下に置き換えます。
+
+```php
+LaravelLang\LocaleList\Locale
+```
+
+置き換えの例を示します。
+
+```php
+// 変更前
+LaravelLang\Locales\Enums\Locale::Afrikaans; // af
+
+// 変更後
+LaravelLang\LocaleList\Locale::Afrikaans; // af
+```

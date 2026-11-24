@@ -1,0 +1,71 @@
+---
+title: "JSON Fallback"
+slug: /packages-json-fallback.html
+description: "JSON 文字列のフォールバック翻訳に対応します。"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"このプロジェクトの安定版がリリースされています"}>安定版</span> <span className="badge badge--secondary" title={"最新バージョンは不明です"}>不明</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub で見る](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+フォールバックロケールに英語を使用する場合、このパッケージは不要です。
+
+:::
+
+## インストール {/* #installation */}
+
+:::note
+
+[JSON Fallback パッケージの互換性表](<#compatibility> "JSON Fallback パッケージの互換性表")を参照してください。
+
+:::
+
+Laravel の標準機能では、JSON キーのフォールバック翻訳は<a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">使用できません</a>。たとえば、フランス語をフォールバック言語にして `__('Remember Me')` を呼び出しても、`Se souvenir de moi` ではなく `Remember Me` が返ります。
+
+インストールするには、次のコンソールコマンドを実行します。
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## 使用方法 {/* #usage */}
+
+:::note
+
+Laravel 11 の `config/app.php` 設定ファイルには `providers` セクションがありません。手動で追加できます。
+
+:::
+
+インストール後、`config/app.php` 設定ファイルの `providers` セクションにサービスプロバイダーへの参照を追加します。
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // その他のサービスプロバイダー
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+これで JSON キーは選択したロケールに応じた値を返すようになります。
+
+## 互換性 {/* #compatibility */}
+
+| Laravel | PHP | パッケージ | サポート状況 |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">対応</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">非対応</span> |

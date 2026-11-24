@@ -1,0 +1,79 @@
+{
+  "home.description": {
+    "message": "ترجمه‌ها را نصب کنید و مسیرها و مدل‌های Eloquent را با Laravel-Lang بومی‌سازی کنید."
+  },
+  "home.guide.translations.title": {
+    "message": "مدیریت زبان‌های منطقه‌ای"
+  },
+  "home.guide.translations.description": {
+    "message": "با Artisan ترجمه‌ها را اضافه، به‌روز و حذف کنید."
+  },
+  "home.guide.configure.title": {
+    "message": "پیکربندی بومی‌سازی"
+  },
+  "home.guide.configure.description": {
+    "message": "نام‌های مستعار، مسیرهای بومی‌شده و ترجمهٔ مدل‌ها را تنظیم کنید."
+  },
+  "home.guide.plugins.title": {
+    "message": "افزونه‌های ترجمه"
+  },
+  "home.guide.plugins.description": {
+    "message": "بسته‌های ترجمه را نصب کنید یا بستهٔ خودتان را بسازید."
+  },
+  "home.guide.upgrade.title": {
+    "message": "ارتقا به Mona"
+  },
+  "home.guide.upgrade.description": {
+    "message": "وابستگی‌ها، پیکربندی و ترجمه‌های خود را مهاجرت دهید."
+  },
+  "home.title": {
+    "message": "مستندات"
+  },
+  "home.hero.title": {
+    "message": "برنامهٔ Laravel خود را بومی‌سازی کنید"
+  },
+  "home.start": {
+    "message": "شروع در یک دقیقه"
+  },
+  "home.legacy": {
+    "message": "مستندات نسخه‌های قدیمی"
+  },
+  "home.example.install": {
+    "message": "نصب ترجمه‌های فرانسوی"
+  },
+  "home.example.use": {
+    "message": "استفاده از ترجمه"
+  },
+  "home.guides": {
+    "message": "راهنماهای بومی‌سازی"
+  },
+  "home.llms": {
+    "message": "مستندات برای عامل‌های هوش مصنوعی (llms.txt)"
+  },
+  "localePicker.label": {
+    "message": "زبان منطقه‌ای"
+  },
+  "localePicker.install": {
+    "message": "برای نصب ترجمه‌های {language} فرمان زیر را اجرا کنید."
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "حالت سیستم",
+    "description": "The name for the system color mode"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(در زبانه‌ای جدید باز می‌شود)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "زبان‌ها",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "باز کردن منوی کشویی",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "بستن منوی کشویی",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  }
+}

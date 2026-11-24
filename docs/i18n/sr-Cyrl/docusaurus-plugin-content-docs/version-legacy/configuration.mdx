@@ -1,0 +1,693 @@
+---
+title: "Подешавање"
+slug: /configuration.html
+description: "Детаљне информације о подешавању пакета"
+---
+
+## Објављивање {/* #publish */}
+
+По избору, датотеку подешавања можете да објавите следећом командом.
+
+```bash
+php artisan vendor:publish --tag="localization"
+```
+
+Ово је садржај објављене датотеке `config/localization.php`.
+
+<details>
+<summary>Прикажи подешавања</summary>
+
+```php
+return [
+    /*
+     * Одређује која врста датотека се користи при ажурирању језичких датотека.
+     *
+     * @see https://laravel-lang.com/configuration.html#inline
+     *
+     * Подразумевана вредност је `false`.
+     */
+
+    'inline' => (bool) env('LOCALIZATION_INLINE', env('LANG_PUBLISHER_INLINE')),
+
+    /*
+     * Одређује да ли се низови поравнавају по кључевима пре обраде.
+     *
+     * @see https://laravel-lang.com/configuration.html#alignment
+     *
+     * Подразумевана вредност је true.
+     */
+
+    'align' => (bool) env('LOCALIZATION_ALIGN', env('LANG_PUBLISHER_ALIGN', true)),
+
+    /*
+     * Језички кодови изабрани за датотеке у овом репозиторијуму
+     * не морају да одговарају подешавањима вашег пројекта.
+     *
+     * Овде наведите како се локали мапирају у вашем пројекту.
+     *
+     * @see https://laravel-lang.com/configuration.html#aliases
+     */
+
+    'aliases' => [
+        // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
+        // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+
+    /*
+     * Ова опција одређује како се кључеви превода
+     * претварају у типографски облик.
+     *
+     * @see https://laravel-lang.com/configuration.html#smart_punctuation
+     *
+     * Подразумевана вредност је false.
+     */
+
+    'smart_punctuation' => [
+        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+
+        'common' => [
+            'double_quote_opener' => '“',
+            'double_quote_closer' => '”',
+            'single_quote_opener' => '‘',
+            'single_quote_closer' => '’',
+        ],
+
+        'locales' => [
+            Locale::French->value => [
+                'double_quote_opener' => '«&nbsp;',
+                'double_quote_closer' => '&nbsp;»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Russian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Ukrainian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Belarusian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+        ],
+    ],
+
+    /*
+     * Ова опција дефинише подешавања рута апликације.
+     *
+     * @see https://laravel-lang.com/configuration.html#routes
+     */
+
+    'routes' => [
+        /*
+         * Ова опција дефинише називе кључева који се користе при рутирању у апликацији.
+         *
+         * Подразумеване вредности:
+         *
+         *   parameter - locale
+         *   header    - Accept-Language
+         *   cookie    - Accept-Language
+         *   session   - Accept-Language
+         *   column    - column
+         */
+
+        'names' => [
+            'parameter' => RouteName::Parameter,
+            'header'    => RouteName::Header,
+            'cookie'    => RouteName::Cookie,
+            'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
+        ],
+
+        /*
+         * Ова опција одређује префикс назива група рута.
+         *
+         * Подразумевана вредност је `localized.`.
+         */
+
+        'name_prefix' => env('LOCALIZATION_NAME_PREFIX', 'localized.'),
+
+        /*
+         * Ова опција одређује да ли се захтев преусмерава при покушају отварања подразумеваног локала.
+         *
+         * Примењује се при употреби фасаде `LaravelLang\Routes\Facades\LocalizationRoute`.
+         */
+
+        'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
+
+        /*
+         * Ова опција дефинише подразумевани локал. Када се он користи, параметар локала се уклања из URL-а.
+         *
+         * Примењује се при употреби помоћне функције `localizedRoute`.
+         */
+
+        'hide_default' => (bool) env('LOCALIZATION_HIDE_DEFAULT', false),
+
+        // Ова опција садржи подешавања рута.
+
+        'group' => [
+            'middlewares' => [
+                // Ова опција садржи подешавања рута без префикса кода локала.
+
+                'default' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+
+                // Ова опција садржи подешавања рута са префиксом кода локала.
+
+                'prefix' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+            ],
+        ],
+    ],
+
+    /*
+     * Ова опција дефинише подешавања за рад са преводима модела.
+     *
+     * @see https://laravel-lang.com/configuration.html#models
+     */
+
+    'models' => [
+        /*
+         * Ова опција одређује суфикс модела који садрже преводе.
+         *
+         * На пример,
+         *   основни модел је `App\Models\Page`
+         *   модел превода је `App\Models\PageTranslation`
+         *
+         * Подразумевана вредност је `Translation`.
+         */
+
+        'suffix' => 'Translation',
+
+        /*
+         * Ова опција одређује да ли се филтрирају локали
+         * у вези која се учитава унапред.
+         *
+         * Подразумевана вредност је true.
+         */
+
+        'filter' => [
+            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+        ],
+
+        /*
+         * Ова опција одређује директоријум за IDE помоћне датотеке.
+         *
+         * Подразумевана вредност је `vendor/_laravel_lang`.
+         */
+
+        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
+    ],
+
+    /*
+     * Ова опција садржи списак преводилаца које користи Laravel Lang Translator.
+     *
+     * Google Translate је подразумевано укључен.
+     *
+     * @see https://laravel-lang.com/configuration.html#translators
+     */
+
+    'translators' => [
+        /*
+         * Списак канала који се користе за превођење.
+         *
+         * Подразумевано,
+         *
+         *     Google је укључен
+         *     DeepL је искључен
+         *     Yandex је искључен
+         */
+
+        'channels' => [
+            'google' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Google',
+
+                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
+            ],
+
+            'deepl' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+
+                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
+
+                'credentials' => [
+                    'key' => (string) env('TRANSLATION_DEEPL_KEY'),
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
+
+                'credentials' => [
+                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
+                ],
+            ],
+        ],
+
+        'options' => [
+            /*
+             * Подесите сопствени образац за издвајање заменљивих кључних речи из ниске.
+             * Подразумевано се издвајају речи које почињу двотачком.
+             *
+             *  Доступне опције:
+             *
+             *     `true` користи `/:(\w+)/`
+             *     `false` искључује обраду регуларног израза
+             *     `/any regex/` је регуларни израз који сами наведете
+             *
+             *   Подразумевана вредност је `true`.
+             *
+             * @example (e.g. "Hello :name" will extract "name")
+             */
+
+            'preserve_parameters' => true,
+        ],
+    ],
+];
+```
+
+</details>
+
+## Поруке без назива поља {/* #inline */}
+
+Опција `inline` одређује која врста датотека се користи при ажурирању језичких датотека.
+
+- Са `true` користе се датотеке без назива поља.
+- Са `false` користе се подразумеване датотеке.
+
+Разлика се види у следећем примеру.
+
+```text
+The :attribute must be accepted. // default
+This field must be accepted. // inline
+```
+
+Ова опција доступна је у датотеци `config/localization.php`.
+
+```php
+return [
+    'inline' => (bool) env('LOCALIZATION_INLINE', env('LANG_PUBLISHER_INLINE')),
+];
+```
+
+## Поравнавање {/* #alignment */}
+
+Опција `align` одређује како се вредности поравнавају једна у односу на другу при обради датотека локализације.
+
+При ажурирању се сви коментари аутоматски уклањају из коначних датотека. Функција [var\_export](<https://www.php.net/manual/en/function.var-export.php>) не уме да обради коментаре.
+
+Погледајте пример улазне датотеке.
+
+```php
+declare(strict_types=1);
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Поруке за аутентификацију
+    |--------------------------------------------------------------------------
+    |
+    | Следећи преводи користе се током аутентификације за различите
+    | поруке које треба приказати кориснику. Можете их изменити
+    | у складу са захтевима своје апликације.
+    |
+    */
+    'failed'   => 'These credentials do not match our records 123456.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'foo'      => 'bar',
+];
+```
+
+Ажурирана датотека изгледа овако.
+
+```php
+declare(strict_types=1);
+
+return [
+    'failed'   => 'These credentials do not match our records 123456.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'foo'      => 'bar',
+];
+```
+
+Погледајте и пример датотеке `validation.php`.
+
+<details>
+<summary>Прикажи садржај</summary>
+
+```php
+declare(strict_types=1);
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Поруке валидације
+    |--------------------------------------------------------------------------
+    |
+    | Следећи преводи садрже подразумеване поруке о грешкама које користи
+    | класа валидатора. Нека правила имају више варијанти, попут
+    | правила за величину. Сваку поруку овде можете да прилагодите.
+    |
+    */
+    'accepted'   => 'The :attribute must be accepted.',
+    'active_url' => 'The :attribute is not a valid URL.',
+
+    // many rules
+
+    'uuid' => 'The :attribute must be a valid UUID.',
+    /*
+    |--------------------------------------------------------------------------
+    | Прилагођене поруке валидације
+    |--------------------------------------------------------------------------
+    |
+    | Овде можете навести прилагођене поруке валидације за атрибуте
+    | користећи конвенцију "attribute.rule" за њихове називе. Тако можете
+    | брзо навести одређену поруку за дато правило атрибута.
+    |
+    */
+    'custom' => [
+        'name' => [
+            'required' => 'Custom message 1',
+            'string'   => 'Custom message 2',
+        ],
+    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Прилагођени атрибути валидације
+    |--------------------------------------------------------------------------
+    |
+    | Следећи преводи користе се да ознаку места за атрибут замене
+    | читљивијим називом, попут "E-Mail Address" уместо
+    | "email". Тако порука постаје јаснија.
+    |
+    */
+    'attributes' => [
+        'name' => 'Foo',
+        'bar'  => 'Bar',
+        'baz'  => 'Baz',
+    ],
+];
+```
+
+</details>
+
+Овако изгледа после ажурирања.
+
+```php
+declare(strict_types=1);
+
+return [
+    'accepted'   => 'The :attribute must be accepted.',
+    'active_url' => 'The :attribute is not a valid URL.',
+    'uuid'       => 'The :attribute must be a valid UUID.',
+    'custom'     => [
+        'name' => [
+            'required' => 'Custom message 1',
+            'string'   => 'Custom message 2',
+        ],
+    ],
+    'attributes' => [
+        'name' => 'Foo',
+        'bar'  => 'Bar',
+        'baz'  => 'Baz',
+    ],
+];
+```
+
+Ова опција доступна је у датотеци `config/localization.php`.
+
+```php
+return [
+    'align' => (bool) env('LOCALIZATION_ALIGN', env('LANG_PUBLISHER_ALIGN', true)),
+];
+```
+
+## Псеудоними {/* #aliases */}
+
+Ако желите другачије називе кодова, на пример `de-DE` уместо `de` или `de-CH` уместо `de_CH`, дефинишите `aliases` у [датотеци подешавања](<./configuration.mdx#aliases>).
+
+После тога све радње додавања, ажурирања и брисања аутоматски користе псеудониме из датотеке `config/localization.php`.
+
+```php
+declare(strict_types=1);
+
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'aliases' => [
+        Locale::German->value            => 'de-DE',
+        Locale::GermanAustria->value     => 'de-AT',
+        Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+];
+```
+
+Ако `config/localization.php` већ постоји, можете у њу додати кључ `aliases` и навести жељене псеудониме у низу података.
+
+Затим можете, на пример, додати нове локале навођењем и главног кода и његовог псеудонима.
+
+```bash
+php artisan lang:add de de_CH
+```
+
+Инсталирани локали користиће наведене псеудониме као називе директоријума за PHP преводе и називе датотека за JSON преводе.
+
+```text
+lang
+de-CH
+de-DE
+```
+
+Ова опција доступна је у датотеци `config/localization.php`.
+
+```php
+return [
+    'aliases' => [
+        // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
+        // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+];
+```
+
+## Паметна интерпункција {/* #smart_punctuation */}
+
+При ажурирању кључева превода можете укључити и паметно претварање ASCII наводника, црта и тротачки у одговарајуће Unicode знакове.
+
+Погледајте пример.
+
+```json
+{
+    "Some": "\"It's super-configurable... you can even use additional extensions to expand its capabilities -- just like this one!\""
+}
+```
+
+Добићете следеће датотеке.
+
+```json
+{
+    "Some": "“It’s super-configurable… you can even use additional extensions to expand its capabilities – just like this one!”"
+}
+```
+
+Ова опција доступна је у датотеци `config/localization.php`.
+
+<details>
+<summary>Прикажи подешавања</summary>
+
+```php
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'smart_punctuation' => [
+        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+
+        'common' => [
+            'double_quote_opener' => '“',
+            'double_quote_closer' => '”',
+            'single_quote_opener' => '‘',
+            'single_quote_closer' => '’',
+        ],
+
+        'locales' => [
+            Locale::French->value => [
+                'double_quote_opener' => '«&nbsp;',
+                'double_quote_closer' => '&nbsp;»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Russian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Ukrainian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Belarusian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+        ],
+    ],
+];
+```
+
+</details>
+
+Можете да подесите и различита правила за сваки локал.
+
+Претварање је подразумевано искључено.
+
+## Руте {/* #routes */}
+
+Када користите пакет за рад са [рутирањем](<./packages-routes.mdx> "Лак и брз начин локализације рута"), можете да замените подразумеване називе кључева.
+
+Ова опција укључује се у датотеци `config/localization.php`.
+
+```php
+use LaravelLang\Config\Constants\RouteName;
+
+return [
+    'routes' => [
+        'names' => [
+            'parameter' => RouteName::Parameter,
+            'header'    => RouteName::Header,
+            'cookie'    => RouteName::Cookie,
+            'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
+        ],
+
+        'name_prefix' => env('LOCALIZATION_NAME_PREFIX', 'localized.'),
+        'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
+        'hide_default' => (bool) env('LOCALIZATION_HIDE_DEFAULT', false),
+
+        'group' => [
+            'middlewares' => [
+                'default' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+                'prefix' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+            ],
+        ],
+    ],
+];
+```
+
+## Модели {/* #models */}
+
+Када користите пакет [Models](<./packages-models.mdx> "Лак и брз начин локализације модела"), можете дефинисати подразумеване вредности параметара.
+
+Ово подешавање доступно је у датотеци `config/localization.php`.
+
+```php
+return [
+    'models' => [
+        'suffix' => 'Translation',
+        'filter' => [
+            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+        ],
+        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
+    ],
+];
+```
+
+Параметар `suffix` одређује суфикс модела којима припада складиште превода.
+
+Погледајте пример.
+
+```text
+App\Models\Post::class
+App\Models\PostTranslation::class
+```
+
+## Преводилац {/* #translator */}
+
+Овде можете активирати подразумеване преводиоце и направити сопствене. Више о томе можете прочитати на страници пакета [Translator](<./packages-translator.mdx> "Превођење текста помоћу више API-ја за превођење").
+
+Ово подешавање доступно је у датотеци `config/localization.php`.
+
+```php
+return [
+    'translators' => [
+        'channels' => [
+            'google' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Google',
+
+                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
+            ],
+
+            'deepl' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+
+                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
+
+                'credentials' => [
+                    'key' => (string) env('TRANSLATION_DEEPL_KEY'),
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
+
+                'credentials' => [
+                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
+                ],
+            ],
+        ],
+
+        'options' => [
+            'preserve_parameters' => true,
+        ],
+    ],
+];
+```

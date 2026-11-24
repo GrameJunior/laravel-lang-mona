@@ -1,0 +1,693 @@
+---
+title: "Configuration"
+slug: /configuration.html
+description: "Paramètres détaillés des paquets."
+---
+
+## Publier la configuration {/* #publish */}
+
+Si vous le souhaitez, vous pouvez publier le fichier de configuration avec la commande suivante.
+
+```bash
+php artisan vendor:publish --tag="localization"
+```
+
+Voici le contenu du fichier `config/localization.php` publié.
+
+<details>
+<summary>Afficher la configuration</summary>
+
+```php
+return [
+    /*
+     * Détermine le type de fichiers à utiliser lors de la mise à jour des fichiers de langue.
+     *
+     * @see https://laravel-lang.com/configuration.html#inline
+     *
+     * Par défaut, `false`.
+     */
+
+    'inline' => (bool) env('LOCALIZATION_INLINE', env('LANG_PUBLISHER_INLINE')),
+
+    /*
+     * Aligner les tableaux sur leurs clés avant leur traitement ?
+     *
+     * @see https://laravel-lang.com/configuration.html#alignment
+     *
+     * Par défaut, true.
+     */
+
+    'align' => (bool) env('LOCALIZATION_ALIGN', env('LANG_PUBLISHER_ALIGN', true)),
+
+    /*
+     * Les codes de langue utilisés pour les fichiers de ce dépôt peuvent différer
+     * des codes que vous souhaitez utiliser dans votre projet.
+     *
+     * Indiquez ici les correspondances avec les codes de votre projet.
+     *
+     * @see https://laravel-lang.com/configuration.html#aliases
+     */
+
+    'aliases' => [
+        // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
+        // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+
+    /*
+     * Cette option détermine la façon de convertir
+     * les clés de traduction en leur version typographique.
+     *
+     * @see https://laravel-lang.com/configuration.html#smart_punctuation
+     *
+     * Par défaut, false.
+     */
+
+    'smart_punctuation' => [
+        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+
+        'common' => [
+            'double_quote_opener' => '“',
+            'double_quote_closer' => '”',
+            'single_quote_opener' => '‘',
+            'single_quote_closer' => '’',
+        ],
+
+        'locales' => [
+            Locale::French->value => [
+                'double_quote_opener' => '«&nbsp;',
+                'double_quote_closer' => '&nbsp;»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Russian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Ukrainian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Belarusian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+        ],
+    ],
+
+    /*
+     * Cette option définit les paramètres des routes de l’application.
+     *
+     * @see https://laravel-lang.com/configuration.html#routes
+     */
+
+    'routes' => [
+        /*
+         * Cette option définit les noms des clés utilisés par le routage de l’application.
+         *
+         * Valeurs par défaut :
+         *
+         *   parameter - locale
+         *   header    - Accept-Language
+         *   cookie    - Accept-Language
+         *   session   - Accept-Language
+         *   column    - column
+         */
+
+        'names' => [
+            'parameter' => RouteName::Parameter,
+            'header'    => RouteName::Header,
+            'cookie'    => RouteName::Cookie,
+            'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
+        ],
+
+        /*
+         * Cette option définit le préfixe des noms des groupes de routes.
+         *
+         * Par défaut, `localized.`.
+         */
+
+        'name_prefix' => env('LOCALIZATION_NAME_PREFIX', 'localized.'),
+
+        /*
+         * Cette option définit la redirection des requêtes pour la langue par défaut.
+         *
+         * S’applique à la façade `LaravelLang\\Routes\\Facades\\LocalizationRoute`.
+         */
+
+        'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
+
+        /*
+         * Cette option définit la langue par défaut, dont le paramètre sera retiré de l’URL.
+         *
+         * S’applique à la fonction `localizedRoute`.
+         */
+
+        'hide_default' => (bool) env('LOCALIZATION_HIDE_DEFAULT', false),
+
+        // Cette option contient les paramètres des routes.
+
+        'group' => [
+            'middlewares' => [
+                // Paramètres des routes sans préfixe de langue.
+
+                'default' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+
+                // Paramètres des routes avec préfixe de langue.
+
+                'prefix' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+            ],
+        ],
+    ],
+
+    /*
+     * Cette option définit les paramètres de traduction des modèles.
+     *
+     * @see https://laravel-lang.com/configuration.html#models
+     */
+
+    'models' => [
+        /*
+         * Cette option définit le suffixe des modèles de traduction.
+         *
+         * Par exemple :
+         *   le modèle principal est `App\Models\Page`
+         *   le modèle de traduction est `App\Models\PageTranslation`
+         *
+         * Par défaut, `Translation`.
+         */
+
+        'suffix' => 'Translation',
+
+        /*
+         * Cette option détermine s’il faut filtrer les langues récupérées
+         * dans la relation lors du chargement anticipé.
+         *
+         * Par défaut, true.
+         */
+
+        'filter' => [
+            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+        ],
+
+        /*
+         * Cette option désigne le dossier des fichiers d’aide pour l’IDE.
+         *
+         * Par défaut, `vendor/_laravel_lang`.
+         */
+
+        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
+    ],
+
+    /*
+     * Cette option contient la liste des traducteurs pris en charge par le projet Laravel Lang Translator.
+     *
+     * Google Translate est activé par défaut.
+     *
+     * @see https://laravel-lang.com/configuration.html#translators
+     */
+
+    'translators' => [
+        /*
+         * Liste des canaux utilisés pour les traductions.
+         *
+         * Par défaut :
+         *
+         *     Google est activé
+         *     DeepL est désactivé
+         *     Yandex est désactivé
+         */
+
+        'channels' => [
+            'google' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Google',
+
+                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
+            ],
+
+            'deepl' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+
+                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
+
+                'credentials' => [
+                    'key' => (string) env('TRANSLATION_DEEPL_KEY'),
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
+
+                'credentials' => [
+                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
+                ],
+            ],
+        ],
+
+        'options' => [
+            /*
+             * Définissez un motif personnalisé pour extraire les mots à remplacer dans la chaîne.
+             * Par défaut, le motif extrait les mots précédés de deux-points.
+             *
+             *  Options disponibles :
+             *
+             *     `true` utilise `/:(\w+)/`
+             *     `false` désactive le traitement par expression régulière
+             *      `/any regex/` utilise l’expression régulière que vous indiquez
+             *
+             *   Par défaut, `true`.
+             *
+             * @example (« Hello :name » extrait « name »)
+             */
+
+            'preserve_parameters' => true,
+        ],
+    ],
+];
+```
+
+</details>
+
+## Traductions en ligne {/* #inline */}
+
+L’option `inline` détermine le type de fichiers à utiliser lors de la mise à jour des fichiers de langue.
+
+- `true` utilise les fichiers de traductions en ligne.
+- `false` utilise les fichiers par défaut.
+
+L’exemple suivant montre la différence.
+
+```text
+The :attribute must be accepted. // default
+This field must be accepted. // inline
+```
+
+Cette option est disponible dans `config/localization.php`.
+
+```php
+return [
+    'inline' => (bool) env('LOCALIZATION_INLINE', env('LANG_PUBLISHER_INLINE')),
+];
+```
+
+## Alignement {/* #alignment */}
+
+L’option `align` aligne les valeurs entre elles lors du traitement des fichiers de langue.
+
+La mise à jour retire automatiquement tous les commentaires des fichiers générés. [var\_export](<https://www.php.net/manual/en/function.var-export.php>) ne sait pas conserver les commentaires.
+
+Voici un exemple de fichier.
+
+```php
+declare(strict_types=1);
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Messages d’authentification
+    |--------------------------------------------------------------------------
+    |
+    | Ces textes sont utilisés pour les messages que nous devons afficher
+    | à l’utilisateur pendant l’authentification. Vous pouvez les modifier
+    | selon les besoins de votre application.
+    |
+    */
+    'failed'   => 'These credentials do not match our records 123456.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'foo'      => 'bar',
+];
+```
+
+Voici le même fichier après la mise à jour.
+
+```php
+declare(strict_types=1);
+
+return [
+    'failed'   => 'These credentials do not match our records 123456.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'foo'      => 'bar',
+];
+```
+
+Voici un exemple de fichier `validation.php`.
+
+<details>
+<summary>Afficher le contenu</summary>
+
+```php
+declare(strict_types=1);
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Messages de validation
+    |--------------------------------------------------------------------------
+    |
+    | Ces textes contiennent les messages d’erreur par défaut du validateur.
+    | Certaines règles ont plusieurs versions, par exemple les règles de taille.
+    | Vous pouvez adapter chaque message ici.
+    |
+    */
+    'accepted'   => 'The :attribute must be accepted.',
+    'active_url' => 'The :attribute is not a valid URL.',
+
+    // nombreuses autres règles
+
+    'uuid' => 'The :attribute must be a valid UUID.',
+    /*
+    |--------------------------------------------------------------------------
+    | Messages de validation personnalisés
+    |--------------------------------------------------------------------------
+    |
+    | Vous pouvez définir des messages de validation personnalisés en nommant
+    | les entrées selon la convention « attribute.rule ». Cette convention
+    | permet de définir rapidement un message propre à une règle d’attribut.
+    |
+    */
+    'custom' => [
+        'name' => [
+            'required' => 'Custom message 1',
+            'string'   => 'Custom message 2',
+        ],
+    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Noms d’attributs de validation personnalisés
+    |--------------------------------------------------------------------------
+    |
+    | Ces textes remplacent le paramètre qui désigne un attribut par un libellé
+    | plus lisible, par exemple « E-Mail Address » à la place de « email ».
+    | Cela rend les messages plus clairs.
+    |
+    */
+    'attributes' => [
+        'name' => 'Foo',
+        'bar'  => 'Bar',
+        'baz'  => 'Baz',
+    ],
+];
+```
+
+</details>
+
+Voici son contenu après la mise à jour.
+
+```php
+declare(strict_types=1);
+
+return [
+    'accepted'   => 'The :attribute must be accepted.',
+    'active_url' => 'The :attribute is not a valid URL.',
+    'uuid'       => 'The :attribute must be a valid UUID.',
+    'custom'     => [
+        'name' => [
+            'required' => 'Custom message 1',
+            'string'   => 'Custom message 2',
+        ],
+    ],
+    'attributes' => [
+        'name' => 'Foo',
+        'bar'  => 'Bar',
+        'baz'  => 'Baz',
+    ],
+];
+```
+
+Cette option est disponible dans `config/localization.php`.
+
+```php
+return [
+    'align' => (bool) env('LOCALIZATION_ALIGN', env('LANG_PUBLISHER_ALIGN', true)),
+];
+```
+
+## Aliases {/* #aliases */}
+
+Si vous souhaitez utiliser un autre code, par exemple `de-DE` au lieu de `de` ou `de-CH` au lieu de `de_CH`, définissez `aliases` dans le [fichier de configuration](<./configuration.mdx#aliases>).
+
+Les opérations d’ajout, de mise à jour et de suppression utiliseront alors automatiquement les alias définis dans `config/localization.php`.
+
+```php
+declare(strict_types=1);
+
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'aliases' => [
+        Locale::German->value            => 'de-DE',
+        Locale::GermanAustria->value     => 'de-AT',
+        Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+];
+```
+
+Si le fichier `config/localization.php` existe déjà, ajoutez-y la clé `aliases` et renseignez les alias souhaités dans un tableau.
+
+Vous pouvez ensuite ajouter des langues en passant soit leur code principal, soit leur alias.
+
+```bash
+php artisan lang:add de de_CH
+```
+
+Les langues installées utilisent les alias comme noms de dossier pour les traductions PHP et comme noms de fichier pour les traductions JSON.
+
+```text
+lang
+de-CH
+de-DE
+```
+
+Cette option est disponible dans `config/localization.php`.
+
+```php
+return [
+    'aliases' => [
+        // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
+        // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+];
+```
+
+## Ponctuation intelligente {/* #smart_punctuation */}
+
+Lors de la mise à jour des traductions, vous pouvez activer la conversion des apostrophes et des guillemets ASCII, des tirets et des points de suspension vers leurs équivalents Unicode.
+
+Voici un exemple.
+
+```json
+{
+    "Some": "\"It's super-configurable... you can even use additional extensions to expand its capabilities -- just like this one!\""
+}
+```
+
+Vous obtiendrez les fichiers suivants.
+
+```json
+{
+    "Some": "“It’s super-configurable… you can even use additional extensions to expand its capabilities – just like this one!”"
+}
+```
+
+Cette option est disponible dans `config/localization.php`.
+
+<details>
+<summary>Afficher les paramètres</summary>
+
+```php
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'smart_punctuation' => [
+        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+
+        'common' => [
+            'double_quote_opener' => '“',
+            'double_quote_closer' => '”',
+            'single_quote_opener' => '‘',
+            'single_quote_closer' => '’',
+        ],
+
+        'locales' => [
+            Locale::French->value => [
+                'double_quote_opener' => '«&nbsp;',
+                'double_quote_closer' => '&nbsp;»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Russian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Ukrainian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Belarusian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+        ],
+    ],
+];
+```
+
+</details>
+
+Vous pouvez aussi définir des règles distinctes pour chaque langue.
+
+La conversion est désactivée par défaut.
+
+## Routes {/* #routes */}
+
+Lorsque vous utilisez le paquet de [routage](<./packages-routes.mdx> "Localiser les routes simplement et rapidement"), vous pouvez redéfinir les noms de clés par défaut.
+
+Cette option est disponible dans `config/localization.php`.
+
+```php
+use LaravelLang\Config\Constants\RouteName;
+
+return [
+    'routes' => [
+        'names' => [
+            'parameter' => RouteName::Parameter,
+            'header'    => RouteName::Header,
+            'cookie'    => RouteName::Cookie,
+            'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
+        ],
+
+        'name_prefix' => env('LOCALIZATION_NAME_PREFIX', 'localized.'),
+        'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
+        'hide_default' => (bool) env('LOCALIZATION_HIDE_DEFAULT', false),
+
+        'group' => [
+            'middlewares' => [
+                'default' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+                'prefix' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+            ],
+        ],
+    ],
+];
+```
+
+## Modèles {/* #models */}
+
+Vous pouvez définir des paramètres par défaut lorsque vous utilisez le paquet [Models](<./packages-models.mdx> "Localiser les modèles simplement et rapidement").
+
+Ce paramètre est disponible dans `config/localization.php`.
+
+```php
+return [
+    'models' => [
+        'suffix' => 'Translation',
+        'filter' => [
+            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+        ],
+        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
+    ],
+];
+```
+
+Le paramètre `suffix` définit le suffixe des modèles associés au dépôt de traductions.
+
+Voici un exemple.
+
+```text
+App\Models\Post::class
+App\Models\PostTranslation::class
+```
+
+## Translator {/* #translator */}
+
+Vous pouvez activer les traducteurs fournis par défaut et créer les vôtres. Pour en savoir plus, consultez la page du paquet [Translator](<./packages-translator.mdx> "Traduire du texte avec plusieurs API de traduction").
+
+Ce paramètre est disponible dans `config/localization.php`.
+
+```php
+return [
+    'translators' => [
+        'channels' => [
+            'google' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Google',
+
+                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
+            ],
+
+            'deepl' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+
+                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
+
+                'credentials' => [
+                    'key' => (string) env('TRANSLATION_DEEPL_KEY'),
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
+
+                'credentials' => [
+                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
+                ],
+            ],
+        ],
+
+        'options' => [
+            'preserve_parameters' => true,
+        ],
+    ],
+];
+```

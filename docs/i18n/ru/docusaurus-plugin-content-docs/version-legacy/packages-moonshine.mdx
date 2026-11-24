@@ -1,0 +1,64 @@
+---
+title: "MoonShine"
+slug: /packages-moonshine.html
+description: "Переводы панели администрирования MoonShine"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Выпущена стабильная версия проекта"}>Стабильный</span> <span className="badge badge--secondary" title={"Последняя версия неизвестна"}>неизвестно</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Открыть на GitHub](<https://github.com/laravel-lang/moonshine>)
+
+:::tip
+
+Пакет содержит переводы интерфейса [<strong>панели администрирования MoonShine</strong>](<https://getmoonshine.app>).
+
+Это позволяет легко локализовать эти строки.
+
+:::
+
+## Установка {/* #installation */}
+
+:::note
+
+См. [таблицу совместимости](<#compatibility> "Таблица совместимости пакета MoonShine").
+
+:::
+
+Для установки выполните команду:
+
+```bash
+composer require --dev laravel-lang/moonshine:^1.9.2
+```
+
+## Использование {/* #usage */}
+
+Теперь можно [обновить](<./usage-update-locales.mdx> "Обновление локалей в приложении Laravel") существующие локали командой `lang:update`:
+
+```bash
+php artisan lang:update
+```
+
+Добавьте вызов в раздел `post-update-cmd` в блоке `scripts` файла `composer.json`:
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+Так файлы локализаций будут обновляться автоматически после обновления зависимостей, и запускать `php artisan lang:update` вручную не придётся.
+
+## Совместимость {/* #compatibility */}
+
+| Laravel | PHP | Publisher | Пакет | MoonShine | Поддержка |
+| --- | --- | --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.2, 8.3, 8.4, 8.5 | 15, 16 | `^1.5` | `^3.0, ^4.0` | <span className="compatibility-status compatibility-status--supported">поддерживается</span> |
+| 10, 11, 12 | 8.2, 8.3, 8.4 | 15, 16 | `^1.0` | `^3.0` | <span className="compatibility-status compatibility-status--not-supported">не поддерживается</span> |

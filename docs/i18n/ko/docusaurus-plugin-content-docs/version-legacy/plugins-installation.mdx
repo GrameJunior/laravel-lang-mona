@@ -1,0 +1,50 @@
+---
+title: "플러그인 설치"
+slug: /plugins-installation.html
+description: "Publisher로 현지화 플러그인을 설치하는 방법입니다."
+---
+
+:::note
+
+사용할 수 있는 [공식](<./plugins-official.mdx>) 및 [커뮤니티](<./plugins-community.mdx>) 플러그인 목록도 확인할 수 있습니다.
+
+:::
+
+플러그인 관리자를 사용하려면 다음 두 단계를 따르세요.
+
+1. 애플리케이션에 패키지를 설치하세요. 예를 들어 `composer require --dev laravel-lang/lang:^15.39.1`을 실행하거나 다른 패키지를 설치할 수 있습니다.
+1. 이 단계로 설치가 끝납니다. 😊
+
+이제 `php artisan lang:update` 명령을 실행하면 관리자가 지정한 패키지를 확인하고 애플리케이션의 파일을 자동으로 갱신합니다.
+
+서로 다른 패키지에 `custom.php`처럼 이름이 같은 파일이 있으면 처리할 때 모든 파일의 키를 합칩니다.
+
+:::tip
+
+쉽게 개발하려면 준비된 [번역 템플릿](<https://github.com/Laravel-Lang/translations-template>)을 사용하세요.
+
+:::
+
+즐겁게 사용하세요! 😊
+
+## 플러그인 {/* #plugins */}
+
+<div className="legacy-card-grid">
+
+<div className="card legacy-card">
+
+[공식 플러그인](<./plugins-official.mdx>)
+
+Laravel-Lang 팀이 개발하고 유지보수하는 플러그인 목록입니다.
+
+</div>
+
+<div className="card legacy-card">
+
+[커뮤니티 플러그인](<./plugins-community.mdx>)
+
+커뮤니티가 개발하고 유지보수하는 플러그인 목록입니다.
+
+</div>
+
+</div>

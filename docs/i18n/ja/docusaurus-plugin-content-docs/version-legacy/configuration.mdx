@@ -1,0 +1,693 @@
+---
+title: "設定"
+slug: /configuration.html
+description: "パッケージの設定方法を説明します。"
+---
+
+## 設定を公開する {/* #publish */}
+
+必要に応じて、次のコマンドで設定ファイルを公開できます。
+
+```bash
+php artisan vendor:publish --tag="localization"
+```
+
+公開される `config/localization.php` ファイルの内容は以下のとおりです。
+
+<details>
+<summary>設定を表示する</summary>
+
+```php
+return [
+    /*
+     * 言語ファイルの更新時に使用するファイルの種類を決めます。
+     *
+     * @see https://laravel-lang.com/configuration.html#inline
+     *
+     * 既定値は `false` です。
+     */
+
+    'inline' => (bool) env('LOCALIZATION_INLINE', env('LANG_PUBLISHER_INLINE')),
+
+    /*
+     * 配列を処理する前に、キーを基準に値の位置を揃えるかどうかを指定します。
+     *
+     * @see https://laravel-lang.com/configuration.html#alignment
+     *
+     * 既定値は true です。
+     */
+
+    'align' => (bool) env('LOCALIZATION_ALIGN', env('LANG_PUBLISHER_ALIGN', true)),
+
+    /*
+     * このリポジトリのファイルに使われている言語コードが、
+     * プロジェクトで使用するコードと異なる場合があります。
+     *
+     * ここでプロジェクトのロケールコードとの対応を指定します。
+     *
+     * @see https://laravel-lang.com/configuration.html#aliases
+     */
+
+    'aliases' => [
+        // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
+        // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+
+    /*
+     * このオプションは、翻訳文で組版用の文字を
+     * 使用するための変換規則を設定します。
+     *
+     * @see https://laravel-lang.com/configuration.html#smart_punctuation
+     *
+     * 既定値は false です。
+     */
+
+    'smart_punctuation' => [
+        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+
+        'common' => [
+            'double_quote_opener' => '“',
+            'double_quote_closer' => '”',
+            'single_quote_opener' => '‘',
+            'single_quote_closer' => '’',
+        ],
+
+        'locales' => [
+            Locale::French->value => [
+                'double_quote_opener' => '«&nbsp;',
+                'double_quote_closer' => '&nbsp;»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Russian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Ukrainian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Belarusian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+        ],
+    ],
+
+    /*
+     * アプリケーションのルート設定を定義します。
+     *
+     * @see https://laravel-lang.com/configuration.html#routes
+     */
+
+    'routes' => [
+        /*
+         * ルーティングで使うキーの名前を設定します。
+         *
+         * 既定値は以下のとおりです。
+         *
+         *   parameter - locale
+         *   header    - Accept-Language
+         *   cookie    - Accept-Language
+         *   session   - Accept-Language
+         *   column    - column
+         */
+
+        'names' => [
+            'parameter' => RouteName::Parameter,
+            'header'    => RouteName::Header,
+            'cookie'    => RouteName::Cookie,
+            'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
+        ],
+
+        /*
+         * ルートグループの名前に付けるプレフィックスを指定します。
+         *
+         * 既定値は `localized.` です。
+         */
+
+        'name_prefix' => env('LOCALIZATION_NAME_PREFIX', 'localized.'),
+
+        /*
+         * 既定のロケールを開こうとしたときにリダイレクトするかどうかを指定します。
+         *
+         * `LaravelLang\Routes\Facades\LocalizationRoute` ファサードを使用するときに適用されます。
+         */
+
+        'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
+
+        /*
+         * 既定のロケールを使う場合に URL からロケールパラメーターを除くかどうかを指定します。
+         *
+         * `localizedRoute` ヘルパーを使用するときに適用されます。
+         */
+
+        'hide_default' => (bool) env('LOCALIZATION_HIDE_DEFAULT', false),
+
+        // ルートの設定です。
+
+        'group' => [
+            'middlewares' => [
+                // ロケールコードのプレフィックスがないルートの設定です。
+
+                'default' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+
+                // ロケールコードのプレフィックス付きルートの設定です。
+
+                'prefix' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+            ],
+        ],
+    ],
+
+    /*
+     * モデルの翻訳に関する設定を定義します。
+     *
+     * @see https://laravel-lang.com/configuration.html#models
+     */
+
+    'models' => [
+        /*
+         * 翻訳を保持するモデルの接尾辞を指定します。
+         *
+         * 以下はモデル名の例です。
+         *   メインモデルは `App\Models\Page`
+         *   翻訳モデルは `App\Models\PageTranslation`
+         *
+         * 既定値は `Translation` です。
+         */
+
+        'suffix' => 'Translation',
+
+        /*
+         * 事前ロードで読み込むロケールを
+         * リレーション内で絞り込むかどうかを指定します。
+         *
+         * 既定値は true です。
+         */
+
+        'filter' => [
+            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+        ],
+
+        /*
+         * IDE ヘルパーファイルの保存先を指定します。
+         *
+         * 既定値は `vendor/_laravel_lang` です。
+         */
+
+        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
+    ],
+
+    /*
+     * Laravel Lang Translator で使用する翻訳サービスを指定します。
+     *
+     * Google Translate は既定で有効です。
+     *
+     * @see https://laravel-lang.com/configuration.html#translators
+     */
+
+    'translators' => [
+        /*
+         * 翻訳で使用するチャンネルの一覧です。
+         *
+         * 既定の設定は以下のとおりです。
+         *
+         *     Google は有効
+         *     DeepL は無効
+         *     Yandex は無効
+         */
+
+        'channels' => [
+            'google' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Google',
+
+                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
+            ],
+
+            'deepl' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+
+                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
+
+                'credentials' => [
+                    'key' => (string) env('TRANSLATION_DEEPL_KEY'),
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
+
+                'credentials' => [
+                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
+                ],
+            ],
+        ],
+
+        'options' => [
+            /*
+             * 文字列から置換対象のキーワードを取り出すパターンを指定します。
+             * 既定ではコロンで始まる単語を取り出します。
+             *
+             *  指定できる値は以下のとおりです。
+             *
+             *     `true` では `/:(\w+)/` を使用
+             *     `false` は正規表現による処理を無効化
+             *      `/any regex/` は任意の正規表現を指定
+             *
+             *   既定値は `true` です。
+             *
+             * @example（"Hello :name" からは "name" を取り出します）
+             */
+
+            'preserve_parameters' => true,
+        ],
+    ],
+];
+```
+
+</details>
+
+## インライン翻訳 {/* #inline */}
+
+`inline` オプションは、言語ファイルの更新時に使用するファイルの種類を決めます。
+
+- `true` の場合はインラインファイルを使用します。
+- `false` の場合は既定のファイルを使用します。
+
+インラインと既定の違いを次の例に示します。
+
+```text
+The :attribute must be accepted. // default
+This field must be accepted. // inline
+```
+
+このオプションは `config/localization.php` ファイルにあります。
+
+```php
+return [
+    'inline' => (bool) env('LOCALIZATION_INLINE', env('LANG_PUBLISHER_INLINE')),
+];
+```
+
+## 値の位置揃え {/* #alignment */}
+
+`align` オプションは、ローカライズファイルを処理するときに、値の位置を揃える方法を定義します。
+
+ファイルを更新すると、出力先のすべてのコメントが自動で削除されます。[var\_export](<https://www.php.net/manual/en/function.var-export.php>) はコメントを扱えません。
+
+更新前のファイルの例を示します。
+
+```php
+declare(strict_types=1);
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | 認証のメッセージ
+    |--------------------------------------------------------------------------
+    |
+    | 以下の文言は、認証の各段階でユーザーに表示する
+    | メッセージに使われます。アプリケーションの要件に合わせて、
+    | 自由に変更できます。
+    |
+    */
+    'failed'   => 'These credentials do not match our records 123456.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'foo'      => 'bar',
+];
+```
+
+更新すると次のようになります。
+
+```php
+declare(strict_types=1);
+
+return [
+    'failed'   => 'These credentials do not match our records 123456.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'foo'      => 'bar',
+];
+```
+
+次は `validation.php` ファイルの例です。
+
+<details>
+<summary>内容を表示する</summary>
+
+```php
+declare(strict_types=1);
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | バリデーションのメッセージ
+    |--------------------------------------------------------------------------
+    |
+    | 以下の文言は、バリデータークラスが使う既定のエラーメッセージです。
+    | サイズのルールなど、複数の種類があるルールもあります。
+    | それぞれのメッセージは、ここで必要に応じて変更できます。
+    |
+    */
+    'accepted'   => 'The :attribute must be accepted.',
+    'active_url' => 'The :attribute is not a valid URL.',
+
+    // このほかにも多くのルールがあります
+
+    'uuid' => 'The :attribute must be a valid UUID.',
+    /*
+    |--------------------------------------------------------------------------
+    | カスタムバリデーションメッセージ
+    |--------------------------------------------------------------------------
+    |
+    | 属性に固有のバリデーションメッセージを設定するには、
+    | キーを "attribute.rule" の形式で指定します。これにより、
+    | 特定の属性とルールの組み合わせに合わせたメッセージを設定できます。
+    |
+    */
+    'custom' => [
+        'name' => [
+            'required' => 'Custom message 1',
+            'string'   => 'Custom message 2',
+        ],
+    ],
+    /*
+    |--------------------------------------------------------------------------
+    | カスタムバリデーション属性
+    |--------------------------------------------------------------------------
+    |
+    | 以下の文言を使うと、属性のプレースホルダーを読みやすい表記にできます。
+    | たとえば "email" を "E-Mail Address" に
+    | 置き換えると、メッセージの意味が伝わりやすくなります。
+    |
+    */
+    'attributes' => [
+        'name' => 'Foo',
+        'bar'  => 'Bar',
+        'baz'  => 'Baz',
+    ],
+];
+```
+
+</details>
+
+更新後の例を示します。
+
+```php
+declare(strict_types=1);
+
+return [
+    'accepted'   => 'The :attribute must be accepted.',
+    'active_url' => 'The :attribute is not a valid URL.',
+    'uuid'       => 'The :attribute must be a valid UUID.',
+    'custom'     => [
+        'name' => [
+            'required' => 'Custom message 1',
+            'string'   => 'Custom message 2',
+        ],
+    ],
+    'attributes' => [
+        'name' => 'Foo',
+        'bar'  => 'Bar',
+        'baz'  => 'Baz',
+    ],
+];
+```
+
+このオプションは `config/localization.php` ファイルにあります。
+
+```php
+return [
+    'align' => (bool) env('LOCALIZATION_ALIGN', env('LANG_PUBLISHER_ALIGN', true)),
+];
+```
+
+## エイリアス {/* #aliases */}
+
+コードを `de` ではなく `de-DE`、`de_CH` ではなく `de-CH` のように呼びたい場合は、[設定ファイル](<./configuration.mdx#aliases>)の `aliases` を定義します。
+
+設定すると、追加、更新、削除の操作では `config/localization.php` のエイリアスが自動的に使用されます。
+
+```php
+declare(strict_types=1);
+
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'aliases' => [
+        Locale::German->value            => 'de-DE',
+        Locale::GermanAustria->value     => 'de-AT',
+        Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+];
+```
+
+`config/localization.php` ファイルがすでに存在する場合は、そこに `aliases` キーを追加し、配列でエイリアスの対応を指定できます。
+
+設定後は、正規コードとエイリアスの両方をロケールの追加時に使用できます。
+
+```bash
+php artisan lang:add de de_CH
+```
+
+インストール済みのロケールでは、指定したエイリアスが PHP 翻訳のフォルダー名と JSON 翻訳のファイル名に使われます。
+
+```text
+lang
+de-CH
+de-DE
+```
+
+このオプションは `config/localization.php` ファイルにあります。
+
+```php
+return [
+    'aliases' => [
+        // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
+        // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
+    ],
+];
+```
+
+## スマート句読法 {/* #smart_punctuation */}
+
+翻訳キーの更新時に、ASCII の引用符、ダッシュ、省略記号を対応する Unicode 文字へ自動変換できます。
+
+以下は例です。
+
+```json
+{
+    "Some": "\"It's super-configurable... you can even use additional extensions to expand its capabilities -- just like this one!\""
+}
+```
+
+変換後は次のようなファイルになります。
+
+```json
+{
+    "Some": "“It’s super-configurable… you can even use additional extensions to expand its capabilities – just like this one!”"
+}
+```
+
+このオプションは `config/localization.php` ファイルにあります。
+
+<details>
+<summary>設定を表示する</summary>
+
+```php
+use LaravelLang\LocaleList\Locale;
+
+return [
+    'smart_punctuation' => [
+        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+
+        'common' => [
+            'double_quote_opener' => '“',
+            'double_quote_closer' => '”',
+            'single_quote_opener' => '‘',
+            'single_quote_closer' => '’',
+        ],
+
+        'locales' => [
+            Locale::French->value => [
+                'double_quote_opener' => '«&nbsp;',
+                'double_quote_closer' => '&nbsp;»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Russian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Ukrainian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+
+            Locale::Belarusian->value => [
+                'double_quote_opener' => '«',
+                'double_quote_closer' => '»',
+                'single_quote_opener' => '‘',
+                'single_quote_closer' => '’',
+            ],
+        ],
+    ],
+];
+```
+
+</details>
+
+ロケールごとに異なる規則を設定することもできます。
+
+既定では変換は無効です。
+
+## ルート {/* #routes */}
+
+[ルーティング用パッケージ](<./packages-routes.mdx> "ルートを簡単にすばやくローカライズする")を使用する場合は、キー名の既定値を上書きできます。
+
+このオプションは `config/localization.php` ファイルで有効化します。
+
+```php
+use LaravelLang\Config\Constants\RouteName;
+
+return [
+    'routes' => [
+        'names' => [
+            'parameter' => RouteName::Parameter,
+            'header'    => RouteName::Header,
+            'cookie'    => RouteName::Cookie,
+            'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
+        ],
+
+        'name_prefix' => env('LOCALIZATION_NAME_PREFIX', 'localized.'),
+        'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
+        'hide_default' => (bool) env('LOCALIZATION_HIDE_DEFAULT', false),
+
+        'group' => [
+            'middlewares' => [
+                'default' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+                'prefix' => [
+                    LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
+                    LaravelLang\Routes\Middlewares\LocalizationBySession::class,
+                    LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+                ],
+            ],
+        ],
+    ],
+];
+```
+
+## モデル {/* #models */}
+
+[Models](<./packages-models.mdx> "モデルを簡単にすばやくローカライズする") パッケージを使用する場合は、パラメーターの既定値を定義できます。
+
+この設定は `config/localization.php` ファイルにあります。
+
+```php
+return [
+    'models' => [
+        'suffix' => 'Translation',
+        'filter' => [
+            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+        ],
+        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
+    ],
+];
+```
+
+`suffix` パラメーターは、翻訳リポジトリに対応するモデルの接尾辞を指定するために使用します。
+
+以下は例です。
+
+```text
+App\Models\Post::class
+App\Models\PostTranslation::class
+```
+
+## Translator の設定 {/* #translator */}
+
+既定の翻訳サービスを有効にしたり、独自の翻訳サービスを作成したりできます。詳細は [Translator](<./packages-translator.mdx> "複数の翻訳 API を使ってテキストを翻訳する") のパッケージ情報を参照してください。
+
+この設定は `config/localization.php` ファイルにあります。
+
+```php
+return [
+    'translators' => [
+        'channels' => [
+            'google' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Google',
+
+                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
+            ],
+
+            'deepl' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+
+                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
+
+                'credentials' => [
+                    'key' => (string) env('TRANSLATION_DEEPL_KEY'),
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
+
+                'credentials' => [
+                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
+                ],
+            ],
+        ],
+
+        'options' => [
+            'preserve_parameters' => true,
+        ],
+    ],
+];
+```

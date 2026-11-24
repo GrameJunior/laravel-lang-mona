@@ -1,0 +1,59 @@
+---
+title: "Publisher"
+slug: /packages-publisher.html
+description: "Publisher обезбеђује могућности за рад са локализацијом апликације"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Објављена је стабилна верзија пројекта"}>Стабилна</span> <span className="badge badge--secondary" title={"Најновија верзија није позната"}>непозната</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Погледајте на GitHub-у](<https://github.com/laravel-lang/publisher>)
+
+## Инсталација {/* #installation */}
+
+:::note
+
+Погледајте [табелу компатибилности](<#compatibility> "Табела компатибилности за пакет Publisher").
+
+:::
+
+За инсталацију покрените следећу команду.
+
+```bash
+composer require --dev laravel-lang/publisher:^16.9.0
+```
+
+## Употреба {/* #usage */}
+
+Сада можете [ажурирати](<./usage-update-locales.mdx> "Ажурирање локала Laravel апликације") постојеће локале командом `lang:update`.
+
+```bash
+php artisan lang:update
+```
+
+Препоручујемо и да позив додате у одељак `post-update-cmd` блока `scripts` у датотеци `composer.json`.
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+Тако се датотеке локализације аутоматски ажурирају после ажурирања зависности, без ручног покретања команде `php artisan lang:update`.
+
+## Компатибилност {/* #compatibility */}
+
+| Laravel | PHP | Пакет | Статус |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^16.0` | <span className="compatibility-status compatibility-status--supported">подржано</span> |
+| 10 | 8.1, 8.2, 8.3 | `^15.0` | <span className="compatibility-status compatibility-status--not-supported">није подржано</span> |
+| 8, 9, 10 | 8.1, 8.2 | `^14.0` | <span className="compatibility-status compatibility-status--not-supported">није подржано</span> |
+| 7, 8, 9 | 8.0, 8.1 | `^13.0` | <span className="compatibility-status compatibility-status--not-supported">није подржано</span> |
+| 7, 8, 9 | 7.3, 7.4, 8.0, 8.1 | `^12.0` | <span className="compatibility-status compatibility-status--not-supported">није подржано</span> |

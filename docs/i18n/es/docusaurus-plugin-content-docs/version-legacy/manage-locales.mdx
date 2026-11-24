@@ -1,0 +1,35 @@
+---
+title: "Gestionar configuraciones regionales"
+slug: /manage-locales.html
+description: "Información general sobre la gestión de configuraciones regionales"
+---
+
+:::warning
+
+De forma predeterminada, Laravel <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">no permite</a> traducciones de reserva para claves JSON. Por ejemplo, si llamas a `__('Remember Me')`, obtienes `Remember Me` en lugar de `Se souvenir de moi` cuando el idioma de reserva es el francés.
+
+:::
+
+Casi todos los comandos de consola aceptan un arreglo de configuraciones regionales como parámetro.
+
+Estos son algunos ejemplos.
+
+```bash
+php artisan lang:<command> fr de de_AT de_CH vi zh_CN
+php artisan lang:<command> fr
+php artisan lang:<command>
+```
+
+Las opciones son las siguientes.
+
+- `fr de de_AT de_CH vi zh_CN` es una lista de configuraciones regionales separadas por espacios.
+- `fr` muestra que también puedes indicar una sola configuración regional.
+- Si no pasas el parámetro en la llamada, el script hace dos preguntas.
+- `Do you want to %s all localizations?`, donde `%s` es `install`, `remove` o `reset`.
+- Si respondes que no, la siguiente pregunta es `Select localizations to add (specify the necessary localizations separated by commas)`.
+
+:::note
+
+Las operaciones con archivos (`install`, `uninstall`, `reset` y `update`) incluyen automáticamente tanto los archivos PHP como los JSON. Esto abarca las traducciones de [Laravel Framework](<https://laravel.com>), [Jetstream](<https://jetstream.laravel.com/>), [Fortify](<https://github.com/laravel/fortify>), [Cashier](<https://laravel.com/docs/billing>), [Breeze](<https://github.com/laravel/breeze>), [Nova (también Dusk Suite y Log Viewer)](<https://nova.laravel.com/>), [Nova](<https://nova.laravel.com/>) (también [Dusk Suite](<https://github.com/laravel/nova-dusk-suite>) y [Log Viewer](<https://github.com/laravel/nova-log-viewer>)) y [UI](<https://github.com/laravel/ui>).
+
+:::

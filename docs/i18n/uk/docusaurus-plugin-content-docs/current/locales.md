@@ -1,0 +1,80 @@
+---
+title: Локалі й назви
+description: Знайдіть підтримувані та встановлені локалі, перетворюйте псевдоніми та отримуйте локалізовані назви.
+---
+
+Laravel-Lang використовує канонічні коди, як-от `en`, `fr` та `pt_BR`, у Laravel, назвах файлів перекладів і рядках перекладів моделей. Псевдонім локалі — це назва для використання в застосунку, наприклад `pt-br` в URL. Задайте відповідність між канонічним кодом і псевдонімом у [`localization_main.aliases`](./configure.md).
+
+## Пошук підтримуваних і встановлених локалей {#find-supported-and-installed-locales}
+
+Пакет `laravel-lang/locale-list` надає перелік зі скалярними значеннями `LaravelLang\LocaleList\Locale`. Елементи переліку відповідають [підтримуваним канонічним кодам](./available-locales.md).
+
+```php
+use LaravelLang\LocaleList\Locale;
+
+Locale::French->value;        // 'fr'
+Locale::tryFrom('pt_BR');     // Locale::PortugueseBrazil
+Locale::values();            // Масив канонічних кодів.
+Locale::collection();        // Колекція канонічних кодів.
+Locale::collection(false);   // Колекція елементів переліку.
+```
+
+Пакет `laravel-lang/locales` додає фасад `LaravelLang\Locales\Facades\Locales`, який враховує налаштування застосунку. Ці методи повертають колекції рядків. Передайте `false` як аргумент, щоб отримати канонічні коди. За замовчуванням кожен код представлено налаштованим псевдонімом, якщо він існує.
+
+| Метод | Що повертає |
+| --- | --- |
+| `Locales::available()` | Усі відомі локалі |
+| `Locales::installed()` | Локалі, розпізнані за мовними файлами застосунку, і захищені локалі |
+| `Locales::uninstalled()` | Доступні локалі, які не встановлено |
+| `Locales::protects()` | Фактичну поточну та резервну локалі без дублікатів |
+
+Пошук охоплює записи безпосередньо в `lang_path()` та файли JSON за шаблоном `vendor/*/*.json` відносно цього шляху. Назва файла або каталогу має відповідати підтримуваному коду. Каталоги в `lang/vendor/<package>/`, які містять лише переклади PHP, не підпадають під ці правила пошуку. Як опублікувати локаль, описано в розділі [Керування перекладами](./translations.md).
+
+## Отримання та встановлення локалі застосунку {#read-or-set-the-application-locale}
+
+```php
+use LaravelLang\Locales\Facades\Locales;
+
+if (Locales::isInstalled('fr')) {
+    Locales::set('fr');
+}
+
+$canonicalCode = Locales::current(false);
+$displayCode = Locales::current();
+$choices = Locales::data()->installed();
+```
+
+Метод `set()` приймає код, псевдонім, елемент переліку `Locale` або об'єкт `LocaleData`. Якщо локаль установлено, він задає її канонічний код як локаль Laravel. Використовуйте `isAvailable()` для перевірки підтримки коду, а `isInstalled()`, коли потрібна наявність файлів або захисту. Метод `isProtected()` визначає, чи є локаль поточною або резервною.
+
+Метод `current()` повертає поточну локаль Laravel, якщо її розпізнано, інакше викликає `fallback()`. Метод `fallback()` визначає налаштовану в Laravel резервну локаль і повертає `en`, якщо вона невідома. Обидва методи приймають аргумент `false` для отримання канонічних кодів.
+
+Метод `Locales::info('fr')` повертає об'єкт `LaravelLang\LocaleNames\LocaleData` з властивостями `code`, `alias`, `native` та `localized`. Мовою відображення є поточна локаль застосунку. Щоб отримати дані поточної локалі, не передавайте аргумент. Дані відомої локалі можна отримати до її встановлення. Невідомий код спричиняє виняток `LaravelLang\Exceptions\UnknownLocaleException`.
+
+Використовуйте `fromAlias()`, щоб отримати канонічний код за псевдонімом, і `toAlias()`, щоб отримати псевдонім за канонічним кодом. Ці перетворення залишають нерозпізнані непорожні рядки без змін. Для перевірки вхідних даних скористайтеся `isAvailable()`.
+
+## Пошук назв локалей, країн і валют {#look-up-locale-country-and-currency-names}
+
+Пакети `laravel-lang/locale-names`, `laravel-lang/country-names` і `laravel-lang/currency-names` надають по одному сервісу, який можна впровадити через контейнер Laravel. Усі три пакети входять до Common.
+
+```php
+use LaravelLang\CountryNames\CountryNames;
+use LaravelLang\CurrencyNames\CurrencyNames;
+use LaravelLang\LocaleNames\LocaleNames;
+
+$locale = app(LocaleNames::class)->one('de', 'fr');
+$locale->localized; // 'Französisch'
+
+$country = app(CountryNames::class)->one('de', 'fr');
+$country->code;      // 'FR'
+$country->localized; // 'Frankreich'
+
+$currency = app(CurrencyNames::class)->one('de', 'fr');
+$currency->code;    // 'EUR'
+$currency->numeric; // 978
+
+$nativeLocaleNames = app(LocaleNames::class)->all(null, \SortDirection::Ascending);
+```
+
+Перший параметр задає мову відображення. Передайте `null`, щоб отримати назви мовою відповідної локалі. Другий параметр `one()` — локаль рядка, наприклад `fr` у наведених прикладах. Під час пошуку назв країн і валют код ISO міститься в поверненому об'єкті. Обидва параметри приймають канонічні коди, налаштовані псевдоніми й елементи переліку `Locale`.
+
+Метод `all($forLocale)` повертає колекцію з канонічними кодами локалей як ключами. Передайте `SortDirection::Ascending` або `SortDirection::Descending`, щоб відсортувати за властивістю `localized`. Кожне значення — об'єкт лише для читання. Значення для країн і валют також містять `locale` відповідного рядка.

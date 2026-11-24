@@ -4,32 +4,58 @@ import {dirname, join} from "node:path";
 import type {LoadedContent} from "@docusaurus/plugin-content-docs";
 import type {LoadContext, Plugin} from "@docusaurus/types";
 
-function redirectPage(target: string): string {
+const defaultMessages = {
+    releaseLine: "The first-party packages share the same release version.",
+    documentation: "Documentation",
+    optional: "Optional",
+    legacy: "Legacy documentation",
+    legacyDescription: "Guides for pre-Mona installations.",
+    moved: "Documentation has moved",
+    redirect: "Go to the documentation",
+};
+
+type Messages = typeof defaultMessages;
+
+function escapeText(text: string): string {
+    return text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+}
+
+function redirectPage(target: string, language: string, direction: string, messages: Messages): string {
     const href = encodeURI(target);
 
     return `<!doctype html>
-<html lang="en">
+<html lang="${language}" dir="${direction}">
 <meta charset="utf-8">
-<title>Documentation has moved</title>
+<title>${escapeText(messages.moved)}</title>
 <link rel="canonical" href="${href}">
 <meta name="robots" content="noindex">
 <script>location.replace(${JSON.stringify(href)} + location.search + location.hash);</script>
-<p><a href="${href}">Go to the documentation</a></p>
+<p><a href="${href}">${escapeText(messages.redirect)}</a></p>
 </html>
 `;
 }
 
-export default function documentationArtifacts({baseUrl, siteDir, siteConfig}: LoadContext): Plugin {
+export default function documentationArtifacts({baseUrl, siteDir, siteConfig, i18n}: LoadContext): Plugin {
+    const {htmlLang, direction} = i18n.localeConfigs[i18n.currentLocale];
+
     return {
         name: "documentation-artifacts",
+        getTranslationFiles: () => [{
+            path: "messages",
+            content: Object.fromEntries(Object.entries(defaultMessages).map(([key, message]) => [key, {message}])),
+        }],
+        translateContent: ({translationFiles}) => Object.fromEntries(
+            Object.entries(translationFiles[0].content).map(([key, {message}]) => [key, message]),
+        ),
         injectHtmlTags: () => ({
             headTags: [{tagName: "link", attributes: {rel: "describedby", href: `${baseUrl}llms.txt`}}],
         }),
-        async postBuild({outDir, plugins}) {
+        async postBuild({outDir, plugins, content}) {
+            const messages = {...defaultMessages, ...(content as Partial<Messages> | undefined)};
             const docs = plugins.find(({name}) => name === "docusaurus-plugin-content-docs");
-            const content = docs?.content as LoadedContent | undefined;
-            const current = content?.loadedVersions.find(({versionName}) => versionName === "current");
-            const legacy = content?.loadedVersions.find(({versionName}) => versionName === "legacy");
+            const docsContent = docs?.content as LoadedContent | undefined;
+            const current = docsContent?.loadedVersions.find(({versionName}) => versionName === "current");
+            const legacy = docsContent?.loadedVersions.find(({versionName}) => versionName === "legacy");
             const start = current?.docs.find(({id}) => id === "start");
             assert(current && legacy && start, "Expected the current and legacy documentation and the start page.");
 
@@ -51,18 +77,18 @@ export default function documentationArtifacts({baseUrl, siteDir, siteConfig}: L
 
             await writeFile(join(outDir, "llms.txt"), [
                 "# Laravel-Lang",
-                "> The first-party packages share the same release version.",
-                "## Documentation",
+                `> ${messages.releaseLine}`,
+                `## ${messages.documentation}`,
                 links.join("\n"),
-                "## Optional",
-                `- [Legacy documentation](${new URL(legacy.path, siteConfig.url)}): Guides for pre-Mona installations.`,
+                `## ${messages.optional}`,
+                `- [${messages.legacy}](${new URL(legacy.path, siteConfig.url)}): ${messages.legacyDescription}`,
                 "",
             ].join("\n\n"));
 
             await Promise.all(legacy.docs.filter(({slug}) => slug.endsWith(".html")).map(async ({slug, permalink}) => {
                 try {
                     // A root route like /license already uses license.html in the output.
-                    await writeFile(join(outDir, slug), redirectPage(permalink), {flag: "wx"});
+                    await writeFile(join(outDir, slug), redirectPage(permalink, htmlLang, direction, messages), {flag: "wx"});
                 } catch (error) {
                     if (!(error instanceof Error && "code" in error && error.code === "EEXIST")) {
                         throw error;

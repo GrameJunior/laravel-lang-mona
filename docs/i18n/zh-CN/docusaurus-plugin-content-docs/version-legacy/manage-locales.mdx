@@ -1,0 +1,35 @@
+---
+title: "管理语言区域"
+slug: /manage-locales.html
+description: "语言区域管理概览"
+---
+
+:::warning
+
+Laravel 的默认行为<a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">不支持</a> JSON 键的回退译文。例如，回退语言为法语时，调用 `__('Remember Me')` 得到的是 `Remember Me`，而不是 `Se souvenir de moi`。
+
+:::
+
+几乎所有控制台命令都将语言区域列表作为参数。
+
+例如：
+
+```bash
+php artisan lang:<command> fr de de_AT de_CH vi zh_CN
+php artisan lang:<command> fr
+php artisan lang:<command>
+```
+
+其中：
+
+- `fr de de_AT de_CH vi zh_CN` 是以空格分隔的语言区域列表。
+- `fr` 表明也可以只指定一个语言区域。
+- 调用时如果没有传入参数，脚本会提出两个问题：
+- `Do you want to %s all localizations?`（是否要对所有语言区域执行该操作？），其中 `%s` 为 `install`、`remove` 或 `reset`。
+- 如果回答 `no`，接下来会询问 `Select localizations to add (specify the necessary localizations separated by commas)`（选择要添加的语言区域，以逗号分隔）。
+
+:::note
+
+执行文件操作（`install`、`uninstall`、`reset` 和 `update`）时，除了处理 PHP 文件，也会自动处理 JSON 文件，其中包括 [Laravel Framework](<https://laravel.com>)、[Jetstream](<https://jetstream.laravel.com/>)、[Fortify](<https://github.com/laravel/fortify>)、[Cashier](<https://laravel.com/docs/billing>)、[Breeze](<https://github.com/laravel/breeze>)、[Nova（也包含 Dusk Suite 和 Log Viewer）](<https://nova.laravel.com/>)、[Nova](<https://nova.laravel.com/>)（也包含 [Dusk Suite](<https://github.com/laravel/nova-dusk-suite>) 和 [Log Viewer](<https://github.com/laravel/nova-log-viewer>)）及 [UI](<https://github.com/laravel/ui>)的译文。
+
+:::

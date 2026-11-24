@@ -1,0 +1,34 @@
+{
+  "version.label": {
+    "message": "이전 버전",
+    "description": "The label for version legacy"
+  },
+  "sidebar.documentation.category.Prologue": {
+    "message": "소개",
+    "description": "The label for category 'Prologue' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Upgrade Guide": {
+    "message": "업그레이드 가이드",
+    "description": "The label for category 'Upgrade Guide' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Getting Started": {
+    "message": "시작하기",
+    "description": "The label for category 'Getting Started' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Managing Locales": {
+    "message": "로캘 관리",
+    "description": "The label for category 'Managing Locales' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Packages": {
+    "message": "패키지",
+    "description": "The label for category 'Packages' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Plugins": {
+    "message": "플러그인",
+    "description": "The label for category 'Plugins' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.doc.License": {
+    "message": "라이선스",
+    "description": "The label for the doc item 'License' in sidebar 'documentation', linking to the doc license"
+  }
+}

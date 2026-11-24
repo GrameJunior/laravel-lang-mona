@@ -1,52 +1,57 @@
 import Link from "@docusaurus/Link";
+import Translate, {translate} from "@docusaurus/Translate";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import CodeBlock from "@theme/CodeBlock";
 import Layout from "@theme/Layout";
 
 import styles from "./index.module.css";
 
-const description = "Install translations and localize routes and Eloquent models with Laravel-Lang.";
-
-const guides = [
-    {
-        title: "Manage locales",
-        description: "Add, update, and remove translations with Artisan.",
-        to: "/translations",
-    },
-    {
-        title: "Configure localization",
-        description: "Set up locale aliases, localized routes, and model translations.",
-        to: "/configure",
-    },
-    {
-        title: "Translation plugins",
-        description: "Install translation packs or create your own.",
-        to: "/plugins",
-    },
-    {
-        title: "Upgrade to Mona",
-        description: "Migrate your dependencies, configuration, and translations.",
-        to: "/upgrade",
-    },
-];
-
 export default function Home() {
     const llmsUrl = useBaseUrl("/llms.txt");
+    const {i18n: {localeConfigs, currentLocale}} = useDocusaurusContext();
+    const arrow = localeConfigs[currentLocale].direction === "rtl" ? "←" : "→";
+    const description = translate({
+        id: "home.description",
+        message: "Install translations and localize routes and Eloquent models with Laravel-Lang.",
+    });
+    const guides = [
+        {
+            title: translate({id: "home.guide.translations.title", message: "Manage locales"}),
+            description: translate({id: "home.guide.translations.description", message: "Add, update, and remove translations with Artisan."}),
+            to: "/translations",
+        },
+        {
+            title: translate({id: "home.guide.configure.title", message: "Configure localization"}),
+            description: translate({id: "home.guide.configure.description", message: "Set up locale aliases, localized routes, and model translations."}),
+            to: "/configure",
+        },
+        {
+            title: translate({id: "home.guide.plugins.title", message: "Translation plugins"}),
+            description: translate({id: "home.guide.plugins.description", message: "Install translation packs or create your own."}),
+            to: "/plugins",
+        },
+        {
+            title: translate({id: "home.guide.upgrade.title", message: "Upgrade to Mona"}),
+            description: translate({id: "home.guide.upgrade.description", message: "Migrate your dependencies, configuration, and translations."}),
+            to: "/upgrade",
+        },
+    ];
 
     return (
-        <Layout title="Documentation" description={description}>
+        <Layout title={translate({id: "home.title", message: "Documentation"})} description={description}>
             <main>
                 <section className={styles.hero} aria-labelledby="home-title">
                     <div className={styles.heroInner}>
                         <div className={styles.heroCopy}>
-                            <h1 id="home-title">Localize your Laravel application</h1>
+                            <h1 id="home-title"><Translate id="home.hero.title">Localize your Laravel application</Translate></h1>
                             <p className={styles.summary}>{description}</p>
                             <div className={styles.actions}>
                                 <Link className="button button--primary button--lg" to="/start">
-                                    Start in 1 minute
+                                    <Translate id="home.start">Start in 1 minute</Translate>
                                 </Link>
                                 <Link className="button button--secondary button--lg" to="/legacy">
-                                    Legacy documentation
+                                    <Translate id="home.legacy">Legacy documentation</Translate>
                                 </Link>
                             </div>
                             <CodeBlock className={styles.installCommand} language="bash">
@@ -54,10 +59,10 @@ export default function Home() {
                             </CodeBlock>
                         </div>
                         <div className={styles.codePreview}>
-                            <CodeBlock language="bash" title="Install French translations">
+                            <CodeBlock language="bash" title={translate({id: "home.example.install", message: "Install French translations"})}>
                                 {"php artisan lang:add fr"}
                             </CodeBlock>
-                            <CodeBlock language="php" title="Use a translation">
+                            <CodeBlock language="php" title={translate({id: "home.example.use", message: "Use a translation"})}>
                                 {"__('auth.failed', locale: 'fr');"}
                             </CodeBlock>
                         </div>
@@ -65,16 +70,18 @@ export default function Home() {
                 </section>
 
                 <section className={styles.guides} aria-labelledby="guides-title">
-                    <h2 id="guides-title">Localization guides</h2>
+                    <h2 id="guides-title"><Translate id="home.guides">Localization guides</Translate></h2>
                     <div className={styles.guideGrid}>
                         {guides.map((guide) => (
                             <Link key={guide.to} className={styles.guide} to={guide.to}>
-                                <h3>{guide.title} <span aria-hidden="true">→</span></h3>
+                                <h3>{guide.title} <span aria-hidden="true">{arrow}</span></h3>
                                 <p>{guide.description}</p>
                             </Link>
                         ))}
                     </div>
-                    <a className={styles.compatibility} href={llmsUrl}>Documentation for AI agents (llms.txt)</a>
+                    <a className={styles.compatibility} href={llmsUrl}>
+                        <Translate id="home.llms">Documentation for AI agents (llms.txt)</Translate>
+                    </a>
                 </section>
             </main>
         </Layout>

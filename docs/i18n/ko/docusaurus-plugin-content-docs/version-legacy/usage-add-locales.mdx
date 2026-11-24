@@ -1,0 +1,24 @@
+---
+title: "로캘 추가하기"
+slug: /usage-add-locales.html
+description: "Laravel 애플리케이션에 로캘을 추가하는 방법입니다."
+---
+
+:::note
+
+지원되는 로캘 코드는 [목록](<./available-locales-list.mdx>)에서 확인할 수 있습니다.
+
+목록에는 로캘 코드 128개가 있습니다.
+
+:::
+
+`php artisan lang:add <locale>` 콘솔 명령에 하나 이상의 로캘 코드를 공백으로 구분하여 전달하면 필요한 로캘을 설치할 수 있습니다.
+
+```bash
+php artisan lang:add fr de de_AT de_CH vi zh_CN
+php artisan lang:add fr
+```
+
+대상 파일이 이미 있으면 설치를 건너뛸지 파일을 교체할지 묻습니다.
+
+직접 추가한 키가 있는 파일은 건너뛰는 편이 좋습니다. `php artisan lang:update` 명령으로 추가한 내용을 삭제하지 않고 파일을 갱신할 수 있습니다.

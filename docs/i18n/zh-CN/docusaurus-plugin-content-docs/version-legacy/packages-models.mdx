@@ -1,0 +1,547 @@
+---
+title: "Models"
+slug: /packages-models.html
+description: "为 Eloquent 模型提供翻译"
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"该项目已发布稳定版本"}>稳定版</span> <span className="badge badge--secondary" title={"最新版本未知"}>未知</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [在 GitHub 上查看](<https://github.com/laravel-lang/models>)
+
+## 安装 {/* #installation */}
+
+:::note
+
+请参阅[兼容性表](<#compatibility> "Models 软件包的兼容性表")。
+
+:::
+
+要安装软件包，请运行以下控制台命令。
+
+```bash
+composer require laravel-lang/models:^1.8.0
+```
+
+可编辑 `config/localization.php` 文件来[更改](<./configuration.mdx#models>)默认设置。
+
+## 控制台命令 {/* #console_commands */}
+
+### 创建翻译模型 {/* #create_translation_model */}
+
+翻译存储可以存放大量数据，并将不同模型的译文分开。每个需要翻译的模型都有自己的翻译模型。
+
+创建翻译存储最简单的方法是使用 `make:model-translation` 控制台命令。
+
+```bash
+php artisan make:model-translation
+```
+
+执行时，命令会询问源模型，如果模型不存在则会创建它。之后，命令会询问要创建哪些列，例如「title」「description」等。
+
+即使多添加了列，或尚未指定任何列，也可以在命令生成的模型和迁移文件中自行调整。
+
+生成的翻译模型应始终与父模型放在同一目录。例如：
+
+```text
+App\Models\Content\News
+App\Models\Content\NewsTranslation
+App\Models\Products\Category
+App\Models\Products\CategoryTranslation
+```
+
+:::tip
+
+默认后缀为 `Translation`，可以在 [config/localization.php](<./configuration.mdx#models>) 配置文件的 `models` 部分替换为自定义后缀。
+
+:::
+
+然后运行以下控制台命令执行迁移。
+
+```bash
+php artisan migrate
+```
+
+#### 选项 {/* #options */}
+
+<dl>
+<dt>
+
+model
+
+</dt>
+<dd>
+
+指定要为其创建翻译存储的父模型名称。
+
+例如：
+
+```bash
+php artisan make:model-translation Page
+# 或者
+php artisan make:model-translation App\Models\Page
+```
+
+</dd>
+<dt>
+
+--columns
+
+</dt>
+<dd>
+
+此参数可以包含一个或多个值，列出要添加的列。
+
+例如：
+
+```bash
+--columns=title --columns=description
+```
+
+```php
+Artisan::call('make:model-translation', [
+    '--columns' => ['title', 'description'],
+]);
+```
+
+</dd>
+</dl>
+
+### 模型设置 {/* #model_setup */}
+
+创建翻译存储后，请在主模型中使用 `LaravelLang\Models\HasTranslations` trait。
+
+例如：
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+```
+
+也请确认基础模型没有已经用于翻译的实体字段或虚拟字段。
+
+例如：
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+
+    protected $fillable = [
+        'category_id',
+
+        // 需要移除：
+        'title',
+        'description',
+    ];
+}
+```
+
+### IDE 辅助文件 {/* #ide_helpers */}
+
+:::tip
+
+使用 `php artisan make:model-translation` 创建翻译存储时，命令会自动生成 IDE 辅助文件。
+
+对翻译存储模型做出更改后，建议运行该命令。
+
+:::
+
+为使 IDE 能够识别可翻译字段，建议运行以下控制台命令。
+
+```bash
+php artisan lang:models-helper
+```
+
+此命令会生成让 IDE 识别字段的辅助文件。例如：
+
+<Tabs>
+
+<TabItem value="tab-1" label={"之后"}>
+
+<img src={require("@site/static/images/models-helper-after.png").default} alt={"使用 IDE 辅助文件"} />
+
+</TabItem>
+
+<TabItem value="tab-2" label={"之前"}>
+
+<img src={require("@site/static/images/models-helper-before.png").default} alt={"未使用 IDE 辅助文件"} />
+
+</TabItem>
+
+</Tabs>
+
+也可在 [config/localization.php](<./configuration.mdx#models>) 配置文件的 `models` 部分通过 `helpers` 参数更改这些文件的存放目录。请确认 IDE 会索引新路径。
+
+## 用法 {/* #usage */}
+
+可以观看关于如何在同一应用中安装和使用 [Routes](<./packages-routes.mdx#usage> "Routes 软件包使用说明") 和 [Models](<./packages-models.mdx#usage> "Models 软件包使用说明") 的简短视频（[在 YouTube 上观看](<https://youtu.be/mH76pGbpVu0>)）。
+
+<iframe className="legacy-video" src="https://www.youtube-nocookie.com/embed/mH76pGbpVu0" title={"路由和模型"} loading="lazy" allowFullScreen />
+
+### 读取译文 {/* #get_translation */}
+
+:::tip
+
+所有翻译存储都会自动为父模型启用[预加载](<https://laravel.com/docs/eloquent-relationships#eager-loading>)，无需手动配置。
+
+默认情况下，关联只包含当前及回退语言区域的记录。需要加载其他记录时，可以更改[筛选设置](<./configuration.mdx#models>)。
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+在这种情况下，会加载这些条目的所有可用语言区域。
+
+:::
+
+要获取当前语言区域下的属性值，直接读取模型属性即可。例如：
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+如果<abbr title={"config/app.php 文件中 app.locale 参数的值。"}>主语言区域</abbr>没有对应的值，方法会返回<abbr title={"config/app.php 文件中 app.fallback_locale 参数的值。"}>回退语言区域</abbr>的值。
+
+也可以使用 `getTranslation` 方法。
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+要获取特定语言区域的值，请将其代码作为第二个参数传入。例如：
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// 或者
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+即使模型的更改尚未写入数据库，这些方法也会返回相应的值。
+
+:::
+
+### 设置译文 {/* #set_translations */}
+
+#### 单个值 {/* #single_value */}
+
+要添加或更新应用当前语言区域的译文，直接给模型属性赋值即可。例如：
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+也可以使用 `setTranslation` 方法设置新值。
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+这些方法会为当前语言区域设置新值。要为特定语言区域设置值，请将其代码作为此方法的第三个参数传入。例如：
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// 或者
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+也可使用批量赋值。
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+调用这些方法后，新值仍保存在模型对象中。要写入数据库，在父模型上调用 `save` 方法即可。例如：
+
+```php
+$page->save();
+```
+
+:::
+
+也可以在创建模型时赋值。例如：
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### 多个值 {/* #plural_value */}
+
+要为一个属性快速设置多个语言区域的译文，可使用以下任意一种方法。
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// 方案 1
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// 方案 2
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+批量赋值时，也可传入 `iterable` 对象。例如：
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+每个字段可以使用不同的一组语言区域。例如，上面的代码会填充法语、英语和德语的 `title`，而 `description` 只会填充法语和德语的值。
+
+### 删除译文 {/* #forget_translation */}
+
+:::warning
+
+与[添加和更新](<#set_translations>)方法不同，`forgetTranslation` 和 `forgetAllTranslations` 会调用翻译模型上的 `delete` 方法，立即写入数据库。
+
+默认情况下，翻译模型没有使用 [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>) trait，因此会立即删除数据。如果需要软删除，可自行修改模型类和迁移文件。
+
+:::
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetTranslation('fr');
+// 或者
+$page->forgetTranslation(Locale::French);
+```
+
+也可调用 `forgetAllTranslations`，一次删除所有语言区域的译文。
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetAllTranslations();
+```
+
+### 检查是否已有译文 {/* #has_translated */}
+
+有几种方法可以检查某列是否已经翻译。第一种方法是调用 `hasTranslated` 并传入列名。
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->hasTranslated('title');
+```
+
+此方法会检查<abbr title={"config/app.php 文件中 app.locale 参数的值。"}>主语言区域</abbr>和<abbr title={"config/app.php 文件中 app.fallback_locale 参数的值。"}>回退语言区域</abbr>。只要其中一个有值就返回 `true`，两者都没有值则返回 `false`。
+
+:::note
+
+已存储的布尔值（`true / false`）和数字值（`0, 0.0`）也视为有值，检查结果为 `true`。
+
+:::
+
+若要检查特定语言区域是否有值，请将其代码作为第二个参数传入。例如：
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->hasTranslated('title', 'fr');
+// 或者
+$page->hasTranslated('title', Locale::French);
+```
+
+### 检查字段是否可翻译 {/* #is_translatable */}
+
+`isTranslatable` 方法检查翻译模型的 `$fillable` 属性中是否包含某个字段。
+
+例如：
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\Eloquent\Translation;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+
+class ArticleTranslation extends Translation
+{
+    protected $fillable = [
+        'title',
+    ];
+}
+
+$page = Article::first();
+
+$page->isTranslatable('title'); // true
+$page->isTranslatable('description'); // false
+```
+
+### 删除基础模型 {/* #delete_base_model */}
+
+默认情况下，翻译模型持有指向父模型的外键。因此，通过 [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>) trait 对父模型执行软删除时会保留所有译文。调用 `forceDelete` 时，则会自动从数据库中删除译文。
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->delete();
+// 或者
+$page->forceDelete();
+```
+
+## 事件 {/* #events */}
+
+执行特定操作时会触发以下事件。
+
+```php
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+AllTranslationsHasBeenForgetEvent::dispatch($model);
+TranslationHasBeenForgetEvent::dispatch($model, $locale);
+TranslationHasBeenSetEvent::dispatch($model, $column, $locale, $oldValue, $newValue);
+```
+
+如有需要，可以监听此事件。例如：
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(static function (AllTranslationsHasBeenForgetEvent $event) {
+            Log::info('Forget all locales', [
+                'model' => $event->model->getKey(),
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenForgetEvent $event) {
+            Log::info('Forget locale', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenSetEvent $event) {
+            Log::info('Set new translation', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+                'column' => $event->column,
+
+                'old' => $event->oldValue,
+                'new' => $event->newValue,
+            ]);
+        });
+    }
+}
+```
+
+## 兼容性 {/* #compatibility */}
+
+| Laravel | PHP | 软件包 | 状态 |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">支持</span> |

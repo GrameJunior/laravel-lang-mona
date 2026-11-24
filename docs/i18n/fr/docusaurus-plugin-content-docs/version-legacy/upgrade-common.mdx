@@ -1,0 +1,27 @@
+---
+title: "Common"
+slug: /upgrade-common.html
+description: "Comment passer de la version 5 à la version 6 de Common."
+---
+
+## Mettre à jour les dépendances {/* #updating_dependencies */}
+
+Mettez à jour la dépendance suivante dans le fichier `composer.json` de votre application.
+
+- `laravel-lang/common` en version `^6.0`
+
+Si cette dépendance figure dans `require-dev`, déplacez-la dans `require`.
+
+Exécutez ensuite cette commande pour mettre à jour les dépendances.
+
+```bash
+composer update
+```
+
+## Mettre à niveau le Publisher {/* #upgrade_publisher */}
+
+Suivez toutes les étapes du guide de mise à niveau du Publisher à l’exception de la mise à jour des dépendances.
+
+## Mettre à niveau JSON Fallback {/* #upgrade_json_fallback */}
+
+Si vous utilisez le paquet `laravel-lang/json-fallback-hotfix`, vous devrez également adapter le projet.

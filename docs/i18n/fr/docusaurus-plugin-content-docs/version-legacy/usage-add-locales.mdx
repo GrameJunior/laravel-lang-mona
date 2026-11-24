@@ -1,0 +1,24 @@
+---
+title: "Ajouter des langues"
+slug: /usage-add-locales.html
+description: "Ajoutez des langues à une application Laravel."
+---
+
+:::note
+
+Vous trouverez la liste des codes de langue disponibles [sur cette page](<./available-locales-list.mdx>).
+
+La liste contient 128 codes de langue.
+
+:::
+
+Pour installer les langues voulues, exécutez la commande `php artisan lang:add <locale>` avec un ou plusieurs codes de langue séparés par des espaces.
+
+```bash
+php artisan lang:add fr de de_AT de_CH vi zh_CN
+php artisan lang:add fr
+```
+
+Si les fichiers de destination existent, la commande vous propose d’ignorer l’installation ou de remplacer les fichiers.
+
+Si ces fichiers contiennent des clés que vous avez ajoutées, il est recommandé de les conserver. La commande `php artisan lang:update` peut les mettre à jour sans supprimer vos ajouts.

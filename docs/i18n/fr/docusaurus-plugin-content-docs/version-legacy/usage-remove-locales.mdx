@@ -1,0 +1,33 @@
+---
+title: "Supprimer des langues"
+slug: /usage-remove-locales.html
+description: "Supprimez des langues d’une application Laravel."
+---
+
+:::warning
+
+Cette commande supprime l’intégralité du dossier et des fichiers des langues visées, à l’exception de la langue par défaut et de la langue de repli.
+
+:::
+
+Pour supprimer des langues, utilisez la commande `php artisan lang:rm <locale>` et passez-lui les codes correspondants.
+
+```bash
+php artisan lang:rm fr de de_AT de_CH vi zh_CN
+```
+
+Sans argument, la commande propose de choisir les langues à supprimer dans une liste interactive.
+
+```bash
+php artisan lang:rm
+```
+
+Par défaut, la commande affiche un message d’erreur si elle tente de supprimer une langue protégée.
+
+Les langues protégées sont celles définies par les paramètres `locale` et `fallback_locale` du fichier `config/app.php`.
+
+Pour forcer la suppression d’une langue protégée, utilisez l’option `force`.
+
+```bash
+php artisan lang:rm en --force
+```

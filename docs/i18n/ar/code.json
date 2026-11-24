@@ -1,0 +1,103 @@
+{
+  "home.description": {
+    "message": "ثبّت الترجمات ووطّن المسارات ونماذج Eloquent باستخدام Laravel-Lang."
+  },
+  "home.guide.translations.title": {
+    "message": "إدارة الإعدادات المحلية"
+  },
+  "home.guide.translations.description": {
+    "message": "أضف الترجمات وحدّثها وأزلها باستخدام Artisan."
+  },
+  "home.guide.configure.title": {
+    "message": "ضبط إعدادات التوطين"
+  },
+  "home.guide.configure.description": {
+    "message": "اضبط الأسماء البديلة للإعدادات المحلية والمسارات الموطّنة وترجمات النماذج."
+  },
+  "home.guide.plugins.title": {
+    "message": "إضافات الترجمة"
+  },
+  "home.guide.plugins.description": {
+    "message": "ثبّت حزم الترجمة أو أنشئ حزمك الخاصة."
+  },
+  "home.guide.upgrade.title": {
+    "message": "الترقية إلى Mona"
+  },
+  "home.guide.upgrade.description": {
+    "message": "رحّل تبعياتك وإعداداتك وترجماتك."
+  },
+  "home.title": {
+    "message": "التوثيق"
+  },
+  "home.hero.title": {
+    "message": "وطّن تطبيق Laravel"
+  },
+  "home.start": {
+    "message": "ابدأ في دقيقة واحدة"
+  },
+  "home.legacy": {
+    "message": "توثيق الإصدارات السابقة"
+  },
+  "home.example.install": {
+    "message": "تثبيت الترجمات الفرنسية"
+  },
+  "home.example.use": {
+    "message": "استخدام ترجمة"
+  },
+  "home.guides": {
+    "message": "أدلة التوطين"
+  },
+  "home.llms": {
+    "message": "التوثيق لوكلاء الذكاء الاصطناعي (llms.txt)"
+  },
+  "localePicker.label": {
+    "message": "الإعداد المحلي"
+  },
+  "localePicker.install": {
+    "message": "شغّل الأمر التالي لتثبيت ترجمات {language}."
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "وضع النظام",
+    "description": "The name for the system color mode"
+  },
+  "theme.admonition.warning": {
+    "message": "تحذير",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "توسيع فئة «{label}» في الشريط الجانبي",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "طيّ فئة «{label}» في الشريط الجانبي",
+    "description": "The ARIA label to collapse the sidebar category"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(يُفتح في علامة تبويب جديدة)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "التنقل الرئيسي",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "الشريط الجانبي للتوثيق",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "توسيع القائمة المنسدلة",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "طيّ القائمة المنسدلة",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "إغلاق شريط التنقل",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "إظهار شريط التنقل أو إخفاؤه",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  }
+}

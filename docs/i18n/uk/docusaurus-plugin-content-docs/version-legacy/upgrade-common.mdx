@@ -1,0 +1,27 @@
+---
+title: "Common"
+slug: /upgrade-common.html
+description: "Оновлення Common з версії 5 до версії 6"
+---
+
+## Оновлення залежностей {/* #updating_dependencies */}
+
+Оновіть таку залежність у файлі `composer.json` застосунку:
+
+- `laravel-lang/common` до `^6.0`
+
+Якщо залежність вказано в розділі `require-dev`, перенесіть її до `require`.
+
+Далі виконайте команду оновлення залежностей:
+
+```bash
+composer update
+```
+
+## Оновлення Publisher {/* #upgrade_publisher */}
+
+Виконайте всі кроки посібника з оновлення Publisher, крім оновлення залежностей.
+
+## Оновлення JSON Fallback {/* #upgrade_json_fallback */}
+
+Якщо ви використовуєте пакет `laravel-lang/json-fallback-hotfix`, внесіть до проєкту зміни з посібника з оновлення JSON Fallback.

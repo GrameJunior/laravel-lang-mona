@@ -1,0 +1,27 @@
+---
+title: "Common"
+slug: /upgrade-common.html
+description: "Информације о надоградњи пакета Common са верзије 5 на верзију 6"
+---
+
+## Ажурирање зависности {/* #updating_dependencies */}
+
+У датотеци `composer.json` своје апликације ажурирајте следећу зависност.
+
+- `laravel-lang/common` на `^6.0`
+
+Ако је наведена у одељку `require-dev`, преместите је у `require`.
+
+Затим покрените команду за ажурирање зависности.
+
+```bash
+composer update
+```
+
+## Надоградња пакета Publisher {/* #upgrade_publisher */}
+
+Извршите све кораке из водича за надоградњу пакета Publisher, осим ажурирања зависности.
+
+## Надоградња пакета JSON Fallback {/* #upgrade_json_fallback */}
+
+Ако користите пакет `laravel-lang/json-fallback-hotfix`, потребно је да унесете одговарајуће измене у пројекат.

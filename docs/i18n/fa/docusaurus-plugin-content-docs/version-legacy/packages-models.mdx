@@ -1,0 +1,547 @@
+---
+title: "Models"
+slug: /packages-models.html
+description: "روش آسان و سریع بومی‌سازی مدل‌ها"
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"نسخه‌ای پایدار از پروژه منتشر شده است"}>پایدار</span> <span className="badge badge--secondary" title={"آخرین نسخه مشخص نیست"}>نامشخص</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [مشاهده در GitHub](<https://github.com/laravel-lang/models>)
+
+## نصب {/* #installation */}
+
+:::note
+
+جدول سازگاری را [اینجا](<#compatibility> "جدول سازگاری بستهٔ Models") ببینید.
+
+:::
+
+برای نصب، فرمان زیر را اجرا کنید.
+
+```bash
+composer require laravel-lang/models:^1.8.0
+```
+
+با ویرایش فایل `config/localization.php` می‌توانید تنظیمات پیش‌فرض را نیز [تغییر دهید](<./configuration.mdx#models>).
+
+## فرمان‌های کنسول {/* #console_commands */}
+
+### ساخت مدل ترجمه {/* #create_translation_model */}
+
+فضای ذخیره‌سازی برای حجم بالای داده، بدون آمیختن داده‌ها، بهینه شده است. بنابراین برای هر مدل نیازمند ترجمه، یک مدل جداگانه ساخته می‌شود.
+
+ساده‌ترین روش ساخت مخزن، استفاده از فرمان `make:model-translation` است.
+
+```bash
+php artisan make:model-translation
+```
+
+هنگام اجرا از شما نام مدل منبع را می‌پرسد. اگر مدل وجود نداشته باشد، ساخته می‌شود. سپس دربارهٔ ستون‌هایی که باید بسازید، مانند «title» و «description»، از شما می‌پرسد.
+
+اگر ستون‌های اضافی وارد کردید یا هیچ ستونی وارد نکردید، می‌توانید فایل مدل و مهاجرتی را که فرمان می‌سازد ویرایش کنید.
+
+The created storage model will and should always be next to the parent model. نمونه‌ای در ادامه آمده است.
+
+```text
+App\Models\Content\News
+App\Models\Content\NewsTranslation
+App\Models\Products\Category
+App\Models\Products\CategoryTranslation
+```
+
+:::tip
+
+پسوند پیش‌فرض `Translation` است، اما می‌توانید در بخش `models` فایل تنظیمات [config/localization.php](<./configuration.mdx#models>) پسوند خود را جایگزین کنید.
+
+:::
+
+سپس مهاجرت را با فرمان زیر اجرا کنید.
+
+```bash
+php artisan migrate
+```
+
+#### گزینه‌ها {/* #options */}
+
+<dl>
+<dt>
+
+model
+
+</dt>
+<dd>
+
+نام مدل والدی را مشخص می‌کند که مخزن برای آن ساخته می‌شود.
+
+نمونه‌ای در ادامه آمده است.
+
+```bash
+php artisan make:model-translation Page
+# or
+php artisan make:model-translation App\Models\Page
+```
+
+</dd>
+<dt>
+
+--columns
+
+</dt>
+<dd>
+
+این پارامتر می‌تواند یک یا چند مقدار داشته باشد و فهرست ستون‌های مورد نیاز برای افزودن را در بر می‌گیرد.
+
+نمونه‌ای در ادامه آمده است.
+
+```bash
+--columns=title --columns=description
+```
+
+```php
+Artisan::call('make:model-translation', [
+    '--columns' => ['title', 'description'],
+]);
+```
+
+</dd>
+</dl>
+
+### تنظیم مدل {/* #model_setup */}
+
+پس از ساخت مخزن ترجمه، تریت `LaravelLang\Models\HasTranslations` را به مدل اصلی اضافه کنید.
+
+نمونه‌ای در ادامه آمده است.
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+```
+
+مطمئن شوید مدل پایه فیلدهای فیزیکی یا مجازی مربوط به ترجمه را نداشته باشد.
+
+نمونه‌ای در ادامه آمده است.
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+
+    protected $fillable = [
+        'category_id',
+
+        // مواردی که باید حذف شوند
+        'title',
+        'description',
+    ];
+}
+```
+
+### فایل‌های کمکی IDE {/* #ide_helpers */}
+
+:::tip
+
+فرمان `php artisan make:model-translation` هنگام ساخت مخزن، فایل‌های کمکی را هم خودکار تولید می‌کند.
+
+پس از هر تغییر در مدل ذخیره‌سازی ترجمه، بهتر است فرمان تولید فایل کمکی را اجرا کنید.
+
+:::
+
+برای کمک به IDE در کار با فیلدهای ترجمه‌پذیر، پیشنهاد می‌کنیم فرمان زیر را اجرا کنید.
+
+```bash
+php artisan lang:models-helper
+```
+
+This will create helper files that will allow the IDE to “recognize” the fields. نمونه‌ای در ادامه آمده است.
+
+<Tabs>
+
+<TabItem value="tab-1" label={"بعد"}>
+
+<img src={require("@site/static/images/models-helper-after.png").default} alt={"با فایل کمکی"} />
+
+</TabItem>
+
+<TabItem value="tab-2" label={"قبل"}>
+
+<img src={require("@site/static/images/models-helper-before.png").default} alt={"بدون فایل کمکی"} />
+
+</TabItem>
+
+</Tabs>
+
+می‌توانید مسیر پوشهٔ ذخیره‌سازی این فایل‌ها را با پارامتر `helpers` در بخش `models` فایل تنظیمات [config/localization.php](<./configuration.mdx#models>) تغییر دهید. مطمئن شوید IDE مسیر جدید را نمایه‌سازی می‌کند.
+
+## کاربرد {/* #usage */}
+
+این ویدیوی کوتاه نصب و استفاده از [Routes](<./packages-routes.mdx#usage> "اطلاعات کاربرد بستهٔ Routes") و [Models](<./packages-models.mdx#usage> "اطلاعات کاربرد بستهٔ Models") را در یک برنامه نشان می‌دهد ([مشاهده در YouTube](<https://youtu.be/mH76pGbpVu0>)).
+
+<iframe className="legacy-video" src="https://www.youtube-nocookie.com/embed/mH76pGbpVu0" title={"مسیرها و مدل‌ها"} loading="lazy" allowFullScreen />
+
+### دریافت ترجمه {/* #get_translation */}
+
+:::tip
+
+همهٔ مخزن‌های داده پرچم [بارگذاری پیشاپیش](<https://laravel.com/docs/eloquent-relationships#eager-loading>) را خودکار به مدل والد منتقل می‌کنند، بنابراین نیازی به انجام دستی آن نیست.
+
+رابطه به‌طور پیش‌فرض تنها ردیف‌های زبان منطقه‌ای جاری و جایگزین را دارد. در صورت نیاز می‌توانید با تغییر [تنظیمات فیلتر](<./configuration.mdx#models>) همهٔ ردیف‌ها را بارگذاری کنید.
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+در این حالت همهٔ زبان‌های منطقه‌ای موجود برای موارد بارگذاری می‌شوند.
+
+:::
+
+To get the value of a property for the current localization, simply make a call to the model property. نمونه‌ای در ادامه آمده است.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+اگر مقدار <abbr title={"مقدار پارامتر app.locale در فایل config/app.php."}>زبان منطقه‌ای اصلی</abbr> موجود نباشد، متد مقدار <abbr title={"مقدار پارامتر app.fallback_locale در فایل config/app.php."}>زبان منطقه‌ای جایگزین</abbr> را برمی‌گرداند.
+
+می‌توانید از متد `getTranslation` نیز استفاده کنید.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+To get a value for a specific locale, pass the localization code as the second argument. نمونه‌ای در ادامه آمده است.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// یا
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+این متدها حتی اگر تغییرات مدل هنوز در پایگاه داده نوشته نشده باشند، همان مقدار را برمی‌گردانند.
+
+:::
+
+### تنظیم ترجمه‌ها {/* #set_translations */}
+
+#### یک مقدار {/* #single_value */}
+
+To add or update a translation to your application's current locale, simply assign a value to the model property. نمونه‌ای در ادامه آمده است.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+می‌توانید مقدار جدیدی را با متد `setTranslation` هم تنظیم کنید.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+These methods will set a new value to the currently active locale. To set the value to a specific locale, pass its code as the third parameter in this method. نمونه‌ای در ادامه آمده است.
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// یا
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+انتساب گروهی هم ممکن است.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+Please note that despite calling these methods, the new values will be stored to the model objects. To write changes to the database, simply call the `save` method on the parent model. نمونه‌ای در ادامه آمده است.
+
+```php
+$page->save();
+```
+
+:::
+
+Of course, filling can also be done when creating the model. نمونه‌ای در ادامه آمده است.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### چند مقدار {/* #plural_value */}
+
+برای پر کردن سریع ویژگی با ترجمه‌های چند زبان منطقه‌ای می‌توانید از هر یک از روش‌های زیر استفاده کنید.
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// گزینهٔ 1
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// گزینهٔ 2
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+You can also assign `iterable` objects when bulk populating. نمونه‌ای در ادامه آمده است.
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+لازم نیست زبان‌های منطقه‌ای همهٔ فیلدها دقیقاً یکسان باشد. برای نمونه، در مثال بالا فیلد `title` برای فرانسوی، انگلیسی و آلمانی پر می‌شود، ولی فیلد `description` فقط برای فرانسوی و آلمانی مقدار می‌گیرد.
+
+### حذف ترجمه {/* #forget_translation */}
+
+:::warning
+
+برخلاف روش‌های [افزودن و به‌روزرسانی](<#set_translations>)، متدهای `forgetTranslation` و `forgetAllTranslations` با فراخوانی `delete` روی مدل ترجمه، تغییرات را بلافاصله در پایگاه داده اعمال می‌کنند.
+
+مدل ترجمه به‌طور پیش‌فرض تریت [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>) را ندارد، بنابراین داده بلافاصله حذف می‌شود. در صورت نیاز، آن را خودتان به کلاس مدل و فایل مهاجرت اضافه کنید.
+
+:::
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetTranslation('fr');
+// یا
+$page->forgetTranslation(Locale::French);
+```
+
+با فراخوانی `forgetAllTranslations` می‌توانید همهٔ زبان‌های منطقه‌ای را یک‌جا حذف کنید.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetAllTranslations();
+```
+
+### بررسی وجود ترجمه {/* #has_translated */}
+
+چند روش برای بررسی وجود ترجمهٔ یک ستون وجود دارد. روش نخست فراخوانی متد `hasTranslated` با نام ستون به‌عنوان پارامتر است.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->hasTranslated('title');
+```
+
+این متد هم زبان منطقه‌ای <abbr title={"مقدار پارامتر app.locale در فایل config/app.php."}>اصلی</abbr> و هم زبان منطقه‌ای <abbr title={"مقدار پارامتر app.fallback_locale در فایل config/app.php."}>جایگزین</abbr> را بررسی می‌کند. اگر یکی از مقادیر پر باشد، `true` و اگر هر دو خالی باشند، `false` برمی‌گرداند.
+
+:::note
+
+مقادیر بولی ذخیره‌شده (`true / false`) و مقادیر عددی (`0, 0.0`) نیز پرشده محسوب می‌شوند و نتیجه `true` خواهد بود.
+
+:::
+
+If you need to check for the presence of a value for a specific localization, pass its code as the second argument. نمونه‌ای در ادامه آمده است.
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->hasTranslated('title', 'fr');
+// یا
+$page->hasTranslated('title', Locale::French);
+```
+
+### بررسی ترجمه‌پذیری {/* #is_translatable */}
+
+متد `isTranslatable` وجود فیلد را در ویژگی `$fillable` مدل Translate بررسی می‌کند.
+
+نمونه‌ای در ادامه آمده است.
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\Eloquent\Translation;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+
+class ArticleTranslation extends Translation
+{
+    protected $fillable = [
+        'title',
+    ];
+}
+
+$page = Article::first();
+
+$page->isTranslatable('title'); // true
+$page->isTranslatable('description'); // false
+```
+
+### حذف مدل پایه {/* #delete_base_model */}
+
+مدل ترجمه به‌طور پیش‌فرض کلید خارجی به مدل والد دارد. بنابراین اگر مدل والد با تریت [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>) به‌صورت نرم حذف شود، همهٔ ترجمه‌ها باقی می‌مانند. با فراخوانی متد `forceDelete`، ترجمه‌ها خودکار از پایگاه داده حذف می‌شوند.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->delete();
+// یا
+$page->forceDelete();
+```
+
+## رویدادها {/* #events */}
+
+عملیات مشخصی رویدادهای زیر را فعال می‌کند.
+
+```php
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+AllTranslationsHasBeenForgetEvent::dispatch($model);
+TranslationHasBeenForgetEvent::dispatch($model, $locale);
+TranslationHasBeenSetEvent::dispatch($model, $column, $locale, $oldValue, $newValue);
+```
+
+If necessary, you can listen to this event. نمونه‌ای در ادامه آمده است.
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(static function (AllTranslationsHasBeenForgetEvent $event) {
+            Log::info('Forget all locales', [
+                'model' => $event->model->getKey(),
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenForgetEvent $event) {
+            Log::info('Forget locale', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenSetEvent $event) {
+            Log::info('Set new translation', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+                'column' => $event->column,
+
+                'old' => $event->oldValue,
+                'new' => $event->newValue,
+            ]);
+        });
+    }
+}
+```
+
+## سازگاری {/* #compatibility */}
+
+| Laravel | PHP | بسته | وضعیت |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">پشتیبانی می‌شود</span> |

@@ -1,0 +1,71 @@
+---
+title: "JSON Fallback"
+slug: /packages-json-fallback.html
+description: "Резервный поиск переводов строк JSON"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Выпущена стабильная версия проекта"}>Стабильный</span> <span className="badge badge--secondary" title={"Последняя версия неизвестна"}>неизвестно</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Открыть на GitHub](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+Если резервная локаль — английская, этот пакет вам не нужен.
+
+:::
+
+## Установка {/* #installation */}
+
+:::note
+
+См. [таблицу совместимости](<#compatibility> "Таблица совместимости пакета JSON Fallback").
+
+:::
+
+По умолчанию Laravel <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">не поддерживает</a> резервный поиск переводов для JSON-ключей. Например, при вызове `__('Remember Me')` вы получите `Remember Me` вместо `Se souvenir de moi` для резервной французской локали.
+
+Для установки выполните команду:
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## Использование {/* #usage */}
+
+:::note
+
+В Laravel 11 файл `config/app.php` не содержит секции `providers`. Её можно добавить вручную.
+
+:::
+
+После установки добавьте ссылку на поставщика служб в секцию `providers` файла `config/app.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // Другие поставщики служб
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+Теперь JSON-ключи будут возвращать значения для выбранной локали.
+
+## Совместимость {/* #compatibility */}
+
+| Laravel | PHP | Пакет | Поддержка |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">поддерживается</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">не поддерживается</span> |

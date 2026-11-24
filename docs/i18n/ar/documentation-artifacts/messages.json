@@ -1,0 +1,23 @@
+{
+  "releaseLine": {
+    "message": "تحمل الحزم الرسمية رقم الإصدار نفسه."
+  },
+  "documentation": {
+    "message": "التوثيق"
+  },
+  "optional": {
+    "message": "اختياري"
+  },
+  "legacy": {
+    "message": "توثيق الإصدارات السابقة"
+  },
+  "legacyDescription": {
+    "message": "أدلة للتثبيتات التي تسبق Mona."
+  },
+  "moved": {
+    "message": "انتقل التوثيق إلى عنوان جديد"
+  },
+  "redirect": {
+    "message": "الانتقال إلى التوثيق"
+  }
+}

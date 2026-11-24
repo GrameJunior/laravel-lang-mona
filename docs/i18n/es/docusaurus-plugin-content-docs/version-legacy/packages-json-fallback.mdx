@@ -1,0 +1,71 @@
+---
+title: "JSON Fallback"
+slug: /packages-json-fallback.html
+description: "Agrega traducciones de reserva para cadenas JSON"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Se ha publicado una versión estable del proyecto"}>Estable</span> <span className="badge badge--secondary" title={"Se desconoce la última versión"}>desconocida</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Ver en GitHub](<https://github.com/laravel-lang/json-fallback>)
+
+:::warning
+
+Si usas el inglés como idioma de reserva, no necesitas este paquete.
+
+:::
+
+## Instalación {/* #installation */}
+
+:::note
+
+Consulta la [tabla de compatibilidad](<#compatibility> "Tabla de compatibilidad del paquete JSON Fallback").
+
+:::
+
+De forma predeterminada, Laravel <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">no permite</a> traducciones de reserva para claves JSON. Por ejemplo, si llamas a `__('Remember Me')`, obtienes `Remember Me` en lugar de `Se souvenir de moi` cuando el idioma de reserva es el francés.
+
+Para instalarlo, ejecuta el siguiente comando de consola.
+
+```bash
+composer require laravel-lang/json-fallback:^2.3.0
+```
+
+## Uso {/* #usage */}
+
+:::note
+
+En Laravel 11, el archivo de configuración `config/app.php` no incluye la sección `providers`. Puedes agregarla manualmente.
+
+:::
+
+Después de instalar el paquete, agrega una referencia al proveedor de servicios en la sección `providers` del archivo de configuración `config/app.php`.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Translation\TranslationServiceProvider as BaseTranslation;
+use LaravelLang\JsonFallback\TranslationServiceProvider as JsonTranslation;
+
+return [
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // otros proveedores de servicios
+    ])->replace([
+        BaseTranslation::class => JsonTranslation::class,
+    ])->toArray(),
+];
+```
+
+Ahora las claves JSON devolverán el valor correspondiente a la configuración regional seleccionada.
+
+## Compatibilidad {/* #compatibility */}
+
+| Laravel | PHP | Paquete | Estado |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">compatible</span> |
+| 6, 7, 8, 9, 10 | 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">sin compatibilidad</span> |

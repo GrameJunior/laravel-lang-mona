@@ -1,0 +1,33 @@
+---
+title: "Remover localidades"
+slug: /usage-remove-locales.html
+description: "Como remover localidades de uma aplicação Laravel"
+---
+
+:::warning
+
+O comando exclui toda a pasta da localidade com seus arquivos, com exceção das localidades padrão e de fallback.
+
+:::
+
+Para excluir localidades, execute `php artisan lang:rm <locale>` e passe os códigos correspondentes.
+
+```bash
+php artisan lang:rm fr de de_AT de_CH vi zh_CN
+```
+
+Se omitir os argumentos ao chamar o comando, o console exibirá uma pergunta interativa para selecionar localidades entre as que estão disponíveis.
+
+```bash
+php artisan lang:rm
+```
+
+Por padrão, o comando retorna uma mensagem de erro ao tentar remover uma localidade protegida.
+
+As localidades protegidas são os códigos definidos nos parâmetros `locale` e `fallback_locale` do arquivo `config/app.php`.
+
+Para forçar a exclusão de uma localidade protegida, use a opção `force`.
+
+```bash
+php artisan lang:rm en --force
+```

@@ -1,0 +1,23 @@
+---
+title: "Mettre à jour les langues"
+slug: /usage-update-locales.html
+description: "Mettez à jour les langues d’une application Laravel."
+---
+
+Pour mettre à jour les fichiers, exécutez la commande suivante.
+
+```bash
+php artisan lang:update
+```
+
+C’est tout ce qu’il y a à faire 🙂
+
+Cette commande détecte les langues installées dans l’application et met à jour les fichiers.
+
+:::tip
+
+Certaines versions mineures de Laravel peuvent supprimer des clés de leurs dépôts. Celles-ci disparaissent alors de l’application. Cela reste très rare.
+
+La commande de mise à jour ajoute les nouvelles expressions et actualise les traductions existantes. Pour supprimer les expressions inutilisées, utilisez la commande [`php artisan lang:reset`](<./usage-reset-locales.mdx> "Réinitialiser les langues d’une application Laravel").
+
+:::

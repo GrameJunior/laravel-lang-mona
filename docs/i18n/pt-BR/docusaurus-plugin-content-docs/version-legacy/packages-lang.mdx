@@ -1,0 +1,69 @@
+---
+title: "Lang"
+slug: /packages-lang.html
+description: "Traduções do Laravel Framework, Laravel Jetstream, Laravel Fortify, Laravel Breeze, Laravel Cashier, Laravel Nova e Laravel UI."
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Uma versão estável do projeto foi lançada"}>Estável</span> <span className="badge badge--secondary" title={"A versão mais recente é desconhecida"}>Desconhecida</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Ver no GitHub](<https://github.com/laravel-lang/lang>)
+
+:::tip
+
+Este pacote contém traduções de todas as chaves oficiais dos projetos Laravel abaixo.
+
+[Laravel Framework](<https://laravel.com>), [Jetstream](<https://jetstream.laravel.com/>), [Fortify](<https://github.com/laravel/fortify>), [Cashier](<https://laravel.com/docs/billing>), [Breeze](<https://github.com/laravel/breeze>), [Nova (também Dusk Suite e Log Viewer)](<https://nova.laravel.com/>), [Nova](<https://nova.laravel.com/>) (também [Dusk Suite](<https://github.com/laravel/nova-dusk-suite>) e [Log Viewer](<https://github.com/laravel/nova-log-viewer>)) e [UI](<https://github.com/laravel/ui>)
+
+:::
+
+## Instalação {/* #installation */}
+
+:::note
+
+Consulte a [tabela de compatibilidade](<#compatibility> "Compatibilidade do pacote Lang").
+
+:::
+
+Para instalar, execute o comando abaixo.
+
+```bash
+composer require --dev laravel-lang/lang:^15.39.1
+```
+
+## Uso {/* #usage */}
+
+Agora você pode [atualizar](<./usage-update-locales.mdx> "Como atualizar localidades em uma aplicação Laravel") as localidades existentes com o comando `lang:update`.
+
+```bash
+php artisan lang:update
+```
+
+Também recomendamos adicionar a chamada à seção `post-update-cmd` do bloco `scripts` no arquivo `composer.json`.
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+Assim, os arquivos de localização são atualizados automaticamente depois das dependências, sem precisar executar `php artisan lang:update` manualmente.
+
+## Compatibilidade {/* #compatibility */}
+
+| Laravel | PHP | Publisher | Pacote | Dependências | Situação |
+| --- | --- | --- | --- | --- | --- |
+| `^11.0.7, 12, 13` | 8.2, 8.3, 8.4, 8.5 | 16 | `^15.10` | Breeze 2, Cashier Stripe 15, Fortify 1, Jetstream 5, Nova 4/5, Spark Paddle \*, Spark Stripe \*, UI 4 | <span className="compatibility-status compatibility-status--supported">Compatível</span> \* Spark projects have been removed from the [Laravel](<https://github.com/laravel>) organization on GitHub |
+| `^11.0.7` | 8.2, 8.3, 8.4, 8.5 | 16 | `^15.0` | Breeze 2, Cashier Stripe 15, Fortify 1, Jetstream 5, Nova 4, Spark Paddle, Spark Stripe, UI 4 | <span className="compatibility-status compatibility-status--supported">Compatível</span> |
+| 10, `<=11.0.6*` | 8.1, 8.2, 8.3 | 14, 15, 16 | `^14.0` | Breeze 1, 2, Cashier Stripe 13, 14, 15, Fortify 1, Jetstream 2, 3, 4, 5, Nova 4, Spark Paddle, Spark Stripe, UI 4 | <span className="compatibility-status compatibility-status--not-supported">Sem suporte</span> |
+| 10 | 8.1, 8.2, 8.3 | 14, 15, 16 | `^13.0` | Breeze 1, Cashier Stripe 13, 14, Fortify 1, Jetstream 2, 3, 4, Nova 4, Spark Aurelius 11, 12, Spark Aurelius Mollie 2, Spark Paddle, Spark Stripe, UI 4 | <span className="compatibility-status compatibility-status--not-supported">Sem suporte</span> |
+| 9, 10 | 8.1, 8.2 | 14 | `^12.0` | Breeze 1, Cashier Stripe 12, 13, 14, Fortify 1, Jetstream 1, 2, 3, Nova 3, 4, Spark Aurelius 11, 12, Spark Aurelius Mollie 2, Spark Paddle, Spark Stripe, UI 3, 4 | <span className="compatibility-status compatibility-status--not-supported">Sem suporte</span> |
+| 6, 7, 8, 9, 10 | 8.1, 8.2 | --- | `^11.0` | Breeze 1, Cashier Stripe 12, 13, Fortify 1, Jetstream 1, 2, Nova 3, 4, Spark Paddle, Spark Stripe, UI 1, 2, 3, 4 | <span className="compatibility-status compatibility-status--not-supported">Sem suporte</span> |
+| 7, 8, 9 | 8.1, 8.2 | --- | `^10.0` | Breeze 1, Cashier Stripe 12, 13, Fortify 1, Jetstream 1, Nova 3, Spark Paddle, Spark Stripe, UI 1, 2, 3 | <span className="compatibility-status compatibility-status--not-supported">Sem suporte</span> |

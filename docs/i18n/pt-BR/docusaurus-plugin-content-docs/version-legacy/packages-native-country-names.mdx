@@ -1,0 +1,649 @@
+---
+title: "Nomes de países"
+slug: /packages-native-country-names.html
+description: "Tradução de nomes de países"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Uma versão estável do projeto foi lançada"}>Estável</span> <span className="badge badge--secondary" title={"A versão mais recente é desconhecida"}>Desconhecida</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Ver no GitHub](<https://github.com/laravel-lang/native-country-names>)
+
+:::tip
+
+Este pacote contém uma lista de nomes de países localizados.
+
+:::
+
+## Instalação {/* #installation */}
+
+:::note
+
+Consulte a [tabela de compatibilidade](<#compatibility> "Compatibilidade do pacote Native Country Names").
+
+:::
+
+Para instalar, execute o comando abaixo.
+
+```bash
+composer require laravel-lang/native-country-names:^1.8.0
+```
+
+## Uso {/* #usage */}
+
+### Nomes localizados {/* #localized_names */}
+
+```php
+use LaravelLang\NativeCountryNames\CountryNames;
+use LaravelLang\LocaleList\Locale;
+
+return CountryNames::get('bn');
+// or
+return CountryNames::get(Locale::Bengali);
+```
+
+Resultado
+
+<details>
+<summary>Mostrar resultado</summary>
+
+```php
+[
+    'af' => 'দক্ষিণ আফ্রিকা',
+    'ak' => 'ঘানা',
+    'am' => 'ইথিওপিয়া',
+    'ar' => 'মিশর',
+    'as' => 'ভারত',
+    'az' => 'আজারবাইজান',
+    'be' => 'বেলারুশ',
+    'bg' => 'বুলগেরিয়া',
+    'bho' => 'ভারত',
+    'bm' => 'মালি',
+    'bn' => 'বাংলাদেশ',
+    'bs' => 'বসনিয়া ও হার্জেগোভিনা',
+    'ca' => 'স্পেন',
+    'ceb' => 'ফিলিপাইন',
+    'ckb' => 'ইরাক',
+    'cs' => 'চেকিয়া',
+    'cy' => 'যুক্তরাজ্য',
+    'da' => 'ডেনমার্ক',
+    'de' => 'জার্মানি',
+    'de_AT' => 'অস্ট্রিয়া',
+    'de_CH' => 'সুইজারল্যান্ড',
+    'doi' => 'ভারত',
+    'ee' => 'ঘানা',
+    'el' => 'গ্রীস',
+    'en' => 'মার্কিন যুক্তরাষ্ট্র',
+    'eo' => 'পৃথিবী',
+    'es' => 'স্পেন',
+    'et' => 'এস্তোনিয়া',
+    'eu' => 'স্পেন',
+    'fa' => 'ইরান',
+    'fi' => 'ফিনল্যান্ড',
+    'fil' => 'ফিলিপাইন',
+    'fr' => 'ফ্রান্স',
+    'fy' => 'নেদারল্যান্ডস',
+    'ga' => 'আয়ারল্যান্ড',
+    'gd' => 'যুক্তরাজ্য',
+    'gl' => 'স্পেন',
+    'gu' => 'ভারত',
+    'ha' => 'নাইজেরিয়া',
+    'haw' => 'মার্কিন যুক্তরাষ্ট্র',
+    'he' => 'ইজরায়েল',
+    'hi' => 'ভারত',
+    'hr' => 'ক্রোয়েশিয়া',
+    'hu' => 'হাঙ্গেরি',
+    'hy' => 'আর্মেনিয়া',
+    'id' => 'ইন্দোনেশিয়া',
+    'ig' => 'নাইজেরিয়া',
+    'is' => 'আইসল্যান্ড',
+    'it' => 'ইতালি',
+    'ja' => 'জাপান',
+    'ka' => 'জর্জিয়া',
+    'kk' => 'কাজাখস্তান',
+    'km' => 'কম্বোডিয়া',
+    'kn' => 'ভারত',
+    'ko' => 'দক্ষিণ কোরিয়া',
+    'ku' => 'তুরস্ক',
+    'ky' => 'কিরগিজিস্তান',
+    'lb' => 'লাক্সেমবার্গ',
+    'lg' => 'উগান্ডা',
+    'ln' => 'কঙ্গো-কিনশাসা',
+    'lo' => 'লাওস',
+    'lt' => 'লিথুয়ানিয়া',
+    'lv' => 'লাটভিয়া',
+    'mai' => 'ভারত',
+    'mg' => 'মাদাগাস্কার',
+    'mi' => 'নিউজিল্যান্ড',
+    'mk' => 'উত্তর ম্যাসেডোনিয়া',
+    'ml' => 'ভারত',
+    'mn' => 'মঙ্গোলিয়া',
+    'mni_Mtei' => 'ভারত',
+    'mr' => 'ভারত',
+    'ms' => 'মালয়েশিয়া',
+    'mt' => 'মাল্টা',
+    'my' => 'মায়ানমার (বার্মা)',
+    'nb' => 'নরওয়ে',
+    'ne' => 'নেপাল',
+    'nl' => 'নেদারল্যান্ডস',
+    'nn' => 'নরওয়ে',
+    'oc' => 'ফ্রান্স',
+    'om' => 'ইথিওপিয়া',
+    'or' => 'ভারত',
+    'pa' => 'ভারত',
+    'pl' => 'পোল্যান্ড',
+    'ps' => 'আফগানিস্তান',
+    'pt' => 'ব্রাজিল',
+    'pt_BR' => 'ব্রাজিল',
+    'qu' => 'পেরু',
+    'ro' => 'রোমানিয়া',
+    'ru' => 'রাশিয়া',
+    'rw' => 'রুয়ান্ডা',
+    'sa' => 'ভারত',
+    'sc' => 'ইতালি',
+    'sd' => 'পাকিস্তান',
+    'si' => 'শ্রীলঙ্কা',
+    'sk' => 'স্লোভাকিয়া',
+    'sl' => 'স্লোভানিয়া',
+    'sn' => 'জিম্বাবোয়ে',
+    'so' => 'সোমালিয়া',
+    'sq' => 'আলবেনিয়া',
+    'sr_Cyrl' => 'সার্বিয়া',
+    'sr_Latn' => 'সার্বিয়া',
+    'sr_Latn_ME' => 'মন্টিনিগ্রো',
+    'su' => 'ইন্দোনেশিয়া',
+    'sv' => 'সুইডেন',
+    'sw' => 'তাঞ্জানিয়া',
+    'ta' => 'ভারত',
+    'te' => 'ভারত',
+    'tg' => 'তাজিকিস্তান',
+    'th' => 'থাইল্যান্ড',
+    'ti' => 'ইথিওপিয়া',
+    'tk' => 'তুর্কমেনিস্তান',
+    'tl' => 'ফিলিপাইন',
+    'tr' => 'তুরস্ক',
+    'tt' => 'রাশিয়া',
+    'ug' => 'চীন',
+    'uk' => 'ইউক্রেন',
+    'ur' => 'পাকিস্তান',
+    'uz_Cyrl' => 'উজবেকিস্তান',
+    'uz_Latn' => 'উজবেকিস্তান',
+    'vi' => 'ভিয়েতনাম',
+    'xh' => 'দক্ষিণ আফ্রিকা',
+    'yi' => 'পৃথিবী',
+    'yo' => 'নাইজেরিয়া',
+    'zh_CN' => 'চীন',
+    'zh_HK' => 'হংকং এসএআর চীনা',
+    'zh_TW' => 'তাইওয়ান',
+    'zu' => 'দক্ষিণ আফ্রিকা',
+]
+```
+
+</details>
+
+### Nomes nativos {/* #native_names */}
+
+Para obter uma lista de nomes localizados, chame o método `get` sem parâmetros. Você também recebe essa lista se informar um valor inválido ou vazio.
+
+```php
+use LaravelLang\NativeCountryNames\CountryNames;
+
+return CountryNames::get();
+// or
+return CountryNames::get('');
+// or
+return CountryNames::get(null);
+// or
+return CountryNames::get('foo');
+```
+
+Resultado
+
+<details>
+<summary>Mostrar resultado</summary>
+
+```php
+[
+    'af' => 'Suid-Afrika',
+    'ak' => 'Gaana',
+    'am' => 'ኢትዮጵያ',
+    'ar' => 'مصر',
+    'as' => 'ভাৰত',
+    'az' => 'Azərbaycan',
+    'be' => 'Беларусь',
+    'bg' => 'България',
+    'bho' => 'भारत',
+    'bm' => 'Mali',
+    'bn' => 'বাংলাদেশ',
+    'bs' => 'Bosna I Hercegovina',
+    'ca' => 'Espanya',
+    'ceb' => 'Pilipinas',
+    'ckb' => 'عێراق',
+    'cs' => 'Česko',
+    'cy' => 'Y Deyrnas Unedig',
+    'da' => 'Danmark',
+    'de' => 'Deutschland',
+    'de_AT' => 'Österreich',
+    'de_CH' => 'Schweiz',
+    'doi' => 'भारत',
+    'ee' => 'Ghana Nutome',
+    'el' => 'Ελλάδα',
+    'en' => 'United States',
+    'eo' => 'Mondo',
+    'es' => 'España',
+    'et' => 'Eesti',
+    'eu' => 'Espainia',
+    'fa' => 'ایران',
+    'fi' => 'Suomi',
+    'fil' => 'Pilipinas',
+    'fr' => 'France',
+    'fy' => 'Nederlân',
+    'ga' => 'Éire',
+    'gd' => 'An Rìoghachd Aonaichte',
+    'gl' => 'España',
+    'gu' => 'ભારત',
+    'ha' => 'Nijeriya',
+    'haw' => 'ʻAmelika Hui Pū ʻIa',
+    'he' => 'ישראל',
+    'hi' => 'भारत',
+    'hr' => 'Hrvatska',
+    'hu' => 'Magyarország',
+    'hy' => 'Հայաստան',
+    'id' => 'Indonesia',
+    'ig' => 'Naịjịrịa',
+    'is' => 'Ísland',
+    'it' => 'Italia',
+    'ja' => '日本',
+    'ka' => 'საქართველო',
+    'kk' => 'Қазақстан',
+    'km' => 'កម្ពុជា',
+    'kn' => 'ಭಾರತ',
+    'ko' => '대한민국',
+    'ku' => 'Tirkiye',
+    'ky' => 'Кыргызстан',
+    'lb' => 'Lëtzebuerg',
+    'lg' => 'Yuganda',
+    'ln' => 'Republíki Ya Kongó Demokratíki',
+    'lo' => 'ລາວ',
+    'lt' => 'Lietuva',
+    'lv' => 'Latvija',
+    'mai' => 'भारत',
+    'mg' => 'Madagasikara',
+    'mi' => 'Aotearoa',
+    'mk' => 'Северна Македонија',
+    'ml' => 'ഇന്ത്യ',
+    'mn' => 'Монгол',
+    'mni_Mtei' => 'India',
+    'mr' => 'भारत',
+    'ms' => 'Malaysia',
+    'mt' => 'Malta',
+    'my' => 'မြန်မာ',
+    'nb' => 'Norge',
+    'ne' => 'नेपाल',
+    'nl' => 'Nederland',
+    'nn' => 'Noreg',
+    'oc' => 'Fr',
+    'om' => 'Itoophiyaa',
+    'or' => 'ଭାରତ',
+    'pa' => 'ਭਾਰਤ',
+    'pl' => 'Polska',
+    'ps' => 'افغانستان',
+    'pt' => 'Brasil',
+    'pt_BR' => 'Brasil',
+    'qu' => 'Perú',
+    'ro' => 'România',
+    'ru' => 'Россия',
+    'rw' => 'U Rwanda',
+    'sa' => 'भारतः',
+    'sc' => 'Itàlia',
+    'sd' => 'پاڪستان',
+    'si' => 'ශ්‍රී ලංකාව',
+    'sk' => 'Slovensko',
+    'sl' => 'Slovenija',
+    'sn' => 'Zimbabwe',
+    'so' => 'Soomaaliya',
+    'sq' => 'Shqipëri',
+    'sr_Cyrl' => 'Србија',
+    'sr_Latn' => 'Serbia',
+    'sr_Latn_ME' => 'Montenegro',
+    'su' => 'Indonesia',
+    'sv' => 'Sverige',
+    'sw' => 'Tanzania',
+    'ta' => 'இந்தியா',
+    'te' => 'భారతదేశం',
+    'tg' => 'Тоҷикистон',
+    'th' => 'ไทย',
+    'ti' => 'ኢትዮጵያ',
+    'tk' => 'Türkmenistan',
+    'tl' => 'Philippines',
+    'tr' => 'Türkiye',
+    'tt' => 'Россия',
+    'ug' => 'جۇڭگو',
+    'uk' => 'Україна',
+    'ur' => 'پاکستان',
+    'uz_Cyrl' => 'Uzbekistan',
+    'uz_Latn' => 'Oʻzbekiston',
+    'vi' => 'Việt Nam',
+    'xh' => 'Emzantsi Afrika',
+    'yi' => 'וועלט',
+    'yo' => 'Nàìjíríà',
+    'zh_CN' => '中国',
+    'zh_HK' => '中国香港特别行政区',
+    'zh_TW' => '台湾',
+    'zu' => 'Iningizimu Afrika',
+]
+```
+
+</details>
+
+### Ordenação {/* #sorting */}
+
+Para ordenar o resultado por chave ou por valor, passe um valor do enum `SortBy` para o parâmetro.
+
+O padrão é ordenar por valores.
+
+#### Ordenar por chaves {/* #sort_by_keys */}
+
+```php
+use LaravelLang\NativeCountryNames\CountryNames;
+use LaravelLang\NativeCountryNames\Enums\SortBy;
+
+return CountryNames::get('en', SortBy::Key);
+```
+
+Resultado
+
+<details>
+<summary>Mostrar resultado</summary>
+
+```php
+[
+    'af' => 'South Africa',
+    'ak' => 'Ghana',
+    'am' => 'Ethiopia',
+    'ar' => 'Egypt',
+    'as' => 'India',
+    'az' => 'Azerbaijan',
+    'be' => 'Belarus',
+    'bg' => 'Bulgaria',
+    'bho' => 'India',
+    'bm' => 'Mali',
+    'bn' => 'Bangladesh',
+    'bs' => 'Bosnia & Herzegovina',
+    'ca' => 'Spain',
+    'ceb' => 'Philippines',
+    'ckb' => 'Iraq',
+    'cs' => 'Czechia',
+    'cy' => 'United Kingdom',
+    'da' => 'Denmark',
+    'de' => 'Germany',
+    'de_AT' => 'Austria',
+    'de_CH' => 'Switzerland',
+    'doi' => 'India',
+    'ee' => 'Ghana',
+    'el' => 'Greece',
+    'en' => 'United States',
+    'eo' => 'World',
+    'es' => 'Spain',
+    'et' => 'Estonia',
+    'eu' => 'Spain',
+    'fa' => 'Iran',
+    'fi' => 'Finland',
+    'fil' => 'Philippines',
+    'fr' => 'France',
+    'fy' => 'Netherlands',
+    'ga' => 'Ireland',
+    'gd' => 'United Kingdom',
+    'gl' => 'Spain',
+    'gu' => 'India',
+    'ha' => 'Nigeria',
+    'haw' => 'United States',
+    'he' => 'Israel',
+    'hi' => 'India',
+    'hr' => 'Croatia',
+    'hu' => 'Hungary',
+    'hy' => 'Armenia',
+    'id' => 'Indonesia',
+    'ig' => 'Nigeria',
+    'is' => 'Iceland',
+    'it' => 'Italy',
+    'ja' => 'Japan',
+    'ka' => 'Georgia',
+    'kk' => 'Kazakhstan',
+    'km' => 'Cambodia',
+    'kn' => 'India',
+    'ko' => 'South Korea',
+    'ku' => 'Turkey',
+    'ky' => 'Kyrgyzstan',
+    'lb' => 'Luxembourg',
+    'lg' => 'Uganda',
+    'ln' => 'Congo - Kinshasa',
+    'lo' => 'Laos',
+    'lt' => 'Lithuania',
+    'lv' => 'Latvia',
+    'mai' => 'India',
+    'mg' => 'Madagascar',
+    'mi' => 'New Zealand',
+    'mk' => 'North Macedonia',
+    'ml' => 'India',
+    'mn' => 'Mongolia',
+    'mni_Mtei' => 'India',
+    'mr' => 'India',
+    'ms' => 'Malaysia',
+    'mt' => 'Malta',
+    'my' => 'Myanmar (Burma)',
+    'nb' => 'Norway',
+    'ne' => 'Nepal',
+    'nl' => 'Netherlands',
+    'nn' => 'Norway',
+    'oc' => 'France',
+    'om' => 'Ethiopia',
+    'or' => 'India',
+    'pa' => 'India',
+    'pl' => 'Poland',
+    'ps' => 'Afghanistan',
+    'pt' => 'Brazil',
+    'pt_BR' => 'Brazil',
+    'qu' => 'Peru',
+    'ro' => 'Romania',
+    'ru' => 'Russia',
+    'rw' => 'Rwanda',
+    'sa' => 'India',
+    'sc' => 'Italy',
+    'sd' => 'Pakistan',
+    'si' => 'Sri Lanka',
+    'sk' => 'Slovakia',
+    'sl' => 'Slovenia',
+    'sn' => 'Zimbabwe',
+    'so' => 'Somalia',
+    'sq' => 'Albania',
+    'sr_Cyrl' => 'Serbia',
+    'sr_Latn' => 'Serbia',
+    'sr_Latn_ME' => 'Montenegro',
+    'su' => 'Indonesia',
+    'sv' => 'Sweden',
+    'sw' => 'Tanzania',
+    'ta' => 'India',
+    'te' => 'India',
+    'tg' => 'Tajikistan',
+    'th' => 'Thailand',
+    'ti' => 'Ethiopia',
+    'tk' => 'Turkmenistan',
+    'tl' => 'Philippines',
+    'tr' => 'Turkey',
+    'tt' => 'Russia',
+    'ug' => 'China',
+    'uk' => 'Ukraine',
+    'ur' => 'Pakistan',
+    'uz_Cyrl' => 'Uzbekistan',
+    'uz_Latn' => 'Uzbekistan',
+    'vi' => 'Vietnam',
+    'xh' => 'South Africa',
+    'yi' => 'World',
+    'yo' => 'Nigeria',
+    'zh_CN' => 'China',
+    'zh_HK' => 'Hong Kong Sar China',
+    'zh_TW' => 'Taiwan',
+    'zu' => 'South Africa',
+]
+```
+
+</details>
+
+#### Ordenar por valores {/* #sort_by_values */}
+
+```php
+use LaravelLang\NativeCountryNames\CountryNames;
+use LaravelLang\NativeCountryNames\Enums\SortBy;
+
+return CountryNames::get('en', SortBy::Value);
+// or
+return CountryNames::get('en');
+```
+
+Resultado
+
+<details>
+<summary>Mostrar resultado</summary>
+
+```php
+[
+    'af' => 'South Africa',
+    'ak' => 'Ghana',
+    'am' => 'Ethiopia',
+    'ar' => 'Egypt',
+    'as' => 'India',
+    'az' => 'Azerbaijan',
+    'be' => 'Belarus',
+    'bg' => 'Bulgaria',
+    'bho' => 'India',
+    'bm' => 'Mali',
+    'bn' => 'Bangladesh',
+    'bs' => 'Bosnia & Herzegovina',
+    'ca' => 'Spain',
+    'ceb' => 'Philippines',
+    'ckb' => 'Iraq',
+    'cs' => 'Czechia',
+    'cy' => 'United Kingdom',
+    'da' => 'Denmark',
+    'de' => 'Germany',
+    'de_AT' => 'Austria',
+    'de_CH' => 'Switzerland',
+    'doi' => 'India',
+    'ee' => 'Ghana',
+    'el' => 'Greece',
+    'en' => 'United States',
+    'eo' => 'World',
+    'es' => 'Spain',
+    'et' => 'Estonia',
+    'eu' => 'Spain',
+    'fa' => 'Iran',
+    'fi' => 'Finland',
+    'fil' => 'Philippines',
+    'fr' => 'France',
+    'fy' => 'Netherlands',
+    'ga' => 'Ireland',
+    'gd' => 'United Kingdom',
+    'gl' => 'Spain',
+    'gu' => 'India',
+    'ha' => 'Nigeria',
+    'haw' => 'United States',
+    'he' => 'Israel',
+    'hi' => 'India',
+    'hr' => 'Croatia',
+    'hu' => 'Hungary',
+    'hy' => 'Armenia',
+    'id' => 'Indonesia',
+    'ig' => 'Nigeria',
+    'is' => 'Iceland',
+    'it' => 'Italy',
+    'ja' => 'Japan',
+    'ka' => 'Georgia',
+    'kk' => 'Kazakhstan',
+    'km' => 'Cambodia',
+    'kn' => 'India',
+    'ko' => 'South Korea',
+    'ku' => 'Turkey',
+    'ky' => 'Kyrgyzstan',
+    'lb' => 'Luxembourg',
+    'lg' => 'Uganda',
+    'ln' => 'Congo - Kinshasa',
+    'lo' => 'Laos',
+    'lt' => 'Lithuania',
+    'lv' => 'Latvia',
+    'mai' => 'India',
+    'mg' => 'Madagascar',
+    'mi' => 'New Zealand',
+    'mk' => 'North Macedonia',
+    'ml' => 'India',
+    'mn' => 'Mongolia',
+    'mni_Mtei' => 'India',
+    'mr' => 'India',
+    'ms' => 'Malaysia',
+    'mt' => 'Malta',
+    'my' => 'Myanmar (Burma)',
+    'nb' => 'Norway',
+    'ne' => 'Nepal',
+    'nl' => 'Netherlands',
+    'nn' => 'Norway',
+    'oc' => 'France',
+    'om' => 'Ethiopia',
+    'or' => 'India',
+    'pa' => 'India',
+    'pl' => 'Poland',
+    'ps' => 'Afghanistan',
+    'pt' => 'Brazil',
+    'pt_BR' => 'Brazil',
+    'qu' => 'Peru',
+    'ro' => 'Romania',
+    'ru' => 'Russia',
+    'rw' => 'Rwanda',
+    'sa' => 'India',
+    'sc' => 'Italy',
+    'sd' => 'Pakistan',
+    'si' => 'Sri Lanka',
+    'sk' => 'Slovakia',
+    'sl' => 'Slovenia',
+    'sn' => 'Zimbabwe',
+    'so' => 'Somalia',
+    'sq' => 'Albania',
+    'sr_Cyrl' => 'Serbia',
+    'sr_Latn' => 'Serbia',
+    'sr_Latn_ME' => 'Montenegro',
+    'su' => 'Indonesia',
+    'sv' => 'Sweden',
+    'sw' => 'Tanzania',
+    'ta' => 'India',
+    'te' => 'India',
+    'tg' => 'Tajikistan',
+    'th' => 'Thailand',
+    'ti' => 'Ethiopia',
+    'tk' => 'Turkmenistan',
+    'tl' => 'Philippines',
+    'tr' => 'Turkey',
+    'tt' => 'Russia',
+    'ug' => 'China',
+    'uk' => 'Ukraine',
+    'ur' => 'Pakistan',
+    'uz_Cyrl' => 'Uzbekistan',
+    'uz_Latn' => 'Uzbekistan',
+    'vi' => 'Vietnam',
+    'xh' => 'South Africa',
+    'yi' => 'World',
+    'yo' => 'Nigeria',
+    'zh_CN' => 'China',
+    'zh_HK' => 'Hong Kong Sar China',
+    'zh_TW' => 'Taiwan',
+    'zu' => 'South Africa',
+]
+```
+
+</details>
+
+## Compatibilidade {/* #compatibility */}
+
+| PHP | Pacote | Situação |
+| --- | --- | --- |
+| 8.1, 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">Compatível</span> |

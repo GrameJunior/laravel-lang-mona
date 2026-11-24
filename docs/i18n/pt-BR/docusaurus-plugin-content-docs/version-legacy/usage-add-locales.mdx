@@ -1,0 +1,24 @@
+---
+title: "Adicionar localidades"
+slug: /usage-add-locales.html
+description: "Como adicionar localidades a uma aplicação Laravel"
+---
+
+:::note
+
+Consulte [a lista de códigos de localidade disponíveis](<./available-locales-list.mdx>).
+
+A lista contém 128 códigos de localidade.
+
+:::
+
+Para instalar as localidades necessárias, execute o comando `php artisan lang:add <locale>` e informe um ou mais códigos de localidade separados por espaços.
+
+```bash
+php artisan lang:add fr de de_AT de_CH vi zh_CN
+php artisan lang:add fr
+```
+
+Se os arquivos de destino existirem, o comando perguntará se deve pular a instalação ou substituir os arquivos.
+
+Se esses arquivos contiverem chaves que você adicionou, a recomendação é pular a substituição. O comando `php artisan lang:update` pode atualizar os arquivos sem apagar seu código.

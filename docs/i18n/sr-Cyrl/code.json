@@ -1,0 +1,166 @@
+{
+  "home.description": {
+    "message": "Инсталирајте преводе и локализујте руте и Eloquent моделе помоћу Laravel-Lang."
+  },
+  "home.guide.translations.title": {
+    "message": "Управљање локалима"
+  },
+  "home.guide.translations.description": {
+    "message": "Додајте, ажурирајте и уклоните преводе помоћу Artisan-а."
+  },
+  "home.guide.configure.title": {
+    "message": "Подешавање локализације"
+  },
+  "home.guide.configure.description": {
+    "message": "Подесите псеудониме локала, локализоване руте и преводе модела."
+  },
+  "home.guide.plugins.title": {
+    "message": "Додаци за преводе"
+  },
+  "home.guide.plugins.description": {
+    "message": "Инсталирајте пакете превода или направите сопствени."
+  },
+  "home.guide.upgrade.title": {
+    "message": "Надоградња на Mona"
+  },
+  "home.guide.upgrade.description": {
+    "message": "Мигрирајте зависности, подешавања и преводе."
+  },
+  "home.title": {
+    "message": "Документација"
+  },
+  "home.hero.title": {
+    "message": "Локализујте своју Laravel апликацију"
+  },
+  "home.start": {
+    "message": "Започните за један минут"
+  },
+  "home.legacy": {
+    "message": "Архивска документација"
+  },
+  "home.example.install": {
+    "message": "Инсталирајте француске преводе"
+  },
+  "home.example.use": {
+    "message": "Употребите превод"
+  },
+  "home.guides": {
+    "message": "Водичи за локализацију"
+  },
+  "home.llms": {
+    "message": "Документација за AI агенте (llms.txt)"
+  },
+  "localePicker.label": {
+    "message": "Локал"
+  },
+  "localePicker.install": {
+    "message": "Покрените следећу команду да инсталирате преводе за {language}."
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "Дошло је до грешке на страници.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "према систему",
+    "description": "The name for the system color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "светли режим",
+    "description": "The name for the light color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "тамни режим",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Пребаците између тамног и светлог режима (тренутно: {mode})",
+    "description": "The ARIA label for the color mode toggle"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Путања навигације",
+    "description": "The ARIA label for the breadcrumbs"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Верзија: {versionLabel}"
+  },
+  "theme.admonition.caution": {
+    "message": "опрез",
+    "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "опасност",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "информације",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "напомена",
+    "description": "The default label used for the Note admonition (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "савет",
+    "description": "The default label used for the Tip admonition (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "упозорење",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Прошири категорију бочне траке „{label}“",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Скупи категорију бочне траке „{label}“",
+    "description": "The ARIA label to collapse the sidebar category"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(отвара се у новом језичку)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Главна навигација",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Језици",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Укључи или искључи прелом редова",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Почетна страница",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Бочна трака документације",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Затвори траку за навигацију",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Прикажи или сакриј траку за навигацију",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Прошири падајућу листу",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Скупи падајућу листу",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "{count} ставка|{count} ставке|{count} ставки",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Покушајте поново",
+    "description": "The label of the button to try again rendering when the React error boundary captures an error"
+  }
+}

@@ -1,0 +1,396 @@
+---
+title: "Common"
+slug: /packages-common.html
+description: "Једноставно повезивање потребних језичких пакета са апликацијом"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Објављена је стабилна верзија пројекта"}>Стабилна</span> <span className="badge badge--secondary" title={"Најновија верзија није позната"}>непозната</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Погледајте на GitHub-у](<https://github.com/laravel-lang/common>)
+
+## Инсталација {/* #installation */}
+
+:::note
+
+Препоручујемо употребу овог пакета јер омогућава брзо ажурирање свих зависности потребних за локализацију апликације.
+
+Погледајте [табелу компатибилности](<#compatibility> "Табела компатибилности за пакет Common").
+
+:::
+
+Пакет можете инсталирати помоћу [Composer-а](<https://getcomposer.org>).
+
+```bash
+composer require laravel-lang/common:^6.9
+```
+
+:::warning
+
+Ако користите Laravel 10, ручно наведите верзију пакета `laravel-lang/lang` коју треба инсталирати.
+
+```bash
+composer require --dev laravel-lang/lang:^15.39.1:^14.0
+```
+
+:::
+
+## Употреба {/* #usage */}
+
+Сада можете [ажурирати](<./usage-update-locales.mdx> "Ажурирање локала Laravel апликације") постојеће локале командом `lang:update`.
+
+```bash
+php artisan lang:update
+```
+
+Препоручујемо и да позив додате у одељак `post-update-cmd` блока `scripts` у датотеци `composer.json`.
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+Тако се датотеке локализације аутоматски ажурирају после ажурирања зависности, без ручног покретања команде `php artisan lang:update`.
+
+## Компатибилност {/* #compatibility */}
+
+<table>
+<thead>
+
+<tr>
+
+<th>
+
+Laravel
+
+</th>
+
+<th>
+
+PHP
+
+</th>
+
+<th>
+
+Пакет
+
+</th>
+
+<th>
+
+Зависности
+
+</th>
+
+<th>
+
+Статус
+
+</th>
+
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+
+<td>
+
+10\*, 11, 12, 13
+
+</td>
+
+<td>
+
+8.1, 8.2, 8.3, 8.4, 8.5
+
+</td>
+
+<td>
+
+`^6.7`
+
+</td>
+
+<td>
+
+Starter Kits 1, Models 1, Routes 1, Locales 2, Publisher 16, Lang 13-15, Actions 1, Attributes 2, HTTP Statuses 3, Locales 2, JSON Fallback 2, MoonShine 1 (административна табла v3)
+
+</td>
+
+<td>
+
+<span className="compatibility-status compatibility-status--supported">подржано</span>
+
+\* За Laravel 10 ручно наведите верзију пакета Lang коју треба инсталирати.
+
+```bash
+composer require --dev laravel-lang/lang:^15.39.1:^14.0
+```
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+10\*, 11, 12
+
+</td>
+
+<td>
+
+8.1, 8.2, 8.3, 8.4
+
+</td>
+
+<td>
+
+`^6.5`
+
+</td>
+
+<td>
+
+Models 1, Routes 1, Locales 2, Publisher 16, Lang 13-15, Actions 1, Attributes 2, HTTP Statuses 3, Locales 2, JSON Fallback 2, MoonShine 1 (административна табла v3)
+
+</td>
+
+<td>
+
+<span className="compatibility-status compatibility-status--not-supported">није подржано</span>
+
+\* За Laravel 10 ручно наведите верзију пакета Lang коју треба инсталирати.
+
+```bash
+composer require --dev laravel-lang/lang:^15.39.1:^14.0
+```
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+10\*, 11
+
+</td>
+
+<td>
+
+8.1, 8.2, 8.3, 8.4
+
+</td>
+
+<td>
+
+`^6.0`
+
+</td>
+
+<td>
+
+Models 1, Routes 1, Locales 2, Publisher 16, Lang 13-15, Actions 1, Attributes 2, HTTP Statuses 3, Locales 2, JSON Fallback 2
+
+</td>
+
+<td>
+
+<span className="compatibility-status compatibility-status--not-supported">није подржано</span>
+
+\* За Laravel 10 ручно наведите верзију пакета Lang коју треба инсталирати.
+
+```bash
+composer require --dev laravel-lang/lang:^15.39.1:^14.0
+```
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+10
+
+</td>
+
+<td>
+
+8.1, 8.2, 8.3
+
+</td>
+
+<td>
+
+`^5.0`
+
+</td>
+
+<td>
+
+Publisher 15, Lang 13, Actions 1, Attributes 2, HTTP Statuses 3, Locales 1
+
+</td>
+
+<td>
+
+<span className="compatibility-status compatibility-status--not-supported">није подржано</span>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+10
+
+</td>
+
+<td>
+
+8.1, 8.2
+
+</td>
+
+<td>
+
+`^4.0`
+
+</td>
+
+<td>
+
+Publisher 14, Lang 13, Attributes 2, HTTP Statuses 3, Locales 1
+
+</td>
+
+<td>
+
+<span className="compatibility-status compatibility-status--not-supported">није подржано</span>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+8, 9, 10
+
+</td>
+
+<td>
+
+8.1, 8.2
+
+</td>
+
+<td>
+
+`^3.0`
+
+</td>
+
+<td>
+
+Publisher 14, Lang 12, Attributes 2, HTTP Statuses 3
+
+</td>
+
+<td>
+
+<span className="compatibility-status compatibility-status--not-supported">није подржано</span>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+7, 8, 9
+
+</td>
+
+<td>
+
+8.0, 8.1
+
+</td>
+
+<td>
+
+`^2.0`
+
+</td>
+
+<td>
+
+Publisher 13, Lang 10, Attributes 1, HTTP Statuses 2
+
+</td>
+
+<td>
+
+<span className="compatibility-status compatibility-status--not-supported">није подржано</span>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+7, 8, 9
+
+</td>
+
+<td>
+
+7.3, 7.4, 8.0, 8.1
+
+</td>
+
+<td>
+
+`^1.0`
+
+</td>
+
+<td>
+
+Publisher 12, Lang 10, Attributes 1, HTTP Statuses 2
+
+</td>
+
+<td>
+
+<span className="compatibility-status compatibility-status--not-supported">није подржано</span>
+
+</td>
+
+</tr>
+
+</tbody>
+</table>

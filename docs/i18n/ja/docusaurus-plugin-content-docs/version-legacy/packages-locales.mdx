@@ -1,0 +1,318 @@
+---
+title: "Locales"
+slug: /packages-locales.html
+description: "ロケールを扱うための基本機能を提供します。"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"このプロジェクトの安定版がリリースされています"}>安定版</span> <span className="badge badge--secondary" title={"最新バージョンは不明です"}>不明</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [GitHub で見る](<https://github.com/laravel-lang/locales>)
+
+## インストール {/* #installation */}
+
+:::note
+
+[Locales パッケージの互換性表](<#compatibility> "Locales パッケージの互換性表")を参照してください。
+
+:::
+
+インストールするには、次のコンソールコマンドを実行します。
+
+```bash
+composer require laravel-lang/locales:^2.11.0
+```
+
+## 使用方法 {/* #usage */}
+
+ロケールを扱うにはファサード `LaravelLang\Locales\Facades\Locales` を使用します。ロケールコードの一覧または DTO オブジェクトの配列として、情報を取得できます。
+
+### データオブジェクト {/* #data_objects */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// 利用可能なロケールの一覧。
+Locales::available(): array // array<LocaleData>
+
+// インストール済みロケールの一覧。
+Locales::installed(bool $withProtects = true): array // array<LocaleData>
+
+// 未インストールのロケールの一覧。
+Locales::notInstalled(): array // array<LocaleData>
+
+// 保護されているロケールの一覧。
+Locales::protects(): array // array<LocaleData>
+
+// 指定したロケールの言語パックが利用可能かを確認します。
+Locales::isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// 言語パックがインストール済みかを確認します。
+Locales::isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// 指定したロケールが保護されているか確認します。
+Locales::isProtected(LocaleData|Locale|string|null $locale): bool
+
+// ロケールを検証し、対応するロケールを返します。
+// 未インストールのロケールを指定した場合は、現在有効なアプリケーションのロケールを返します。
+Locales::get(mixed $locale): LocaleData
+
+// 既定のロケール名を取得します。
+Locales::getDefault(): LocaleData
+
+// フォールバックロケール名を取得します。
+Locales::getFallback(): LocaleData
+
+// 指定したロケールが利用可能ならその情報を、そうでなければアプリケーションで現在有効なロケールの情報を返します。
+Locales::info(mixed $locale): LocaleData
+```
+
+### ロケールコード {/* #raw_data */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// 利用可能なロケールの一覧。
+Locales::raw()->available(): array // array<string>
+
+// インストール済みロケールの一覧。
+Locales::raw()->installed(bool $withProtects = true): array // array<string>
+
+// 未インストールのロケールの一覧。
+Locales::raw()->notInstalled(): array // array<string>
+
+// 保護されているロケールの一覧。
+Locales::raw()->protects(): array // array<string>
+
+// 指定したロケールの言語パックが利用可能かを確認します。
+Locales::raw()->isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// 言語パックがインストール済みかを確認します。
+Locales::raw()->isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// 指定したロケールが保護されているか確認します。
+Locales::raw()->isProtected(LocaleData|Locale|string|null $locale): bool
+
+// ロケールを検証し、対応するロケールを返します。
+// 未インストールのロケールを指定した場合は、現在有効なアプリケーションのロケールを返します。
+Locales::raw()->get(mixed $locale): string
+
+// 既定のロケール名を取得します。
+Locales::raw()->getDefault(): string
+
+// フォールバックロケール名を取得します。
+Locales::raw()->getFallback(): string
+
+// 指定したロケールが利用可能ならそのコードを、そうでなければアプリケーションで現在有効なロケールのコードを返します。
+Locales::raw()->info(mixed $locale): string
+```
+
+### 例 {/* #examples */}
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::getDefault(withCountry: true, withCurrency: true);
+
+// エイリアスなし
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+// エイリアスあり
+LocaleData {
+  +code: "de-DE"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // vi
+
+return Locales::get('de', withCountry: true, withCurrency: true);
+
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+LocaleData {
+  +code: "ar"
+  +regional: "ar_AE"
+  +type: "Arab"
+  +native: "العربية"
+  +localized: "Arabe"
+  +country: CountryData {
+    +code: "EG"
+    +native: "مصر"
+    +localized: "Égypte"
+  }
+  +currency: CurrencyData {
+    +code: "EGP"
+    +numeric: 818
+    +native: "جنيه مصري"
+    +localized: "livre égyptienne"
+  }
+  +direction: Direction {
+    +name: "RightToLeft"
+    +value: "rtl"
+  }
+  +locale: Locale {
+    +name: "Arabic"
+    +value: "ar"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::get('foo', withCountry: true, withCurrency: true);
+
+// 既定のロケールを返す
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+return Locales::raw()->getDefault();
+// エイリアスなし
+// de
+
+// エイリアスあり
+// de-DE
+```
+
+```php
+return Locales::raw()->get('de');
+// de
+
+return Locales::raw()->get('foo');
+// 既定のロケールを返す
+// de
+```
+
+## 互換性 {/* #compatibility */}
+
+| Laravel | PHP | パッケージ | サポート状況 |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">対応</span> |
+| 10 | 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">非対応</span> |

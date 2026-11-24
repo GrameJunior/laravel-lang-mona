@@ -1,0 +1,124 @@
+---
+title: "コントリビューションガイド"
+slug: /contributions.html
+description: "Laravel Lang プロジェクトの開発に参加する方法を説明します。"
+---
+
+コントリビューションを<strong>歓迎</strong>します。貢献者の<strong>クレジットを明記</strong>します。
+
+組織の[すべてのプロジェクト](<https://github.com/orgs/Laravel-Lang/repositories>)で、プルリクエストによるコントリビューションを受け付けています。
+
+## 各ファイルの内容 {/* #what_do_the_files_mean */}
+
+- <strong>php.json</strong> は PHP ローカライズファイルの値の翻訳を含みます。
+- <strong>php-inline.json</strong> は PHP ローカライズファイルの値のインライン翻訳を含みます。
+- <strong>json.json</strong> は JSON ローカライズファイルの値の翻訳を含みます。
+- <strong>json-inline.json</strong> は JSON ローカライズファイルの値のインライン翻訳を含みます。
+- <strong>\_excludes.json</strong> は英語と同じになる翻訳の値を含みます。このファイルには値の一覧を記述します。キーの一覧ではありません。
+
+## ファイルを変更する {/* #how_to_edit_files */}
+
+翻訳対象のファイルはすべて `locales` フォルダーにあり、拡張子は JSON です。変更したいファイルを開いて編集してください。
+
+:::tip
+
+キーに誤りがあっても変更しないでください。Laravel が読み取れなくなります。
+
+誤字を修正するには、Laravel チームの該当プロダクトに[プルリクエスト](<https://github.com/orgs/laravel/repositories>)を送ってください。
+
+上流で修正されると、私たちの製品ではキーが自動更新されます。自動更新は 1 日に 1 回行われます。
+
+:::
+
+1. ローカライズファイルを開きます。
+1. キーの値を変更します。
+1. コミットを作成してプッシュします。
+1. 変更するロケールのコードを指定してプルリクエストを作成します。以下は例です。
+
+   :::tip
+
+   \[fr\]: Added new localization
+
+   :::
+
+:::tip
+
+接尾辞が `inline` のファイルには、現在の属性への参照（`:attribute`）を含めないでください。
+
+インライン翻訳では、フィールドを示す表現が異なります。
+
+```text
+// 通常の翻訳
+The :attribute must contain at least one letter.
+
+// インライン翻訳
+This field must contain at least one letter.
+```
+
+:::
+
+## 新しいロケールを追加する {/* #how_to_add_a_new_locale */}
+
+### Laravel Lang プロジェクトの場合 {/* #for_laravel_lang_projects */}
+
+通常は、利用可能なロケールがすでに各プロジェクトに含まれています。新しいロケールを提案する場合は、[ディスカッションでお知らせください](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>)。
+
+### サードパーティープロジェクトの場合 {/* #for_third_party_projects */}
+
+:::tip
+
+`laravel-lang/locale-list` にないロケールを追加する場合は、[ディスカッションでお知らせください](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>)。
+
+:::
+
+`laravel-lang/status-generator` パッケージがインストールされていることを確認し、次のコンソールコマンドを実行します。
+
+```bash
+vendor/bin/lang create <locale>
+# vendor/bin/lang create fr
+```
+
+不足しているロケールをすべてインストールするには、ロケールコードを指定せずにコマンドを実行します。
+
+```bash
+vendor/bin/lang create
+```
+
+## コードスタイル {/* #code_style */}
+
+Laravel-Lang チームは、コーディング規約 [PER](<https://www.php-fig.org/per/coding-style/>) とオートロード規約 [PSR-4](<https://www.php-fig.org/psr/psr-4/>) に従います。
+
+コードスタイルに合わせて整形するには、以下のコンソールコマンドを実行します。
+
+```bash
+composer style
+```
+
+## プルリクエストのタイトル {/* #pr_title */}
+
+プルリクエストのタイトルは次の形式に従ってください。
+
+```bash
+[locale]: Description
+```
+
+以下はタイトルの例です。
+
+```bash
+[fr]: Added new localization
+```
+
+タイトルが所定の形式に従っているかどうかを、次の正規表現で検証します。
+
+```bash
+/^(Draft:\s)?\[[a-zA-Z,_\s]+\]:\s.+$/
+```
+
+## 行動規範 {/* #code_of_conduct */}
+
+Laravel の行動規範は [Contributor Covenant](<https://www.contributor-covenant.org/version/2/1/code_of_conduct/>) に基づきます。行動規範に違反する行為は、[Andrey Helldar、Fred Delrieu](<mailto:helldar@dragon-code.pro;caouecs@caouecs.net>) に報告できます。
+
+- 参加者は異なる見解も尊重します。
+- 参加者は、発言や行動に個人攻撃や個人をおとしめる発言が含まれないようにしなければなりません。
+- 参加者は他者の発言や行動を解釈するとき、常に善意を前提とすることが望まれます。
+- ハラスメントと合理的に見なされる行為は容認しません。

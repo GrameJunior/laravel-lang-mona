@@ -1,0 +1,27 @@
+---
+title: "Common"
+slug: /upgrade-common.html
+description: "معلومات عن ترقية Common من الإصدار 5 إلى الإصدار 6."
+---
+
+## تحديث التبعيات {/* #updating_dependencies */}
+
+حدّث التبعية التالية في ملف `composer.json` لتطبيقك:
+
+- `laravel-lang/common` إلى `^6.0`
+
+إذا كانت التبعية مدرجة في قسم `require-dev`، فانقلها إلى قسم `require`.
+
+بعد ذلك، شغّل أمر تحديث التبعيات:
+
+```bash
+composer update
+```
+
+## ترقية Publisher {/* #upgrade_publisher */}
+
+نفّذ جميع خطوات دليل ترقية Publisher باستثناء تحديث التبعيات.
+
+## ترقية JSON Fallback {/* #upgrade_json_fallback */}
+
+إذا كنت تستخدم حزمة `laravel-lang/json-fallback-hotfix`، فستحتاج إلى تطبيق التعديلات المطلوبة على المشروع.

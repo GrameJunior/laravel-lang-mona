@@ -1,0 +1,18 @@
+{
+  "version.label": {
+    "message": "20.x",
+    "description": "The label for version current"
+  },
+  "sidebar.documentation.category.Localize an application": {
+    "message": "应用本地化",
+    "description": "The label for category 'Localize an application' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Packages and plugins": {
+    "message": "软件包和插件",
+    "description": "The label for category 'Packages and plugins' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Project": {
+    "message": "项目",
+    "description": "The label for category 'Project' in sidebar 'documentation'"
+  }
+}

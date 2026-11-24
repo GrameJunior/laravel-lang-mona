@@ -1,0 +1,50 @@
+---
+title: "Installer des plugins"
+slug: /plugins-installation.html
+description: "Installez des plugins de traduction avec le Publisher."
+---
+
+:::note
+
+Vous pouvez également consulter les listes de plugins [officiels](<./plugins-official.mdx>) et [communautaires](<./plugins-community.mdx>).
+
+:::
+
+Pour faire gérer un plugin par le Publisher, procédez comme suit.
+
+1. Installez le paquet dans votre application. Utilisez par exemple `composer require --dev laravel-lang/lang:^15.39.1` ou choisissez un autre paquet.
+1. C’est tout 😊
+
+Lorsque vous lancez la commande `php artisan lang:update`, le Publisher vérifie les paquets indiqués et met automatiquement à jour les fichiers de votre application.
+
+Si plusieurs paquets disposent de fichiers de même nom, par exemple `custom.php`, le Publisher traite toutes les clés de ces fichiers.
+
+:::tip
+
+Pour faciliter le développement, utilisez le [modèle de pack de traduction](<https://github.com/Laravel-Lang/translations-template>).
+
+:::
+
+Bonne localisation ! 😊
+
+## Plugins {/* #plugins */}
+
+<div className="legacy-card-grid">
+
+<div className="card legacy-card">
+
+[Plugins officiels](<./plugins-official.mdx>)
+
+Liste des plugins développés et entretenus par l’équipe Laravel-Lang.
+
+</div>
+
+<div className="card legacy-card">
+
+[Plugins de la communauté](<./plugins-community.mdx>)
+
+Liste des plugins développés et entretenus par la communauté.
+
+</div>
+
+</div>

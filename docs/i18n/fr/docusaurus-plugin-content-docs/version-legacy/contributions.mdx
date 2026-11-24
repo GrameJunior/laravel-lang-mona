@@ -1,0 +1,124 @@
+---
+title: "Guide de contribution"
+slug: /contributions.html
+description: "Aidez à développer les projets Laravel-Lang."
+---
+
+Les contributions sont <strong>les bienvenues</strong> et seront intégralement <strong>attribuées</strong> à leurs auteurs.
+
+Nous acceptons les contributions par pull request dans [tous les projets](<https://github.com/orgs/Laravel-Lang/repositories>) de notre organisation.
+
+## À quoi servent ces fichiers ? {/* #what_do_the_files_mean */}
+
+- <strong>php.json</strong> contient les traductions des valeurs des fichiers de langue PHP.
+- <strong>php-inline.json</strong> contient les traductions en ligne des valeurs des fichiers de langue PHP.
+- <strong>json.json</strong> contient les traductions des valeurs des fichiers de langue JSON.
+- <strong>json-inline.json</strong> contient les traductions en ligne des valeurs des fichiers de langue JSON.
+- <strong>\_excludes.json</strong> contient les valeurs dont la traduction est identique à l’anglais. Ce fichier répertorie les valeurs et non les clés.
+
+## Comment modifier les fichiers ? {/* #how_to_edit_files */}
+
+Tous les fichiers à traduire portent l’extension JSON et se trouvent dans le dossier `locales`. Ouvrez le fichier voulu et modifiez-le.
+
+:::tip
+
+Même si vous repérez une erreur dans une clé, ne la modifiez pas, sinon Laravel ne pourra plus la lire.
+
+Pour corriger l’orthographe, vous pouvez soumettre une [pull request](<https://github.com/orgs/laravel/repositories>) au projet concerné de l’équipe Laravel.
+
+Après cette correction, nos projets mettront automatiquement les clés à jour. Cette mise à jour a lieu une fois par jour.
+
+:::
+
+1. Ouvrez le fichier de langue.
+1. Modifiez les valeurs associées aux clés.
+1. Créez un commit et poussez-le.
+1. Ouvrez une pull request en indiquant le code de la langue que vous modifiez, comme dans l’exemple suivant.
+
+   :::tip
+
+   \[fr\]: Added new localization
+
+   :::
+
+:::tip
+
+Veillez à ce que les fichiers portant le suffixe `inline` ne fassent pas référence à l’attribut courant (`:attribute`).
+
+Les traductions en ligne se distinguent par leur formulation.
+
+```text
+// Message standard
+The :attribute must contain at least one letter.
+
+// Message en ligne
+This field must contain at least one letter.
+```
+
+:::
+
+## Comment ajouter une langue ? {/* #how_to_add_a_new_locale */}
+
+### Pour les projets Laravel-Lang {/* #for_laravel_lang_projects */}
+
+En règle générale, tous nos projets incluent déjà les langues disponibles. Si vous souhaitez en proposer une nouvelle, [écrivez-nous](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+### Pour les projets tiers {/* #for_third_party_projects */}
+
+:::tip
+
+Pour ajouter une langue qui ne figure pas dans `laravel-lang/locale-list`, [écrivez-nous](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+:::
+
+Vérifiez que le paquet `laravel-lang/status-generator` est installé, puis exécutez la commande suivante.
+
+```bash
+vendor/bin/lang create <locale>
+# vendor/bin/lang create fr
+```
+
+Pour installer toutes les langues manquantes, exécutez la commande sans indiquer de code de langue.
+
+```bash
+vendor/bin/lang create
+```
+
+## Style du code {/* #code_style */}
+
+L’équipe Laravel-Lang suit la norme de style [PER](<https://www.php-fig.org/per/coding-style/>) et la norme de chargement automatique [PSR-4](<https://www.php-fig.org/psr/psr-4/>).
+
+Pour appliquer la mise en forme du code, exécutez la commande suivante.
+
+```bash
+composer style
+```
+
+## Titre d’une pull request {/* #pr_title */}
+
+Le titre de la pull request doit respecter le format suivant.
+
+```bash
+[locale]: Description
+```
+
+Voici un exemple.
+
+```bash
+[fr]: Added new localization
+```
+
+Une expression régulière vérifie que le titre respecte le format attendu.
+
+```bash
+/^(Draft:\s)?\[[a-zA-Z,_\s]+\]:\s.+$/
+```
+
+## Code de conduite {/* #code_of_conduct */}
+
+Le code de conduite de Laravel s’inspire de celui du [Contributor Covenant](<https://www.contributor-covenant.org/version/2/1/code_of_conduct/>). Vous pouvez signaler toute violation du code de conduite à [Andrey Helldar, Fred Delrieu](<mailto:helldar@dragon-code.pro;caouecs@caouecs.net>).
+
+- Les participants doivent faire preuve de tolérance envers les opinions divergentes.
+- Les participants doivent s’abstenir de toute attaque personnelle et de toute remarque dénigrante, dans leurs paroles comme dans leurs actes.
+- Les participants doivent toujours présumer de la bonne foi d’autrui lorsqu’ils interprètent ses paroles ou ses actes.
+- Tout comportement pouvant raisonnablement être considéré comme du harcèlement est interdit.

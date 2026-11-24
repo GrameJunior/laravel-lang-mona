@@ -1,0 +1,23 @@
+{
+  "releaseLine": {
+    "message": "Званични пакети имају исту верзију издања."
+  },
+  "documentation": {
+    "message": "Документација"
+  },
+  "optional": {
+    "message": "Опционално"
+  },
+  "legacy": {
+    "message": "Архивска документација"
+  },
+  "legacyDescription": {
+    "message": "Водичи за инсталације које претходе Mona."
+  },
+  "moved": {
+    "message": "Документација је премештена"
+  },
+  "redirect": {
+    "message": "Идите на документацију"
+  }
+}

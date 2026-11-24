@@ -1,0 +1,35 @@
+---
+title: "Управљање локалима"
+slug: /manage-locales.html
+description: "Опште информације о управљању локализацијама"
+---
+
+:::warning
+
+Laravel подразумевано <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">не дозвољава</a> резервне преводе за JSON кључеве. На пример, позив `__('Remember Me')` враћа `Remember Me` уместо `Se souvenir de moi` када је француски резервни језик.
+
+:::
+
+Готово све команде конзоле прихватају низ локала као параметре.
+
+Погледајте пример.
+
+```bash
+php artisan lang:<command> fr de de_AT de_CH vi zh_CN
+php artisan lang:<command> fr
+php artisan lang:<command>
+```
+
+Значење аргумената
+
+- `fr de de_AT de_CH vi zh_CN` је списак локала раздвојених размацима.
+- `fr` показује да можете да наведете и само један локал.
+- Ако параметар није прослеђен, скрипта поставља два питања.
+- `Do you want to %s all localizations?`, при чему `%s` може бити `install`, `remove` или `reset`.
+- Ако је одговор `no`, следи `Select localizations to add (specify the necessary localizations separated by commas)`.
+
+:::note
+
+При свакој радњи над датотекама (`install`, `uninstall`, `reset` и `update`) поред PHP датотека аутоматски се обрађују и JSON датотеке, укључујући преводе за [Laravel Framework](<https://laravel.com>), [Jetstream](<https://jetstream.laravel.com/>), [Fortify](<https://github.com/laravel/fortify>), [Cashier](<https://laravel.com/docs/billing>), [Breeze](<https://github.com/laravel/breeze>), [Nova (укључујући Dusk Suite и Log Viewer)](<https://nova.laravel.com/>), [Nova](<https://nova.laravel.com/>) (укључујући [Dusk Suite](<https://github.com/laravel/nova-dusk-suite>), [Log Viewer](<https://github.com/laravel/nova-log-viewer>)) и [UI](<https://github.com/laravel/ui>).
+
+:::

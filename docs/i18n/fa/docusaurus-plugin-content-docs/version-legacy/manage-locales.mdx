@@ -1,0 +1,35 @@
+---
+title: "مدیریت زبان‌های منطقه‌ای"
+slug: /manage-locales.html
+description: "اطلاعات عمومی مدیریت بومی‌سازی"
+---
+
+:::warning
+
+Laravel در حالت پیش‌فرض ترجمهٔ جایگزین برای کلیدهای JSON را <a href={"https://github.com/laravel/framework/issues/41565#issuecomment-1073572954"} target="_blank" rel="noopener noreferrer">پشتیبانی نمی‌کند</a>. برای نمونه، هنگام فراخوانی `__('Remember Me')`، به‌جای `Se souvenir de moi` برای زبان جایگزین فرانسوی، `Remember Me` برمی‌گردد.
+
+:::
+
+تقریباً همهٔ فرمان‌های کنسول آرایه‌ای از زبان‌های منطقه‌ای را به‌عنوان پارامتر می‌پذیرند.
+
+نمونه‌ای در ادامه آمده است.
+
+```bash
+php artisan lang:<command> fr de de_AT de_CH vi zh_CN
+php artisan lang:<command> fr
+php artisan lang:<command>
+```
+
+معنای گزینه‌ها در ادامه آمده است.
+
+- `fr de de_AT de_CH vi zh_CN` فهرستی از زبان‌های منطقه‌ای جداشده با فاصله است.
+- مانند `fr` می‌توان نام یک زبان منطقه‌ای را هم به‌تنهایی نوشت.
+- اگر هنگام فراخوانی پارامتر را ندهید، اسکریپت دو پرسش مطرح می‌کند.
+- `Do you want to %s all localizations?` که در آن `%s` یکی از `install`، `remove` یا `reset` است.
+- اگر `no` را انتخاب کنید، پرسش بعدی `Select localizations to add (specify the necessary localizations separated by commas)` است.
+
+:::note
+
+در هر عملیات فایل (`install`، `uninstall`، `reset` و `update`)، علاوه بر فایل‌های PHP، فایل‌های JSON هم خودکار پردازش می‌شوند. این شامل ترجمه‌های [Laravel Framework](<https://laravel.com>)، [Jetstream](<https://jetstream.laravel.com/>)، [Fortify](<https://github.com/laravel/fortify>)، [Cashier](<https://laravel.com/docs/billing>)، [Breeze](<https://github.com/laravel/breeze>)، [Nova (همراه با Dusk Suite و Log Viewer)](<https://nova.laravel.com/>)، [Nova](<https://nova.laravel.com/>) (همراه با [Dusk Suite](<https://github.com/laravel/nova-dusk-suite>) و [Log Viewer](<https://github.com/laravel/nova-log-viewer>)) و [UI](<https://github.com/laravel/ui>) است.
+
+:::

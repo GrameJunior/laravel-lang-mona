@@ -1,0 +1,34 @@
+{
+  "version.label": {
+    "message": "旧版",
+    "description": "The label for version legacy"
+  },
+  "sidebar.documentation.category.Prologue": {
+    "message": "概要",
+    "description": "The label for category 'Prologue' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Upgrade Guide": {
+    "message": "アップグレードガイド",
+    "description": "The label for category 'Upgrade Guide' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Getting Started": {
+    "message": "はじめに",
+    "description": "The label for category 'Getting Started' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Managing Locales": {
+    "message": "ロケールの管理",
+    "description": "The label for category 'Managing Locales' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Packages": {
+    "message": "パッケージ",
+    "description": "The label for category 'Packages' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.category.Plugins": {
+    "message": "プラグイン",
+    "description": "The label for category 'Plugins' in sidebar 'documentation'"
+  },
+  "sidebar.documentation.doc.License": {
+    "message": "ライセンス",
+    "description": "The label for the doc item 'License' in sidebar 'documentation', linking to the doc license"
+  }
+}

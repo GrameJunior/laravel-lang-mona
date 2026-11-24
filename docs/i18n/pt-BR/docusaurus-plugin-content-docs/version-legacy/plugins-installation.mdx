@@ -1,0 +1,50 @@
+---
+title: "Instalar plugins"
+slug: /plugins-installation.html
+description: "Como instalar plugins de localização com o Publisher"
+---
+
+:::note
+
+Você também pode consultar a lista de plugins disponíveis, [oficiais](<./plugins-official.mdx>) e [da comunidade](<./plugins-community.mdx>).
+
+:::
+
+Para que o gerenciador use o plugin, instale o pacote.
+
+1. Instale o pacote em sua aplicação. Por exemplo, execute `composer require --dev laravel-lang/lang:^15.39.1` ou instale outro pacote.
+1. Pronto 😊
+
+Ao executar `php artisan lang:update`, o gerenciador verifica os pacotes informados e atualiza automaticamente os arquivos da aplicação.
+
+Se houver arquivos com o mesmo nome em pacotes diferentes, como `custom.php`, o gerenciador processa as chaves de todos eles.
+
+:::tip
+
+Para facilitar o desenvolvimento, use um [modelo de traduções](<https://github.com/Laravel-Lang/translations-template>) pronto.
+
+:::
+
+Bom uso! 😊
+
+## Plugins de tradução {/* #plugins */}
+
+<div className="legacy-card-grid">
+
+<div className="card legacy-card">
+
+[Plugins oficiais](<./plugins-official.mdx>)
+
+Lista de plugins desenvolvidos e mantidos pela equipe Laravel-Lang.
+
+</div>
+
+<div className="card legacy-card">
+
+[Plugins da comunidade](<./plugins-community.mdx>)
+
+Lista de plugins desenvolvidos e mantidos pela comunidade.
+
+</div>
+
+</div>

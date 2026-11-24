@@ -1,0 +1,75 @@
+{
+  "home.description": {
+    "message": "Laravel-Lang으로 번역을 설치하고 라우트와 Eloquent 모델을 현지화하세요."
+  },
+  "home.guide.translations.title": {
+    "message": "로캘 관리"
+  },
+  "home.guide.translations.description": {
+    "message": "Artisan으로 번역을 추가, 갱신 및 제거합니다."
+  },
+  "home.guide.configure.title": {
+    "message": "현지화 설정"
+  },
+  "home.guide.configure.description": {
+    "message": "로캘 별칭, 현지화된 라우트 및 모델 번역을 설정합니다."
+  },
+  "home.guide.plugins.title": {
+    "message": "번역 플러그인"
+  },
+  "home.guide.plugins.description": {
+    "message": "번역 팩을 설치하거나 직접 만듭니다."
+  },
+  "home.guide.upgrade.title": {
+    "message": "Mona로 업그레이드하기"
+  },
+  "home.guide.upgrade.description": {
+    "message": "의존성, 설정 및 번역을 마이그레이션합니다."
+  },
+  "home.title": {
+    "message": "문서"
+  },
+  "home.hero.title": {
+    "message": "Laravel 애플리케이션 현지화"
+  },
+  "home.start": {
+    "message": "1분 만에 시작하기"
+  },
+  "home.legacy": {
+    "message": "이전 버전 문서"
+  },
+  "home.example.install": {
+    "message": "프랑스어 번역 설치하기"
+  },
+  "home.example.use": {
+    "message": "번역 사용하기"
+  },
+  "home.guides": {
+    "message": "현지화 가이드"
+  },
+  "home.llms": {
+    "message": "AI 에이전트용 문서(llms.txt)"
+  },
+  "localePicker.label": {
+    "message": "로캘"
+  },
+  "localePicker.install": {
+    "message": "{language} 번역을 설치하려면 아래 명령을 실행하세요."
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "시스템 모드",
+    "description": "The name for the system color mode"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(새 탭에서 열림)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "드롭다운 펼치기",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "드롭다운 접기",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  }
+}

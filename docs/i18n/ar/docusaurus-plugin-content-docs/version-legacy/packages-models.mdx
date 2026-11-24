@@ -1,0 +1,547 @@
+---
+title: "Models"
+slug: /packages-models.html
+description: "طريقة سهلة وسريعة لتوطين النماذج."
+toc_max_heading_level: 4
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"صدر إصدار مستقر من المشروع"}>مستقر</span> <span className="badge badge--secondary" title={"أحدث إصدار غير معروف"}>غير معروف</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [العرض على GitHub](<https://github.com/laravel-lang/models>)
+
+## التثبيت {/* #installation */}
+
+:::note
+
+اطّلع على [جدول التوافق](<#compatibility> "جدول توافق حزمة Models").
+
+:::
+
+للتثبيت، شغّل أمر الطرفية:
+
+```bash
+composer require laravel-lang/models:^1.8.0
+```
+
+يمكنك أيضًا [تغيير](<./configuration.mdx#models>) الإعدادات الافتراضية بتعديل ملف `config/localization.php`.
+
+## أوامر الطرفية {/* #console_commands */}
+
+### إنشاء نموذج ترجمة {/* #create_translation_model */}
+
+آلية التخزين مصمّمة لحفظ كميات كبيرة من البيانات دون خلطها. لذلك يُنشأ نموذج ترجمة مستقل لكل نموذج يحتاج إلى ترجمات.
+
+أسهل طريقة لإنشاء مستودع الترجمة هي استخدام أمر الطرفية `make:model-translation`:
+
+```bash
+php artisan make:model-translation
+```
+
+عند التشغيل، يُطلب منك تحديد النموذج المصدري. وإذا لم يكن موجودًا، يُنشأ. ثم يُطلب منك تحديد الأعمدة المراد إنشاؤها، مثل `title` و`description`.
+
+إذا أضفت أعمدة زائدة أو لم تضف أي أعمدة، فسيولّد أمر الطرفية ملف النموذج وترحيله، ويمكنك إجراء التعديلات اللازمة فيهما.
+
+يجب أن يكون نموذج التخزين المُنشأ دائمًا بجوار النموذج الأب. مثلًا:
+
+```text
+App\Models\Content\News
+App\Models\Content\NewsTranslation
+App\Models\Products\Category
+App\Models\Products\CategoryTranslation
+```
+
+:::tip
+
+اللاحقة الافتراضية هي `Translation`، ويمكنك استبدالها بلاحقة خاصة بك في قسم `models` من ملف الإعداد [config/localization.php](<./configuration.mdx#models>).
+
+:::
+
+بعد ذلك شغّل الترحيل باستخدام أمر الطرفية:
+
+```bash
+php artisan migrate
+```
+
+#### الخيارات {/* #options */}
+
+<dl>
+<dt>
+
+model
+
+</dt>
+<dd>
+
+يحدّد اسم النموذج الأب الذي سيُنشأ له مستودع الترجمة.
+
+مثلًا:
+
+```bash
+php artisan make:model-translation Page
+# أو
+php artisan make:model-translation App\Models\Page
+```
+
+</dd>
+<dt>
+
+--columns
+
+</dt>
+<dd>
+
+يقبل المعامل قيمة واحدة أو أكثر، ويتضمن قائمة الأعمدة المطلوب إضافتها.
+
+مثلًا:
+
+```bash
+--columns=title --columns=description
+```
+
+```php
+Artisan::call('make:model-translation', [
+    '--columns' => ['title', 'description'],
+]);
+```
+
+</dd>
+</dl>
+
+### إعداد النموذج {/* #model_setup */}
+
+بعد إنشاء مستودع الترجمة، أضف السمة `LaravelLang\Models\HasTranslations` إلى النموذج الرئيسي.
+
+مثلًا:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+```
+
+تأكّد أيضًا من أن النموذج الأساسي لا يحتوي على حقول فعلية أو افتراضية تُستخدم للترجمات.
+
+مثلًا:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+
+    protected $fillable = [
+        'category_id',
+
+        // يجب إزالة ما يلي:
+        'title',
+        'description',
+    ];
+}
+```
+
+### الملفات المساعدة لبيئة التطوير {/* #ide_helpers */}
+
+:::tip
+
+عند إنشاء مستودع الترجمة بأمر الطرفية `php artisan make:model-translation`، يولّد الأمر الملفات المساعدة تلقائيًا.
+
+يُستحسن تشغيل أمر توليد الملفات المساعدة عند تعديل نموذج تخزين الترجمات.
+
+:::
+
+لتتمكّن بيئة التطوير من التعامل مع الحقول القابلة للترجمة، شغّل أمر الطرفية:
+
+```bash
+php artisan lang:models-helper
+```
+
+ينشئ هذا الأمر ملفات مساعدة تتيح لبيئة التطوير التعرّف على الحقول. مثلًا:
+
+<Tabs>
+
+<TabItem value="tab-1" label={"بعد"}>
+
+<img src={require("@site/static/images/models-helper-after.png").default} alt={"مع الملف المساعد"} />
+
+</TabItem>
+
+<TabItem value="tab-2" label={"قبل"}>
+
+<img src={require("@site/static/images/models-helper-before.png").default} alt={"دون الملف المساعد"} />
+
+</TabItem>
+
+</Tabs>
+
+يمكنك أيضًا تغيير مسار مجلد تخزين هذه الملفات في المعامل `helpers` ضمن قسم `models` من ملف الإعداد [config/localization.php](<./configuration.mdx#models>). تأكّد من أن بيئة التطوير تفهرس المسار الجديد.
+
+## الاستخدام {/* #usage */}
+
+شاهد مقطعًا قصيرًا عن تثبيت حزمتي [Routes](<./packages-routes.mdx#usage> "طريقة استخدام حزمة Routes") و[Models](<./packages-models.mdx#usage> "طريقة استخدام حزمة Models") واستخدامهما في تطبيق واحد ([المشاهدة على YouTube](<https://youtu.be/mH76pGbpVu0>)):
+
+<iframe className="legacy-video" src="https://www.youtube-nocookie.com/embed/mH76pGbpVu0" title={"المسارات والنماذج"} loading="lazy" allowFullScreen />
+
+### الحصول على ترجمة {/* #get_translation */}
+
+:::tip
+
+تنقل جميع مخازن المستودع علامة [التحميل المسبق](<https://laravel.com/docs/eloquent-relationships#eager-loading>) إلى النموذج الأب تلقائيًا، فلا حاجة إلى فعل ذلك يدويًا.
+
+افتراضيًا، تتضمن العلاقة سجلات الإعدادين المحليين الأساسيين، الحالي والاحتياطي، فقط. ويمكنك تحميل جميع السجلات بتغيير [إعدادات التصفية](<./configuration.mdx#models>):
+
+```php
+// config/localization.php
+config(['localization.models.filter.enabled' => false]);
+```
+
+```ini
+; .env
+LOCALIZATION_FILTER_ENABLED=false
+```
+
+في هذه الحالة تُحمّل جميع الإعدادات المحلية المتاحة للعناصر.
+
+:::
+
+للحصول على قيمة خاصية للإعداد المحلي الحالي، اقرأ خاصية النموذج مباشرةً. مثلًا:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title;
+```
+
+إذا غابت قيمة <abbr title={"القيمة المحدّدة في المعامل \"app.locale\" في ملف \"config/app.php\"."}>الإعداد المحلي الرئيسي</abbr>، تعيد الدالة قيمة <abbr title={"القيمة المحدّدة في المعامل \"app.fallback_locale\" في ملف \"config/app.php\"."}>الإعداد المحلي الاحتياطي</abbr>.
+
+يمكنك أيضًا استخدام الدالة `getTranslation`:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title');
+```
+
+للحصول على قيمة لإعداد محلي معيّن، مرّر رمز الإعداد وسيطةً ثانية. مثلًا:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->getTranslation('title', 'fr');
+// أو
+$page->getTranslation('title', Locale::French);
+```
+
+:::tip
+
+تعيد هذه الدوال القيمة حتى إذا كان النموذج يحتوي على تغييرات لم تُكتب في قاعدة البيانات.
+
+:::
+
+### تعيين الترجمات {/* #set_translations */}
+
+#### قيمة واحدة {/* #single_value */}
+
+لإضافة ترجمة أو تحديثها للإعداد المحلي الحالي للتطبيق، عيّن قيمة لخاصية النموذج مباشرةً. مثلًا:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->title = 'New value';
+```
+
+يمكنك أيضًا تعيين قيمة جديدة باستخدام الدالة `setTranslation`:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value');
+```
+
+تعيّن هذه الدوال قيمة جديدة للإعداد المحلي النشط حاليًا. ولتعيين القيمة لإعداد محلي معيّن، مرّر رمزه وسيطةً ثالثة لهذه الدالة. مثلًا:
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->setTranslation('title', 'New value', 'fr');
+// أو
+$page->setTranslation('title', 'New value', Locale::French);
+```
+
+يمكنك أيضًا تعبئة الحقول دفعة واحدة:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->fill([
+    'title' => 'New value',
+]);
+```
+
+:::note
+
+تخزّن هذه الدوال القيم الجديدة في كائنات النموذج. ولكتابة التغييرات في قاعدة البيانات، استدعِ الدالة `save` على النموذج الأب. مثلًا:
+
+```php
+$page->save();
+```
+
+:::
+
+يمكنك أيضًا تعبئة الحقول عند إنشاء النموذج. مثلًا:
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+Article::create([
+    'title' => 'New value',
+]);
+```
+
+#### عدة قيم {/* #plural_value */}
+
+لتعبئة خاصية سريعًا بترجمات لعدة إعدادات محلية، استخدم إحدى الطرق الآتية:
+
+```php
+use App\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Models\HasTranslations;
+
+/** @var Model|HasTranslations $post */
+$post = Article::first();
+
+$titles = [
+    'fr' => 'Mettre à jour & continuer à éditer',
+    'en' => 'Update & Continue Editing',
+    'de' => 'Aktualisieren & Weiterbearbeiten',
+];
+
+$descriptions = collect([
+    Locale::French->value => 'Met à jour les informations et continue d\'éditer le message',
+    Locale::German->value => 'Aktualisiert die Informationen und bearbeitet den Beitrag weiter',
+]);
+
+// الخيار 1
+foreach ($titles as $locale => $value) {
+    $post->setTranslation('title', $value, $locale);
+}
+
+foreach ($descriptions as $locale => $value) {
+    $post->setTranslation('description', $value, $locale);
+}
+
+// الخيار 2
+$post->setTranslations('title', $titles);
+$post->setTranslations('description', $descriptions);
+```
+
+يمكنك أيضًا تعيين كائنات `iterable` عند التعبئة دفعة واحدة. مثلًا:
+
+```php
+$post->fill([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+
+Article::create([
+    'title'       => $titles,
+    'description' => $descriptions,
+]);
+```
+
+ليس من الضروري تحديد الإعدادات المحلية نفسها لكل حقل. يعبّئ المثال أعلاه حقل `title` بالفرنسية والإنجليزية والألمانية، بينما يعيّن قيم حقل `description` بالفرنسية والألمانية فقط.
+
+### حذف ترجمة {/* #forget_translation */}
+
+:::warning
+
+بخلاف دوال [الإضافة والتحديث](<#set_translations>)، تعدّل الدالتان `forgetTranslation` و`forgetAllTranslations` قاعدة البيانات فورًا باستدعاء الدالة `delete` على نموذج الترجمة.
+
+لا يتضمن نموذج الترجمة افتراضيًا السمة [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>)، لذا تُحذف البيانات فورًا. يمكنك إضافة دعم الحذف الناعم بنفسك إلى فئة النموذج وملف الترحيل.
+
+:::
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetTranslation('fr');
+// أو
+$page->forgetTranslation(Locale::French);
+```
+
+يمكنك أيضًا حذف جميع الترجمات دفعة واحدة باستدعاء `forgetAllTranslations`.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->forgetAllTranslations();
+```
+
+### التحقّق من وجود ترجمة {/* #has_translated */}
+
+ثمة عدة طرق للتحقّق من وجود ترجمة لعمود. أولها استدعاء الدالة `hasTranslated` وتمرير اسم العمود معاملًا.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->hasTranslated('title');
+```
+
+تتحقّق الدالة من الإعداد المحلي <abbr title={"القيمة المحدّدة في المعامل \"app.locale\" في ملف \"config/app.php\"."}>الرئيسي</abbr> و<abbr title={"القيمة المحدّدة في المعامل \"app.fallback_locale\" في ملف \"config/app.php\"."}>الاحتياطي</abbr>. وتعيد `true` إذا كانت إحدى القيمتين معبّأة، أو `false` إذا كانتا فارغتين.
+
+:::note
+
+تُعامل القيم المنطقية المخزّنة (`true / false`) والقيم الرقمية (`0, 0.0`) على أنها قيم معبّأة، وتعيد الدالة `true` لها.
+
+:::
+
+إذا أردت التحقّق من وجود قيمة لإعداد محلي معيّن، فمرّر رمزه وسيطةً ثانية. مثلًا:
+
+```php
+use App\Models\Article;
+use LaravelLang\LocaleList\Locale;
+
+$page = Article::first();
+
+$page->hasTranslated('title', 'fr');
+// أو
+$page->hasTranslated('title', Locale::French);
+```
+
+### التحقّق من قابلية الحقل للترجمة {/* #is_translatable */}
+
+تتحقّق الدالة `isTranslatable` من وجود الحقل في الخاصية `$fillable` لنموذج الترجمة.
+
+مثلًا:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelLang\Models\Eloquent\Translation;
+use LaravelLang\Models\HasTranslations;
+
+class Article extends Model
+{
+    use HasTranslations;
+}
+
+class ArticleTranslation extends Translation
+{
+    protected $fillable = [
+        'title',
+    ];
+}
+
+$page = Article::first();
+
+$page->isTranslatable('title'); // true
+$page->isTranslatable('description'); // false
+```
+
+### حذف النموذج الأساسي {/* #delete_base_model */}
+
+يتضمن نموذج الترجمة افتراضيًا مفتاحًا خارجيًا إلى النموذج الأب. لذلك إذا حُذف النموذج الأب حذفًا ناعمًا عبر السمة [SoftDeletes](<https://laravel.com/docs/eloquent#soft-deleting>)، تبقى كل ترجماته. وعند استدعاء `forceDelete`، تُحذف الترجمات تلقائيًا من قاعدة البيانات.
+
+```php
+use App\Models\Article;
+
+$page = Article::first();
+
+$page->delete();
+// أو
+$page->forceDelete();
+```
+
+## الأحداث {/* #events */}
+
+عند تنفيذ إجراءات معيّنة، تُرسل الأحداث التالية:
+
+```php
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+AllTranslationsHasBeenForgetEvent::dispatch($model);
+TranslationHasBeenForgetEvent::dispatch($model, $locale);
+TranslationHasBeenSetEvent::dispatch($model, $column, $locale, $oldValue, $newValue);
+```
+
+يمكنك الاستماع إلى الحدث عند الحاجة. مثلًا:
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use LaravelLang\Models\Events\AllTranslationsHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenForgetEvent;
+use LaravelLang\Models\Events\TranslationHasBeenSetEvent;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(static function (AllTranslationsHasBeenForgetEvent $event) {
+            Log::info('Forget all locales', [
+                'model' => $event->model->getKey(),
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenForgetEvent $event) {
+            Log::info('Forget locale', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+            ]);
+        });
+
+        Event::listen(static function (TranslationHasBeenSetEvent $event) {
+            Log::info('Set new translation', [
+                'model'  => $event->model->getKey(),
+                'locale' => $event->locale?->value,
+                'column' => $event->column,
+
+                'old' => $event->oldValue,
+                'new' => $event->newValue,
+            ]);
+        });
+    }
+}
+```
+
+## التوافق {/* #compatibility */}
+
+| Laravel | PHP | الحزمة | الحالة |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.2, 8.3, 8.4, 8.5 | `^1.0` | <span className="compatibility-status compatibility-status--supported">مدعوم</span> |

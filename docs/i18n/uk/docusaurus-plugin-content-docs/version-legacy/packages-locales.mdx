@@ -1,0 +1,318 @@
+---
+title: "Locales"
+slug: /packages-locales.html
+description: "Основні засоби роботи з локалями"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"Випущено стабільну версію проєкту"}>Стабільна</span> <span className="badge badge--secondary" title={"Остання версія невідома"}>невідома</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [Переглянути на GitHub](<https://github.com/laravel-lang/locales>)
+
+## Установлення {/* #installation */}
+
+:::note
+
+Перегляньте [таблицю сумісності](<#compatibility> "Сумісність пакета Locales").
+
+:::
+
+Щоб установити пакет, виконайте команду:
+
+```bash
+composer require laravel-lang/locales:^2.11.0
+```
+
+## Використання {/* #usage */}
+
+Для роботи з локалями можна використовувати фасад `LaravelLang\Locales\Facades\Locales`. Він надає дані у двох формах: список кодів локалей або масив об'єктів DTO.
+
+### Об'єкти даних {/* #data_objects */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// Список доступних локалей.
+Locales::available(): array // array<LocaleData>
+
+// Список установлених локалей.
+Locales::installed(bool $withProtects = true): array // array<LocaleData>
+
+// Список невстановлених локалей.
+Locales::notInstalled(): array // array<LocaleData>
+
+// Отримує список захищених локалей.
+Locales::protects(): array // array<LocaleData>
+
+// Перевіряє, чи є мовні пакети для запитаної локалі.
+Locales::isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// Перевіряє, чи встановлено мовний пакет.
+Locales::isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// Перевіряє, чи захищено локаль.
+Locales::isProtected(LocaleData|Locale|string|null $locale): bool
+
+// Перевіряє та повертає дійсну локаль.
+// Для невстановленої локалі повертає поточну локаль застосунку.
+Locales::get(mixed $locale): LocaleData
+
+// Отримує назву типової локалі.
+Locales::getDefault(): LocaleData
+
+// Отримує назву резервної локалі.
+Locales::getFallback(): LocaleData
+
+// Отримує дані доступної локалі, інакше повертає дані поточної локалі застосунку.
+Locales::info(mixed $locale): LocaleData
+```
+
+### Необроблені дані {/* #raw_data */}
+
+```php
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// Список доступних локалей.
+Locales::raw()->available(): array // array<string>
+
+// Список установлених локалей.
+Locales::raw()->installed(bool $withProtects = true): array // array<string>
+
+// Список невстановлених локалей.
+Locales::raw()->notInstalled(): array // array<string>
+
+// Отримує список захищених локалей.
+Locales::raw()->protects(): array // array<string>
+
+// Перевіряє, чи є мовні пакети для запитаної локалі.
+Locales::raw()->isAvailable(LocaleData|Locale|string|null $locale): bool
+
+// Перевіряє, чи встановлено мовний пакет.
+Locales::raw()->isInstalled(LocaleData|Locale|string|null $locale): bool
+
+// Перевіряє, чи захищено локаль.
+Locales::raw()->isProtected(LocaleData|Locale|string|null $locale): bool
+
+// Перевіряє та повертає дійсну локаль.
+// Для невстановленої локалі повертає поточну локаль застосунку.
+Locales::raw()->get(mixed $locale): string
+
+// Отримує назву типової локалі.
+Locales::raw()->getDefault(): string
+
+// Отримує назву резервної локалі.
+Locales::raw()->getFallback(): string
+
+// Отримує код доступної локалі, інакше повертає код поточної локалі застосунку.
+Locales::raw()->info(mixed $locale): string
+```
+
+### Приклади {/* #examples */}
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::getDefault(withCountry: true, withCurrency: true);
+
+// Без псевдоніма
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+// З псевдонімом
+LocaleData {
+  +code: "de-DE"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // vi
+
+return Locales::get('de', withCountry: true, withCurrency: true);
+
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+
+LocaleData {
+  +code: "ar"
+  +regional: "ar_AE"
+  +type: "Arab"
+  +native: "العربية"
+  +localized: "Arabe"
+  +country: CountryData {
+    +code: "EG"
+    +native: "مصر"
+    +localized: "Égypte"
+  }
+  +currency: CurrencyData {
+    +code: "EGP"
+    +numeric: 818
+    +native: "جنيه مصري"
+    +localized: "livre égyptienne"
+  }
+  +direction: Direction {
+    +name: "RightToLeft"
+    +value: "rtl"
+  }
+  +locale: Locale {
+    +name: "Arabic"
+    +value: "ar"
+  }
+}
+```
+
+```php
+use LaravelLang\LocaleList\Direction;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\CountryData;
+use LaravelLang\Locales\Data\CurrencyData;
+use LaravelLang\Locales\Data\LocaleData;
+use LaravelLang\Locales\Facades\Locales;
+
+// config('app.locale') // de
+
+return Locales::get('foo', withCountry: true, withCurrency: true);
+
+// Повертає типову локаль
+LocaleData {
+  +code: "de"
+  +regional: "de_DE"
+  +type: "Latn"
+  +native: "Deutsch"
+  +localized: "Allemand"
+  +country: CountryData {
+    +code: "DE"
+    +native: "Deutschland"
+    +localized: "Allemagne"
+  }
+  +currency: CurrencyData {
+    +code: "EUR"
+    +numeric: 978
+    +native: "Euro"
+    +localized: "euro"
+  }
+  +direction: Direction {
+    +name: "LeftToRight"
+    +value: "ltr"
+  }
+  +locale: Locale {
+    +name: "German"
+    +value: "de"
+  }
+}
+```
+
+```php
+return Locales::raw()->getDefault();
+// Без псевдоніма
+// de
+
+// З псевдонімом
+// de-DE
+```
+
+```php
+return Locales::raw()->get('de');
+// de
+
+return Locales::raw()->get('foo');
+// Повертає типову локаль
+// de
+```
+
+## Сумісність {/* #compatibility */}
+
+| Laravel | PHP | Пакет | Стан |
+| --- | --- | --- | --- |
+| 10, 11, 12, 13 | 8.1, 8.2, 8.3, 8.4, 8.5 | `^2.0` | <span className="compatibility-status compatibility-status--supported">підтримується</span> |
+| 10 | 8.1, 8.2, 8.3 | `^1.0` | <span className="compatibility-status compatibility-status--not-supported">не підтримується</span> |

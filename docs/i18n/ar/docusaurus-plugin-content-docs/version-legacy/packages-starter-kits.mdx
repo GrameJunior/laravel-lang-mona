@@ -1,0 +1,73 @@
+---
+title: "Starter Kits"
+slug: /packages-starter-kits.html
+description: "ترجمات لحزم البدء."
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<span className="badge badge--info" title={"صدر إصدار مستقر من المشروع"}>مستقر</span> <span className="badge badge--secondary" title={"أحدث إصدار غير معروف"}>غير معروف</span>
+
+<ThemedImage alt={""} height={16} sources={{light: useBaseUrl("/images/github-mark.svg"), dark: useBaseUrl("/images/github-mark_dark.svg")}} /> [العرض على GitHub](<https://github.com/laravel-lang/starter-kits>)
+
+:::tip
+
+تتضمن هذه الحزمة توطين واجهة حزم البدء.
+
+وهكذا يمكنك توطينها أيضًا بسهولة.
+
+:::
+
+## التثبيت {/* #installation */}
+
+:::note
+
+اطّلع على [جدول التوافق](<#compatibility> "جدول توافق حزمة Starter Kits").
+
+:::
+
+للتثبيت، شغّل أمر الطرفية:
+
+```bash
+composer require --dev laravel-lang/starter-kits:^1.17.2
+```
+
+## الاستخدام {/* #usage */}
+
+:::note
+
+لنشر مفاتيح ترجمة [حزم بدء Laravel](<https://laravel.com/starter-kits>) بنجاح، أبقِ اسم التطبيق في مفتاح `name` بملف `composer.json` كما هو. إذا غيّرته، فلن تُثبّت ترجمات حزم البدء.
+
+- `laravel/livewire-starter-kit`
+- `laravel/react-starter-kit`
+- `laravel/vue-starter-kit`
+
+:::
+
+يمكنك الآن [تحديث](<./usage-update-locales.mdx> "تحديث الإعدادات المحلية في تطبيق Laravel") الإعدادات المحلية القائمة باستخدام أمر الطرفية `lang:update`:
+
+```bash
+php artisan lang:update
+```
+
+يُستحسن أيضًا إضافة الاستدعاء إلى قسم `post-update-cmd` ضمن كتلة `scripts` في ملف `composer.json`:
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan lang:update"
+        ]
+    }
+}
+```
+
+يتيح ذلك تحديث ملفات التوطين تلقائيًا بعد تحديث التبعيات، دون الحاجة إلى تشغيل أمر `php artisan lang:update` يدويًا.
+
+## التوافق {/* #compatibility */}
+
+| Laravel | PHP | Publisher | الحزمة | الحالة |
+| --- | --- | --- | --- | --- |
+| 12, 13 | 8.2, 8.3, 8.4, 8.5 | 16 | `^1.0` | <span className="compatibility-status compatibility-status--supported">مدعوم</span> |

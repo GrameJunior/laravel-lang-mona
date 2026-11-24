@@ -1,0 +1,24 @@
+---
+title: "添加语言区域"
+slug: /usage-add-locales.html
+description: "向 Laravel 应用添加语言区域"
+---
+
+:::note
+
+可用代码请参阅[语言区域列表](<./available-locales-list.mdx>)。
+
+列表包含 128 个语言区域代码。
+
+:::
+
+要安装所需的语言区域，请运行控制台命令 `php artisan lang:add <locale>`，并传入一个或多个以空格分隔的语言区域代码。
+
+```bash
+php artisan lang:add fr de de_AT de_CH vi zh_CN
+php artisan lang:add fr
+```
+
+如果目标文件已存在，命令会询问是跳过安装还是替换文件。
+
+如果文件包含你自行添加的键，建议跳过，因为 `php artisan lang:update` 可以在保留这些键的同时更新文件。

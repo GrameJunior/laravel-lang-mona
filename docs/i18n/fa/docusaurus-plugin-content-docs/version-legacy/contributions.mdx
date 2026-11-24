@@ -1,0 +1,124 @@
+---
+title: "راهنمای مشارکت"
+slug: /contributions.html
+description: "راهنمای مشارکت توسعه‌دهندگان در پروژه‌های Laravel-Lang"
+---
+
+از مشارکت‌ها <strong>استقبال می‌کنیم</strong> و <strong>نام مشارکت‌کنندگان</strong> را درج می‌کنیم.
+
+برای [همهٔ پروژه‌های](<https://github.com/orgs/Laravel-Lang/repositories>) سازمان، مشارکت را از طریق درخواست ادغام می‌پذیریم.
+
+## فایل‌ها چه کاربردی دارند؟ {/* #what_do_the_files_mean */}
+
+- <strong>php.json</strong> ترجمهٔ مقادیر فایل‌های زبان PHP را دارد.
+- <strong>php-inline.json</strong> ترجمهٔ درون‌خطی مقادیر فایل‌های زبان PHP را دارد.
+- <strong>json.json</strong> ترجمهٔ مقادیر فایل‌های زبان JSON را دارد.
+- <strong>json-inline.json</strong> ترجمهٔ درون‌خطی مقادیر فایل‌های زبان JSON را دارد.
+- <strong>\_excludes.json</strong> مقادیری را دارد که ترجمه‌شان با انگلیسی یکسان است. این فایل فهرست مقدارها را دارد؛ کلیدها در آن ذخیره نمی‌شوند.
+
+## چگونه فایل‌ها را تغییر دهیم؟ {/* #how_to_edit_files */}
+
+همهٔ فایل‌های قابل ترجمه پسوند JSON دارند و در پوشهٔ `locales` قرار گرفته‌اند. فایل دلخواه را باز کنید و تغییرات را اعمال کنید.
+
+:::tip
+
+حتی اگر خطایی در کلید دیدید، آن را تغییر ندهید، وگرنه Laravel نمی‌تواند آن را بخواند.
+
+برای تصحیح املای کلید، فقط می‌توانید [درخواست ادغام](<https://github.com/orgs/laravel/repositories>) را برای محصول مربوط در تیم Laravel بفرستید.
+
+سپس محصولات ما کلیدها را خودکار به‌روز می‌کنند. این به‌روزرسانی روزی یک بار انجام می‌شود.
+
+:::
+
+1. فایل زبان منطقه‌ای را باز کنید.
+1. مقادیر کلیدها را تغییر دهید.
+1. یک کامیت بسازید و آن را push کنید.
+1. درخواست ادغامی باز کنید که کد زبان منطقه‌ایِ تغییرکرده را مشخص کند. نمونه در ادامه آمده است.
+
+   :::tip
+
+   \[fr\]: Added new localization
+
+   :::
+
+:::tip
+
+مراقب فایل‌های دارای پسوند `inline` باشید. نباید ارجاعی به ویژگی فعلی (`:attribute`) داشته باشند.
+
+ترجمه‌های درون‌خطی از شیوهٔ خطاب متفاوتی استفاده می‌کنند.
+
+```text
+// پیام معمولی
+The :attribute must contain at least one letter.
+
+// پیام درون‌خطی
+This field must contain at least one letter.
+```
+
+:::
+
+## چگونه زبان منطقه‌ای جدیدی اضافه کنیم؟ {/* #how_to_add_a_new_locale */}
+
+### پروژه‌های Laravel-Lang {/* #for_laravel_lang_projects */}
+
+معمولاً همهٔ پروژه‌های ما زبان‌های منطقه‌ای موجود را دارند. اگر می‌خواهید زبان جدیدی پیشنهاد دهید، [به ما پیام بدهید](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+### پروژه‌های شخص ثالث {/* #for_third_party_projects */}
+
+:::tip
+
+برای افزودن زبان منطقه‌ای خارج از `laravel-lang/locale-list`، [به ما پیام بدهید](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+:::
+
+مطمئن شوید بستهٔ `laravel-lang/status-generator` نصب شده است و فرمان زیر را اجرا کنید.
+
+```bash
+vendor/bin/lang create <locale>
+# vendor/bin/lang create fr
+```
+
+برای نصب همهٔ زبان‌های منطقه‌ای غایب، فرمان را بدون تعیین کد اجرا کنید.
+
+```bash
+vendor/bin/lang create
+```
+
+## سبک کد {/* #code_style */}
+
+تیم Laravel-Lang از استاندارد کدنویسی [PER](<https://www.php-fig.org/per/coding-style/>) و استاندارد بارگذاری خودکار [PSR-4](<https://www.php-fig.org/psr/psr-4/>) پیروی می‌کند.
+
+برای اعمال قالب‌بندی سبک کد، فرمان زیر را اجرا کنید.
+
+```bash
+composer style
+```
+
+## عنوان درخواست ادغام {/* #pr_title */}
+
+عنوان درخواست ادغام باید از قالب زیر پیروی کند.
+
+```bash
+[locale]: Description
+```
+
+نمونه‌ای در ادامه آمده است.
+
+```bash
+[fr]: Added new localization
+```
+
+انطباق عنوان با قالب تعیین‌شده با این عبارت منظم بررسی می‌شود.
+
+```bash
+/^(Draft:\s)?\[[a-zA-Z,_\s]+\]:\s.+$/
+```
+
+## آیین‌نامهٔ رفتاری {/* #code_of_conduct */}
+
+آیین‌نامهٔ رفتاری Laravel برگرفته از [Contributor Covenant](<https://www.contributor-covenant.org/version/2/1/code_of_conduct/>) است. می‌توانید هرگونه نقض آن را به [Andrey Helldar و Fred Delrieu](<mailto:helldar@dragon-code.pro;caouecs@caouecs.net>) گزارش کنید.
+
+- مشارکت‌کنندگان دیدگاه‌های مخالف را تحمل می‌کنند.
+- مشارکت‌کنندگان باید مطمئن شوند زبان و رفتارشان عاری از حملهٔ شخصی و اظهار نظر تحقیرآمیز دربارهٔ اشخاص است.
+- مشارکت‌کنندگان هنگام تفسیر سخنان و رفتار دیگران باید همواره حسن نیت را فرض کنند.
+- رفتاری که به‌طور معقول آزار به حساب آید تحمل نخواهد شد.

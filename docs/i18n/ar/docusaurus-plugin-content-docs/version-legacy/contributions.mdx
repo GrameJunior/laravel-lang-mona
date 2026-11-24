@@ -1,0 +1,124 @@
+---
+title: "دليل المساهمة"
+slug: /contributions.html
+description: "دليل المطوّرين للمساهمة في تطوير مشاريع Laravel Lang."
+---
+
+<strong>نرحّب</strong> بالمساهمات ونضمن <strong>نسبها إلى أصحابها</strong>.
+
+نقبل المساهمات عبر طلبات السحب في [جميع مشاريع](<https://github.com/orgs/Laravel-Lang/repositories>) مؤسستنا.
+
+## ما وظيفة هذه الملفات؟ {/* #what_do_the_files_mean */}
+
+- <strong>php.json</strong> يحتوي على ترجمات القيم لملفات توطين PHP.
+- <strong>php-inline.json</strong> يحتوي على ترجمات القيم التي لا تذكر اسم الحقل لملفات توطين PHP.
+- <strong>json.json</strong> يحتوي على ترجمات القيم لملفات توطين JSON.
+- <strong>json-inline.json</strong> يحتوي على ترجمات القيم التي لا تذكر اسم الحقل لملفات توطين JSON.
+- <strong>\_excludes.json</strong> يحتوي على القيم التي تطابق ترجمتها النص الإنجليزي. يتضمن الملف قائمة بالقيم.
+
+## كيف تعدّل الملفات؟ {/* #how_to_edit_files */}
+
+كل الملفات المتاحة للترجمة لها اللاحقة `.json` وتقع في مجلد `locales`. افتح الملف المطلوب وأجرِ التغييرات.
+
+:::tip
+
+اترك المفتاح كما هو حتى لو لاحظت فيه خطأً، وإلا فلن يتمكّن Laravel من قراءته.
+
+يمكنك إرسال [طلب سحب](<https://github.com/orgs/laravel/repositories>) إلى المنتج المعني لدى فريق Laravel لتصحيح الإملاء.
+
+بعد ذلك تحدّث منتجاتنا المفاتيح تلقائيًا مرة واحدة يوميًا.
+
+:::
+
+1. افتح ملف التوطين.
+1. غيّر قيم المفاتيح.
+1. أنشئ إيداعًا وادفعه.
+1. أنشئ طلب سحب يتضمن رمز الإعداد المحلي الذي تجري التغييرات له. مثلًا:
+
+   :::tip
+
+   \[fr\]: Added new localization
+
+   :::
+
+:::tip
+
+انتبه إلى الملفات ذات اللاحقة `inline`. ينبغي أن تخلو من الإشارات إلى السمة الحالية (`:attribute`).
+
+تختلف الترجمات التي لا تذكر اسم الحقل في صيغة المخاطبة:
+
+```text
+// هذه ترجمة عادية
+The :attribute must contain at least one letter.
+
+// هذه ترجمة لا تذكر اسم الحقل
+This field must contain at least one letter.
+```
+
+:::
+
+## كيف تضيف إعدادًا محليًا جديدًا؟ {/* #how_to_add_a_new_locale */}
+
+### لمشاريع Laravel Lang {/* #for_laravel_lang_projects */}
+
+تتضمن مشاريعنا عادةً الإعدادات المحلية المتاحة. إذا أردت اقتراح إعداد جديد، [راسلنا](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>) بشأنه.
+
+### لمشاريع الجهات الخارجية {/* #for_third_party_projects */}
+
+:::tip
+
+لإضافة إعداد محلي غير مدرج في `laravel-lang/locale-list`، [راسلنا](<https://github.com/orgs/Laravel-Lang/discussions/new?category=ideas&title=I%20want%20to%20add%20a%20new%20localization>).
+
+:::
+
+تأكّد من تثبيت حزمة `laravel-lang/status-generator` وشغّل أمر الطرفية:
+
+```bash
+vendor/bin/lang create <locale>
+# vendor/bin/lang create fr
+```
+
+إذا أردت تثبيت جميع الإعدادات المحلية الناقصة، فشغّل الأمر دون تحديد رمز الإعداد المحلي:
+
+```bash
+vendor/bin/lang create
+```
+
+## أسلوب الشيفرة {/* #code_style */}
+
+يتبع فريق Laravel-Lang معيار [PER](<https://www.php-fig.org/per/coding-style/>) لأسلوب الشيفرة ومعيار [PSR-4](<https://www.php-fig.org/psr/psr-4/>) للتحميل التلقائي.
+
+لتنسيق الشيفرة، شغّل أمر الطرفية:
+
+```bash
+composer style
+```
+
+## عنوان طلب السحب {/* #pr_title */}
+
+يجب أن يطابق عنوان طلب السحب الصيغة التالية:
+
+```bash
+[locale]: Description
+```
+
+مثلًا:
+
+```bash
+[fr]: Added new localization
+```
+
+يُتحقَّق من مطابقة العنوان للصيغة المحدّدة بتعبير نمطي:
+
+```bash
+/^(Draft:\s)?\[[a-zA-Z,_\s]+\]:\s.+$/
+```
+
+## مدوّنة السلوك {/* #code_of_conduct */}
+
+تستند مدوّنة سلوك Laravel إلى مدوّنة [ميثاق المساهمين](<https://www.contributor-covenant.org/version/2/1/code_of_conduct/>). يمكن إبلاغ [Andrey Helldar وFred Delrieu](<mailto:helldar@dragon-code.pro;caouecs@caouecs.net>) بأي انتهاكات لمدوّنة السلوك:
+
+- على المشاركين تقبّل الآراء المخالفة.
+- يجب أن يتأكّد المشاركون من خلو أقوالهم وأفعالهم من الهجمات الشخصية والملاحظات التي تحطّ من قدر الآخرين.
+- ينبغي للمشاركين افتراض حسن النية دائمًا عند تفسير أقوال الآخرين وأفعالهم.
+- لا يُتسامح مع أي سلوك يمكن اعتباره مضايقة على نحو معقول.
