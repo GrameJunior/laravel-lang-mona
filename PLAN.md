@@ -172,14 +172,14 @@
 - [ ] Актуализировать GitHub Actions
     - [x] dependabot
     - [x] close-stale-issues
-    - [ ] license
+    - [x] license
     - [x] preview
     - [ ] release-drafter
         - Изменить шаблон по аналогии с https://github.com/nvm-windows/nvm/releases/tag/v2.0.1
-    - [ ] statuses
+    - [x] statuses
     - [x] test-dependencies
     - [x] tests
-    - [ ] Найти auto-labeler
+    - [x] Найти auto-labeler
 - [ ] Очистить проект от технических файлов.
 - [ ] Обновить файлы переводов через утилиту миграции.
 - [ ] Реализовать split репозитории (посмотреть как это сделано в
