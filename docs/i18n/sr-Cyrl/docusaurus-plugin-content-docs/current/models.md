@@ -22,6 +22,8 @@ php artisan migrate
 
 Ако модел није у `app/Models`, додајте његов директоријум у [`localization_models.directories`](./configure.md) пре покретања генератора.
 
+Покрените `php artisan make:model-translation` да бисте интерактивно изабрали модел и колоне. Ако оставите празан списак, генератор користи `title` и `description`. Да бисте касније додали поље, направите миграцију и додајте поље у попуњиве атрибуте и конверзије модела превода.
+
 ## Упис и читање преведених атрибута {#write-and-read-translated-attributes}
 
 Када је [француски инсталиран](./translations.md), можете да сачувате превод тако што ћете проследити канонски код, алијас, члан енума `Locale` или `LocaleData`. За упис измена користите `save()` основног модела.
@@ -64,6 +66,8 @@ $articles = Article::query()
     ->orderByTranslation('title', 'asc', 'fr')
     ->get();
 ```
+
+Модели унапред учитавају релацију `translations()`. `orWhereTranslation()` и `orWhereTranslationLike()` додају алтернативан услов. `orderByTranslation()` сортира према једном локалу, подразумевано текућем.
 
 ## Праћење измена и освежавање IDE помоћних датотека {#observe-changes-and-refresh-ide-helpers}
 

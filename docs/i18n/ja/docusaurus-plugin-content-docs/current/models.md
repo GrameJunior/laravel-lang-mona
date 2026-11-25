@@ -22,6 +22,8 @@ php artisan migrate
 
 モデルが `app/Models` の外にある場合は、ジェネレーターを実行する前にモデルのディレクトリを [`localization_models.directories`](./configure.md) に追加します。
 
+`php artisan make:model-translation` を実行すると、モデルとカラムを対話的に選べます。カラムを省略すると `title` と `description` が使われます。後でフィールドを追加するには、マイグレーションを作成し、翻訳モデルの一括代入可能な属性とキャストに追加します。
+
 ## 翻訳済み属性を書き込み、読み取る {#write-and-read-translated-attributes}
 
 [フランス語をインストール](./translations.md)していれば、正規コード、エイリアス、列挙型 `Locale` のケース、または `LocaleData` を指定して翻訳を設定できます。変更を永続化するには基本モデルの `save()` を使います。
@@ -64,6 +66,8 @@ $articles = Article::query()
     ->orderByTranslation('title', 'asc', 'fr')
     ->get();
 ```
+
+モデルは `translations()` リレーションを事前読み込みします。`orWhereTranslation()` と `orWhereTranslationLike()` は代替条件を追加します。`orderByTranslation()` は 1 つのロケールで並べ替えます。省略時は現在のロケールを使います。
 
 ## 変更を監視して IDE ヘルパーを更新する {#observe-changes-and-refresh-ide-helpers}
 

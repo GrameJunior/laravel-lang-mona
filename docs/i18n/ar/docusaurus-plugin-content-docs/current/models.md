@@ -22,6 +22,8 @@ php artisan migrate
 
 إذا كان النموذج خارج `app/Models`، فأضف مجلده إلى [`localization_models.directories`](./configure.md) قبل تشغيل المولّد.
 
+شغّل `php artisan make:model-translation` لاختيار النموذج والأعمدة تفاعليًا. إذا تركت القائمة فارغة، يستخدم المولّد `title` و`description`. لإضافة حقل لاحقًا، أنشئ ترحيلًا جديدًا وأضف الحقل إلى السمات القابلة للتعبئة والتحويلات في نموذج الترجمة.
+
 ## كتابة السمات المترجمة وقراءتها {#write-and-read-translated-attributes}
 
 بعد [تثبيت الفرنسية](./translations.md)، يمكنك تخزين ترجمة بتمرير رمزها المعتمد أو اسمها البديل أو حالة من التعداد `Locale` أو كائن `LocaleData`. استخدم `save()` في النموذج الأساسي لحفظ التغييرات.
@@ -64,6 +66,8 @@ $articles = Article::query()
     ->orderByTranslation('title', 'asc', 'fr')
     ->get();
 ```
+
+تحمّل النماذج علاقة `translations()` مسبقًا. تعمل دوال `orWhereTranslation()` و`orWhereTranslationLike()` بديلًا للشروط السابقة. يفرز `orderByTranslation()` حسب إعداد محلي واحد، ويستخدم الحالي عند إغفال الوسيطة.
 
 ## مراقبة التغييرات وتحديث الملفات المساعدة لبيئة التطوير {#observe-changes-and-refresh-ide-helpers}
 

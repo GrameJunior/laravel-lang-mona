@@ -22,6 +22,8 @@ php artisan migrate
 
 모델이 `app/Models` 밖에 있다면 생성기를 실행하기 전에 그 디렉터리를 [`localization_models.directories`](./configure.md)에 추가합니다.
 
+`php artisan make:model-translation`을 실행해 모델과 열을 대화형으로 지정하세요. 열 목록을 비우면 `title`과 `description`을 사용합니다. 나중에 필드를 추가하려면 마이그레이션을 만들고 번역 모델의 할당 가능 속성과 캐스트에 필드를 추가하세요.
+
 ## 번역된 속성 쓰기 및 읽기 {#write-and-read-translated-attributes}
 
 [프랑스어를 설치](./translations.md)한 뒤 표준 코드, 별칭, `Locale` 열거형 케이스 또는 `LocaleData`를 전달해 번역을 저장할 수 있습니다. 변경 사항은 기본 모델의 `save()`로 저장하세요.
@@ -64,6 +66,8 @@ $articles = Article::query()
     ->orderByTranslation('title', 'asc', 'fr')
     ->get();
 ```
+
+모델은 `translations()` 관계를 미리 로드합니다. `orWhereTranslation()`과 `orWhereTranslationLike()`는 대체 조건을 추가합니다. `orderByTranslation()`은 하나의 로캘을 기준으로 정렬하며 기본값은 현재 로캘입니다.
 
 ## 변경 감지 및 IDE 헬퍼 갱신하기 {#observe-changes-and-refresh-ide-helpers}
 

@@ -22,6 +22,8 @@ Oluşturucu, temel modele `LaravelLang\Models\HasTranslations` trait’ini ekler
 
 Model `app/Models` dışındaysa oluşturucuyu çalıştırmadan önce modelin dizinini [`localization_models.directories`](./configure.md) ayarına ekleyin.
 
+Modeli ve sütunları etkileşimli olarak seçmek için `php artisan make:model-translation` çalıştırın. Listeyi boş bırakırsanız üreteç `title` ve `description` kullanır. Sonradan alan eklemek için yeni bir migration oluşturun ve alanı çeviri modelinin doldurulabilir özniteliklerine ve dönüşümlerine ekleyin.
+
 ## Çevrilmiş öznitelikleri yazma ve okuma {#write-and-read-translated-attributes}
 
 [Fransızca kuruluysa](./translations.md) standart kod, takma ad, `Locale` enum değeri veya `LocaleData` vererek çeviri saklayabilirsiniz. Değişiklikleri kalıcı olarak saklamak için temel modelin `save()` metodunu kullanın.
@@ -64,6 +66,8 @@ $articles = Article::query()
     ->orderByTranslation('title', 'asc', 'fr')
     ->get();
 ```
+
+Modeller `translations()` ilişkisini önceden yükler. `orWhereTranslation()` ve `orWhereTranslationLike()` alternatif koşullar ekler. `orderByTranslation()` tek bir yerel ayara göre sıralar ve varsayılan olarak geçerli yerel ayarı kullanır.
 
 ## Değişiklikleri izleme ve IDE yardımcı dosyalarını yenileme {#observe-changes-and-refresh-ide-helpers}
 

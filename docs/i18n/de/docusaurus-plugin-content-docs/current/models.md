@@ -22,6 +22,8 @@ Der Generator ergänzt das Basismodell um den Trait `LaravelLang\Models\HasTrans
 
 Liegt das Modell außerhalb von `app/Models`, ergänze sein Verzeichnis in [`localization_models.directories`](./configure.md), bevor du den Generator ausführst.
 
+Starte `php artisan make:model-translation`, um Modell und Spalten interaktiv auszuwählen. Ohne Spalteneingabe verwendet der Generator `title` und `description`. Lege für ein späteres Feld eine neue Migration an und ergänze die zuweisbaren Attribute und Casts im Übersetzungsmodell.
+
 ## Übersetzte Attribute schreiben und lesen {#write-and-read-translated-attributes}
 
 Wenn [Französisch installiert ist](./translations.md), kannst du eine Übersetzung speichern, indem du den kanonischen Code, den Alias, einen Fall des Enums `Locale` oder `LocaleData` übergibst. Speichere die Änderungen mit `save()` am Basismodell.
@@ -64,6 +66,8 @@ $articles = Article::query()
     ->orderByTranslation('title', 'asc', 'fr')
     ->get();
 ```
+
+Modelle laden die Relation `translations()` vorab. `orWhereTranslation()` und `orWhereTranslationLike()` ergänzen alternative Bedingungen. `orderByTranslation()` sortiert nach einer einzelnen Locale, standardmäßig der aktuellen.
 
 ## Änderungen beobachten und IDE-Helper aktualisieren {#observe-changes-and-refresh-ide-helpers}
 

@@ -22,6 +22,8 @@ php artisan migrate
 
 Калі мадэль знаходзіцца па-за `app/Models`, дадайце яе каталог у [`localization_models.directories`](./configure.md) перад запускам генератара.
 
+Запусціце `php artisan make:model-translation`, каб інтэрактыўна выбраць мадэль і слупкі. Калі спіс пусты, генератар выкарыстоўвае `title` і `description`. Каб пазней дадаць поле, стварыце міграцыю і дапоўніце запаўняльныя палі і пераўтварэнні мадэлі перакладу.
+
 ## Запіс і чытанне перакладзеных атрыбутаў {#write-and-read-translated-attributes}
 
 Калі [французская лакаль усталяваная](./translations.md), пераклад можна захаваць, перадаўшы кананічны код, аліяс, варыянт enum-а `Locale` або `LocaleData`. Каб запісаць змены, выкарыстоўвайце `save()` базавай мадэлі.
@@ -64,6 +66,8 @@ $articles = Article::query()
     ->orderByTranslation('title', 'asc', 'fr')
     ->get();
 ```
+
+Мадэлі загадзя загружаюць сувязь `translations()`. `orWhereTranslation()` і `orWhereTranslationLike()` дадаюць альтэрнатыўную ўмову. `orderByTranslation()` сартуе паводле адной лакалі, паводле змоўчання бягучай.
 
 ## Назіранне за зменамі і абнаўленне дапаможных файлаў IDE {#observe-changes-and-refresh-ide-helpers}
 

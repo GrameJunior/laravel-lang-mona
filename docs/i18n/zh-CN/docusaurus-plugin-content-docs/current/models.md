@@ -22,6 +22,8 @@ php artisan migrate
 
 如果模型不在 `app/Models` 下，请先将其目录添加到 [`localization_models.directories`](./configure.md)，再运行生成器。
 
+运行 `php artisan make:model-translation` 可交互选择模型和列。留空时，生成器使用 `title` 和 `description`。之后要新增字段，请创建迁移，并将字段加入翻译模型的可批量赋值属性与类型转换。
+
 ## 写入和读取已翻译的属性 {#write-and-read-translated-attributes}
 
 [安装法语译文](./translations.md)后，可传入法语的规范代码、别名、`Locale` 枚举项或 `LocaleData` 对象来存储译文。使用基础模型的 `save()` 持久化更改。
@@ -64,6 +66,8 @@ $articles = Article::query()
     ->orderByTranslation('title', 'asc', 'fr')
     ->get();
 ```
+
+模型会预加载 `translations()` 关系。`orWhereTranslation()` 和 `orWhereTranslationLike()` 可添加备选条件。`orderByTranslation()` 按单个语言区域排序，默认为当前语言区域。
 
 ## 监听更改和更新 IDE 辅助文件 {#observe-changes-and-refresh-ide-helpers}
 

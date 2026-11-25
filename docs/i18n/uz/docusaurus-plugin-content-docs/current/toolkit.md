@@ -14,7 +14,7 @@ php src/Toolkit/bin/toolkit migrate-locales --help
 ## Tarjima holatini tekshirish {#check-translation-status}
 
 ```bash
-php src/Toolkit/bin/toolkit status src/Library
+php src/Toolkit/bin/toolkit status src/Lang
 ```
 
 Standart holatda buyruq loyiha ichiga `locales/<locale>/_status.json` faylini yozadi. Unda saqlangan tarjimasi manba iboraga mos keladigan yozuvlar uslub bo‘yicha guruhlanadi. Buyruq `locales/_settings.json` va `locales/<locale>/_settings.json` dagi istisnolarni birlashtiradi hamda bo‘sh hisobotlarni o‘chiradi. Lug‘atda umuman yo‘q iboralarni topish uchun lug‘atni paket manba fayllari bilan taqqoslang.
@@ -23,6 +23,14 @@ Hisobotlarni alohida katalogga `<locale>.json` fayllari sifatida yozish uchun `-
 
 ```bash
 php src/Toolkit/bin/toolkit status src/Library --output-dir=workbench/status
+```
+
+Ataylab o‘zgartirilmagan iboralarni tegishli `_settings.json` faylidagi `excludes` ro‘yxatiga qo‘shing.
+
+```json
+{
+  "excludes": ["Laravel"]
+}
 ```
 
 ## Lokal kataloglarini boshqarish {#manage-locale-directories}
@@ -45,6 +53,8 @@ php src/Toolkit/bin/toolkit sync:package path/to/translation-pack
 - `sync:package` bitta paketning `source/` katalogini o‘qiydi va `locales/` katalogidagi ishlatilmayotgan yozuvlarni olib tashlaydi. Bu tozalashdan keyin bo‘sh qolgan lug‘atlarni o‘chiradi.
 
 Ikkala buyruq ham faol iboralarning mavjud tarjimalarini hamda `_settings.json` singari pastki chiziq bilan boshlanadigan fayllarni saqlaydi. Yangi iboralarning tarjimasini bevosita lug‘atga qo‘shing.
+
+Argument berilmasa, `sync:library` ishchi nusxaning `src/` katalogidan, `sync:package` joriy katalogdan foydalanadi. Ikkalasi kanonik lokal kodi bor kataloglarni qayta ishlaydi.
 
 ## Eski lug‘atlarni ko‘chirish {#migrate-legacy-dictionaries}
 
@@ -74,3 +84,5 @@ php src/Toolkit/bin/toolkit download \
 - Tanlangan PHP va JSON fayllari katalog tuzilmasisiz, o‘z nomi bilan bevosita maqsad katalogiga nusxalanadi. PHP fayllari baytma-bayt nusxalanadi. Bir xil nomdagi JSON fayllari birlashtiriladi va kiruvchi qiymatlar ustun turadi.
 - `--only-copy` berilmasa, Toolkit literal kalitli qo‘llab-quvvatlanadigan tarjima chaqiruvlarini qidiradi. Iboralarni topsa, maqsad katalogining ota katalogi nomida JSON manba faylini yozadi, masalan, yuqoridagi `framework.json`.
 - Buyruq PHP’ning ZIP kengaytmasini talab qiladi. U nashr qilishdan oldin o‘zgarishlarni vaqtincha joyga tayyorlaydi va nashr muvaffaqiyatsiz bo‘lsa, oldingi maqsad katalogini tiklashga urinadi.
+
+`--url` va `--directory` majburiy. `--paths` kataloglari ichki kataloglari bilan birga tekshiriladi. Faqat tarjima kalitlarini izlash uchun `--paths` ni tashlab keting. Kalitlarni paketga qo‘shishdan oldin tekshiring.

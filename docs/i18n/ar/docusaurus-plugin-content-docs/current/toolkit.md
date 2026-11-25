@@ -14,7 +14,7 @@ php src/Toolkit/bin/toolkit migrate-locales --help
 ## التحقّق من حالة الترجمة {#check-translation-status}
 
 ```bash
-php src/Toolkit/bin/toolkit status src/Library
+php src/Toolkit/bin/toolkit status src/Lang
 ```
 
 افتراضيًا، يكتب الأمر `locales/<locale>/_status.json` داخل المشروع. يسرد المدخلات التي تطابق ترجمتها المحفوظة العبارة المصدرية، ويجمعها بحسب الأسلوب. يدمج الاستثناءات من `locales/_settings.json` و`locales/<locale>/_settings.json` ويحذف التقارير الفارغة. للعثور على العبارات الغائبة تمامًا عن قاموس، قارنه بملفات الحزمة المصدرية.
@@ -23,6 +23,14 @@ php src/Toolkit/bin/toolkit status src/Library
 
 ```bash
 php src/Toolkit/bin/toolkit status src/Library --output-dir=workbench/status
+```
+
+أضف العبارات المترجمة بالنص نفسه عمدًا إلى `excludes` في ملف `_settings.json` المناسب.
+
+```json
+{
+  "excludes": ["Laravel"]
+}
 ```
 
 ## إدارة مجلدات الإعدادات المحلية {#manage-locale-directories}
@@ -45,6 +53,8 @@ php src/Toolkit/bin/toolkit sync:package path/to/translation-pack
 - يقرأ `sync:package` مجلد `source/` لحزمة واحدة ويزيل المدخلات غير المستخدمة من مجلد `locales/` الخاص بها. ويحذف القواميس التي فرغت بعد الإزالة.
 
 يحتفظ الأمران بالترجمات الموجودة للعبارات النشطة ويحافظان على الملفات التي تبدأ بشرطة سفلية مثل `_settings.json`. أضف ترجمات العبارات الجديدة إلى القاموس مباشرةً.
+
+عند إغفال المسار، يستخدم `sync:library` دليل `src/` الخاص بالمستودع، ويستخدم `sync:package` دليل العمل الحالي. يعالج كلاهما أدلة الإعدادات المحلية ذات الرموز القياسية.
 
 ## ترحيل القواميس القديمة {#migrate-legacy-dictionaries}
 
@@ -74,3 +84,5 @@ php src/Toolkit/bin/toolkit download \
 - تُنسخ ملفات PHP وJSON المحدّدة إلى الوجهة بأسمائها. تُنسخ ملفات PHP بايتًا ببايت، وتُدمج ملفات JSON ذات الاسم نفسه مع إعطاء الأولوية للقيم الواردة.
 - في غياب `--only-copy`، تبحث Toolkit عن استدعاءات الترجمة المدعومة ذات المفاتيح الحرفية. وإذا وجدت عبارات، تكتب مصدر JSON باسم المجلد الأب للوجهة، مثل `framework.json` في المثال.
 - يتطلب الأمر امتداد ZIP في PHP. يجهّز التغييرات قبل النشر ويحاول استعادة الوجهة السابقة إذا فشل النشر.
+
+يلزم توفير `--url` و`--directory`. تفحص الأداة الدلائل المحددة في `--paths` وأدلتها الفرعية. احذف `--paths` للبحث عن مفاتيح الترجمة فقط، وراجع المفاتيح الناتجة قبل إضافتها إلى الحزمة.

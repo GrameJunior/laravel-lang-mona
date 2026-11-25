@@ -22,6 +22,8 @@ El generador agrega el trait `LaravelLang\Models\HasTranslations` al modelo base
 
 Si el modelo está fuera de `app/Models`, agrega su directorio a [`localization_models.directories`](./configure.md) antes de ejecutar el generador.
 
+Ejecuta `php artisan make:model-translation` para elegir el modelo y sus columnas de forma interactiva. Si dejas la lista vacía, usa `title` y `description`. Para añadir un campo más adelante, crea una migración y añade el campo a los atributos asignables y a las conversiones del modelo de traducción.
+
 ## Escribir y leer atributos traducidos {#write-and-read-translated-attributes}
 
 Con [el francés instalado](./translations.md), puedes guardar una traducción pasando su código canónico, alias, caso de la enumeración `Locale` u objeto `LocaleData`. Usa `save()` del modelo base para guardar los cambios.
@@ -64,6 +66,8 @@ $articles = Article::query()
     ->orderByTranslation('title', 'asc', 'fr')
     ->get();
 ```
+
+Los modelos precargan la relación `translations()`. `orWhereTranslation()` y `orWhereTranslationLike()` añaden condiciones alternativas. `orderByTranslation()` ordena por una sola configuración regional, la actual por defecto.
 
 ## Observar cambios y actualizar archivos de ayuda del IDE {#observe-changes-and-refresh-ide-helpers}
 

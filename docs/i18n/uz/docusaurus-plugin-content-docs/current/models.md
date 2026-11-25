@@ -22,6 +22,8 @@ Generator asosiy modelga `LaravelLang\Models\HasTranslations` treytini qo‘shad
 
 Model `app/Models` dan tashqarida bo‘lsa, generatorni ishga tushirishdan oldin uning katalogini [`localization_models.directories`](./configure.md) sozlamasiga qo‘shing.
 
+Model va ustunlarni interaktiv tanlash uchun `php artisan make:model-translation` ni bajaring. Ro‘yxat bo‘sh bo‘lsa, generator `title` va `description` ni ishlatadi. Keyinroq maydon qo‘shish uchun yangi migratsiya yarating va maydonni tarjima modelining to‘ldiriladigan atributlari va o‘girish qoidalariga kiriting.
+
 ## Tarjima qilingan atributlarni yozish va o‘qish {#write-and-read-translated-attributes}
 
 [Fransuz tili o‘rnatilgan](./translations.md) bo‘lsa, uning kanonik kodi, muqobil nomi, `Locale` enum varianti yoki `LocaleData` obyektini uzatib tarjimani yozishingiz mumkin. O‘zgarishlarni saqlash uchun asosiy modelning `save()` metodidan foydalaning.
@@ -64,6 +66,8 @@ $articles = Article::query()
     ->orderByTranslation('title', 'asc', 'fr')
     ->get();
 ```
+
+Modellar `translations()` aloqasini oldindan yuklaydi. `orWhereTranslation()` va `orWhereTranslationLike()` muqobil shart qo‘shadi. `orderByTranslation()` bitta lokal bo‘yicha saralaydi, standart qiymat joriy lokal.
 
 ## O‘zgarishlarni kuzatish va IDE yordamchi fayllarini yangilash {#observe-changes-and-refresh-ide-helpers}
 

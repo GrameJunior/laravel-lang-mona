@@ -14,7 +14,7 @@ php src/Toolkit/bin/toolkit migrate-locales --help
 ## Çeviri durumunu kontrol etme {#check-translation-status}
 
 ```bash
-php src/Toolkit/bin/toolkit status src/Library
+php src/Toolkit/bin/toolkit status src/Lang
 ```
 
 Komut varsayılan olarak proje içinde `locales/<locale>/_status.json` dosyasını yazar. Kaydedilen çevirisi kaynak ifadeyle aynı olan girdileri listeler ve stile göre gruplar. `locales/_settings.json` ile `locales/<locale>/_settings.json` dosyalarındaki hariç tutma listelerini birleştirir ve boş raporları siler. Sözlükte hiç bulunmayan ifadeleri bulmak için sözlüğü paketin kaynak dosyalarıyla karşılaştırın.
@@ -23,6 +23,14 @@ Raporları `<locale>.json` dosya adlarıyla ayrı bir dizine yazmak için `--out
 
 ```bash
 php src/Toolkit/bin/toolkit status src/Library --output-dir=workbench/status
+```
+
+Bilerek aynı bıraktığınız ifadeleri ilgili `_settings.json` dosyasındaki `excludes` listesine ekleyin.
+
+```json
+{
+  "excludes": ["Laravel"]
+}
 ```
 
 ## Yerel ayar dizinlerini yönetme {#manage-locale-directories}
@@ -45,6 +53,8 @@ php src/Toolkit/bin/toolkit sync:package path/to/translation-pack
 - `sync:package`, tek bir paketin `source/` dizinini okur ve `locales/` dizinindeki kullanılmayan girdileri kaldırır. Bu işlemden sonra boş kalan sözlükleri siler.
 
 Her iki komut, etkin ifadelerin mevcut çevirilerini ve `_settings.json` gibi alt çizgiyle başlayan dosyaları korur. Yeni ifadelerin çevirilerini doğrudan sözlüğe ekleyin.
+
+Argüman verilmezse `sync:library` çalışma kopyasındaki `src/` dizinini, `sync:package` mevcut çalışma dizinini kullanır. Her ikisi standart yerel ayar koduyla adlandırılmış dizinleri işler.
 
 ## Eski sözlükleri taşıma {#migrate-legacy-dictionaries}
 
@@ -74,3 +84,5 @@ php src/Toolkit/bin/toolkit download \
 - Seçilen PHP ve JSON dosyaları, dosya adlarıyla hedefe kopyalanır. PHP dosyaları bayt düzeyinde kopyalanır. Aynı adlı JSON dosyaları birleştirilir ve gelen değerler önceliklidir.
 - `--only-copy` olmadan Toolkit, anahtarları değişmez metinler olan desteklenen çeviri çağrılarını tarar. İfade bulursa, örnekteki `framework.json` gibi hedefin üst dizinine göre adlandırılmış bir JSON kaynak dosyası yazar.
 - Komut PHP’nin ZIP eklentisini gerektirir. Değişiklikleri yayımdan önce geçici bir alanda hazırlar. Yayım başarısız olursa önceki hedefi geri yüklemeye çalışır.
+
+`--url` ve `--directory` zorunludur. `--paths` ile verilen dizinler özyinelemeli taranır. Yalnızca çeviri anahtarlarını bulmak için `--paths` seçeneğini atlayın. Anahtarları pakete eklemeden önce inceleyin.
